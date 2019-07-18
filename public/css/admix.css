@@ -1,4 +1,9 @@
-@charset "UTF-8";
+/**
+ * @author Script47 (https://github.com/Script47/Toast)
+ * @description Toast - A Bootstrap 4.2+ jQuery plugin for the toast component
+ * @version 0.7.1
+ **/
+#toast-container{position:-webkit-sticky;position:sticky;z-index:1055;top:0}#toast-wrapper{position:absolute;top:0;right:0;margin:5px}#toast-container>#toast-wrapper>.toast{min-width:150px;background-color:rgb(255,255,255);border-top:none;}#toast-container>#toast-wrapper>.toast>.toast-header strong{padding-right:20px}@charset "UTF-8";
 
 /**
 Dashboard UI
@@ -4205,9 +4210,7 @@ input[type=button].btn-block {
   height: calc(1rem - 4px);
   background-color: #adb5bd;
   border-radius: 0.5rem;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
   transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -4218,8 +4221,7 @@ input[type=button].btn-block {
 
 .custom-switch .custom-control-input:checked ~ .custom-control-label::after {
   background-color: #fff;
-  -webkit-transform: translateX(0.75rem);
-          transform: translateX(0.75rem);
+  transform: translateX(0.75rem);
 }
 
 .custom-switch .custom-control-input:disabled:checked ~ .custom-control-label::before {
@@ -5223,12 +5225,10 @@ input[type=button].btn-block {
 
 @media (min-width: 576px) {
   .card-columns {
-    -webkit-column-count: 3;
-       -moz-column-count: 3;
-            column-count: 3;
-    -webkit-column-gap: 1.25rem;
-       -moz-column-gap: 1.25rem;
-            column-gap: 1.25rem;
+    -moz-column-count: 3;
+         column-count: 3;
+    -moz-column-gap: 1.25rem;
+         column-gap: 1.25rem;
     orphans: 1;
     widows: 1;
   }
@@ -6237,11 +6237,8 @@ a.close.disabled {
 }
 
 .modal.fade .modal-dialog {
-  transition: -webkit-transform 0.3s ease-out;
   transition: transform 0.3s ease-out;
-  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
-  -webkit-transform: translate(0, -50px);
-          transform: translate(0, -50px);
+  transform: translate(0, -50px);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -6251,8 +6248,7 @@ a.close.disabled {
 }
 
 .modal.show .modal-dialog {
-  -webkit-transform: none;
-          transform: none;
+  transform: none;
 }
 
 .modal-dialog-scrollable {
@@ -6754,9 +6750,7 @@ a.close.disabled {
   margin-right: -100%;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  transition: -webkit-transform 0.6s ease-in-out;
   transition: transform 0.6s ease-in-out;
-  transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -6773,21 +6767,18 @@ a.close.disabled {
 
 .carousel-item-next:not(.carousel-item-left),
 .active.carousel-item-right {
-  -webkit-transform: translateX(100%);
-          transform: translateX(100%);
+  transform: translateX(100%);
 }
 
 .carousel-item-prev:not(.carousel-item-right),
 .active.carousel-item-left {
-  -webkit-transform: translateX(-100%);
-          transform: translateX(-100%);
+  transform: translateX(-100%);
 }
 
 .carousel-fade .carousel-item {
   opacity: 0;
   transition-property: opacity;
-  -webkit-transform: none;
-          transform: none;
+  transform: none;
 }
 
 .carousel-fade .carousel-item.active,
@@ -6923,15 +6914,13 @@ a.close.disabled {
 
 @-webkit-keyframes spinner-border {
   to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
 @keyframes spinner-border {
   to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -6955,8 +6944,7 @@ a.close.disabled {
 
 @-webkit-keyframes spinner-grow {
   0% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
   }
 
   50% {
@@ -6966,8 +6954,7 @@ a.close.disabled {
 
 @keyframes spinner-grow {
   0% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
   }
 
   50% {
@@ -14130,7 +14117,7 @@ yx-axis
 /* ---------------------------------------- */
 
 /*!
- * bootstrap-fileinput v5.0.2
+ * bootstrap-fileinput v5.0.4
  * http://plugins.krajee.com/file-input
  *
  * Krajee default styling for bootstrap-fileinput.
@@ -14200,7 +14187,8 @@ input[type=file].file-loading,
 
 .krajee-default .file-upload-indicator,
 .krajee-default .file-drag-handle {
-  margin: 5px 0 -5px;
+  float: left;
+  margin-top: 10px;
   width: 16px;
   height: 16px;
 }
@@ -17887,8 +17875,7 @@ a.icon:hover {
   width: 1.4em;
   left: calc(50% - (1.4em / 2));
   top: calc(50% - (1.4em / 2));
-  -webkit-transform-origin: center;
-          transform-origin: center;
+  transform-origin: center;
   position: absolute !important;
 }
 
@@ -18903,25 +18890,21 @@ Card alert
 
 @-webkit-keyframes loader {
   from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 
   to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
 @keyframes loader {
   from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 
   to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -18940,8 +18923,7 @@ Dimmer
   top: 50%;
   left: 0;
   right: 0;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .dimmer.active .loader {
@@ -19352,8 +19334,7 @@ Icon input
   display: inline-block;
   background: currentColor;
   border-radius: 50%;
-  -webkit-transform: translateY(-1px);
-          transform: translateY(-1px);
+  transform: translateY(-1px);
   margin-right: 0.375rem;
   vertical-align: middle;
 }
@@ -22709,14 +22690,11 @@ svg {
   height: 10px;
   background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 5'%3E%3Cpath fill='#999' d='M0 0L10 0L5 5L0 0'/%3E%3C/svg%3E") no-repeat center;
   background-size: 8px 10px;
-  transition: 0.3s -webkit-transform;
   transition: 0.3s transform;
-  transition: 0.3s transform, 0.3s -webkit-transform;
 }
 
 .selectize-control.single .selectize-input.dropdown-active:after {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .selectize-control .selectize-input.disabled {
@@ -22754,7 +22732,7 @@ svg {
   font-family: "feather";
   src: url(/fonts/feather-webfont.eot?cc5143b2b877ad1f2a9d7ddde2e55dee);
   /* IE9*/
-  src: url(/fonts/feather-webfont.eot?cc5143b2b877ad1f2a9d7ddde2e55dee#iefix) format("embedded-opentype"), url(/fonts/feather-webfont.woff?2cf523cd335b115a5678b068b56c3011) format("woff"), url(/fonts/feather-webfont.ttf?b8e9cbc7ac23b572497cd2115bcf71c6) format("truetype"), url(/fonts/feather-webfont.svg?4a878d5b85f694202ec0ccd16510be9c#feather) format("svg");
+  src: url(/fonts/feather-webfont.eot?cc5143b2b877ad1f2a9d7ddde2e55dee) format("embedded-opentype"), url(/fonts/feather-webfont.woff?2cf523cd335b115a5678b068b56c3011) format("woff"), url(/fonts/feather-webfont.ttf?b8e9cbc7ac23b572497cd2115bcf71c6) format("truetype"), url(/fonts/feather-webfont.svg?4a878d5b85f694202ec0ccd16510be9c) format("svg");
   /* iOS 4.1- */
 }
 
@@ -23849,8 +23827,33 @@ form.destroy button {
   padding: 0;
 }
 
-.card-list-group .list-group-item:last-child {
-  border-bottom: 1px solid rgba(0, 40, 100, 0.12);
+#formUploadMetaPost .col-xl-5 {
+  flex: unset;
+  max-width: 74.666667%;
+}
+
+#formUploadMetaPost .list-group-item {
+  padding: 0;
+}
+
+.list-group-item {
+  border: unset;
+}
+
+.list-group li:nth-of-type(even) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.table-striped thead tr {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.card-header {
+  border-bottom: unset;
+}
+
+.card-footer {
+  border-top: unset;
 }
 
 #sidebar {
@@ -23924,12 +23927,41 @@ form.destroy button {
   padding: unset;
 }
 
+.file-drop-zone.clickable:hover,
+.file-drop-zone.clickable:focus {
+  border: unset;
+}
+
+.file-caption-main.no-browse {
+  display: none;
+}
+
 .file-preview-image {
   border-radius: 3px;
 }
 
 .file-preview {
   border: 1px solid rgba(0, 40, 100, 0.12);
+}
+
+.file-no-browse:disabled {
+  opacity: 0;
+}
+
+.single-upload .file-preview {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.single-upload .krajee-default.file-preview-frame {
+  border: unset;
+  padding: 0;
+}
+
+.single-upload .krajee-default.file-preview-frame:not(.file-preview-error):hover {
+  border: unset;
+  padding: 0;
 }
 
 .krajee-default.file-preview-frame {
@@ -23949,5 +23981,13 @@ form.destroy button {
   height: unset;
   max-width: 300px;
   max-height: 300px;
+}
+
+.krajee-default .file-upload-indicator,
+.krajee-default .file-drag-handle {
+  float: left;
+  margin: unset;
+  width: unset;
+  height: unset;
 }
 
