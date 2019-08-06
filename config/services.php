@@ -44,4 +44,10 @@ return [
         ],
     ],
 
+    'google' => [
+        'api_key' => env('GOOGLE_API_KEY'),
+        'tagmanager' => env('GOOGLE_TAGMANAGER'),
+        'view_id' => env('GOOGLE_VIEW_ID'),
+    ],
+
 ];
