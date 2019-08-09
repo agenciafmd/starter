@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6c60e2d24bde8e4652cd6c79a38dfb0",
+    "content-hash": "54fb75af4d0261cf71aaf7a343f6f670",
     "packages": [
         {
             "name": "agenciafmd/admix",
@@ -12,7 +12,7 @@
             "dist": {
                 "type": "path",
                 "url": "../packages/agenciafmd/admix",
-                "reference": "ff55d878c37adfb8cccd98918c3014a8cc4b8d55"
+                "reference": "1ecaa5c6509f2e5e882f9488b27eb765f4cbf324"
             },
             "require": {
                 "laravel/framework": "5.8.*"
@@ -100,7 +100,7 @@
             "dist": {
                 "type": "path",
                 "url": "../packages/agenciafmd/admix-form",
-                "reference": "16adb32a565d63da827811e90868d4ea1a0298c9"
+                "reference": "5151b8e809ba2a4c44141ef2b73f99368b035eab"
             },
             "require": {
                 "laravel/framework": "5.8.*"
@@ -146,7 +146,7 @@
             "dist": {
                 "type": "path",
                 "url": "../packages/agenciafmd/admix-postal",
-                "reference": "e9359ab8d92afea3a1756917321e1f925e26c1f2"
+                "reference": "75d0688f4a6bdecab2f6950b0cde885d400e30e5"
             },
             "require": {
                 "laravel/framework": "5.8.*"
@@ -1662,6 +1662,64 @@
                 "zip"
             ],
             "time": "2018-02-09T09:26:57+00:00"
+        },
+        {
+            "name": "mixdinternet/homestead-ngrok",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mixdinternet/homestead-ngrok.git",
+                "reference": "ccf151a824ef10af847457e1fe08124c7e5719a3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mixdinternet/homestead-ngrok/zipball/ccf151a824ef10af847457e1fe08124c7e5719a3",
+                "reference": "ccf151a824ef10af847457e1fe08124c7e5719a3",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^5.0",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Mixdinternet\\Ngrok\\Providers\\NgrokServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mixdinternet\\Ngrok\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Irineu Martins Junior",
+                    "email": "irineu@mixd.com.br",
+                    "homepage": "http://www.mixd.com.br/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Alex",
+                    "email": "_oster_@mail.ru",
+                    "homepage": "https://github.com/Osster",
+                    "role": "Thanks"
+                }
+            ],
+            "description": "Allow ngrok url works on homestead",
+            "keywords": [
+                "homestead",
+                "laravel",
+                "ngrok"
+            ],
+            "time": "2019-01-18T16:28:47+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -7698,7 +7756,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "mixdinternet/homestead-ngrok": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

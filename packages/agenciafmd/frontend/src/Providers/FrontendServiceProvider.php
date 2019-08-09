@@ -22,6 +22,7 @@ class FrontendServiceProvider extends ServiceProvider
 
     public function register()
     {
+        //
     }
 
     protected function setRoutes()
