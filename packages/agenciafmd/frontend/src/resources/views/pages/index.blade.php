@@ -2,15 +2,19 @@
 
 @section('content')
     <div>
-        <?php
+        @php
             $phrases = collect([
                 'Se você não lutar por alguma coisa será vencido por qualquer coisa!',
-                'Be Great!',
-                'What a lovely day',
-                'Hakuna Matata',
+                'Que o vento leve o necessário e me traga o suficiente.',
+                'Nunca saberemos o quão forte somos até que ser forte seja a única escolha.',
+                'Se a caminhada está difícil, é porque você está no caminho certo.',
+                'Seja humilde para admitir seus erros, inteligente para aprender com eles e maduro para corrigi-los.',
+                'Inspira. Respira. Não pira.',
             ]);
-        ?>
+        @endphp
+
         {{ $phrases->random(1)->first() }}
+
     </div>
 @endsection
 
@@ -25,6 +29,8 @@
             color: #3e515b;
             margin: auto;
             font-size: 48px;
+            padding: 0 120px;
+            text-align: center;
         }
     </style>
 @endpush
