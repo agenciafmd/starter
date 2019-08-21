@@ -116,6 +116,9 @@
 @stack('footer')
 
 <script src="{{ mix('/js/app.js') }}"></script>
+
+@include('agenciafmd/frontend::partials.message')
+
 @stack('scripts')
 </body>
 </html>
