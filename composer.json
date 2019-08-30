@@ -35,6 +35,10 @@
         {
             "type": "path",
             "url": "../packages/agenciafmd/admix-categories"
+        },
+        {
+            "type": "path",
+            "url": "../packages/agenciafmd/admix-banners"
         }
     ],
     "require": {
@@ -43,6 +47,7 @@
         "agenciafmd/admix-categories": "*",
         "agenciafmd/admix-form": "*",
         "agenciafmd/admix-postal": "*",
+        "agenciafmd/admix-banners": "*",
         "agenciafmd/frontend": "*",
         "agenciafmd/local-products": "*",
         "fideloper/proxy": "^4.0",

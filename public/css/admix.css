@@ -21142,7 +21142,6 @@ form.destroy button {
   width: unset;
   height: unset;
   max-width: 300px;
-  max-height: 300px;
 }
 
 .krajee-default .file-upload-indicator,

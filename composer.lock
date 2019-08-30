@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "54fb75af4d0261cf71aaf7a343f6f670",
+    "content-hash": "75ab341c83a183b65bacaa664f5040d8",
     "packages": [
         {
             "name": "agenciafmd/admix",
@@ -12,7 +12,7 @@
             "dist": {
                 "type": "path",
                 "url": "../packages/agenciafmd/admix",
-                "reference": "edccc2830bee2ec236e456f86625f8668c76ed48"
+                "reference": "a8387aad2ed604f8be9a666a48a39d92bca65882"
             },
             "require": {
                 "laravel/framework": "5.8.*",
@@ -53,12 +53,55 @@
             ]
         },
         {
+            "name": "agenciafmd/admix-banners",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../packages/agenciafmd/admix-banners",
+                "reference": "6f9bc10b5b7ff103a2917f01b220457abec8c5a0"
+            },
+            "require": {
+                "laravel/framework": "5.8.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Agenciafmd\\Banners\\Providers\\BannerServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Http/helpers.php"
+                ],
+                "psr-4": {
+                    "Agenciafmd\\Banners\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Irineu Martins Junior",
+                    "email": "irineu@fmd.ag",
+                    "homepage": "https://fmd.ag/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Banners - Agência F&MD",
+            "homepage": "https://github.com/agenciafmd/admix-banners",
+            "keywords": [
+                "agenciafmd",
+                "laravel"
+            ]
+        },
+        {
             "name": "agenciafmd/admix-categories",
             "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "../packages/agenciafmd/admix-categories",
-                "reference": "f69ba79477aa285ec81e598ccf2ce823ec3c8657"
+                "reference": "1e7a7c4868151a218005b2a8cb2952385822fcbe"
             },
             "require": {
                 "laravel/framework": "5.8.*"
@@ -3444,16 +3487,16 @@
         },
         {
             "name": "sentry/sentry",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/getsentry/sentry-php.git",
-                "reference": "8e27e6c5fcf6f01fc2e5235dd14cc0b2b347d793"
+                "reference": "646f6ada8b89a08063e31f54ed6d260bd6879239"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/8e27e6c5fcf6f01fc2e5235dd14cc0b2b347d793",
-                "reference": "8e27e6c5fcf6f01fc2e5235dd14cc0b2b347d793",
+                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/646f6ada8b89a08063e31f54ed6d260bd6879239",
+                "reference": "646f6ada8b89a08063e31f54ed6d260bd6879239",
                 "shasum": ""
             },
             "require": {
@@ -3482,12 +3525,12 @@
                 "phpstan/phpstan": "^0.10.3",
                 "phpstan/phpstan-phpunit": "^0.10",
                 "phpunit/phpunit": "^7.0",
-                "symfony/phpunit-bridge": "^4.1.6"
+                "symfony/phpunit-bridge": "^4.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.1.x-dev"
                 }
             },
             "autoload": {
@@ -3519,7 +3562,7 @@
                 "logging",
                 "sentry"
             ],
-            "time": "2019-06-13T11:27:23+00:00"
+            "time": "2019-08-22T07:37:30+00:00"
         },
         {
             "name": "sentry/sentry-laravel",

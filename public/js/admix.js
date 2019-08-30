@@ -191,6 +191,25 @@ $(function () {
 
   var editor = new MediumEditor('.js-wysiwyg', {
     placeholder: false,
+    imageDragging: false,
+    // paste: {
+    //     forcePlainText: true,
+    //     cleanPastedHTML: false,
+    //     cleanReplacements: [
+    //         [
+    //             '/<[^>]*>/ig', ''
+    //         ]
+    //     ],
+    //     cleanTags: [
+    //         'meta',
+    //         'script',
+    //         'style',
+    //         'img',
+    //         'object',
+    //         'iframe',
+    //         'p'
+    //     ]
+    // },
     anchor: {
       placeholderText: 'ex. https://fmd.ag',
       targetCheckbox: true,
@@ -203,6 +222,9 @@ $(function () {
       })
     },
     toolbar: {
+      // static: false, // deixa a toolbar fixa no topo
+      // sticky: false, //
+      // updateOnEmptySelection: false, // a toolbar aparece mesmo quando não temos o texto selecionado
       buttons: [{
         name: 'bold',
         aria: 'negrito'
@@ -218,7 +240,13 @@ $(function () {
       }, {
         name: 'anchor',
         aria: 'link'
-      }, 'h3', 'h4', {
+      }, {
+        name: 'h3',
+        aria: 'cabeçalho tipo 3'
+      }, {
+        name: 'h4',
+        aria: 'cabeçalho tipo 4'
+      }, {
         name: 'quote',
         aria: 'citação'
       }, {
@@ -228,12 +256,103 @@ $(function () {
       }, {
         name: 'orderedlist',
         aria: 'lista ordenada'
-      }, 'table'],
-      "static": true,
-      sticky: true
+      }, {
+        name: 'justifyLeft',
+        aria: 'alinhar a esquerda',
+        contentDefault: '<i class="icon fe-align-left"></i>'
+      }, {
+        name: 'justifyCenter',
+        aria: 'centralizar',
+        contentDefault: '<i class="icon fe-align-center"></i>'
+      }, {
+        name: 'justifyRight',
+        aria: 'alinhar a direita',
+        contentDefault: '<i class="icon fe-align-right"></i>'
+      }, {
+        name: 'justifyFull',
+        aria: 'justificar',
+        contentDefault: '<i class="icon fe-align-justify"></i>'
+      }, {
+        name: 'removeFormat',
+        aria: 'remover formatação',
+        contentDefault: '<i class="icon fe-x"></i>'
+      }, 'table']
     }
   });
+  editor.subscribe('editableDrop', function (event) {
+    var maxFileSize = 50000; //Set to ~10kb bytes for testing
+
+    for (var index = 0; index < event.dataTransfer.files.length; index++) {
+      var file = event.dataTransfer.files[index];
+
+      if (file.size > maxFileSize) {
+        // console.log('filesize ' + file.size + ' bytes > ' + maxFileSize + ' bytes ; cancel dropping');
+        $.toast({
+          title: 'Atenção',
+          content: 'A imagem deve ter no máximo ' + maxFileSize / 1000 + 'kb',
+          type: 'danger',
+          delay: 3000,
+          pause_on_hover: true
+        });
+        continue;
+      } // console.log('filesize ' + file.size + ' bytes is < ' + maxFileSize + ' bytes ; continue dropping');
+
+
+      insertFileAsHtml(file);
+    }
+  });
+
+  var insertFileAsHtml = function insertFileAsHtml(file) {
+    var fileReader = new FileReader();
+
+    fileReader.onload = function () {
+      $.post("/admix/medium", {
+        _token: $('meta[name="csrf-token"]').attr('content'),
+        file: fileReader.result
+      }, function (result) {
+        if (!result) {
+          $.toast({
+            title: 'Atenção',
+            content: 'Falha no envio da imagem',
+            type: 'danger',
+            delay: 3000,
+            pause_on_hover: true
+          });
+        } else {
+          var previewElement = document.createElement('img');
+          previewElement.setAttribute('class', 'medium-editor-image'); // previewElement.src = fileReader.result;
+
+          previewElement.src = result;
+          MediumEditor.util.insertHTMLCommand(document, previewElement.outerHTML);
+        }
+      });
+    };
+
+    fileReader.readAsDataURL(file);
+  };
+
+  var mediumEditorTableBuilderToolbar = $('.medium-editor-table-builder-toolbar');
+
+  if (mediumEditorTableBuilderToolbar.length > 0) {
+    mediumEditorTableBuilderToolbar.find('span')[0].innerHTML = 'Linha';
+    $(mediumEditorTableBuilderToolbar.find('button')[0]).attr('title', 'Adicionar uma linha antes');
+    $(mediumEditorTableBuilderToolbar.find('button')[0]).find('i').removeClass().addClass('icon fe-arrow-up');
+    $(mediumEditorTableBuilderToolbar.find('button')[1]).attr('title', 'Adicionar uma linha depois');
+    $(mediumEditorTableBuilderToolbar.find('button')[1]).find('i').removeClass().addClass('icon fe-arrow-down');
+    $(mediumEditorTableBuilderToolbar.find('button')[2]).attr('title', 'Remover linha');
+    $(mediumEditorTableBuilderToolbar.find('button')[2]).find('i').removeClass().addClass('icon fe-x');
+    mediumEditorTableBuilderToolbar.find('span')[1].innerHTML = 'Coluna';
+    $(mediumEditorTableBuilderToolbar.find('button')[3]).attr('title', 'Adicionar uma coluna antes');
+    $(mediumEditorTableBuilderToolbar.find('button')[3]).find('i').removeClass().addClass('icon fe-arrow-left');
+    $(mediumEditorTableBuilderToolbar.find('button')[4]).attr('title', 'Adicionar uma coluna depois');
+    $(mediumEditorTableBuilderToolbar.find('button')[4]).find('i').removeClass().addClass('icon fe-arrow-right');
+    $(mediumEditorTableBuilderToolbar.find('button')[5]).attr('title', 'Remover coluna');
+    $(mediumEditorTableBuilderToolbar.find('button')[5]).find('i').removeClass().addClass('icon fe-x');
+    $(mediumEditorTableBuilderToolbar.find('button')[6]).attr('title', 'Remover tabela');
+    $(mediumEditorTableBuilderToolbar.find('button')[6]).find('i').removeClass().addClass('icon fe-trash');
+  }
   /* fim editor wysiwyg */
+
 }); // window.onload = function(){
 //     var editor = new MediumEditor('.js-wysiwyg', {
 //         placeholder: false,
@@ -525,6 +644,7 @@ if (token) {
     html += '<h4>';
     html += '<strong class="mr-auto">' + title + '</strong>';
     html += '<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">';
+    html += '<span aria-hidden="true">×</span>';
     html += '</button>';
     html += '</h4>';
 
