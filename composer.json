@@ -26,6 +26,10 @@
         },
         {
             "type": "path",
+            "url": "../packages/agenciafmd/admix-analytics"
+        },
+        {
+            "type": "path",
             "url": "../packages/agenciafmd/admix-form"
         },
         {
@@ -44,10 +48,11 @@
     "require": {
         "php": "^7.1.3",
         "agenciafmd/admix": "*",
+        "agenciafmd/admix-analytics": "*",
+        "agenciafmd/admix-banners": "*",
         "agenciafmd/admix-categories": "*",
         "agenciafmd/admix-form": "*",
         "agenciafmd/admix-postal": "*",
-        "agenciafmd/admix-banners": "*",
         "agenciafmd/frontend": "*",
         "agenciafmd/local-products": "*",
         "fideloper/proxy": "^4.0",
