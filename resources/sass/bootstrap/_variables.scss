@@ -1,0 +1,62 @@
+// Overwrite bootstrap's variables
+
+// Map the project's colors for the class generators from bootstrap
+$theme-colors: ();
+
+// Options
+
+$enable-shadows: true;
+
+// Spacing
+
+$spacer: 1rem;
+$spacers: ();
+
+@for $i from 0 through 20 {
+
+  $unit: $spacer * $i;
+  $unit-quarter-variation: $unit + .25;
+  $unit-half-variation: $unit + .5;
+  $unit-half-quarter-variation: $unit + .75;
+
+  $unit-variations: (
+    //'n#{$i}': negative-value($unit),
+    //'n#{$i}q': negative-value($unit-quarter-variation),
+    //'n#{$i}h': negative-value($unit-half-variation),
+    //'n#{$i}hq': negative-value($unit-half-quarter-variation),
+      '#{$i}': $unit,
+      '#{$i}q': ($unit-quarter-variation),
+      '#{$i}h': ($unit-half-variation),
+      '#{$i}hq': ($unit-half-quarter-variation),
+  );
+
+  $spacers: map-merge($spacers, $unit-variations);
+}
+
+// Paragraphs
+
+$paragraph-margin-bottom: 0;
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 426px, // large-mobile
+    md: 1023px,
+    lg: 1365px,
+    xl: 1439px
+);
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+    sm: 645px,
+    md: 920px,
+    lg: 1220px,
+    xl: 1350px
+);

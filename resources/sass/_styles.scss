@@ -1,0 +1,77 @@
+// Project's common (global) styles
+
+// Creates text classes for all fonts
+@each $font-key, $font-map in $project-fonts {
+
+  .#{$font-key}-text {
+
+    font-family: get-font-family($font-map), $fallback-font;
+  }
+}
+
+// Generate responsive font sizes
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @each $font-size in $font-sizes {
+      .fs#{$infix}-#{$font-size} {
+        font-size: #{$font-size}px;
+      }
+    }
+  }
+}
+
+//Generate letter-spacing and line-height with grid-breakpoint to use in html
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @each $prop, $abbrev in (letter-spacing: ls, line-height: lh) {
+      @each $size, $length in $spacers {
+        .#{$abbrev}#{$infix}-#{$size} {
+          #{$prop}: strip-unit($length)+px;
+        }
+
+        @if $size != 0 {
+          .#{$abbrev}#{$infix}-n#{$size} {
+            #{$prop}: strip-unit(-$length)+px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Generate stroke and fill for each color in theme, including links.
+@each $color, $value in $theme-colors {
+
+  .stroke-#{$color} {
+
+    stroke: $value;
+  }
+
+  .fill-#{$color} {
+
+    fill: $value;
+  }
+
+  @include media-breakpoint-up(md) {
+
+    a {
+
+      @include hover {
+
+        .stroke-#{$color} {
+
+          stroke: darken($value, $emphasized-link-hover-darken-percentage);
+        }
+
+        .fill-#{$color} {
+
+          fill: darken($value, $emphasized-link-hover-darken-percentage);
+        }
+      }
+    }
+  }
+}

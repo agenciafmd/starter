@@ -18,6 +18,15 @@ require('laravel-mix-purgecss');
  |
  */
 
+/*
+ * USAGE
+ * <svg role="img">
+ *   <use xlink:href="/svg/sprite.svg#050-santa-claus"/>
+ * </svg>
+ * <svg role="img">
+ *   <use xlink:href="/svg/sprite.svg#049-deer"/>
+ * </svg>
+ * */
 let wpConfig = {
     plugins: [
         new SVGSpritemapPlugin('resources/svg/*.svg', {
@@ -75,7 +84,6 @@ if (!mix.inProduction()) {
     wpConfig.devtool = 'source-map';
     mix.sourceMaps()
     // .copyDirectory('resources/images', 'public/images')
-        .copy('resources/images/*', 'public/images')
         .copy('resources/images/**/*', 'public/images');
 }
 
@@ -87,15 +95,19 @@ if (mix.inProduction()) {
         .purgeCss({
             enabled: true,
             globs: [
+                path.join(__dirname, 'packages/agenciafmd/frontend/src/**/*.php'),
                 path.join(__dirname, 'packages/mixdinternet/frontend/src/**/*.php'),
-                path.join(__dirname, 'node_modules/slick-carousel/slick/**/*.js'),
+                path.join(__dirname, 'node_modules/tiny-slider/**/*.js'),
+                path.join(__dirname, 'node_modules/select2/dist/**/*.js'),
+                path.join(__dirname, 'node_modules/sweetalert2/dist/*.js'),
+                path.join(__dirname, 'node_modules/@fancyapps/fancybox/dist/*.js'),
                 path.join(
                     __dirname,
                     'node_modules/bootstrap/dist/js/bootstrap.min.js',
                 ),
             ],
             // Include classes we don't have access directly
-            whitelistPatterns: [/hs-*/],
+            whitelistPatterns: [/hs-*/, /tns-*/],
         })
         .version();
 }
@@ -113,7 +125,7 @@ mix.browserSync({
     files: [
         'app/**/*.php',
         'resources/views/**/*.php',
-        'packages/mixdinternet/frontend/src/**/*.php',
+        'packages/agenciafmd/frontend/src/**/*.php',
         'resources/js/**/*.js',
         'resources/sass/**/*.scss',
         'public/js/**/*.js',

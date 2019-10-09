@@ -1,0 +1,32 @@
+.progressive img.preview {
+  filter: blur(2vw);
+  transform: none;
+}
+
+@-moz-keyframes origin-scale {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes origin-scale {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@-o-keyframes origin-scale {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes origin-scale {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}

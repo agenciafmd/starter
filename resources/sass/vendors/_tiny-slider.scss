@@ -1,0 +1,34 @@
+.tns {
+
+  &-nav {
+
+    outline: none;
+    // Reset font-size to prevent weird height on tns-nav (dots container)
+    font-size: 0;
+
+    button[data-nav] {
+
+      border-radius: 50%;
+      // Use padding to control dot's size to prevent safari issue
+      padding: 8px;
+      margin: 0 .5rem;
+      outline: none;
+
+      &.tns-nav-active {
+
+      }
+    }
+  }
+}
+
+.slider-container {
+
+  position: relative;
+
+  &.dark-dots {
+
+    .tns-nav {
+
+    }
+  }
+}

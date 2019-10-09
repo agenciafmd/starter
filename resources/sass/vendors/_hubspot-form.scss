@@ -1,0 +1,202 @@
+/* All HubSpot Forms
+   ==========================================================================
+
+  Primeiro definimos tudo que será padrão do formulário, para depois entrar com
+  as partes específicas, como o bootstrap usa as classe personalizadas
+*/
+
+/* Form */
+.hs-form {
+
+
+  /* Form Field (selector for form field wrapper) */
+  .hs-input {
+
+  }
+
+  .hs-form-required {
+
+  }
+
+  .hs-form-radio {
+
+    label {
+
+      span {
+
+      }
+    }
+  }
+
+  label, span {
+
+  }
+
+  /* Descriptions (targets class applied to Help Text divs) */
+  .hs-field-desc {
+  }
+
+  /* Labels (selects field labels and error messages) */
+  label {
+  }
+
+  .hs-form-field {
+
+    label {
+    }
+  }
+
+  /* Inputs (selectors for all inputs)  */
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="url"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="color"],
+  input[type="file"],
+  textarea,
+  select {
+  }
+
+  select {
+  }
+
+  /* Inputs in focus (selectors for all inputs when clicked)  */
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="datetime"]:focus,
+  input[type="datetime-local"]:focus,
+  input[type="date"]:focus,
+  input[type="month"]:focus,
+  input[type="time"]:focus,
+  input[type="week"]:focus,
+  input[type="number"]:focus,
+  input[type="email"]:focus,
+  input[type="url"]:focus,
+  input[type="search"]:focus,
+  input[type="tel"]:focus,
+  input[type="color"]:focus,
+  input[type="file"]:focus,
+  textarea:focus,
+  select:focus {
+  }
+
+  /* Multi-line inputs (selectors to target multi-line fields */
+  textarea {
+  }
+
+  textarea:focus {
+  }
+
+  /* Dropdowns (selectors for dropdowns) */
+  select {
+  }
+
+  select:focus {
+  }
+
+  /* Multi-select (selectors for multi-select fields) */
+  .hs-form-radio {
+  }
+
+  input[type="radio"] {
+  }
+
+  input[type="checkbox"] {
+  }
+
+  /* Required (selectors for fields, when they do not pass validation) */
+  input:focus:required:invalid,
+  textarea:focus:required:invalid,
+  select:focus:required:invalid {
+  }
+
+  input:focus:required:invalid:focus,
+  textarea:focus:required:invalid:focus,
+  select:focus:required:invalid:focus {
+  }
+
+  /* Error message (selector for validation messages) */
+  .hs-error-msgs {
+
+    label {
+    }
+  }
+
+  .hs-submit {
+
+  }
+
+  .hs_error_rollup {
+
+  }
+
+  /* Placeholder Text (styles the placeholder attribute text) */
+  ::-webkit-input-placeholder { /* Webkit Browsers */
+  }
+
+  :-moz-placeholder { /* Firefox 18- */
+  }
+
+  ::-moz-placeholder { /* Firefox 19+ */
+  }
+
+  :-ms-input-placeholder { /* IE10 */
+  }
+
+  /* Multi Column Form (selectors for fieldsets and field wrappers)
+     ========================================================================== */
+
+  .form-columns-1 {
+  }
+
+  .form-columns-1 {
+
+    .hs-form-field {
+    }
+  }
+
+  .form-columns-2 {
+  }
+
+  .form-columns-2 {
+
+    .hs-form-field {
+    }
+  }
+
+  .form-columns-3 {
+  }
+
+  .form-columns-3 {
+
+    .hs-form-field {
+    }
+  }
+
+  /* Submit buttons (selectors for all non-CTA buttons)
+     ========================================================================== */
+
+  .hs-button.primary,
+  input[type="submit"],
+  input[type="button"] {
+
+    &:focus {
+    }
+
+    &:hover {
+
+    }
+  }
+}
+
+
+
