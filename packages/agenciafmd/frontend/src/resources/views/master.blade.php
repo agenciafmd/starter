@@ -46,7 +46,7 @@
     <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#6F6F6F">
     <meta name="theme-color" content="{{ config('pwa.manifest.theme_color') }}">
 
-    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('/css/frontend.css') }}" rel="stylesheet">
 
     <script>
         @if(config('app.env') === 'production')
@@ -115,7 +115,7 @@
 
 @stack('footer')
 
-<script src="{{ mix('/js/app.js') }}"></script>
+<script src="{{ mix('/js/frontend.js') }}"></script>
 
 @include('agenciafmd/frontend::partials.message')
 
