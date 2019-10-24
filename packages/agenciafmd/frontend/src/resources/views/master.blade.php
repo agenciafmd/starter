@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ strtolower(str_replace('_', '-', app()->getLocale())) }}">
 <head>
     @if(config('services.google.tagmanager'))
         <!-- Google Tag Manager -->
