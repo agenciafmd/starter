@@ -1,7 +1,7 @@
 {
-    "name": "{{ $name }}",
-    "short_name": "{{ $short_name }}",
-    "description": "{{ $description }}",
+"name": "{!! $name !!}",
+"short_name": "{!! $short_name !!}",
+"description": "{!! $description !!}",
     "scope": "{{ $scope }}",
     "start_url": "{{ $start_url }}",
     "display": "{{ $display }}",
@@ -9,7 +9,7 @@
     "theme_color": "{{ $theme_color }}",
     "orientation": "{{ $orientation }}",
     "gcm_sender_id": "{{ $sender_id }}",
-    "gcm_sender_id_comment": "FMD - OneSignal",
+"gcm_sender_id_comment": "",
     "icons": [
         {
             "src": "/images/icon-192x192.png",

@@ -1745,6 +1745,101 @@
         </div>
     </div>
 
+    <!-- Imagens para trocar
+    ================================================== -->
+    <div class="bs-docs-section">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-header">
+                    <h1 id="dialogs">Images</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="p-3 mb-2 bg-light">
+                    <figure class="figure mb-0">
+                        <img src="/images/logo.png" class="figure-img img-fluid" width="200" height="70">
+                        <figcaption class="figure-caption">200x70 - logo.png (1,8 KB)</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="p-3 mb-2 bg-light">
+                    <figure class="figure mb-0">
+                        <img src="/images/logo-email.png" class="figure-img img-fluid" width="200" height="70">
+                        <figcaption class="figure-caption">200x70 - logo-email.png (1,8 KB)</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="p-3 mb-2 bg-light">
+                    <figure class="figure mb-0">
+                        <img src="/images/favicon.ico" class="figure-img img-fluid" width="48" height="48">
+                        <figcaption class="figure-caption">48x48 - favicon.ico (15,09 KB)</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="p-3 mb-2 bg-light">
+                    <figure class="figure mb-0">
+                        <img src="/images/logo-amp.png" class="figure-img img-fluid" width="60" height="60">
+                        <figcaption class="figure-caption">60x60 - logo-amp.png (1 KB)</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="p-3 mb-2 bg-light">
+                    <figure class="figure mb-0">
+                        <img src="/images/mstile-150x150.png" class="figure-img img-fluid" width="150" height="150">
+                        <figcaption class="figure-caption">150x150 - mstile-150x150.png (1,7 KB)</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="p-3 mb-2 bg-light">
+                    <figure class="figure mb-0">
+                        <img src="/images/safari-pinned-tab.svg" class="figure-img img-fluid" width="192" height="192">
+                        <figcaption class="figure-caption">192x192 - safari-pinned-tab.svg (5 KB)</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="p-3 mb-2 bg-light">
+                    <figure class="figure mb-0">
+                        <img src="/images/apple-touch-icon.png" class="figure-img img-fluid" width="192" height="192">
+                        <figcaption class="figure-caption">192x192 - apple-touch-icon.png (3,51 KB)</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="p-3 mb-2 bg-light">
+                    <figure class="figure mb-0">
+                        <img src="/images/icon-192x192.png" class="figure-img img-fluid" width="192" height="192">
+                        <figcaption class="figure-caption">192x192 - icon-192x192.png (5,28 KB)</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="p-3 mb-2 bg-light">
+                    <figure class="figure mb-0">
+                        <img src="/images/icon-512x512.png" class="figure-img img-fluid" width="512" height="512">
+                        <figcaption class="figure-caption">512x512 - icon-512x512.png (13,55 KB)</figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="p-3 mb-2 bg-light">
+                    <figure class="figure mb-0">
+                        <img src="/images/loading.gif" class="figure-img img-fluid" width="120" height="120">
+                        <figcaption class="figure-caption">120x120 - loading.gif (27,36 KB)</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="source-modal" class="modal fade">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">

@@ -29,7 +29,6 @@
             color: #3e515b;
             margin: auto;
             font-size: 48px;
-            padding: 0 120px;
             text-align: center;
         }
     </style>
