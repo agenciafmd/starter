@@ -14,3 +14,12 @@
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+
+//Route::get('mailable', function () {
+//    $user = collect([
+//        'name' => 'Irineu Junior',
+//        'email' => 'irineu@fmd.ag',
+//    ]);
+//
+//    return new \Agenciafmd\Analytics\Mail\ReportMail($user);
+//});
