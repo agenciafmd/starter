@@ -1752,7 +1752,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="page-header">
-                    <h1 id="dialogs">Images</h1>
+                    <h1 id="dialogs"><a href="https://realfavicongenerator.net/" target="_blank">Images</a></h1>
                 </div>
             </div>
         </div>
