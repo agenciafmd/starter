@@ -1,5 +1,18 @@
 {
-    "/js/compress.js": "/js/compress.js?id=4dcd66f9359ad709e0c1",
-    "/css/frontend.css": "/css/frontend.css?id=91e601218a3fba6551b5",
-    "/js/frontend.js": "/js/frontend.js?id=3ce7f0efd54c42219635"
+    "/css/frontend.css": "/css/frontend.css",
+    "/mix.js.map": "/mix.js.map",
+    "/css/frontend.css.map": "/css/frontend.css.map",
+    "/js/frontend.js": "/js/frontend.js",
+    "/favicon.ico": "/favicon.ico",
+    "/images/apple-touch-icon.png": "/images/apple-touch-icon.png",
+    "/images/favicon.ico": "/images/favicon.ico",
+    "/images/icon-192x192.png": "/images/icon-192x192.png",
+    "/images/icon-512x512.png": "/images/icon-512x512.png",
+    "/images/mstile-150x150.png": "/images/mstile-150x150.png",
+    "/images/safari-pinned-tab.svg": "/images/safari-pinned-tab.svg",
+    "/images/loading.gif": "/images/loading.gif",
+    "/images/logo-amp.png": "/images/logo-amp.png",
+    "/images/logo-email.png": "/images/logo-email.png",
+    "/images/logo.png": "/images/logo.png",
+    "/images/sem-imagem.jpg": "/images/sem-imagem.jpg"
 }

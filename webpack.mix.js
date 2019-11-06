@@ -1,6 +1,6 @@
 let mix = require('laravel-mix');
 let SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
-let scripts = require('./resources/js/bootstrap');
+let frontendImports = require('./resources/js/frontend-imports');
 
 const httpRegex = 'http:\\/\\/|https:\\/\\/';
 const projectProxy = process.env.APP_URL.replace(new RegExp(httpRegex), '');
@@ -78,7 +78,7 @@ mix
     .copyDirectory('resources/fonts', 'public/fonts')
     //.copyDirectory('resources/images', 'public/images')
     //.copy('resources/images/*', 'public/images')
-    .babel(scripts, 'public/js/frontend.js');
+    .babel(frontendImports, 'public/js/frontend.js');
 
 if (!mix.inProduction()) {
   wpConfig.devtool = 'source-map';
@@ -92,22 +92,26 @@ mix.webpackConfig(wpConfig);
 
 if (mix.inProduction()) {
   mix
-      .js('resources/js/compress.js', 'public/js')
       .purgeCss({
         enabled: true,
         globs: [
           path.join(__dirname, 'packages/agenciafmd/frontend/src/**/*.php'),
-          path.join(__dirname, 'packages/mixdinternet/frontend/src/**/*.php'),
+          path.join(__dirname, 'node_modules/@fancyapps/fancybox/dist/*.js'),
           path.join(__dirname, 'node_modules/tiny-slider/**/*.js'),
+          path.join(__dirname, 'node_modules/progressive-image/dist/index.js'),
+          path.join(
+              __dirname,
+              'node_modules/sweetalert2/dist/sweetalert2.min.js',
+          ),
+          path.join(__dirname, 'node_modules/jquery/dist/jquery.min.js'),
           path.join(__dirname, 'node_modules/select2/dist/**/*.js'),
           path.join(__dirname, 'node_modules/sweetalert2/dist/*.js'),
-          path.join(__dirname, 'node_modules/@fancyapps/fancybox/dist/*.js'),
           path.join(
               __dirname,
               'node_modules/bootstrap/dist/js/bootstrap.min.js',
           ),
         ],
-        // Include classes we don't have access directly
+        // Include classes we don't have direct access
         whitelistPatterns: [/hs-*/, /tns-*/],
       })
       .version();
@@ -128,6 +132,7 @@ mix.browserSync({
     'resources/views/**/*.php',
     'packages/agenciafmd/frontend/src/**/*.php',
     'resources/js/**/*.js',
+    '!resources/js/**/*-imports.js',
     'resources/sass/**/*.scss',
     'public/js/**/*.js',
     'public/css/**/*.css',
