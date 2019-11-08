@@ -44,10 +44,10 @@ $paragraph-margin-bottom: 0;
 
 $grid-breakpoints: (
     xs: 0,
-    sm: 426px, // large-mobile
-    md: 1023px,
-    lg: 1365px,
-    xl: 1439px
+    sm: 425px, // Read 'from 425px' (min-width)
+    md: 1024px, // Read 'from 1024px' (min-width)
+    lg: 1366px, // Read 'from 1366px' (min-width)
+    xl: 1680px // Read 'from 1680px' (min-width)
 );
 
 // Grid containers
@@ -55,8 +55,8 @@ $grid-breakpoints: (
 // Define the maximum width of `.container` for different screen sizes.
 
 $container-max-widths: (
-    sm: 645px,
-    md: 920px,
-    lg: 1220px,
-    xl: 1350px
+    sm: 964px, // Define max-width between sm-md
+    md: 1166px, // Define max-width between md-lg
+    lg: 1280px, // Define max-width between lg-xl
+    xl: 1440px // Define max-width between xl-infinite
 );
