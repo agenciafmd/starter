@@ -98,7 +98,6 @@ if (mix.inProduction()) {
           path.join(__dirname, 'packages/agenciafmd/frontend/src/**/*.php'),
           path.join(__dirname, 'node_modules/@fancyapps/fancybox/dist/*.js'),
           path.join(__dirname, 'node_modules/tiny-slider/**/*.js'),
-          path.join(__dirname, 'node_modules/progressive-image/dist/index.js'),
           path.join(
               __dirname,
               'node_modules/sweetalert2/dist/sweetalert2.min.js',
