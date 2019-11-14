@@ -125,7 +125,7 @@
         if ($url[0] !== undefined) {
           // If the page has link, call ajax
           if (settings.loadImage !== "") {
-            $(settings.contentsWrapperSelector).append("<img src='" + settings.loadImage + "' id='cis-load-img'>");
+            $(settings.contentsWrapperSelector).append("<div class='text-center'><img src='" + settings.loadImage + "' id='cis-load-img'></div>");
           }
           $.ajax({
             url: $url[0],
