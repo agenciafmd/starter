@@ -15,12 +15,14 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-
-            if (!$this->auth->guard('admix-web')->check()) {
-                return route('admix.login.form');
+            if ($request->is('admix*') || $request->is('telescope*')) {
+                if (!$this->auth->guard('admix-web')
+                    ->check()) {
+                    return route('admix.login.form');
+                }
             }
 
-            return route('login');
+            return route('frontend.login.index');
         }
     }
 }

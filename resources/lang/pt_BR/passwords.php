@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'password' => 'A senha deve ter no mínimo oito caracteres e ser igual ao de confirmação.',
     'reset' => 'Sua senha foi alterada!',
     'sent' => 'O link para redefinição de senha foi enviado para o seu e-mail!',
     'token' => 'Este token para recuperação de senha é inválido.',
     'user' => 'Não encontramos nenhum usuário com esse endereço de e-mail.',
+    'throttled' => 'Por favor, aguarde antes de tentar novamente.',
 
 ];
