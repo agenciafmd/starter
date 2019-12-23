@@ -1,7 +1,7 @@
 {
     "name": "agenciafmd/starter",
     "type": "project",
-    "description": "Agência F&MD - Laravel 5.8",
+    "description": "Agência F&MD - Laravel 6",
     "keywords": [
         "framework",
         "laravel"
@@ -9,46 +9,26 @@
     "license": "MIT",
     "repositories": [
         {
-            "type": "composer",
-            "url": "https://packages.mixd.com.br"
-        },
-        {
             "type": "path",
             "url": "packages/agenciafmd/frontend"
         }
     ],
     "require": {
-        "php": "7.3.*",
+        "php": "^7.3",
         "agenciafmd/admix": "dev-master",
-        "agenciafmd/admix-form": "dev-master",
-        "agenciafmd/admix-postal": "dev-master",
-        "agenciafmd/admix-analytics": "dev-master",
-        "agenciafmd/frontend": "*",
+        "agenciafmd/frontend": "dev-master",
         "fideloper/proxy": "^4.0",
-        "laracasts/flash": "^3.0",
-        "laravel/framework": "5.8.*",
-        "laravel/tinker": "^1.0",
-        "laravelcollective/html": "^5.8",
-        "owen-it/laravel-auditing": "^9.2",
-        "predis/predis": "^1.1",
-        "renatomarinho/laravel-page-speed": "^1.8",
-        "sentry/sentry-laravel": "^1.0",
-        "silber/page-cache": "^1.0",
-        "spatie/laravel-medialibrary": "^7.0.0",
-        "spatie/laravel-query-builder": "^1.17",
-        "spatie/laravel-sitemap": "^5.3",
-        "spatie/laravel-translatable": "^4.1",
-        "thiagocordeiro/laravel-translator": "^0.1.6"
+        "laravel/framework": "^6.2",
+        "laravel/telescope": "^2.1",
+        "laravel/tinker": "^1.0"
     },
     "require-dev": {
         "mixdinternet/homestead-ngrok": "dev-master",
-        "beyondcode/laravel-dump-server": "^1.0",
-        "filp/whoops": "^2.0",
+        "facade/ignition": "^1.4",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^2.0",
-        "itsgoingd/clockwork": "^4.0",
-        "phpunit/phpunit": "^7.5"
+        "nunomaduro/collision": "^3.0",
+        "phpunit/phpunit": "^8.0"
     },
     "config": {
         "optimize-autoloader": true,
@@ -85,7 +65,9 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
+            "@php artisan key:generate --ansi",
+            "@php artisan vendor:publish --provider=\"Agenciafmd\\Admix\\Providers\\AdmixServiceProvider\" --tag=\"assets\" --force",
+            "@php artisan telescope:install"
         ]
     }
 }
