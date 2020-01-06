@@ -4,9 +4,6 @@
 // Project's custom variables
 @import "frontend/variables";
 
-// Vendors
-@import "vendors/vendors";
-
 // Project's helpers functions/mixins
 @import "frontend/helpers";
 @import "frontend/functions";
@@ -58,7 +55,11 @@
 // Overwriting bootstrap's styles
 @import "bootstrap/bootstrap";
 
-// Project's common (global) styles
+// Vendors
+@import "vendors/vendors";
+
+// Common (global) styles
+@import "frontend/typography";
 @import "styles";
 
 // Projects's pages styles
