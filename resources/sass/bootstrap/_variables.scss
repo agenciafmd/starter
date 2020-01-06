@@ -1,6 +1,10 @@
 // Overwrite bootstrap's variables
 
 // Map the project's colors for the class generators from bootstrap
+// Color system
+$white: #fff !default;
+$black: #000 !default;
+
 $theme-colors: ();
 
 // Options
@@ -20,10 +24,6 @@ $spacers: ();
   $unit-half-quarter-variation: $unit + .75;
 
   $unit-variations: (
-    //'n#{$i}': negative-value($unit),
-    //'n#{$i}q': negative-value($unit-quarter-variation),
-    //'n#{$i}h': negative-value($unit-half-variation),
-    //'n#{$i}hq': negative-value($unit-half-quarter-variation),
       '#{$i}': $unit,
       '#{$i}q': ($unit-quarter-variation),
       '#{$i}h': ($unit-half-variation),
@@ -32,6 +32,9 @@ $spacers: ();
 
   $spacers: map-merge($spacers, $unit-variations);
 }
+
+// Links
+$link-hover-decoration: none !default;
 
 // Paragraphs
 
@@ -60,3 +63,25 @@ $container-max-widths: (
     lg: 1280px, // Define max-width between lg-xl
     xl: 1440px // Define max-width between xl-infinite
 );
+
+// Body
+//
+// Settings for the `<body>` element.
+
+//$body-bg: $example !default;
+//$body-color: $example !default;
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+
+//$font-family-sans-serif: get-font-family($example-font-map), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+
+//$headings-margin-bottom: $example-size !default;
+//$headings-font-family: get-font-family($example-font-map);
+//$headings-color: $example-color;
+
+//$h1-font-size: $example-size !default;
+//$h2-font-size: $example-size !default;
+//$h3-font-size: $example-size !default;
+//$h4-font-size: $example-size !default;

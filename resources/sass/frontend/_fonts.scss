@@ -24,16 +24,24 @@ $fonts-base-path: '/fonts';
   font-display: swap;
 }
 
-$example-font-map: (
-    family: 'example_family',
-    file-name: 'example-family', // WITHOUT FONT EXTENSION
-    //fallback: '',
-    //weight: '',
-    //style: '',
+$book-font-map: (
+    family: 'BookFontExample',
+    file-name: 'BookFontExample',
+);
+$regular-font-map: (
+    family: 'BookItalicFontExample',
+    file-name: 'BookItalicFontExample',
+);
+
+$bold-font-map: (
+    family: 'BoldFontExample',
+    file-name: 'BoldFontExample',
 );
 
 $project-fonts: (
-    example-font-map: $example-font-map,
+    book: $book-font-map,
+    regular: $regular-font-map,
+    bold: $bold-font-map,
 );
 
 @each $font-key, $font-map in $project-fonts {
@@ -50,9 +58,9 @@ $project-fonts: (
 }
 
 $font-sizes: (
-        14,
-        16,
-        20,
-        30,
-        40,
+    14,
+    16,
+    20,
+    30,
+    40,
 );

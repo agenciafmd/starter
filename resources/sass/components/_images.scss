@@ -1,0 +1,29 @@
+.img {
+
+  &-full-page {
+
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  &-cover {
+
+    @extend .w-100;
+    @extend .h-100;
+    object-fit: cover;
+  }
+
+  &-cover-width {
+
+    object-fit: cover;
+    @extend .w-100
+  }
+
+  &-sanitize {
+
+    @extend .d-block;
+    @extend .mx-auto;
+    @extend .img-fluid;
+  }
+}

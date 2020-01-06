@@ -1,4 +1,13 @@
-// Project's custom variables
+// Custom variables
 
-$browser-default-font-size: 16px;
 $fallback-font: sans-serif;
+
+$block-spacing-y: convert-to-rem(110px) !default;
+
+// Color System
+
+// Components
+$collapse-transition-time: .35s;
+
+// Video
+$backdrop-color: rgba($black, 0.3);

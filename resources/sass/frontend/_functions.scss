@@ -10,7 +10,7 @@
   @return $value;
 }
 
-@function convert-to-rem($size) {
+@function convert-to-rem($size, $browser-default-font-size: 16px) {
 
   @if (unit($size) == '%') {
 
