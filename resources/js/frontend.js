@@ -366,4 +366,6 @@ $(function () {
   // setupCustomFileInput();
 
   // setupCustomFormFieldsVisibility();
+
+  setupStickyHeader();
 });

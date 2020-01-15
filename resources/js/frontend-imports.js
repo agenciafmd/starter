@@ -14,7 +14,10 @@ module.exports = (function () {
     // 'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js',
     // 'resources/js/vendors/jquery.clever-infinite-scroll.js',
     // Helpers
-    'resources/js/helpers/form-helpers.js',
+    // 'resources/js/helpers/form-helpers.js',
+    'resources/js/helpers/user-interaction-helpers.js',
+    // Components
+    'resources/js/components/sticky-header.js',
     // Pages
     'resources/js/frontend.js',
   ];
