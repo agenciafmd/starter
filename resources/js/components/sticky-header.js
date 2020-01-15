@@ -1,7 +1,5 @@
 function setupStickyHeader() {
 
-  //adicionar elementos basicos na partial de header
-  //adicionar classes basicas no scss do componente header
   const targetSelector = '.js-header-sticky-target';
   const target = $(targetSelector);
 
