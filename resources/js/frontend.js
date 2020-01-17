@@ -368,12 +368,11 @@ $(function () {
   // setupCustomFormFieldsVisibility();
 });
 
-$(window)
-    .load(function () {
+window.addEventListener('load', function () {
 
-      /**
-       * Usually the header triggers after the first section which has the
-       * height defined as 100vh. We need the starting function here because
-       * vh/vw are calculated after all resources loaded*/
-      setupStickyHeader();
-    });
+  /**
+   * Usually the header triggers after the first section which has the
+   * height defined as 100vh. We need the starting function here because
+   * vh/vw are calculated after all resources loaded*/
+  setupStickyHeader();
+});
