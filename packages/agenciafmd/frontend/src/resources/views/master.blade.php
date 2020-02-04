@@ -76,11 +76,11 @@
 
 @stack('header')
 
-@include('agenciafmd/frontend::partials.header')
+@yield('header', View::make('agenciafmd/frontend::partials.header'))
 
 @yield('content')
 
-@include('agenciafmd/frontend::partials.footer')
+@yield('footer', View::make('agenciafmd/frontend::partials.footer'))
 
 @stack('footer')
 
