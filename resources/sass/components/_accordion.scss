@@ -1,0 +1,57 @@
+.accordion {
+
+  &-item {
+
+    border-top: $border-width solid $border-color;
+
+    &:last-child {
+
+      border-bottom: $border-width solid $border-color;
+    }
+  }
+
+  &-header {
+
+    padding: $accordion-padding-y 0 $accordion-padding-y $accordion-padding-x;
+
+    @include media-breakpoint-up(md) {
+
+      padding-left: 7.5rem;
+    }
+
+    cursor: pointer;
+
+    .ic-arrow {
+
+      position: absolute;
+      left: 3.5%;
+      top: 1.25rem;
+    }
+
+    &[aria-expanded=true] {
+
+      .ic-arrow {
+
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  &-content {
+
+    padding-top: $accordion-padding-y;
+    padding-bottom: $accordion-padding-y;
+    padding-left: $accordion-padding-x;
+
+    @include media-breakpoint-up(md) {
+
+      padding-left: 7.5rem;
+    }
+
+    // Keep this when you edit accordion to prevent spacing issue
+    p:last-child {
+
+      @extend .m-0;
+    }
+  }
+}
