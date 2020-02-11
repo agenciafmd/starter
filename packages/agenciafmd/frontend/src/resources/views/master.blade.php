@@ -3,7 +3,7 @@
 <head>
 @if(config('services.google.tagmanager'))
     <!-- Google Tag Manager -->
-        <script>(function (w, d, s, l, i) {
+        <script async>(function (w, d, s, l, i) {
                 w[l] = w[l] || [];
                 w[l].push({
                     'gtm.start':
