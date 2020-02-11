@@ -22,94 +22,72 @@ function getThemeVariables() {
   };
 }
 
-function setupAddressAutoFill() {
+function setupStateCityOptions() {
 
-  if ($('.js-state').length > 0) {
-    $.getJSON('/json/estados-cidades.json', function (data) {
-      var items = [];
-      var state = $('.js-state');
-      var options = '<option value="">-</option>';
-      $.each(data, function (key, val) {
-        var selected = '';
-        if (val.nome === state.attr('data-selected')) {
-          selected = 'selected';
-        }
-        options +=
-            '<option value="' + val.nome + '" ' + selected + '>' + val.nome + '</option>';
-      });
-      state.html(options);
-      state.change(function () {
-        var options_cidades = '<option value="">-</option>';
-        var str = '';
-        $('.js-state option:selected')
-            .each(function () {
-              str += $(this)
-                  .text();
-            });
+  if (!$('.js-state').length) {
 
-        var city = $('.js-city');
-        $.each(data, function (key, val) {
-          if (val.nome === str) {
-            $.each(val.cidades, function (key_city, val_city) {
-              var selected = '';
-              if (val_city === city.attr('data-selected')) {
-                selected = 'selected';
-              }
-              options_cidades +=
-                  '<option value="' + val_city + '" ' + selected + '>' + val_city + '</option>';
-            });
-          }
-        });
-        city.html(options_cidades);
-      })
-           .change();
-    });
+    return;
   }
-  /* fim select de estado e cidade */
 
-  /* autocompletar de cep */
-  $('.js-zipcode')
-      .on('blur', function () {
+  $.getJSON('/json/estados-cidades.json', function (data) {
 
-        var $this = $(this);
-        var cep = $this.val()
-                       .replace('-', '');
+    const $state = $('.js-state');
+    let $options = '<option value="">-</option>';
 
-        if (cep.length === 8) {
-          $.getJSON('https://api.mixd.com.br/cep/' + cep, {},
-              function (result) {
+    $.each(data, function (key, val) {
 
-                if (!result) {
+      var selected = '';
 
-                  console.log(result.message || 'Houve um erro desconhecido');
-                  return;
-                }
+      if (val.nome === $state.attr('data-selected')) {
 
-                var stateInput = $('.js-state');
-                var cityInput = $('.js-city');
+        selected = 'selected';
+      }
 
-                $('.js-neighborhood')
-                    .val(result.bairro);
-                $('.js-address')
-                    .val(result.logradouro);
+      $options +=
+          `<option value="${ val.nome }" ${ selected }>${ val.nome }</option>`;
+    });
 
-                if (stateInput.is('input')) {
-                  stateInput.val(result.uf_nome);
-                }
+    $state.html($options);
 
-                if (cityInput.is('input')) {
-                  cityInput.val(result.cidade);
-                }
+    $state.change(function () {
 
-                if (stateInput.is('select')) {
-                  stateInput.val(result.uf_nome);
-                  stateInput.trigger('change');
-                  cityInput.val(result.cidade);
-                }
-              },
-          );
+      let $optionsCity = '<option value="">-</option>';
+
+      let str = '';
+
+      $('.js-state option:selected')
+          .each(function () {
+            str += $(this)
+                .text();
+          });
+
+      var city = $('.js-city');
+
+      $.each(data, function (key, val) {
+
+        if (val.nome !== str) {
+
+          return;
         }
+
+        $.each(val.cidades, function (key_city, val_city) {
+
+          let selected = '';
+
+          if (val_city === city.attr('data-selected')) {
+
+            selected = 'selected';
+          }
+
+          $optionsCity +=
+              `<option value="${ val_city }" ${ selected }>${ val_city }</option>`;
+        });
       });
+
+      city.html($optionsCity);
+    })
+          .change();
+  });
 }
 
 function setupServiceWorker() {
@@ -347,7 +325,7 @@ function setupInputMasks() {
 
 function setupCepSearch() {
 
-  $('#zipcode')
+  $('.js-zipcode')
       .on('blur', function () {
 
         var $this = $(this);
@@ -364,22 +342,25 @@ function setupCepSearch() {
                   return;
                 }
 
-                var stateInput = $('#state');
-                var cityInput = $('#city');
+                var stateInput = $('.js-state');
+                var cityInput = $('.js-city');
 
-                $('#neighborhood')
+                $('.js-neighborhood')
                     .val(result.bairro);
-                $('#address')
+                $('.js-address')
                     .val(result.logradouro);
 
-                // se for input
                 if (stateInput.is('input')) {
-
                   stateInput.val(result.uf_nome);
                 }
 
                 if (cityInput.is('input')) {
+                  cityInput.val(result.cidade);
+                }
 
+                if (stateInput.is('select')) {
+                  stateInput.val(result.uf_nome);
+                  stateInput.trigger('change');
                   cityInput.val(result.cidade);
                 }
               },
@@ -501,7 +482,9 @@ $(function () {
 
   setupSideDrawer();
 
-  setupAddressAutoFill();
+  // setupCepSearch();
+
+  // setupStateCityOptions();
 
   // onChangeSelectLink();
 
@@ -510,8 +493,6 @@ $(function () {
   // setupSelect2();
 
   setupInputMasks();
-
-  // setupCepSearch();
 
   // setupPopover();
 
