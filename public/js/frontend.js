@@ -1,3 +1,15 @@
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /*! jQuery v3.4.1 | (c) JS Foundation and other contributors | jquery.org/license */
@@ -7052,6 +7064,2253 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     value: !0
   });
 });
+/*
+ *  jquery-maskmoney - v3.0.2
+ *  jQuery plugin to mask data entry in the input text in the form of money (currency)
+ *  https://github.com/plentz/jquery-maskmoney
+ *
+ *  Made by Diego Plentz
+ *  Under MIT License (https://raw.github.com/plentz/jquery-maskmoney/master/LICENSE)
+ */
+
+!function ($) {
+  "use strict";
+
+  $.browser || ($.browser = {}, $.browser.mozilla = /mozilla/.test(navigator.userAgent.toLowerCase()) && !/webkit/.test(navigator.userAgent.toLowerCase()), $.browser.webkit = /webkit/.test(navigator.userAgent.toLowerCase()), $.browser.opera = /opera/.test(navigator.userAgent.toLowerCase()), $.browser.msie = /msie/.test(navigator.userAgent.toLowerCase()));
+  var a = {
+    destroy: function destroy() {
+      return $(this).unbind(".maskMoney"), $.browser.msie && (this.onpaste = null), this;
+    },
+    mask: function mask(a) {
+      return this.each(function () {
+        var b,
+            c = $(this);
+        return "number" == typeof a && (c.trigger("mask"), b = $(c.val().split(/\D/)).last()[0].length, a = a.toFixed(b), c.val(a)), c.trigger("mask");
+      });
+    },
+    unmasked: function unmasked() {
+      return this.map(function () {
+        var a,
+            b = $(this).val() || "0",
+            c = -1 !== b.indexOf("-");
+        return $(b.split(/\D/).reverse()).each(function (b, c) {
+          return c ? (a = c, !1) : void 0;
+        }), b = b.replace(/\D/g, ""), b = b.replace(new RegExp(a + "$"), "." + a), c && (b = "-" + b), parseFloat(b);
+      });
+    },
+    init: function init(a) {
+      return a = $.extend({
+        prefix: "",
+        suffix: "",
+        affixesStay: !0,
+        thousands: ",",
+        decimal: ".",
+        precision: 2,
+        allowZero: !1,
+        allowNegative: !1
+      }, a), this.each(function () {
+        function b() {
+          var a,
+              b,
+              c,
+              d,
+              e,
+              f = s.get(0),
+              g = 0,
+              h = 0;
+          return "number" == typeof f.selectionStart && "number" == typeof f.selectionEnd ? (g = f.selectionStart, h = f.selectionEnd) : (b = document.selection.createRange(), b && b.parentElement() === f && (d = f.value.length, a = f.value.replace(/\r\n/g, "\n"), c = f.createTextRange(), c.moveToBookmark(b.getBookmark()), e = f.createTextRange(), e.collapse(!1), c.compareEndPoints("StartToEnd", e) > -1 ? g = h = d : (g = -c.moveStart("character", -d), g += a.slice(0, g).split("\n").length - 1, c.compareEndPoints("EndToEnd", e) > -1 ? h = d : (h = -c.moveEnd("character", -d), h += a.slice(0, h).split("\n").length - 1)))), {
+            start: g,
+            end: h
+          };
+        }
+
+        function c() {
+          var a = !(s.val().length >= s.attr("maxlength") && s.attr("maxlength") >= 0),
+              c = b(),
+              d = c.start,
+              e = c.end,
+              f = c.start !== c.end && s.val().substring(d, e).match(/\d/) ? !0 : !1,
+              g = "0" === s.val().substring(0, 1);
+          return a || f || g;
+        }
+
+        function d(a) {
+          s.each(function (b, c) {
+            if (c.setSelectionRange) c.focus(), c.setSelectionRange(a, a);else if (c.createTextRange) {
+              var d = c.createTextRange();
+              d.collapse(!0), d.moveEnd("character", a), d.moveStart("character", a), d.select();
+            }
+          });
+        }
+
+        function e(b) {
+          var c = "";
+          return b.indexOf("-") > -1 && (b = b.replace("-", ""), c = "-"), c + a.prefix + b + a.suffix;
+        }
+
+        function f(b) {
+          var c,
+              d,
+              f,
+              g = b.indexOf("-") > -1 && a.allowNegative ? "-" : "",
+              h = b.replace(/[^0-9]/g, ""),
+              i = h.slice(0, h.length - a.precision);
+          return i = i.replace(/^0*/g, ""), i = i.replace(/\B(?=(\d{3})+(?!\d))/g, a.thousands), "" === i && (i = "0"), c = g + i, a.precision > 0 && (d = h.slice(h.length - a.precision), f = new Array(a.precision + 1 - d.length).join(0), c += a.decimal + f + d), e(c);
+        }
+
+        function g(a) {
+          var b,
+              c = s.val().length;
+          s.val(f(s.val())), b = s.val().length, a -= c - b, d(a);
+        }
+
+        function h() {
+          var a = s.val();
+          s.val(f(a));
+        }
+
+        function i() {
+          var b = s.val();
+          return a.allowNegative ? "" !== b && "-" === b.charAt(0) ? b.replace("-", "") : "-" + b : b;
+        }
+
+        function j(a) {
+          a.preventDefault ? a.preventDefault() : a.returnValue = !1;
+        }
+
+        function k(a) {
+          a = a || window.event;
+          var d,
+              e,
+              f,
+              h,
+              k,
+              l = a.which || a.charCode || a.keyCode;
+          return void 0 === l ? !1 : 48 > l || l > 57 ? 45 === l ? (s.val(i()), !1) : 43 === l ? (s.val(s.val().replace("-", "")), !1) : 13 === l || 9 === l ? !0 : !$.browser.mozilla || 37 !== l && 39 !== l || 0 !== a.charCode ? (j(a), !0) : !0 : c() ? (j(a), d = String.fromCharCode(l), e = b(), f = e.start, h = e.end, k = s.val(), s.val(k.substring(0, f) + d + k.substring(h, k.length)), g(f + 1), !1) : !1;
+        }
+
+        function l(c) {
+          c = c || window.event;
+          var d,
+              e,
+              f,
+              h,
+              i,
+              k = c.which || c.charCode || c.keyCode;
+          return void 0 === k ? !1 : (d = b(), e = d.start, f = d.end, 8 === k || 46 === k || 63272 === k ? (j(c), h = s.val(), e === f && (8 === k ? "" === a.suffix ? e -= 1 : (i = h.split("").reverse().join("").search(/\d/), e = h.length - i - 1, f = e + 1) : f += 1), s.val(h.substring(0, e) + h.substring(f, h.length)), g(e), !1) : 9 === k ? !0 : !0);
+        }
+
+        function m() {
+          r = s.val(), h();
+          var a,
+              b = s.get(0);
+          b.createTextRange && (a = b.createTextRange(), a.collapse(!1), a.select());
+        }
+
+        function n() {
+          setTimeout(function () {
+            h();
+          }, 0);
+        }
+
+        function o() {
+          var b = parseFloat("0") / Math.pow(10, a.precision);
+          return b.toFixed(a.precision).replace(new RegExp("\\.", "g"), a.decimal);
+        }
+
+        function p(b) {
+          if ($.browser.msie && k(b), "" === s.val() || s.val() === e(o())) a.allowZero ? a.affixesStay ? s.val(e(o())) : s.val(o()) : s.val("");else if (!a.affixesStay) {
+            var c = s.val().replace(a.prefix, "").replace(a.suffix, "");
+            s.val(c);
+          }
+          s.val() !== r && s.change();
+        }
+
+        function q() {
+          var a,
+              b = s.get(0);
+          b.setSelectionRange ? (a = s.val().length, b.setSelectionRange(a, a)) : s.val(s.val());
+        }
+
+        var r,
+            s = $(this);
+        a = $.extend(a, s.data()), s.unbind(".maskMoney"), s.bind("keypress.maskMoney", k), s.bind("keydown.maskMoney", l), s.bind("blur.maskMoney", p), s.bind("focus.maskMoney", m), s.bind("click.maskMoney", q), s.bind("cut.maskMoney", n), s.bind("paste.maskMoney", n), s.bind("mask.maskMoney", h);
+      });
+    }
+  };
+
+  $.fn.maskMoney = function (b) {
+    return a[b] ? a[b].apply(this, Array.prototype.slice.call(arguments, 1)) : "object" != _typeof(b) && b ? ($.error("Method " + b + " does not exist on jQuery.maskMoney"), void 0) : a.init.apply(this, arguments);
+  };
+}(window.jQuery || window.Zepto);
+
+(function (factory) {
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(['jquery'], factory);
+  } else if ((typeof exports === "undefined" ? "undefined" : _typeof(exports)) === 'object') {
+    // Node/CommonJS
+    factory(require('jquery'));
+  } else {
+    // Browser globals
+    factory(jQuery);
+  }
+})(function ($) {
+  var ua = navigator.userAgent,
+      iPhone = /iphone/i.test(ua),
+      chrome = /chrome/i.test(ua),
+      android = /android/i.test(ua),
+      caretTimeoutId;
+  $.mask = {
+    //Predefined character definitions
+    definitions: {
+      '9': "[0-9]",
+      'a': "[A-Za-z]",
+      '*': "[A-Za-z0-9]"
+    },
+    autoclear: true,
+    dataName: "rawMaskFn",
+    placeholder: '_'
+  };
+  $.fn.extend({
+    //Helper Function for Caret positioning
+    caret: function caret(begin, end) {
+      var range;
+
+      if (this.length === 0 || this.is(":hidden") || this.get(0) !== document.activeElement) {
+        return;
+      }
+
+      if (typeof begin == 'number') {
+        end = typeof end === 'number' ? end : begin;
+        return this.each(function () {
+          if (this.setSelectionRange) {
+            this.setSelectionRange(begin, end);
+          } else if (this.createTextRange) {
+            range = this.createTextRange();
+            range.collapse(true);
+            range.moveEnd('character', end);
+            range.moveStart('character', begin);
+            range.select();
+          }
+        });
+      } else {
+        if (this[0].setSelectionRange) {
+          begin = this[0].selectionStart;
+          end = this[0].selectionEnd;
+        } else if (document.selection && document.selection.createRange) {
+          range = document.selection.createRange();
+          begin = 0 - range.duplicate().moveStart('character', -100000);
+          end = begin + range.text.length;
+        }
+
+        return {
+          begin: begin,
+          end: end
+        };
+      }
+    },
+    unmask: function unmask() {
+      return this.trigger("unmask");
+    },
+    mask: function mask(_mask, settings) {
+      var input, defs, tests, partialPosition, firstNonMaskPos, lastRequiredNonMaskPos, len, oldVal;
+
+      if (!_mask && this.length > 0) {
+        input = $(this[0]);
+        var fn = input.data($.mask.dataName);
+        return fn ? fn() : undefined;
+      }
+
+      settings = $.extend({
+        autoclear: $.mask.autoclear,
+        placeholder: $.mask.placeholder,
+        // Load default placeholder
+        completed: null
+      }, settings);
+      defs = $.mask.definitions;
+      tests = [];
+      partialPosition = len = _mask.length;
+      firstNonMaskPos = null;
+      _mask = String(_mask);
+      $.each(_mask.split(""), function (i, c) {
+        if (c == '?') {
+          len--;
+          partialPosition = i;
+        } else if (defs[c]) {
+          tests.push(new RegExp(defs[c]));
+
+          if (firstNonMaskPos === null) {
+            firstNonMaskPos = tests.length - 1;
+          }
+
+          if (i < partialPosition) {
+            lastRequiredNonMaskPos = tests.length - 1;
+          }
+        } else {
+          tests.push(null);
+        }
+      });
+      return this.trigger("unmask").each(function () {
+        var input = $(this),
+            buffer = $.map(_mask.split(""), function (c, i) {
+          if (c != '?') {
+            return defs[c] ? getPlaceholder(i) : c;
+          }
+        }),
+            defaultBuffer = buffer.join(''),
+            focusText = input.val();
+
+        function tryFireCompleted() {
+          if (!settings.completed) {
+            return;
+          }
+
+          for (var i = firstNonMaskPos; i <= lastRequiredNonMaskPos; i++) {
+            if (tests[i] && buffer[i] === getPlaceholder(i)) {
+              return;
+            }
+          }
+
+          settings.completed.call(input);
+        }
+
+        function getPlaceholder(i) {
+          if (i < settings.placeholder.length) return settings.placeholder.charAt(i);
+          return settings.placeholder.charAt(0);
+        }
+
+        function seekNext(pos) {
+          while (++pos < len && !tests[pos]) {
+            ;
+          }
+
+          return pos;
+        }
+
+        function seekPrev(pos) {
+          while (--pos >= 0 && !tests[pos]) {
+            ;
+          }
+
+          return pos;
+        }
+
+        function shiftL(begin, end) {
+          var i, j;
+
+          if (begin < 0) {
+            return;
+          }
+
+          for (i = begin, j = seekNext(end); i < len; i++) {
+            if (tests[i]) {
+              if (j < len && tests[i].test(buffer[j])) {
+                buffer[i] = buffer[j];
+                buffer[j] = getPlaceholder(j);
+              } else {
+                break;
+              }
+
+              j = seekNext(j);
+            }
+          }
+
+          writeBuffer();
+          input.caret(Math.max(firstNonMaskPos, begin));
+        }
+
+        function shiftR(pos) {
+          var i, c, j, t;
+
+          for (i = pos, c = getPlaceholder(pos); i < len; i++) {
+            if (tests[i]) {
+              j = seekNext(i);
+              t = buffer[i];
+              buffer[i] = c;
+
+              if (j < len && tests[j].test(t)) {
+                c = t;
+              } else {
+                break;
+              }
+            }
+          }
+        }
+
+        function androidInputEvent(e) {
+          var curVal = input.val();
+          var pos = input.caret();
+
+          if (oldVal && oldVal.length && oldVal.length > curVal.length) {
+            // a deletion or backspace happened
+            checkVal(true);
+
+            while (pos.begin > 0 && !tests[pos.begin - 1]) {
+              pos.begin--;
+            }
+
+            if (pos.begin === 0) {
+              while (pos.begin < firstNonMaskPos && !tests[pos.begin]) {
+                pos.begin++;
+              }
+            }
+
+            input.caret(pos.begin, pos.begin);
+          } else {
+            var pos2 = checkVal(true);
+            var lastEnteredValue = curVal.charAt(pos.begin);
+
+            if (pos.begin < len) {
+              if (!tests[pos.begin]) {
+                pos.begin++;
+
+                if (tests[pos.begin].test(lastEnteredValue)) {
+                  pos.begin++;
+                }
+              } else {
+                if (tests[pos.begin].test(lastEnteredValue)) {
+                  pos.begin++;
+                }
+              }
+            }
+
+            input.caret(pos.begin, pos.begin);
+          }
+
+          tryFireCompleted();
+        }
+
+        function blurEvent(e) {
+          checkVal();
+          if (input.val() != focusText) input.change();
+        }
+
+        function keydownEvent(e) {
+          if (input.prop("readonly")) {
+            return;
+          }
+
+          var k = e.which || e.keyCode,
+              pos,
+              begin,
+              end;
+          oldVal = input.val(); //backspace, delete, and escape get special treatment
+
+          if (k === 8 || k === 46 || iPhone && k === 127) {
+            pos = input.caret();
+            begin = pos.begin;
+            end = pos.end;
+
+            if (end - begin === 0) {
+              begin = k !== 46 ? seekPrev(begin) : end = seekNext(begin - 1);
+              end = k === 46 ? seekNext(end) : end;
+            }
+
+            clearBuffer(begin, end);
+            shiftL(begin, end - 1);
+            e.preventDefault();
+          } else if (k === 13) {
+            // enter
+            blurEvent.call(this, e);
+          } else if (k === 27) {
+            // escape
+            input.val(focusText);
+            input.caret(0, checkVal());
+            e.preventDefault();
+          }
+        }
+
+        function keypressEvent(e) {
+          if (input.prop("readonly")) {
+            return;
+          }
+
+          var k = e.which || e.keyCode,
+              pos = input.caret(),
+              p,
+              c,
+              next;
+
+          if (e.ctrlKey || e.altKey || e.metaKey || k < 32) {
+            //Ignore
+            return;
+          } else if (k && k !== 13) {
+            if (pos.end - pos.begin !== 0) {
+              clearBuffer(pos.begin, pos.end);
+              shiftL(pos.begin, pos.end - 1);
+            }
+
+            p = seekNext(pos.begin - 1);
+
+            if (p < len) {
+              c = String.fromCharCode(k);
+
+              if (tests[p].test(c)) {
+                shiftR(p);
+                buffer[p] = c;
+                writeBuffer();
+                next = seekNext(p);
+
+                if (android) {
+                  //Path for CSP Violation on FireFox OS 1.1
+                  var proxy = function proxy() {
+                    $.proxy($.fn.caret, input, next)();
+                  };
+
+                  setTimeout(proxy, 0);
+                } else {
+                  input.caret(next);
+                }
+
+                if (pos.begin <= lastRequiredNonMaskPos) {
+                  tryFireCompleted();
+                }
+              }
+            }
+
+            e.preventDefault();
+          }
+        }
+
+        function clearBuffer(start, end) {
+          var i;
+
+          for (i = start; i < end && i < len; i++) {
+            if (tests[i]) {
+              buffer[i] = getPlaceholder(i);
+            }
+          }
+        }
+
+        function writeBuffer() {
+          input.val(buffer.join(''));
+        }
+
+        function checkVal(allow) {
+          //try to place characters where they belong
+          var test = input.val(),
+              lastMatch = -1,
+              i,
+              c,
+              pos;
+
+          for (i = 0, pos = 0; i < len; i++) {
+            if (tests[i]) {
+              buffer[i] = getPlaceholder(i);
+
+              while (pos++ < test.length) {
+                c = test.charAt(pos - 1);
+
+                if (tests[i].test(c)) {
+                  buffer[i] = c;
+                  lastMatch = i;
+                  break;
+                }
+              }
+
+              if (pos > test.length) {
+                clearBuffer(i + 1, len);
+                break;
+              }
+            } else {
+              if (buffer[i] === test.charAt(pos)) {
+                pos++;
+              }
+
+              if (i < partialPosition) {
+                lastMatch = i;
+              }
+            }
+          }
+
+          if (allow) {
+            writeBuffer();
+          } else if (lastMatch + 1 < partialPosition) {
+            if (settings.autoclear || buffer.join('') === defaultBuffer) {
+              // Invalid value. Remove it and replace it with the
+              // mask, which is the default behavior.
+              if (input.val()) input.val("");
+              clearBuffer(0, len);
+            } else {
+              // Invalid value, but we opt to show the value to the
+              // user and allow them to correct their mistake.
+              writeBuffer();
+            }
+          } else {
+            writeBuffer();
+            input.val(input.val().substring(0, lastMatch + 1));
+          }
+
+          return partialPosition ? i : firstNonMaskPos;
+        }
+
+        input.data($.mask.dataName, function () {
+          return $.map(buffer, function (c, i) {
+            return tests[i] && c != getPlaceholder(i) ? c : null;
+          }).join('');
+        });
+        input.one("unmask", function () {
+          input.off(".mask").removeData($.mask.dataName);
+        }).on("focus.mask", function () {
+          if (input.prop("readonly")) {
+            return;
+          }
+
+          clearTimeout(caretTimeoutId);
+          var pos;
+          focusText = input.val();
+          pos = checkVal();
+          caretTimeoutId = setTimeout(function () {
+            if (input.get(0) !== document.activeElement) {
+              return;
+            }
+
+            writeBuffer();
+
+            if (pos == _mask.replace("?", "").length) {
+              input.caret(0, pos);
+            } else {
+              input.caret(pos);
+            }
+          }, 10);
+        }).on("blur.mask", blurEvent).on("keydown.mask", keydownEvent).on("keypress.mask", keypressEvent).on("input.mask paste.mask", function () {
+          if (input.prop("readonly")) {
+            return;
+          }
+
+          setTimeout(function () {
+            var pos = checkVal(true);
+            input.caret(pos);
+            tryFireCompleted();
+          }, 0);
+        });
+
+        if (chrome && android) {
+          input.off('input.mask').on('input.mask', androidInputEvent);
+        }
+
+        checkVal(); //Perform initial check for existing values
+      });
+    }
+  });
+});
+
+!function (t, e) {
+  "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define(e) : t.Sweetalert2 = e();
+}(this, function () {
+  "use strict";
+
+  function r(t) {
+    return (r = "function" == typeof Symbol && "symbol" == _typeof(Symbol.iterator) ? function (t) {
+      return _typeof(t);
+    } : function (t) {
+      return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : _typeof(t);
+    })(t);
+  }
+
+  function o(t, e) {
+    if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
+  }
+
+  function i(t, e) {
+    for (var n = 0; n < e.length; n++) {
+      var o = e[n];
+      o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(t, o.key, o);
+    }
+  }
+
+  function a(t, e, n) {
+    return e && i(t.prototype, e), n && i(t, n), t;
+  }
+
+  function c() {
+    return (c = Object.assign || function (t) {
+      for (var e = 1; e < arguments.length; e++) {
+        var n = arguments[e];
+
+        for (var o in n) {
+          Object.prototype.hasOwnProperty.call(n, o) && (t[o] = n[o]);
+        }
+      }
+
+      return t;
+    }).apply(this, arguments);
+  }
+
+  function s(t) {
+    return (s = Object.setPrototypeOf ? Object.getPrototypeOf : function (t) {
+      return t.__proto__ || Object.getPrototypeOf(t);
+    })(t);
+  }
+
+  function u(t, e) {
+    return (u = Object.setPrototypeOf || function (t, e) {
+      return t.__proto__ = e, t;
+    })(t, e);
+  }
+
+  function l(t, e, n) {
+    return (l = function () {
+      if ("undefined" != typeof Reflect && Reflect.construct && !Reflect.construct.sham) {
+        if ("function" == typeof Proxy) return 1;
+
+        try {
+          return Date.prototype.toString.call(Reflect.construct(Date, [], function () {})), 1;
+        } catch (t) {
+          return;
+        }
+      }
+    }() ? Reflect.construct : function (t, e, n) {
+      var o = [null];
+      o.push.apply(o, e);
+      var i = new (Function.bind.apply(t, o))();
+      return n && u(i, n.prototype), i;
+    }).apply(null, arguments);
+  }
+
+  function d(t, e) {
+    return !e || "object" != _typeof(e) && "function" != typeof e ? function (t) {
+      if (void 0 === t) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+      return t;
+    }(t) : e;
+  }
+
+  function p(t, e, n) {
+    return (p = "undefined" != typeof Reflect && Reflect.get ? Reflect.get : function (t, e, n) {
+      var o = function (t, e) {
+        for (; !Object.prototype.hasOwnProperty.call(t, e) && null !== (t = s(t));) {
+          ;
+        }
+
+        return t;
+      }(t, e);
+
+      if (o) {
+        var i = Object.getOwnPropertyDescriptor(o, e);
+        return i.get ? i.get.call(n) : i.value;
+      }
+    })(t, e, n || t);
+  }
+
+  function f(e) {
+    return Object.keys(e).map(function (t) {
+      return e[t];
+    });
+  }
+
+  function m(t) {
+    return Array.prototype.slice.call(t);
+  }
+
+  function g(t) {
+    console.error("".concat(q, " ").concat(t));
+  }
+
+  function h(t, e) {
+    var n;
+    n = '"'.concat(t, '" is deprecated and will be removed in the next major release. Please use "').concat(e, '" instead.'), -1 === D.indexOf(n) && (D.push(n), R(n));
+  }
+
+  function v(t) {
+    return t && Promise.resolve(t) === t;
+  }
+
+  function b(t) {
+    return t instanceof Element || "object" === r(e = t) && e.jquery;
+    var e;
+  }
+
+  function t(t) {
+    var e = {};
+
+    for (var n in t) {
+      e[t[n]] = "swal2-" + t[n];
+    }
+
+    return e;
+  }
+
+  function y(t) {
+    var e = z();
+    return e ? e.querySelector(t) : null;
+  }
+
+  function e(t) {
+    return y(".".concat(t));
+  }
+
+  function n() {
+    var t = W();
+    return m(t.querySelectorAll(".".concat(_.icon)));
+  }
+
+  function w() {
+    var t = n().filter(function (t) {
+      return dt(t);
+    });
+    return t.length ? t[0] : null;
+  }
+
+  function C() {
+    return e(_.title);
+  }
+
+  function k() {
+    return e(_.content);
+  }
+
+  function x() {
+    return e(_.image);
+  }
+
+  function P() {
+    return e(_["progress-steps"]);
+  }
+
+  function A() {
+    return e(_["validation-message"]);
+  }
+
+  function B() {
+    return y(".".concat(_.actions, " .").concat(_.confirm));
+  }
+
+  function E() {
+    return y(".".concat(_.actions, " .").concat(_.cancel));
+  }
+
+  function S() {
+    return e(_.actions);
+  }
+
+  function T() {
+    return e(_.header);
+  }
+
+  function L() {
+    return e(_.footer);
+  }
+
+  function O() {
+    return e(_["timer-progress-bar"]);
+  }
+
+  function M() {
+    return e(_.close);
+  }
+
+  function H() {
+    var t = m(W().querySelectorAll('[tabindex]:not([tabindex="-1"]):not([tabindex="0"])')).sort(function (t, e) {
+      return t = parseInt(t.getAttribute("tabindex")), (e = parseInt(e.getAttribute("tabindex"))) < t ? 1 : t < e ? -1 : 0;
+    }),
+        e = m(W().querySelectorAll('\n  a[href],\n  area[href],\n  input:not([disabled]),\n  select:not([disabled]),\n  textarea:not([disabled]),\n  button:not([disabled]),\n  iframe,\n  object,\n  embed,\n  [tabindex="0"],\n  [contenteditable],\n  audio[controls],\n  video[controls],\n  summary\n')).filter(function (t) {
+      return "-1" !== t.getAttribute("tabindex");
+    });
+    return function (t) {
+      for (var e = [], n = 0; n < t.length; n++) {
+        -1 === e.indexOf(t[n]) && e.push(t[n]);
+      }
+
+      return e;
+    }(t.concat(e)).filter(function (t) {
+      return dt(t);
+    });
+  }
+
+  function I() {
+    return !K() && !document.body.classList.contains(_["no-backdrop"]);
+  }
+
+  function j(t, e) {
+    if (e) {
+      for (var n = e.split(/\s+/), o = 0; o < n.length; o++) {
+        if (!t.classList.contains(n[o])) return;
+      }
+
+      return 1;
+    }
+  }
+
+  function V(t, e, n) {
+    var o, i;
+
+    if (i = e, m((o = t).classList).forEach(function (t) {
+      -1 === f(_).indexOf(t) && -1 === f(F).indexOf(t) && -1 === f(i.showClass).indexOf(t) && o.classList.remove(t);
+    }), e.customClass && e.customClass[n]) {
+      if ("string" != typeof e.customClass[n] && !e.customClass[n].forEach) return R("Invalid type of customClass.".concat(n, '! Expected string or iterable object, got "').concat(r(e.customClass[n]), '"'));
+      st(t, e.customClass[n]);
+    }
+  }
+
+  var q = "SweetAlert2:",
+      R = function R(t) {
+    console.warn("".concat(q, " ").concat(t));
+  },
+      D = [],
+      N = function N(t) {
+    return "function" == typeof t ? t() : t;
+  },
+      U = Object.freeze({
+    cancel: "cancel",
+    backdrop: "backdrop",
+    close: "close",
+    esc: "esc",
+    timer: "timer"
+  }),
+      _ = t(["container", "shown", "height-auto", "iosfix", "popup", "modal", "no-backdrop", "toast", "toast-shown", "toast-column", "show", "hide", "close", "title", "header", "content", "html-container", "actions", "confirm", "cancel", "footer", "icon", "icon-content", "image", "input", "file", "range", "select", "radio", "checkbox", "label", "textarea", "inputerror", "validation-message", "progress-steps", "active-progress-step", "progress-step", "progress-step-line", "loading", "styled", "top", "top-start", "top-end", "top-left", "top-right", "center", "center-start", "center-end", "center-left", "center-right", "bottom", "bottom-start", "bottom-end", "bottom-left", "bottom-right", "grow-row", "grow-column", "grow-fullscreen", "rtl", "timer-progress-bar", "scrollbar-measure", "icon-success", "icon-warning", "icon-info", "icon-question", "icon-error"]),
+      F = t(["success", "warning", "info", "question", "error"]),
+      z = function z() {
+    return document.body.querySelector(".".concat(_.container));
+  },
+      W = function W() {
+    return e(_.popup);
+  },
+      K = function K() {
+    return document.body.classList.contains(_["toast-shown"]);
+  },
+      Y = {
+    previousBodyPadding: null
+  };
+
+  function Z(t, e) {
+    if (!e) return null;
+
+    switch (e) {
+      case "select":
+      case "textarea":
+      case "file":
+        return lt(t, _[e]);
+
+      case "checkbox":
+        return t.querySelector(".".concat(_.checkbox, " input"));
+
+      case "radio":
+        return t.querySelector(".".concat(_.radio, " input:checked")) || t.querySelector(".".concat(_.radio, " input:first-child"));
+
+      case "range":
+        return t.querySelector(".".concat(_.range, " input"));
+
+      default:
+        return lt(t, _.input);
+    }
+  }
+
+  function Q(t) {
+    if (t.focus(), "file" !== t.type) {
+      var e = t.value;
+      t.value = "", t.value = e;
+    }
+  }
+
+  function $(t, e, n) {
+    t && e && ("string" == typeof e && (e = e.split(/\s+/).filter(Boolean)), e.forEach(function (e) {
+      t.forEach ? t.forEach(function (t) {
+        n ? t.classList.add(e) : t.classList.remove(e);
+      }) : n ? t.classList.add(e) : t.classList.remove(e);
+    }));
+  }
+
+  function J(t, e, n) {
+    n || 0 === parseInt(n) ? t.style[e] = "number" == typeof n ? "".concat(n, "px") : n : t.style.removeProperty(e);
+  }
+
+  function X(t, e) {
+    var n = 1 < arguments.length && void 0 !== e ? e : "flex";
+    t.style.opacity = "", t.style.display = n;
+  }
+
+  function G(t) {
+    t.style.opacity = "", t.style.display = "none";
+  }
+
+  function tt(t, e, n) {
+    e ? X(t, n) : G(t);
+  }
+
+  function et(t) {
+    var e = window.getComputedStyle(t),
+        n = parseFloat(e.getPropertyValue("animation-duration") || "0"),
+        o = parseFloat(e.getPropertyValue("transition-duration") || "0");
+    return 0 < n || 0 < o;
+  }
+
+  function nt(t, e) {
+    var n = 1 < arguments.length && void 0 !== e && e,
+        o = O();
+    dt(o) && (n && (o.style.transition = "none", o.style.width = "100%"), setTimeout(function () {
+      o.style.transition = "width ".concat(t / 1e3, "s linear"), o.style.width = "0%";
+    }, 10));
+  }
+
+  function ot() {
+    return "undefined" == typeof window || "undefined" == typeof document;
+  }
+
+  function it(t) {
+    Xe.isVisible() && ct !== t.target.value && Xe.resetValidationMessage(), ct = t.target.value;
+  }
+
+  function rt(t, e) {
+    t instanceof HTMLElement ? e.appendChild(t) : "object" === r(t) ? mt(t, e) : t && (e.innerHTML = t);
+  }
+
+  function at(t, e) {
+    var n = S(),
+        o = B(),
+        i = E();
+    e.showConfirmButton || e.showCancelButton || G(n), V(n, e, "actions"), vt(o, "confirm", e), vt(i, "cancel", e), e.buttonsStyling ? function (t, e, n) {
+      st([t, e], _.styled), n.confirmButtonColor && (t.style.backgroundColor = n.confirmButtonColor);
+      n.cancelButtonColor && (e.style.backgroundColor = n.cancelButtonColor);
+      var o = window.getComputedStyle(t).getPropertyValue("background-color");
+      t.style.borderLeftColor = o, t.style.borderRightColor = o;
+    }(o, i, e) : (ut([o, i], _.styled), o.style.backgroundColor = o.style.borderLeftColor = o.style.borderRightColor = "", i.style.backgroundColor = i.style.borderLeftColor = i.style.borderRightColor = ""), e.reverseButtons && o.parentNode.insertBefore(i, o);
+  }
+
+  var ct,
+      st = function st(t, e) {
+    $(t, e, !0);
+  },
+      ut = function ut(t, e) {
+    $(t, e, !1);
+  },
+      lt = function lt(t, e) {
+    for (var n = 0; n < t.childNodes.length; n++) {
+      if (j(t.childNodes[n], e)) return t.childNodes[n];
+    }
+  },
+      dt = function dt(t) {
+    return !(!t || !(t.offsetWidth || t.offsetHeight || t.getClientRects().length));
+  },
+      pt = '\n <div aria-labelledby="'.concat(_.title, '" aria-describedby="').concat(_.content, '" class="').concat(_.popup, '" tabindex="-1">\n   <div class="').concat(_.header, '">\n     <ul class="').concat(_["progress-steps"], '"></ul>\n     <div class="').concat(_.icon, " ").concat(F.error, '"></div>\n     <div class="').concat(_.icon, " ").concat(F.question, '"></div>\n     <div class="').concat(_.icon, " ").concat(F.warning, '"></div>\n     <div class="').concat(_.icon, " ").concat(F.info, '"></div>\n     <div class="').concat(_.icon, " ").concat(F.success, '"></div>\n     <img class="').concat(_.image, '" />\n     <h2 class="').concat(_.title, '" id="').concat(_.title, '"></h2>\n     <button type="button" class="').concat(_.close, '"></button>\n   </div>\n   <div class="').concat(_.content, '">\n     <div id="').concat(_.content, '" class="').concat(_["html-container"], '"></div>\n     <input class="').concat(_.input, '" />\n     <input type="file" class="').concat(_.file, '" />\n     <div class="').concat(_.range, '">\n       <input type="range" />\n       <output></output>\n     </div>\n     <select class="').concat(_.select, '"></select>\n     <div class="').concat(_.radio, '"></div>\n     <label for="').concat(_.checkbox, '" class="').concat(_.checkbox, '">\n       <input type="checkbox" />\n       <span class="').concat(_.label, '"></span>\n     </label>\n     <textarea class="').concat(_.textarea, '"></textarea>\n     <div class="').concat(_["validation-message"], '" id="').concat(_["validation-message"], '"></div>\n   </div>\n   <div class="').concat(_.actions, '">\n     <button type="button" class="').concat(_.confirm, '">OK</button>\n     <button type="button" class="').concat(_.cancel, '">Cancel</button>\n   </div>\n   <div class="').concat(_.footer, '"></div>\n   <div class="').concat(_["timer-progress-bar"], '"></div>\n </div>\n').replace(/(^|\n)\s*/g, ""),
+      ft = function ft(t) {
+    var e;
+    if ((e = z()) && (e.parentNode.removeChild(e), ut([document.documentElement, document.body], [_["no-backdrop"], _["toast-shown"], _["has-column"]])), ot()) g("SweetAlert2 requires document to initialize");else {
+      var n = document.createElement("div");
+      n.className = _.container, n.innerHTML = pt;
+      var o,
+          i,
+          r,
+          a,
+          c,
+          s,
+          u,
+          l,
+          d,
+          p,
+          f,
+          m,
+          h = "string" == typeof (o = t.target) ? document.querySelector(o) : o;
+      h.appendChild(n), i = t, (r = W()).setAttribute("role", i.toast ? "alert" : "dialog"), r.setAttribute("aria-live", i.toast ? "polite" : "assertive"), i.toast || r.setAttribute("aria-modal", "true"), a = h, "rtl" === window.getComputedStyle(a).direction && st(z(), _.rtl), c = k(), s = lt(c, _.input), u = lt(c, _.file), l = c.querySelector(".".concat(_.range, " input")), d = c.querySelector(".".concat(_.range, " output")), p = lt(c, _.select), f = c.querySelector(".".concat(_.checkbox, " input")), m = lt(c, _.textarea), s.oninput = it, u.onchange = it, p.onchange = it, f.onchange = it, m.oninput = it, l.oninput = function (t) {
+        it(t), d.value = l.value;
+      }, l.onchange = function (t) {
+        it(t), l.nextSibling.value = l.value;
+      };
+    }
+  },
+      mt = function mt(t, e) {
+    t.jquery ? ht(e, t) : e.innerHTML = t.toString();
+  },
+      ht = function ht(t, e) {
+    if (t.innerHTML = "", 0 in e) for (var n = 0; n in e; n++) {
+      t.appendChild(e[n].cloneNode(!0));
+    } else t.appendChild(e.cloneNode(!0));
+  },
+      gt = function () {
+    if (ot()) return !1;
+    var t = document.createElement("div"),
+        e = {
+      WebkitAnimation: "webkitAnimationEnd",
+      OAnimation: "oAnimationEnd oanimationend",
+      animation: "animationend"
+    };
+
+    for (var n in e) {
+      if (Object.prototype.hasOwnProperty.call(e, n) && void 0 !== t.style[n]) return e[n];
+    }
+
+    return !1;
+  }();
+
+  function vt(t, e, n) {
+    var o;
+    tt(t, n["show".concat((o = e).charAt(0).toUpperCase() + o.slice(1), "Button")], "inline-block"), t.innerHTML = n["".concat(e, "ButtonText")], t.setAttribute("aria-label", n["".concat(e, "ButtonAriaLabel")]), t.className = _[e], V(t, n, "".concat(e, "Button")), st(t, n["".concat(e, "ButtonClass")]);
+  }
+
+  function bt(t, e) {
+    var n = z();
+
+    if (n) {
+      var o, i, r, a;
+      o = n, "string" == typeof (i = e.backdrop) ? o.style.background = i : i || st([document.documentElement, document.body], _["no-backdrop"]), !e.backdrop && e.allowOutsideClick && R('"allowOutsideClick" parameter requires `backdrop` parameter to be set to `true`'), r = n, (a = e.position) in _ ? st(r, _[a]) : (R('The "position" parameter is not valid, defaulting to "center"'), st(r, _.center)), function (t, e) {
+        if (e && "string" == typeof e) {
+          var n = "grow-".concat(e);
+          n in _ && st(t, _[n]);
+        }
+      }(n, e.grow), V(n, e, "container");
+      var c = document.body.getAttribute("data-swal2-queue-step");
+      c && (n.setAttribute("data-queue-step", c), document.body.removeAttribute("data-swal2-queue-step"));
+    }
+  }
+
+  function yt(t, e) {
+    t.placeholder && !e.inputPlaceholder || (t.placeholder = e.inputPlaceholder);
+  }
+
+  var wt = {
+    promise: new WeakMap(),
+    innerParams: new WeakMap(),
+    domCache: new WeakMap()
+  },
+      Ct = ["input", "file", "range", "select", "radio", "checkbox", "textarea"],
+      kt = function kt(t) {
+    if (!Bt[t.input]) return g('Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "'.concat(t.input, '"'));
+    var e = At(t.input),
+        n = Bt[t.input](e, t);
+    X(n), setTimeout(function () {
+      Q(n);
+    });
+  },
+      xt = function xt(t, e) {
+    var n = Z(k(), t);
+    if (n) for (var o in !function (t) {
+      for (var e = 0; e < t.attributes.length; e++) {
+        var n = t.attributes[e].name;
+        -1 === ["type", "value", "style"].indexOf(n) && t.removeAttribute(n);
+      }
+    }(n), e) {
+      "range" === t && "placeholder" === o || n.setAttribute(o, e[o]);
+    }
+  },
+      Pt = function Pt(t) {
+    var e = At(t.input);
+    t.customClass && st(e, t.customClass.input);
+  },
+      At = function At(t) {
+    var e = _[t] ? _[t] : _.input;
+    return lt(k(), e);
+  },
+      Bt = {};
+
+  Bt.text = Bt.email = Bt.password = Bt.number = Bt.tel = Bt.url = function (t, e) {
+    return "string" == typeof e.inputValue || "number" == typeof e.inputValue ? t.value = e.inputValue : v(e.inputValue) || R('Unexpected type of inputValue! Expected "string", "number" or "Promise", got "'.concat(r(e.inputValue), '"')), yt(t, e), t.type = e.input, t;
+  }, Bt.file = function (t, e) {
+    return yt(t, e), t;
+  }, Bt.range = function (t, e) {
+    var n = t.querySelector("input"),
+        o = t.querySelector("output");
+    return n.value = e.inputValue, n.type = e.input, o.value = e.inputValue, t;
+  }, Bt.select = function (t, e) {
+    if (t.innerHTML = "", e.inputPlaceholder) {
+      var n = document.createElement("option");
+      n.innerHTML = e.inputPlaceholder, n.value = "", n.disabled = !0, n.selected = !0, t.appendChild(n);
+    }
+
+    return t;
+  }, Bt.radio = function (t) {
+    return t.innerHTML = "", t;
+  }, Bt.checkbox = function (t, e) {
+    var n = Z(k(), "checkbox");
+    return n.value = 1, n.id = _.checkbox, n.checked = Boolean(e.inputValue), t.querySelector("span").innerHTML = e.inputPlaceholder, t;
+  }, Bt.textarea = function (e, t) {
+    if (e.value = t.inputValue, yt(e, t), "MutationObserver" in window) {
+      var n = parseInt(window.getComputedStyle(W()).width),
+          o = parseInt(window.getComputedStyle(W()).paddingLeft) + parseInt(window.getComputedStyle(W()).paddingRight);
+      new MutationObserver(function () {
+        var t = e.offsetWidth + o;
+        W().style.width = n < t ? "".concat(t, "px") : null;
+      }).observe(e, {
+        attributes: !0,
+        attributeFilter: ["style"]
+      });
+    }
+
+    return e;
+  };
+
+  function Et(t, e) {
+    var n,
+        o,
+        i,
+        r,
+        a,
+        c = k().querySelector("#".concat(_.content));
+    e.html ? (rt(e.html, c), X(c, "block")) : e.text ? (c.textContent = e.text, X(c, "block")) : G(c), n = t, o = e, i = k(), r = wt.innerParams.get(n), a = !r || o.input !== r.input, Ct.forEach(function (t) {
+      var e = _[t],
+          n = lt(i, e);
+      xt(t, o.inputAttributes), n.className = e, a && G(n);
+    }), o.input && (a && kt(o), Pt(o)), V(k(), e, "content");
+  }
+
+  function St() {
+    return z().getAttribute("data-queue-step");
+  }
+
+  function Tt(t, s) {
+    var u = P();
+    if (!s.progressSteps || 0 === s.progressSteps.length) return G(u);
+    X(u), u.innerHTML = "";
+    var l = parseInt(void 0 === s.currentProgressStep ? St() : s.currentProgressStep);
+    l >= s.progressSteps.length && R("Invalid currentProgressStep parameter, it should be less than progressSteps.length (currentProgressStep like JS arrays starts from 0)"), s.progressSteps.forEach(function (t, e) {
+      var n,
+          o,
+          i,
+          r,
+          a = (n = t, o = document.createElement("li"), st(o, _["progress-step"]), o.innerHTML = n, o);
+
+      if (u.appendChild(a), e === l && st(a, _["active-progress-step"]), e !== s.progressSteps.length - 1) {
+        var c = (i = t, r = document.createElement("li"), st(r, _["progress-step-line"]), i.progressStepsDistance && (r.style.width = i.progressStepsDistance), r);
+        u.appendChild(c);
+      }
+    });
+  }
+
+  function Lt(t, e) {
+    var n,
+        o,
+        i,
+        r,
+        a = T();
+    V(a, e, "header"), Tt(0, e), function (t, e) {
+      var n = wt.innerParams.get(t);
+      if (n && e.icon === n.icon && w()) V(w(), e, "icon");else if (Ht(), e.icon) if (-1 !== Object.keys(F).indexOf(e.icon)) {
+        var o = y(".".concat(_.icon, ".").concat(F[e.icon]));
+        X(o), jt(o, e), It(), V(o, e, "icon"), st(o, e.showClass.icon);
+      } else g('Unknown icon! Expected "success", "error", "warning", "info" or "question", got "'.concat(e.icon, '"'));
+    }(t, e), function (t) {
+      var e = x();
+      if (!t.imageUrl) return G(e);
+      X(e), e.setAttribute("src", t.imageUrl), e.setAttribute("alt", t.imageAlt), J(e, "width", t.imageWidth), J(e, "height", t.imageHeight), e.className = _.image, V(e, t, "image");
+    }(e), n = e, o = C(), tt(o, n.title || n.titleText), n.title && rt(n.title, o), n.titleText && (o.innerText = n.titleText), V(o, n, "title"), i = e, (r = M()).innerHTML = i.closeButtonHtml, V(r, i, "closeButton"), tt(r, i.showCloseButton), r.setAttribute("aria-label", i.closeButtonAriaLabel);
+  }
+
+  function Ot(t, e) {
+    var n, o, i, r;
+    n = e, o = W(), J(o, "width", n.width), J(o, "padding", n.padding), n.background && (o.style.background = n.background), Rt(o, n), bt(0, e), Lt(t, e), Et(t, e), at(0, e), i = e, r = L(), tt(r, i.footer), i.footer && rt(i.footer, r), V(r, i, "footer"), "function" == typeof e.onRender && e.onRender(W());
+  }
+
+  function Mt() {
+    return B() && B().click();
+  }
+
+  var Ht = function Ht() {
+    for (var t = n(), e = 0; e < t.length; e++) {
+      G(t[e]);
+    }
+  },
+      It = function It() {
+    for (var t = W(), e = window.getComputedStyle(t).getPropertyValue("background-color"), n = t.querySelectorAll("[class^=swal2-success-circular-line], .swal2-success-fix"), o = 0; o < n.length; o++) {
+      n[o].style.backgroundColor = e;
+    }
+  },
+      jt = function jt(t, e) {
+    if (t.innerHTML = "", e.iconHtml) t.innerHTML = Vt(e.iconHtml);else if ("success" === e.icon) t.innerHTML = '\n      <div class="swal2-success-circular-line-left"></div>\n      <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>\n      <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>\n      <div class="swal2-success-circular-line-right"></div>\n    ';else if ("error" === e.icon) t.innerHTML = '\n      <span class="swal2-x-mark">\n        <span class="swal2-x-mark-line-left"></span>\n        <span class="swal2-x-mark-line-right"></span>\n      </span>\n    ';else {
+      t.innerHTML = Vt({
+        question: "?",
+        warning: "!",
+        info: "i"
+      }[e.icon]);
+    }
+  },
+      Vt = function Vt(t) {
+    return '<div class="'.concat(_["icon-content"], '">').concat(t, "</div>");
+  },
+      qt = [],
+      Rt = function Rt(t, e) {
+    t.className = "".concat(_.popup, " ").concat(dt(t) ? e.showClass.popup : ""), e.toast ? (st([document.documentElement, document.body], _["toast-shown"]), st(t, _.toast)) : st(t, _.modal), V(t, e, "popup"), "string" == typeof e.customClass && st(t, e.customClass), e.icon && st(t, _["icon-".concat(e.icon)]);
+  };
+
+  function Dt() {
+    var t = W();
+    t || Xe.fire(), t = W();
+    var e = S(),
+        n = B();
+    X(e), X(n, "inline-block"), st([t, e], _.loading), n.disabled = !0, t.setAttribute("data-loading", !0), t.setAttribute("aria-busy", !0), t.focus();
+  }
+
+  function Nt() {
+    return new Promise(function (t) {
+      var e = window.scrollX,
+          n = window.scrollY;
+      Wt.restoreFocusTimeout = setTimeout(function () {
+        Wt.previousActiveElement && Wt.previousActiveElement.focus ? (Wt.previousActiveElement.focus(), Wt.previousActiveElement = null) : document.body && document.body.focus(), t();
+      }, 100), void 0 !== e && void 0 !== n && window.scrollTo(e, n);
+    });
+  }
+
+  function Ut() {
+    if (Wt.timeout) return function () {
+      var t = O(),
+          e = parseInt(window.getComputedStyle(t).width);
+      t.style.removeProperty("transition"), t.style.width = "100%";
+      var n = parseInt(window.getComputedStyle(t).width),
+          o = parseInt(e / n * 100);
+      t.style.removeProperty("transition"), t.style.width = "".concat(o, "%");
+    }(), Wt.timeout.stop();
+  }
+
+  function _t() {
+    if (Wt.timeout) {
+      var t = Wt.timeout.start();
+      return nt(t), t;
+    }
+  }
+
+  function Ft(t) {
+    return Object.prototype.hasOwnProperty.call(Kt, t);
+  }
+
+  function zt(t) {
+    return Zt[t];
+  }
+
+  var Wt = {},
+      Kt = {
+    title: "",
+    titleText: "",
+    text: "",
+    html: "",
+    footer: "",
+    icon: void 0,
+    iconHtml: void 0,
+    toast: !1,
+    animation: !0,
+    showClass: {
+      popup: "swal2-show",
+      backdrop: "swal2-backdrop-show",
+      icon: "swal2-icon-show"
+    },
+    hideClass: {
+      popup: "swal2-hide",
+      backdrop: "swal2-backdrop-hide",
+      icon: "swal2-icon-hide"
+    },
+    customClass: void 0,
+    target: "body",
+    backdrop: !0,
+    heightAuto: !0,
+    allowOutsideClick: !0,
+    allowEscapeKey: !0,
+    allowEnterKey: !0,
+    stopKeydownPropagation: !0,
+    keydownListenerCapture: !1,
+    showConfirmButton: !0,
+    showCancelButton: !1,
+    preConfirm: void 0,
+    confirmButtonText: "OK",
+    confirmButtonAriaLabel: "",
+    confirmButtonColor: void 0,
+    cancelButtonText: "Cancel",
+    cancelButtonAriaLabel: "",
+    cancelButtonColor: void 0,
+    buttonsStyling: !0,
+    reverseButtons: !1,
+    focusConfirm: !0,
+    focusCancel: !1,
+    showCloseButton: !1,
+    closeButtonHtml: "&times;",
+    closeButtonAriaLabel: "Close this dialog",
+    showLoaderOnConfirm: !1,
+    imageUrl: void 0,
+    imageWidth: void 0,
+    imageHeight: void 0,
+    imageAlt: "",
+    timer: void 0,
+    timerProgressBar: !1,
+    width: void 0,
+    padding: void 0,
+    background: void 0,
+    input: void 0,
+    inputPlaceholder: "",
+    inputValue: "",
+    inputOptions: {},
+    inputAutoTrim: !0,
+    inputAttributes: {},
+    inputValidator: void 0,
+    validationMessage: void 0,
+    grow: !1,
+    position: "center",
+    progressSteps: [],
+    currentProgressStep: void 0,
+    progressStepsDistance: void 0,
+    onBeforeOpen: void 0,
+    onOpen: void 0,
+    onRender: void 0,
+    onClose: void 0,
+    onAfterClose: void 0,
+    onDestroy: void 0,
+    scrollbarPadding: !0
+  },
+      Yt = ["title", "titleText", "text", "html", "icon", "customClass", "allowOutsideClick", "allowEscapeKey", "showConfirmButton", "showCancelButton", "confirmButtonText", "confirmButtonAriaLabel", "confirmButtonColor", "cancelButtonText", "cancelButtonAriaLabel", "cancelButtonColor", "buttonsStyling", "reverseButtons", "imageUrl", "imageWidth", "imageHeight", "imageAlt", "progressSteps", "currentProgressStep"],
+      Zt = {
+    animation: 'showClass" and "hideClass'
+  },
+      Qt = ["allowOutsideClick", "allowEnterKey", "backdrop", "focusConfirm", "focusCancel", "heightAuto", "keydownListenerCapture"],
+      $t = Object.freeze({
+    isValidParameter: Ft,
+    isUpdatableParameter: function isUpdatableParameter(t) {
+      return -1 !== Yt.indexOf(t);
+    },
+    isDeprecatedParameter: zt,
+    argsToParams: function argsToParams(o) {
+      var i = {};
+      return "object" !== r(o[0]) || b(o[0]) ? ["title", "html", "icon"].forEach(function (t, e) {
+        var n = o[e];
+        "string" == typeof n || b(n) ? i[t] = n : void 0 !== n && g("Unexpected type of ".concat(t, '! Expected "string" or "Element", got ').concat(r(n)));
+      }) : c(i, o[0]), i;
+    },
+    isVisible: function isVisible() {
+      return dt(W());
+    },
+    clickConfirm: Mt,
+    clickCancel: function clickCancel() {
+      return E() && E().click();
+    },
+    getContainer: z,
+    getPopup: W,
+    getTitle: C,
+    getContent: k,
+    getHtmlContainer: function getHtmlContainer() {
+      return e(_["html-container"]);
+    },
+    getImage: x,
+    getIcon: w,
+    getIcons: n,
+    getCloseButton: M,
+    getActions: S,
+    getConfirmButton: B,
+    getCancelButton: E,
+    getHeader: T,
+    getFooter: L,
+    getFocusableElements: H,
+    getValidationMessage: A,
+    isLoading: function isLoading() {
+      return W().hasAttribute("data-loading");
+    },
+    fire: function fire() {
+      for (var t = arguments.length, e = new Array(t), n = 0; n < t; n++) {
+        e[n] = arguments[n];
+      }
+
+      return l(this, e);
+    },
+    mixin: function mixin(n) {
+      return function (t) {
+        function e() {
+          return o(this, e), d(this, s(e).apply(this, arguments));
+        }
+
+        return function (t, e) {
+          if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function");
+          t.prototype = Object.create(e && e.prototype, {
+            constructor: {
+              value: t,
+              writable: !0,
+              configurable: !0
+            }
+          }), e && u(t, e);
+        }(e, t), a(e, [{
+          key: "_main",
+          value: function value(t) {
+            return p(s(e.prototype), "_main", this).call(this, c({}, n, t));
+          }
+        }]), e;
+      }(this);
+    },
+    queue: function queue(t) {
+      var r = this;
+      qt = t;
+
+      function a(t, e) {
+        qt = [], t(e);
+      }
+
+      var c = [];
+      return new Promise(function (i) {
+        !function e(n, o) {
+          n < qt.length ? (document.body.setAttribute("data-swal2-queue-step", n), r.fire(qt[n]).then(function (t) {
+            void 0 !== t.value ? (c.push(t.value), e(n + 1, o)) : a(i, {
+              dismiss: t.dismiss
+            });
+          })) : a(i, {
+            value: c
+          });
+        }(0);
+      });
+    },
+    getQueueStep: St,
+    insertQueueStep: function insertQueueStep(t, e) {
+      return e && e < qt.length ? qt.splice(e, 0, t) : qt.push(t);
+    },
+    deleteQueueStep: function deleteQueueStep(t) {
+      void 0 !== qt[t] && qt.splice(t, 1);
+    },
+    showLoading: Dt,
+    enableLoading: Dt,
+    getTimerLeft: function getTimerLeft() {
+      return Wt.timeout && Wt.timeout.getTimerLeft();
+    },
+    stopTimer: Ut,
+    resumeTimer: _t,
+    toggleTimer: function toggleTimer() {
+      var t = Wt.timeout;
+      return t && (t.running ? Ut : _t)();
+    },
+    increaseTimer: function increaseTimer(t) {
+      if (Wt.timeout) {
+        var e = Wt.timeout.increase(t);
+        return nt(e, !0), e;
+      }
+    },
+    isTimerRunning: function isTimerRunning() {
+      return Wt.timeout && Wt.timeout.isRunning();
+    }
+  });
+
+  function Jt() {
+    var t = wt.innerParams.get(this);
+
+    if (t) {
+      var e = wt.domCache.get(this);
+      t.showConfirmButton || (G(e.confirmButton), t.showCancelButton || G(e.actions)), ut([e.popup, e.actions], _.loading), e.popup.removeAttribute("aria-busy"), e.popup.removeAttribute("data-loading"), e.confirmButton.disabled = !1, e.cancelButton.disabled = !1;
+    }
+  }
+
+  function Xt() {
+    null === Y.previousBodyPadding && document.body.scrollHeight > window.innerHeight && (Y.previousBodyPadding = parseInt(window.getComputedStyle(document.body).getPropertyValue("padding-right")), document.body.style.paddingRight = "".concat(Y.previousBodyPadding + function () {
+      var t = document.createElement("div");
+      t.className = _["scrollbar-measure"], document.body.appendChild(t);
+      var e = t.getBoundingClientRect().width - t.clientWidth;
+      return document.body.removeChild(t), e;
+    }(), "px"));
+  }
+
+  function Gt() {
+    return !!window.MSInputMethodContext && !!document.documentMode;
+  }
+
+  function te() {
+    var t = z(),
+        e = W();
+    t.style.removeProperty("align-items"), e.offsetTop < 0 && (t.style.alignItems = "flex-start");
+  }
+
+  var ee = function ee() {
+    var n,
+        o = z();
+    o.ontouchstart = function (t) {
+      var e;
+      n = t.target === o || !((e = o).scrollHeight > e.clientHeight) && "INPUT" !== t.target.tagName;
+    }, o.ontouchmove = function (t) {
+      n && (t.preventDefault(), t.stopPropagation());
+    };
+  },
+      ne = {
+    swalPromiseResolve: new WeakMap()
+  };
+
+  function oe(t, e, n, o) {
+    n ? ae(t, o) : (Nt().then(function () {
+      return ae(t, o);
+    }), Wt.keydownTarget.removeEventListener("keydown", Wt.keydownHandler, {
+      capture: Wt.keydownListenerCapture
+    }), Wt.keydownHandlerAdded = !1), e.parentNode && e.parentNode.removeChild(e), I() && (null !== Y.previousBodyPadding && (document.body.style.paddingRight = "".concat(Y.previousBodyPadding, "px"), Y.previousBodyPadding = null), function () {
+      if (j(document.body, _.iosfix)) {
+        var t = parseInt(document.body.style.top, 10);
+        ut(document.body, _.iosfix), document.body.style.top = "", document.body.scrollTop = -1 * t;
+      }
+    }(), "undefined" != typeof window && Gt() && window.removeEventListener("resize", te), m(document.body.children).forEach(function (t) {
+      t.hasAttribute("data-previous-aria-hidden") ? (t.setAttribute("aria-hidden", t.getAttribute("data-previous-aria-hidden")), t.removeAttribute("data-previous-aria-hidden")) : t.removeAttribute("aria-hidden");
+    })), ut([document.documentElement, document.body], [_.shown, _["height-auto"], _["no-backdrop"], _["toast-shown"], _["toast-column"]]);
+  }
+
+  function ie(t) {
+    var e = W();
+
+    if (e) {
+      var n = wt.innerParams.get(this);
+
+      if (n && !j(e, n.hideClass.popup)) {
+        var o = ne.swalPromiseResolve.get(this);
+        ut(e, n.showClass.popup), st(e, n.hideClass.popup);
+        var i = z();
+        ut(i, n.showClass.backdrop), st(i, n.hideClass.backdrop), function (t, e, n) {
+          var o = z(),
+              i = gt && et(e),
+              r = n.onClose,
+              a = n.onAfterClose;
+
+          if (r !== null && typeof r === "function") {
+            r(e);
+          }
+
+          if (i) {
+            re(t, e, o, a);
+          } else {
+            oe(t, o, K(), a);
+          }
+        }(this, e, n), o(t || {});
+      }
+    }
+  }
+
+  var re = function re(t, e, n, o) {
+    Wt.swalCloseEventFinishedCallback = oe.bind(null, t, n, K(), o), e.addEventListener(gt, function (t) {
+      t.target === e && (Wt.swalCloseEventFinishedCallback(), delete Wt.swalCloseEventFinishedCallback);
+    });
+  },
+      ae = function ae(t, e) {
+    setTimeout(function () {
+      "function" == typeof e && e(), t._destroy();
+    });
+  };
+
+  function ce(t, e, n) {
+    var o = wt.domCache.get(t);
+    e.forEach(function (t) {
+      o[t].disabled = n;
+    });
+  }
+
+  function se(t, e) {
+    if (!t) return !1;
+    if ("radio" === t.type) for (var n = t.parentNode.parentNode.querySelectorAll("input"), o = 0; o < n.length; o++) {
+      n[o].disabled = e;
+    } else t.disabled = e;
+  }
+
+  var ue = function () {
+    function n(t, e) {
+      o(this, n), this.callback = t, this.remaining = e, this.running = !1, this.start();
+    }
+
+    return a(n, [{
+      key: "start",
+      value: function value() {
+        return this.running || (this.running = !0, this.started = new Date(), this.id = setTimeout(this.callback, this.remaining)), this.remaining;
+      }
+    }, {
+      key: "stop",
+      value: function value() {
+        return this.running && (this.running = !1, clearTimeout(this.id), this.remaining -= new Date() - this.started), this.remaining;
+      }
+    }, {
+      key: "increase",
+      value: function value(t) {
+        var e = this.running;
+        return e && this.stop(), this.remaining += t, e && this.start(), this.remaining;
+      }
+    }, {
+      key: "getTimerLeft",
+      value: function value() {
+        return this.running && (this.stop(), this.start()), this.remaining;
+      }
+    }, {
+      key: "isRunning",
+      value: function value() {
+        return this.running;
+      }
+    }]), n;
+  }(),
+      le = {
+    email: function email(t, e) {
+      return /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]{2,24}$/.test(t) ? Promise.resolve() : Promise.resolve(e || "Invalid email address");
+    },
+    url: function url(t, e) {
+      return /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,63}\b([-a-zA-Z0-9@:%_+.~#?&/=]*)$/.test(t) ? Promise.resolve() : Promise.resolve(e || "Invalid URL");
+    }
+  };
+
+  function de(t) {
+    var e, n;
+    (e = t).inputValidator || Object.keys(le).forEach(function (t) {
+      e.input === t && (e.inputValidator = le[t]);
+    }), t.showLoaderOnConfirm && !t.preConfirm && R("showLoaderOnConfirm is set to true, but preConfirm is not defined.\nshowLoaderOnConfirm should be used together with preConfirm, see usage example:\nhttps://sweetalert2.github.io/#ajax-request"), t.animation = N(t.animation), (n = t).target && ("string" != typeof n.target || document.querySelector(n.target)) && ("string" == typeof n.target || n.target.appendChild) || (R('Target parameter is not valid, defaulting to "body"'), n.target = "body"), "string" == typeof t.title && (t.title = t.title.split("\n").join("<br />")), ft(t);
+  }
+
+  function pe(t) {
+    var e = z(),
+        n = W();
+    "function" == typeof t.onBeforeOpen && t.onBeforeOpen(n), xe(e, n, t), Ce(e, n), I() && ke(e, t.scrollbarPadding), K() || Wt.previousActiveElement || (Wt.previousActiveElement = document.activeElement), "function" == typeof t.onOpen && setTimeout(function () {
+      return t.onOpen(n);
+    });
+  }
+
+  function fe(t) {
+    var e = W();
+
+    if (t.target === e) {
+      var n = z();
+      e.removeEventListener(gt, fe), n.style.overflowY = "auto";
+    }
+  }
+
+  function me(t, e) {
+    "select" === e.input || "radio" === e.input ? Ee(t, e) : -1 !== ["text", "email", "number", "tel", "textarea"].indexOf(e.input) && v(e.inputValue) && Se(t, e);
+  }
+
+  function he(t, e) {
+    t.disableButtons(), e.input ? Oe(t, e) : Me(t, e, !0);
+  }
+
+  function ge(t, e) {
+    t.disableButtons(), e(U.cancel);
+  }
+
+  function ve(t, e) {
+    t.closePopup({
+      value: e
+    });
+  }
+
+  function be(e, t, n, o) {
+    t.keydownTarget && t.keydownHandlerAdded && (t.keydownTarget.removeEventListener("keydown", t.keydownHandler, {
+      capture: t.keydownListenerCapture
+    }), t.keydownHandlerAdded = !1), n.toast || (t.keydownHandler = function (t) {
+      return je(e, t, o);
+    }, t.keydownTarget = n.keydownListenerCapture ? window : W(), t.keydownListenerCapture = n.keydownListenerCapture, t.keydownTarget.addEventListener("keydown", t.keydownHandler, {
+      capture: t.keydownListenerCapture
+    }), t.keydownHandlerAdded = !0);
+  }
+
+  function ye(t, e, n) {
+    var o = H(),
+        i = 0;
+    if (i < o.length) return (e += n) === o.length ? e = 0 : -1 === e && (e = o.length - 1), o[e].focus();
+    W().focus();
+  }
+
+  function we(t, e, n) {
+    wt.innerParams.get(t).toast ? Ne(t, e, n) : (_e(e), Fe(e), ze(t, e, n));
+  }
+
+  var Ce = function Ce(t, e) {
+    gt && et(e) ? (t.style.overflowY = "hidden", e.addEventListener(gt, fe)) : t.style.overflowY = "auto";
+  },
+      ke = function ke(t, e) {
+    !function () {
+      if ((/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream || "MacIntel" === navigator.platform && 1 < navigator.maxTouchPoints) && !j(document.body, _.iosfix)) {
+        var t = document.body.scrollTop;
+        document.body.style.top = "".concat(-1 * t, "px"), st(document.body, _.iosfix), ee();
+      }
+    }(), "undefined" != typeof window && Gt() && (te(), window.addEventListener("resize", te)), m(document.body.children).forEach(function (t) {
+      t === z() || function (t, e) {
+        if ("function" == typeof t.contains) return t.contains(e);
+      }(t, z()) || (t.hasAttribute("aria-hidden") && t.setAttribute("data-previous-aria-hidden", t.getAttribute("aria-hidden")), t.setAttribute("aria-hidden", "true"));
+    }), e && Xt(), setTimeout(function () {
+      t.scrollTop = 0;
+    });
+  },
+      xe = function xe(t, e, n) {
+    st(t, n.showClass.backdrop), X(e), st(e, n.showClass.popup), st([document.documentElement, document.body], _.shown), n.heightAuto && n.backdrop && !n.toast && st([document.documentElement, document.body], _["height-auto"]);
+  },
+      Pe = function Pe(t) {
+    return t.checked ? 1 : 0;
+  },
+      Ae = function Ae(t) {
+    return t.checked ? t.value : null;
+  },
+      Be = function Be(t) {
+    return t.files.length ? null !== t.getAttribute("multiple") ? t.files : t.files[0] : null;
+  },
+      Ee = function Ee(e, n) {
+    function o(t) {
+      return Te[n.input](i, Le(t), n);
+    }
+
+    var i = k();
+    v(n.inputOptions) ? (Dt(), n.inputOptions.then(function (t) {
+      e.hideLoading(), o(t);
+    })) : "object" === r(n.inputOptions) ? o(n.inputOptions) : g("Unexpected type of inputOptions! Expected object, Map or Promise, got ".concat(r(n.inputOptions)));
+  },
+      Se = function Se(e, n) {
+    var o = e.getInput();
+    G(o), n.inputValue.then(function (t) {
+      o.value = "number" === n.input ? parseFloat(t) || 0 : "".concat(t), X(o), o.focus(), e.hideLoading();
+    })["catch"](function (t) {
+      g("Error in inputValue promise: ".concat(t)), o.value = "", X(o), o.focus(), e.hideLoading();
+    });
+  },
+      Te = {
+    select: function select(t, e, i) {
+      var r = lt(t, _.select);
+      e.forEach(function (t) {
+        var e = t[0],
+            n = t[1],
+            o = document.createElement("option");
+        o.value = e, o.innerHTML = n, i.inputValue.toString() === e.toString() && (o.selected = !0), r.appendChild(o);
+      }), r.focus();
+    },
+    radio: function radio(t, e, a) {
+      var c = lt(t, _.radio);
+      e.forEach(function (t) {
+        var e = t[0],
+            n = t[1],
+            o = document.createElement("input"),
+            i = document.createElement("label");
+        o.type = "radio", o.name = _.radio, o.value = e, a.inputValue.toString() === e.toString() && (o.checked = !0);
+        var r = document.createElement("span");
+        r.innerHTML = n, r.className = _.label, i.appendChild(o), i.appendChild(r), c.appendChild(i);
+      });
+      var n = c.querySelectorAll("input");
+      n.length && n[0].focus();
+    }
+  },
+      Le = function Le(e) {
+    var n = [];
+    return "undefined" != typeof Map && e instanceof Map ? e.forEach(function (t, e) {
+      n.push([e, t]);
+    }) : Object.keys(e).forEach(function (t) {
+      n.push([t, e[t]]);
+    }), n;
+  },
+      Oe = function Oe(e, n) {
+    var o = function (t, e) {
+      var n = t.getInput();
+      if (!n) return null;
+
+      switch (e.input) {
+        case "checkbox":
+          return Pe(n);
+
+        case "radio":
+          return Ae(n);
+
+        case "file":
+          return Be(n);
+
+        default:
+          return e.inputAutoTrim ? n.value.trim() : n.value;
+      }
+    }(e, n);
+
+    n.inputValidator ? (e.disableInput(), Promise.resolve().then(function () {
+      return n.inputValidator(o, n.validationMessage);
+    }).then(function (t) {
+      e.enableButtons(), e.enableInput(), t ? e.showValidationMessage(t) : Me(e, n, o);
+    })) : e.getInput().checkValidity() ? Me(e, n, o) : (e.enableButtons(), e.showValidationMessage(n.validationMessage));
+  },
+      Me = function Me(e, t, n) {
+    (t.showLoaderOnConfirm && Dt(), t.preConfirm) ? (e.resetValidationMessage(), Promise.resolve().then(function () {
+      return t.preConfirm(n, t.validationMessage);
+    }).then(function (t) {
+      dt(A()) || !1 === t ? e.hideLoading() : ve(e, void 0 === t ? n : t);
+    })) : ve(e, n);
+  },
+      He = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Left", "Right", "Up", "Down"],
+      Ie = ["Escape", "Esc"],
+      je = function je(t, e, n) {
+    var o = wt.innerParams.get(t);
+    o.stopKeydownPropagation && e.stopPropagation(), "Enter" === e.key ? Ve(t, e, o) : "Tab" === e.key ? qe(e, o) : -1 !== He.indexOf(e.key) ? Re() : -1 !== Ie.indexOf(e.key) && De(e, o, n);
+  },
+      Ve = function Ve(t, e, n) {
+    if (!e.isComposing && e.target && t.getInput() && e.target.outerHTML === t.getInput().outerHTML) {
+      if (-1 !== ["textarea", "file"].indexOf(n.input)) return;
+      Mt(), e.preventDefault();
+    }
+  },
+      qe = function qe(t) {
+    for (var e = t.target, n = H(), o = -1, i = 0; i < n.length; i++) {
+      if (e === n[i]) {
+        o = i;
+        break;
+      }
+    }
+
+    t.shiftKey ? ye(0, o, -1) : ye(0, o, 1), t.stopPropagation(), t.preventDefault();
+  },
+      Re = function Re() {
+    var t = B(),
+        e = E();
+    document.activeElement === t && dt(e) ? e.focus() : document.activeElement === e && dt(t) && t.focus();
+  },
+      De = function De(t, e, n) {
+    N(e.allowEscapeKey) && (t.preventDefault(), n(U.esc));
+  },
+      Ne = function Ne(e, t, n) {
+    t.popup.onclick = function () {
+      var t = wt.innerParams.get(e);
+      t.showConfirmButton || t.showCancelButton || t.showCloseButton || t.input || n(U.close);
+    };
+  },
+      Ue = !1,
+      _e = function _e(e) {
+    e.popup.onmousedown = function () {
+      e.container.onmouseup = function (t) {
+        e.container.onmouseup = void 0, t.target === e.container && (Ue = !0);
+      };
+    };
+  },
+      Fe = function Fe(e) {
+    e.container.onmousedown = function () {
+      e.popup.onmouseup = function (t) {
+        e.popup.onmouseup = void 0, t.target !== e.popup && !e.popup.contains(t.target) || (Ue = !0);
+      };
+    };
+  },
+      ze = function ze(n, o, i) {
+    o.container.onclick = function (t) {
+      var e = wt.innerParams.get(n);
+      Ue ? Ue = !1 : t.target === o.container && N(e.allowOutsideClick) && i(U.backdrop);
+    };
+  };
+
+  var We = function We(t, e, n) {
+    var o = O();
+    G(o), e.timer && (t.timeout = new ue(function () {
+      n("timer"), delete t.timeout;
+    }, e.timer), e.timerProgressBar && (X(o), setTimeout(function () {
+      nt(e.timer);
+    })));
+  },
+      Ke = function Ke(t, e) {
+    if (!e.toast) return N(e.allowEnterKey) ? e.focusCancel && dt(t.cancelButton) ? t.cancelButton.focus() : e.focusConfirm && dt(t.confirmButton) ? t.confirmButton.focus() : void ye(0, -1, 1) : Ye();
+  },
+      Ye = function Ye() {
+    document.activeElement && "function" == typeof document.activeElement.blur && document.activeElement.blur();
+  };
+
+  var Ze,
+      Qe = function Qe(t) {
+    for (var e in t) {
+      t[e] = new WeakMap();
+    }
+  },
+      $e = Object.freeze({
+    hideLoading: Jt,
+    disableLoading: Jt,
+    getInput: function getInput(t) {
+      var e = wt.innerParams.get(t || this),
+          n = wt.domCache.get(t || this);
+      return n ? Z(n.content, e.input) : null;
+    },
+    close: ie,
+    closePopup: ie,
+    closeModal: ie,
+    closeToast: ie,
+    enableButtons: function enableButtons() {
+      ce(this, ["confirmButton", "cancelButton"], !1);
+    },
+    disableButtons: function disableButtons() {
+      ce(this, ["confirmButton", "cancelButton"], !0);
+    },
+    enableInput: function enableInput() {
+      return se(this.getInput(), !1);
+    },
+    disableInput: function disableInput() {
+      return se(this.getInput(), !0);
+    },
+    showValidationMessage: function showValidationMessage(t) {
+      var e = wt.domCache.get(this);
+      e.validationMessage.innerHTML = t;
+      var n = window.getComputedStyle(e.popup);
+      e.validationMessage.style.marginLeft = "-".concat(n.getPropertyValue("padding-left")), e.validationMessage.style.marginRight = "-".concat(n.getPropertyValue("padding-right")), X(e.validationMessage);
+      var o = this.getInput();
+      o && (o.setAttribute("aria-invalid", !0), o.setAttribute("aria-describedBy", _["validation-message"]), Q(o), st(o, _.inputerror));
+    },
+    resetValidationMessage: function resetValidationMessage() {
+      var t = wt.domCache.get(this);
+      t.validationMessage && G(t.validationMessage);
+      var e = this.getInput();
+      e && (e.removeAttribute("aria-invalid"), e.removeAttribute("aria-describedBy"), ut(e, _.inputerror));
+    },
+    getProgressSteps: function getProgressSteps() {
+      return wt.domCache.get(this).progressSteps;
+    },
+    _main: function _main(t) {
+      !function (t) {
+        for (var e in t) {
+          Ft(i = e) || R('Unknown parameter "'.concat(i, '"')), t.toast && (o = e, -1 !== Qt.indexOf(o) && R('The parameter "'.concat(o, '" is incompatible with toasts'))), zt(n = e) && h(n, zt(n));
+        }
+
+        var n, o, i;
+      }(t), Wt.currentInstance && Wt.currentInstance._destroy(), Wt.currentInstance = this;
+
+      var e = function (t) {
+        var e = c({}, Kt.showClass, t.showClass),
+            n = c({}, Kt.hideClass, t.hideClass),
+            o = c({}, Kt, t);
+
+        if (o.showClass = e, o.hideClass = n, t.animation === false) {
+          o.showClass = {
+            popup: "",
+            backdrop: "swal2-backdrop-show swal2-noanimation"
+          };
+          o.hideClass = {};
+        }
+
+        return o;
+      }(t);
+
+      de(e), Object.freeze(e), Wt.timeout && (Wt.timeout.stop(), delete Wt.timeout), clearTimeout(Wt.restoreFocusTimeout);
+
+      var n = function (t) {
+        var e = {
+          popup: W(),
+          container: z(),
+          content: k(),
+          actions: S(),
+          confirmButton: B(),
+          cancelButton: E(),
+          closeButton: M(),
+          validationMessage: A(),
+          progressSteps: P()
+        };
+        return wt.domCache.set(t, e), e;
+      }(this);
+
+      return Ot(this, e), wt.innerParams.set(this, e), function (n, o, i) {
+        return new Promise(function (t) {
+          var e = function t(e) {
+            n.closePopup({
+              dismiss: e
+            });
+          };
+
+          ne.swalPromiseResolve.set(n, t);
+          We(Wt, i, e);
+
+          o.confirmButton.onclick = function () {
+            return he(n, i);
+          };
+
+          o.cancelButton.onclick = function () {
+            return ge(n, e);
+          };
+
+          o.closeButton.onclick = function () {
+            return e(U.close);
+          };
+
+          we(n, o, e);
+          be(n, Wt, i, e);
+
+          if (i.toast && (i.input || i.footer || i.showCloseButton)) {
+            st(document.body, _["toast-column"]);
+          } else {
+            ut(document.body, _["toast-column"]);
+          }
+
+          me(n, i);
+          pe(i);
+          Ke(o, i);
+          o.container.scrollTop = 0;
+        });
+      }(this, n, e);
+    },
+    update: function update(e) {
+      var t = W(),
+          n = wt.innerParams.get(this);
+      if (!t || j(t, n.hideClass.popup)) return R("You're trying to update the closed or closing popup, that won't work. Use the update() method in preConfirm parameter or show a new popup.");
+      var o = {};
+      Object.keys(e).forEach(function (t) {
+        Xe.isUpdatableParameter(t) ? o[t] = e[t] : R('Invalid parameter to update: "'.concat(t, '". Updatable params are listed here: https://github.com/sweetalert2/sweetalert2/blob/master/src/utils/params.js'));
+      });
+      var i = c({}, n, o);
+      Ot(this, i), wt.innerParams.set(this, i), Object.defineProperties(this, {
+        params: {
+          value: c({}, this.params, e),
+          writable: !1,
+          enumerable: !0
+        }
+      });
+    },
+    _destroy: function _destroy() {
+      var t = wt.domCache.get(this),
+          e = wt.innerParams.get(this);
+      e && (t.popup && Wt.swalCloseEventFinishedCallback && (Wt.swalCloseEventFinishedCallback(), delete Wt.swalCloseEventFinishedCallback), Wt.deferDisposalTimer && (clearTimeout(Wt.deferDisposalTimer), delete Wt.deferDisposalTimer), "function" == typeof e.onDestroy && e.onDestroy(), delete this.params, delete Wt.keydownHandler, delete Wt.keydownTarget, Qe(wt), Qe(ne));
+    }
+  });
+
+  function Je() {
+    if ("undefined" != typeof window) {
+      "undefined" == typeof Promise && g("This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)"), Ze = this;
+
+      for (var t = arguments.length, e = new Array(t), n = 0; n < t; n++) {
+        e[n] = arguments[n];
+      }
+
+      var o = Object.freeze(this.constructor.argsToParams(e));
+      Object.defineProperties(this, {
+        params: {
+          value: o,
+          writable: !1,
+          enumerable: !0,
+          configurable: !0
+        }
+      });
+
+      var i = this._main(this.params);
+
+      wt.promise.set(this, i);
+    }
+  }
+
+  Je.prototype.then = function (t) {
+    return wt.promise.get(this).then(t);
+  }, Je.prototype["finally"] = function (t) {
+    return wt.promise.get(this)["finally"](t);
+  }, c(Je.prototype, $e), c(Je, $t), Object.keys($e).forEach(function (t) {
+    Je[t] = function () {
+      if (Ze) return Ze[t].apply(Ze, arguments);
+    };
+  }), Je.DismissReason = U, Je.version = "9.7.2";
+  var Xe = Je;
+  return Xe["default"] = Xe;
+}), void 0 !== this && this.Sweetalert2 && (this.swal = this.sweetAlert = this.Swal = this.SweetAlert = this.Sweetalert2);
+!function (a, b) {
+  "function" == typeof define && define.amd ? define(b) : "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) ? module.exports = b() : a.VMasker = b();
+}(this, function () {
+  var a = [9, 16, 17, 18, 36, 37, 38, 39, 40, 91, 92, 93],
+      b = function b(_b) {
+    for (var c = 0, d = a.length; c < d; c++) {
+      if (_b == a[c]) return !1;
+    }
+
+    return !0;
+  },
+      c = function c(a) {
+    return a = a || {}, a = {
+      delimiter: a.delimiter || ".",
+      lastOutput: a.lastOutput,
+      precision: a.hasOwnProperty("precision") ? a.precision : 2,
+      separator: a.separator || ",",
+      showSignal: a.showSignal,
+      suffixUnit: a.suffixUnit && " " + a.suffixUnit.replace(/[\s]/g, "") || "",
+      unit: a.unit && a.unit.replace(/[\s]/g, "") + " " || "",
+      zeroCents: a.zeroCents
+    }, a.moneyPrecision = a.zeroCents ? 0 : a.precision, a;
+  },
+      d = function d(a, b, c) {
+    for (; b < a.length; b++) {
+      "9" !== a[b] && "A" !== a[b] && "S" !== a[b] || (a[b] = c);
+    }
+
+    return a;
+  },
+      e = function e(a) {
+    this.elements = a;
+  };
+
+  e.prototype.unbindElementToMask = function () {
+    for (var a = 0, b = this.elements.length; a < b; a++) {
+      this.elements[a].lastOutput = "", this.elements[a].onkeyup = !1, this.elements[a].onkeydown = !1, this.elements[a].value.length && (this.elements[a].value = this.elements[a].value.replace(/\D/g, ""));
+    }
+  }, e.prototype.bindElementToMask = function (a) {
+    for (var c = this, d = function d(_d) {
+      _d = _d || window.event;
+      var e = _d.target || _d.srcElement;
+      b(_d.keyCode) && setTimeout(function () {
+        c.opts.lastOutput = e.lastOutput, e.value = f[a](e.value, c.opts), e.lastOutput = e.value, e.setSelectionRange && c.opts.suffixUnit && e.setSelectionRange(e.value.length, e.value.length - c.opts.suffixUnit.length);
+      }, 0);
+    }, e = 0, g = this.elements.length; e < g; e++) {
+      this.elements[e].lastOutput = "", this.elements[e].onkeyup = d, this.elements[e].value.length && (this.elements[e].value = f[a](this.elements[e].value, this.opts));
+    }
+  }, e.prototype.maskMoney = function (a) {
+    this.opts = c(a), this.bindElementToMask("toMoney");
+  }, e.prototype.maskNumber = function () {
+    this.opts = {}, this.bindElementToMask("toNumber");
+  }, e.prototype.maskAlphaNum = function () {
+    this.opts = {}, this.bindElementToMask("toAlphaNumeric");
+  }, e.prototype.maskPattern = function (a) {
+    this.opts = {
+      pattern: a
+    }, this.bindElementToMask("toPattern");
+  }, e.prototype.unMask = function () {
+    this.unbindElementToMask();
+  };
+
+  var f = function f(a) {
+    if (!a) throw new Error("VanillaMasker: There is no element to bind.");
+    var b = "length" in a ? a.length ? a : [] : [a];
+    return new e(b);
+  };
+
+  return f.toMoney = function (a, b) {
+    if (b = c(b), b.zeroCents) {
+      b.lastOutput = b.lastOutput || "";
+      var d = "(" + b.separator + "[0]{0," + b.precision + "})",
+          e = new RegExp(d, "g"),
+          f = a.toString().replace(/[\D]/g, "").length || 0,
+          g = b.lastOutput.toString().replace(/[\D]/g, "").length || 0;
+      a = a.toString().replace(e, ""), f < g && (a = a.slice(0, a.length - 1));
+    }
+
+    var h = a.toString().replace(/[\D]/g, ""),
+        i = new RegExp("^(0|\\" + b.delimiter + ")"),
+        j = new RegExp("(\\" + b.separator + ")$"),
+        k = h.substr(0, h.length - b.moneyPrecision),
+        l = k.substr(0, k.length % 3),
+        m = new Array(b.precision + 1).join("0");
+    k = k.substr(k.length % 3, k.length);
+
+    for (var n = 0, o = k.length; n < o; n++) {
+      n % 3 == 0 && (l += b.delimiter), l += k[n];
+    }
+
+    l = l.replace(i, ""), l = l.length ? l : "0";
+    var p = "";
+
+    if (!0 === b.showSignal && (p = a < 0 || a.startsWith && a.startsWith("-") ? "-" : ""), !b.zeroCents) {
+      var q = h.length - b.precision,
+          r = h.substr(q, b.precision),
+          s = r.length;
+      m = (m + r).slice(-(b.precision > s ? b.precision : s));
+    }
+
+    return (b.unit + p + l + b.separator + m).replace(j, "") + b.suffixUnit;
+  }, f.toPattern = function (a, b) {
+    var c,
+        e = "object" == _typeof(b) ? b.pattern : b,
+        f = e.replace(/\W/g, ""),
+        g = e.split(""),
+        h = a.toString().replace(/\W/g, ""),
+        i = h.replace(/\W/g, ""),
+        j = 0,
+        k = g.length,
+        l = "object" == _typeof(b) ? b.placeholder : void 0;
+
+    for (c = 0; c < k; c++) {
+      if (j >= h.length) {
+        if (f.length == i.length) return g.join("");
+        if (void 0 !== l && f.length > i.length) return d(g, c, l).join("");
+        break;
+      }
+
+      if ("9" === g[c] && h[j].match(/[0-9]/) || "A" === g[c] && h[j].match(/[a-zA-Z]/) || "S" === g[c] && h[j].match(/[0-9a-zA-Z]/)) g[c] = h[j++];else if ("9" === g[c] || "A" === g[c] || "S" === g[c]) return void 0 !== l ? d(g, c, l).join("") : g.slice(0, c).join("");
+    }
+
+    return g.join("").substr(0, c);
+  }, f.toNumber = function (a) {
+    return a.toString().replace(/(?!^-)[^0-9]/g, "");
+  }, f.toAlphaNumeric = function (a) {
+    return a.toString().replace(/[^a-z0-9 ]+/i, "");
+  }, f;
+});
+
+var FmdSweetalert2 =
+/*#__PURE__*/
+function () {
+  function FmdSweetalert2() {
+    _classCallCheck(this, FmdSweetalert2);
+  }
+
+  _createClass(FmdSweetalert2, [{
+    key: "fireSwal",
+    value: function fireSwal(swalOptions) {
+      Swal.fire(swalOptions);
+    }
+  }, {
+    key: "fireErrorAlert",
+    value: function fireErrorAlert(swalOptions) {
+      Swal.fire(_objectSpread({
+        icon: 'error'
+      }, swalOptions));
+    }
+  }]);
+
+  return FmdSweetalert2;
+}();
 
 function setupCustomFormFieldsVisibility() {
   $.fn.disableFormFields = function () {
@@ -7077,24 +9336,208 @@ function setupCustomFormFieldsVisibility() {
   };
 }
 
-function throttle(fn, wait) {
-  var time = Date.now();
-  return function () {
-    if (time + wait - Date.now() < 0) {
-      fn();
-      time = Date.now();
-    }
-  };
+function getFieldValue(_ref) {
+  var name = _ref.name,
+      type = _ref.type;
+
+  if (!type) {
+    type = 'input';
+  }
+
+  if (type === 'input') {
+    return $("".concat(type, "[name=\"").concat(name, "\"]")).val();
+  }
+
+  if (type === 'select') {
+    return $("".concat(type, "[name=\"").concat(name, "\"]")).children('option:selected').text();
+  }
 }
 
-function setupStickyHeader() {
-  //adicionar elementos basicos na partial de header
-  //adicionar classes basicas no scss do componente header
-  var targetSelector = '.js-header-sticky-target';
-  var target = $(targetSelector);
+(function setCustomFileLabel() {
+  $('.custom-file-input').change(function () {
+    var file = $(this)[0].files[0].name;
+    var fileName = $('.custom-file-label');
+    fileName.text(file);
+  });
+})();
 
-  if (!target.length) {
+function setInvalidInput(input) {
+  input.setCustomValidity('invalid');
+  input.classList.add('is-invalid');
+}
+
+function setValidInput(input) {
+  input.setCustomValidity('');
+  input.classList.remove('is-invalid');
+}
+
+var CpfCnpjValidators =
+/*#__PURE__*/
+function () {
+  function CpfCnpjValidators() {
+    _classCallCheck(this, CpfCnpjValidators);
+
+    this.swal = new FmdSweetalert2();
+    this.sizes = {
+      cpf: 11,
+      cnpj: 14
+    };
+    this.selectors = {
+      cpf: '.mask-cpf',
+      cnpj: '.mask-cnpj'
+    };
+  }
+
+  _createClass(CpfCnpjValidators, [{
+    key: "sanitize",
+    value: function sanitize(cpfOrCnpj) {
+      return cpfOrCnpj.replace(/[^\d]+/g, '');
+    }
+  }, {
+    key: "checkCNPJ",
+    value: function checkCNPJ(cnpjInput) {
+      var sanitizedCnpj = this.sanitize(cnpjInput.value);
+      var sizes = {
+        full: sanitizedCnpj.length,
+        prefix: sanitizedCnpj.length - 2
+      };
+      var cnpj = {
+        number: {
+          full: sanitizedCnpj,
+          prefix: sanitizedCnpj.substring(0, sizes.prefix),
+          suffix: sanitizedCnpj.substring(sizes.prefix)
+        }
+      };
+
+      if (!cnpj.number.full || cnpj.number.full.length !== this.sizes.cnpj) {
+        setInvalidInput(cnpjInput);
+      }
+
+      if (cnpj.number.full === '00000000000000' || cnpj.number.full === '11111111111111' || cnpj.number.full === '22222222222222' || cnpj.number.full === '33333333333333' || cnpj.number.full === '44444444444444' || cnpj.number.full === '55555555555555' || cnpj.number.full === '66666666666666' || cnpj.number.full === '77777777777777' || cnpj.number.full === '88888888888888' || cnpj.number.full === '99999999999999') {
+        setInvalidInput(cnpjInput);
+        return;
+      }
+
+      var sum = 0;
+      var positionIndex = sizes.prefix - 7;
+
+      for (var i = sizes.prefix; i >= 1; i--) {
+        sum += cnpj.number.full.charAt(sizes.prefix - i) * positionIndex--;
+
+        if (positionIndex < 2) {
+          positionIndex = 9;
+        }
+      }
+
+      var result = sum % 11 < 2 ? 0 : 11 - sum % 11;
+
+      if (result !== Number(cnpj.number.suffix.charAt(0))) {
+        setInvalidInput(cnpjInput);
+        return;
+      }
+
+      sizes.prefix = sizes.prefix + 1;
+      sum = 0;
+      positionIndex = sizes.prefix - 7;
+
+      for (var _i2 = sizes.prefix; _i2 >= 1; _i2--) {
+        sum += cnpj.number.full.charAt(sizes.prefix - _i2) * positionIndex--;
+
+        if (positionIndex < 2) {
+          positionIndex = 9;
+        }
+      }
+
+      result = sum % 11 < 2 ? 0 : 11 - sum % 11;
+
+      if (result !== Number(cnpj.number.suffix.charAt(1))) {
+        setInvalidInput(cnpjInput);
+        return;
+      }
+
+      setValidInput(cnpjInput);
+      return true;
+    }
+  }, {
+    key: "checkCPF",
+    value: function checkCPF(cpfInput) {
+      var sanitizedCpf = this.sanitize(cpfInput.value);
+      var cpf = {
+        fullNumber: sanitizedCpf,
+        prefix: sanitizedCpf.substr(0, 9),
+        suffix: sanitizedCpf.substr(9, 2)
+      };
+
+      if (!cpf.fullNumber || cpf.fullNumber.length !== this.sizes.cpf) {
+        setInvalidInput(cpfInput);
+        return;
+      }
+
+      if (cpf.fullNumber === '00000000000' || cpf.fullNumber === '11111111111' || cpf.fullNumber === '22222222222' || cpf.fullNumber === '33333333333' || cpf.fullNumber === '44444444444' || cpf.fullNumber === '55555555555' || cpf.fullNumber === '66666666666' || cpf.fullNumber === '77777777777' || cpf.fullNumber === '88888888888' || cpf.fullNumber === '99999999999') {
+        setInvalidInput(cpfInput);
+        return;
+      }
+
+      var d1 = 0;
+
+      for (var i = 0; i < 9; i++) {
+        d1 += cpf.prefix.charAt(i) * (10 - i);
+      }
+
+      if (d1 === 0) {
+        setInvalidInput(cpfInput);
+        return;
+      }
+
+      d1 = 11 - d1 % 11;
+
+      if (d1 > 9) {
+        d1 = 0;
+      }
+
+      if (Number(cpf.suffix.charAt(0)) !== d1) {
+        setInvalidInput(cpfInput);
+        return;
+      }
+
+      d1 *= 2;
+
+      for (var _i3 = 0; _i3 < 9; _i3++) {
+        d1 += cpf.prefix.charAt(_i3) * (11 - _i3);
+      }
+
+      d1 = 11 - d1 % 11;
+
+      if (d1 > 9) {
+        d1 = 0;
+      }
+
+      if (Number(cpf.suffix.charAt(1)) !== d1) {
+        setInvalidInput(cpfInput);
+        return;
+      }
+
+      setValidInput(cpfInput);
+      return true;
+    }
+  }]);
+
+  return CpfCnpjValidators;
+}();
+
+function setupStickyHeader() {
+  var targetSelector = '.js-header-sticky-target';
+  var mainContentSelector = '.js-main-content';
+  var $target = $(targetSelector);
+  var $mainContent = $(mainContentSelector);
+
+  if (!$target.length) {
     console.error("Adicione a classe ".concat(targetSelector, " para ativar o hide menu"));
+    return;
+  }
+
+  if (!$mainContent.length) {
+    console.error("Adicione a classe ".concat(mainContentSelector, " para que o padding-top seja \n        aplicado"));
     return;
   }
 
@@ -7106,7 +9549,8 @@ function setupStickyHeader() {
   var isScrollingUp = false;
   var isScrollingDown = false;
   var $header = $('.header');
-  var targetTopOffset = target.offset().top;
+  var targetTopOffset = $target.offset().top;
+  var headerHeight = $header.innerHeight();
   var stickyMenuClass = 'header-sticky';
 
   function showHeader() {
@@ -7124,6 +9568,7 @@ function setupStickyHeader() {
   function setStaticHeader() {
     $header.removeClass(stickyMenuClass);
     $header.css('display', '');
+    $mainContent.css('padding-top', '');
   }
 
   function updateLastCurrentPosition(scrollPosition) {
@@ -7139,6 +9584,7 @@ function setupStickyHeader() {
 
     if (isScrollPositionAfterTarget && !isStickyMenu) {
       $header.addClass(stickyMenuClass);
+      $mainContent.css('padding-top', "".concat(headerHeight, "px"));
 
       if (isScrollingUp) {
         showHeader();
@@ -7180,6 +9626,113 @@ function setupStickyHeader() {
 
     headerToggle(scrollCurrentPosition);
   }, 300));
+}
+
+function getThemeVariables() {
+  return {
+    breakpoints: {
+      xs: 0,
+      sm: 425,
+      // Read 'from 425px' (min-width)
+      md: 1024,
+      // Read 'from 1024px' (min-width)
+      lg: 1366,
+      // Read 'from 1366px' (min-width)
+      xl: 1680 // Read 'from 1680px' (min-width)
+
+    },
+    collapseTransitionTime: 350,
+    // In milliseconds
+    colors: {
+      primary: '#',
+      secondary: '#',
+      success: '#',
+      info: '#',
+      warning: '#',
+      danger: '#',
+      light: '#',
+      dark: '#'
+    }
+  };
+}
+
+function setupAddressAutoFill() {
+  if ($('.js-state').length > 0) {
+    $.getJSON('/json/estados-cidades.json', function (data) {
+      var items = [];
+      var state = $('.js-state');
+      var options = '<option value="">-</option>';
+      $.each(data, function (key, val) {
+        var selected = '';
+
+        if (val.nome === state.attr('data-selected')) {
+          selected = 'selected';
+        }
+
+        options += '<option value="' + val.nome + '" ' + selected + '>' + val.nome + '</option>';
+      });
+      state.html(options);
+      state.change(function () {
+        var options_cidades = '<option value="">-</option>';
+        var str = '';
+        $('.js-state option:selected').each(function () {
+          str += $(this).text();
+        });
+        var city = $('.js-city');
+        $.each(data, function (key, val) {
+          if (val.nome === str) {
+            $.each(val.cidades, function (key_city, val_city) {
+              var selected = '';
+
+              if (val_city === city.attr('data-selected')) {
+                selected = 'selected';
+              }
+
+              options_cidades += '<option value="' + val_city + '" ' + selected + '>' + val_city + '</option>';
+            });
+          }
+        });
+        city.html(options_cidades);
+      }).change();
+    });
+  }
+  /* fim select de estado e cidade */
+
+  /* autocompletar de cep */
+
+
+  $('.js-zipcode').on('blur', function () {
+    var $this = $(this);
+    var cep = $this.val().replace('-', '');
+
+    if (cep.length === 8) {
+      $.getJSON('https://api.mixd.com.br/cep/' + cep, {}, function (result) {
+        if (!result) {
+          console.log(result.message || 'Houve um erro desconhecido');
+          return;
+        }
+
+        var stateInput = $('.js-state');
+        var cityInput = $('.js-city');
+        $('.js-neighborhood').val(result.bairro);
+        $('.js-address').val(result.logradouro);
+
+        if (stateInput.is('input')) {
+          stateInput.val(result.uf_nome);
+        }
+
+        if (cityInput.is('input')) {
+          cityInput.val(result.cidade);
+        }
+
+        if (stateInput.is('select')) {
+          stateInput.val(result.uf_nome);
+          stateInput.trigger('change');
+          cityInput.val(result.cidade);
+        }
+      });
+    }
+  });
 }
 
 function setupServiceWorker() {
@@ -7287,67 +9840,70 @@ function setupSelect2() {
 }
 
 function setupInputMasks() {
-  if ($.mask) {
-    $('.mask-phone').focusout(function () {
-      var phone, element;
-      element = $(this);
-      element.unmask();
-      phone = element.val().replace(/\D/g, '');
-
-      if (phone.length > 10) {
-        element.mask('(99) 99999-999?9');
-      } else {
-        element.mask('(99) 9999-9999?9');
-      }
-    }).trigger('focusout'); //http://alexjunioralves.blogspot.com.br/2013/08/mascara-cpfcnpj-para-o-mesmo-campo.html
-
-    $('.mask-cpfcnpj').on('keyup', function () {
-      var element = $(this);
-      var cpfcnpj = element.val().replace(/\D/g, '');
-
-      if (cpfcnpj.length === 11 || cpfcnpj.length === 0) {
-        element.mask('999.999.999-99?99999');
-      }
-
-      if (cpfcnpj.length >= 14) {
-        element.mask('99.999.999/9999-99');
-      }
-    }).trigger('keyup');
-    $('.mask-date').mask('99/99/9999');
-    $('.mask-zipcode').mask('99999-999');
-    $('.mask-cpf').mask('999.999.999-99');
-    $('.mask-cnpj').mask('99.999.999/9999-99');
-    $('.mask-hour').mask('99:99');
-    $('.mask-plate').mask('aaa-9999');
+  function inputHandler(masks, max, event) {
+    var c = event.target;
+    var v = c.value.replace(/\D/g, '');
+    var m = c.value.length > max ? 1 : 0;
+    VMasker(c).unMask();
+    VMasker(c).maskPattern(masks[m]);
+    c.value = VMasker.toPattern(v, masks[m]);
   }
 
-  $('.mask-money').maskMoney({
-    prefix: 'R$ ',
-    allowNegative: false,
-    decimal: ',',
-    thousands: '.',
-    affixesStay: false
+  if (document.querySelectorAll('.mask-phone').length > 0) {
+    var telMask = ['(99) 9999-99999', '(99) 99999-9999'];
+    var tels = document.querySelectorAll('.mask-phone');
+    tels.forEach(function (tel) {
+      VMasker(tel).maskPattern(telMask[0]);
+      tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false);
+    });
+  }
+
+  if (document.querySelectorAll('.mask-cpfcnpj').length > 0) {
+    var docMask = ['999.999.999-999', '99.999.999/9999-99'];
+    var docs = document.querySelectorAll('.mask-cpfcnpj');
+    docs.forEach(function (doc) {
+      VMasker(doc).maskPattern(docMask[0]);
+      doc.addEventListener('input', inputHandler.bind(undefined, docMask, 14), false);
+    });
+  }
+
+  if (document.querySelectorAll('.mask-date').length > 0) {
+    VMasker(document.querySelectorAll('.mask-date')).maskPattern('99/99/9999');
+  }
+
+  if (document.querySelectorAll('.mask-zipcode').length > 0) {
+    VMasker(document.querySelectorAll('.mask-zipcode')).maskPattern('99999-999');
+  }
+
+  if (document.querySelectorAll('.mask-cpf').length > 0) {
+    VMasker(document.querySelectorAll('.mask-cpf')).maskPattern('999.999.999-99');
+  }
+
+  if (document.querySelectorAll('.mask-cnpj').length > 0) {
+    VMasker(document.querySelectorAll('.mask-cnpj')).maskPattern('99.999.999/9999-99');
+  }
+
+  if (document.querySelectorAll('.mask-hour').length > 0) {
+    VMasker(document.querySelectorAll('.mask-hour')).maskPattern('99:99');
+  }
+
+  if (document.querySelectorAll('.mask-money').length > 0) {
+    VMasker(document.querySelectorAll('.mask-money')).maskMoney({
+      precision: 2,
+      separator: ',',
+      delimiter: '.',
+      unit: 'R$'
+    });
+  }
+
+  var cpfCnpjValidators = new CpfCnpjValidators();
+  var cpfInput = document.querySelector(cpfCnpjValidators.selectors.cpf);
+  var cnpjInput = document.querySelector(cpfCnpjValidators.selectors.cnpj);
+  cpfInput.addEventListener('blur', function (event) {
+    cpfCnpjValidators.checkCPF(event.target);
   });
-  $('.mask-size').maskMoney({
-    prefix: '',
-    decimal: '',
-    thousands: '.',
-    affixesStay: false,
-    precision: 0
-  });
-  $('.mask-integer').maskMoney({
-    prefix: '',
-    decimal: '',
-    thousands: '',
-    affixesStay: false,
-    precision: 0
-  });
-  $('.mask-float').maskMoney({
-    prefix: '',
-    decimal: ',',
-    thousands: '',
-    affixesStay: false,
-    precision: 2
+  cnpjInput.addEventListener('blur', function (event) {
+    cpfCnpjValidators.checkCPF(event.target);
   });
 }
 
@@ -7411,28 +9967,72 @@ function setupShareWindow() {
   });
 }
 
-function setupCustomFileInput() {
-  $('.custom-file-input').on('change', function () {
-    var fileName = $(this).val();
-    $(this).next('.custom-file-label').addClass('selected').html(fileName.replace(/^.*[\\\/]/, ''));
-  });
+function setupSideDrawer() {
+  var $body = $('body');
+  var $mainContent = $('.js-main-content');
+  var $navbar = $('.navbar');
+  var $navbarCollapse = $('.navbar-collapse');
+  var $navbarToggler = $('.navbar-toggler');
+  var headerHeight = $navbar.innerHeight();
+  resetSideDrawerConfig();
+
+  if (window.innerWidth > getThemeVariables().breakpoints.md) {
+    return;
+  }
+
+  $navbarCollapse.css('margin-top', "".concat(headerHeight, "px"));
+
+  function resetSideDrawerConfig() {
+    $navbarCollapse.css('margin-top', '');
+    $navbarCollapse.removeClass('show');
+    $mainContent.removeClass('show-backdrop');
+    $body.removeClass('overflow-hidden');
+  }
+
+  function navbarToggleHandler() {
+    $navbarCollapse.toggleClass('show');
+    $mainContent.toggleClass('show-backdrop');
+    $body.toggleClass('overflow-hidden');
+  }
+
+  $navbarToggler.click(navbarToggleHandler);
+}
+
+function insertCopyrightYear() {
+  var copyrightContainerSelector = '.js-copyright-container';
+  var hasCopyrightSelector = $('footer').find(copyrightContainerSelector).length;
+
+  if (!hasCopyrightSelector) {
+    console.error("".concat(copyrightContainerSelector, " class is required to insert copyright text"));
+    return;
+  }
+
+  var $yearContainer = $(copyrightContainerSelector);
+  $yearContainer.text("Todos os direitos reservados \xA9 ".concat(new Date().getFullYear()));
 }
 
 $(function () {
   setupServiceWorker();
-  preventInvalidFormSubmit(); // setupSmoothScroll();
-  // onChangeSelectLink();
+  preventInvalidFormSubmit();
+  setupSmoothScroll();
+  setupSideDrawer();
+  setupAddressAutoFill(); // onChangeSelectLink();
   // setupLazyMap();
   // setupSelect2();
-  // setupInputMasks();
-  // setupCepSearch();
+
+  setupInputMasks(); // setupCepSearch();
   // setupPopover();
   // setupTooltip();
   // setupAnchorReloadPrevention();
   // setupInfiniteScroll();
   // setupShareWindow();
-  // setupCustomFileInput();
   // setupCustomFormFieldsVisibility();
-
+  // insertCopyrightYear();
+});
+window.addEventListener('load', function () {
+  /**
+   * Usually the header triggers after the first section which has the
+   * height defined as 100vh. We need the starting function here because
+   * vh/vw are calculated after all resources loaded*/
   setupStickyHeader();
 });

@@ -1,12 +1,22 @@
 function setupStickyHeader() {
 
   const targetSelector = '.js-header-sticky-target';
-  const target = $(targetSelector);
+  const mainContentSelector = '.js-main-content';
+  const $target = $(targetSelector);
+  const $mainContent = $(mainContentSelector);
 
-  if (!target.length) {
+  if (!$target.length) {
 
     console.error(
         `Adicione a classe ${ targetSelector } para ativar o hide menu`);
+    return;
+  }
+
+  if (!$mainContent.length) {
+
+    console.error(
+        `Adicione a classe ${ mainContentSelector } para que o padding-top seja 
+        aplicado`);
     return;
   }
 
@@ -18,8 +28,9 @@ function setupStickyHeader() {
   let isScrollingUp = false;
   let isScrollingDown = false;
   const $header = $('.header');
-  const targetTopOffset = target
+  const targetTopOffset = $target
       .offset().top;
+  const headerHeight = $header.innerHeight();
   const stickyMenuClass = 'header-sticky';
 
   function showHeader() {
@@ -36,6 +47,7 @@ function setupStickyHeader() {
 
     $header.removeClass(stickyMenuClass);
     $header.css('display', '');
+    $mainContent.css('padding-top', '');
   }
 
   function updateLastCurrentPosition(scrollPosition) {
@@ -55,6 +67,7 @@ function setupStickyHeader() {
     if (isScrollPositionAfterTarget && !isStickyMenu) {
 
       $header.addClass(stickyMenuClass);
+      $mainContent.css('padding-top', `${ headerHeight }px`);
 
       if (isScrollingUp) {
 
