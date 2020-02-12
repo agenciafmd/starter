@@ -9656,82 +9656,48 @@ function getThemeVariables() {
   };
 }
 
-function setupAddressAutoFill() {
-  if ($('.js-state').length > 0) {
-    $.getJSON('/json/estados-cidades.json', function (data) {
-      var items = [];
-      var state = $('.js-state');
-      var options = '<option value="">-</option>';
-      $.each(data, function (key, val) {
-        var selected = '';
-
-        if (val.nome === state.attr('data-selected')) {
-          selected = 'selected';
-        }
-
-        options += '<option value="' + val.nome + '" ' + selected + '>' + val.nome + '</option>';
-      });
-      state.html(options);
-      state.change(function () {
-        var options_cidades = '<option value="">-</option>';
-        var str = '';
-        $('.js-state option:selected').each(function () {
-          str += $(this).text();
-        });
-        var city = $('.js-city');
-        $.each(data, function (key, val) {
-          if (val.nome === str) {
-            $.each(val.cidades, function (key_city, val_city) {
-              var selected = '';
-
-              if (val_city === city.attr('data-selected')) {
-                selected = 'selected';
-              }
-
-              options_cidades += '<option value="' + val_city + '" ' + selected + '>' + val_city + '</option>';
-            });
-          }
-        });
-        city.html(options_cidades);
-      }).change();
-    });
+function setupStateCityOptions() {
+  if (!$('.js-state').length) {
+    return;
   }
-  /* fim select de estado e cidade */
 
-  /* autocompletar de cep */
+  $.getJSON('/json/estados-cidades.json', function (data) {
+    var $state = $('.js-state');
+    var $options = '<option value="">-</option>';
+    $.each(data, function (key, val) {
+      var selected = '';
 
+      if (val.nome === $state.attr('data-selected')) {
+        selected = 'selected';
+      }
 
-  $('.js-zipcode').on('blur', function () {
-    var $this = $(this);
-    var cep = $this.val().replace('-', '');
-
-    if (cep.length === 8) {
-      $.getJSON('https://api.mixd.com.br/cep/' + cep, {}, function (result) {
-        if (!result) {
-          console.log(result.message || 'Houve um erro desconhecido');
+      $options += "<option value=\"".concat(val.nome, "\" ").concat(selected, ">").concat(val.nome, "</option>");
+    });
+    $state.html($options);
+    $state.change(function () {
+      var $optionsCity = '<option value="">-</option>';
+      var str = '';
+      $('.js-state option:selected').each(function () {
+        str += $(this).text();
+      });
+      var city = $('.js-city');
+      $.each(data, function (key, val) {
+        if (val.nome !== str) {
           return;
         }
 
-        var stateInput = $('.js-state');
-        var cityInput = $('.js-city');
-        $('.js-neighborhood').val(result.bairro);
-        $('.js-address').val(result.logradouro);
+        $.each(val.cidades, function (key_city, val_city) {
+          var selected = '';
 
-        if (stateInput.is('input')) {
-          stateInput.val(result.uf_nome);
-        }
+          if (val_city === city.attr('data-selected')) {
+            selected = 'selected';
+          }
 
-        if (cityInput.is('input')) {
-          cityInput.val(result.cidade);
-        }
-
-        if (stateInput.is('select')) {
-          stateInput.val(result.uf_nome);
-          stateInput.trigger('change');
-          cityInput.val(result.cidade);
-        }
+          $optionsCity += "<option value=\"".concat(val_city, "\" ").concat(selected, ">").concat(val_city, "</option>");
+        });
       });
-    }
+      city.html($optionsCity);
+    }).change();
   });
 }
 
@@ -9899,16 +9865,22 @@ function setupInputMasks() {
   var cpfCnpjValidators = new CpfCnpjValidators();
   var cpfInput = document.querySelector(cpfCnpjValidators.selectors.cpf);
   var cnpjInput = document.querySelector(cpfCnpjValidators.selectors.cnpj);
-  cpfInput.addEventListener('blur', function (event) {
-    cpfCnpjValidators.checkCPF(event.target);
-  });
-  cnpjInput.addEventListener('blur', function (event) {
-    cpfCnpjValidators.checkCPF(event.target);
-  });
+
+  if (cpfInput) {
+    cpfInput.addEventListener('blur', function (event) {
+      cpfCnpjValidators.checkCPF(event.target);
+    });
+  }
+
+  if (cnpjInput) {
+    cnpjInput.addEventListener('blur', function (event) {
+      cpfCnpjValidators.checkCPF(event.target);
+    });
+  }
 }
 
 function setupCepSearch() {
-  $('#zipcode').on('blur', function () {
+  $('.js-zipcode').on('blur', function () {
     var $this = $(this);
     var cep = $this.val().replace('-', '');
 
@@ -9919,16 +9891,22 @@ function setupCepSearch() {
           return;
         }
 
-        var stateInput = $('#state');
-        var cityInput = $('#city');
-        $('#neighborhood').val(result.bairro);
-        $('#address').val(result.logradouro); // se for input
+        var stateInput = $('.js-state');
+        var cityInput = $('.js-city');
+        $('.js-neighborhood').val(result.bairro);
+        $('.js-address').val(result.logradouro);
 
         if (stateInput.is('input')) {
           stateInput.val(result.uf_nome);
         }
 
         if (cityInput.is('input')) {
+          cityInput.val(result.cidade);
+        }
+
+        if (stateInput.is('select')) {
+          stateInput.val(result.uf_nome);
+          stateInput.trigger('change');
           cityInput.val(result.cidade);
         }
       });
@@ -10015,13 +9993,13 @@ $(function () {
   setupServiceWorker();
   preventInvalidFormSubmit();
   setupSmoothScroll();
-  setupSideDrawer();
-  setupAddressAutoFill(); // onChangeSelectLink();
+  setupSideDrawer(); // setupCepSearch();
+  // setupStateCityOptions();
+  // onChangeSelectLink();
   // setupLazyMap();
   // setupSelect2();
 
-  setupInputMasks(); // setupCepSearch();
-  // setupPopover();
+  setupInputMasks(); // setupPopover();
   // setupTooltip();
   // setupAnchorReloadPrevention();
   // setupInfiniteScroll();

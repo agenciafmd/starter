@@ -312,15 +312,21 @@ function setupInputMasks() {
   const cpfInput = document.querySelector(cpfCnpjValidators.selectors.cpf);
   const cnpjInput = document.querySelector(cpfCnpjValidators.selectors.cnpj);
 
-  cpfInput.addEventListener('blur', function (event) {
+  if (cpfInput) {
 
-    cpfCnpjValidators.checkCPF(event.target);
-  });
+    cpfInput.addEventListener('blur', function (event) {
 
-  cnpjInput.addEventListener('blur', function (event) {
+      cpfCnpjValidators.checkCPF(event.target);
+    });
+  }
 
-    cpfCnpjValidators.checkCPF(event.target);
-  });
+  if (cnpjInput) {
+
+    cnpjInput.addEventListener('blur', function (event) {
+
+      cpfCnpjValidators.checkCPF(event.target);
+    });
+  }
 }
 
 function setupCepSearch() {
