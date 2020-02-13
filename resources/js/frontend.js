@@ -298,6 +298,11 @@ function setupInputMasks() {
         .maskPattern('99:99');
   }
 
+  if (document.querySelectorAll('.mask-number').length > 0) {
+    VMasker(document.querySelectorAll('.mask-number'))
+        .maskNumber();
+  }
+
   if (document.querySelectorAll('.mask-money').length > 0) {
     VMasker(document.querySelectorAll('.mask-money'))
         .maskMoney({
