@@ -1,6 +1,7 @@
 /.idea
 /node_modules
 /public/hot
+/public/media
 /public/page-cache
 /public/storage
 /storage/*.key

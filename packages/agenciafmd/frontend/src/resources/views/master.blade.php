@@ -48,12 +48,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
     <!-- fim PWA -->
 
-    <link href="{{ mix('/css/frontend.css') }}" rel="stylesheet">
-
     @if(config('app.env') === 'production')
         <script>
             console.log = function () {
-                //
             };
         </script>
     @endif
@@ -61,6 +58,18 @@
     @if(config('services.google.site_verification'))
         <meta name="google-site-verification" content="{{ config('services.google.site_verification') }}"/>
     @endif
+
+    @if(isset($critical) && ($critical))
+        <style>
+            {!! @file_get_contents(public_path('/css/critical/' . $critical)) !!}
+        </style>
+    @endif
+
+    <link rel="preload" href="{{ mix('/css/frontend.css') }}" as="style"
+          onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="{{ mix('/css/frontend.css') }}">
+    </noscript>
 
     @stack('head')
 </head>
