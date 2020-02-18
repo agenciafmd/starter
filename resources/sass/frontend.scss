@@ -1,12 +1,6 @@
 // Project's fonts
 @import "frontend/fonts";
 
-// Project's custom variables
-@import "frontend/variables";
-
-// Vendors
-@import "vendors/vendors";
-
 // Project's helpers functions/mixins
 @import "frontend/helpers";
 @import "frontend/functions";
@@ -17,6 +11,7 @@
 // Bootstrap
 @import "~bootstrap/scss/functions";
 @import "bootstrap/variables";
+@import "frontend/variables";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/root";
@@ -58,7 +53,22 @@
 // Overwriting bootstrap's styles
 @import "bootstrap/bootstrap";
 
-// Project's common (global) styles
+// Vendors
+@import "vendors/vendors";
+
+// Common (global) styles
+@import "frontend/reboot";
+@import "frontend/typography";
+@import "components/accordion";
+@import "components/icons";
+@import "components/images";
+@import "components/structure";
+@import "components/videos";
 @import "styles";
 
-// Projects's pages styles
+// Partial`s styles
+@import "pages/partials/footer";
+@import "pages/partials/header";
+
+// Pages`s styles
+@import "pages/index";

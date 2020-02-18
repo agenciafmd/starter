@@ -1,3 +1,95 @@
+function getThemeVariables() {
+
+  return {
+    breakpoints: {
+      xs: 0,
+      sm: 425, // Read 'from 425px' (min-width)
+      md: 1024, // Read 'from 1024px' (min-width)
+      lg: 1366, // Read 'from 1366px' (min-width)
+      xl: 1680, // Read 'from 1680px' (min-width)
+    },
+    collapseTransitionTime: 350, // In milliseconds
+    colors: {
+      primary: '#',
+      secondary: '#',
+      success: '#',
+      info: '#',
+      warning: '#',
+      danger: '#',
+      light: '#',
+      dark: '#',
+    },
+  };
+}
+
+function setupStateCityOptions() {
+
+  if (!$('.js-state').length) {
+
+    return;
+  }
+
+  $.getJSON('/json/estados-cidades.json', function (data) {
+
+    const $state = $('.js-state');
+    let $options = '<option value="">-</option>';
+
+    $.each(data, function (key, val) {
+
+      var selected = '';
+
+      if (val.nome === $state.attr('data-selected')) {
+
+        selected = 'selected';
+      }
+
+      $options +=
+          `<option value="${ val.nome }" ${ selected }>${ val.nome }</option>`;
+    });
+
+    $state.html($options);
+
+    $state.change(function () {
+
+      let $optionsCity = '<option value="">-</option>';
+
+      let str = '';
+
+      $('.js-state option:selected')
+          .each(function () {
+            str += $(this)
+                .text();
+          });
+
+      var city = $('.js-city');
+
+      $.each(data, function (key, val) {
+
+        if (val.nome !== str) {
+
+          return;
+        }
+
+        $.each(val.cidades, function (key_city, val_city) {
+
+          let selected = '';
+
+          if (val_city === city.attr('data-selected')) {
+
+            selected = 'selected';
+          }
+
+          $optionsCity +=
+              `<option value="${ val_city }" ${ selected }>${ val_city }</option>`;
+        });
+      });
+
+      city.html($optionsCity);
+    })
+          .change();
+  });
+}
+
 function setupServiceWorker() {
 
   if (!('serviceWorker' in navigator)) {
@@ -140,100 +232,111 @@ function setupSelect2() {
 
 function setupInputMasks() {
 
-  if ($.mask) {
-    $('.mask-phone')
-        .focusout(function () {
-
-          var phone, element;
-
-          element = $(this);
-          element.unmask();
-          phone = element.val()
-                         .replace(/\D/g, '');
-          if (phone.length > 10) {
-
-            element.mask('(99) 99999-999?9');
-          } else {
-
-            element.mask('(99) 9999-9999?9');
-          }
-        })
-        .trigger('focusout');
-
-    //http://alexjunioralves.blogspot.com.br/2013/08/mascara-cpfcnpj-para-o-mesmo-campo.html
-    $('.mask-cpfcnpj')
-        .on('keyup', function () {
-
-          var element = $(this);
-          var cpfcnpj = element.val()
-                               .replace(/\D/g, '');
-
-          if ((cpfcnpj.length === 11) || (cpfcnpj.length === 0)) {
-
-            element.mask('999.999.999-99?99999');
-          }
-
-          if (cpfcnpj.length >= 14) {
-
-            element.mask('99.999.999/9999-99');
-          }
-        })
-        .trigger('keyup');
-
-    $('.mask-date')
-        .mask('99/99/9999');
-    $('.mask-zipcode')
-        .mask('99999-999');
-    $('.mask-cpf')
-        .mask('999.999.999-99');
-    $('.mask-cnpj')
-        .mask('99.999.999/9999-99');
-    $('.mask-hour')
-        .mask('99:99');
-    $('.mask-plate')
-        .mask('aaa-9999');
+  function inputHandler(masks, max, event) {
+    var c = event.target;
+    var v = c.value.replace(/\D/g, '');
+    var m = c.value.length > max
+            ? 1
+            : 0;
+    VMasker(c)
+        .unMask();
+    VMasker(c)
+        .maskPattern(masks[m]);
+    c.value = VMasker.toPattern(v, masks[m]);
   }
 
-  $('.mask-money')
-      .maskMoney({
-        prefix: 'R$ ',
-        allowNegative: false,
-        decimal: ',',
-        thousands: '.',
-        affixesStay: false,
-      });
+  if (document.querySelectorAll('.mask-phone').length > 0) {
+    var telMask = ['(99) 9999-99999', '(99) 99999-9999'];
+    var tels = document.querySelectorAll('.mask-phone');
+    tels.forEach((tel) => {
+      VMasker(tel)
+          .maskPattern(telMask[0]);
+      tel.addEventListener(
+          'input',
+          inputHandler.bind(undefined, telMask, 14),
+          false,
+      );
+    });
+  }
 
-  $('.mask-size')
-      .maskMoney({
-        prefix: '',
-        decimal: '',
-        thousands: '.',
-        affixesStay: false,
-        precision: 0,
-      });
+  if (document.querySelectorAll('.mask-cpfcnpj').length > 0) {
+    var docMask = ['999.999.999-999', '99.999.999/9999-99'];
+    var docs = document.querySelectorAll('.mask-cpfcnpj');
+    docs.forEach((doc) => {
+      VMasker(doc)
+          .maskPattern(docMask[0]);
+      doc.addEventListener(
+          'input',
+          inputHandler.bind(undefined, docMask, 14),
+          false,
+      );
+    });
+  }
 
-  $('.mask-integer')
-      .maskMoney({
-        prefix: '',
-        decimal: '',
-        thousands: '',
-        affixesStay: false,
-        precision: 0,
-      });
+  if (document.querySelectorAll('.mask-date').length > 0) {
+    VMasker(document.querySelectorAll('.mask-date'))
+        .maskPattern('99/99/9999');
+  }
 
-  $('.mask-float')
-      .maskMoney({
-        prefix: '',
-        decimal: ',',
-        thousands: '',
-        affixesStay: false,
-        precision: 2,
-      });
+  if (document.querySelectorAll('.mask-zipcode').length > 0) {
+    VMasker(document.querySelectorAll('.mask-zipcode'))
+        .maskPattern('99999-999');
+  }
+
+  if (document.querySelectorAll('.mask-cpf').length > 0) {
+    VMasker(document.querySelectorAll('.mask-cpf'))
+        .maskPattern('999.999.999-99');
+  }
+
+  if (document.querySelectorAll('.mask-cnpj').length > 0) {
+    VMasker(document.querySelectorAll('.mask-cnpj'))
+        .maskPattern('99.999.999/9999-99');
+  }
+
+  if (document.querySelectorAll('.mask-hour').length > 0) {
+    VMasker(document.querySelectorAll('.mask-hour'))
+        .maskPattern('99:99');
+  }
+
+  if (document.querySelectorAll('.mask-number').length > 0) {
+    VMasker(document.querySelectorAll('.mask-number'))
+        .maskNumber();
+  }
+
+  if (document.querySelectorAll('.mask-money').length > 0) {
+    VMasker(document.querySelectorAll('.mask-money'))
+        .maskMoney({
+          precision: 2,
+          separator: ',',
+          delimiter: '.',
+          unit: 'R$',
+        });
+  }
+
+  const cpfCnpjValidators = new CpfCnpjValidators();
+  const cpfInput = document.querySelector(cpfCnpjValidators.selectors.cpf);
+  const cnpjInput = document.querySelector(cpfCnpjValidators.selectors.cnpj);
+
+  if (cpfInput) {
+
+    cpfInput.addEventListener('blur', function (event) {
+
+      cpfCnpjValidators.checkCPF(event.target);
+    });
+  }
+
+  if (cnpjInput) {
+
+    cnpjInput.addEventListener('blur', function (event) {
+
+      cpfCnpjValidators.checkCPF(event.target);
+    });
+  }
 }
 
 function setupCepSearch() {
 
-  $('#zipcode')
+  $('.js-zipcode')
       .on('blur', function () {
 
         var $this = $(this);
@@ -250,22 +353,25 @@ function setupCepSearch() {
                   return;
                 }
 
-                var stateInput = $('#state');
-                var cityInput = $('#city');
+                var stateInput = $('.js-state');
+                var cityInput = $('.js-city');
 
-                $('#neighborhood')
+                $('.js-neighborhood')
                     .val(result.bairro);
-                $('#address')
+                $('.js-address')
                     .val(result.logradouro);
 
-                // se for input
                 if (stateInput.is('input')) {
-
                   stateInput.val(result.uf_nome);
                 }
 
                 if (cityInput.is('input')) {
+                  cityInput.val(result.cidade);
+                }
 
+                if (stateInput.is('select')) {
+                  stateInput.val(result.uf_nome);
+                  stateInput.trigger('change');
                   cityInput.val(result.cidade);
                 }
               },
@@ -322,17 +428,59 @@ function setupShareWindow() {
       });
 }
 
-function setupCustomFileInput() {
+function setupSideDrawer() {
 
-  $('.custom-file-input')
-      .on('change', function () {
-        var fileName = $(this)
-            .val();
-        $(this)
-            .next('.custom-file-label')
-            .addClass('selected')
-            .html(fileName.replace(/^.*[\\\/]/, ''));
-      });
+  const $body = $('body');
+  const $mainContent = $('.js-main-content');
+  const $navbar = $('.navbar');
+  const $navbarCollapse = $('.navbar-collapse');
+  const $navbarToggler = $('.navbar-toggler');
+  const headerHeight = $navbar
+      .innerHeight();
+
+  resetSideDrawerConfig();
+
+  if (window.innerWidth > getThemeVariables().breakpoints.md) {
+
+    return;
+  }
+
+  $navbarCollapse.css('margin-top', `${ headerHeight }px`);
+
+  function resetSideDrawerConfig() {
+
+    $navbarCollapse.css('margin-top', '');
+    $navbarCollapse.removeClass('show');
+    $mainContent.removeClass('show-backdrop');
+    $body.removeClass('overflow-hidden');
+  }
+
+  function navbarToggleHandler() {
+
+    $navbarCollapse.toggleClass('show');
+    $mainContent.toggleClass('show-backdrop');
+    $body.toggleClass('overflow-hidden');
+  }
+
+  $navbarToggler.click(navbarToggleHandler);
+}
+
+function insertCopyrightYear() {
+
+  const copyrightContainerSelector = '.js-copyright-container';
+
+  const hasCopyrightSelector = $('footer')
+      .find(copyrightContainerSelector).length;
+
+  if (!hasCopyrightSelector) {
+
+    console.error(`${ copyrightContainerSelector } class is required to insert copyright text`);
+    return;
+  }
+
+  const $yearContainer = $(copyrightContainerSelector);
+
+  $yearContainer.text(`Todos os direitos reservados © ${ new Date().getFullYear() }`);
 }
 
 $(function () {
@@ -341,7 +489,13 @@ $(function () {
 
   preventInvalidFormSubmit();
 
-  // setupSmoothScroll();
+  setupSmoothScroll();
+
+  setupSideDrawer();
+
+  // setupCepSearch();
+
+  // setupStateCityOptions();
 
   // onChangeSelectLink();
 
@@ -349,9 +503,7 @@ $(function () {
 
   // setupSelect2();
 
-  // setupInputMasks();
-
-  // setupCepSearch();
+  setupInputMasks();
 
   // setupPopover();
 
@@ -363,7 +515,16 @@ $(function () {
 
   // setupShareWindow();
 
-  // setupCustomFileInput();
-
   // setupCustomFormFieldsVisibility();
+
+  // insertCopyrightYear();
+});
+
+window.addEventListener('load', function () {
+
+  /**
+   * Usually the header triggers after the first section which has the
+   * height defined as 100vh. We need the starting function here because
+   * vh/vw are calculated after all resources loaded*/
+  setupStickyHeader();
 });

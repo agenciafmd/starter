@@ -21,18 +21,27 @@ $fonts-base-path: '/fonts';
   src: url('#{$fonts-base-path}/#{$file-name}.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
-$example-font-map: (
-    family: 'example_family',
-    file-name: 'example-family', // WITHOUT FONT EXTENSION
-    //fallback: '',
-    //weight: '',
-    //style: '',
+$light-font-map: (
+    family: 'Roboto-Light',
+    file-name: 'Roboto-Light',
+);
+$regular-font-map: (
+    family: 'Roboto-Regular',
+    file-name: 'Roboto-Regular',
+);
+
+$bold-font-map: (
+    family: 'Roboto-Bold',
+    file-name: 'Roboto-Bold',
 );
 
 $project-fonts: (
-    example-font-map: $example-font-map,
+    light: $light-font-map,
+    regular: $regular-font-map,
+    bold: $bold-font-map,
 );
 
 @each $font-key, $font-map in $project-fonts {
@@ -49,9 +58,9 @@ $project-fonts: (
 }
 
 $font-sizes: (
-        14,
-        16,
-        20,
-        30,
-        40,
+    14,
+    16,
+    20,
+    30,
+    40,
 );

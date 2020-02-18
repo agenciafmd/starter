@@ -1,0 +1,32 @@
+@import "variables";
+@import "~sweetalert2/src/sweetalert2";
+
+.swal2 {
+
+  &-title {
+
+    @extend .text-uppercase;
+  }
+
+  &-actions {
+
+    flex-direction: row-reverse;
+
+    button {
+
+      flex-grow: 1;
+      flex-basis: 45%;
+    }
+  }
+
+  &-content {
+
+    .ticket-instant-prize {
+
+      .ic-woman {
+
+        max-height: 11rem;
+      }
+    }
+  }
+}

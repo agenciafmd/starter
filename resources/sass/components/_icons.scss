@@ -1,0 +1,14 @@
+.ic {
+
+  @each $color, $value in $theme-colors {
+    &-#{$color} {
+
+      fill: $value;
+    }
+  }
+
+  &-right {
+
+    transform: rotate(-90deg);
+  }
+}

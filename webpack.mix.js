@@ -21,10 +21,10 @@ require('laravel-mix-purgecss');
 /*
  * USAGE
  * <svg role="img">
- *   <use xlink:href="/svg/sprite.svg#050-santa-claus"/>
+ *   <use xlink:href="/svg/sprite.svg#050-santa-claus"></use>
  * </svg>
  * <svg role="img">
- *   <use xlink:href="/svg/sprite.svg#049-deer"/>
+ *   <use xlink:href="/svg/sprite.svg#049-deer"></use>
  * </svg>
  * */
 let wpConfig = {

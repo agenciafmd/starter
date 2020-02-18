@@ -3,7 +3,7 @@
 <head>
 @if(config('services.google.tagmanager'))
     <!-- Google Tag Manager -->
-        <script async>(function (w, d, s, l, i) {
+        <script>(function (w, d, s, l, i) {
                 w[l] = w[l] || [];
                 w[l].push({
                     'gtm.start':
@@ -76,17 +76,17 @@
 
 @stack('header')
 
-@yield('header', View::make('agenciafmd/frontend::partials.header'))
+@include('agenciafmd/frontend::html.partials.header')
 
 @yield('content')
 
-@yield('footer', View::make('agenciafmd/frontend::partials.footer'))
+@include('agenciafmd/frontend::html.partials.footer')
 
 @stack('footer')
 
 <script src="{{ mix('/js/frontend.js') }}"></script>
 
-@include('agenciafmd/frontend::partials.message')
+@include('agenciafmd/frontend::html.partials.message')
 
 @stack('scripts')
 

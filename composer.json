@@ -7,12 +7,15 @@
         "laravel"
     ],
     "license": "MIT",
-    "repositories": [
-        {
+    "repositories": {
+        "agenciafmd/frontend": {
             "type": "path",
-            "url": "packages/agenciafmd/frontend"
+            "url": "packages/agenciafmd/frontend",
+            "options": {
+                "symlink": true
+            }
         }
-    ],
+    },
     "require": {
         "php": "^7.3",
         "agenciafmd/admix": "dev-master",
@@ -28,6 +31,7 @@
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
+        "itsgoingd/clockwork": "^4.0",
         "phpunit/phpunit": "^8.0"
     },
     "config": {

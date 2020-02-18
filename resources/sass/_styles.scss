@@ -1,27 +1,5 @@
 // Project's common (global) styles
 
-// Creates text classes for all fonts
-@each $font-key, $font-map in $project-fonts {
-
-  .#{$font-key}-text {
-
-    font-family: get-font-family($font-map), $fallback-font;
-  }
-}
-
-// Generate responsive font sizes
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-    @each $font-size in $font-sizes {
-      .fs#{$infix}-#{$font-size} {
-        font-size: #{$font-size}px;
-      }
-    }
-  }
-}
-
 //Generate letter-spacing and line-height with grid-breakpoint to use in html
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
