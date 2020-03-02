@@ -20,47 +20,8 @@
   }
 }
 
-//$texts-font-size: $font-size-base;
+.text-underline {
 
-// Texts
-p, a, span, button {
-
-  font-size: $font-size-base;
-  letter-spacing: $font-size-base * .05;
-}
-
-h1, h2, h3, h4, h5, h6 {
-
-  text-transform: uppercase;
-}
-
-// Headings
-h1, h2 {
-
-  text-align: center;
-  font-size: $h1-font-size;
-  letter-spacing: $h1-font-size * .05;
-
-  @include media-breakpoint-up(md) {
-
-    margin-bottom: convert-to-rem(80px);
-  }
-}
-
-h3 {
-
-  font-size: $h3-font-size;
-  letter-spacing: $h3-font-size * .05;
-}
-
-h4, h5, h6 {
-
-  font-size: $h4-font-size;
-  letter-spacing: $h4-font-size * .05;
-
-  @include media-breakpoint-down(lg) {
-
-    font-size: $font-size-base;
-  }
+  text-decoration: underline;
 }
 

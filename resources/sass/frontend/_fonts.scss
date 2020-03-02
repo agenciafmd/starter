@@ -8,7 +8,6 @@ $fonts-base-path: '/fonts';
 // e.g.: $open-sans-regular: (
 //    family: 'open_sansregular',
 //    file-name: 'open_sans_regular', -> WITHOUT FONT EXTENSION
-//    fallback: sans-serif
 //  );
 @mixin font-face($font-map) {
 
@@ -28,6 +27,7 @@ $light-font-map: (
     family: 'Roboto-Light',
     file-name: 'Roboto-Light',
 );
+
 $regular-font-map: (
     family: 'Roboto-Regular',
     file-name: 'Roboto-Regular',
@@ -60,7 +60,10 @@ $project-fonts: (
 $font-sizes: (
     14,
     16,
+    18,
     20,
+    25,
     30,
+    35,
     40,
 );
