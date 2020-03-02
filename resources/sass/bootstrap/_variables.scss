@@ -89,7 +89,7 @@ $theme-colors: map-merge(
 );
 
 // Set a specific jump point for requesting color jumps
-$theme-color-interval: 8% !default;
+$theme-color-interval: 5% !default;
 
 // The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
 $yiq-contrasted-threshold: 150 !default;
@@ -112,7 +112,7 @@ $escaped-characters: (
 $enable-caret: true !default;
 $enable-rounded: true !default;
 $enable-shadows: true !default;
-$enable-gradients: false !default;
+$enable-gradients: true !default;
 $enable-transitions: true !default;
 $enable-prefers-reduced-motion-media-query: true !default;
 $enable-hover-media-query: false !default; // Deprecated, no longer affects any compiled CSS
@@ -122,8 +122,6 @@ $enable-print-styles: true !default;
 $enable-responsive-font-sizes: false !default;
 $enable-validation-icons: true !default;
 $enable-deprecation-messages: true !default;
-
-// Spacing
 
 // Spacing
 //
@@ -212,7 +210,7 @@ $grid-breakpoints: (
     md: 1024px, // Read 'from 1024px' (min-width)
     lg: 1366px, // Read 'from 1366px' (min-width)
     xl: 1680px // Read 'from 1680px' (min-width)
-);
+) !default;
 
 @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
 @include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
@@ -226,7 +224,7 @@ $container-max-widths: (
     md: 1166px, // Define max-width between md-lg
     lg: 1280px, // Define max-width between lg-xl
     xl: 1440px // Define max-width between xl-infinite
-);
+) !default;
 
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 
@@ -286,7 +284,7 @@ $embed-responsive-aspect-ratios: join(
 // Font, line-height, and color for body text, headings, and more.
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-sans-serif: get-font-family($regular-font-map), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base: $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
@@ -312,10 +310,10 @@ $h5-font-size: $font-size-base * 1.25 !default;
 $h6-font-size: $font-size-base !default;
 
 $headings-margin-bottom: $spacer / 2 !default;
-$headings-font-family: null !default;
+$headings-font-family: get-font-family($bold-secondary-font-map) !default;
 $headings-font-weight: 500 !default;
 $headings-line-height: 1.2 !default;
-$headings-color: null !default;
+$headings-color: theme-color('primary') !default;
 
 $display1-size: 6rem !default;
 $display2-size: 5.5rem !default;
@@ -962,10 +960,10 @@ $modal-header-padding-y: 1rem !default;
 $modal-header-padding-x: 1rem !default;
 $modal-header-padding: $modal-header-padding-y $modal-header-padding-x !default; // Keep this for backwards compatibility
 
-$modal-xl: 1140px !default;
-$modal-lg: 800px !default;
-$modal-md: 500px !default;
-$modal-sm: 300px !default;
+$modal-xl: map_get($container-max-widths, 'xl') !default;
+$modal-lg: map_get($container-max-widths, 'lg') !default;
+$modal-md: map_get($container-max-widths, 'md') !default;
+$modal-sm: map_get($container-max-widths, 'sm') !default;
 
 $modal-fade-transform: translate(0, -50px) !default;
 $modal-show-transform: none !default;
