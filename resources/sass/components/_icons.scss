@@ -11,4 +11,9 @@
 
     transform: rotate(-90deg);
   }
+
+  &-inverse {
+
+    transform: rotate(180deg);
+  }
 }
