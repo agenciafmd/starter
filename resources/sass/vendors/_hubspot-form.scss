@@ -8,7 +8,6 @@
 /* Form */
 .hs-form {
 
-
   /* Form Field (selector for form field wrapper) */
   .hs-input {
 
@@ -29,7 +28,7 @@
   }
 
   label, span {
-
+    @extend .text-white;
   }
 
   /* Descriptions (targets class applied to Help Text divs) */
@@ -44,6 +43,9 @@
 
     label {
     }
+
+    padding-bottom: .55rem;
+    position: relative;
   }
 
   /* Inputs (selectors for all inputs)  */
@@ -64,9 +66,13 @@
   input[type="file"],
   textarea,
   select {
+    @extend .form-control;
+    @extend .mb-1q;
   }
 
-  select {
+  select.hs-input {
+
+    @extend .custom-select;
   }
 
   /* Inputs in focus (selectors for all inputs when clicked)  */
@@ -126,6 +132,12 @@
 
   /* Error message (selector for validation messages) */
   .hs-error-msgs {
+
+    @extend .invalid-feedback;
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
 
     label {
     }
@@ -189,7 +201,13 @@
   input[type="submit"],
   input[type="button"] {
 
+    @extend .btn;
+    @extend .btn-block;
+    @extend .btn-warning;
+    @extend .text-uppercase;
+
     &:focus {
+
     }
 
     &:hover {
@@ -198,5 +216,7 @@
   }
 }
 
+.submitted-message {
 
-
+  @extend .text-white;
+}
