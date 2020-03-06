@@ -3,6 +3,7 @@
 /public/hot
 /public/media
 /public/page-cache
+/public/sitemap.xml
 /public/storage
 /storage/*.key
 /vendor
