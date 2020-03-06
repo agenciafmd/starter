@@ -1,1 +1,16 @@
 // Project's custom mixins
+@mixin background-set ($file, $extension) {
+
+  background-image: url("/images/#{$file}.#{$extension}");
+  background-image: -webkit-image-set(
+          url("/images/#{$file}.#{$extension}") 1x,
+          url("/images/#{$file}-2x.#{$extension}") 2x
+  );
+  background-position-x: center;
+  background-size: cover;
+}
+
+// exemplo de uso
+// .bg-class {
+//   @include background-set('nome-banner', 'jpg');
+// }

@@ -223,7 +223,7 @@ function setupLazyMap() {
 
 function setupSelect2() {
 
-  $('select.jq-select2')
+  $('select.js-select2')
       .select2({
         theme: 'bootstrap',
         language: 'pt-BR',
