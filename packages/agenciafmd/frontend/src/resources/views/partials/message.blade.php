@@ -1,4 +1,4 @@
-@foreach (session('flash_notification', collect())->toArray() as $message)
+@forelse (session('flash_notification', collect())->toArray() as $message)
     <script>
         @if($message['level'] == 'success')
         Swal.fire({
@@ -34,6 +34,21 @@
         });
         @endif
     </script>
-@endforeach
+@empty
+    @if (session()->get('errors'))
+        @if(collect(session()->get('errors'))->flatten()->first()->has('hp_time'))
+            {{--@dd(collect(session()->get('errors'))->flatten()->first()->first('hp_time'))--}}
+            <script>
+                Swal.fire({
+                    text: 'Por favor, aguarde alguns segundos para enviar os dados.',
+                    icon: 'info',
+                    title: 'Informação',
+                    showConfirmButton: false,
+                    showCloseButton: true,
+                });
+            </script>
+        @endif
+    @endif
+@endforelse
 
 {{ session()->forget('flash_notification') }}
