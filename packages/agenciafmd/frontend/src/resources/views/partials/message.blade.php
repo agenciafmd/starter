@@ -3,7 +3,7 @@
         @if($message['level'] == 'success')
         Swal.fire({
             text: '{!! $message['message'] !!}',
-            type: 'success',
+            icon: 'success',
             title: 'Sucesso',
             showConfirmButton: false,
             showCloseButton: true,
@@ -11,7 +11,7 @@
         @elseif($message['level'] == 'danger')
         Swal.fire({
             text: '{!! $message['message'] !!}',
-            type: 'error',
+            icon: 'error',
             title: 'Falhou!',
             showConfirmButton: false,
             showCloseButton: true,
@@ -19,7 +19,7 @@
         @elseif($message['level'] == 'warning')
         Swal.fire({
             text: '{!! $message['message'] !!}',
-            type: 'warning',
+            icon: 'warning',
             title: 'Atenção',
             showConfirmButton: false,
             showCloseButton: true,
@@ -27,7 +27,7 @@
         @else
         Swal.fire({
             text: '{!! $message['message'] !!}',
-            type: 'info',
+            icon: 'info',
             title: 'Informação',
             showConfirmButton: false,
             showCloseButton: true,
