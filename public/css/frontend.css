@@ -42646,6 +42646,18 @@ b, strong {
   -o-object-fit: cover;
      object-fit: cover;
 }
+.style-scroll::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.style-scroll::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
+.style-scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #7f7f7f;
+}
+
 .block-spacer-y {
   padding-top: 6.875rem;
   padding-bottom: 6.875rem;
