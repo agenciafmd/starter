@@ -2235,7 +2235,8 @@
             </div>
             <img style="height: 200px; width: 100%; display: block;"
                  src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-                 alt="Card image">
+                 alt="Card image"
+                 loading="lazy">
             <div class="card-body">
               <p class="card-text">Some quick example text to build on the card
                                    title and make up the bulk
@@ -2414,6 +2415,14 @@
                target="_blank">Images
             </a>
           </h1>
+          <div class="d-flex align-items-center mb-1">
+            <div class="bg-danger mr-0h" style="width: 20px; height: 20px;"></div>
+            Missing <kbd class="ml-0h">alt=""</kbd>
+          </div>
+          <div class="d-flex align-items-center mb-2">
+            <div class="bg-warning mr-0h" style="width: 20px; height: 20px"></div>
+            Missing <kbd class="ml-0h">loading=""</kbd>
+          </div>
         </div>
       </div>
     </div>
@@ -2423,6 +2432,8 @@
           <figure class="figure mb-0">
             <img src="/images/logo.png"
                  class="figure-img img-fluid"
+                 alt="200x70 - logo.png (1,8 KB)"
+                 loading="lazy"
                  width="200"
                  height="70">
             <figcaption class="figure-caption">200x70 - logo.png (1,8 KB)
@@ -2435,6 +2446,8 @@
           <figure class="figure mb-0">
             <img src="/images/logo-email.png"
                  class="figure-img img-fluid"
+                 alt="200x70 - logo-email.png (1,8 KB)"
+                 loading="lazy"
                  width="200"
                  height="70">
             <figcaption class="figure-caption">200x70 - logo-email.png (1,8
@@ -2448,6 +2461,8 @@
           <figure class="figure mb-0">
             <img src="/images/favicon.ico"
                  class="figure-img img-fluid"
+                 alt="48x48 - favicon.ico (15,09 KB)"
+                 loading="lazy"
                  width="48"
                  height="48">
             <figcaption class="figure-caption">48x48 - favicon.ico (15,09 KB)
@@ -2460,6 +2475,8 @@
           <figure class="figure mb-0">
             <img src="/images/logo-amp.png"
                  class="figure-img img-fluid"
+                 alt="60x60 - logo-amp.png (1 KB)"
+                 loading="lazy"
                  width="60"
                  height="60">
             <figcaption class="figure-caption">60x60 - logo-amp.png (1 KB)
@@ -2472,6 +2489,9 @@
           <figure class="figure mb-0">
             <img src="/images/mstile-150x150.png"
                  class="figure-img img-fluid"
+                 alt="150x150 - mstile-150x150.png (1,7 KB)"
+                 loading="lazy"
+                 loading="lazy"
                  width="150"
                  height="150">
             <figcaption class="figure-caption">150x150 - mstile-150x150.png (1,7
@@ -2485,6 +2505,8 @@
           <figure class="figure mb-0">
             <img src="/images/safari-pinned-tab.svg"
                  class="figure-img img-fluid"
+                 alt="192x192 - safari-pinned-tab.svg (5 KB)"
+                 loading="lazy"
                  width="192"
                  height="192">
             <figcaption class="figure-caption">192x192 - safari-pinned-tab.svg
@@ -2498,6 +2520,8 @@
           <figure class="figure mb-0">
             <img src="/images/apple-touch-icon.png"
                  class="figure-img img-fluid"
+                 alt="192x192 - apple-touch-icon.png (3,51 KB)"
+                 loading="lazy"
                  width="192"
                  height="192">
             <figcaption class="figure-caption">192x192 - apple-touch-icon.png
@@ -2511,6 +2535,8 @@
           <figure class="figure mb-0">
             <img src="/images/icon-192x192.png"
                  class="figure-img img-fluid"
+                 alt="192x192 - icon-192x192.png (5,28 KB)"
+                 loading="lazy"
                  width="192"
                  height="192">
             <figcaption class="figure-caption">192x192 - icon-192x192.png (5,28
@@ -2524,6 +2550,8 @@
           <figure class="figure mb-0">
             <img src="/images/icon-512x512.png"
                  class="figure-img img-fluid"
+                 alt="512x512 - icon-512x512.png (13,55 KB)"
+                 loading="lazy"
                  width="512"
                  height="512">
             <figcaption class="figure-caption">512x512 - icon-512x512.png (13,55
@@ -2537,6 +2565,8 @@
           <figure class="figure mb-0">
             <img src="/images/loading.gif"
                  class="figure-img img-fluid"
+                 alt="120x120 - loading.gif (27,36 KB)"
+                 loading="lazy"
                  width="120"
                  height="120">
             <figcaption class="figure-caption">120x120 - loading.gif (27,36
@@ -2685,13 +2715,9 @@
   })();
 </script>
 
-<script id="__bs_script__">//<![CDATA[
-document.write(
-    '<script async src=\'//HOST:3000/browser-sync/browser-sync-client.js?v=2.18.6\'><\/script>'.replace(
-        'HOST',
-        location.hostname,
-    ));
-//]]>
-</script>
+  <script id="__bs_script__">//<![CDATA[
+  document.write("<script async src='//HOST:3000/browser-sync/browser-sync-client.js?v=2.18.6'><\/script>".replace("HOST", location.hostname));
+  //]]>
+  </script>
 </body>
 </html>
