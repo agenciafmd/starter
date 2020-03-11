@@ -1,5 +1,7 @@
 {
+    "/css/frontend.css": "/css/frontend.css",
     "/mix.js.map": "/mix.js.map",
+    "/css/frontend.css.map": "/css/frontend.css.map",
     "/js/frontend.js": "/js/frontend.js",
     "/favicon.ico": "/favicon.ico",
     "/images/apple-touch-icon.png": "/images/apple-touch-icon.png",
@@ -13,7 +15,5 @@
     "/images/logo-email.png": "/images/logo-email.png",
     "/images/logo.png": "/images/logo.png",
     "/images/sem-imagem.jpg": "/images/sem-imagem.jpg",
-    "/images/video-film.png": "/images/video-film.png",
-    "/css/frontend.css": "/css/frontend.css",
-    "/css/frontend.css.map": "/css/frontend.css.map"
+    "/images/video-film.png": "/images/video-film.png"
 }
