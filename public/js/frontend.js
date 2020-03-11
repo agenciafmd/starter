@@ -10,7 +10,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /*! jQuery v3.4.1 | (c) JS Foundation and other contributors | jquery.org/license */
 !function (e, t) {
@@ -4027,7 +4027,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   }, e || (C.jQuery = C.$ = k), k;
 });
 /*
- Copyright (C) Federico Zivolo 2020
+ Copyright (C) Federico Zivolo 2019
  Distributed under the MIT License (license terms are at http://opensource.org/licenses/MIT).
  */
 
@@ -4136,7 +4136,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   function m(e, t) {
     var o = 'x' === t ? 'Left' : 'Top',
         n = 'Left' == o ? 'Right' : 'Bottom';
-    return parseFloat(e['border' + o + 'Width']) + parseFloat(e['border' + n + 'Width']);
+    return parseFloat(e['border' + o + 'Width'], 10) + parseFloat(e['border' + n + 'Width'], 10);
   }
 
   function h(e, t, o, n) {
@@ -4200,8 +4200,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         a = u(o),
         l = n(e),
         m = t(o),
-        h = parseFloat(m.borderTopWidth),
-        c = parseFloat(m.borderLeftWidth);
+        h = parseFloat(m.borderTopWidth, 10),
+        c = parseFloat(m.borderLeftWidth, 10);
     i && s && (a.top = ee(a.top, 0), a.left = ee(a.left, 0));
     var b = g({
       top: d.top - a.top - h,
@@ -4211,8 +4211,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     });
 
     if (b.marginTop = 0, b.marginLeft = 0, !p && s) {
-      var w = parseFloat(m.marginTop),
-          y = parseFloat(m.marginLeft);
+      var w = parseFloat(m.marginTop, 10),
+          y = parseFloat(m.marginLeft, 10);
       b.top -= h - w, b.bottom -= h - w, b.left -= c - y, b.right -= c - y, b.marginTop = w, b.marginLeft = y;
     }
 
@@ -4837,8 +4837,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           d[c] - u < s[m] && (e.offsets.popper[m] -= s[m] - (d[c] - u)), d[m] + u > s[c] && (e.offsets.popper[m] += d[m] + u - s[c]), e.offsets.popper = g(e.offsets.popper);
           var b = d[m] + d[l] / 2 - u / 2,
               w = t(e.instance.popper),
-              y = parseFloat(w['margin' + f]),
-              E = parseFloat(w['border' + f + 'Width']),
+              y = parseFloat(w['margin' + f], 10),
+              E = parseFloat(w['border' + f + 'Width'], 10),
               v = b - e.offsets.popper[m] - y - E;
           return v = ee(Q(s[l] - u, v), 0), e.arrowElement = i, e.offsets.arrow = (n = {}, ae(n, m, $(v)), ae(n, h, ''), n), e;
         },
@@ -7697,7 +7697,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 });
 
 !function (t, e) {
-  "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define(e) : (t = t || self).Sweetalert2 = e();
+  "object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define(e) : t.Sweetalert2 = e();
 }(this, function () {
   "use strict";
 
@@ -7803,8 +7803,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     return Array.prototype.slice.call(t);
   }
 
-  function v(t) {
-    console.error("".concat(V, " ").concat(t));
+  function g(t) {
+    console.error("".concat(q, " ").concat(t));
   }
 
   function h(t, e) {
@@ -7812,7 +7812,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     n = '"'.concat(t, '" is deprecated and will be removed in the next major release. Please use "').concat(e, '" instead.'), -1 === D.indexOf(n) && (D.push(n), R(n));
   }
 
-  function g(t) {
+  function v(t) {
     return t && Promise.resolve(t) === t;
   }
 
@@ -7876,15 +7876,15 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     return y(".".concat(_.actions, " .").concat(_.confirm));
   }
 
-  function T() {
+  function E() {
     return y(".".concat(_.actions, " .").concat(_.cancel));
   }
 
-  function E() {
+  function S() {
     return e(_.actions);
   }
 
-  function S() {
+  function T() {
     return e(_.header);
   }
 
@@ -7932,7 +7932,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
   }
 
-  function q(t, e, n) {
+  function V(t, e, n) {
     var o, i;
 
     if (i = e, m((o = t).classList).forEach(function (t) {
@@ -7943,9 +7943,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
   }
 
-  var V = "SweetAlert2:",
+  var q = "SweetAlert2:",
       R = function R(t) {
-    console.warn("".concat(V, " ").concat(t));
+    console.warn("".concat(q, " ").concat(t));
   },
       D = [],
       N = function N(t) {
@@ -7958,7 +7958,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     esc: "esc",
     timer: "timer"
   }),
-      _ = t(["container", "shown", "height-auto", "iosfix", "popup", "modal", "no-backdrop", "no-transition", "toast", "toast-shown", "toast-column", "show", "hide", "close", "title", "header", "content", "html-container", "actions", "confirm", "cancel", "footer", "icon", "icon-content", "image", "input", "file", "range", "select", "radio", "checkbox", "label", "textarea", "inputerror", "validation-message", "progress-steps", "active-progress-step", "progress-step", "progress-step-line", "loading", "styled", "top", "top-start", "top-end", "top-left", "top-right", "center", "center-start", "center-end", "center-left", "center-right", "bottom", "bottom-start", "bottom-end", "bottom-left", "bottom-right", "grow-row", "grow-column", "grow-fullscreen", "rtl", "timer-progress-bar", "scrollbar-measure", "icon-success", "icon-warning", "icon-info", "icon-question", "icon-error"]),
+      _ = t(["container", "shown", "height-auto", "iosfix", "popup", "modal", "no-backdrop", "toast", "toast-shown", "toast-column", "show", "hide", "close", "title", "header", "content", "html-container", "actions", "confirm", "cancel", "footer", "icon", "icon-content", "image", "input", "file", "range", "select", "radio", "checkbox", "label", "textarea", "inputerror", "validation-message", "progress-steps", "active-progress-step", "progress-step", "progress-step-line", "loading", "styled", "top", "top-start", "top-end", "top-left", "top-right", "center", "center-start", "center-end", "center-left", "center-right", "bottom", "bottom-start", "bottom-end", "bottom-left", "bottom-right", "grow-row", "grow-column", "grow-fullscreen", "rtl", "timer-progress-bar", "scrollbar-measure", "icon-success", "icon-warning", "icon-info", "icon-question", "icon-error"]),
       F = t(["success", "warning", "info", "question", "error"]),
       z = function z() {
     return document.body.querySelector(".".concat(_.container));
@@ -8056,10 +8056,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   }
 
   function at(t, e) {
-    var n = E(),
+    var n = S(),
         o = B(),
-        i = T();
-    e.showConfirmButton || e.showCancelButton || G(n), q(n, e, "actions"), vt(o, "confirm", e), vt(i, "cancel", e), e.buttonsStyling ? function (t, e, n) {
+        i = E();
+    e.showConfirmButton || e.showCancelButton || G(n), V(n, e, "actions"), vt(o, "confirm", e), vt(i, "cancel", e), e.buttonsStyling ? function (t, e, n) {
       st([t, e], _.styled), n.confirmButtonColor && (t.style.backgroundColor = n.confirmButtonColor);
       n.cancelButtonColor && (e.style.backgroundColor = n.cancelButtonColor);
       var o = window.getComputedStyle(t).getPropertyValue("background-color");
@@ -8084,12 +8084,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   },
       pt = '\n <div aria-labelledby="'.concat(_.title, '" aria-describedby="').concat(_.content, '" class="').concat(_.popup, '" tabindex="-1">\n   <div class="').concat(_.header, '">\n     <ul class="').concat(_["progress-steps"], '"></ul>\n     <div class="').concat(_.icon, " ").concat(F.error, '"></div>\n     <div class="').concat(_.icon, " ").concat(F.question, '"></div>\n     <div class="').concat(_.icon, " ").concat(F.warning, '"></div>\n     <div class="').concat(_.icon, " ").concat(F.info, '"></div>\n     <div class="').concat(_.icon, " ").concat(F.success, '"></div>\n     <img class="').concat(_.image, '" />\n     <h2 class="').concat(_.title, '" id="').concat(_.title, '"></h2>\n     <button type="button" class="').concat(_.close, '"></button>\n   </div>\n   <div class="').concat(_.content, '">\n     <div id="').concat(_.content, '" class="').concat(_["html-container"], '"></div>\n     <input class="').concat(_.input, '" />\n     <input type="file" class="').concat(_.file, '" />\n     <div class="').concat(_.range, '">\n       <input type="range" />\n       <output></output>\n     </div>\n     <select class="').concat(_.select, '"></select>\n     <div class="').concat(_.radio, '"></div>\n     <label for="').concat(_.checkbox, '" class="').concat(_.checkbox, '">\n       <input type="checkbox" />\n       <span class="').concat(_.label, '"></span>\n     </label>\n     <textarea class="').concat(_.textarea, '"></textarea>\n     <div class="').concat(_["validation-message"], '" id="').concat(_["validation-message"], '"></div>\n   </div>\n   <div class="').concat(_.actions, '">\n     <button type="button" class="').concat(_.confirm, '">OK</button>\n     <button type="button" class="').concat(_.cancel, '">Cancel</button>\n   </div>\n   <div class="').concat(_.footer, '"></div>\n   <div class="').concat(_["timer-progress-bar"], '"></div>\n </div>\n').replace(/(^|\n)\s*/g, ""),
       ft = function ft(t) {
-    var e,
-        n = !!(e = z()) && (e.parentNode.removeChild(e), ut([document.documentElement, document.body], [_["no-backdrop"], _["toast-shown"], _["has-column"]]), !0);
-    if (ot()) v("SweetAlert2 requires document to initialize");else {
-      var o = document.createElement("div");
-      o.className = _.container, n && st(o, _["no-transition"]), o.innerHTML = pt;
-      var i,
+    var e;
+    if ((e = z()) && (e.parentNode.removeChild(e), ut([document.documentElement, document.body], [_["no-backdrop"], _["toast-shown"], _["has-column"]])), ot()) g("SweetAlert2 requires document to initialize");else {
+      var n = document.createElement("div");
+      n.className = _.container, n.innerHTML = pt;
+      var o,
+          i,
           r,
           a,
           c,
@@ -8100,12 +8100,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           p,
           f,
           m,
-          h,
-          g = "string" == typeof (i = t.target) ? document.querySelector(i) : i;
-      g.appendChild(o), r = t, (a = W()).setAttribute("role", r.toast ? "alert" : "dialog"), a.setAttribute("aria-live", r.toast ? "polite" : "assertive"), r.toast || a.setAttribute("aria-modal", "true"), c = g, "rtl" === window.getComputedStyle(c).direction && st(z(), _.rtl), s = k(), u = lt(s, _.input), l = lt(s, _.file), d = s.querySelector(".".concat(_.range, " input")), p = s.querySelector(".".concat(_.range, " output")), f = lt(s, _.select), m = s.querySelector(".".concat(_.checkbox, " input")), h = lt(s, _.textarea), u.oninput = it, l.onchange = it, f.onchange = it, m.onchange = it, h.oninput = it, d.oninput = function (t) {
-        it(t), p.value = d.value;
-      }, d.onchange = function (t) {
-        it(t), d.nextSibling.value = d.value;
+          h = "string" == typeof (o = t.target) ? document.querySelector(o) : o;
+      h.appendChild(n), i = t, (r = W()).setAttribute("role", i.toast ? "alert" : "dialog"), r.setAttribute("aria-live", i.toast ? "polite" : "assertive"), i.toast || r.setAttribute("aria-modal", "true"), a = h, "rtl" === window.getComputedStyle(a).direction && st(z(), _.rtl), c = k(), s = lt(c, _.input), u = lt(c, _.file), l = c.querySelector(".".concat(_.range, " input")), d = c.querySelector(".".concat(_.range, " output")), p = lt(c, _.select), f = c.querySelector(".".concat(_.checkbox, " input")), m = lt(c, _.textarea), s.oninput = it, u.onchange = it, p.onchange = it, f.onchange = it, m.oninput = it, l.oninput = function (t) {
+        it(t), d.value = l.value;
+      }, l.onchange = function (t) {
+        it(t), l.nextSibling.value = l.value;
       };
     }
   },
@@ -8135,7 +8134,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
   function vt(t, e, n) {
     var o;
-    tt(t, n["show".concat((o = e).charAt(0).toUpperCase() + o.slice(1), "Button")], "inline-block"), t.innerHTML = n["".concat(e, "ButtonText")], t.setAttribute("aria-label", n["".concat(e, "ButtonAriaLabel")]), t.className = _[e], q(t, n, "".concat(e, "Button")), st(t, n["".concat(e, "ButtonClass")]);
+    tt(t, n["show".concat((o = e).charAt(0).toUpperCase() + o.slice(1), "Button")], "inline-block"), t.innerHTML = n["".concat(e, "ButtonText")], t.setAttribute("aria-label", n["".concat(e, "ButtonAriaLabel")]), t.className = _[e], V(t, n, "".concat(e, "Button")), st(t, n["".concat(e, "ButtonClass")]);
   }
 
   function bt(t, e) {
@@ -8148,7 +8147,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           var n = "grow-".concat(e);
           n in _ && st(t, _[n]);
         }
-      }(n, e.grow), q(n, e, "container");
+      }(n, e.grow), V(n, e, "container");
       var c = document.body.getAttribute("data-swal2-queue-step");
       c && (n.setAttribute("data-queue-step", c), document.body.removeAttribute("data-swal2-queue-step"));
     }
@@ -8165,7 +8164,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   },
       Ct = ["input", "file", "range", "select", "radio", "checkbox", "textarea"],
       kt = function kt(t) {
-    if (!Bt[t.input]) return v('Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "'.concat(t.input, '"'));
+    if (!Bt[t.input]) return g('Unexpected type of input! Expected "text", "email", "password", "number", "tel", "select", "radio", "checkbox", "textarea", "file" or "url", got "'.concat(t.input, '"'));
     var e = At(t.input),
         n = Bt[t.input](e, t);
     X(n), setTimeout(function () {
@@ -8194,7 +8193,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       Bt = {};
 
   Bt.text = Bt.email = Bt.password = Bt.number = Bt.tel = Bt.url = function (t, e) {
-    return "string" == typeof e.inputValue || "number" == typeof e.inputValue ? t.value = e.inputValue : g(e.inputValue) || R('Unexpected type of inputValue! Expected "string", "number" or "Promise", got "'.concat(r(e.inputValue), '"')), yt(t, e), t.type = e.input, t;
+    return "string" == typeof e.inputValue || "number" == typeof e.inputValue ? t.value = e.inputValue : v(e.inputValue) || R('Unexpected type of inputValue! Expected "string", "number" or "Promise", got "'.concat(r(e.inputValue), '"')), yt(t, e), t.type = e.input, t;
   }, Bt.file = function (t, e) {
     return yt(t, e), t;
   }, Bt.range = function (t, e) {
@@ -8229,7 +8228,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     return e;
   };
 
-  function Tt(t, e) {
+  function Et(t, e) {
     var n,
         o,
         i,
@@ -8240,18 +8239,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       var e = _[t],
           n = lt(i, e);
       xt(t, o.inputAttributes), n.className = e, a && G(n);
-    }), o.input && (a && kt(o), Pt(o)), q(k(), e, "content");
+    }), o.input && (a && kt(o), Pt(o)), V(k(), e, "content");
   }
 
-  function Et() {
+  function St() {
     return z().getAttribute("data-queue-step");
   }
 
-  function St(t, s) {
+  function Tt(t, s) {
     var u = P();
     if (!s.progressSteps || 0 === s.progressSteps.length) return G(u);
     X(u), u.innerHTML = "";
-    var l = parseInt(void 0 === s.currentProgressStep ? Et() : s.currentProgressStep);
+    var l = parseInt(void 0 === s.currentProgressStep ? St() : s.currentProgressStep);
     l >= s.progressSteps.length && R("Invalid currentProgressStep parameter, it should be less than progressSteps.length (currentProgressStep like JS arrays starts from 0)"), s.progressSteps.forEach(function (t, e) {
       var n,
           o,
@@ -8271,23 +8270,23 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         o,
         i,
         r,
-        a = S();
-    q(a, e, "header"), St(0, e), function (t, e) {
+        a = T();
+    V(a, e, "header"), Tt(0, e), function (t, e) {
       var n = wt.innerParams.get(t);
-      if (n && e.icon === n.icon && w()) q(w(), e, "icon");else if (Ht(), e.icon) if (-1 !== Object.keys(F).indexOf(e.icon)) {
+      if (n && e.icon === n.icon && w()) V(w(), e, "icon");else if (Ht(), e.icon) if (-1 !== Object.keys(F).indexOf(e.icon)) {
         var o = y(".".concat(_.icon, ".").concat(F[e.icon]));
-        X(o), jt(o, e), It(), q(o, e, "icon"), st(o, e.showClass.icon);
-      } else v('Unknown icon! Expected "success", "error", "warning", "info" or "question", got "'.concat(e.icon, '"'));
+        X(o), jt(o, e), It(), V(o, e, "icon"), st(o, e.showClass.icon);
+      } else g('Unknown icon! Expected "success", "error", "warning", "info" or "question", got "'.concat(e.icon, '"'));
     }(t, e), function (t) {
       var e = x();
       if (!t.imageUrl) return G(e);
-      X(e), e.setAttribute("src", t.imageUrl), e.setAttribute("alt", t.imageAlt), J(e, "width", t.imageWidth), J(e, "height", t.imageHeight), e.className = _.image, q(e, t, "image");
-    }(e), n = e, o = C(), tt(o, n.title || n.titleText), n.title && rt(n.title, o), n.titleText && (o.innerText = n.titleText), q(o, n, "title"), i = e, (r = M()).innerHTML = i.closeButtonHtml, q(r, i, "closeButton"), tt(r, i.showCloseButton), r.setAttribute("aria-label", i.closeButtonAriaLabel);
+      X(e), e.setAttribute("src", t.imageUrl), e.setAttribute("alt", t.imageAlt), J(e, "width", t.imageWidth), J(e, "height", t.imageHeight), e.className = _.image, V(e, t, "image");
+    }(e), n = e, o = C(), tt(o, n.title || n.titleText), n.title && rt(n.title, o), n.titleText && (o.innerText = n.titleText), V(o, n, "title"), i = e, (r = M()).innerHTML = i.closeButtonHtml, V(r, i, "closeButton"), tt(r, i.showCloseButton), r.setAttribute("aria-label", i.closeButtonAriaLabel);
   }
 
   function Ot(t, e) {
     var n, o, i, r;
-    n = e, o = W(), J(o, "width", n.width), J(o, "padding", n.padding), n.background && (o.style.background = n.background), Rt(o, n), bt(0, e), Lt(t, e), Tt(t, e), at(0, e), i = e, r = L(), tt(r, i.footer), i.footer && rt(i.footer, r), q(r, i, "footer"), "function" == typeof e.onRender && e.onRender(W());
+    n = e, o = W(), J(o, "width", n.width), J(o, "padding", n.padding), n.background && (o.style.background = n.background), Rt(o, n), bt(0, e), Lt(t, e), Et(t, e), at(0, e), i = e, r = L(), tt(r, i.footer), i.footer && rt(i.footer, r), V(r, i, "footer"), "function" == typeof e.onRender && e.onRender(W());
   }
 
   function Mt() {
@@ -8305,26 +8304,26 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
   },
       jt = function jt(t, e) {
-    if (t.innerHTML = "", e.iconHtml) t.innerHTML = qt(e.iconHtml);else if ("success" === e.icon) t.innerHTML = '\n      <div class="swal2-success-circular-line-left"></div>\n      <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>\n      <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>\n      <div class="swal2-success-circular-line-right"></div>\n    ';else if ("error" === e.icon) t.innerHTML = '\n      <span class="swal2-x-mark">\n        <span class="swal2-x-mark-line-left"></span>\n        <span class="swal2-x-mark-line-right"></span>\n      </span>\n    ';else {
-      t.innerHTML = qt({
+    if (t.innerHTML = "", e.iconHtml) t.innerHTML = Vt(e.iconHtml);else if ("success" === e.icon) t.innerHTML = '\n      <div class="swal2-success-circular-line-left"></div>\n      <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>\n      <div class="swal2-success-ring"></div> <div class="swal2-success-fix"></div>\n      <div class="swal2-success-circular-line-right"></div>\n    ';else if ("error" === e.icon) t.innerHTML = '\n      <span class="swal2-x-mark">\n        <span class="swal2-x-mark-line-left"></span>\n        <span class="swal2-x-mark-line-right"></span>\n      </span>\n    ';else {
+      t.innerHTML = Vt({
         question: "?",
         warning: "!",
         info: "i"
       }[e.icon]);
     }
   },
-      qt = function qt(t) {
+      Vt = function Vt(t) {
     return '<div class="'.concat(_["icon-content"], '">').concat(t, "</div>");
   },
-      Vt = [],
+      qt = [],
       Rt = function Rt(t, e) {
-    t.className = "".concat(_.popup, " ").concat(dt(t) ? e.showClass.popup : ""), e.toast ? (st([document.documentElement, document.body], _["toast-shown"]), st(t, _.toast)) : st(t, _.modal), q(t, e, "popup"), "string" == typeof e.customClass && st(t, e.customClass), e.icon && st(t, _["icon-".concat(e.icon)]);
+    t.className = "".concat(_.popup, " ").concat(dt(t) ? e.showClass.popup : ""), e.toast ? (st([document.documentElement, document.body], _["toast-shown"]), st(t, _.toast)) : st(t, _.modal), V(t, e, "popup"), "string" == typeof e.customClass && st(t, e.customClass), e.icon && st(t, _["icon-".concat(e.icon)]);
   };
 
   function Dt() {
     var t = W();
     t || Xe.fire(), t = W();
-    var e = E(),
+    var e = S(),
         n = B();
     X(e), X(n, "inline-block"), st([t, e], _.loading), n.disabled = !0, t.setAttribute("data-loading", !0), t.setAttribute("aria-busy", !0), t.focus();
   }
@@ -8457,7 +8456,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       var i = {};
       return "object" !== r(o[0]) || b(o[0]) ? ["title", "html", "icon"].forEach(function (t, e) {
         var n = o[e];
-        "string" == typeof n || b(n) ? i[t] = n : void 0 !== n && v("Unexpected type of ".concat(t, '! Expected "string" or "Element", got ').concat(r(n)));
+        "string" == typeof n || b(n) ? i[t] = n : void 0 !== n && g("Unexpected type of ".concat(t, '! Expected "string" or "Element", got ').concat(r(n)));
       }) : c(i, o[0]), i;
     },
     isVisible: function isVisible() {
@@ -8465,7 +8464,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     },
     clickConfirm: Mt,
     clickCancel: function clickCancel() {
-      return T() && T().click();
+      return E() && E().click();
     },
     getContainer: z,
     getPopup: W,
@@ -8478,12 +8477,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     getIcon: w,
     getIcons: n,
     getCloseButton: M,
-    getActions: E,
+    getActions: S,
     getConfirmButton: B,
-    getCancelButton: T,
-    getHeader: S,
+    getCancelButton: E,
+    getHeader: T,
     getFooter: L,
-    getTimerProgressBar: O,
     getFocusableElements: H,
     getValidationMessage: A,
     isLoading: function isLoading() {
@@ -8521,16 +8519,16 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     },
     queue: function queue(t) {
       var r = this;
-      Vt = t;
+      qt = t;
 
       function a(t, e) {
-        Vt = [], t(e);
+        qt = [], t(e);
       }
 
       var c = [];
       return new Promise(function (i) {
         !function e(n, o) {
-          n < Vt.length ? (document.body.setAttribute("data-swal2-queue-step", n), r.fire(Vt[n]).then(function (t) {
+          n < qt.length ? (document.body.setAttribute("data-swal2-queue-step", n), r.fire(qt[n]).then(function (t) {
             void 0 !== t.value ? (c.push(t.value), e(n + 1, o)) : a(i, {
               dismiss: t.dismiss
             });
@@ -8540,12 +8538,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         }(0);
       });
     },
-    getQueueStep: Et,
+    getQueueStep: St,
     insertQueueStep: function insertQueueStep(t, e) {
-      return e && e < Vt.length ? Vt.splice(e, 0, t) : Vt.push(t);
+      return e && e < qt.length ? qt.splice(e, 0, t) : qt.push(t);
     },
     deleteQueueStep: function deleteQueueStep(t) {
-      void 0 !== Vt[t] && Vt.splice(t, 1);
+      void 0 !== qt[t] && qt.splice(t, 1);
     },
     showLoading: Dt,
     enableLoading: Dt,
@@ -8616,7 +8614,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       return ae(t, o);
     }), Wt.keydownTarget.removeEventListener("keydown", Wt.keydownHandler, {
       capture: Wt.keydownListenerCapture
-    }), Wt.keydownHandlerAdded = !1), e.parentNode && !document.body.getAttribute("data-swal2-queue-step") && e.parentNode.removeChild(e), I() && (null !== Y.previousBodyPadding && (document.body.style.paddingRight = "".concat(Y.previousBodyPadding, "px"), Y.previousBodyPadding = null), function () {
+    }), Wt.keydownHandlerAdded = !1), e.parentNode && e.parentNode.removeChild(e), I() && (null !== Y.previousBodyPadding && (document.body.style.paddingRight = "".concat(Y.previousBodyPadding, "px"), Y.previousBodyPadding = null), function () {
       if (j(document.body, _.iosfix)) {
         var t = parseInt(document.body.style.top, 10);
         ut(document.body, _.iosfix), document.body.style.top = "", document.body.scrollTop = -1 * t;
@@ -8735,7 +8733,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         n = W();
     "function" == typeof t.onBeforeOpen && t.onBeforeOpen(n), xe(e, n, t), Ce(e, n), I() && ke(e, t.scrollbarPadding), K() || Wt.previousActiveElement || (Wt.previousActiveElement = document.activeElement), "function" == typeof t.onOpen && setTimeout(function () {
       return t.onOpen(n);
-    }), ut(e, _["no-transition"]);
+    });
   }
 
   function fe(t) {
@@ -8748,7 +8746,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   }
 
   function me(t, e) {
-    "select" === e.input || "radio" === e.input ? Te(t, e) : -1 !== ["text", "email", "number", "tel", "textarea"].indexOf(e.input) && g(e.inputValue) && Ee(t, e);
+    "select" === e.input || "radio" === e.input ? Ee(t, e) : -1 !== ["text", "email", "number", "tel", "textarea"].indexOf(e.input) && v(e.inputValue) && Se(t, e);
   }
 
   function he(t, e) {
@@ -8815,25 +8813,25 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       Be = function Be(t) {
     return t.files.length ? null !== t.getAttribute("multiple") ? t.files : t.files[0] : null;
   },
-      Te = function Te(e, n) {
+      Ee = function Ee(e, n) {
     function o(t) {
-      return Se[n.input](i, Le(t), n);
+      return Te[n.input](i, Le(t), n);
     }
 
     var i = k();
-    g(n.inputOptions) ? (Dt(), n.inputOptions.then(function (t) {
+    v(n.inputOptions) ? (Dt(), n.inputOptions.then(function (t) {
       e.hideLoading(), o(t);
-    })) : "object" === r(n.inputOptions) ? o(n.inputOptions) : v("Unexpected type of inputOptions! Expected object, Map or Promise, got ".concat(r(n.inputOptions)));
+    })) : "object" === r(n.inputOptions) ? o(n.inputOptions) : g("Unexpected type of inputOptions! Expected object, Map or Promise, got ".concat(r(n.inputOptions)));
   },
-      Ee = function Ee(e, n) {
+      Se = function Se(e, n) {
     var o = e.getInput();
     G(o), n.inputValue.then(function (t) {
       o.value = "number" === n.input ? parseFloat(t) || 0 : "".concat(t), X(o), o.focus(), e.hideLoading();
     })["catch"](function (t) {
-      v("Error in inputValue promise: ".concat(t)), o.value = "", X(o), o.focus(), e.hideLoading();
+      g("Error in inputValue promise: ".concat(t)), o.value = "", X(o), o.focus(), e.hideLoading();
     });
   },
-      Se = {
+      Te = {
     select: function select(t, e, i) {
       var r = lt(t, _.select);
       e.forEach(function (t) {
@@ -8903,15 +8901,15 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       Ie = ["Escape", "Esc"],
       je = function je(t, e, n) {
     var o = wt.innerParams.get(t);
-    o.stopKeydownPropagation && e.stopPropagation(), "Enter" === e.key ? qe(t, e, o) : "Tab" === e.key ? Ve(e, o) : -1 !== He.indexOf(e.key) ? Re() : -1 !== Ie.indexOf(e.key) && De(e, o, n);
+    o.stopKeydownPropagation && e.stopPropagation(), "Enter" === e.key ? Ve(t, e, o) : "Tab" === e.key ? qe(e, o) : -1 !== He.indexOf(e.key) ? Re() : -1 !== Ie.indexOf(e.key) && De(e, o, n);
   },
-      qe = function qe(t, e, n) {
+      Ve = function Ve(t, e, n) {
     if (!e.isComposing && e.target && t.getInput() && e.target.outerHTML === t.getInput().outerHTML) {
       if (-1 !== ["textarea", "file"].indexOf(n.input)) return;
       Mt(), e.preventDefault();
     }
   },
-      Ve = function Ve(t) {
+      qe = function qe(t) {
     for (var e = t.target, n = H(), o = -1, i = 0; i < n.length; i++) {
       if (e === n[i]) {
         o = i;
@@ -8923,7 +8921,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   },
       Re = function Re() {
     var t = B(),
-        e = T();
+        e = E();
     document.activeElement === t && dt(e) ? e.focus() : document.activeElement === e && dt(t) && t.focus();
   },
       De = function De(t, e, n) {
@@ -8962,7 +8960,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     G(o), e.timer && (t.timeout = new ue(function () {
       n("timer"), delete t.timeout;
     }, e.timer), e.timerProgressBar && (X(o), setTimeout(function () {
-      t.timeout.running && nt(e.timer);
+      nt(e.timer);
     })));
   },
       Ke = function Ke(t, e) {
@@ -9051,9 +9049,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           popup: W(),
           container: z(),
           content: k(),
-          actions: E(),
+          actions: S(),
           confirmButton: B(),
-          cancelButton: T(),
+          cancelButton: E(),
           closeButton: M(),
           validationMessage: A(),
           progressSteps: P()
@@ -9126,7 +9124,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
   function Je() {
     if ("undefined" != typeof window) {
-      "undefined" == typeof Promise && v("This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)"), Ze = this;
+      "undefined" == typeof Promise && g("This package requires a Promise library, please include a shim to enable it in this browser (See: https://github.com/sweetalert2/sweetalert2/wiki/Migration-from-SweetAlert-to-SweetAlert2#1-ie-support)"), Ze = this;
 
       for (var t = arguments.length, e = new Array(t), n = 0; n < t; n++) {
         e[n] = arguments[n];
@@ -9156,7 +9154,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     Je[t] = function () {
       if (Ze) return Ze[t].apply(Ze, arguments);
     };
-  }), Je.DismissReason = U, Je.version = "9.8.2";
+  }), Je.DismissReason = U, Je.version = "9.7.2";
   var Xe = Je;
   return Xe["default"] = Xe;
 }), void 0 !== this && this.Sweetalert2 && (this.swal = this.sweetAlert = this.Swal = this.SweetAlert = this.Sweetalert2);
@@ -9290,7 +9288,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   }, f;
 });
 
-var FmdSweetalert2 = /*#__PURE__*/function () {
+var FmdSweetalert2 =
+/*#__PURE__*/
+function () {
   function FmdSweetalert2() {
     _classCallCheck(this, FmdSweetalert2);
   }
@@ -9371,7 +9371,9 @@ function setValidInput(input) {
   input.classList.remove('is-invalid');
 }
 
-var CpfCnpjValidators = /*#__PURE__*/function () {
+var CpfCnpjValidators =
+/*#__PURE__*/
+function () {
   function CpfCnpjValidators() {
     _classCallCheck(this, CpfCnpjValidators);
 
