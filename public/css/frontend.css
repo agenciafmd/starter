@@ -5047,7 +5047,7 @@ input[type=button].btn-block {
 .badge {
   display: inline-block;
   padding: 0.25em 0.4em;
-  font-size: 75%;
+  font-size: 0.75rem;
   font-weight: 700;
   line-height: 1;
   text-align: center;
@@ -42595,6 +42595,10 @@ b, strong {
     padding-left: 7.5rem;
   }
 }
+.btn-spinner {
+  padding: 0.375rem 3rem;
+}
+
 .card {
   padding: 15px;
 }
@@ -42656,6 +42660,22 @@ b, strong {
 .style-scroll::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #7f7f7f;
+}
+
+@keyframes spinner-border {
+  to {
+    -webkit-transform: rotate(360deg) translateY(50%);
+            transform: rotate(360deg) translateY(50%);
+  }
+}
+.spinner-border {
+  position: absolute;
+  right: 115%;
+  bottom: 60%;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+  -webkit-transform: rotate(0deg) translateY(50%);
+          transform: rotate(0deg) translateY(50%);
 }
 
 .block-spacer-y {
