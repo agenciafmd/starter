@@ -1,0 +1,16 @@
+@keyframes spinner-border {
+
+  to {
+
+    transform: rotate(360deg) translateY(50%);
+  }
+}
+
+.spinner-border {
+
+  position: absolute;
+  right: 115%;
+  bottom: 60%;
+  transform-origin: bottom;
+  transform: rotate(0deg) translateY(50%);
+}
