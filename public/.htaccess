@@ -123,7 +123,7 @@
 #Alternative caching using Apache's "mod_headers", if it's installed.
 #Caching of common files - ENABLED
 <IfModule mod_headers.c>
-    <FilesMatch "\.(ico|pdf|flv|swf|js|css|gif|png|jpg|jpeg|txt|html|htm)$">
+    <FilesMatch "\.(ico|pdf|flv|swf|js|css|gif|png|jpg|jpeg|txt|html|htm|svg|woff2)$">
         Header set Cache-Control "max-age=2592000, public"
     </FilesMatch>
 </IfModule>
