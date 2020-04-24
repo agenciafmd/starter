@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a31defb02f1a4976742fb7e5c972f06d",
+    "content-hash": "a28d132415f9668b8231d73fe7f8fae1",
     "packages": [
         {
             "name": "agenciafmd/admix",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix.git",
-                "reference": "a02192af2b037139331beab0e6aecbbee351e7a0"
+                "reference": "53ec5b41b408db537c38dd5c1895d885ceb873cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix/zipball/a02192af2b037139331beab0e6aecbbee351e7a0",
-                "reference": "a02192af2b037139331beab0e6aecbbee351e7a0",
+                "url": "https://api.github.com/repos/agenciafmd/admix/zipball/53ec5b41b408db537c38dd5c1895d885ceb873cb",
+                "reference": "53ec5b41b408db537c38dd5c1895d885ceb873cb",
                 "shasum": ""
             },
             "require": {
@@ -73,7 +73,7 @@
             ],
             "description": "Admix - Agência F&MD",
             "homepage": "https://github.com/agenciafmd/admix",
-            "time": "2020-03-27T13:14:21+00:00"
+            "time": "2020-04-23T20:52:22+00:00"
         },
         {
             "name": "agenciafmd/admix-analytics",
@@ -81,12 +81,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-analytics.git",
-                "reference": "7084d79d48293679831f77fa341b00a3d9b1798f"
+                "reference": "f52c88cc387104a6840b1be0914506bfe35ac348"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix-analytics/zipball/7084d79d48293679831f77fa341b00a3d9b1798f",
-                "reference": "7084d79d48293679831f77fa341b00a3d9b1798f",
+                "url": "https://api.github.com/repos/agenciafmd/admix-analytics/zipball/f52c88cc387104a6840b1be0914506bfe35ac348",
+                "reference": "f52c88cc387104a6840b1be0914506bfe35ac348",
                 "shasum": ""
             },
             "require": {
@@ -121,7 +121,7 @@
             ],
             "description": "Analytics - Agência F&MD",
             "homepage": "https://github.com/agenciafmd/admix-analytics",
-            "time": "2019-12-23T11:02:09+00:00"
+            "time": "2020-04-15T19:49:23+00:00"
         },
         {
             "name": "agenciafmd/admix-form",
@@ -129,12 +129,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-form.git",
-                "reference": "3ac53f473cddd867ca4c1d0df41241ba5e2b7f1a"
+                "reference": "6cc0b0f1923ba0078127b611866dbb8c2ac5515b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix-form/zipball/3ac53f473cddd867ca4c1d0df41241ba5e2b7f1a",
-                "reference": "3ac53f473cddd867ca4c1d0df41241ba5e2b7f1a",
+                "url": "https://api.github.com/repos/agenciafmd/admix-form/zipball/6cc0b0f1923ba0078127b611866dbb8c2ac5515b",
+                "reference": "6cc0b0f1923ba0078127b611866dbb8c2ac5515b",
                 "shasum": ""
             },
             "require": {
@@ -174,7 +174,7 @@
             ],
             "description": "Form - Agência F&MD",
             "homepage": "https://github.com/agenciafmd/admix-form",
-            "time": "2020-03-10T13:21:46+00:00"
+            "time": "2020-04-15T19:53:06+00:00"
         },
         {
             "name": "agenciafmd/admix-leads",
@@ -182,12 +182,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-leads.git",
-                "reference": "3f49a0a58a1918ec7c555893f739391512a66d08"
+                "reference": "79eac1ed6d5640f8b59f6f043378501421e7437f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix-leads/zipball/3f49a0a58a1918ec7c555893f739391512a66d08",
-                "reference": "3f49a0a58a1918ec7c555893f739391512a66d08",
+                "url": "https://api.github.com/repos/agenciafmd/admix-leads/zipball/79eac1ed6d5640f8b59f6f043378501421e7437f",
+                "reference": "79eac1ed6d5640f8b59f6f043378501421e7437f",
                 "shasum": ""
             },
             "require": {
@@ -228,7 +228,7 @@
             ],
             "description": "Leads - Agência F&MD",
             "homepage": "https://github.com/agenciafmd/admix-leads",
-            "time": "2020-03-17T18:24:42+00:00"
+            "time": "2020-04-20T19:21:48+00:00"
         },
         {
             "name": "agenciafmd/admix-postal",
@@ -236,12 +236,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-postal.git",
-                "reference": "b30642b778e1959a02859763e68a8f9d27dc8695"
+                "reference": "e4a852a4f34b1563c55c1389f4bd1c1f758b2382"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix-postal/zipball/b30642b778e1959a02859763e68a8f9d27dc8695",
-                "reference": "b30642b778e1959a02859763e68a8f9d27dc8695",
+                "url": "https://api.github.com/repos/agenciafmd/admix-postal/zipball/e4a852a4f34b1563c55c1389f4bd1c1f758b2382",
+                "reference": "e4a852a4f34b1563c55c1389f4bd1c1f758b2382",
                 "shasum": ""
             },
             "require": {
@@ -281,7 +281,7 @@
             ],
             "description": "Postal - Agência F&MD",
             "homepage": "https://github.com/agenciafmd/admix-postal",
-            "time": "2020-01-14T16:50:07+00:00"
+            "time": "2020-04-15T19:49:24+00:00"
         },
         {
             "name": "agenciafmd/frontend",
@@ -289,7 +289,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/agenciafmd/frontend",
-                "reference": "4d091dc9d797021b127fec58b4db66e8e8e31482"
+                "reference": "37a8db4bc7ef6959801f362fcbd1874704f02df9"
             },
             "require": {
                 "laravel/framework": "6.*"
@@ -320,7 +320,8 @@
             ],
             "description": "Frontend - Agência F&MD",
             "transport-options": {
-                "symlink": true
+                "symlink": true,
+                "relative": true
             }
         },
         {
@@ -764,16 +765,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.128",
+            "version": "v0.131",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "d6425891e72439bbec9d9dcb0c8b9fca49ca017e"
+                "reference": "c7085d771c635933baff9714732af2d5042f5dd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/d6425891e72439bbec9d9dcb0c8b9fca49ca017e",
-                "reference": "d6425891e72439bbec9d9dcb0c8b9fca49ca017e",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/c7085d771c635933baff9714732af2d5042f5dd6",
+                "reference": "c7085d771c635933baff9714732af2d5042f5dd6",
                 "shasum": ""
             },
             "require": {
@@ -797,7 +798,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2020-04-01T00:24:15+00:00"
+            "time": "2020-04-20T00:24:47+00:00"
         },
         {
             "name": "google/auth",
@@ -853,23 +854,24 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.5.2",
+            "version": "6.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82"
+                "reference": "aab4ebd862aa7d04f01a4b51849d657db56d882e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/43ece0e75098b7ecd8d13918293029e555a50f82",
-                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/aab4ebd862aa7d04f01a4b51849d657db56d882e",
+                "reference": "aab4ebd862aa7d04f01a4b51849d657db56d882e",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "guzzlehttp/promises": "^1.0",
                 "guzzlehttp/psr7": "^1.6.1",
-                "php": ">=5.5"
+                "php": ">=5.5",
+                "symfony/polyfill-intl-idn": "^1.11"
             },
             "require-dev": {
                 "ext-curl": "*",
@@ -877,7 +879,6 @@
                 "psr/log": "^1.1"
             },
             "suggest": {
-                "ext-intl": "Required for Internationalized Domain Name (IDN) support",
                 "psr/log": "Required for using the Log middleware"
             },
             "type": "library",
@@ -916,7 +917,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2019-12-23T11:57:10+00:00"
+            "time": "2020-04-18T10:38:46+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1205,6 +1206,7 @@
                     "email": "jakub.onderka@gmail.com"
                 }
             ],
+            "abandoned": "php-parallel-lint/php-console-color",
             "time": "2018-09-29T17:23:10+00:00"
         },
         {
@@ -1251,6 +1253,7 @@
                 }
             ],
             "description": "Highlight PHP code in terminal",
+            "abandoned": "php-parallel-lint/php-console-highlighter",
             "time": "2018-09-29T18:48:56+00:00"
         },
         {
@@ -1309,16 +1312,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v6.18.3",
+            "version": "v6.18.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "4e48acfaba87f08320a2764d36c3b6a4a4112ccf"
+                "reference": "9177744ccdd8d5db970fdff2383fe89c2e94aabe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/4e48acfaba87f08320a2764d36c3b6a4a4112ccf",
-                "reference": "4e48acfaba87f08320a2764d36c3b6a4a4112ccf",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/9177744ccdd8d5db970fdff2383fe89c2e94aabe",
+                "reference": "9177744ccdd8d5db970fdff2383fe89c2e94aabe",
                 "shasum": ""
             },
             "require": {
@@ -1451,7 +1454,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-03-24T16:37:50+00:00"
+            "time": "2020-04-21T18:53:10+00:00"
         },
         {
             "name": "laravel/helpers",
@@ -1702,16 +1705,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "1.3.2",
+            "version": "1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "75542a366ccbe1896ed79fcf3e8e68206d6c4257"
+                "reference": "9e780d972185e4f737a03bade0fd34a9e67bbf31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/75542a366ccbe1896ed79fcf3e8e68206d6c4257",
-                "reference": "75542a366ccbe1896ed79fcf3e8e68206d6c4257",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/9e780d972185e4f737a03bade0fd34a9e67bbf31",
+                "reference": "9e780d972185e4f737a03bade0fd34a9e67bbf31",
                 "shasum": ""
             },
             "require": {
@@ -1729,7 +1732,7 @@
                 "github/gfm": "0.29.0",
                 "michelf/php-markdown": "~1.4",
                 "mikehaertl/php-shellcommand": "^1.4",
-                "phpstan/phpstan-shim": "^0.11.5",
+                "phpstan/phpstan": "^0.12",
                 "phpunit/phpunit": "^7.5",
                 "scrutinizer/ocular": "^1.5",
                 "symfony/finder": "^4.2"
@@ -1774,6 +1777,18 @@
             ],
             "funding": [
                 {
+                    "url": "https://enjoy.gitstore.app/repositories/thephpleague/commonmark",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.colinodell.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.paypal.me/colinpodell/10.00",
+                    "type": "custom"
+                },
+                {
                     "url": "https://github.com/colinodell",
                     "type": "github"
                 },
@@ -1782,24 +1797,24 @@
                     "type": "patreon"
                 },
                 {
-                    "url": "https://tidelift.com/funding/github/packagist/league%2fcommonmark",
+                    "url": "https://tidelift.com/funding/github/packagist/league/commonmark",
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-03-25T19:55:28+00:00"
+            "time": "2020-04-24T13:39:56+00:00"
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.66",
+            "version": "1.0.67",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "021569195e15f8209b1c4bebb78bd66aa4f08c21"
+                "reference": "5b1f36c75c4bdde981294c2a0ebdb437ee6f275e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/021569195e15f8209b1c4bebb78bd66aa4f08c21",
-                "reference": "021569195e15f8209b1c4bebb78bd66aa4f08c21",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/5b1f36c75c4bdde981294c2a0ebdb437ee6f275e",
+                "reference": "5b1f36c75c4bdde981294c2a0ebdb437ee6f275e",
                 "shasum": ""
             },
             "require": {
@@ -1876,7 +1891,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2020-03-17T18:58:12+00:00"
+            "time": "2020-04-16T13:21:26+00:00"
         },
         {
             "name": "league/glide",
@@ -2023,6 +2038,69 @@
             "description": "Glide adapter for Symfony",
             "homepage": "http://glide.thephpleague.com",
             "time": "2020-03-05T12:38:10+00:00"
+        },
+        {
+            "name": "livewire/livewire",
+            "version": "v1.0.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/livewire/livewire.git",
+                "reference": "2f2035c2be547f7af7782c0231eebf7413d5d9e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/2f2035c2be547f7af7782c0231eebf7413d5d9e0",
+                "reference": "2f2035c2be547f7af7782c0231eebf7413d5d9e0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+                "illuminate/support": "~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+                "illuminate/validation": "~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+                "php": "^7.1.3",
+                "symfony/http-kernel": "^4.0|^5.0"
+            },
+            "require-dev": {
+                "laravel/framework": "~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+                "mockery/mockery": "^1.3.1",
+                "orchestra/testbench": "~3.6.0|~3.7.0|~3.8.0|^4.0|^5.0",
+                "phpunit/phpunit": "^7.5.15|^8.4|^9.0",
+                "psy/psysh": "@stable"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Livewire\\LivewireServiceProvider"
+                    ],
+                    "aliases": {
+                        "Livewire": "Livewire\\Livewire"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Livewire\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Caleb Porzio",
+                    "email": "calebporzio@gmail.com"
+                }
+            ],
+            "description": "A front-end framework for Laravel.",
+            "funding": [
+                {
+                    "url": "https://github.com/calebporzio",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-04-23T01:49:34+00:00"
         },
         {
             "name": "maennchen/zipstream-php",
@@ -2605,16 +2683,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.3.0",
+            "version": "v4.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "9a9981c347c5c49d6dfe5cf826bb882b824080dc"
+                "reference": "bd43ec7152eaaab3bd8c6d0aa95ceeb1df8ee120"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/9a9981c347c5c49d6dfe5cf826bb882b824080dc",
-                "reference": "9a9981c347c5c49d6dfe5cf826bb882b824080dc",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/bd43ec7152eaaab3bd8c6d0aa95ceeb1df8ee120",
+                "reference": "bd43ec7152eaaab3bd8c6d0aa95ceeb1df8ee120",
                 "shasum": ""
             },
             "require": {
@@ -2653,7 +2731,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-11-08T13:50:10+00:00"
+            "time": "2020-04-10T16:34:50+00:00"
         },
         {
             "name": "opis/closure",
@@ -3049,16 +3127,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "2.0.26",
+            "version": "2.0.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "09655fcc1f8bab65727be036b28f6f20311c126c"
+                "reference": "34620af4df7d1988d8f0d7e91f6c8a3bf931d8dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/09655fcc1f8bab65727be036b28f6f20311c126c",
-                "reference": "09655fcc1f8bab65727be036b28f6f20311c126c",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/34620af4df7d1988d8f0d7e91f6c8a3bf931d8dc",
+                "reference": "34620af4df7d1988d8f0d7e91f6c8a3bf931d8dc",
                 "shasum": ""
             },
             "require": {
@@ -3151,7 +3229,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-03-13T04:15:39+00:00"
+            "time": "2020-04-04T23:17:33+00:00"
         },
         {
             "name": "psr/cache",
@@ -3712,16 +3790,16 @@
         },
         {
             "name": "spatie/browsershot",
-            "version": "3.35.0",
+            "version": "3.36.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/browsershot.git",
-                "reference": "adb9e91c409462152b0baff473b2fa47cf413150"
+                "reference": "5e5210438857148c126fa1867eb037e98b73ebc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/browsershot/zipball/adb9e91c409462152b0baff473b2fa47cf413150",
-                "reference": "adb9e91c409462152b0baff473b2fa47cf413150",
+                "url": "https://api.github.com/repos/spatie/browsershot/zipball/5e5210438857148c126fa1867eb037e98b73ebc2",
+                "reference": "5e5210438857148c126fa1867eb037e98b73ebc2",
                 "shasum": ""
             },
             "require": {
@@ -3770,20 +3848,20 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-03-05T08:48:51+00:00"
+            "time": "2020-04-20T10:33:41+00:00"
         },
         {
             "name": "spatie/crawler",
-            "version": "4.6.8",
+            "version": "4.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/crawler.git",
-                "reference": "3c1eb2d38b4a18560d3f48087597f9786f95b694"
+                "reference": "3ec6b08ede3215d29ba8f5f2ed1df0fba5e2ea17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/crawler/zipball/3c1eb2d38b4a18560d3f48087597f9786f95b694",
-                "reference": "3c1eb2d38b4a18560d3f48087597f9786f95b694",
+                "url": "https://api.github.com/repos/spatie/crawler/zipball/3ec6b08ede3215d29ba8f5f2ed1df0fba5e2ea17",
+                "reference": "3ec6b08ede3215d29ba8f5f2ed1df0fba5e2ea17",
                 "shasum": ""
             },
             "require": {
@@ -3835,7 +3913,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-03-13T10:56:11+00:00"
+            "time": "2020-04-14T14:38:37+00:00"
         },
         {
             "name": "spatie/image",
@@ -4366,16 +4444,16 @@
         },
         {
             "name": "spatie/robots-txt",
-            "version": "1.0.5",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/robots-txt.git",
-                "reference": "dbd8d2048114f81813a57d21da594dbde77fdac7"
+                "reference": "64e4c984cd37e6b45d9b3201d0026332290442ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/robots-txt/zipball/dbd8d2048114f81813a57d21da594dbde77fdac7",
-                "reference": "dbd8d2048114f81813a57d21da594dbde77fdac7",
+                "url": "https://api.github.com/repos/spatie/robots-txt/zipball/64e4c984cd37e6b45d9b3201d0026332290442ec",
+                "reference": "64e4c984cd37e6b45d9b3201d0026332290442ec",
                 "shasum": ""
             },
             "require": {
@@ -4409,7 +4487,7 @@
                 "robots-txt",
                 "spatie"
             ],
-            "time": "2019-08-07T22:29:10+00:00"
+            "time": "2020-04-18T17:37:31+00:00"
         },
         {
             "name": "spatie/temporary-directory",
@@ -6455,16 +6533,16 @@
         },
         {
             "name": "tightenco/collect",
-            "version": "v7.4.0",
+            "version": "v7.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/collect.git",
-                "reference": "5024db45b1ec1956e6d5959cbb5cdf5f00f26f56"
+                "reference": "4b6a215656eb77bdaa31b0f61aa9e2a3eaf2f7a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tightenco/collect/zipball/5024db45b1ec1956e6d5959cbb5cdf5f00f26f56",
-                "reference": "5024db45b1ec1956e6d5959cbb5cdf5f00f26f56",
+                "url": "https://api.github.com/repos/tightenco/collect/zipball/4b6a215656eb77bdaa31b0f61aa9e2a3eaf2f7a0",
+                "reference": "4b6a215656eb77bdaa31b0f61aa9e2a3eaf2f7a0",
                 "shasum": ""
             },
             "require": {
@@ -6501,7 +6579,7 @@
                 "collection",
                 "laravel"
             ],
-            "time": "2020-03-31T17:56:15+00:00"
+            "time": "2020-04-17T18:15:55+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -6554,16 +6632,16 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v3.6.2",
+            "version": "v3.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "786a947e57086cf236cefdee80784634224b99fa"
+                "reference": "1b3103013797f04521c6cae5560f604649484066"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/786a947e57086cf236cefdee80784634224b99fa",
-                "reference": "786a947e57086cf236cefdee80784634224b99fa",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/1b3103013797f04521c6cae5560f604649484066",
+                "reference": "1b3103013797f04521c6cae5560f604649484066",
                 "shasum": ""
             },
             "require": {
@@ -6619,7 +6697,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-03-27T23:36:02+00:00"
+            "time": "2020-04-12T15:18:03+00:00"
         }
     ],
     "packages-dev": [
@@ -7015,19 +7093,20 @@
         },
         {
             "name": "itsgoingd/clockwork",
-            "version": "v4.0.17",
+            "version": "v4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/itsgoingd/clockwork.git",
-                "reference": "30d54ecbf0cd424594b2ae5f94a9e3d4a7c3e961"
+                "reference": "5b149a708a74027404126abe05289ff10d9f0f1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/itsgoingd/clockwork/zipball/30d54ecbf0cd424594b2ae5f94a9e3d4a7c3e961",
-                "reference": "30d54ecbf0cd424594b2ae5f94a9e3d4a7c3e961",
+                "url": "https://api.github.com/repos/itsgoingd/clockwork/zipball/5b149a708a74027404126abe05289ff10d9f0f1d",
+                "reference": "5b149a708a74027404126abe05289ff10d9f0f1d",
                 "shasum": ""
             },
             "require": {
+                "ext-json": "*",
                 "php": ">=5.5",
                 "psr/log": "1.*"
             },
@@ -7069,7 +7148,13 @@
                 "profiling",
                 "slim"
             ],
-            "time": "2020-02-04T22:56:50+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/itsgoingd",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-04-15T15:10:57+00:00"
         },
         {
             "name": "mixdinternet/homestead-ngrok",
@@ -7876,16 +7961,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "8.5.3",
+            "version": "8.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "67750516bc02f300e2742fed2f50177f8f37bedf"
+                "reference": "8474e22d7d642f665084ba5ec780626cbd1efd23"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/67750516bc02f300e2742fed2f50177f8f37bedf",
-                "reference": "67750516bc02f300e2742fed2f50177f8f37bedf",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/8474e22d7d642f665084ba5ec780626cbd1efd23",
+                "reference": "8474e22d7d642f665084ba5ec780626cbd1efd23",
                 "shasum": ""
             },
             "require": {
@@ -7965,7 +8050,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-03-31T08:52:04+00:00"
+            "time": "2020-04-23T04:39:42+00:00"
         },
         {
             "name": "scrivo/highlight.php",
@@ -8699,16 +8784,16 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "aed98a490f9a8f78468232db345ab9cf606cf598"
+                "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/aed98a490f9a8f78468232db345ab9cf606cf598",
-                "reference": "aed98a490f9a8f78468232db345ab9cf606cf598",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
+                "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
                 "shasum": ""
             },
             "require": {
@@ -8716,7 +8801,7 @@
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
-                "vimeo/psalm": "<3.6.0"
+                "vimeo/psalm": "<3.9.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.8.36 || ^7.5.13"
@@ -8743,7 +8828,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2020-02-14T12:15:55+00:00"
+            "time": "2020-04-18T12:12:48+00:00"
         }
     ],
     "aliases": [],

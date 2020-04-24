@@ -52,3 +52,22 @@
 @endforelse
 
 {{ session()->forget('flash_notification') }}
+
+<script>
+    window.livewire.on('swal', (param) => {
+        const title = {
+            success: 'Sucesso',
+            danger: 'Falhou',
+            warning: 'Atenção',
+            info: 'Informação',
+        };
+
+        Swal.fire({
+            text: param.message,
+            icon: param.level,
+            title: title[param.level],
+            showConfirmButton: false,
+            showCloseButton: true,
+        });
+    });
+</script>

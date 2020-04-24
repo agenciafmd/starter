@@ -9795,27 +9795,6 @@ function onChangeSelectLink() {
   });
 }
 
-function setupLazyMap() {
-  // lazy load do mapa
-  // Chame o iframe do mapa com src vazio e o valor do src em data-lazy-map
-  // ex. <iframe src="" data-lazy-map="https://www.google.com/maps..."...
-  if ($('iframe[data-lazy-map]').length) {
-    $(window).scroll(function () {
-      var windowElement = $(window);
-      var mapElement = $('iframe[data-lazy-map]'); // console.log($(window).height());
-      // console.log($(window).scrollTop());
-      // console.log($('iframe.lazy-map').offset().top);
-      //somando o local que estamos com a altura da tela e verifica se chegamos no local do mapa
-
-      if (windowElement.height() + windowElement.scrollTop() >= mapElement.offset().top) {
-        if (mapElement.attr('src') === '') {
-          mapElement.attr('src', mapElement.attr('data-lazy-map'));
-        }
-      }
-    }).trigger('scroll');
-  }
-}
-
 function setupSelect2() {
   $('select.js-select2').select2({
     theme: 'bootstrap',
@@ -10011,6 +9990,33 @@ function insertCopyrightYear() {
   $yearContainer.text("Todos os direitos reservados \xA9 ".concat(new Date().getFullYear()));
 }
 
+function setupLivewire() {
+  document.addEventListener("livewire:load", function (event) {
+    window.livewire.hook('afterDomUpdate', function () {
+      setupInputMasks();
+      document.querySelectorAll('[data-upload]').forEach(function (item) {
+        item.addEventListener('change', function (event) {
+          var target = event.target;
+          var inputName = target.getAttribute('data-upload');
+          var file = target.files[0];
+          var reader = new FileReader();
+          reader.readAsDataURL(file);
+
+          reader.onload = function () {
+            livewire.emit('upload', inputName, reader.result);
+            /* console.log(reader.result); */
+          };
+
+          reader.onerror = function (error) {
+            livewire.emit('upload', inputName, '');
+            /* console.log('Error: ', error); */
+          };
+        });
+      });
+    });
+  });
+}
+
 $(function () {
   setupServiceWorker();
   preventInvalidFormSubmit();
@@ -10019,7 +10025,6 @@ $(function () {
   setupSideDrawer(); // setupCepSearch();
   // setupStateCityOptions();
   // onChangeSelectLink();
-  // setupLazyMap();
   // setupSelect2();
 
   setupInputMasks(); // setupPopover();
@@ -10037,3 +10042,4 @@ window.addEventListener('load', function () {
    * vh/vw are calculated after all resources loaded*/
   setupStickyHeader();
 });
+setupLivewire();

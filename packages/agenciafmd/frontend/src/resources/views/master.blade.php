@@ -50,8 +50,7 @@
 
     @if(config('app.env') === 'production')
         <script>
-            console.log = function () {
-            };
+            console.log = function () {};
         </script>
     @endif
 
@@ -59,6 +58,7 @@
         <meta name="google-site-verification" content="{{ config('services.google.site_verification') }}"/>
     @endif
 
+    {{-- refatorar --}}
     @if(isset($critical) && ($critical))
         <style>
             {!! @file_get_contents(public_path('/css/critical/' . $critical)) !!}
@@ -70,6 +70,8 @@
     <noscript>
         <link rel="stylesheet" href="{{ mix('/css/frontend.css') }}">
     </noscript>
+
+    @livewireStyles
 
     @stack('head')
 </head>
@@ -94,6 +96,8 @@
 @stack('footer')
 
 <script src="{{ mix('/js/frontend.js') }}"></script>
+
+@livewireScripts
 
 @include('agenciafmd/frontend::partials.message')
 

@@ -23,7 +23,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
         "laravel/telescope": "^2.1",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "livewire/livewire": "^1.0"
     },
     "require-dev": {
         "mixdinternet/homestead-ngrok": "dev-master",
@@ -63,6 +64,7 @@
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan vendor:publish --force --tag=livewire:assets --ansi",
             "@php artisan package:discover --ansi"
         ],
         "post-root-package-install": [

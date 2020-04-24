@@ -2,22 +2,17 @@
 
 namespace Agenciafmd\Frontend\Providers;
 
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Route;
-#use Agenciafmd\Categories\Category;
 use Illuminate\Support\ServiceProvider;
 
 class FrontendServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->setRoutes();
+        $this->providers();
 
         $this->loadViews();
 
         $this->loadTranslations();
-
-        $this->loadViewComposer();
     }
 
     public function register()
@@ -25,19 +20,11 @@ class FrontendServiceProvider extends ServiceProvider
         //
     }
 
-    protected function setRoutes()
+    protected function providers()
     {
-        if (!$this->app->routesAreCached()) {
-            $namespace = 'Agenciafmd\Frontend\Http\Controllers';
-
-            Route::middleware('web')
-                ->namespace($namespace)
-                ->group(__DIR__ . '/../routes/web.php');
-
-            Route::middleware('api')
-                ->namespace($namespace)
-                ->group(__DIR__ . '/../routes/api.php');
-        }
+        $this->app->register(RouteServiceProvider::class);
+        $this->app->register(EventServiceProvider::class);
+        $this->app->register(LivewireServiceProvider::class);
     }
 
     protected function loadViews()
@@ -48,12 +35,5 @@ class FrontendServiceProvider extends ServiceProvider
     protected function loadTranslations()
     {
         $this->loadJsonTranslationsFrom(__DIR__ . '/../resources/lang');
-    }
-
-    protected function loadViewComposer()
-    {
-//        View::composer('agenciafmd/frontend::master', function ($view) {
-//            $view->with('categoriesViewComposer', Category::where('type', 'products')->isActive()->sort()->get());
-//        });
     }
 }
