@@ -58,7 +58,7 @@ var returnFromCache = function(request){
     return caches.open(CACHE_NAME).then(function (cache) {
         return cache.match(request).then(function (matching) {
             if(!matching || matching.status == 404) {
-                return cache.match('/admix/offline')
+                return cache.match('/offline')
             } else {
                 return matching
             }

@@ -914,7 +914,7 @@ $toast-header-border-color: rgba(0, 0, 0, .05) !default;
 
 // Badges
 
-$badge-font-size: 75% !default;
+$badge-font-size: .75rem !default;
 $badge-font-weight: $font-weight-bold !default;
 $badge-padding-y: .25em !default;
 $badge-padding-x: .4em !default;
@@ -1104,8 +1104,8 @@ $code-color: $pink !default;
 $kbd-padding-y: .2rem !default;
 $kbd-padding-x: .4rem !default;
 $kbd-font-size: $code-font-size !default;
-$kbd-color: $white !default;
-$kbd-bg: $gray-900 !default;
+$kbd-color: $black !default;
+$kbd-bg: $gray-200 !default;
 
 $pre-color: $gray-900 !default;
 $pre-scrollable-max-height: 340px !default;
