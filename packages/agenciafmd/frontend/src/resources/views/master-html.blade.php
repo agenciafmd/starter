@@ -48,7 +48,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
     <!-- fim PWA -->
 
-    <link href="{{ mix('/css/frontend.css') }}" rel="stylesheet">
+    <link href="{{ ('/css/frontend.css') }}" rel="stylesheet">
 
     @if(config('app.env') === 'production')
         <script>
@@ -84,7 +84,7 @@
 
 @stack('footer')
 
-<script src="{{ mix('/js/frontend.js') }}"></script>
+<script src="{{ ('/js/frontend.js') }}"></script>
 
 @include('agenciafmd/frontend::html.partials.message')
 
