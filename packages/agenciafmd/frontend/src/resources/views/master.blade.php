@@ -28,11 +28,14 @@
     <meta name="author" content="@yield('author', 'F&MD')">
 
     <meta property="og:title" content="@yield('title', '') | {{ config('app.name') }}"/>
+    <meta property="og:description" content="@yield('description', '')" />
+    <meta property="og:image" itemprop="image" content="@yield('image', url('/images/logo.png'))"/>
     <meta property="og:url" content="@yield('url', request()->fullUrl())"/>
-    <meta property="og:image" content="@yield('image', url('/images/logo.png'))"/>
     <meta property="og:site_name" content="{{ config('app.name') }}"/>
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <link href="https://www.google-analytics.com" rel="preconnect" crossorigin>
 
     <!-- inicio PWA -->
     <link rel="manifest" href="/manifest.json">
