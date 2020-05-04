@@ -17,7 +17,7 @@ class FrontendServiceProvider extends ServiceProvider
 
     public function register()
     {
-        //
+        $this->loadConfigs();
     }
 
     protected function providers()
@@ -35,5 +35,10 @@ class FrontendServiceProvider extends ServiceProvider
     protected function loadTranslations()
     {
         $this->loadJsonTranslationsFrom(__DIR__ . '/../resources/lang');
+    }
+
+    protected function loadConfigs()
+    {
+        $this->mergeConfigFrom(__DIR__ . '/../config/frontend.php', 'frontend');
     }
 }
