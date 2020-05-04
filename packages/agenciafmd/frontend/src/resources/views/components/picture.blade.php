@@ -5,7 +5,7 @@
        data-caption="{{ $alt }}"
        class="{{ $fancyboxClass }}">
         @endif
-        <picture>
+        <picture class="{{ $pictureClass }}">
             @foreach($sources as $source)
                 @if(!$loop->last)
                     <source media="(min-width: {{ $source['name'] }}px)"
@@ -16,10 +16,10 @@
                 @endif
             @endforeach
             <img loading="lazy"
-                 width="1"
-                 height="1"
+                 width="{{ $w ?? '1' }}"
+                 height="{{ $h ?? '1' }}"
                  src="data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-                 class="{{ $class ?? 'img-sanitize img-cover' }}"
+                 class="{{ $imgClass ?: 'img-sanitize img-cover' }}"
                  alt="{{ $alt ?? 'sem imagem' }}"
                  title="{{ $alt ?? 'sem imagem' }}">
         </picture>
