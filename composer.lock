@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix.git",
-                "reference": "acbe34d2b2cfc66970f93d303ccd70682503eb20"
+                "reference": "d8245cfea1e82618f76e83dcac96a21720af079e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix/zipball/acbe34d2b2cfc66970f93d303ccd70682503eb20",
-                "reference": "acbe34d2b2cfc66970f93d303ccd70682503eb20",
+                "url": "https://api.github.com/repos/agenciafmd/admix/zipball/d8245cfea1e82618f76e83dcac96a21720af079e",
+                "reference": "d8245cfea1e82618f76e83dcac96a21720af079e",
                 "shasum": ""
             },
             "require": {
@@ -73,7 +73,7 @@
             ],
             "description": "Admix - Agência F&MD",
             "homepage": "https://github.com/agenciafmd/admix",
-            "time": "2020-05-05T17:25:46+00:00"
+            "time": "2020-05-05T18:21:21+00:00"
         },
         {
             "name": "agenciafmd/admix-analytics",
@@ -182,12 +182,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-leads.git",
-                "reference": "f6048a58a90da31c47b2d6041e5f914f997e3d16"
+                "reference": "168bf655cc0b2ddb2cd47ebd1fe02f642970a23f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix-leads/zipball/f6048a58a90da31c47b2d6041e5f914f997e3d16",
-                "reference": "f6048a58a90da31c47b2d6041e5f914f997e3d16",
+                "url": "https://api.github.com/repos/agenciafmd/admix-leads/zipball/168bf655cc0b2ddb2cd47ebd1fe02f642970a23f",
+                "reference": "168bf655cc0b2ddb2cd47ebd1fe02f642970a23f",
                 "shasum": ""
             },
             "require": {
@@ -228,7 +228,7 @@
             ],
             "description": "Leads - Agência F&MD",
             "homepage": "https://github.com/agenciafmd/admix-leads",
-            "time": "2020-05-05T17:25:46+00:00"
+            "time": "2020-05-05T18:41:55+00:00"
         },
         {
             "name": "agenciafmd/admix-postal",
@@ -236,12 +236,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-postal.git",
-                "reference": "f0f43b3ec079d334e79dbd39bf7d3a60264bf993"
+                "reference": "0c547b1ae6c72f53b81beef52f7148d65f80017e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix-postal/zipball/f0f43b3ec079d334e79dbd39bf7d3a60264bf993",
-                "reference": "f0f43b3ec079d334e79dbd39bf7d3a60264bf993",
+                "url": "https://api.github.com/repos/agenciafmd/admix-postal/zipball/0c547b1ae6c72f53b81beef52f7148d65f80017e",
+                "reference": "0c547b1ae6c72f53b81beef52f7148d65f80017e",
                 "shasum": ""
             },
             "require": {
@@ -281,7 +281,7 @@
             ],
             "description": "Postal - Agência F&MD",
             "homepage": "https://github.com/agenciafmd/admix-postal",
-            "time": "2020-05-05T17:25:46+00:00"
+            "time": "2020-05-05T18:42:31+00:00"
         },
         {
             "name": "agenciafmd/frontend",
