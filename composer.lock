@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a28d132415f9668b8231d73fe7f8fae1",
+    "content-hash": "c52052193af20debd59a364ac5e6105c",
     "packages": [
         {
             "name": "agenciafmd/admix",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix.git",
-                "reference": "71e4d79bc4773f7f446b278d6634a6883cccbb69"
+                "reference": "acbe34d2b2cfc66970f93d303ccd70682503eb20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix/zipball/71e4d79bc4773f7f446b278d6634a6883cccbb69",
-                "reference": "71e4d79bc4773f7f446b278d6634a6883cccbb69",
+                "url": "https://api.github.com/repos/agenciafmd/admix/zipball/acbe34d2b2cfc66970f93d303ccd70682503eb20",
+                "reference": "acbe34d2b2cfc66970f93d303ccd70682503eb20",
                 "shasum": ""
             },
             "require": {
@@ -73,7 +73,7 @@
             ],
             "description": "Admix - Agência F&MD",
             "homepage": "https://github.com/agenciafmd/admix",
-            "time": "2020-05-04T22:06:33+00:00"
+            "time": "2020-05-05T17:25:46+00:00"
         },
         {
             "name": "agenciafmd/admix-analytics",
@@ -182,12 +182,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-leads.git",
-                "reference": "79eac1ed6d5640f8b59f6f043378501421e7437f"
+                "reference": "f6048a58a90da31c47b2d6041e5f914f997e3d16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix-leads/zipball/79eac1ed6d5640f8b59f6f043378501421e7437f",
-                "reference": "79eac1ed6d5640f8b59f6f043378501421e7437f",
+                "url": "https://api.github.com/repos/agenciafmd/admix-leads/zipball/f6048a58a90da31c47b2d6041e5f914f997e3d16",
+                "reference": "f6048a58a90da31c47b2d6041e5f914f997e3d16",
                 "shasum": ""
             },
             "require": {
@@ -228,7 +228,7 @@
             ],
             "description": "Leads - Agência F&MD",
             "homepage": "https://github.com/agenciafmd/admix-leads",
-            "time": "2020-04-20T19:21:48+00:00"
+            "time": "2020-05-05T17:25:46+00:00"
         },
         {
             "name": "agenciafmd/admix-postal",
@@ -236,12 +236,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-postal.git",
-                "reference": "e4a852a4f34b1563c55c1389f4bd1c1f758b2382"
+                "reference": "f0f43b3ec079d334e79dbd39bf7d3a60264bf993"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix-postal/zipball/e4a852a4f34b1563c55c1389f4bd1c1f758b2382",
-                "reference": "e4a852a4f34b1563c55c1389f4bd1c1f758b2382",
+                "url": "https://api.github.com/repos/agenciafmd/admix-postal/zipball/f0f43b3ec079d334e79dbd39bf7d3a60264bf993",
+                "reference": "f0f43b3ec079d334e79dbd39bf7d3a60264bf993",
                 "shasum": ""
             },
             "require": {
@@ -281,7 +281,7 @@
             ],
             "description": "Postal - Agência F&MD",
             "homepage": "https://github.com/agenciafmd/admix-postal",
-            "time": "2020-04-15T19:49:24+00:00"
+            "time": "2020-05-05T17:25:46+00:00"
         },
         {
             "name": "agenciafmd/frontend",
@@ -1312,16 +1312,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v6.18.11",
+            "version": "v6.18.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "73bc10bb23aab7539c8ffae6d5dc3c4b277de557"
+                "reference": "39519d03237a81380e2126d667e898e2922db444"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/73bc10bb23aab7539c8ffae6d5dc3c4b277de557",
-                "reference": "73bc10bb23aab7539c8ffae6d5dc3c4b277de557",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/39519d03237a81380e2126d667e898e2922db444",
+                "reference": "39519d03237a81380e2126d667e898e2922db444",
                 "shasum": ""
             },
             "require": {
@@ -1454,7 +1454,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-04-28T15:18:58+00:00"
+            "time": "2020-05-05T15:53:49+00:00"
         },
         {
             "name": "laravel/helpers",
@@ -1705,16 +1705,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "1.4.2",
+            "version": "1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "9e780d972185e4f737a03bade0fd34a9e67bbf31"
+                "reference": "412639f7cfbc0b31ad2455b2fe965095f66ae505"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/9e780d972185e4f737a03bade0fd34a9e67bbf31",
-                "reference": "9e780d972185e4f737a03bade0fd34a9e67bbf31",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/412639f7cfbc0b31ad2455b2fe965095f66ae505",
+                "reference": "412639f7cfbc0b31ad2455b2fe965095f66ae505",
                 "shasum": ""
             },
             "require": {
@@ -1801,7 +1801,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-04-24T13:39:56+00:00"
+            "time": "2020-05-04T22:15:21+00:00"
         },
         {
             "name": "league/flysystem",
@@ -6948,16 +6948,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.7.1",
+            "version": "2.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "fff6f1e4f36be0e0d0b84d66b413d9dcb0c49130"
+                "reference": "17d0d3f266c8f925ebd035cd36f83cf802b47d4a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/fff6f1e4f36be0e0d0b84d66b413d9dcb0c49130",
-                "reference": "fff6f1e4f36be0e0d0b84d66b413d9dcb0c49130",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/17d0d3f266c8f925ebd035cd36f83cf802b47d4a",
+                "reference": "17d0d3f266c8f925ebd035cd36f83cf802b47d4a",
                 "shasum": ""
             },
             "require": {
@@ -7005,7 +7005,7 @@
                 "throwable",
                 "whoops"
             ],
-            "time": "2020-01-15T10:00:00+00:00"
+            "time": "2020-05-05T12:28:07+00:00"
         },
         {
             "name": "fzaninotto/faker",
