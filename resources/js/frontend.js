@@ -324,7 +324,7 @@ function setupInputMasks() {
 
     cnpjInput.addEventListener('blur', function (event) {
 
-      cpfCnpjValidators.checkCPF(event.target);
+      cpfCnpjValidators.checkCNPJ(event.target);
     });
   }
 }
