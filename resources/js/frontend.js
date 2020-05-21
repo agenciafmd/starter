@@ -532,8 +532,6 @@ $(function () {
 
   // setupAnchorReloadPrevention();
 
-  // setupInfiniteScroll();
-
   // setupShareWindow();
 
   // setupCustomFormFieldsVisibility();
@@ -548,6 +546,8 @@ window.addEventListener('load', function () {
    * height defined as 100vh. We need the starting function here because
    * vh/vw are calculated after all resources loaded*/
   setupStickyHeader();
+
+  // setupInfiniteScroll();
 });
 
 setupLivewire();
