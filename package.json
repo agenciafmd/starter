@@ -36,6 +36,7 @@
         "select2": "^4.0.13",
         "sweetalert2": "^9.7.2",
         "tiny-slider": "^2.9.2",
-        "vanilla-masker": "^1.2.0"
+        "vanilla-masker": "^1.2.0",
+        "wow.js": "^1.2.2"
     }
 }
