@@ -24,5 +24,7 @@ class Authenticate extends Middleware
 
             return route('frontend.login.index');
         }
+
+        return '';
     }
 }
