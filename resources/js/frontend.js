@@ -246,11 +246,16 @@ function setupInputMasks() {
     tels.forEach((tel) => {
       VMasker(tel)
           .maskPattern(telMask[0]);
-      tel.addEventListener(
-          'input',
-          inputHandler.bind(undefined, telMask, 14),
-          false,
-      );
+        if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1) {
+            /* me julgue safari desgraçado */
+        }
+        else {
+            tel.addEventListener(
+                'input',
+                inputHandler.bind(undefined, telMask, 14),
+                false,
+            );
+        }
     });
   }
 
