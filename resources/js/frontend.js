@@ -246,28 +246,40 @@ function setupInputMasks() {
     tels.forEach((tel) => {
       VMasker(tel)
           .maskPattern(telMask[0]);
-      tel.addEventListener(
-          'input',
-          inputHandler.bind(undefined, telMask, 14),
-          false,
-      );
+        if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1) {
+            /* me julgue safari desgraçado */
+        }
+        else {
+            tel.addEventListener(
+                'input',
+                inputHandler.bind(undefined, telMask, 14),
+                false,
+            );
+        }
     });
   }
 
-  if (document.querySelectorAll('.mask-cpfcnpj').length > 0) {
-    var docMask = ['999.999.999-999', '99.999.999/9999-99'];
-    var docs = document.querySelectorAll('.mask-cpfcnpj');
-    docs.forEach((doc) => {
-      VMasker(doc)
-          .maskPattern(docMask[0]);
-      doc.addEventListener(
-          'input',
-          inputHandler.bind(undefined, docMask, 14),
-          false,
-      );
-    });
-  }
+    if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1) {
+        /* me julgue safari desgraçado */
+        /* o safari não deixa trocar a mascara do campo */
+    }
+    else {
+        if (document.querySelectorAll('.mask-cpfcnpj').length > 0) {
+            var docMask = ['999.999.999-999', '99.999.999/9999-99'];
+            var docs = document.querySelectorAll('.mask-cpfcnpj');
+            docs.forEach((doc) => {
+                VMasker(doc)
+                    .maskPattern(docMask[0]);
 
+
+                doc.addEventListener(
+                    'input',
+                    inputHandler.bind(undefined, docMask, 14),
+                    false,
+                );
+            });
+        }
+    }
   if (document.querySelectorAll('.mask-date').length > 0) {
     VMasker(document.querySelectorAll('.mask-date'))
         .maskPattern('99/99/9999');
