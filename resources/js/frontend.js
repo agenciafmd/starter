@@ -403,7 +403,8 @@ function setupInfiniteScroll() {
         contentsWrapperSelector: '.infinite-scroll',
         contentSelector: '.infinite-scroll-content',
         nextSelector: 'a[rel~="next"]',
-        loadImage: '/images/loading.gif',
+        // Without extension, because we use xlink on svg tag
+        loadImage: 'ic-loading',
       });
 }
 

@@ -42635,6 +42635,10 @@ b, strong {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }
+.ic-infinite-scroll-loading {
+  min-height: 64px;
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.0' width='64px' height='64px' viewBox='0 0 128 128' fill='%23007bff'%3e%3cg%3e%3ccircle cx='16' cy='64' r='16'/%3e%3ccircle cx='16' cy='64' r='14.344' transform='rotate(45 64 64)'/%3e%3ccircle cx='16' cy='64' r='12.531' transform='rotate(90 64 64)'/%3e%3ccircle cx='16' cy='64' r='10.75' transform='rotate(135 64 64)'/%3e%3ccircle cx='16' cy='64' r='10.063' transform='rotate(180 64 64)'/%3e%3ccircle cx='16' cy='64' r='8.063' transform='rotate(225 64 64)'/%3e%3ccircle cx='16' cy='64' r='6.438' transform='rotate(270 64 64)'/%3e%3ccircle cx='16' cy='64' r='5.375' transform='rotate(315 64 64)'/%3e%3canimateTransform attributeName='transform' type='rotate' values='0 64 64;315 64 64;270 64 64;225 64 64;180 64 64;135 64 64;90 64 64;45 64 64' calcMode='discrete' dur='1040ms' repeatCount='indefinite'/%3e%3c/g%3e%3c/svg%3e") no-repeat center;
+}
 
 .img-full-page {
   -o-object-fit: cover;
@@ -42679,13 +42683,13 @@ b, strong {
 }
 
 .block-spacer-y {
-  padding-top: 6.875rem;
-  padding-bottom: 6.875rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
 @media (max-width: 1365.98px) {
   .block-spacer-y {
-    padding-top: calc(6.875rem / 2);
-    padding-bottom: calc(6.875rem / 2);
+    padding-top: calc(6rem / 2);
+    padding-bottom: calc(6rem / 2);
   }
 }
 

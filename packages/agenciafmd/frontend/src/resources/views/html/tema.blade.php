@@ -2667,30 +2667,18 @@
                      loading="lazy"
                      width="512"
                      height="512">
-                <figcaption class="figure-caption">512x512 - icon-512x512.png
-                                                   (13,55
-                                                   KB)
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="p-3 mb-2 bg-light">
-              <figure class="figure mb-0">
-                <img src="/images/loading.gif"
-                     class="figure-img img-fluid"
-                     alt="120x120 - loading.gif (27,36 KB)"
-                     loading="lazy"
-                     width="120"
-                     height="120">
-                <figcaption class="figure-caption">120x120 - loading.gif (27,36
-                                                   KB)
+                <figcaption class="figure-caption">
+                  512x512 - icon-512x512.png (13,55 KB)
                 </figcaption>
               </figure>
             </div>
           </div>
         </div>
       </div>
+
+      <!--Inifinte Scroll Loading Icon-->
+      <h2>Ícone do Infinite Scroll</h2>
+      <div class="ic-infinite-scroll-loading"></div>
 
       <div id="source-modal"
            class="modal fade">

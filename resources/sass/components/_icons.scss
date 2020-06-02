@@ -16,4 +16,10 @@
 
     transform: rotate(180deg);
   }
+
+  &-infinite-scroll-loading {
+
+    min-height: $infinite-scroll-loading-icon-size;
+    background: $infinite-scroll-loading-icon-background;
+  }
 }
