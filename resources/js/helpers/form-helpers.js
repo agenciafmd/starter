@@ -55,7 +55,7 @@ function getFieldValue({ name, type }) {
   }
 }
 
-(function setCustomFileLabel() {
+function setCustomFileLabel() {
 
   $('.custom-file-input')
       .change(function () {
@@ -63,7 +63,7 @@ function getFieldValue({ name, type }) {
         var fileName = $('.custom-file-label');
         fileName.text(file);
       });
-})();
+}
 
 function setInvalidInput(input) {
 

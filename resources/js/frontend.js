@@ -549,6 +549,8 @@ $(function () {
 
   // setupCustomFormFieldsVisibility();
 
+  setCustomFileLabel();
+
   // insertCopyrightYear();
 });
 

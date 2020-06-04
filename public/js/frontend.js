@@ -9175,13 +9175,13 @@ function getFieldValue(_ref) {
   }
 }
 
-(function setCustomFileLabel() {
+function setCustomFileLabel() {
   $('.custom-file-input').change(function () {
     var file = $(this)[0].files[0].name;
     var fileName = $('.custom-file-label');
     fileName.text(file);
   });
-})();
+}
 
 function setInvalidInput(input) {
   input.setCustomValidity('invalid');
@@ -9193,13 +9193,39 @@ function setValidInput(input) {
   input.classList.remove('is-invalid');
 }
 
+function guideUserToTheFirstError() {
+  var currentScrollPosition = $(window).scrollTop();
+  var invalidInputsSelectors = ['.form-control:invalid', '.custom-control-input:invalid', '.form-control.is-invalid', '.custom-control-input.is-invalid'];
+  var $invalidInputs = $(invalidInputsSelectors.join(', ')); // Selects the parent to get input label
+
+  var $firstInvalidInput = $invalidInputs.first().parent();
+  var firstInvalidInputOffsetTop = $firstInvalidInput.offset().top;
+
+  if (currentScrollPosition <= firstInvalidInputOffsetTop) {
+    return;
+  }
+
+  $('html, body').animate({
+    scrollTop: $firstInvalidInput.offset().top - getStickyHeaderOffset()
+  }, 1000);
+
+  function getStickyHeaderOffset() {
+    var $stickyHeaderSticky = $('.js-header-sticky');
+
+    if (!$stickyHeaderSticky.length) {
+      return 0;
+    }
+
+    return $stickyHeaderSticky.innerHeight();
+  }
+}
+
 var CpfCnpjValidators =
 /*#__PURE__*/
 function () {
   function CpfCnpjValidators() {
     _classCallCheck(this, CpfCnpjValidators);
 
-    this.swal = new FmdSweetalert2();
     this.sizes = {
       cpf: 11,
       cnpj: 14
@@ -9556,6 +9582,7 @@ function preventInvalidFormSubmit() {
       if (form.checkValidity() === false) {
         event.preventDefault();
         event.stopPropagation();
+        guideUserToTheFirstError();
       }
 
       form.classList.add('was-validated');
@@ -9866,7 +9893,8 @@ $(function () {
   // setupAnchorReloadPrevention();
   // setupShareWindow();
   // setupCustomFormFieldsVisibility();
-  // insertCopyrightYear();
+
+  setCustomFileLabel(); // insertCopyrightYear();
 });
 window.addEventListener('load', function () {
   /**
