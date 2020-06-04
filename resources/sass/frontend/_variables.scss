@@ -1,29 +1,43 @@
 // Custom variables
 
-$fallback-font: sans-serif;
+$fallback-font: sans-serif !default;
 
 $block-spacing-y: 6rem !default;
 
-// Color System
+//--Forms--
 
-// Components
-$collapse-transition-time: .35s;
+// Select--
+// Linux/Windows uses the select background for <option>, this is for prevent
+// white text on white bg for example.
+$custom-select-option-bg: $input-bg !default;
+
+// Radios/Checkboxes--
+// Bootstrap sets one style for all custom indicators. This variables are to
+// overwrite that generic style
+$custom-radio-size: $custom-control-indicator-size !default;
+$custom-radio-bg: $custom-control-indicator-bg !default;
+
+// ---Components---
+$collapse-transition-time: .35s !default;
+
+// Breadcrumb
+$breadcrumb-color: $secondary !default;
 
 // Navs
-$nav-toggler-size-base: 2.5rem;
+$nav-toggler-size-base: 2.5rem !default;
 
 // Sidedrawer
-$side-drawer-bg: $primary;
+$side-drawer-bg: $primary !default;
 
 // Accordion
-$accordion-padding-x: 3.5rem;
-$accordion-padding-y: 1rem;
+$accordion-padding-x: 3.5rem !default;
+$accordion-padding-y: 1rem !default;
 
 // Video
-$backdrop-color: rgba($black, 0.3);
+$backdrop-color: rgba($black, 0.3) !default;
 
 // Buttons
-$btn-spinner-padding-x: 3rem;
+$btn-spinner-padding-x: 3rem !default;
 
 // Loadings
 
