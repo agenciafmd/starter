@@ -137,6 +137,8 @@ function preventInvalidFormSubmit() {
       if (form.checkValidity() === false) {
         event.preventDefault();
         event.stopPropagation();
+
+        guideUserToTheFirstError();
       }
       form.classList.add('was-validated');
     }, false);
