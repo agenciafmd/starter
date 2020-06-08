@@ -162,3 +162,8 @@
 
     FileETag None
 </IfModule>
+
+# A cookie associated with a cross-site resource at
+<IfModule mod_headers.c>
+    Header set Set-Cookie HttpOnly;Secure;SameSite=Strict
+</IfModule>
