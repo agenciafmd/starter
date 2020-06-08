@@ -137,6 +137,8 @@ function preventInvalidFormSubmit() {
       if (form.checkValidity() === false) {
         event.preventDefault();
         event.stopPropagation();
+
+        guideUserToTheFirstError();
       }
       form.classList.add('was-validated');
     }, false);
@@ -415,7 +417,8 @@ function setupInfiniteScroll() {
         contentsWrapperSelector: '.infinite-scroll',
         contentSelector: '.infinite-scroll-content',
         nextSelector: 'a[rel~="next"]',
-        loadImage: '/images/loading.gif',
+        // Without extension, because we use xlink on svg tag
+        loadImage: 'ic-loading',
       });
 }
 
@@ -547,6 +550,8 @@ $(function () {
   // setupShareWindow();
 
   // setupCustomFormFieldsVisibility();
+
+  setCustomFileLabel();
 
   // insertCopyrightYear();
 });

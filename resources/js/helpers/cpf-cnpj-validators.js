@@ -2,7 +2,6 @@ class CpfCnpjValidators {
 
   constructor() {
 
-    this.swal = new FmdSweetalert2();
     this.sizes = {
       cpf: 11,
       cnpj: 14,
