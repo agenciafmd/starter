@@ -36,7 +36,7 @@ class CpfCnpjValidators {
 
     if (!cnpj.number.full || cnpj.number.full.length !== this.sizes.cnpj) {
 
-      setInvalidInput(cnpjInput);
+      setInvalidInput({ input: cnpjInput });
     }
 
     if (cnpj.number.full === '00000000000000' ||
@@ -49,7 +49,7 @@ class CpfCnpjValidators {
         cnpj.number.full === '77777777777777' ||
         cnpj.number.full === '88888888888888' ||
         cnpj.number.full === '99999999999999') {
-      setInvalidInput(cnpjInput);
+      setInvalidInput({ input: cnpjInput });
       return;
     }
 
@@ -72,7 +72,7 @@ class CpfCnpjValidators {
 
     if (result !== Number(cnpj.number.suffix.charAt(0))) {
 
-      setInvalidInput(cnpjInput);
+      setInvalidInput({ input: cnpjInput });
       return;
     }
 
@@ -96,11 +96,11 @@ class CpfCnpjValidators {
 
     if (result !== Number(cnpj.number.suffix.charAt(1))) {
 
-      setInvalidInput(cnpjInput);
+      setInvalidInput({ input: cnpjInput });
       return;
     }
 
-    setValidInput(cnpjInput);
+    setValidInput({ input: cnpjInput });
     return true;
   }
 
@@ -116,7 +116,7 @@ class CpfCnpjValidators {
 
     if (!cpf.fullNumber || cpf.fullNumber.length !== this.sizes.cpf) {
 
-      setInvalidInput(cpfInput);
+      setInvalidInput({ input: cpfInput });
       return;
     }
 
@@ -130,7 +130,7 @@ class CpfCnpjValidators {
         cpf.fullNumber === '77777777777' ||
         cpf.fullNumber === '88888888888' ||
         cpf.fullNumber === '99999999999') {
-      setInvalidInput(cpfInput);
+      setInvalidInput({ input: cpfInput });
       return;
     }
 
@@ -143,7 +143,7 @@ class CpfCnpjValidators {
 
     if (d1 === 0) {
 
-      setInvalidInput(cpfInput);
+      setInvalidInput({ input: cpfInput });
       return;
     }
 
@@ -156,7 +156,7 @@ class CpfCnpjValidators {
 
     if (Number(cpf.suffix.charAt(0)) !== d1) {
 
-      setInvalidInput(cpfInput);
+      setInvalidInput({ input: cpfInput });
       return;
     }
 
@@ -176,11 +176,11 @@ class CpfCnpjValidators {
 
     if (Number(cpf.suffix.charAt(1)) !== d1) {
 
-      setInvalidInput(cpfInput);
+      setInvalidInput({ input: cpfInput });
       return;
     }
 
-    setValidInput(cpfInput);
+    setValidInput({ input: cpfInput });
     return true;
   }
 }
