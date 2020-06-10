@@ -118,7 +118,6 @@ function guideUserToTheFirstError() {
 
 function validateFullName({ fullNameElement, invalidMessage }) {
 
-  const regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
   const fullName = fullNameElement.value;
   // Only for themed form by Bootstrap
   const invalidFeedbackElement = fullNameElement.nextElementSibling;
@@ -136,7 +135,8 @@ function validateFullName({ fullNameElement, invalidMessage }) {
 
   function isValidFullName() {
 
-    return regName.test(fullName);
+    return fullName.trim()
+                   .split(' ').length >= 2;
   }
 }
 
