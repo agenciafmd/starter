@@ -59,8 +59,8 @@ function setCustomFileLabel() {
 
   $('.custom-file-input')
       .change(function () {
-        var file = $(this)[0].files[0].name;
-        var fileName = $('.custom-file-label');
+        const file = $(this)[0].files[0].name;
+        const fileName = $('.custom-file-label');
         fileName.text(file);
       });
 }
@@ -151,16 +151,97 @@ function setupFullNameValidate() {
 
   fullNameElements.forEach((fullNameElement) => {
 
-    fullNameElement.addEventListener('focusout', function () {
+    // Execute as soon as it's found
+    fullNameValidateHandler({ fullNameElement });
 
-      if (!fullNameElement.value.length) {
+    fullNameElement.addEventListener('blur', function () {
 
+      // Execute on every blur event propagation
+      fullNameValidateHandler({ fullNameElement });
+    });
+  });
+
+  function fullNameValidateHandler({ fullNameElement }) {
+
+    if (!fullNameElement.value.length) {
+
+      return;
+    }
+
+    const invalidMessage = 'Por favor, insira nome e sobrenome';
+
+    validateFullName({ fullNameElement: fullNameElement, invalidMessage });
+  }
+}
+
+function setupBrazilianCellphoneValidate() {
+
+  const phoneInputs = document.querySelectorAll('.js-cellphone-validate');
+
+  phoneInputs.forEach((phoneInput) => {
+
+    phoneInput.addEventListener('blur', function () {
+
+      if (!isValidPhone(phoneInput)) {
+
+        setInvalidInput({
+          input: phoneInput,
+          message: 'Por favor, insira um número de celular válido',
+        });
         return;
       }
 
-      const invalidMessage = 'Por favor, insira nome e sobrenome';
-
-      validateFullName({ fullNameElement: fullNameElement, invalidMessage });
+      setValidInput({ input: phoneInput });
     });
   });
+
+  function isValidPhone(phoneValue) {
+
+    const sanitizedPhone = phoneValue.value.replace(/\D/g, '');
+
+    // Check if has phone number and it has 11 characters
+    return sanitizedPhone.length && sanitizedPhone.length === 11;
+  }
+}
+
+function setupBrazilianPhoneValidate() {
+
+  const phoneInputs = document.querySelectorAll('.js-phone-validate');
+
+  phoneInputs.forEach((phoneInput) => {
+
+    phoneInput.addEventListener('blur', function () {
+
+      if (!isValidPhone(phoneInput)) {
+
+        setInvalidInput({
+          input: phoneInput,
+          message: 'Por favor, insira um número de telefone válido',
+        });
+        return;
+      }
+
+      setValidInput({ input: phoneInput });
+    });
+  });
+
+  function isValidPhone(phoneValue) {
+
+    const sanitizedPhone = phoneValue.value.replace(/\D/g, '');
+
+    // Check if has phone number and it has 11 characters
+    return sanitizedPhone.length && sanitizedPhone.length === 10;
+  }
+}
+
+function initializeFormHelpers() {
+
+  // Form usability
+  setCustomFileLabel();
+  setupCustomFormFieldsVisibility();
+
+  // Validators
+  setupFullNameValidate();
+  setupBrazilianCellphoneValidate();
+  setupBrazilianPhoneValidate();
 }

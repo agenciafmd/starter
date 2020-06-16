@@ -549,14 +549,9 @@ $(function () {
 
   // setupShareWindow();
 
-  // Forms Helpers Initialization
-  setCustomFileLabel();
-
-  setupFullNameValidate();
-
-  // setupCustomFormFieldsVisibility();
-
   // insertCopyrightYear();
+
+  initializeFormHelpers();
 });
 
 window.addEventListener('load', function () {

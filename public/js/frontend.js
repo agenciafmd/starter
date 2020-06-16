@@ -9226,7 +9226,6 @@ function guideUserToTheFirstError() {
 function validateFullName(_ref4) {
   var fullNameElement = _ref4.fullNameElement,
       invalidMessage = _ref4.invalidMessage;
-  var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
   var fullName = fullNameElement.value; // Only for themed form by Bootstrap
 
   var invalidFeedbackElement = fullNameElement.nextElementSibling;
@@ -9247,7 +9246,7 @@ function validateFullName(_ref4) {
   invalidFeedbackElement.innerText = defaultInvalidFeedback;
 
   function isValidFullName() {
-    return regName.test(fullName);
+    return fullName.trim().split(' ').length >= 2;
   }
 }
 
@@ -9259,18 +9258,91 @@ function setupFullNameValidate() {
   }
 
   fullNameElements.forEach(function (fullNameElement) {
-    fullNameElement.addEventListener('focusout', function () {
-      if (!fullNameElement.value.length) {
-        return;
-      }
-
-      var invalidMessage = 'Por favor, insira nome e sobrenome';
-      validateFullName({
-        fullNameElement: fullNameElement,
-        invalidMessage: invalidMessage
+    // Execute as soon as it's found
+    fullNameValidateHandler({
+      fullNameElement: fullNameElement
+    });
+    fullNameElement.addEventListener('blur', function () {
+      // Execute on every blur event propagation
+      fullNameValidateHandler({
+        fullNameElement: fullNameElement
       });
     });
   });
+
+  function fullNameValidateHandler(_ref5) {
+    var fullNameElement = _ref5.fullNameElement;
+
+    if (!fullNameElement.value.length) {
+      return;
+    }
+
+    var invalidMessage = 'Por favor, insira nome e sobrenome';
+    validateFullName({
+      fullNameElement: fullNameElement,
+      invalidMessage: invalidMessage
+    });
+  }
+}
+
+function setupBrazilianCellphoneValidate() {
+  var phoneInputs = document.querySelectorAll('.js-cellphone-validate');
+  phoneInputs.forEach(function (phoneInput) {
+    phoneInput.addEventListener('blur', function () {
+      if (!isValidPhone(phoneInput)) {
+        setInvalidInput({
+          input: phoneInput,
+          message: 'Por favor, insira um número de celular válido'
+        });
+        return;
+      }
+
+      setValidInput({
+        input: phoneInput
+      });
+    });
+  });
+
+  function isValidPhone(phoneValue) {
+    var sanitizedPhone = phoneValue.value.replace(/\D/g, ''); // Check if has phone number and it has 11 characters
+
+    return sanitizedPhone.length && sanitizedPhone.length === 11;
+  }
+}
+
+function setupBrazilianPhoneValidate() {
+  var phoneInputs = document.querySelectorAll('.js-phone-validate');
+  phoneInputs.forEach(function (phoneInput) {
+    phoneInput.addEventListener('blur', function () {
+      if (!isValidPhone(phoneInput)) {
+        setInvalidInput({
+          input: phoneInput,
+          message: 'Por favor, insira um número de telefone válido'
+        });
+        return;
+      }
+
+      setValidInput({
+        input: phoneInput
+      });
+    });
+  });
+
+  function isValidPhone(phoneValue) {
+    var sanitizedPhone = phoneValue.value.replace(/\D/g, ''); // Check if has phone number and it has 11 characters
+
+    return sanitizedPhone.length && sanitizedPhone.length === 10;
+  }
+}
+
+function initializeFormHelpers() {
+  // Form usability
+  setCustomFileLabel();
+  setupCustomFormFieldsVisibility(); // Validators
+
+  setupFullNameValidate();
+  setupBrazilianCellphoneValidate();
+  setupBrazilianPhoneValidate();
 }
 
 var CpfCnpjValidators =
@@ -9967,11 +10039,9 @@ $(function () {
   // setupTooltip();
   // setupAnchorReloadPrevention();
   // setupShareWindow();
-  // Forms Helpers Initialization
-
-  setCustomFileLabel();
-  setupFullNameValidate(); // setupCustomFormFieldsVisibility();
   // insertCopyrightYear();
+
+  initializeFormHelpers();
 });
 window.addEventListener('load', function () {
   /**
