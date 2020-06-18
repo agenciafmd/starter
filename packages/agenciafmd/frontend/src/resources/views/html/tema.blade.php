@@ -2506,6 +2506,34 @@
               </button>
             </div>
           </div>
+          <div class="col-lg-6">
+            <div class="my-2">
+              <h2 class="mb-0">Fancybox Custom Layout</h2>
+              <small class="d-inline-block mb-1h text-muted">
+                Requires importing JS from Fancybox.
+              </small>
+              <div class="bs-component">
+                <div class="position-relative">
+                  <img src="/images/logo.png"
+                       alt=""
+                       loading="lazy"
+                       width="199"
+                       height="68">
+                  <a href="/images/logo.png"
+                     class="stretched-link"
+                     data-fancybox="título"
+                     data-subtitle="subtitulo"
+                     data-caption="Descrição do conteúdo."></a>
+                </div>
+
+                <!-----------------------------------------------
+                  To activate this custom layout:
+                   1. Import the _fancybox.scss file in _vendors.scss
+                   2. Activate the setupFancyBox function in frontend.js
+                ------------------------------------------------>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

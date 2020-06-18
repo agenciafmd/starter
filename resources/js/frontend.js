@@ -519,6 +519,42 @@ function setupLivewire() {
     });
 }
 
+function setupFancyBox() {
+
+  $('[data-fancybox]').fancybox({
+
+    baseClass: "fancybox-custom-layout",
+    infobar: false,
+    touch: {
+      vertical: false
+    },
+    buttons: ["close", "thumbs", "share"],
+    animationEffect: "fade",
+    transitionEffect: "fade",
+    preventCaptionOverlap: false,
+    idleTime: false,
+    gutter: 0,
+    loop: true,
+    lang: "pt",
+    i18n: {
+      pt: {
+
+        SHARE: "Compartilhar",
+      }
+    },
+    caption: function() {
+
+      var caption = $(this).attr('data-caption');
+      var title = $(this).attr('data-fancybox');
+      var subtitle = $(this).attr('data-subtitle');
+
+      return `<h3 class="fancybox-caption-title">${title}</h3>
+      <p class="fancybox-caption-subtitle">${subtitle}</p>
+      <span class="fancybox-caption-description">${caption}</span>`;
+    }
+  });
+}
+
 $(function () {
 
   setupServiceWorker();
@@ -550,6 +586,8 @@ $(function () {
   // setupShareWindow();
 
   // insertCopyrightYear();
+
+  setupFancyBox();
 
   initializeFormHelpers();
 });
