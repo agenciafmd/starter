@@ -125,7 +125,8 @@
         if ($url[0] !== undefined) {
           // If the page has link, call ajax
           if (settings.loadImage !== "") {
-            $(settings.contentsWrapperSelector).append("<div class='text-center'><img src='" + settings.loadImage + "' id='cis-load-img'></div>");
+            $(settings.contentsWrapperSelector)
+                .append(`<div class="ic-infinite-scroll-loading js-loading-container"></div>`);
           }
           $.ajax({
             url: $url[0],
@@ -142,7 +143,7 @@
               }
               documentHeight = $(document).height();
               $contents = $(settings.contentSelector);
-              $("#cis-load-img").remove();
+              $(".js-loading-container").remove();
               $(document).trigger('clever-infinite-scroll-content-loaded');
             }
           });

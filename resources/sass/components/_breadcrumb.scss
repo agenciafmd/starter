@@ -1,0 +1,12 @@
+.breadcrumb {
+
+  color: $breadcrumb-color;
+
+  &-item {
+
+    &.active {
+
+      @extend .bold-text;
+    }
+  }
+}

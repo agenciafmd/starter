@@ -5,6 +5,12 @@
 
     RewriteEngine On
 
+    # Redirect index.php and index.html to /
+    RewriteCond %{THE_REQUEST} /index\.php/(.+)\sHTTP [NC]
+    RewriteRule ^ /%1 [NE,L,R]
+    RewriteCond %{THE_REQUEST} ^GET\ .*/index\.(php|html)(.*)\ HTTP
+    RewriteRule ^(.*)index\.(php|html)$ /$1 [R=301,L]
+
     # Serve Cached Page If Available...
     RewriteCond %{REQUEST_URI} ^/?$
     RewriteCond %{DOCUMENT_ROOT}/page-cache/pc__index__pc.html -f
@@ -161,4 +167,9 @@
     </IfModule>
 
     FileETag None
+</IfModule>
+
+# A cookie associated with a cross-site resource at
+<IfModule mod_headers.c>
+    Header set Set-Cookie HttpOnly;Secure;SameSite=Strict
 </IfModule>

@@ -9287,6 +9287,84 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     return a.toString().replace(/[^a-z0-9 ]+/i, "");
   }, f;
 });
+/*
+* helper para setarmos os parametros do utm a partir da query string
+* */
+
+function getUrlParameter(sParam) {
+  var sPageURL = decodeURIComponent(window.location.search.substring(1));
+  var sURLVariables = sPageURL.split('&');
+  var sParameterName;
+  var i = 0;
+
+  for (i = 0; i < sURLVariables.length; i++) {
+    sParameterName = sURLVariables[i].split('=');
+
+    if (sParameterName[0] === sParam) {
+      return sParameterName[1] === '' ? true : sParameterName[1];
+    }
+  }
+}
+
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  var expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+
+    while (c.charAt(0) === ' ') {
+      c = c.substring(1);
+    }
+
+    if (c.indexOf(name) === 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+
+  return "";
+}
+
+if (getUrlParameter("utm_source")) {
+  setCookie("utm_source", getUrlParameter("utm_source"), 30);
+  setCookie("utm_today", 1, 30);
+} else if (!getUrlParameter("utm_source") && !getCookie("utm_today") && document.referrer !== "" && document.referrer.search("google") > 0) {
+  setCookie("utm_source", "google", 30);
+  setCookie("utm_medium", "organic", 30);
+  setCookie("utm_today", 1, 30);
+} else if (!getUrlParameter("utm_source") && !getCookie("utm_today") && document.referrer !== "") {
+  setCookie("utm_source", "referral", 30);
+  setCookie("utm_medium", document.referrer, 30);
+  setCookie("utm_today", 1, 30);
+}
+
+if (getUrlParameter("utm_medium")) {
+  setCookie("utm_medium", getUrlParameter("utm_medium"), 30);
+}
+
+if (getUrlParameter("utm_campaign") && getUrlParameter("utm_campaign") !== "") {
+  setCookie("utm_campaign", getUrlParameter("utm_campaign"), 30);
+}
+
+if (getUrlParameter("utm_term") && getUrlParameter("utm_term") !== "") {
+  setCookie("utm_term", getUrlParameter("utm_term"), 30);
+}
+
+if (getUrlParameter("utm_content") && getUrlParameter("utm_content") !== "") {
+  setCookie("utm_content", getUrlParameter("utm_content"), 30);
+}
+
+if (getUrlParameter("gclid") && getUrlParameter("gclid") !== "") {
+  setCookie("gclid", getUrlParameter("gclid"), 30);
+}
 
 var FmdSweetalert2 =
 /*#__PURE__*/
@@ -9353,22 +9431,174 @@ function getFieldValue(_ref) {
   }
 }
 
-(function setCustomFileLabel() {
+function setCustomFileLabel() {
   $('.custom-file-input').change(function () {
     var file = $(this)[0].files[0].name;
     var fileName = $('.custom-file-label');
     fileName.text(file);
   });
-})();
+}
 
-function setInvalidInput(input) {
-  input.setCustomValidity('invalid');
+function setInvalidInput(_ref2) {
+  var input = _ref2.input,
+      message = _ref2.message;
+  input.setCustomValidity(message || 'invalid');
   input.classList.add('is-invalid');
 }
 
-function setValidInput(input) {
+function setValidInput(_ref3) {
+  var input = _ref3.input;
   input.setCustomValidity('');
   input.classList.remove('is-invalid');
+}
+
+function guideUserToTheFirstError() {
+  var currentScrollPosition = $(window).scrollTop();
+  var invalidInputsSelectors = ['.form-control:invalid', '.custom-control-input:invalid', '.form-control.is-invalid', '.custom-control-input.is-invalid'];
+  var $invalidInputs = $(invalidInputsSelectors.join(', ')); // Selects the parent to get input label
+
+  var $firstInvalidInput = $invalidInputs.first().parent();
+  var firstInvalidInputOffsetTop = $firstInvalidInput.offset().top;
+
+  if (currentScrollPosition <= firstInvalidInputOffsetTop) {
+    return;
+  }
+
+  $('html, body').animate({
+    scrollTop: $firstInvalidInput.offset().top - getStickyHeaderOffset()
+  }, 1000);
+
+  function getStickyHeaderOffset() {
+    var $stickyHeaderSticky = $('.js-header-sticky');
+
+    if (!$stickyHeaderSticky.length) {
+      return 0;
+    }
+
+    return $stickyHeaderSticky.innerHeight();
+  }
+}
+
+function validateFullName(_ref4) {
+  var fullNameElement = _ref4.fullNameElement,
+      invalidMessage = _ref4.invalidMessage;
+  var fullName = fullNameElement.value; // Only for themed form by Bootstrap
+
+  var invalidFeedbackElement = fullNameElement.nextElementSibling;
+  var defaultInvalidFeedback = invalidFeedbackElement.innerText;
+
+  if (!isValidFullName()) {
+    setInvalidInput({
+      input: fullNameElement,
+      message: invalidMessage
+    });
+    invalidFeedbackElement.innerText = invalidMessage;
+    return;
+  }
+
+  setValidInput({
+    input: fullNameElement
+  });
+  invalidFeedbackElement.innerText = defaultInvalidFeedback;
+
+  function isValidFullName() {
+    return fullName.trim().split(' ').length >= 2;
+  }
+}
+
+function setupFullNameValidate() {
+  var fullNameElements = document.querySelectorAll('.js-full-name');
+
+  if (!fullNameElements.length) {
+    return;
+  }
+
+  fullNameElements.forEach(function (fullNameElement) {
+    // Execute as soon as it's found
+    fullNameValidateHandler({
+      fullNameElement: fullNameElement
+    });
+    fullNameElement.addEventListener('blur', function () {
+      // Execute on every blur event propagation
+      fullNameValidateHandler({
+        fullNameElement: fullNameElement
+      });
+    });
+  });
+
+  function fullNameValidateHandler(_ref5) {
+    var fullNameElement = _ref5.fullNameElement;
+
+    if (!fullNameElement.value.length) {
+      return;
+    }
+
+    var invalidMessage = 'Por favor, insira nome e sobrenome';
+    validateFullName({
+      fullNameElement: fullNameElement,
+      invalidMessage: invalidMessage
+    });
+  }
+}
+
+function setupBrazilianCellphoneValidate() {
+  var phoneInputs = document.querySelectorAll('.js-cellphone-validate');
+  phoneInputs.forEach(function (phoneInput) {
+    phoneInput.addEventListener('blur', function () {
+      if (!isValidPhone(phoneInput)) {
+        setInvalidInput({
+          input: phoneInput,
+          message: 'Por favor, insira um número de celular válido'
+        });
+        return;
+      }
+
+      setValidInput({
+        input: phoneInput
+      });
+    });
+  });
+
+  function isValidPhone(phoneValue) {
+    var sanitizedPhone = phoneValue.value.replace(/\D/g, ''); // Check if has phone number and it has 11 characters
+
+    return sanitizedPhone.length && sanitizedPhone.length === 11;
+  }
+}
+
+function setupBrazilianPhoneValidate() {
+  var phoneInputs = document.querySelectorAll('.js-phone-validate');
+  phoneInputs.forEach(function (phoneInput) {
+    phoneInput.addEventListener('blur', function () {
+      if (!isValidPhone(phoneInput)) {
+        setInvalidInput({
+          input: phoneInput,
+          message: 'Por favor, insira um número de telefone válido'
+        });
+        return;
+      }
+
+      setValidInput({
+        input: phoneInput
+      });
+    });
+  });
+
+  function isValidPhone(phoneValue) {
+    var sanitizedPhone = phoneValue.value.replace(/\D/g, ''); // Check if has phone number and it has 11 characters
+
+    return sanitizedPhone.length && sanitizedPhone.length === 10;
+  }
+}
+
+function initializeFormHelpers() {
+  // Form usability
+  setCustomFileLabel();
+  setupCustomFormFieldsVisibility(); // Validators
+
+  setupFullNameValidate();
+  setupBrazilianCellphoneValidate();
+  setupBrazilianPhoneValidate();
 }
 
 var CpfCnpjValidators =
@@ -9377,7 +9607,6 @@ function () {
   function CpfCnpjValidators() {
     _classCallCheck(this, CpfCnpjValidators);
 
-    this.swal = new FmdSweetalert2();
     this.sizes = {
       cpf: 11,
       cnpj: 14
@@ -9410,11 +9639,15 @@ function () {
       };
 
       if (!cnpj.number.full || cnpj.number.full.length !== this.sizes.cnpj) {
-        setInvalidInput(cnpjInput);
+        setInvalidInput({
+          input: cnpjInput
+        });
       }
 
       if (cnpj.number.full === '00000000000000' || cnpj.number.full === '11111111111111' || cnpj.number.full === '22222222222222' || cnpj.number.full === '33333333333333' || cnpj.number.full === '44444444444444' || cnpj.number.full === '55555555555555' || cnpj.number.full === '66666666666666' || cnpj.number.full === '77777777777777' || cnpj.number.full === '88888888888888' || cnpj.number.full === '99999999999999') {
-        setInvalidInput(cnpjInput);
+        setInvalidInput({
+          input: cnpjInput
+        });
         return;
       }
 
@@ -9432,7 +9665,9 @@ function () {
       var result = sum % 11 < 2 ? 0 : 11 - sum % 11;
 
       if (result !== Number(cnpj.number.suffix.charAt(0))) {
-        setInvalidInput(cnpjInput);
+        setInvalidInput({
+          input: cnpjInput
+        });
         return;
       }
 
@@ -9451,11 +9686,15 @@ function () {
       result = sum % 11 < 2 ? 0 : 11 - sum % 11;
 
       if (result !== Number(cnpj.number.suffix.charAt(1))) {
-        setInvalidInput(cnpjInput);
+        setInvalidInput({
+          input: cnpjInput
+        });
         return;
       }
 
-      setValidInput(cnpjInput);
+      setValidInput({
+        input: cnpjInput
+      });
       return true;
     }
   }, {
@@ -9469,12 +9708,16 @@ function () {
       };
 
       if (!cpf.fullNumber || cpf.fullNumber.length !== this.sizes.cpf) {
-        setInvalidInput(cpfInput);
+        setInvalidInput({
+          input: cpfInput
+        });
         return;
       }
 
       if (cpf.fullNumber === '00000000000' || cpf.fullNumber === '11111111111' || cpf.fullNumber === '22222222222' || cpf.fullNumber === '33333333333' || cpf.fullNumber === '44444444444' || cpf.fullNumber === '55555555555' || cpf.fullNumber === '66666666666' || cpf.fullNumber === '77777777777' || cpf.fullNumber === '88888888888' || cpf.fullNumber === '99999999999') {
-        setInvalidInput(cpfInput);
+        setInvalidInput({
+          input: cpfInput
+        });
         return;
       }
 
@@ -9485,7 +9728,9 @@ function () {
       }
 
       if (d1 === 0) {
-        setInvalidInput(cpfInput);
+        setInvalidInput({
+          input: cpfInput
+        });
         return;
       }
 
@@ -9496,7 +9741,9 @@ function () {
       }
 
       if (Number(cpf.suffix.charAt(0)) !== d1) {
-        setInvalidInput(cpfInput);
+        setInvalidInput({
+          input: cpfInput
+        });
         return;
       }
 
@@ -9513,11 +9760,15 @@ function () {
       }
 
       if (Number(cpf.suffix.charAt(1)) !== d1) {
-        setInvalidInput(cpfInput);
+        setInvalidInput({
+          input: cpfInput
+        });
         return;
       }
 
-      setValidInput(cpfInput);
+      setValidInput({
+        input: cpfInput
+      });
       return true;
     }
   }]);
@@ -9734,6 +9985,7 @@ function preventInvalidFormSubmit() {
       if (form.checkValidity() === false) {
         event.preventDefault();
         event.stopPropagation();
+        guideUserToTheFirstError();
       }
 
       form.classList.add('was-validated');
@@ -9817,17 +10069,28 @@ function setupInputMasks() {
     var tels = document.querySelectorAll('.mask-phone');
     tels.forEach(function (tel) {
       VMasker(tel).maskPattern(telMask[0]);
-      tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false);
+
+      if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1) {
+        /* me julgue safari desgraçado */
+      } else {
+        tel.addEventListener('input', inputHandler.bind(undefined, telMask, 14), false);
+      }
     });
   }
 
-  if (document.querySelectorAll('.mask-cpfcnpj').length > 0) {
-    var docMask = ['999.999.999-999', '99.999.999/9999-99'];
-    var docs = document.querySelectorAll('.mask-cpfcnpj');
-    docs.forEach(function (doc) {
-      VMasker(doc).maskPattern(docMask[0]);
-      doc.addEventListener('input', inputHandler.bind(undefined, docMask, 14), false);
-    });
+  if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1) {
+    /* me julgue safari desgraçado */
+
+    /* o safari não deixa trocar a mascara do campo */
+  } else {
+    if (document.querySelectorAll('.mask-cpfcnpj').length > 0) {
+      var docMask = ['999.999.999-999', '99.999.999/9999-99'];
+      var docs = document.querySelectorAll('.mask-cpfcnpj');
+      docs.forEach(function (doc) {
+        VMasker(doc).maskPattern(docMask[0]);
+        doc.addEventListener('input', inputHandler.bind(undefined, docMask, 14), false);
+      });
+    }
   }
 
   if (document.querySelectorAll('.mask-date').length > 0) {
@@ -9875,7 +10138,7 @@ function setupInputMasks() {
 
   if (cnpjInput) {
     cnpjInput.addEventListener('blur', function (event) {
-      cpfCnpjValidators.checkCPF(event.target);
+      cpfCnpjValidators.checkCNPJ(event.target);
     });
   }
 }
@@ -9934,7 +10197,8 @@ function setupInfiniteScroll() {
     contentsWrapperSelector: '.infinite-scroll',
     contentSelector: '.infinite-scroll-content',
     nextSelector: 'a[rel~="next"]',
-    loadImage: '/images/loading.gif'
+    // Without extension, because we use xlink on svg tag
+    loadImage: 'ic-loading'
   });
 }
 
@@ -10030,16 +10294,16 @@ $(function () {
   setupInputMasks(); // setupPopover();
   // setupTooltip();
   // setupAnchorReloadPrevention();
-  // setupInfiniteScroll();
   // setupShareWindow();
-  // setupCustomFormFieldsVisibility();
   // insertCopyrightYear();
+
+  initializeFormHelpers();
 });
 window.addEventListener('load', function () {
   /**
    * Usually the header triggers after the first section which has the
    * height defined as 100vh. We need the starting function here because
    * vh/vw are calculated after all resources loaded*/
-  setupStickyHeader();
+  setupStickyHeader(); // setupInfiniteScroll();
 });
 setupLivewire();

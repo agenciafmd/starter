@@ -1,5 +1,9 @@
 // Overwrite bootstrap's variables
 
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
 // Map the project's colors for the class generators from bootstrap
 // Color system
 $white: #fff !default;
@@ -103,6 +107,8 @@ $escaped-characters: (
         ("<", "%3c"),
         (">", "%3e"),
         ("#", "%23"),
+        ("(", "%28"),
+        (")", "%29"),
 ) !default;
 
 // Options
@@ -112,7 +118,7 @@ $escaped-characters: (
 $enable-caret: true !default;
 $enable-rounded: true !default;
 $enable-shadows: true !default;
-$enable-gradients: true !default;
+$enable-gradients: false !default;
 $enable-transitions: true !default;
 $enable-prefers-reduced-motion-media-query: true !default;
 $enable-hover-media-query: false !default; // Deprecated, no longer affects any compiled CSS
@@ -313,7 +319,7 @@ $headings-margin-bottom: $spacer / 2 !default;
 $headings-font-family: get-font-family($bold-font-map) !default;
 $headings-font-weight: 500 !default;
 $headings-line-height: 1.2 !default;
-$headings-color: theme-color('primary') !default;
+$headings-color: $primary !default;
 
 $display1-size: 6rem !default;
 $display2-size: 5.5rem !default;
@@ -785,6 +791,7 @@ $dropdown-item-padding-y: .25rem !default;
 $dropdown-item-padding-x: 1.5rem !default;
 
 $dropdown-header-color: $gray-600 !default;
+$dropdown-header-padding: $dropdown-padding-y $dropdown-item-padding-x !default;
 
 // Pagination
 
@@ -914,7 +921,7 @@ $toast-header-border-color: rgba(0, 0, 0, .05) !default;
 
 // Badges
 
-$badge-font-size: .75rem !default;
+$badge-font-size: 75% !default;
 $badge-font-weight: $font-weight-bold !default;
 $badge-padding-y: .25em !default;
 $badge-padding-x: .4em !default;
@@ -1104,8 +1111,8 @@ $code-color: $pink !default;
 $kbd-padding-y: .2rem !default;
 $kbd-padding-x: .4rem !default;
 $kbd-font-size: $code-font-size !default;
-$kbd-color: $black !default;
-$kbd-bg: $gray-200 !default;
+$kbd-color: $white !default;
+$kbd-bg: $gray-900 !default;
 
 $pre-color: $gray-900 !default;
 $pre-scrollable-max-height: 340px !default;
@@ -1115,6 +1122,7 @@ $pre-scrollable-max-height: 340px !default;
 $displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;
 $overflows: auto, hidden !default;
 $positions: static, relative, absolute, fixed, sticky !default;
+$user-selects: all, auto, none !default;
 
 // Printing
 
