@@ -12,3 +12,25 @@
     }
   }
 }
+
+.position {
+
+  &-middle {
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &-justify-center {
+
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &-align-center {
+
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

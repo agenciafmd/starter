@@ -42623,6 +42623,23 @@ img:not([loading=lazy]) {
   }
 }
 
+.position-middle {
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.position-justify-center {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.position-align-center {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
 .video-film {
   position: absolute;
   background: rgba(0, 0, 0, 0.3) url("/images/video-film.png");
