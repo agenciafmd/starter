@@ -10281,35 +10281,6 @@ function setupLivewire() {
   });
 }
 
-function setupFancyBox() {
-  $('[data-fancybox]').fancybox({
-    baseClass: "fancybox-custom-layout",
-    infobar: false,
-    touch: {
-      vertical: false
-    },
-    buttons: ["close", "thumbs", "share"],
-    animationEffect: "fade",
-    transitionEffect: "fade",
-    preventCaptionOverlap: false,
-    idleTime: false,
-    gutter: 0,
-    loop: true,
-    lang: "pt",
-    i18n: {
-      pt: {
-        SHARE: "Compartilhar"
-      }
-    },
-    caption: function caption() {
-      var caption = $(this).attr('data-caption');
-      var title = $(this).attr('data-fancybox');
-      var subtitle = $(this).attr('data-subtitle');
-      return "<h3 class=\"fancybox-caption-title\">".concat(title, "</h3>\n      <p class=\"fancybox-caption-subtitle\">").concat(subtitle, "</p>\n      <span class=\"fancybox-caption-description\">").concat(caption, "</span>");
-    }
-  });
-}
-
 $(function () {
   setupServiceWorker();
   preventInvalidFormSubmit();
@@ -10326,7 +10297,6 @@ $(function () {
   // setupShareWindow();
   // insertCopyrightYear();
 
-  setupFancyBox();
   initializeFormHelpers();
 });
 window.addEventListener('load', function () {
