@@ -519,6 +519,37 @@ function setupLivewire() {
     });
 }
 
+function copyToClipboard() {
+
+  // Don't forget to install the package: npm install clipboard --save
+
+  const triggerElement = new ClipboardJS('.js-copy');
+
+  triggerElement.on('success', (event) => {
+
+    showTooltip(event.trigger);
+  });
+
+  function showTooltip(targetElement) {
+
+    const successTooltip = $(targetElement).tooltip({
+
+      title: 'Copiado para a área de transferência',
+      placement: 'bottom',
+      trigger: 'manual',
+    });
+
+    successTooltip.tooltip('show');
+
+    setTimeout(() => {
+
+      successTooltip.tooltip('hide');
+    }, 2000);
+  }
+
+  // Attention: the target element must be above the trigger element to work
+}
+
 $(function () {
 
   setupServiceWorker();
@@ -552,6 +583,8 @@ $(function () {
   // insertCopyrightYear();
 
   initializeFormHelpers();
+
+  // copyToClipboard();
 });
 
 window.addEventListener('load', function () {
