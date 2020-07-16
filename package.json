@@ -30,7 +30,7 @@
         "jquery": "^3.4.1",
         "jquery-maskmoney": "^3.0.2",
         "jquery.maskedinput": "^1.4.1",
-        "lodash": "^4.17.5",
+        "lodash": "^4.17.19",
         "moment": "^2.18.1",
         "popper.js": "^1.12",
         "select2": "^4.0.13",
