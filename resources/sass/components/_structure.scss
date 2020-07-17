@@ -1,5 +1,25 @@
 .block {
 
+  &-spacer-t {
+
+    padding-top: $block-spacing-y;
+
+    @include media-breakpoint-down(md) {
+
+      padding-top: calc(#{$block-spacing-y} / 2);
+    }
+  }
+
+  &-spacer-b {
+
+    padding-bottom: $block-spacing-y;
+
+    @include media-breakpoint-down(md) {
+
+      padding-bottom: calc(#{$block-spacing-y} / 2);
+    }
+  }
+
   &-spacer-y {
 
     padding-top: $block-spacing-y;
