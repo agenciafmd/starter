@@ -70,4 +70,14 @@
             showCloseButton: true,
         });
     });
+
+    window.livewire.on('datalayer', (param) => {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: param.event || 'gaEvent',
+            category: param.category || 'formulario',
+            action: param.action || 'enviar',
+            rotulo: param.label || 'sucesso',
+        });
+    });
 </script>
