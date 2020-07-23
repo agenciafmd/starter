@@ -12,6 +12,16 @@ class EncryptCookies extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        'cid',
+        'gclid',
+        'hubspotutk',
+        'utm_campaign',
+        'utm_content',
+        'utm_medium',
+        'utm_medium',
+        'utm_source',
+        'utm_source',
+        'utm_term',
+        'utm_today',
     ];
 }
