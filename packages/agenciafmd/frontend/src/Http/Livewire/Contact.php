@@ -137,7 +137,15 @@ class Contact extends Component
                 . '<br/> Mensagem: ' . nl2br($data['message']),
         ]);
 
-        $this->emit('swal', ['level' => 'success', 'message' => 'Mensagem enviada com sucesso.']);
+        $this->emit('swal', [
+            'level' => 'success',
+            'message' => 'Mensagem enviada com sucesso.',
+        ]);
+
+        $this->emit('datalayer', [
+            'label' => 'sucesso'
+        ]);
+
         $this->reset();
     }
 

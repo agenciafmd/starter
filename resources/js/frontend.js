@@ -519,7 +519,7 @@ function setupLivewire() {
     });
 }
 
-function copyToClipboard() {
+function setupClipboardJS() {
 
   // Don't forget to install the package: npm install clipboard --save
 
@@ -546,8 +546,6 @@ function copyToClipboard() {
       successTooltip.tooltip('hide');
     }, 2000);
   }
-
-  // Attention: the target element must be above the trigger element to work
 }
 
 $(function () {
@@ -584,7 +582,7 @@ $(function () {
 
   initializeFormHelpers();
 
-  // copyToClipboard();
+  // setupClipboardJS();
 });
 
 window.addEventListener('load', function () {

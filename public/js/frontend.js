@@ -10025,7 +10025,7 @@ function setupLivewire() {
   });
 }
 
-function copyToClipboard() {
+function setupClipboardJS() {
   // Don't forget to install the package: npm install clipboard --save
   var triggerElement = new ClipboardJS('.js-copy');
   triggerElement.on('success', function (event) {
@@ -10042,8 +10042,7 @@ function copyToClipboard() {
     setTimeout(function () {
       successTooltip.tooltip('hide');
     }, 2000);
-  } // Attention: the target element must be above the trigger element to work
-
+  }
 }
 
 $(function () {
@@ -10062,7 +10061,7 @@ $(function () {
   // setupShareWindow();
   // insertCopyrightYear();
 
-  initializeFormHelpers(); // copyToClipboard();
+  initializeFormHelpers(); // setupClipboardJS();
 });
 window.addEventListener('load', function () {
   /**
