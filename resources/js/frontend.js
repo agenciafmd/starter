@@ -529,7 +529,7 @@ $(function () {
 
   setupSmoothScroll();
 
-  setupSideDrawer();
+  // setupSideDrawer();
 
   // setupCepSearch();
 
@@ -552,6 +552,8 @@ $(function () {
   // insertCopyrightYear();
 
   initializeFormHelpers();
+
+  // setupDefaultSlider();
 });
 
 window.addEventListener('load', function () {
@@ -560,7 +562,7 @@ window.addEventListener('load', function () {
    * Usually the header triggers after the first section which has the
    * height defined as 100vh. We need the starting function here because
    * vh/vw are calculated after all resources loaded*/
-  setupStickyHeader();
+  // setupStickyHeader();
 
   // setupInfiniteScroll();
 });

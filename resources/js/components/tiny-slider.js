@@ -1,14 +1,15 @@
 function createSlider(options) {
 
-  if (!$('main').find(options.container).length) {
-    return;
+  if (!options.container) {
+
+    throw new Error('passa o elemento ai');
   }
 
   return tns({
+    container: options.container,
     items: 1,
     autoplay: true,
     autoplayTimeout: 3000,
-    mouseDrag: true,
     controls: true,
     navPosition: 'center',
     controlsPosition: 'bottom',
@@ -23,20 +24,15 @@ function createSlider(options) {
   });
 }
 
-$(function () {
+function setupDefaultSlider() {
 
-  /*$('.js-default').each(function () {
+  document
+      .querySelectorAll('.js-slider')
+      .forEach(function (item) {
 
-    createSlider({
+        createSlider({
 
-      container: '#' + $(this).attr('id'),
-      responsive: {
-
-        1024: {
-
-          items: 3,
-        },
-      },
-    });
-  });*/
-});
+          container: item
+        });
+      });
+}
