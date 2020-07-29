@@ -1400,11 +1400,7 @@
               </div>
               <button type="submit"
                       class="btn btn-primary btn-block">
-                <span class="position-relative">
-                  <span class="spinner-border spinner-border-sm text-light"
-                        role="status"></span>
-                  Enviar
-                </span>
+                Enviar
               </button>
             </div>
           </div>
