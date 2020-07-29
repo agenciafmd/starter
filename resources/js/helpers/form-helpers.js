@@ -234,6 +234,82 @@ function setupBrazilianPhoneValidate() {
   }
 }
 
+function isValidDate(inputElement) {
+
+  const datePattern = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+
+  // Match the date format through regular expression
+  if (!inputElement.value.match(datePattern)) {
+
+    return false;
+  }
+
+  // Test which separator is used '/' or '-'
+  const slashOperator = inputElement.value.split('/');
+  const dashOperator = inputElement.value.split('-');
+  const isSlashOperator = !!slashOperator.length;
+  const isDashOperator = !!dashOperator.length;
+
+  // Extract the string into month, date and year
+  let pdate;
+  if (isSlashOperator) {
+
+    pdate = inputElement.value.split('/');
+  } else if (isDashOperator) {
+
+    pdate = inputElement.value.split('-');
+  }
+
+  const dd = parseInt(pdate[0]);
+  const mm = parseInt(pdate[1]);
+  const yy = parseInt(pdate[2]);
+
+  // Accept date until now
+  if (yy > new Date().getFullYear()) {
+
+    return false;
+  }
+
+  // Create list of days of a month assuming there is no leap year by default
+  const lastDaysOfMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+  if (mm === 1 || mm > 2) {
+    if (dd > lastDaysOfMonths[mm - 1]) {
+      return false;
+    }
+  }
+
+  // If is february
+  if (mm === 2) {
+
+    const isLeapYear = !!(!(yy % 4) && yy % 100) || !(yy % 400);
+
+    if ((!isLeapYear) && (dd >= 29) || (isLeapYear) && (dd > 29)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function setDateValidationHandlers() {
+
+  document.querySelectorAll('.mask-date')
+      .forEach(function (item) {
+
+        item.addEventListener('blur', function () {
+
+          if (!isValidDate(item)) {
+
+            setInvalidInput({ input: item });
+            return;
+          }
+
+          setValidInput({ input: item });
+        });
+      });
+}
+
 function initializeFormHelpers() {
 
   // Form usability
@@ -244,4 +320,5 @@ function initializeFormHelpers() {
   setupFullNameValidate();
   setupBrazilianCellphoneValidate();
   setupBrazilianPhoneValidate();
+  setDateValidationHandlers();
 }

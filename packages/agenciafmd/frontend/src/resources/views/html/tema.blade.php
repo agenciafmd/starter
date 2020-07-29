@@ -1086,6 +1086,16 @@
                            placeholder="Password">
                   </div>
                   <div class="form-group">
+                    <label for="exampleInputDate">Date</label>
+                    <input type="text"
+                           class="form-control mask-date"
+                           id="exampleInputDate"
+                           placeholder="Data">
+                    <div class="invalid-feedback">
+                      favor digite uma data valida
+                    </div>
+                  </div>
+                  <div class="form-group">
                     <label for="exampleSelect1">Example select</label>
                     <select class="form-control"
                             id="exampleSelect1">
