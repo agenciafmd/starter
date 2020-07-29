@@ -133,14 +133,21 @@ function preventInvalidFormSubmit() {
 
   var forms = document.getElementsByClassName('needs-validation');
   var validation = Array.prototype.filter.call(forms, function (form) {
+
     form.addEventListener('submit', function (event) {
+
       if (form.checkValidity() === false) {
+
         event.preventDefault();
         event.stopPropagation();
 
         guideUserToTheFirstError();
+        form.classList.add('was-validated');
+        return;
       }
-      form.classList.add('was-validated');
+
+      // Execute the function only when form was submitted and is valid
+      disableButtonOnSubmit();
     }, false);
   });
 
@@ -153,6 +160,16 @@ function preventInvalidFormSubmit() {
             .removeClass('is-invalid');
         $(this)[0].setCustomValidity('');
       });
+}
+
+function disableButtonOnSubmit() {
+
+  const buttons = document.querySelectorAll('form button');
+
+  buttons.forEach((item) => {
+
+    item.setAttribute('disabled', 'disabled');
+  });
 }
 
 function setupSmoothScroll() {
