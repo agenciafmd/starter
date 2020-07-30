@@ -22,4 +22,22 @@
     min-height: $infinite-scroll-loading-icon-size;
     background: $infinite-scroll-loading-icon-background;
   }
+
+  &-sm {
+
+    width: $icon-sm;
+    height: $icon-sm;
+  }
+
+  &-md {
+
+    width: $icon-md;
+    height: $icon-md;
+  }
+
+  &-lg {
+
+    width: $icon-lg;
+    height: $icon-lg;
+  }
 }
