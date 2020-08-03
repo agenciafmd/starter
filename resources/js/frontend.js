@@ -162,21 +162,6 @@ function preventInvalidFormSubmit() {
       });
 }
 
-function createSpinnerIconOnButtonSubmit() {
-
-  const buttons = document.querySelectorAll('form button');
-
-  buttons.forEach((button) => {
-
-    const buttonText = button.innerText;
-    button.innerHTML = `<span class="spinner-container">
-                            <span class="spinner-border spinner-border-sm text-light"
-                                  role="status"></span>
-                            ${ buttonText }
-                        </span>`;
-  });
-}
-
 function disableButtonOnSubmit() {
 
   const buttons = document.querySelectorAll('form button');
@@ -185,9 +170,15 @@ function disableButtonOnSubmit() {
 
     button.setAttribute('disabled', 'disabled');
 
-    const spinner = button.querySelector('.spinner-border');
+    const buttonText = button.innerText;
+    button.innerHTML = `<span class="spinner-container">
+                            <span class="spinner-border spinner-border-sm text-light"
+                                  role="status"></span>
+                            ${ buttonText }
+                        </span>`;
 
-    spinner.classList.add('d-block');
+    const spinner = button.querySelector('.spinner-container');
+    spinner.classList.add('d-inline-block');
   });
 }
 
@@ -556,8 +547,6 @@ function setupLivewire() {
 }
 
 $(function () {
-
-  createSpinnerIconOnButtonSubmit();
 
   setupServiceWorker();
 
