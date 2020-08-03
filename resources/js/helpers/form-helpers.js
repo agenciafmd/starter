@@ -90,7 +90,7 @@ function guideUserToTheFirstError() {
   const $invalidInputs = $(invalidInputsSelectors.join(', '));
   // Selects the parent to get input label
   const $firstInvalidInput = $invalidInputs.first()
-                                           .parent();
+      .parent();
   const firstInvalidInputOffsetTop = $firstInvalidInput.offset().top;
 
   if (currentScrollPosition <= firstInvalidInputOffsetTop) {
@@ -98,12 +98,36 @@ function guideUserToTheFirstError() {
     return;
   }
 
-  $('html, body')
-      .animate({
-        scrollTop: $firstInvalidInput.offset().top - getStickyHeaderOffset(),
-      }, 1000);
+  if (_isFormOnModal()) {
 
-  function getStickyHeaderOffset() {
+    _scrollToError({ container: '.modal.show' });
+
+    return;
+  }
+
+  _scrollToError({ container: 'html, body' });
+
+  function _scrollToError({ container }) {
+
+    const animateConfig = {
+      properties: {
+        scrollTop: $firstInvalidInput.offset().top - _getStickyHeaderOffset(),
+      },
+      options: {
+        duration: 1000,
+      },
+    };
+
+    $(container)
+        .animate(animateConfig.properties, animateConfig.options);
+  }
+
+  function _isFormOnModal() {
+
+    return $('body').hasClass('modal-open');
+  }
+
+  function _getStickyHeaderOffset() {
 
     const $stickyHeaderSticky = $('.js-header-sticky');
 
