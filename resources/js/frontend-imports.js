@@ -22,6 +22,7 @@ module.exports = (function () {
     // 'resources/js/helpers/user-interaction-helpers.js',
     // Components
     'resources/js/components/sticky-header.js',
+    // 'resources/js/components/fancybox.js',
     // Pages
     'resources/js/frontend.js',
   ];
