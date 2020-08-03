@@ -519,6 +519,35 @@ function setupLivewire() {
     });
 }
 
+function setupClipboardJS() {
+
+  // Don't forget to install the package: npm install clipboard --save
+
+  const triggerElement = new ClipboardJS('.js-copy');
+
+  triggerElement.on('success', (event) => {
+
+    showTooltip(event.trigger);
+  });
+
+  function showTooltip(targetElement) {
+
+    const successTooltip = $(targetElement).tooltip({
+
+      title: 'Copiado para a área de transferência',
+      placement: 'bottom',
+      trigger: 'manual',
+    });
+
+    successTooltip.tooltip('show');
+
+    setTimeout(() => {
+
+      successTooltip.tooltip('hide');
+    }, 2000);
+  }
+}
+
 $(function () {
 
   setupServiceWorker();
@@ -552,6 +581,8 @@ $(function () {
   // insertCopyrightYear();
 
   initializeFormHelpers();
+
+  // setupClipboardJS();
 });
 
 window.addEventListener('load', function () {

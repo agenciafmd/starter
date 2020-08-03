@@ -474,7 +474,6 @@
 
         <div class="row">
           <div class="col-lg-7">
-
             <p class="bs-component">
               <button type="button"
                       class="btn btn-primary">Primary
@@ -483,6 +482,7 @@
                       class="btn btn-secondary">Secondary
               </button>
               <button type="button"
+                      data-clipboard-target="#navbars"
                       class="btn btn-success">Success
               </button>
               <button type="button"
