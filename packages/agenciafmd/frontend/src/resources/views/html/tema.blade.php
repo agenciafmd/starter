@@ -1379,6 +1379,32 @@
 
           </div>
         </div>
+
+        <p>Trava botão no submit</p>
+        <form class="needs-validation"
+              novalidate>
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label class=""
+                       for="news-name">Nome
+                </label>
+                <input type="text"
+                       class="form-control"
+                       placeholder="Nome"
+                       id="news-name"
+                       required>
+                <div class="invalid-feedback">
+                  Digite o campo nome.
+                </div>
+              </div>
+              <button type="submit"
+                      class="btn btn-primary btn-block">
+                Enviar
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
 
       <!-- Navs
