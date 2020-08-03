@@ -22,9 +22,11 @@ module.exports = (function () {
     'resources/js/helpers/cpf-cnpj-validators.js',
     // 'resources/js/helpers/user-interaction-helpers.js',
     // Components
-    'resources/js/components/sticky-header.js',
+    // 'resources/js/components/sticky-header.js',
+    // 'resources/js/components/tiny-slider.js',
     // 'resources/js/components/fancybox.js',
-    // Pages
+    // Global usages
     'resources/js/frontend.js',
+    // Pages
   ];
 })();
