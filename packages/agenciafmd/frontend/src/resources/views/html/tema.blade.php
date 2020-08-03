@@ -474,7 +474,6 @@
 
         <div class="row">
           <div class="col-lg-7">
-
             <p class="bs-component">
               <button type="button"
                       class="btn btn-primary">Primary
@@ -483,6 +482,7 @@
                       class="btn btn-secondary">Secondary
               </button>
               <button type="button"
+                      data-clipboard-target="#navbars"
                       class="btn btn-success">Success
               </button>
               <button type="button"
@@ -2504,6 +2504,35 @@
                       data-placement="right"
                       title="Tooltip on right">Right
               </button>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="my-2">
+              <h2 class="mb-0">Fancybox Custom Layout</h2>
+              <small class="d-inline-block mb-1h text-muted">
+                Requires importing JS from Fancybox.
+              </small>
+              <div class="bs-component">
+                <div class="position-relative">
+                  <a href="/images/logo.png"
+                     class="stretched-link custom-layout"
+                     data-fancybox="título"
+                     data-subtitle="subtitulo"
+                     data-caption="Descrição do conteúdo.">
+                  </a>
+                  <img src="/images/logo.png"
+                       alt="Alt exemple for test"
+                       loading="lazy"
+                       width="199"
+                       height="68">
+                </div>
+
+                <!-----------------------------------------------
+                  To activate this custom layout:
+                   1. Import the _fancybox.scss file in _vendors.scss
+                   2. Uncomfortable fancybox.js in frontend-imports.js
+                ------------------------------------------------>
+              </div>
             </div>
           </div>
         </div>

@@ -9,8 +9,9 @@ module.exports = (function () {
     // 'node_modules/select2/dist/js/i18n/pt-BR.js',
     // 'node_modules/select2/dist/js/select2.min.js',
     'node_modules/sweetalert2/dist/sweetalert2.min.js',
-    'node_modules/tiny-slider/dist/min/tiny-slider.js',
+    // 'node_modules/tiny-slider/dist/min/tiny-slider.js',
     'node_modules/vanilla-masker/build/vanilla-masker.min.js',
+    // 'node_modules/clipboard/dist/clipboard.min.js',
     // 'node_modules/wow.js/dist/wow.min.js',
     // Vendors
     // 'resources/js/vendors/jquery.clever-infinite-scroll.js',
@@ -21,8 +22,9 @@ module.exports = (function () {
     'resources/js/helpers/cpf-cnpj-validators.js',
     // 'resources/js/helpers/user-interaction-helpers.js',
     // Components
-    'resources/js/components/sticky-header.js',
-    'resources/js/components/tiny-slider.js',
+    // 'resources/js/components/sticky-header.js',
+    // 'resources/js/components/tiny-slider.js',
+    // 'resources/js/components/fancybox.js',
     // Global usages
     'resources/js/frontend.js',
     // Pages
