@@ -1,5 +1,9 @@
 .ic {
 
+  @extend .img-fluid;
+  width: $icon-md-x;
+  height: $icon-md-y;
+
   @each $color, $value in $theme-colors {
     &-#{$color} {
 
@@ -23,21 +27,33 @@
     background: $infinite-scroll-loading-icon-background;
   }
 
-  &-sm {
+  @include media-breakpoint-up(lg) {
 
-    width: $icon-sm;
-    height: $icon-sm;
+    width: $icon-md-x;
+    height: $icon-md-y;
   }
 
-  &-md {
+  &-sm {
 
-    width: $icon-md;
-    height: $icon-md;
+    width: $icon-sm-x;
+    height: $icon-sm-y;
+
+    @include media-breakpoint-up(lg) {
+
+      width: $icon-sm-x;
+      height: $icon-sm-y;
+    }
   }
 
   &-lg {
 
-    width: $icon-lg;
-    height: $icon-lg;
+    width: $icon-lg-x;
+    height: $icon-lg-y;
+
+    @include media-breakpoint-up(lg) {
+
+      width: $icon-lg-x;
+      height: $icon-lg-y;
+    }
   }
 }
