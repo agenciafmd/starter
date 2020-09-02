@@ -19,6 +19,14 @@
       }
     }
   }
+
+  &-item {
+
+    &:not(.tns-slide-active) {
+
+      visibility: hidden;
+    }
+  }
 }
 
 .slider-container {
