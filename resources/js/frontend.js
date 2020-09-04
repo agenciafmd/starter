@@ -86,7 +86,7 @@ function setupStateCityOptions() {
 
       city.html($optionsCity);
     })
-          .change();
+        .change();
   });
 }
 
@@ -120,13 +120,13 @@ function setupServiceWorker() {
 
   // Register the ServiceWorker
   navigator.serviceWorker
-           .register('/sw.js')
-           .then(function (reg) {
-             console.log('Service worker has been registered for scope: ' + reg.scope);
-           })
-           .catch(function (err) {
-             console.log('ServiceWorker registration failed: ', err);
-           });
+      .register('/sw.js')
+      .then(function (reg) {
+        console.log('Service worker has been registered for scope: ' + reg.scope);
+      })
+      .catch(function (err) {
+        console.log('ServiceWorker registration failed: ', err);
+      });
 }
 
 function preventInvalidFormSubmit() {
@@ -195,33 +195,80 @@ function setupSmoothScroll() {
         // Prevent default anchor click behavior
         event.preventDefault();
 
-        var additionalOffset = this.getAttribute('data-scroll-offset') || 0;
+        const additionalOffset = this.getAttribute('data-scroll-offset') || 0;
 
-        $('html, body')
-            .animate({
-              scrollTop: $(this.hash)
-                  .offset().top + Number(additionalOffset),
-            }, 1000);
+        setupScrollAnimate({
+          container: 'html, body',
+          target: $(this.hash),
+          additionalOffset: additionalOffset,
+        });
       });
+}
+
+function setupScrollAnimate({ container, target, additionOffset }) {
+
+  if (!target) {
+
+    console.error(`target: Passar o alvo do link é obrigatório`);
+    return;
+  }
+
+  if (!container) {
+
+    console.error(`container: Passar elemento para executar o scroll é obrigatório`);
+    return;
+  }
+
+  const additionalOffset = Number(additionOffset) || 0;
+  const scrollAnimateConfig = {
+    properties: { scrollTop: target.offset().top + additionalOffset },
+    options: {
+      duration: 1000,
+    },
+  };
+
+  $(container)
+      .animate(
+          scrollAnimateConfig.properties,
+          scrollAnimateConfig.options.duration,
+      );
 }
 
 function verifyUserAgent() {
 
-  var OSNome = "";
-  if (window.navigator.userAgent.indexOf("Windows NT 10.0")!== -1) OSNome="Windows 10";
-  if (window.navigator.userAgent.indexOf("Windows NT 6.2") !== -1) OSNome="Windows 8";
-  if (window.navigator.userAgent.indexOf("Windows NT 6.1") !== -1) OSNome="Windows 7";
-  if (window.navigator.userAgent.indexOf("Windows NT 6.0") !== -1) OSNome="Windows Vista";
-  if (window.navigator.userAgent.indexOf("Windows NT 5.1") !== -1) OSNome="Windows XP";
-  if (window.navigator.userAgent.indexOf("Windows NT 5.0") !== -1) OSNome="Windows 2000";
-  if (window.navigator.userAgent.indexOf("Mac")            !== -1) OSNome="Mac/iOS";
-  if (window.navigator.userAgent.indexOf("X11")            !== -1) OSNome="UNIX";
-  if (window.navigator.userAgent.indexOf("Linux")          !== -1) OSNome="Linux";
+  var OSNome = '';
+  if (window.navigator.userAgent.indexOf('Windows NT 10.0') !== -1) {
+    OSNome = 'Windows 10';
+  }
+  if (window.navigator.userAgent.indexOf('Windows NT 6.2') !== -1) {
+    OSNome = 'Windows 8';
+  }
+  if (window.navigator.userAgent.indexOf('Windows NT 6.1') !== -1) {
+    OSNome = 'Windows 7';
+  }
+  if (window.navigator.userAgent.indexOf('Windows NT 6.0') !== -1) {
+    OSNome = 'Windows Vista';
+  }
+  if (window.navigator.userAgent.indexOf('Windows NT 5.1') !== -1) {
+    OSNome = 'Windows XP';
+  }
+  if (window.navigator.userAgent.indexOf('Windows NT 5.0') !== -1) {
+    OSNome = 'Windows 2000';
+  }
+  if (window.navigator.userAgent.indexOf('Mac') !== -1) {
+    OSNome = 'Mac/iOS';
+  }
+  if (window.navigator.userAgent.indexOf('X11') !== -1) {
+    OSNome = 'UNIX';
+  }
+  if (window.navigator.userAgent.indexOf('Linux') !== -1) {
+    OSNome = 'Linux';
+  }
 
-  if (OSNome !== "Mac/iOS") {
+  if (OSNome !== 'Mac/iOS') {
 
     let body = document.querySelector('body');
-    body.classList.add("style-scroll");
+    body.classList.add('style-scroll');
   }
 }
 
@@ -260,8 +307,8 @@ function setupInputMasks() {
     var c = event.target;
     var v = c.value.replace(/\D/g, '');
     var m = c.value.length > max
-            ? 1
-            : 0;
+        ? 1
+        : 0;
     VMasker(c)
         .unMask();
     VMasker(c)
@@ -275,40 +322,39 @@ function setupInputMasks() {
     tels.forEach((tel) => {
       VMasker(tel)
           .maskPattern(telMask[0]);
-        if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1) {
-            /* me julgue safari desgraçado */
-        }
-        else {
-            tel.addEventListener(
-                'input',
-                inputHandler.bind(undefined, telMask, 14),
-                false,
-            );
-        }
+      if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf(
+          'Chrome') === -1) {
+        /* me julgue safari desgraçado */
+      } else {
+        tel.addEventListener(
+            'input',
+            inputHandler.bind(undefined, telMask, 14),
+            false,
+        );
+      }
     });
   }
 
-    if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf('Chrome') === -1) {
-        /* me julgue safari desgraçado */
-        /* o safari não deixa trocar a mascara do campo */
-    }
-    else {
-        if (document.querySelectorAll('.mask-cpfcnpj').length > 0) {
-            var docMask = ['999.999.999-999', '99.999.999/9999-99'];
-            var docs = document.querySelectorAll('.mask-cpfcnpj');
-            docs.forEach((doc) => {
-                VMasker(doc)
-                    .maskPattern(docMask[0]);
+  if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf(
+      'Chrome') === -1) {
+    /* me julgue safari desgraçado */
+    /* o safari não deixa trocar a mascara do campo */
+  } else {
+    if (document.querySelectorAll('.mask-cpfcnpj').length > 0) {
+      var docMask = ['999.999.999-999', '99.999.999/9999-99'];
+      var docs = document.querySelectorAll('.mask-cpfcnpj');
+      docs.forEach((doc) => {
+        VMasker(doc)
+            .maskPattern(docMask[0]);
 
-
-                doc.addEventListener(
-                    'input',
-                    inputHandler.bind(undefined, docMask, 14),
-                    false,
-                );
-            });
-        }
+        doc.addEventListener(
+            'input',
+            inputHandler.bind(undefined, docMask, 14),
+            false,
+        );
+      });
     }
+  }
   if (document.querySelectorAll('.mask-date').length > 0) {
     VMasker(document.querySelectorAll('.mask-date'))
         .maskPattern('99/99/9999');
@@ -377,7 +423,7 @@ function setupCepSearch() {
 
         var $this = $(this);
         var cep = $this.val()
-                       .replace('-', '');
+            .replace('-', '');
 
         if (cep.length === 8) {
           $.getJSON('https://api.mixd.com.br/cep/' + cep, {},
@@ -521,29 +567,29 @@ function insertCopyrightYear() {
 }
 
 function setupLivewire() {
-    document.addEventListener("livewire:load", function (event) {
-        window.livewire.hook('afterDomUpdate', () => {
-            setupInputMasks();
+  document.addEventListener('livewire:load', function (event) {
+    window.livewire.hook('afterDomUpdate', () => {
+      setupInputMasks();
 
-            document.querySelectorAll('[data-upload]').forEach((item) => {
-                item.addEventListener('change', (event) => {
-                    let target = event.target;
-                    let inputName = target.getAttribute('data-upload');
-                    let file = target.files[0];
-                    let reader = new FileReader();
-                    reader.readAsDataURL(file);
-                    reader.onload = () => {
-                        livewire.emit('upload', inputName, reader.result);
-                        /* console.log(reader.result); */
-                    };
-                    reader.onerror = (error) => {
-                        livewire.emit('upload', inputName, '');
-                        /* console.log('Error: ', error); */
-                    };
-                });
-            });
+      document.querySelectorAll('[data-upload]').forEach((item) => {
+        item.addEventListener('change', (event) => {
+          let target = event.target;
+          let inputName = target.getAttribute('data-upload');
+          let file = target.files[0];
+          let reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => {
+            livewire.emit('upload', inputName, reader.result);
+            /* console.log(reader.result); */
+          };
+          reader.onerror = (error) => {
+            livewire.emit('upload', inputName, '');
+            /* console.log('Error: ', error); */
+          };
         });
+      });
     });
+  });
 }
 
 function setupClipboardJS() {
@@ -583,8 +629,6 @@ $(function () {
 
   verifyUserAgent();
 
-  setupSmoothScroll();
-
   // setupSideDrawer();
 
   // setupCepSearch();
@@ -623,6 +667,8 @@ window.addEventListener('load', function () {
   // setupStickyHeader();
 
   // setupInfiniteScroll();
+
+  setupSmoothScroll();
 });
 
 setupLivewire();
