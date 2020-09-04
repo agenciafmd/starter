@@ -4,13 +4,6 @@
   width: $icon-md-x;
   height: $icon-md-y;
 
-  @each $color, $value in $theme-colors {
-    &-#{$color} {
-
-      fill: $value;
-    }
-  }
-
   &-right {
 
     transform: rotate(-90deg);
