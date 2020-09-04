@@ -1,35 +1,5 @@
 // Project's common (global) styles
 
-//Generate letter-spacing and line-height with grid-breakpoint to use in html
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-    @each $key, $value in $spacers {
-
-      $unitLess-value: strip-unit($value);
-
-      @if ($unitLess-value >= 0) {
-
-        .lh#{$infix}-#{$key} {
-          line-height: $unitLess-value+px;
-        }
-      }
-
-      .ls#{$infix}-#{$key} {
-        letter-spacing: $unitLess-value+px;
-      }
-
-      @if ($unitLess-value != 0) {
-
-        .ls#{$infix}-n#{$key} {
-          letter-spacing: (-$unitLess-value)+px;
-        }
-      }
-    }
-  }
-}
-
 // Generate stroke and fill for each color in theme, including links.
 @each $color, $value in $theme-colors {
 
