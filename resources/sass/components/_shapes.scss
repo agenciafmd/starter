@@ -1,0 +1,32 @@
+// Generate stroke and fill for each color in theme, including links.
+@each $color, $value in $theme-colors {
+
+    .stroke-#{$color} {
+
+        stroke: $value;
+    }
+
+    .fill-#{$color} {
+
+        fill: $value;
+    }
+
+    @include media-breakpoint-up(lg) {
+
+        a {
+
+            @include hover {
+
+                .stroke-#{$color} {
+
+                    stroke: darken($value, $emphasized-link-hover-darken-percentage);
+                }
+
+                .fill-#{$color} {
+
+                    fill: darken($value, $emphasized-link-hover-darken-percentage);
+                }
+            }
+        }
+    }
+}
