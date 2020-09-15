@@ -199,6 +199,7 @@ function setupSmoothScroll() {
 
         doScrollAnimate({
           targetSelector: $(this.hash),
+          additionalOffset: additionalOffset,
         });
       });
 }
