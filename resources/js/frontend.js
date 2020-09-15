@@ -86,7 +86,7 @@ function setupStateCityOptions() {
 
       city.html($optionsCity);
     })
-        .change();
+          .change();
   });
 }
 
@@ -120,13 +120,13 @@ function setupServiceWorker() {
 
   // Register the ServiceWorker
   navigator.serviceWorker
-      .register('/sw.js')
-      .then(function (reg) {
-        console.log('Service worker has been registered for scope: ' + reg.scope);
-      })
-      .catch(function (err) {
-        console.log('ServiceWorker registration failed: ', err);
-      });
+           .register('/sw.js')
+           .then(function (reg) {
+             console.log('Service worker has been registered for scope: ' + reg.scope);
+           })
+           .catch(function (err) {
+             console.log('ServiceWorker registration failed: ', err);
+           });
 }
 
 function preventInvalidFormSubmit() {
@@ -197,37 +197,35 @@ function setupSmoothScroll() {
 
         const additionalOffset = this.getAttribute('data-scroll-offset') || 0;
 
-        setupScrollAnimate({
-          container: 'html, body',
-          target: $(this.hash),
-          additionalOffset: additionalOffset,
+        doScrollAnimate({
+          targetSelector: $(this.hash),
         });
       });
 }
 
-function setupScrollAnimate({ container, target, additionOffset }) {
+function doScrollAnimate({ containerSelector, targetSelector, additionOffset, animateOptions }) {
 
-  if (!target) {
+  if (!targetSelector) {
 
-    console.error(`target: Passar o alvo do link é obrigatório`);
+    console.error(`targetSelector: Por favor, insira uma string de seleção CSS com o alvo onde o scroll animate irá parar, por exemplo, .my-content, [data-scroll-target=my-content], #my-content, etc`);
     return;
   }
 
-  if (!container) {
-
-    console.error(`container: Passar elemento para executar o scroll é obrigatório`);
-    return;
-  }
-
+  const container = containerSelector ? $(containerSelector) : $('html, body');
   const additionalOffset = Number(additionOffset) || 0;
+  const targetOffset = $(targetSelector).offset().top;
+
   const scrollAnimateConfig = {
-    properties: { scrollTop: target.offset().top + additionalOffset },
+    properties: {
+      scrollTop: targetOffset + additionalOffset,
+    },
     options: {
       duration: 1000,
+      ...animateOptions,
     },
   };
 
-  $(container)
+  container
       .animate(
           scrollAnimateConfig.properties,
           scrollAnimateConfig.options.duration,
@@ -307,8 +305,8 @@ function setupInputMasks() {
     var c = event.target;
     var v = c.value.replace(/\D/g, '');
     var m = c.value.length > max
-        ? 1
-        : 0;
+            ? 1
+            : 0;
     VMasker(c)
         .unMask();
     VMasker(c)
@@ -423,7 +421,7 @@ function setupCepSearch() {
 
         var $this = $(this);
         var cep = $this.val()
-            .replace('-', '');
+                       .replace('-', '');
 
         if (cep.length === 8) {
           $.getJSON('https://api.mixd.com.br/cep/' + cep, {},
@@ -629,6 +627,8 @@ $(function () {
 
   verifyUserAgent();
 
+  setupSmoothScroll();
+
   // setupSideDrawer();
 
   // setupCepSearch();
@@ -667,8 +667,6 @@ window.addEventListener('load', function () {
   // setupStickyHeader();
 
   // setupInfiniteScroll();
-
-  setupSmoothScroll();
 });
 
 setupLivewire();
