@@ -21374,6 +21374,10 @@ select[disabled] {
   -webkit-appearance: none;
 }
 
+form.send {
+  display: inline;
+}
+
 form.destroy {
   display: inline;
 }
@@ -21878,7 +21882,7 @@ form.destroy button {
     margin: 0.25rem;
     clear: both;
     font-weight: 400;
-    color: #212529;
+    color: #343a40;
     text-align: inherit;
     white-space: nowrap;
     background-color: transparent;

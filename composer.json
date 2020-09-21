@@ -21,12 +21,20 @@
             "options": {
                 "symlink": true
             }
+        },
+        "agenciafmd/admix-postal": {
+            "type": "path",
+            "url": "../packages/agenciafmd/admix-postal",
+            "options": {
+                "symlink": true
+            }
         }
     },
     "require": {
         "php": "^7.4",
         "agenciafmd/admix": "v8.x-dev",
         "agenciafmd/admix-media": "v8.x-dev",
+        "agenciafmd/admix-postal": "v8.x-dev",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
