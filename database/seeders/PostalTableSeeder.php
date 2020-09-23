@@ -1,6 +1,8 @@
 <?php
 
-use Agenciafmd\Postal\Postal;
+namespace Database\Seeders;
+
+use Agenciafmd\Postal\Models\Postal;
 use Illuminate\Database\Seeder;
 
 class PostalTableSeeder extends Seeder
