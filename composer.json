@@ -28,6 +28,13 @@
             "options": {
                 "symlink": true
             }
+        },
+        "agenciafmd/admix-leads": {
+            "type": "path",
+            "url": "../packages/agenciafmd/admix-leads",
+            "options": {
+                "symlink": true
+            }
         }
     },
     "require": {
@@ -35,6 +42,7 @@
         "agenciafmd/admix": "v8.x-dev",
         "agenciafmd/admix-media": "v8.x-dev",
         "agenciafmd/admix-postal": "v8.x-dev",
+        "agenciafmd/admix-leads": "v8.x-dev",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
