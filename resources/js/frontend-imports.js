@@ -15,9 +15,8 @@ module.exports = (function () {
     // 'node_modules/wow.js/dist/wow.min.js',
     // Vendors
     // 'resources/js/vendors/jquery.clever-infinite-scroll.js',
-    'resources/js/vendors/utm-helper.js',
-    'resources/js/vendors/sweetalert2.js',
     // Helpers
+    'resources/js/helpers/utm-helper.js',
     'resources/js/helpers/form-helpers.js',
     'resources/js/helpers/cpf-cnpj-validators.js',
     // 'resources/js/helpers/user-interaction-helpers.js',
