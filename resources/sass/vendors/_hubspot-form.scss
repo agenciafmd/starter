@@ -1,9 +1,8 @@
 /* All HubSpot Forms
-   ==========================================================================
-
-  Primeiro definimos tudo que será padrão do formulário, para depois entrar com
-  as partes específicas, como o bootstrap usa as classe personalizadas
-*/
+    ==========================================================================
+   Primeiro definimos tudo que será padrão do formulário, para depois entrar com
+   as partes específicas, como o bootstrap usa as classe personalizadas
+ */
 
 /* Form */
 .hs-form {
@@ -28,7 +27,6 @@
   }
 
   label, span {
-    @extend .text-white;
   }
 
   /* Descriptions (targets class applied to Help Text divs) */
@@ -42,10 +40,45 @@
   .hs-form-field {
 
     label {
+
+      @extend .bold-text;
+
+      color: $input-color;
     }
 
-    padding-bottom: .55rem;
+    margin-bottom: .25rem;
     position: relative;
+  }
+
+  .inputs-list {
+
+    @extend .list-unstyled;
+
+    margin: 0;
+
+    label {
+
+      position: relative;
+      margin: 0;
+
+      a {
+
+        @extend .text-reset;
+      }
+
+      span {
+
+        @extend .regular-text;
+      }
+
+      input[type="checkbox"] {
+
+        float: none;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
   }
 
   /* Inputs (selectors for all inputs)  */
@@ -135,11 +168,27 @@
 
     @extend .invalid-feedback;
     position: absolute;
-    bottom: 0;
+    top: 100%;
     margin: 0;
     padding: 0;
 
+    label.hs-error-msg {
+
+      @extend .regular-text;
+
+      color: $danger;
+    }
+  }
+
+  .hs_error_rollup {
+
     label {
+
+      @extend .regular-text;
+
+      position: absolute;
+      color: $danger;
+      bottom: 10px;
     }
   }
 
@@ -205,6 +254,8 @@
     @extend .btn-block;
     @extend .btn-warning;
     @extend .text-uppercase;
+
+    margin-top: 2rem;
 
     &:focus {
 
