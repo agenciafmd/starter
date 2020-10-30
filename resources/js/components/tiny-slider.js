@@ -1,5 +1,9 @@
 function createSlider(options) {
 
+  if (!$('main').find(options.container).length) {
+    return;
+  }
+
   if (!options.container) {
 
     throw new Error('passa o elemento ai');
