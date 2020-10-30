@@ -22,7 +22,7 @@
 
   &-item {
 
-    &:not(.tns-slide-active) {
+    &:not(:only-child), &:not(.tns-slide-active) {
 
       visibility: hidden;
     }
