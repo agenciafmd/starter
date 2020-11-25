@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Agenciafmd\Admix\Models\User;
 use Illuminate\Database\Seeder;
+use Database\Seeders\LeadsTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +12,7 @@ class DatabaseSeeder extends Seeder
     {
 //        User::factory(10)
 //            ->create();
-        $this->call(PostalTableSeeder::class);
+//        $this->call(PostalTableSeeder::class);
+        $this->call(LeadsTableSeeder::class);
     }
 }
