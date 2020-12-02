@@ -1,0 +1,63 @@
+// Custom variables
+
+$fallback-font: sans-serif !default;
+
+$block-spacing-y: 3rem !default;
+
+// Icons Variables
+$icon-sm-x: 2rem !default;
+$icon-md-x: 3rem !default;
+$icon-lg-x: 4rem !default;
+$icon-sm-y: 2rem !default;
+$icon-md-y: 3rem !default;
+$icon-lg-y: 4rem !default;
+
+//--Forms--
+
+// Select--
+// Linux/Windows uses the select background for <option>, this is for prevent
+// white text on white bg for example.
+$custom-select-option-bg: $input-bg !default;
+
+// Radios/Checkboxes--
+// Bootstrap sets one style for all custom indicators. This variables are to
+// overwrite that generic style
+$custom-radio-size: $custom-control-indicator-size !default;
+$custom-radio-bg: $custom-control-indicator-bg !default;
+
+// ---Components---
+$collapse-transition-time: .35s !default;
+
+// Breadcrumb
+$breadcrumb-color: $secondary !default;
+
+// Navs
+$nav-toggler-size-base: 2.5rem !default;
+
+// Sidedrawer
+$side-drawer-bg: $primary !default;
+
+// Accordion
+$accordion-padding-x: 3.5rem !default;
+$accordion-padding-y: 1rem !default;
+
+// Video
+$backdrop-color: rgba($black, 0.3) !default;
+
+// Buttons
+$btn-spinner-padding-x: 3rem !default;
+
+// Loadings
+
+// Infinite Scroll
+$infinite-scroll-loading-icon-size: 64px !default;
+$infinite-scroll-loading-icon-indicator-color: $primary !default;
+$infinite-scroll-loading-icon-indicator: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.0' width='#{$infinite-scroll-loading-icon-size}' height='#{$infinite-scroll-loading-icon-size}' viewBox='0 0 128 128' fill='#{$infinite-scroll-loading-icon-indicator-color}'><g><circle cx='16' cy='64' r='16'/><circle cx='16' cy='64' r='14.344' transform='rotate(45 64 64)'/><circle cx='16' cy='64' r='12.531' transform='rotate(90 64 64)'/><circle cx='16' cy='64' r='10.75' transform='rotate(135 64 64)'/><circle cx='16' cy='64' r='10.063' transform='rotate(180 64 64)'/><circle cx='16' cy='64' r='8.063' transform='rotate(225 64 64)'/><circle cx='16' cy='64' r='6.438' transform='rotate(270 64 64)'/><circle cx='16' cy='64' r='5.375' transform='rotate(315 64 64)'/><animateTransform attributeName='transform' type='rotate' values='0 64 64;315 64 64;270 64 64;225 64 64;180 64 64;135 64 64;90 64 64;45 64 64' calcMode='discrete' dur='1040ms' repeatCount='indefinite'/></g></svg>") !default;
+$infinite-scroll-loading-icon-background: escape-svg($infinite-scroll-loading-icon-indicator) no-repeat center !default;
+
+// Fancybox
+$caption-padding-x: 1.25rem;
+$caption-padding-y: 2rem;
+
+// WhatsApp
+$btn-whatsapp-color: $mountain-meadow;

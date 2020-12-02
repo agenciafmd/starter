@@ -1,0 +1,69 @@
+// Project's font configuration
+
+// There's 5 generic family groups ‘serif’, ‘sans-serif’, ‘cursive’, ‘fantasy’, and ‘monospace’
+
+$fonts-base-path: '/fonts';
+
+// Generate @font-face's content body based on a map of font family.
+// e.g.: $open-sans-regular: (
+//    family: 'open_sansregular',
+//    file-name: 'open_sans_regular', -> WITHOUT FONT EXTENSION
+//  );
+@mixin font-face($font-map) {
+
+  $family: map-get($font-map, 'family');
+  $file-name: map-get($font-map, 'file-name');
+  //$weight: map-get($font-map, 'weight');
+  //$style: map-get($font-map, 'style');
+
+  font-family: '#{$family}';
+  src: url('#{$fonts-base-path}/#{$file-name}.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+$light-font-map: (
+    family: 'Roboto-Light',
+    file-name: 'Roboto-Light',
+);
+
+$regular-font-map: (
+    family: 'Roboto-Regular',
+    file-name: 'Roboto-Regular',
+);
+
+$bold-font-map: (
+    family: 'Roboto-Bold',
+    file-name: 'Roboto-Bold',
+);
+
+$project-fonts: (
+    light: $light-font-map,
+    regular: $regular-font-map,
+    bold: $bold-font-map,
+);
+
+@each $font-key, $font-map in $project-fonts {
+
+  @font-face {
+
+    @include font-face($font-map);
+  }
+}
+
+@function get-font-family($font-map) {
+
+  @return map-get($font-map, 'family');
+}
+
+$font-sizes: (
+    14,
+    16,
+    18,
+    20,
+    25,
+    30,
+    35,
+    40,
+);

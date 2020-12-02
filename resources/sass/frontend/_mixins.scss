@@ -1,0 +1,43 @@
+// Project's custom mixins
+@mixin background-set ($file, $extension) {
+
+  background-image: url("/images/#{$file}.#{$extension}");
+  background-image: -webkit-image-set(
+          url("/images/#{$file}.#{$extension}") 1x,
+          url("/images/#{$file}@2x.#{$extension}") 2x
+  );
+  background-position-x: center;
+  background-size: cover;
+
+  @include media-breakpoint-up(md) {
+
+    background-image: url("/images/#{$file}-md.#{$extension}");
+    background-image: -webkit-image-set(
+            url("/images/#{$file}-md.#{$extension}") 1x,
+            url("/images/#{$file}-md@2x.#{$extension}") 2x
+    );
+  }
+
+  @include media-breakpoint-up(lg) {
+
+    background-image: url("/images/#{$file}-lg.#{$extension}");
+    background-image: -webkit-image-set(
+            url("/images/#{$file}-lg.#{$extension}") 1x,
+            url("/images/#{$file}-lg@2x.#{$extension}") 2x
+    );
+  }
+
+  @include media-breakpoint-up(xl) {
+
+    background-image: url("/images/#{$file}-xl.#{$extension}");
+    background-image: -webkit-image-set(
+            url("/images/#{$file}-xl.#{$extension}") 1x,
+            url("/images/#{$file}-xl@2x.#{$extension}") 2x
+    );
+  }
+}
+
+// exemplo de uso
+// .bg-class {
+//   @include background-set('nome-banner', 'jpg');
+// }

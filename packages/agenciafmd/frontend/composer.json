@@ -1,0 +1,30 @@
+{
+  "name": "agenciafmd/frontend",
+  "description": "Frontend - Agência F&MD",
+  "authors": [
+    {
+      "name": "Irineu Martins Junior",
+      "email": "irineu@fmd",
+      "homepage": "http://fmd.ag/",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "laravel/framework": "8.*"
+  },
+  "autoload": {
+    "files": [
+      "src/Http/helpers.php"
+    ],
+    "psr-4": {
+      "Agenciafmd\\Frontend\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Agenciafmd\\Frontend\\Providers\\FrontendServiceProvider"
+      ]
+    }
+  }
+}

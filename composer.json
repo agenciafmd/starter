@@ -8,6 +8,13 @@
     ],
     "license": "MIT",
     "repositories": {
+        "agenciafmd/frontend": {
+            "type": "path",
+            "url": "packages/agenciafmd/frontend",
+            "options": {
+                "symlink": true
+            }
+        },
         "agenciafmd/admix": {
             "type": "path",
             "url": "../packages/agenciafmd/admix",
@@ -18,13 +25,6 @@
         "agenciafmd/admix-analytics": {
             "type": "path",
             "url": "../packages/agenciafmd/admix-analytics",
-            "options": {
-                "symlink": true
-            }
-        },
-        "agenciafmd/admix-banners": {
-            "type": "path",
-            "url": "../packages/agenciafmd/admix-banners",
             "options": {
                 "symlink": true
             }
@@ -61,11 +61,13 @@
     "require": {
         "php": "^7.4",
         "agenciafmd/admix": "v8.x-dev",
+        "agenciafmd/frontend": "*",
         "agenciafmd/admix-analytics": "v8.x-dev",
         "agenciafmd/admix-form": "v8.x-dev",
         "agenciafmd/admix-leads": "v8.x-dev",
         "agenciafmd/admix-media": "v8.x-dev",
         "agenciafmd/admix-postal": "v8.x-dev",
+        "agenciafmd/laravel-social-meta": "dev-master",
         "ext-json": "*",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",

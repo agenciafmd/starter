@@ -1,0 +1,85 @@
+form {
+
+  label {
+
+    @extend .bold-text;
+  }
+
+  .custom-select {
+
+    option {
+
+      background: $custom-select-option-bg;
+    }
+  }
+
+  .custom-radio, .custom-checkbox {
+
+    .custom-control-input {
+
+      &:not(:invalid), &:not(.is-invalid) {
+
+        & ~ .custom-control-label {
+
+          &:before, &:after {
+
+            top: 0;
+            left: -2.3rem;
+            width: $custom-radio-size;
+            height: $custom-radio-size;
+            background-color: $custom-radio-bg;
+          }
+        }
+
+        &:checked {
+
+          & ~ .custom-control-label {
+
+            &:before {
+
+              border-color: $component-active-color;
+              background-color: $component-active-bg;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .custom-switch {
+
+    .custom-control-input {
+
+      & ~ .custom-control-label {
+
+        &:before {
+
+          cursor: pointer;
+          border-color: rgba($custom-control-indicator-active-color, .5);
+        }
+
+        &:after {
+
+          cursor: pointer;
+          background-color: rgba($custom-control-indicator-active-color, .5);
+        }
+      }
+
+      &:checked {
+
+        & ~ .custom-control-label {
+
+          &:before {
+
+            border-color: $component-active-color;
+          }
+
+          &:after {
+
+            background-color: $component-active-color;
+          }
+        }
+      }
+    }
+  }
+}

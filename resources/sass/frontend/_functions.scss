@@ -1,0 +1,31 @@
+// Project's custom functions
+
+@function strip-unit($value) {
+
+  @if type-of($value) == 'number' and not unitless($value) {
+
+    @return $value / ($value * 0 + 1);
+  }
+
+  @return $value;
+}
+
+@function convert-to-rem($size, $browser-default-font-size: 16px) {
+
+  @if (unit($size) == '%') {
+
+    @return #{strip-unit($size / 100%)}rem;
+  }
+
+  @if (unit($size) == 'px') {
+
+    @return #{strip-unit($size / $browser-default-font-size)}rem;
+  }
+
+  @if (unit($size) == 'em') {
+
+    @return #{strip-unit($size / 1em)}rem;
+  }
+
+  @return $size;
+}
