@@ -19,11 +19,6 @@
     "require": {
         "php": "^7.4|^8.0",
         "agenciafmd/admix": "v8.x-dev",
-        "agenciafmd/admix-analytics": "v8.x-dev",
-        "agenciafmd/admix-form": "v8.x-dev",
-        "agenciafmd/admix-leads": "v8.x-dev",
-        "agenciafmd/admix-media": "v8.x-dev",
-        "agenciafmd/admix-postal": "v8.x-dev",
         "agenciafmd/frontend": "*",
         "agenciafmd/laravel-social-meta": "dev-master",
         "ext-json": "*",

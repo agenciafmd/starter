@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53b10c935303ae7db7f1cbd05c57d48d",
+    "content-hash": "cd956bf939d469af79660705ff11606f",
     "packages": [
         {
             "name": "agenciafmd/admix",
@@ -12,15 +12,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix.git",
-                "reference": "bd196a6c400ca9ce496a4b29813db16dfe22212f"
+                "reference": "9557094af6b2bf82a226ee9875b486660a468b42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix/zipball/bd196a6c400ca9ce496a4b29813db16dfe22212f",
-                "reference": "bd196a6c400ca9ce496a4b29813db16dfe22212f",
+                "url": "https://api.github.com/repos/agenciafmd/admix/zipball/9557094af6b2bf82a226ee9875b486660a468b42",
+                "reference": "9557094af6b2bf82a226ee9875b486660a468b42",
                 "shasum": ""
             },
             "require": {
+                "agenciafmd/admix-analytics": "v8.x-dev",
+                "agenciafmd/admix-form": "v8.x-dev",
+                "agenciafmd/admix-leads": "v8.x-dev",
+                "agenciafmd/admix-media": "v8.x-dev",
+                "agenciafmd/admix-postal": "v8.x-dev",
                 "geekcom/validator-docs": "^3.4",
                 "hmazter/laravel-schedule-list": "^2.0",
                 "laracasts/flash": "^3.0",
@@ -78,7 +83,7 @@
                 "issues": "https://github.com/agenciafmd/admix/issues",
                 "source": "https://github.com/agenciafmd/admix/tree/v8"
             },
-            "time": "2020-12-03T18:17:31+00:00"
+            "time": "2020-12-03T18:44:21+00:00"
         },
         {
             "name": "agenciafmd/admix-analytics",
@@ -10710,11 +10715,6 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "agenciafmd/admix": 20,
-        "agenciafmd/admix-analytics": 20,
-        "agenciafmd/admix-form": 20,
-        "agenciafmd/admix-leads": 20,
-        "agenciafmd/admix-media": 20,
-        "agenciafmd/admix-postal": 20,
         "agenciafmd/laravel-social-meta": 20,
         "mixdinternet/homestead-ngrok": 20
     },
