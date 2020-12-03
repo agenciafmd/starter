@@ -2,9 +2,8 @@
 
 namespace Agenciafmd\Frontend\Http\Livewire;
 
-use Agenciafmd\Leads\Lead;
 use Agenciafmd\Postal\Notifications\SendNotification;
-use Agenciafmd\Postal\Postal;
+use Agenciafmd\Postal\Models\Postal;
 use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 
@@ -102,15 +101,6 @@ class Contact extends Component
                     '**Mensagem:** ' . nl2br($data['message']),
                 ],
             ], [$data['email'] => $data['name']], $attachments));
-
-        Lead::create([
-            'source' => 'contato',
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'description' => 'Cidade: ' . $data['city'] . ' - ' . $data['state']
-                . '<br/> Mensagem: ' . nl2br($data['message']),
-        ]);
 
         $this->emit('swal', [
             'level' => 'success',

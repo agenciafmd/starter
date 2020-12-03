@@ -14,59 +14,17 @@
             "options": {
                 "symlink": true
             }
-        },
-        "agenciafmd/admix": {
-            "type": "path",
-            "url": "../packages/agenciafmd/admix",
-            "options": {
-                "symlink": true
-            }
-        },
-        "agenciafmd/admix-analytics": {
-            "type": "path",
-            "url": "../packages/agenciafmd/admix-analytics",
-            "options": {
-                "symlink": true
-            }
-        },
-        "agenciafmd/admix-form": {
-            "type": "path",
-            "url": "../packages/agenciafmd/admix-form",
-            "options": {
-                "symlink": true
-            }
-        },
-        "agenciafmd/admix-leads": {
-            "type": "path",
-            "url": "../packages/agenciafmd/admix-leads",
-            "options": {
-                "symlink": true
-            }
-        },
-        "agenciafmd/admix-media": {
-            "type": "path",
-            "url": "../packages/agenciafmd/admix-media",
-            "options": {
-                "symlink": true
-            }
-        },
-        "agenciafmd/admix-postal": {
-            "type": "path",
-            "url": "../packages/agenciafmd/admix-postal",
-            "options": {
-                "symlink": true
-            }
         }
     },
     "require": {
-        "php": "^7.4",
+        "php": "^7.4|^8.0",
         "agenciafmd/admix": "v8.x-dev",
-        "agenciafmd/frontend": "*",
         "agenciafmd/admix-analytics": "v8.x-dev",
         "agenciafmd/admix-form": "v8.x-dev",
         "agenciafmd/admix-leads": "v8.x-dev",
         "agenciafmd/admix-media": "v8.x-dev",
         "agenciafmd/admix-postal": "v8.x-dev",
+        "agenciafmd/frontend": "*",
         "agenciafmd/laravel-social-meta": "dev-master",
         "ext-json": "*",
         "fideloper/proxy": "^4.2",
