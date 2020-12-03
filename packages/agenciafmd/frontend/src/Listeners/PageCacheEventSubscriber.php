@@ -9,6 +9,7 @@ class PageCacheEventSubscriber
 {
     public function subscribe($events)
     {
+        /* descontinuado, veja \Agenciafmd\Admix\Observers\UserObserver::class */
         if (app()->runningInConsole()) {
             return false;
         }

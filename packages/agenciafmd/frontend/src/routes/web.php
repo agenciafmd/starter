@@ -1,13 +1,11 @@
 <?php
 
-Route::get('html/{any?}', 'HtmlController@index')
+use Agenciafmd\Frontend\Http\Controllers\FrontendController;
+use Agenciafmd\Frontend\Http\Controllers\HtmlController;
+
+Route::get('html/{any?}', [HtmlController::class, 'index'])
     ->name('frontend.html');
-//Route::get('{any?}', 'FrontendController@index')->name('frontend.index');
-Route::get('/manifest.json', 'PwaController@manifest')
-    ->name('frontend.pwa.manifest');
-Route::get('/sw.js', 'PwaController@sw')
-    ->name('frontend.pwa.sw');
-Route::get('/offline', 'FrontendController@offline')
-    ->name('frontend.offline');
-Route::get('/', 'FrontendController@index')
+Route::get('/', [FrontendController::class, 'index'])
     ->name('frontend.index');
+Route::view('/offline', 'agenciafmd/frontend::pages.offline')
+    ->name('frontend.offline');

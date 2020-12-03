@@ -1,0 +1,9 @@
+{
+    "Unauthorized": "Acesso negado",
+    "Forbidden": "Proibido",
+    "Not Found": "A página que você está procurando não existe.",
+    "Page Expired": "A página expirou por inatividade. Por favor, volte para a página inicial e tente novamente.",
+    "Too Many Requests": "Muitos acessos simultâneos",
+    "Server Error": "Ops, erro de servidor!",
+    "Service Unavailable": "Estamos em manutenção, voltaremos em breve."
+}

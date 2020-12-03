@@ -80,35 +80,14 @@
                     @enderror
                 </div>
             </div>
-            <div class="col-md-12">
-                <div class="form-group">
-                    <div class="custom-file">
-                        <input type="file"
-                               data-upload="image"
-                               required
-                               aria-label="imagem"
-                               aria-describedby="image"
-                               class="@error('image') is-invalid @enderror custom-file-input form-control js-fields-attachment"
-                               accept=".pdf, .doc, .docx, .jpg, .png">
-                        <label class="custom-file-label"
-                               for="image">{{ ($image) ? 'Arquivo anexado com sucesso' : 'Anexar Arquivo' }}
-                        </label>
-                        @error('image')
-                        <span class="invalid-feedback">
-                            {{ $message }}
-                        </span>
-                        @enderror
-                    </div>
-                </div>
-            </div>
             <div class="col-12">
                 <div class="form-group">
-                                <textarea wire:model.lazy="message"
-                                          placeholder="Deixe aqui mais detalhes e informações"
-                                          required
-                                          aria-label="mensagem"
-                                          rows="5"
-                                          class="@error('message') is-invalid @enderror form-control contact-custom-placeholder text-dark"></textarea>
+                    <textarea wire:model.lazy="message"
+                              placeholder="Deixe aqui mais detalhes e informações"
+                              required
+                              aria-label="mensagem"
+                              rows="5"
+                              class="@error('message') is-invalid @enderror form-control contact-custom-placeholder text-dark"></textarea>
                     @error('message')
                     <span class="invalid-feedback">
                         {{ $message }}

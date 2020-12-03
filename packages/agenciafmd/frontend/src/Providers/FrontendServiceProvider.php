@@ -10,8 +10,6 @@ class FrontendServiceProvider extends ServiceProvider
     {
         $this->providers();
 
-        $this->loadViews();
-
         $this->loadTranslations();
     }
 
@@ -22,14 +20,10 @@ class FrontendServiceProvider extends ServiceProvider
 
     protected function providers()
     {
-        $this->app->register(RouteServiceProvider::class);
+        $this->app->register(BladeServiceProvider::class);
         $this->app->register(EventServiceProvider::class);
         $this->app->register(LivewireServiceProvider::class);
-    }
-
-    protected function loadViews()
-    {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'agenciafmd/frontend');
+        $this->app->register(RouteServiceProvider::class);
     }
 
     protected function loadTranslations()

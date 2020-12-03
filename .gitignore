@@ -6,6 +6,7 @@
 /public/storage
 /public/media
 /storage/*.key
+/storage/*.xlsx
 /vendor
 .env
 .env.backup

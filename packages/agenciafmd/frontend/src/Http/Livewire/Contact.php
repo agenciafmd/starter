@@ -2,12 +2,9 @@
 
 namespace Agenciafmd\Frontend\Http\Livewire;
 
-use Agenciafmd\Leads\Lead;
 use Agenciafmd\Postal\Notifications\SendNotification;
-use Agenciafmd\Postal\Postal;
+use Agenciafmd\Postal\Models\Postal;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use Livewire\Component;
 
 class Contact extends Component
@@ -22,38 +19,15 @@ class Contact extends Component
 
     public $city;
 
-    public $image;
-
     public $message;
-
-    protected $listeners = [
-        'upload' => 'upload',
-    ];
 
     public function render()
     {
-        $statesCities = Cache::rememberForever('statesCities', function () {
-            return collect(json_decode(file_get_contents(public_path('json/estados-cidades.json'))));
-        });
-
-        $view['states'] = $statesCities->mapWithKeys(function ($item) {
-            return [
-                $item->nome => $item->nome,
-            ];
-        });
+        $view['states'] = $this->states();
 
         $view['cities'] = [];
         if ($this->state) {
-            $view['cities'] = $statesCities->where('nome', $this->state)
-                ->mapWithKeys(function ($item) {
-                    $cities = collect($item->cidades);
-
-                    return $cities->mapWithKeys(function ($city) {
-                        return [
-                            $city => $city,
-                        ];
-                    });
-                });
+            $view['cities'] = $this->cities($this->state);
         }
 
         return view('agenciafmd/frontend::livewire.contact', $view);
@@ -128,15 +102,6 @@ class Contact extends Component
                 ],
             ], [$data['email'] => $data['name']], $attachments));
 
-        Lead::create([
-            'source' => 'contato',
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'description' => 'Cidade: ' . $data['city'] . ' - ' . $data['state']
-                . '<br/> Mensagem: ' . nl2br($data['message']),
-        ]);
-
         $this->emit('swal', [
             'level' => 'success',
             'message' => 'Mensagem enviada com sucesso.',
@@ -149,17 +114,37 @@ class Contact extends Component
         $this->reset();
     }
 
-    public function upload($field, $value)
+    private function statesCities()
     {
-        $content = base64_decode(trim(strstr($value, ','), ','));
-        $extension = explode('/', mime_content_type($value))[1];
-        $name = Str::slug((($this->name) ?? date('YmdHis')) . '-' . str_random(5));
-        $customName = $name . '.' . $extension;
+        return Cache::rememberForever('statesCities', function () {
+            return collect(json_decode(file_get_contents(public_path('json/estados-cidades.json'))));
+        });
+    }
 
-        Storage::disk('local')
-            ->put('attachments/' . $customName, $content);
+    private function states()
+    {
+        $statesCities = $this->statesCities();
 
-        $this->{$field} = storage_path('app/attachments/' . $customName);
-        $this->resetValidation($field);
+        return $statesCities->mapWithKeys(function ($item) {
+            return [
+                $item->nome => $item->nome,
+            ];
+        });
+    }
+
+    private function cities($state)
+    {
+        $statesCities = $this->statesCities();
+
+        return $statesCities->where('nome', $state)
+            ->mapWithKeys(function ($item) {
+                $cities = collect($item->cidades);
+
+                return $cities->mapWithKeys(function ($city) {
+                    return [
+                        $city => $city,
+                    ];
+                });
+            });
     }
 }

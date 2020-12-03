@@ -2,36 +2,32 @@
 
 namespace Agenciafmd\Frontend\Providers;
 
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    protected $namespace = 'Agenciafmd\Frontend\Http\Controllers';
-
     public function boot()
     {
-        parent::boot();
+        $this->configureRateLimiting();
+
+        $this->routes(function () {
+            Route::middleware('web')
+                ->group(__DIR__ . '/../routes/web.php');
+
+            Route::prefix('api')
+                ->middleware('api')
+                ->group(__DIR__ . '/../routes/api.php');
+        });
     }
 
-    public function map()
+    protected function configureRateLimiting()
     {
-        $this->mapApiRoutes();
-
-        $this->mapWebRoutes();
-    }
-
-    protected function mapApiRoutes()
-    {
-        Route::middleware('api')
-            ->namespace($this->namespace)
-            ->group(__DIR__ . '/../routes/api.php');
-    }
-
-    protected function mapWebRoutes()
-    {
-        Route::middleware('web')
-            ->namespace($this->namespace)
-            ->group(__DIR__ . '/../routes/web.php');
+        RateLimiter::for('api', function (Request $request) {
+            return Limit::perMinute(60);
+        });
     }
 }
