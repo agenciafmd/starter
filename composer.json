@@ -18,7 +18,7 @@
     },
     "require": {
         "php": "^7.4|^8.0",
-        "agenciafmd/admix": "v8.x-dev",
+        "agenciafmd/admix": "dev-master",
         "agenciafmd/frontend": "*",
         "agenciafmd/laravel-social-meta": "dev-master",
         "ext-json": "*",

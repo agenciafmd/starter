@@ -4,28 +4,28 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cd956bf939d469af79660705ff11606f",
+    "content-hash": "cebd5dbb8cb8473d06eab2c640782e79",
     "packages": [
         {
             "name": "agenciafmd/admix",
-            "version": "v8.x-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix.git",
-                "reference": "04fd48edf4e7d0bf5a964f0c91c1a87258c19e32"
+                "reference": "040acd3f08d877165d7e266fce62d357f8ff0ac0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix/zipball/04fd48edf4e7d0bf5a964f0c91c1a87258c19e32",
-                "reference": "04fd48edf4e7d0bf5a964f0c91c1a87258c19e32",
+                "url": "https://api.github.com/repos/agenciafmd/admix/zipball/040acd3f08d877165d7e266fce62d357f8ff0ac0",
+                "reference": "040acd3f08d877165d7e266fce62d357f8ff0ac0",
                 "shasum": ""
             },
             "require": {
-                "agenciafmd/admix-analytics": "v8.x-dev",
-                "agenciafmd/admix-form": "v8.x-dev",
-                "agenciafmd/admix-leads": "v8.x-dev",
-                "agenciafmd/admix-media": "v8.x-dev",
-                "agenciafmd/admix-postal": "v8.x-dev",
+                "agenciafmd/admix-analytics": "dev-master",
+                "agenciafmd/admix-form": "dev-master",
+                "agenciafmd/admix-leads": "dev-master",
+                "agenciafmd/admix-media": "dev-master",
+                "agenciafmd/admix-postal": "dev-master",
                 "geekcom/validator-docs": "^3.4",
                 "hmazter/laravel-schedule-list": "^2.0",
                 "laracasts/flash": "^3.0",
@@ -46,6 +46,7 @@
                 "beyondcode/laravel-dump-server": "^1.0",
                 "itsgoingd/clockwork": "^4.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -60,9 +61,7 @@
                     "src/Http/helpers.php"
                 ],
                 "psr-4": {
-                    "Agenciafmd\\Admix\\": "src/",
-                    "Database\\Factories\\": "src/database/factories/",
-                    "Database\\Seeders\\": "src/database/seeders/"
+                    "Agenciafmd\\Admix\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -81,13 +80,13 @@
             "homepage": "https://github.com/agenciafmd/admix",
             "support": {
                 "issues": "https://github.com/agenciafmd/admix/issues",
-                "source": "https://github.com/agenciafmd/admix/tree/v8"
+                "source": "https://github.com/agenciafmd/admix/tree/master"
             },
-            "time": "2020-12-03T21:03:37+00:00"
+            "time": "2020-12-04T10:58:49+00:00"
         },
         {
             "name": "agenciafmd/admix-analytics",
-            "version": "v8.x-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-analytics.git",
@@ -103,6 +102,7 @@
                 "laravel/framework": "^8.0",
                 "spatie/laravel-analytics": "^3.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -133,13 +133,13 @@
             "homepage": "https://github.com/agenciafmd/admix-analytics",
             "support": {
                 "issues": "https://github.com/agenciafmd/admix-analytics/issues",
-                "source": "https://github.com/agenciafmd/admix-analytics/tree/v8"
+                "source": "https://github.com/agenciafmd/admix-analytics/tree/master"
             },
             "time": "2020-12-02T13:43:13+00:00"
         },
         {
             "name": "agenciafmd/admix-form",
-            "version": "v8.x-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-form.git",
@@ -154,6 +154,7 @@
             "require": {
                 "laravel/framework": "^8.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -187,13 +188,13 @@
             "homepage": "https://github.com/agenciafmd/admix-form",
             "support": {
                 "issues": "https://github.com/agenciafmd/admix-form/issues",
-                "source": "https://github.com/agenciafmd/admix-form/tree/v8"
+                "source": "https://github.com/agenciafmd/admix-form/tree/master"
             },
             "time": "2020-11-26T14:18:29+00:00"
         },
         {
             "name": "agenciafmd/admix-leads",
-            "version": "v8.x-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-leads.git",
@@ -209,6 +210,7 @@
                 "laravel/framework": "^8.0",
                 "rap2hpoutre/fast-excel": "^2.2"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -241,13 +243,13 @@
             "homepage": "https://github.com/agenciafmd/admix-leads",
             "support": {
                 "issues": "https://github.com/agenciafmd/admix-leads/issues",
-                "source": "https://github.com/agenciafmd/admix-leads/tree/v8"
+                "source": "https://github.com/agenciafmd/admix-leads/tree/master"
             },
             "time": "2020-12-03T21:03:37+00:00"
         },
         {
             "name": "agenciafmd/admix-media",
-            "version": "v8.x-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-media.git",
@@ -263,6 +265,7 @@
                 "laravel/framework": "^8.0",
                 "spatie/laravel-medialibrary": "^8.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -292,13 +295,13 @@
             "homepage": "https://github.com/agenciafmd/admix-media",
             "support": {
                 "issues": "https://github.com/agenciafmd/admix-media/issues",
-                "source": "https://github.com/agenciafmd/admix-media/tree/v8"
+                "source": "https://github.com/agenciafmd/admix-media/tree/master"
             },
             "time": "2020-11-26T13:28:39+00:00"
         },
         {
             "name": "agenciafmd/admix-postal",
-            "version": "v8.x-dev",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-postal.git",
@@ -314,6 +317,7 @@
                 "laravel/framework": "^8.0",
                 "msurguy/honeypot": "^1.0"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -349,13 +353,13 @@
             "homepage": "https://github.com/agenciafmd/admix-postal",
             "support": {
                 "issues": "https://github.com/agenciafmd/admix-postal/issues",
-                "source": "https://github.com/agenciafmd/admix-postal/tree/v8"
+                "source": "https://github.com/agenciafmd/admix-postal/tree/master"
             },
             "time": "2020-12-02T21:04:05+00:00"
         },
         {
             "name": "agenciafmd/frontend",
-            "version": "8.x-dev",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "packages/agenciafmd/frontend",
@@ -3811,16 +3815,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.10.4",
+            "version": "v0.10.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "a8aec1b2981ab66882a01cce36a49b6317dc3560"
+                "reference": "7c710551d4a2653afa259c544508dc18a9098956"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/a8aec1b2981ab66882a01cce36a49b6317dc3560",
-                "reference": "a8aec1b2981ab66882a01cce36a49b6317dc3560",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/7c710551d4a2653afa259c544508dc18a9098956",
+                "reference": "7c710551d4a2653afa259c544508dc18a9098956",
                 "shasum": ""
             },
             "require": {
@@ -3881,9 +3885,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/master"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.10.5"
             },
-            "time": "2020-05-03T19:32:03+00:00"
+            "time": "2020-12-04T02:51:30+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -9402,16 +9406,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.4.4",
+            "version": "9.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "6535e637961f0829832621dc1b7308c2d24a799e"
+                "reference": "8e16c225d57c3d6808014df6b1dd7598d0a5bbbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6535e637961f0829832621dc1b7308c2d24a799e",
-                "reference": "6535e637961f0829832621dc1b7308c2d24a799e",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/8e16c225d57c3d6808014df6b1dd7598d0a5bbbe",
+                "reference": "8e16c225d57c3d6808014df6b1dd7598d0a5bbbe",
                 "shasum": ""
             },
             "require": {
@@ -9427,7 +9431,7 @@
                 "phar-io/version": "^3.0.2",
                 "php": ">=7.3",
                 "phpspec/prophecy": "^1.12.1",
-                "phpunit/php-code-coverage": "^9.2",
+                "phpunit/php-code-coverage": "^9.2.3",
                 "phpunit/php-file-iterator": "^3.0.5",
                 "phpunit/php-invoker": "^3.1.1",
                 "phpunit/php-text-template": "^2.0.3",
@@ -9458,7 +9462,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "9.4-dev"
+                    "dev-master": "9.5-dev"
                 }
             },
             "autoload": {
@@ -9489,7 +9493,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.4.4"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.0"
             },
             "funding": [
                 {
@@ -9501,7 +9505,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-12-01T04:58:47+00:00"
+            "time": "2020-12-04T05:05:53+00:00"
         },
         {
             "name": "sebastian/cli-parser",
