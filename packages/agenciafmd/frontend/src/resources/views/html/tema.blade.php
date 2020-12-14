@@ -497,6 +497,9 @@
               <button type="button"
                       class="btn btn-link">Link
               </button>
+              <a href="#banner"
+                      class="btn btn-link js-scroll-top" data-scroll-offset="10">Link Scroll
+              </a>
             </p>
 
             <p class="bs-component">
