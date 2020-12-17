@@ -2,8 +2,8 @@
 
 namespace Agenciafmd\Frontend\Http\Livewire;
 
-use Agenciafmd\Postal\Notifications\SendNotification;
 use Agenciafmd\Postal\Models\Postal;
+use Agenciafmd\Postal\Notifications\SendNotification;
 use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 
@@ -108,7 +108,7 @@ class Contact extends Component
         ]);
 
         $this->emit('datalayer', [
-            'label' => 'sucesso'
+            'label' => 'sucesso',
         ]);
 
         $this->reset();
