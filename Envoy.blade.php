@@ -70,7 +70,7 @@
 
 @task('down', ['on' => $branch])
     echo 'Ativando modo manutenção'
-    cd {{ $dir }} && {{ $php }} artisan down --message='Atualizando a aplicação.' --retry=60
+    cd {{ $dir }} && {{ $php }} artisan down
 @endtask
 
 @task('up', ['on' => $branch])
