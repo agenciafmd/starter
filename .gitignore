@@ -12,9 +12,11 @@
 .env.backup
 .php_cs.cache
 .phpunit.result.cache
+Envoy*
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
 .DS_Store
 *.zip
+!Envoy.blade.php

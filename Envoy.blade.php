@@ -1,26 +1,22 @@
 @setup
     require __DIR__.'/vendor/autoload.php';
 
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+
     try {
-        $dotenv = Dotenv\Dotenv::create(__DIR__);
         $dotenv->load();
         $dotenv->required([
                 'SERVER_DEVELOP',
                 'SERVER_PRODUCTION',
-                'LOG_SLACK_WEBHOOK_URL',
             ])->notEmpty();
-        $serverDevelopment = env('SERVER_DEVELOP');
-        $serverProduction = env('SERVER_PRODUCTION');
-        $slackBot = env('LOG_SLACK_WEBHOOK_URL');
     } catch ( Exception $exception )  {
-        $serverDevelopment = getenv('SERVER_INTERNO');
-        $serverProduction = getenv('SERVER_PLESK');
-        $slackBot = getenv('SLACK_BOT');
+        echo $exception->getMessage();
+        exit;
     }
 
-    if((!$serverDevelopment) || (!$serverProduction)) {
-        exit('Verifique o SERVER_DEVELOP e o SERVER_PRODUCTION no seu .env');
-    }
+    $serverDevelopment = env('SERVER_DEVELOP');
+    $serverProduction = env('SERVER_PRODUCTION');
+    $slackBot = env('LOG_SLACK_WEBHOOK_URL');
 
     $branch = ($branch) ?? 'develop';
 
@@ -114,6 +110,10 @@
 
 @after
     if ($task !== 'deploy') {
+        return;
+    }
+
+    if (!$slackBot) {
         return;
     }
 
