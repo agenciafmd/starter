@@ -13,7 +13,7 @@ parameters:
     ignoreErrors:
         - '#Unsafe usage of new static#'
 
-    excludes_analyse:
+    excludePaths:
         - ./app/Console/Commands/*.php
 
     checkMissingIterableValueType: false
