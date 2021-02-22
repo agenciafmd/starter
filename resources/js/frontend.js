@@ -620,6 +620,39 @@ function setupClipboardJS() {
   }
 }
 
+function setupShareAPI() {
+
+  // To install: npm install share-api-polyfill --save
+
+  $('.btn-share').on('click', function () {
+
+    navigator.share({
+          title: 'Title',
+          text: 'Description.',
+          url: location.href,
+          fbId: '123456789123456',
+        },
+        {
+          // change this configurations to hide specific unnecessary icons
+          copy: true,
+          email: true,
+          print: true,
+          sms: true,
+          messenger: true,
+          facebook: true,
+          whatsapp: true,
+          twitter: true,
+          linkedin: true,
+          telegram: true,
+          skype: true,
+          language: 'pt' // specify the default language
+        }
+    )
+             .then( _ => console.log('Compartilhado com sucesso!'))
+             .catch( error => console.log('Ops! Algo de errado aconteceu:\'(\n', error));
+  });
+}
+
 $(function () {
 
   setupServiceWorker();
@@ -657,6 +690,8 @@ $(function () {
   // setupDefaultSlider();
 
   // setupClipboardJS();
+
+  // setupShareAPI();
 });
 
 window.addEventListener('load', function () {
