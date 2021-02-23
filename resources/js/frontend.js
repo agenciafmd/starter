@@ -622,25 +622,19 @@ function setupClipboardJS() {
 
 function setupDataLayerEventClickButton() {
 
-  const buttons = [
-    '#link-bar-sales-cta',
-    '#link-bar-whatsapp-cta',
-    '#link-bar-chat-cta',
-  ];
+  const buttons = document.querySelectorAll('.js-btn-data-layer');
 
-  buttons.forEach((linkID) => {
+  if (!buttons.length) {
 
-    const link = document.querySelector(linkID);
+    return;
+  }
 
-    if (!link) {
+  buttons.forEach((button) => {
 
-      return;
-    }
-
-    link.addEventListener('click', (linkClicked) => {
+    button.addEventListener('click', (clickEvent) => {
 
       const nameDataLayerAction = 'data-fmd-datalayer-action';
-      const linkDataLayerAction = linkClicked.currentTarget.getAttribute(
+      const linkDataLayerAction = clickEvent.currentTarget.getAttribute(
           nameDataLayerAction);
 
       if (!linkDataLayerAction) {
