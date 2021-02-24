@@ -185,53 +185,36 @@ function disableButtonOnSubmit() {
 function setupSmoothScroll() {
 
   // Smooth page scroll
-  $('a.js-scroll-top')
-      .on('click', function (event) {
+  const elementsScrollTo = document.querySelectorAll('a.js-scroll-to');
 
-        // e.g. <a href="#text">
-        // 'this' is the element -> a
-        // 'hash' is the text (element) after # symbol from href -> #text
+  Array.prototype.forEach.call(elementsScrollTo, function (el, i) {
+    el.addEventListener('click', function (event) {
+      event.preventDefault();
 
-        // Prevent default anchor click behavior
-        event.preventDefault();
+      const additionalOffset = Number(this.getAttribute('data-scroll-offset')) || 0;
 
-        const additionalOffset = this.getAttribute('data-scroll-offset') || 0;
+      doScrollAnimate(this.hash, additionalOffset);
+    });
+  });
 
-        doScrollAnimate({
-          targetSelector: $(this.hash),
-          additionalOffset: additionalOffset,
-        });
-      });
-}
+  function doScrollAnimate(targetSelector, additionOffset) {
+    const target = document.querySelector(targetSelector);
 
-function doScrollAnimate({ containerSelector, targetSelector, additionOffset, animateOptions }) {
+    if (!target) {
 
-  if (!targetSelector) {
+      console.error(`Alvo não encontrado, verifique se existe um elemento na página com o id ${targetSelector}.`);
+      return;
+    }
 
-    console.error(`targetSelector: Por favor, insira uma string de seleção CSS com o alvo onde o scroll animate irá parar, por exemplo, .my-content, [data-scroll-target=my-content], #my-content, etc`);
-    return;
+    const scrollTop = target.getBoundingClientRect().top + document.body.scrollTop + additionOffset;
+
+    window.scrollBy({
+      top: scrollTop,
+      behavior: 'smooth'
+    });
   }
-
-  const container = containerSelector ? $(containerSelector) : $('html, body');
-  const additionalOffset = Number(additionOffset) || 0;
-  const targetOffset = $(targetSelector).offset().top;
-
-  const scrollAnimateConfig = {
-    properties: {
-      scrollTop: targetOffset + additionalOffset,
-    },
-    options: {
-      duration: 1000,
-      ...animateOptions,
-    },
-  };
-
-  container
-      .animate(
-          scrollAnimateConfig.properties,
-          scrollAnimateConfig.options.duration,
-      );
 }
+
 
 function verifyUserAgent() {
 
