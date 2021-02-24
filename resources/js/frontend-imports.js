@@ -9,10 +9,10 @@ module.exports = (function () {
     // 'node_modules/select2/dist/js/i18n/pt-BR.js',
     // 'node_modules/select2/dist/js/select2.min.js',
     'node_modules/sweetalert2/dist/sweetalert2.min.js',
-    // 'node_modules/tiny-slider/dist/min/tiny-slider.js',
     'node_modules/vanilla-masker/build/vanilla-masker.min.js',
     // 'node_modules/clipboard/dist/clipboard.min.js',
     // 'node_modules/wow.js/dist/wow.min.js',
+    // 'node_modules/swiper/swiper-bundle.min.js',
     // 'node_modules/lax.js/lib/lax.min.js',
 
     // Vendors
@@ -26,8 +26,8 @@ module.exports = (function () {
 
     // Components
     // 'resources/js/components/sticky-header.js',
-    // 'resources/js/components/tiny-slider.js',
     // 'resources/js/components/fancybox.js',
+    // 'resources/js/components/swiper.js',
     // 'resources/js/components/lax.js',
 
     // Global usages
