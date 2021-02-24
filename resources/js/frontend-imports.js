@@ -13,19 +13,26 @@ module.exports = (function () {
     'node_modules/vanilla-masker/build/vanilla-masker.min.js',
     // 'node_modules/clipboard/dist/clipboard.min.js',
     // 'node_modules/wow.js/dist/wow.min.js',
+    // 'node_modules/lax.js/lib/lax.min.js',
+
     // Vendors
     // 'resources/js/vendors/jquery.clever-infinite-scroll.js',
+
     // Helpers
     'resources/js/helpers/utm-helper.js',
     'resources/js/helpers/form-helpers.js',
     'resources/js/helpers/cpf-cnpj-validators.js',
     // 'resources/js/helpers/user-interaction-helpers.js',
+
     // Components
     // 'resources/js/components/sticky-header.js',
     // 'resources/js/components/tiny-slider.js',
     // 'resources/js/components/fancybox.js',
+    // 'resources/js/components/lax.js',
+
     // Global usages
     'resources/js/frontend.js',
+
     // Pages
   ];
 })();
