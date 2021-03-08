@@ -1,7 +1,7 @@
 a {
   
   outline: none !important;
-  transition: .25s;
+  transition: $transition-base;
   
   @each $color, $value in $theme-colors {
     
