@@ -4,8 +4,6 @@ module.exports = (function () {
     'node_modules/popper.js/dist/umd/popper.min.js',
     'node_modules/bootstrap/dist/js/bootstrap.min.js',
     // 'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js',
-    'node_modules/jquery-maskmoney/dist/jquery.maskMoney.min.js',
-    'node_modules/jquery.maskedinput/src/jquery.maskedinput.js',
     // 'node_modules/select2/dist/js/i18n/pt-BR.js',
     // 'node_modules/select2/dist/js/select2.min.js',
     'node_modules/sweetalert2/dist/sweetalert2.min.js',
