@@ -5,5 +5,5 @@
     left: 0;
     right: 0;
     z-index: $zindex-sticky;
-    transition: .3s;
+    transition: $transition-base;
 }

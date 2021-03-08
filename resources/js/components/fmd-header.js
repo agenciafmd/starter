@@ -67,7 +67,7 @@ function setupFmdHeader() {
   const headerTransition = Number(getComputedStyle(header)['transition-duration'].replace('s', '')) * 1000;
 
   // If header is relative, set it's parent padding-top with header height
-  const isHeaderRelative = headerInitialPosition === 'relative' || headerInitialPosition === 'sticky';
+  const isHeaderRelative = ['relative', 'sticky', 'initial'].includes(headerInitialPosition);
   const parentPaddingTop = isHeaderRelative ? header.offsetHeight : '0';
 
   // Start target where header will be fixed | Default: Window Height (100vh)
