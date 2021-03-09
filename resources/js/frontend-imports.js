@@ -14,7 +14,7 @@ module.exports = (function () {
     // 'node_modules/clipboard/dist/clipboard.min.js',
     // 'node_modules/wow.js/dist/wow.min.js',
     // Vendors
-    // 'resources/js/vendors/jquery.clever-infinite-scroll.js',
+    'resources/js/vendors/jquery.clever-infinite-scroll.js',
     // Helpers
     'resources/js/helpers/utm-helper.js',
     'resources/js/helpers/form-helpers.js',

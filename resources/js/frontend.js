@@ -667,7 +667,7 @@ window.addEventListener('load', function () {
    * vh/vw are calculated after all resources loaded*/
   // setupStickyHeader();
 
-  // setupInfiniteScroll();
+  setupInfiniteScroll();
 });
 
 setupLivewire();
