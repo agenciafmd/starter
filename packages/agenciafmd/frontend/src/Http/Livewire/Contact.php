@@ -51,6 +51,7 @@ class Contact extends Component
             ],
             'phone' => [
                 'required',
+                'min:14',
             ],
             'state' => [
                 'required',

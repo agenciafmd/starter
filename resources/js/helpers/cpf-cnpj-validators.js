@@ -7,8 +7,8 @@ class CpfCnpjValidators {
       cnpj: 14,
     };
     this.selectors = {
-      cpf: '.mask-cpf',
-      cnpj: '.mask-cnpj',
+      cpf: '.js-mask-cpf',
+      cnpj: '.js-mask-cnpj',
     };
   }
 

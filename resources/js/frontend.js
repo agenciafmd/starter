@@ -302,97 +302,48 @@ function setupSelect2() {
 
 function setupInputMasks() {
 
-  function inputHandler(masks, max, event) {
-    var c = event.target;
-    var v = c.value.replace(/\D/g, '');
-    var m = c.value.length > max
-            ? 1
-            : 0;
-    VMasker(c)
-        .unMask();
-    VMasker(c)
-        .maskPattern(masks[m]);
-    c.value = VMasker.toPattern(v, masks[m]);
+  function setMaskToAllElements(elements, maskOptions) {
+    Array.prototype.forEach.call(elements, function (element){
+      const mask = IMask(element, maskOptions);
+    })
   }
 
-  if (document.querySelectorAll('.mask-phone').length > 0) {
-    var telMask = ['(99) 9999-99999', '(99) 99999-9999'];
-    var tels = document.querySelectorAll('.mask-phone');
-    tels.forEach((tel) => {
-      VMasker(tel)
-          .maskPattern(telMask[0]);
-      if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf(
-          'Chrome') === -1) {
-        /* me julgue safari desgraçado */
-      } else {
-        tel.addEventListener(
-            'input',
-            inputHandler.bind(undefined, telMask, 14),
-            false,
-        );
+  const phoneMaskOptions = {mask: [{mask: '(00) 0000-0000'}, {mask: '(00) 00000-0000'}]};
+  setMaskToAllElements(document.querySelectorAll('.js-mask-phone'), phoneMaskOptions);
+
+  const cpfMaskOptions = {mask: '000.000.000-00'};
+  setMaskToAllElements(document.querySelectorAll('.js-mask-cpf'), cpfMaskOptions);
+
+  const cnpjMaskOptions = {mask: '00.000.000/0000-00'};
+  setMaskToAllElements(document.querySelectorAll('.js-mask-cnpj'), cnpjMaskOptions);
+
+  const cpfcnpjMaskOptions = {mask: [cpfMaskOptions, cnpjMaskOptions]};
+  setMaskToAllElements(document.querySelectorAll('.js-mask-cpfcnpj'), cpfcnpjMaskOptions);
+
+  const cepMaskOptions = {mask: '00000-000'};
+  setMaskToAllElements(document.querySelectorAll('.js-mask-cep'), cepMaskOptions);
+
+  const moneyMaskOptions = {
+    mask: 'R$ num',
+    blocks: {
+      num: {
+        mask: Number,
+        thousandsSeparator: '.'
       }
-    });
-  }
-
-  if (navigator.userAgent.indexOf('Safari') !== -1 && navigator.userAgent.indexOf(
-      'Chrome') === -1) {
-    /* me julgue safari desgraçado */
-    /* o safari não deixa trocar a mascara do campo */
-  } else {
-    if (document.querySelectorAll('.mask-cpfcnpj').length > 0) {
-      var docMask = ['999.999.999-999', '99.999.999/9999-99'];
-      var docs = document.querySelectorAll('.mask-cpfcnpj');
-      docs.forEach((doc) => {
-        VMasker(doc)
-            .maskPattern(docMask[0]);
-
-        doc.addEventListener(
-            'input',
-            inputHandler.bind(undefined, docMask, 14),
-            false,
-        );
-      });
     }
   }
-  if (document.querySelectorAll('.mask-date').length > 0) {
-    VMasker(document.querySelectorAll('.mask-date'))
-        .maskPattern('99/99/9999');
-  }
+  setMaskToAllElements(document.querySelectorAll('.js-mask-money'), moneyMaskOptions);
 
-  if (document.querySelectorAll('.mask-zipcode').length > 0) {
-    VMasker(document.querySelectorAll('.mask-zipcode'))
-        .maskPattern('99999-999');
-  }
-
-  if (document.querySelectorAll('.mask-cpf').length > 0) {
-    VMasker(document.querySelectorAll('.mask-cpf'))
-        .maskPattern('999.999.999-99');
-  }
-
-  if (document.querySelectorAll('.mask-cnpj').length > 0) {
-    VMasker(document.querySelectorAll('.mask-cnpj'))
-        .maskPattern('99.999.999/9999-99');
-  }
-
-  if (document.querySelectorAll('.mask-hour').length > 0) {
-    VMasker(document.querySelectorAll('.mask-hour'))
-        .maskPattern('99:99');
-  }
-
-  if (document.querySelectorAll('.mask-number').length > 0) {
-    VMasker(document.querySelectorAll('.mask-number'))
-        .maskNumber();
-  }
-
-  if (document.querySelectorAll('.mask-money').length > 0) {
-    VMasker(document.querySelectorAll('.mask-money'))
-        .maskMoney({
-          precision: 2,
-          separator: ',',
-          delimiter: '.',
-          unit: 'R$',
-        });
-  }
+  const dateMaskOptions = {
+    mask: Date,
+    autofix: true,
+    blocks: {
+      d: {mask: IMask.MaskedRange, from: 1, to: 31, maxLength: 2},
+      m: {mask: IMask.MaskedRange, from: 1, to: 12, maxLength: 2},
+      Y: {mask: IMask.MaskedRange, from: 1900, to: 2999}
+    }
+  };
+  setMaskToAllElements(document.querySelectorAll('.js-mask-date'), dateMaskOptions);
 
   const cpfCnpjValidators = new CpfCnpjValidators();
   const cpfInput = document.querySelector(cpfCnpjValidators.selectors.cpf);
