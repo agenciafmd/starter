@@ -19,7 +19,7 @@ module.exports = (function () {
     'resources/js/helpers/cpf-cnpj-validators.js',
     // 'resources/js/helpers/user-interaction-helpers.js',
     // Components
-    // 'resources/js/components/sticky-header.js',
+    'resources/js/components/fmd-header.js',
     // 'resources/js/components/tiny-slider.js',
     // 'resources/js/components/fancybox.js',
     // Global usages
