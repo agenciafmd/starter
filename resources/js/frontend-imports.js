@@ -9,6 +9,7 @@ module.exports = (function () {
     'node_modules/sweetalert2/dist/sweetalert2.min.js',
     // 'node_modules/tiny-slider/dist/min/tiny-slider.js',
     'node_modules/vanilla-masker/build/vanilla-masker.min.js',
+    'node_modules/infinite-scroll/dist/infinite-scroll.pkgd.min.js',
     // 'node_modules/clipboard/dist/clipboard.min.js',
     // 'node_modules/wow.js/dist/wow.min.js',
     // Vendors

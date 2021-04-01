@@ -27,6 +27,7 @@
     "dependencies": {
         "@fancyapps/fancybox": "^3.5.7",
         "bootstrap": "^4.6.0",
+        "infinite-scroll": "^4.0.1",
         "jquery": "^3.6.0",
         "lodash": "^4.17.21",
         "moment": "^2.18.1",
