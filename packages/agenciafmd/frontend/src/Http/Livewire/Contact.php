@@ -58,9 +58,6 @@ class Contact extends Component
             'city' => [
                 'required',
             ],
-            'image' => [
-                'required',
-            ],
             'message' => [
                 'required',
                 'min:15',
@@ -74,7 +71,6 @@ class Contact extends Component
             'name' => 'nome',
             'phone' => 'telefone',
             'state' => 'estado',
-            'image' => 'imagem',
             'city' => 'cidade',
             'message' => 'mensagem',
         ];
@@ -83,11 +79,6 @@ class Contact extends Component
     public function submit()
     {
         $data = $this->validate($this->rules(), [], $this->attributes());
-
-        $attachments = null;
-        if ($data['image']) {
-            $attachments[] = $data['image'];
-        }
 
         Postal::where('slug', 'contato')
             ->first()
@@ -100,7 +91,7 @@ class Contact extends Component
                     '**Cidade:** ' . $data['city'] . ' - ' . $data['state'],
                     '**Mensagem:** ' . nl2br($data['message']),
                 ],
-            ], [$data['email'] => $data['name']], $attachments));
+            ], [$data['email'] => $data['name']]));
 
         $this->emit('swal', [
             'level' => 'success',
@@ -108,7 +99,7 @@ class Contact extends Component
         ]);
 
         $this->emit('datalayer', [
-            'label' => 'sucesso',
+            'form_name' => 'contato',
         ]);
 
         $this->reset();
