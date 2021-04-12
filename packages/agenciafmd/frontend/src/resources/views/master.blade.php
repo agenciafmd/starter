@@ -47,7 +47,9 @@
             {!! @file_get_contents(public_path('/css/critical/' . $critical)) !!}
         </style>
     @endif
-
+    
+    @include('agenciafmd/frontend::partials.fonts-preload')
+    
     <link rel="preload" href="{{ mix('/css/frontend.css') }}" as="style"
           onload="this.onload=null;this.rel='stylesheet'">
     <noscript>

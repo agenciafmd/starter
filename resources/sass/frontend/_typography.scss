@@ -32,7 +32,7 @@
             @if ($unitLess-value >= 0) {
 
                 .lh#{$infix}-#{$key} {
-                    line-height: $unitLess-value+px;
+                    line-height: $unitLess-value;
                 }
             }
 

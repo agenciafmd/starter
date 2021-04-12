@@ -7,3 +7,13 @@ b, strong {
 
   font-family: get-font-family($bold-font-map);
 }
+
+p:last-child {
+  
+  margin-bottom: 0;
+}
+
+section {
+
+  position: relative;
+}
