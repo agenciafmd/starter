@@ -215,7 +215,6 @@ function setupSmoothScroll() {
   }
 }
 
-
 function verifyUserAgent() {
 
   var OSNome = '';
@@ -467,7 +466,7 @@ function setupAnchorReloadPrevention() {
 
 function setupInfiniteScroll() {
 
-  $('.infinite-scroll').infiniteScroll({
+  let infiniteScroll = new InfiniteScroll( '.infinite-scroll', {
     path: 'a[rel~="next"]',
     append: '.infinite-scroll-content',
     scrollThreshold: 100,
