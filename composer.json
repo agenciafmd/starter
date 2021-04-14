@@ -18,15 +18,16 @@
     },
     "require": {
         "php": "^7.4|^8.0",
+        "ext-json": "*",
         "agenciafmd/admix": "dev-master",
         "agenciafmd/frontend": "*",
         "agenciafmd/laravel-social-meta": "dev-master",
-        "ext-json": "*",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.0",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "spatie/laravel-robots-middleware": "^1.3"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
