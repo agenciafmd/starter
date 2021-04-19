@@ -691,6 +691,10 @@ window.addEventListener('load', function () {
    * vh/vw are calculated after all resources loaded*/
   setupFmdHeader();
 
+  if (window.innerWidth > getThemeVariables().breakpoints.md) {
+    // setupLax();
+  }
+
   // setupInfiniteScroll();
 });
 
