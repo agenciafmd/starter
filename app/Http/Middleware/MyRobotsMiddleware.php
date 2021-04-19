@@ -12,6 +12,14 @@ class MyRobotsMiddleware extends RobotsMiddleware
      */
     protected function shouldIndex(Request $request)
     {
-        return $request->segment(1) !== 'admix';
+        if ($request->segment(1) === 'admix') {
+            return false;
+        }
+
+        if (config('app.env') === 'production') {
+            return true;
+        }
+
+        return false;
     }
 }
