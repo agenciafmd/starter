@@ -1,8 +1,4 @@
-window.onload = function () {
-
-	if ($(window).outerWidth() < 992) {
-		return
-	}
+function setupLax() {
 
 	lax.init()
 
