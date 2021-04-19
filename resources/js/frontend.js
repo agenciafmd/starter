@@ -215,7 +215,6 @@ function setupSmoothScroll() {
   }
 }
 
-
 function verifyUserAgent() {
 
   var OSNome = '';
@@ -467,14 +466,13 @@ function setupAnchorReloadPrevention() {
 
 function setupInfiniteScroll() {
 
-  $(window)
-      .cleverInfiniteScroll({
-        contentsWrapperSelector: '.infinite-scroll',
-        contentSelector: '.infinite-scroll-content',
-        nextSelector: 'a[rel~="next"]',
-        // Without extension, because we use xlink on svg tag
-        loadImage: 'ic-loading',
-      });
+  new InfiniteScroll('.infinite-scroll', {
+    path: 'a[rel~="next"]',
+    append: '.infinite-scroll-content',
+    scrollThreshold: 100,
+    status: '.page-load-status',
+    history: false
+  });
 }
 
 function setupShareWindow() {
