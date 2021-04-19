@@ -466,7 +466,7 @@ function setupAnchorReloadPrevention() {
 
 function setupInfiniteScroll() {
 
-  let infiniteScroll = new InfiniteScroll( '.infinite-scroll', {
+  new InfiniteScroll('.infinite-scroll', {
     path: 'a[rel~="next"]',
     append: '.infinite-scroll-content',
     scrollThreshold: 100,
