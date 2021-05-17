@@ -11,9 +11,9 @@
             'Mesmo que já tenhas feito uma longa caminhada, há sempre um novo caminho a fazer.',
             'Não encontre defeitos, encontre soluções.',
 
-            // Jessica
-            'É sempre divertido fazer o impossível.',
-            'Tudo da certo no final, se ainda não deu certo é porque não chegou ao fim.',
+            // Renan Breno
+            'Life is short. Drive fast and leave a sexy corpse',
+            'Mas eu não sou, nem quero ser, igual a quem me diz que sendo igual eu posso ser feliz',
 
             // Edmo
             'Você decide como será o seu dia, então hora de Daytonar!',
@@ -39,11 +39,11 @@
             'Tudo o que um sonho precisa para ser realizado, é de alguém que acredite que ele possa ser realizado.',
             'Só é lutador quem sabe lutar consigo mesmo.',
 
-            //Renan
+            // Renan Zika
             'Mesmo que já tenha feito uma longa caminhada, há sempre um novo caminho a fazer.',
             'Um ideal não é nada até você lutar por ele!',
 
-            //Vitor
+            // Vitor
             'Quem responde antes de ouvir mostra que é insensato e passa vergonha.',
             'As pessoas aprendem umas com as outras, assim como o ferro afia o próprio ferro.',
 

@@ -7,14 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5.0">
 
+    @if(config('app.env') !== 'production')
+        <meta name="robots" content="noindex,nofollow">
+        <meta name="googlebot" content="noindex,nofollow">
+    @endif
+    
     <x-social-meta
         title="{{ $__env->yieldContent('title', 'A cultura come a estratégia no café da manhã') }} | {{ config('app.name') }}"
         description="{{ $__env->yieldContent('description') }}"
     />
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <link href="https://www.google-analytics.com" rel="preconnect" crossorigin>
 
     {{-- refazer no pacote novo
     <!-- inicio PWA -->
@@ -47,6 +50,8 @@
             {!! @file_get_contents(public_path('/css/critical/' . $critical)) !!}
         </style>
     @endif
+
+    @include('agenciafmd/frontend::partials.fonts-preload')
 
     <link rel="preload" href="{{ mix('/css/frontend.css') }}" as="style"
           onload="this.onload=null;this.rel='stylesheet'">

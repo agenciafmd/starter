@@ -36,7 +36,17 @@
             @endif
         </div>
     </div>
-
+    <div class="page-load-status mx-auto">
+        <div class="infinite-scroll-request text-center">
+            <img src="/svg/loading.svg"
+                 loading="eager"
+                 title="Carregando solicitação"
+                 alt="Por gentileza, aguarde enquanto processamos a solicitação"
+                 class="border-0">
+        </div>
+        <p class="infinite-scroll-last"></p>
+        <p class="infinite-scroll-error"></p>
+    </div>
     @push('head')
         @if (!$paginator->onFirstPage())
             <link rel="prev" href="{{ $paginator->previousPageUrl() }}">
