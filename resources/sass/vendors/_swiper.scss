@@ -1,0 +1,47 @@
+.swiper {
+    &-container-initialized {
+        position: relative;
+    }
+    
+    &-wrapper {
+        align-items: stretch;
+    }
+    
+    &-slide {
+        overflow: hidden;
+        width: auto;
+        height: auto;
+    }
+
+    &-slide-visible {
+        .swiper-slide {
+            overflow: visible;
+        }
+    }
+
+    &-container-free-mode {
+        .swiper-slide {
+            width: auto !important;
+        }
+    }
+
+    &-pagination {
+
+        .swiper-container-horizontal > &-bullets,
+        &.swiper-pagination-custom,
+        &.swiper-pagination-fraction {
+            position: relative;
+            bottom: 0;
+        }
+
+        &-bullet {
+            background: none;
+            border: $border-width solid $primary;
+            opacity: 1;
+
+            &-active {
+                background: $primary;
+            }
+        }
+    }
+}

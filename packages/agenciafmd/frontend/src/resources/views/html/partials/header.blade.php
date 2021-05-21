@@ -1,3 +1,1 @@
-<div class="header">
-
-</div>
+<header class="header fmd-header"></header>

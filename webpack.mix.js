@@ -102,11 +102,7 @@ mix
         globs: [
             path.join(__dirname, 'packages/agenciafmd/frontend/src/**/*.php'),
             path.join(__dirname, 'node_modules/@fancyapps/fancybox/dist/*.js'),
-            path.join(__dirname, 'node_modules/tiny-slider/**/*.js'),
-            path.join(
-                __dirname,
-                'node_modules/sweetalert2/dist/sweetalert2.min.js',
-            ),
+            path.join(__dirname, 'node_modules/swiper/**/*.js'),
             path.join(__dirname, 'node_modules/jquery/dist/jquery.min.js'),
             path.join(__dirname, 'node_modules/select2/dist/**/*.js'),
             path.join(__dirname, 'node_modules/sweetalert2/dist/*.js'),
@@ -116,7 +112,7 @@ mix
             ),
         ],
         // Include classes we don't have direct access
-        whitelistPatterns: [/hs-*/, /tns-*/],
+        whitelistPatterns: [/hs-*/, /tns-*/, /swiper-*/],
     });
 
 // critical path

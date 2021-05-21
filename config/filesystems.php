@@ -55,6 +55,15 @@ return [
             'visibility' => 'public',
         ],
 
+        'cdn' => [
+            'driver' => 'ftp',
+            'host' => env('CDN_HOST'),
+            'username' => env('CDN_USERNAME'),
+            'password' => env('CDN_PASSWORD'),
+            'url' => env('CDN_URL'),
+            'ssl' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

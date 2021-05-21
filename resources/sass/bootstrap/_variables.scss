@@ -21,18 +21,18 @@ $black: #000 !default;
 $grays: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $grays: map-merge(
-        (
-            "100": $gray-100,
-            "200": $gray-200,
-            "300": $gray-300,
-            "400": $gray-400,
-            "500": $gray-500,
-            "600": $gray-600,
-            "700": $gray-700,
-            "800": $gray-800,
-            "900": $gray-900
-        ),
-        $grays
+    (
+        "100": $gray-100,
+        "200": $gray-200,
+        "300": $gray-300,
+        "400": $gray-400,
+        "500": $gray-500,
+        "600": $gray-600,
+        "700": $gray-700,
+        "800": $gray-800,
+        "900": $gray-900
+    ),
+    $grays
 );
 
 $blue: #007bff !default;
@@ -50,22 +50,22 @@ $cyan: #17a2b8 !default;
 $colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $colors: map-merge(
-        (
-            "blue": $blue,
-            "indigo": $indigo,
-            "purple": $purple,
-            "pink": $pink,
-            "red": $red,
-            "orange": $orange,
-            "yellow": $yellow,
-            "green": $green,
-            "teal": $teal,
-            "cyan": $cyan,
-            "white": $white,
-            "gray": $gray-600,
-            "gray-dark": $gray-800
-        ),
-        $colors
+    (
+        "blue": $blue,
+        "indigo": $indigo,
+        "purple": $purple,
+        "pink": $pink,
+        "red": $red,
+        "orange": $orange,
+        "yellow": $yellow,
+        "green": $green,
+        "teal": $teal,
+        "cyan": $cyan,
+        "white": $white,
+        "gray": $gray-600,
+        "gray-dark": $gray-800
+    ),
+    $colors
 );
 
 $primary: $blue !default;
@@ -80,17 +80,17 @@ $dark: $gray-800 !default;
 $theme-colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $theme-colors: map-merge(
-        (
-            "primary": $primary,
-            "secondary": $secondary,
-            "success": $success,
-            "info": $info,
-            "warning": $warning,
-            "danger": $danger,
-            "light": $light,
-            "dark": $dark
-        ),
-        $theme-colors
+    (
+        "primary": $primary,
+        "secondary": $secondary,
+        "success": $success,
+        "info": $info,
+        "warning": $warning,
+        "danger": $danger,
+        "light": $light,
+        "dark": $dark
+    ),
+    $theme-colors
 );
 
 // Set a specific jump point for requesting color jumps
@@ -105,11 +105,11 @@ $yiq-text-light: $white !default;
 
 // Characters which are escaped by the escape-svg function
 $escaped-characters: (
-        ("<", "%3c"),
-        (">", "%3e"),
-        ("#", "%23"),
-        ("(", "%28"),
-        (")", "%29"),
+    ("<", "%3c"),
+    (">", "%3e"),
+    ("#", "%23"),
+    ("(", "%28"),
+    (")", "%29"),
 ) !default;
 
 // Options
@@ -140,46 +140,46 @@ $spacer: 1rem !default;
 $spacers: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $spacers: map-merge(
-        (
-            0: 0,
-            1: ($spacer * .25),
-            2: ($spacer * .5),
-            3: $spacer,
-            4: ($spacer * 1.5),
-            5: ($spacer * 3)
-        ),
-        $spacers
+    (
+        0: 0,
+        1: ($spacer * .25),
+        2: ($spacer * .5),
+        3: $spacer,
+        4: ($spacer * 1.5),
+        5: ($spacer * 3)
+    ),
+    $spacers
 );
 
 @for $i from 0 through 20 {
-
-  $unit: $spacer * $i;
-  $unit-quarter-variation: $unit + .25;
-  $unit-half-variation: $unit + .5;
-  $unit-half-quarter-variation: $unit + .75;
-
-  $unit-variations: (
-      '#{$i}': $unit,
-      '#{$i}q': ($unit-quarter-variation),
-      '#{$i}h': ($unit-half-variation),
-      '#{$i}hq': ($unit-half-quarter-variation),
-  );
-
-  $spacers: map-merge($spacers, $unit-variations);
+	
+	$unit: $spacer * $i;
+	$unit-quarter-variation: $unit + .25;
+	$unit-half-variation: $unit + .5;
+	$unit-half-quarter-variation: $unit + .75;
+	
+	$unit-variations: (
+		#{$i}: $unit,
+		'#{$i}q': ($unit-quarter-variation),
+		'#{$i}h': ($unit-half-variation),
+		'#{$i}hq': ($unit-half-quarter-variation),
+	);
+	
+	$spacers: map-merge($spacers, $unit-variations);
 }
 
 // This variable affects the `.h-*` and `.w-*` classes.
 $sizes: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $sizes: map-merge(
-        (
-            25: 25%,
-            50: 50%,
-            75: 75%,
-            100: 100%,
-            auto: auto
-        ),
-        $sizes
+    (
+        25: 25%,
+        50: 50%,
+        75: 75%,
+        100: 100%,
+        auto: auto
+    ),
+    $sizes
 );
 
 // Body
@@ -193,9 +193,9 @@ $body-color: $gray-900 !default;
 //
 // Style anchor elements.
 
-$link-color: theme-color("primary") !default;
+$link-color: inherit !default;
 $link-decoration: none !default;
-$link-hover-color: darken($link-color, 15%) !default;
+$link-hover-color: $primary !default;
 $link-hover-decoration: none !default;
 // Darken percentage for links with `.text-*` class (e.g. `.text-success`)
 $emphasized-link-hover-darken-percentage: 15% !default;
@@ -212,11 +212,11 @@ $paragraph-margin-bottom: 1rem !default;
 // adapting to different screen sizes, for use in media queries.
 
 $grid-breakpoints: (
-    xs: 0,
-    sm: 425px, // Read 'from 425px' (min-width)
-    md: 1024px, // Read 'from 1024px' (min-width)
-    lg: 1280px, // Read 'from 1280px' (min-width)
-    xl: 1680px // Read 'from 1680px' (min-width)
+	xs: 0,
+	sm: 425px, // Read 'from 425px' (min-width)
+	md: 1024px, // Read 'from 1024px' (min-width)
+	lg: 1280px, // Read 'from 1280px' (min-width)
+	xl: 1680px // Read 'from 1680px' (min-width)
 ) !default;
 
 @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
@@ -227,10 +227,10 @@ $grid-breakpoints: (
 // Define the maximum width of `.container` for different screen sizes.
 
 $container-max-widths: (
-    sm: 964px, // Define max-width between sm-md
-    md: 1166px, // Define max-width between md-lg
-    lg: 1280px, // Define max-width between lg-xl
-    xl: 1440px // Define max-width between xl-infinite
+	sm: 964px, // Define max-width between sm-md
+	md: 1166px, // Define max-width between md-lg
+	lg: 1280px, // Define max-width between lg-xl
+	xl: 1440px // Define max-width between xl-infinite
 ) !default;
 
 @include _assert-ascending($container-max-widths, "$container-max-widths");
@@ -277,13 +277,13 @@ $transition-collapse: height .35s ease !default;
 $embed-responsive-aspect-ratios: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $embed-responsive-aspect-ratios: join(
-            (
-                    (21 9),
-                    (16 9),
-                    (4 3),
-                    (1 1),
-            ),
-        $embed-responsive-aspect-ratios
+    (
+        (21 9),
+        (16 9),
+        (4 3),
+        (1 1),
+    ),
+    $embed-responsive-aspect-ratios
 );
 
 // Typography
@@ -320,7 +320,7 @@ $headings-margin-bottom: $spacer / 2 !default;
 $headings-font-family: get-font-family($bold-font-map) !default;
 $headings-font-weight: 500 !default;
 $headings-line-height: 1.2 !default;
-$headings-color: $primary !default;
+$headings-color: inherit !default;
 
 $display1-size: 6rem !default;
 $display2-size: 5.5rem !default;
@@ -658,8 +658,8 @@ $custom-file-box-shadow: $input-box-shadow !default;
 $custom-file-button-color: $custom-file-color !default;
 $custom-file-button-bg: $input-group-addon-bg !default;
 $custom-file-text: (
-    en: "Browse",
-    pt-br: "Procurar"
+	en: "Browse",
+	pt-br: "Procurar"
 ) !default;
 
 // Form validation
@@ -677,17 +677,17 @@ $form-feedback-icon-invalid: url("data:image/svg+xml,<svg xmlns='http://www.w3.o
 $form-validation-states: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $form-validation-states: map-merge(
-        (
-            "valid": (
-                "color": $form-feedback-valid-color,
-                "icon": $form-feedback-icon-valid
-            ),
-            "invalid": (
-                "color": $form-feedback-invalid-color,
-                "icon": $form-feedback-icon-invalid
-            ),
-        ),
-        $form-validation-states
+		(
+			"valid": (
+				"color": $form-feedback-valid-color,
+				"icon": $form-feedback-icon-valid
+			),
+			"invalid": (
+				"color": $form-feedback-invalid-color,
+				"icon": $form-feedback-icon-invalid
+			),
+		),
+		$form-validation-states
 );
 
 // Z-index master list

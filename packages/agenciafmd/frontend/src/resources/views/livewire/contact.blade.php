@@ -36,7 +36,7 @@
                            placeholder="Telefone"
                            required
                            aria-label="telefone"
-                           class="@error('phone') is-invalid @enderror mask-phone form-control contact-custom-placeholder text-dark">
+                           class="@error('phone') is-invalid @enderror js-mask-phone form-control contact-custom-placeholder text-dark">
                     @error('phone')
                     <span class="invalid-feedback">
                         {{ $message }}

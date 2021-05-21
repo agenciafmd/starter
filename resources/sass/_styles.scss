@@ -1,1 +1,20 @@
 // Project's common (global) styles
+@for $i from 0 to 3 {
+	.z-#{$i} {
+		z-index: $i;
+	}
+	
+	@if ($i != 0) {
+		.z-n#{$i} {
+			z-index: -$i;
+		}
+	}
+}
+
+$opacities: 0, .25, .5, .75, 1;
+
+@each $opac in $opacities {
+	.opacity-#{$opac * 100} {
+		opacity: $opac;
+	}
+}
