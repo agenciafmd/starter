@@ -9949,28 +9949,28 @@ function insertCopyrightYear() {
 
 function setupLivewire() {
   document.addEventListener("livewire:load", function (event) {
-    window.livewire.hook('afterDomUpdate', function () {
-      setupInputMasks();
-      document.querySelectorAll('[data-upload]').forEach(function (item) {
-        item.addEventListener('change', function (event) {
-          var target = event.target;
-          var inputName = target.getAttribute('data-upload');
-          var file = target.files[0];
-          var reader = new FileReader();
-          reader.readAsDataURL(file);
-
-          reader.onload = function () {
-            livewire.emit('upload', inputName, reader.result);
-            /* console.log(reader.result); */
-          };
-
-          reader.onerror = function (error) {
-            livewire.emit('upload', inputName, '');
-            /* console.log('Error: ', error); */
-          };
-        });
-      });
-    });
+    // window.livewire.hook('afterDomUpdate', function () {
+    //   setupInputMasks();
+    //   document.querySelectorAll('[data-upload]').forEach(function (item) {
+    //     item.addEventListener('change', function (event) {
+    //       var target = event.target;
+    //       var inputName = target.getAttribute('data-upload');
+    //       var file = target.files[0];
+    //       var reader = new FileReader();
+    //       reader.readAsDataURL(file);
+    //
+    //       reader.onload = function () {
+    //         livewire.emit('upload', inputName, reader.result);
+    //         /* console.log(reader.result); */
+    //       };
+    //
+    //       reader.onerror = function (error) {
+    //         livewire.emit('upload', inputName, '');
+    //         /* console.log('Error: ', error); */
+    //       };
+    //     });
+    //   });
+    // });
   });
 }
 
