@@ -686,6 +686,21 @@
               </div>
             </div>
 
+            <div class="bs-component">
+              <h2>
+                Share buttons
+              </h2>
+              <div class="mt-1">
+                <a role="button"
+                   data-fmd-share-btn-title="Insert the title here"
+                   data-fmd-share-btn-description="Insert the description here"
+                   data-fmd-share-btn-fbidentification="123456789123456"
+                   class="btn btn-primary js-btn-share">
+                  share
+                </a>
+              </div>
+            </div>
+
           </div>
           <div class="col-lg-5">
 

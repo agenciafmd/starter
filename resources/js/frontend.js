@@ -555,33 +555,36 @@ function setupClipboardJS() {
 function setupShareAPI() {
 
   // To install: npm install share-api-polyfill --save
+  const shareButtonElement = document.querySelectorAll('.js-btn-share');
 
-  $('.btn-share').on('click', function () {
+  shareButtonElement.forEach(buttonItem => {
 
-    navigator.share({
-          title: 'Title',
-          text: 'Description.',
-          url: location.href,
-          fbId: '123456789123456',
-        },
-        {
-          // change this configurations to hide specific unnecessary icons
-          copy: true,
-          email: true,
-          print: true,
-          sms: true,
-          messenger: true,
-          facebook: true,
-          whatsapp: true,
-          twitter: true,
-          linkedin: true,
-          telegram: true,
-          skype: true,
-          language: 'pt' // specify the default language
-        }
-    )
-             .then( _ => console.log('Compartilhado com sucesso!'))
-             .catch( error => console.log('Ops! Algo de errado aconteceu:\'(\n', error));
+    buttonItem.addEventListener('click', function () {
+
+      navigator.share({
+            title: buttonItem.getAttribute('data-fmd-share-btn-title'),
+            text: buttonItem.getAttribute('data-fmd-share-btn-description'),
+            url: location.href,
+            fbId: buttonItem.getAttribute('data-fmd-share-btn-fbidentification'),
+          },
+          {
+            // change this configurations to hide specific unnecessary icons
+            copy: true,
+            email: true,
+            print: true,
+            sms: true,
+            messenger: true,
+            facebook: true,
+            whatsapp: true,
+            twitter: true,
+            linkedin: true,
+            telegram: true,
+            skype: true,
+            language: 'pt' // specify the default language
+          }
+      ).then( _ => console.log('Compartilhado com sucesso!'))
+       .catch( error => console.log('Ops! Algo de errado aconteceu:\'(\n', error));
+    });
   });
 }
 
@@ -664,7 +667,7 @@ $(function () {
 
   // setupClipboardJS();
 
-  // setupShareAPI();
+  setupShareAPI();
 
   // setupDataLayerEventClickButton();
 });
