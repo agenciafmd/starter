@@ -74,7 +74,8 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
-        "post-update-cmd": "Google\\Task\\Composer::cleanup"
+        "post-update-cmd": "Google\\Task\\Composer::cleanup",
+        "phpstan": "vendor/bin/phpstan analyse"
     },
     "extra": {
         "laravel": {
