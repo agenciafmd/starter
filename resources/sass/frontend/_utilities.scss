@@ -1,0 +1,46 @@
+$utilities: map-merge(
+	$utilities,
+	(
+		"fill": (
+			property: fill,
+			values: $theme-colors
+		),
+		"stroke": (
+			property: stroke,
+			values: $theme-colors
+		),
+		"font-size": (
+			property: font-size,
+			responsive: true,
+			values: (
+				"sm": $font-size-sm,
+				"base": $font-size-base,
+				"lg": $font-size-lg,
+			)
+		),
+		"opacity": (
+			property: opacity,
+			class: opac,
+			responsive: true,
+			values: (
+				"0": 0,
+				"25": .25,
+				"50": .5,
+				"75": .75,
+				"100": 1,
+			)
+		),
+		"z-index": (
+			property: z-index,
+			values: (
+				"n3": -3,
+				"n2": -2,
+				"n1": -1,
+				"0": 0,
+				"1": 1,
+				"2": 2,
+				"3": 3,
+			)
+		)
+	)
+);

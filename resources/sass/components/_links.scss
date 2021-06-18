@@ -1,13 +1,10 @@
 a {
-  
   outline: none !important;
   transition: $transition-base;
   
   @each $color, $value in $theme-colors {
-    
     .text-#{$color} &:hover {
-  
-      color: darken($value, $emphasized-link-hover-darken-percentage);
+      color: darken($value, $link-shade-percentage);
     }
   }
 }

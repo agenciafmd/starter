@@ -1,19 +1,11 @@
-textarea {
-
-  resize: none;
+section {
+	position: relative;
 }
 
-b, strong {
-
-  font-family: get-font-family($bold-font-map);
+textarea {
+	resize: none;
 }
 
 p:last-child {
-  
-  margin-bottom: 0;
-}
-
-section {
-
-  position: relative;
+	margin-bottom: 0;
 }

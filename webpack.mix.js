@@ -106,10 +106,7 @@ mix
             path.join(__dirname, 'node_modules/jquery/dist/jquery.min.js'),
             path.join(__dirname, 'node_modules/select2/dist/**/*.js'),
             path.join(__dirname, 'node_modules/sweetalert2/dist/*.js'),
-            path.join(
-                __dirname,
-                'node_modules/bootstrap/dist/js/bootstrap.min.js',
-            ),
+            path.join(__dirname, 'node_modules/bootstrap/dist/js/bootstrap.min.js',),
         ],
         // Include classes we don't have direct access
         whitelistPatterns: [/hs-*/, /tns-*/, /swiper-*/],
