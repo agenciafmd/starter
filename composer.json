@@ -21,6 +21,7 @@
         "ext-json": "*",
         "agenciafmd/admix": "dev-master",
         "agenciafmd/frontend": "*",
+        "agenciafmd/laravel-sitemap": "dev-master",
         "agenciafmd/laravel-social-meta": "dev-master",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
