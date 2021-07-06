@@ -185,7 +185,7 @@ function disableButtonOnSubmit(form) {
 function setupSmoothScroll() {
 
   // Smooth page scroll
-  const elementsScrollTo = document.querySelectorAll('a.js-scroll-to');
+  const elementsScrollTo = document.querySelectorAll('a.js-scroll-top');
 
   Array.prototype.forEach.call(elementsScrollTo, function (el, i) {
     el.addEventListener('click', function (event) {
