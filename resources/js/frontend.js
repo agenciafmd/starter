@@ -556,14 +556,16 @@ function setupShareAPI() {
 
   // To install: npm install share-api-polyfill --save
   const shareButtonElement = document.querySelectorAll('.js-btn-share');
+  const pageTitle = document.querySelector('title').textContent;
+  const pageDescription = document.querySelector('meta[name="description"]').getAttribute('content');
 
   shareButtonElement.forEach(buttonItem => {
 
     buttonItem.addEventListener('click', function () {
 
       navigator.share({
-            title: buttonItem.getAttribute('data-fmd-share-btn-title'),
-            text: buttonItem.getAttribute('data-fmd-share-btn-description'),
+            title: pageTitle,
+            text: pageDescription,
             url: location.href,
             fbId: buttonItem.getAttribute('data-fmd-share-btn-fbidentification'),
           },
