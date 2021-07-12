@@ -552,6 +552,44 @@ function setupClipboardJS() {
   }
 }
 
+function setupShareAPI() {
+
+  // To install: npm install share-api-polyfill --save
+  const shareButtonElement = document.querySelectorAll('.js-btn-share');
+  const pageTitle = document.querySelector('title').textContent;
+  const pageDescription = document.querySelector('meta[name="description"]').getAttribute('content');
+
+  shareButtonElement.forEach(buttonItem => {
+
+    buttonItem.addEventListener('click', function () {
+
+      navigator.share({
+            title: pageTitle,
+            text: pageDescription,
+            url: location.href,
+            fbId: buttonItem.getAttribute('data-fmd-share-btn-fbidentification'),
+          },
+          {
+            // change this configurations to hide specific unnecessary icons
+            copy: true,
+            email: true,
+            print: true,
+            sms: true,
+            messenger: true,
+            facebook: true,
+            whatsapp: true,
+            twitter: true,
+            linkedin: true,
+            telegram: true,
+            skype: true,
+            language: 'pt' // specify the default language
+          }
+      ).then( _ => console.log('Compartilhado com sucesso!'))
+       .catch( error => console.log('Ops! Algo de errado aconteceu:\'(\n', error));
+    });
+  });
+}
+
 function setupDataLayerEventClickButton() {
 
   const buttons = document.querySelectorAll('.js-btn-data-layer');
@@ -630,6 +668,8 @@ $(function () {
   // setupDefaultSlider();
 
   // setupClipboardJS();
+
+  setupShareAPI();
 
   // setupDataLayerEventClickButton();
 });

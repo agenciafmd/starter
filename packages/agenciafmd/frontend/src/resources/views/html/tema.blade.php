@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Tema</title>
+    <meta name="description" content="Página para visualização de todos os componentes">
     <meta name="viewport"
           content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible"
@@ -683,6 +684,19 @@
                     Enviar
                   </span>
                 </button>
+              </div>
+            </div>
+
+            <div class="bs-component">
+              <h2>
+                Share buttons
+              </h2>
+              <div class="mt-1">
+                <a role="button"
+                   data-fmd-share-btn-fbidentification="123456789123456"
+                   class="btn btn-primary js-btn-share">
+                  share
+                </a>
               </div>
             </div>
 
