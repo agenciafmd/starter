@@ -16,7 +16,6 @@ module.exports = (function () {
     // 'node_modules/lax.js/lib/lax.min.js',
 
     // Vendors
-    // 'resources/js/vendors/jquery.clever-infinite-scroll.js',
 
     // Helpers
     'resources/js/helpers/utm-helper.js',

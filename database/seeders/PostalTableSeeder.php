@@ -1,14 +1,16 @@
 <?php
 
-use Agenciafmd\Postal\Postal;
+namespace Database\Seeders;
+
+use Agenciafmd\Postal\Models\Postal;
 use Illuminate\Database\Seeder;
 
 class PostalTableSeeder extends Seeder
 {
     public function run()
     {
-        Postal::withTrashed()
-            ->get()->each->forceDelete();
+        Postal::query()
+            ->truncate();
 
         $items = collect([
             [

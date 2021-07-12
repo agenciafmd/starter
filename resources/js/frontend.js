@@ -684,7 +684,7 @@ window.addEventListener('load', function () {
     // setupLax();
   }
 
-  // setupInfiniteScroll();
+  setupInfiniteScroll();
 });
 
 setupLivewire();
