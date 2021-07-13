@@ -430,19 +430,20 @@
 
 </head>
 <body>
-<div class="container">
-	
-	<div class="page-header"
-	     id="banner">
-		<div class="row">
-			<div class="col-lg-8 col-md-7 col-sm-6">
-				<h1>Tema</h1>
-				<p class="lead">Agência F&MD</p>
+<header class="fmd-header py-1 bg-white">
+	<div class="container">
+		<div class="row align-items-center justify-content-between">
+			<div class="col-auto">
+				<h1 class="mb-0">Tema</h1>
 			</div>
-			<div class="col-lg-4 col-md-5 col-sm-6">
+			<div class="col-auto">
+				<p class="lead">Agência F&MD</p>
 			</div>
 		</div>
 	</div>
+</header>
+
+<div id="banner" class="container">
 	
 	<!-- Navbar
 	================================================== -->
