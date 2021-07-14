@@ -672,6 +672,8 @@ $(function () {
   setupShareAPI();
 
   // setupDataLayerEventClickButton();
+
+  setupUtmHelpers();
 });
 
 window.addEventListener('load', function () {
