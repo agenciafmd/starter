@@ -417,7 +417,14 @@ function setupAnchorReloadPrevention() {
 
 function setupInfiniteScroll() {
 
-  new InfiniteScroll('.infinite-scroll', {
+  const scrollContainerElement = document.querySelector('.infinite-scroll');
+
+  if (!scrollContainerElement) {
+
+    return;
+  }
+
+  new InfiniteScroll(scrollContainerElement, {
     path: 'a[rel~="next"]',
     append: '.infinite-scroll-content',
     scrollThreshold: 100,
