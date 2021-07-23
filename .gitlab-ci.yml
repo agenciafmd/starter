@@ -1,7 +1,7 @@
 #https://www.talvbansal.me/blog/in-depth-gitlab-ci-cd-with-laravel-apps/
 #https://github.com/Geovica/Laravel-Gitlab-CI-CD-setup/blob/master/.gitlab-ci.yml
 
-image: edbizarro/gitlab-ci-pipeline-php:7.4
+image: edbizarro/gitlab-ci-pipeline-php:8.0
 
 stages:
   - preparation
@@ -145,7 +145,7 @@ wall-e:
     - git commit -m "feat(wall-e) commita o nrp e/ou php-cs-fix $CI_COMMIT_SHORT_SHA [skip ci]" || echo "Nenhuma alteração!"
     - git remote rm origin && git remote add origin git@gitlab.com:$CI_PROJECT_PATH.git
     - git push origin HEAD:$CI_COMMIT_REF_NAME
-    - ./vendor/bin/envoy run deploy
+#    - ./vendor/bin/envoy run deploy
 
 #wall-e-prod:
 #  stage: deploy

@@ -17,11 +17,12 @@
         }
     },
     "require": {
-        "php": "~7.4|^8.0",
+        "php": "^8.0",
         "ext-json": "*",
         "agenciafmd/admix": "dev-master",
         "agenciafmd/frontend": "*",
         "agenciafmd/laravel-social-meta": "dev-master",
+        "agenciafmd/laravel-sitemap": "dev-master",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
