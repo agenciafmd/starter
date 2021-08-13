@@ -8,6 +8,34 @@ let frontendImports = require('./resources/js/frontend-imports');
 const httpRegex = 'http:\\/\\/|https:\\/\\/';
 const projectProxy = process.env.APP_URL.replace(new RegExp(httpRegex), '');
 
+/*
+ * USAGE
+ * <svg role="img">
+ *   <use xlink:href="/svg/sprite.svg#050-santa-claus"></use>
+ * </svg>
+ * <svg role="img">
+ *   <use xlink:href="/svg/sprite.svg#049-deer"></use>
+ * </svg>
+ * */
+const wpConfig = {
+  plugins: [
+    new SVGSpritemapPlugin('resources/svg/*.svg', {
+      output: {
+        filename: 'svg/sprite.svg',
+        svgo: {
+          removeTitle: true,
+        },
+        chunk: {
+          name: '../resources/js/spritemap',
+        },
+      },
+      sprite: {
+        prefix: false,
+      },
+    }),
+  ],
+};
+
 mix
     .sass('resources/sass/frontend.scss', 'public/css')
     .purgeCss({
@@ -26,7 +54,7 @@ mix
         ],
         // Include classes we don't have direct access
         safelist: [/hs-*/, /tns-*/, /js-*/, /swiper-*/],
-      }
+      },
     })
     .options({
       imgLoaderOptions: {
@@ -60,46 +88,54 @@ mix
       },
       urls: [
         // urls que temos no /html
-        { url: 'index', template: 'index' },
+        {
+          url: 'index',
+          template: 'index',
+        },
         // {url: 'contato', template: 'contato'},
         // {url: 'quem-somos', template: 'quem-somos'},
       ],
       dimensions: [
-        { width: 375, height: 667 },
-        { width: 1024, height: 768 },
-        { width: 1280, height: 720 },
-        { width: 1366, height: 768 },
+        {
+          width: 375,
+          height: 667,
+        },
+        {
+          width: 1024,
+          height: 768,
+        },
+        {
+          width: 1280,
+          height: 720,
+        },
+        {
+          width: 1366,
+          height: 768,
+        },
       ],
       ignore: ['@font-face'],
-    });
-
-/*
- * USAGE
- * <svg role="img">
- *   <use xlink:href="/svg/sprite.svg#050-santa-claus"></use>
- * </svg>
- * <svg role="img">
- *   <use xlink:href="/svg/sprite.svg#049-deer"></use>
- * </svg>
- * */
-const wpConfig = {
-  plugins: [
-    new SVGSpritemapPlugin('resources/svg/*.svg', {
-      output: {
-        filename: 'svg/sprite.svg',
-        svgo: {
-          removeTitle: true,
-        },
-        chunk: {
-          name: '../resources/js/spritemap',
-        },
+    })
+    .browserSync({
+      host: '192.168.10.10',
+      proxy: projectProxy,
+      open: false,
+      watch: true,
+      files: [
+        'app/**/*.php',
+        'resources/views/**/*.php',
+        'packages/agenciafmd/frontend/src/**/*.php',
+        'resources/js/**/*.js',
+        '!resources/js/**/*-imports.js',
+        'resources/sass/**/*.scss',
+        'public/js/**/*.js',
+        'public/css/**/*.css',
+      ],
+      watchOptions: {
+        usePolling: true,
+        interval: 500,
       },
-      sprite: {
-        prefix: false,
-      },
-    }),
-  ],
-};
+    })
+    .webpackConfig(wpConfig);
 
 if (!mix.inProduction()) {
 
@@ -111,31 +147,3 @@ if (mix.inProduction()) {
 
   mix.version();
 }
-
-mix.webpackConfig(wpConfig);
-
-/*
- |--------------------------------------------------------------------------
- | BrowserSync
- |--------------------------------------------------------------------------
- */
-mix.browserSync({
-  host: '192.168.10.10',
-  proxy: projectProxy,
-  open: false,
-  watch: true,
-  files: [
-    'app/**/*.php',
-    'resources/views/**/*.php',
-    'packages/agenciafmd/frontend/src/**/*.php',
-    'resources/js/**/*.js',
-    '!resources/js/**/*-imports.js',
-    'resources/sass/**/*.scss',
-    'public/js/**/*.js',
-    'public/css/**/*.css',
-  ],
-  watchOptions: {
-    usePolling: true,
-    interval: 500,
-  },
-});
