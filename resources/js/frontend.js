@@ -202,7 +202,7 @@ function setupSmoothScroll() {
 
     if (!target) {
 
-      console.error(`Alvo não encontrado, verifique se existe um elemento na página com o id ${targetSelector}.`);
+      console.error(`Alvo não encontrado, verifique se existe um elemento na página com o id ${ targetSelector }.`);
       return;
     }
 
@@ -210,7 +210,7 @@ function setupSmoothScroll() {
 
     window.scrollBy({
       top: scrollTop,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   }
 }
@@ -285,47 +285,92 @@ function setupSelect2() {
 function setupInputMasks() {
 
   function setMaskToAllElements(elements, maskOptions) {
-    Array.prototype.forEach.call(elements, function (element){
+    Array.prototype.forEach.call(elements, function (element) {
       const mask = IMask(element, maskOptions);
-    })
+    });
   }
 
-  const phoneMaskOptions = {mask: [{mask: '(00) 0000-0000'}, {mask: '(00) 00000-0000'}]};
-  setMaskToAllElements(document.querySelectorAll('.js-mask-phone'), phoneMaskOptions);
+  const phoneMaskOptions = {
+    mask: [
+      { mask: '(00) 0000-0000' },
+      { mask: '(00) 00000-0000' },
+    ],
+  };
 
-  const cpfMaskOptions = {mask: '000.000.000-00'};
-  setMaskToAllElements(document.querySelectorAll('.js-mask-cpf'), cpfMaskOptions);
+  setMaskToAllElements(
+      document.querySelectorAll('.js-mask-phone'),
+      phoneMaskOptions,
+  );
 
-  const cnpjMaskOptions = {mask: '00.000.000/0000-00'};
-  setMaskToAllElements(document.querySelectorAll('.js-mask-cnpj'), cnpjMaskOptions);
+  const cpfMaskOptions = { mask: '000.000.000-00' };
 
-  const cpfcnpjMaskOptions = {mask: [cpfMaskOptions, cnpjMaskOptions]};
-  setMaskToAllElements(document.querySelectorAll('.js-mask-cpfcnpj'), cpfcnpjMaskOptions);
+  setMaskToAllElements(
+      document.querySelectorAll('.js-mask-cpf'),
+      cpfMaskOptions,
+  );
 
-  const cepMaskOptions = {mask: '00000-000'};
-  setMaskToAllElements(document.querySelectorAll('.js-mask-cep'), cepMaskOptions);
+  const cnpjMaskOptions = { mask: '00.000.000/0000-00' };
+
+  setMaskToAllElements(
+      document.querySelectorAll('.js-mask-cnpj'),
+      cnpjMaskOptions,
+  );
+
+  const cpfcnpjMaskOptions = { mask: [cpfMaskOptions, cnpjMaskOptions] };
+
+  setMaskToAllElements(
+      document.querySelectorAll('.js-mask-cpfcnpj'),
+      cpfcnpjMaskOptions,
+  );
+
+  const cepMaskOptions = { mask: '00000-000' };
+  setMaskToAllElements(
+      document.querySelectorAll('.js-mask-cep'),
+      cepMaskOptions,
+  );
 
   const moneyMaskOptions = {
     mask: 'R$ num',
     blocks: {
       num: {
         mask: Number,
-        thousandsSeparator: '.'
-      }
-    }
-  }
-  setMaskToAllElements(document.querySelectorAll('.js-mask-money'), moneyMaskOptions);
+        thousandsSeparator: '.',
+      },
+    },
+  };
+
+  setMaskToAllElements(
+      document.querySelectorAll('.js-mask-money'),
+      moneyMaskOptions,
+  );
 
   const dateMaskOptions = {
     mask: Date,
     autofix: true,
     blocks: {
-      d: {mask: IMask.MaskedRange, from: 1, to: 31, maxLength: 2},
-      m: {mask: IMask.MaskedRange, from: 1, to: 12, maxLength: 2},
-      Y: {mask: IMask.MaskedRange, from: 1900, to: 2999}
-    }
+      d: {
+        mask: IMask.MaskedRange,
+        from: 1,
+        to: 31,
+        maxLength: 2,
+      },
+      m: {
+        mask: IMask.MaskedRange,
+        from: 1,
+        to: 12,
+        maxLength: 2,
+      },
+      Y: {
+        mask: IMask.MaskedRange,
+        from: 1900,
+        to: 2999,
+      },
+    },
   };
-  setMaskToAllElements(document.querySelectorAll('.js-mask-date'), dateMaskOptions);
+  setMaskToAllElements(
+      document.querySelectorAll('.js-mask-date'),
+      dateMaskOptions,
+  );
 
   const cpfCnpjValidators = new CpfCnpjValidators();
   const cpfInput = document.querySelector(cpfCnpjValidators.selectors.cpf);
@@ -418,18 +463,20 @@ function setupAnchorReloadPrevention() {
 function setupInfiniteScroll() {
 
   const scrollContainerElement = document.querySelector('.infinite-scroll');
+  const nextElementSelector = 'a[rel~="next"]';
+  const nextPageElement = document.querySelector(nextElementSelector);
 
-  if (!scrollContainerElement) {
+  if (!scrollContainerElement || !nextPageElement) {
 
     return;
   }
 
   new InfiniteScroll(scrollContainerElement, {
-    path: 'a[rel~="next"]',
+    path: nextElementSelector,
     append: '.infinite-scroll-content',
     scrollThreshold: 100,
     status: '.page-load-status',
-    history: false
+    history: 'push',
   });
 }
 
@@ -564,13 +611,15 @@ function setupShareAPI() {
   // To install: npm install share-api-polyfill --save
   const shareButtonElement = document.querySelectorAll('.js-btn-share');
   const pageTitle = document.querySelector('title').textContent;
-  const pageDescription = document.querySelector('meta[name="description"]').getAttribute('content');
+  const pageDescription = document.querySelector('meta[name="description"]')
+                                  .getAttribute('content');
 
   shareButtonElement.forEach(buttonItem => {
 
     buttonItem.addEventListener('click', function () {
 
-      navigator.share({
+      navigator.share(
+          {
             title: pageTitle,
             text: pageDescription,
             url: location.href,
@@ -589,10 +638,14 @@ function setupShareAPI() {
             linkedin: true,
             telegram: true,
             skype: true,
-            language: 'pt' // specify the default language
-          }
-      ).then( _ => console.log('Compartilhado com sucesso!'))
-       .catch( error => console.log('Ops! Algo de errado aconteceu:\'(\n', error));
+            language: 'pt', // specify the default language
+          },
+      )
+               .then(() => console.log('Compartilhado com sucesso!'))
+               .catch(error => console.log(
+                   'Ops! Algo de errado aconteceu:\'(\n',
+                   error,
+               ));
     });
   });
 }
