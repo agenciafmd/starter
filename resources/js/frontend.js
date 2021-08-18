@@ -608,13 +608,18 @@ function setupClipboardJS() {
 
 function setupShareAPI() {
 
-  // To install: npm install share-api-polyfill --save
-  const shareButtonElement = document.querySelectorAll('.js-btn-share');
+  const shareButtonElements = document.querySelectorAll('.js-btn-share');
+
+  if (!shareButtonElements.length) {
+
+    return;
+  }
+
   const pageTitle = document.querySelector('title').textContent;
   const pageDescription = document.querySelector('meta[name="description"]')
                                   .getAttribute('content');
 
-  shareButtonElement.forEach(buttonItem => {
+  shareButtonElements.forEach(buttonItem => {
 
     buttonItem.addEventListener('click', function () {
 
