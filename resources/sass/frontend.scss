@@ -1,6 +1,5 @@
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "~bootstrap/scss/functions";
-@import "frontend/functions";
 @import "frontend/fonts";
 
 // 2. Include any default variable overrides here
@@ -10,6 +9,7 @@
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/utilities";
+@import "frontend/utilities";
 
 // 4. Include any optional Bootstrap components as you like
 @import "~bootstrap/scss/root";
@@ -53,11 +53,10 @@
 // 5.2 Common (global) styles
 @import "frontend/reboot";
 @import "frontend/typography";
+@import "components/breadcrumb";
 @import "components/fmd-header";
 @import "components/icons";
 @import "components/images";
-@import "components/links";
-@import "components/spinners";
 @import "components/videos";
 @import "styles";
 

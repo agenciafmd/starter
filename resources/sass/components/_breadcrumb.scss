@@ -1,0 +1,7 @@
+.breadcrumb {
+	&-item {
+		&.active {
+			font-weight: $font-weight-bold;
+		}
+	}
+}
