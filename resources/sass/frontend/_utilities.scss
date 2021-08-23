@@ -1,0 +1,78 @@
+$utilities: map-merge(
+        $utilities,
+        (
+            "fill": (
+                property: fill,
+                values: $theme-colors
+            ),
+            "stroke": (
+                property: stroke,
+                values: $theme-colors
+            ),
+            "font-size": map-merge(
+                    map-get($utilities, "font-size"),
+                    (
+                        responsive: true,
+                        values: map-merge(
+                                map-get(map-get($utilities, "font-size"), "values"),
+                                (
+                                    "small": $font-size-sm,
+                                    "base": $font-size-base,
+                                    "large": $font-size-lg,
+                                ),
+                        ),
+                    ),
+            ),
+            "line-height": map-merge(
+                    map-get($utilities, "line-height"),
+                    (
+                        values: map-merge(
+                                map-get(map-get($utilities, "line-height"), "values"),
+                                (
+                                    "0": 0,
+                                    "0q": .25,
+                                    "0h": .5,
+                                    "0hq": .75,
+                                    "1": 1,
+                                ),
+                        ),
+                    ),
+            ),
+            "letter-spacing": (
+                property: letter-spacing,
+                class: ls,
+                values: (
+                    "0": 0,
+                    "1": 0.05em,
+                    "2": 0.1em,
+                    "3": 0.15em,
+                    "4": 0.2em,
+                    "5": 0.25em,
+                )
+            ),
+            "opacity": (
+                property: opacity,
+                class: opac,
+                responsive: true,
+                values: (
+                    "0": 0,
+                    "25": .25,
+                    "50": .5,
+                    "75": .75,
+                    "100": 1,
+                )
+            ),
+            "z-index": (
+                property: z-index,
+                values: (
+                    "n3": -3,
+                    "n2": -2,
+                    "n1": -1,
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                )
+            )
+        )
+);

@@ -1,25 +1,22 @@
-// Project's fonts
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "~bootstrap/scss/functions";
 @import "frontend/fonts";
 
-// Project's helpers functions/mixins
-@import "frontend/helpers";
-@import "frontend/functions";
-@import "frontend/mixins";
-
-// Overwriting bootstrap's variables
-
-// Bootstrap
-@import "~bootstrap/scss/functions";
-@import "bootstrap/variables";
+// 2. Include any default variable overrides here
 @import "frontend/variables";
+
+// 3. Include remainder of required Bootstrap stylesheets
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+@import "frontend/utilities";
+
+// 4. Include any optional Bootstrap components as you like
 @import "~bootstrap/scss/root";
 @import "~bootstrap/scss/reboot";
-@import "bootstrap/reboot";
 @import "~bootstrap/scss/type";
 @import "~bootstrap/scss/images";
-@import "~bootstrap/scss/code";
+@import "~bootstrap/scss/containers";
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/tables";
 @import "~bootstrap/scss/forms";
@@ -27,18 +24,15 @@
 @import "~bootstrap/scss/transitions";
 @import "~bootstrap/scss/dropdown";
 @import "~bootstrap/scss/button-group";
-@import "~bootstrap/scss/input-group";
-@import "~bootstrap/scss/custom-forms";
 @import "~bootstrap/scss/nav";
 @import "~bootstrap/scss/navbar";
 @import "~bootstrap/scss/card";
+@import "~bootstrap/scss/accordion";
 @import "~bootstrap/scss/breadcrumb";
 @import "~bootstrap/scss/pagination";
 @import "~bootstrap/scss/badge";
-@import "~bootstrap/scss/jumbotron";
 @import "~bootstrap/scss/alert";
 @import "~bootstrap/scss/progress";
-@import "~bootstrap/scss/media";
 @import "~bootstrap/scss/list-group";
 @import "~bootstrap/scss/close";
 @import "~bootstrap/scss/toasts";
@@ -47,40 +41,28 @@
 @import "~bootstrap/scss/popover";
 @import "~bootstrap/scss/carousel";
 @import "~bootstrap/scss/spinners";
-@import "~bootstrap/scss/utilities";
-@import "~bootstrap/scss/print";
+@import "~bootstrap/scss/offcanvas";
+@import "~bootstrap/scss/helpers";
+@import "~bootstrap/scss/utilities/api";
 
-@import "frontend/mixins";
+// 5. Add additional custom code here
 
-// Overwriting bootstrap's styles
-@import "bootstrap/bootstrap";
-
-// Vendors
+// 5.1 Vendors
 @import "vendors/vendors";
 
-// Common (global) styles
+// 5.2 Common (global) styles
 @import "frontend/reboot";
 @import "frontend/typography";
-@import "components/accordion";
 @import "components/breadcrumb";
-@import "components/buttons";
-@import "components/cards";
-@import "components/forms";
 @import "components/fmd-header";
 @import "components/icons";
 @import "components/images";
-@import "components/links";
-@import "components/scroll";
-@import "components/shapes";
-@import "components/spinners";
-@import "components/structure";
 @import "components/videos";
-@import "components/pseudos";
 @import "styles";
 
-// Partial`s styles
+// 5.3 Partial`s styles
 @import "pages/partials/footer";
 @import "pages/partials/header";
 
-// Pages`s styles
+// 5.4 Pages`s styles
 @import "pages/index";

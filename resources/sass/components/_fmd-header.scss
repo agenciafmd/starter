@@ -11,7 +11,7 @@ $is-header-over-banner: false;
 	right: 0;
 	z-index: $zindex-sticky;
 	transition: $transition-base;
-	
+
 	&-is-fixed {
 		background: $body-bg;
 	}

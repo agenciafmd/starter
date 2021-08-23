@@ -1,12 +1,7 @@
 .breadcrumb {
-
-  color: $breadcrumb-color;
-
-  &-item {
-
-    &.active {
-
-      @extend .bold-text;
-    }
-  }
+	&-item {
+		&.active {
+			font-weight: $font-weight-bold;
+		}
+	}
 }
