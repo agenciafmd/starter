@@ -9,12 +9,12 @@ module.exports = (function () {
     'node_modules/sweetalert2/dist/sweetalert2.min.js',
     'node_modules/infinite-scroll/dist/infinite-scroll.pkgd.min.js',
     // 'node_modules/clipboard/dist/clipboard.min.js',
+    'node_modules/share-api-polyfill/dist/share-min.js',
     // 'node_modules/wow.js/dist/wow.min.js',
     // 'node_modules/swiper/swiper-bundle.min.js',
     // 'node_modules/lax.js/lib/lax.min.js',
 
     // Vendors
-    // 'resources/js/vendors/jquery.clever-infinite-scroll.js',
 
     // Helpers
     'resources/js/helpers/utm-helper.js',

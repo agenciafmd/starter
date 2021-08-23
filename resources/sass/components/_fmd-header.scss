@@ -1,8 +1,22 @@
+:root {
+	--header-height: 0px;
+}
+
+$is-header-over-banner: false;
+
 .fmd-header {
-	position: absolute;
+	position: if($is-header-over-banner, absolute, relative);
 	top: 0;
 	left: 0;
 	right: 0;
 	z-index: $zindex-sticky;
 	transition: $transition-base;
+
+	&-is-fixed {
+		background: $body-bg;
+	}
+}
+
+body {
+	 padding-top: if($is-header-over-banner, 0px, var(--header-height));
 }

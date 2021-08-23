@@ -3,14 +3,15 @@
 <head>
 	<meta charset="utf-8">
 	<title>Tema</title>
+    <meta name="description" content="Página para visualização de todos os componentes">
 	<meta name="viewport"
 	      content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible"
 	      content="IE=edge"/>
-	
+
 	<link href="{{ mix('/css/frontend.css') }}"
 	      rel="stylesheet">
-	
+
 	<style>
         body {
             padding-top: 120px
@@ -444,7 +445,7 @@
 </header>
 
 <div id="banner" class="container">
-	
+
 	<!-- Navbar
 	================================================== -->
 	<div class="bs-docs-section clearfix">
@@ -453,7 +454,7 @@
 				<div class="page-header">
 					<h1 id="navbars">Navbars</h1>
 				</div>
-				
+
 				<div class="bs-component">
 					<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 						<div class="container-fluid">
@@ -463,7 +464,7 @@
 							        aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon"></span>
 							</button>
-							
+
 							<div class="collapse navbar-collapse" id="navbarColor01">
 								<ul class="navbar-nav me-auto">
 									<li class="nav-item active">
@@ -500,7 +501,7 @@
 						</div>
 					</nav>
 				</div>
-				
+
 				<div class="bs-component">
 					<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 						<div class="container-fluid">
@@ -510,7 +511,7 @@
 							        aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon"></span>
 							</button>
-							
+
 							<div class="collapse navbar-collapse" id="navbarColor02">
 								<ul class="navbar-nav me-auto">
 									<li class="nav-item active">
@@ -547,7 +548,7 @@
 						</div>
 					</nav>
 				</div>
-				
+
 				<div class="bs-component">
 					<nav class="navbar navbar-expand-lg navbar-light bg-light">
 						<div class="container-fluid">
@@ -557,7 +558,7 @@
 							        aria-label="Toggle navigation">
 								<span class="navbar-toggler-icon"></span>
 							</button>
-							
+
 							<div class="collapse navbar-collapse" id="navbarColor03">
 								<ul class="navbar-nav me-auto">
 									<li class="nav-item active">
@@ -594,11 +595,11 @@
 						</div>
 					</nav>
 				</div>
-			
+
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Buttons
 	================================================== -->
 	<div class="bs-docs-section">
@@ -609,7 +610,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-lg-7">
 				<p class="bs-component">
@@ -621,7 +622,7 @@
 					<button type="button" class="btn btn-danger">Danger</button>
 					<button type="button" class="btn btn-link">Link</button>
 				</p>
-				
+
 				<p class="bs-component">
 					<button type="button" class="btn btn-primary disabled">Primary</button>
 					<button type="button" class="btn btn-secondary disabled">Secondary</button>
@@ -631,7 +632,7 @@
 					<button type="button" class="btn btn-danger disabled">Danger</button>
 					<button type="button" class="btn btn-link disabled">Link</button>
 				</p>
-				
+
 				<p class="bs-component">
 					<button type="button" class="btn btn-outline-primary">Primary</button>
 					<button type="button" class="btn btn-outline-secondary">Secondary</button>
@@ -640,7 +641,7 @@
 					<button type="button" class="btn btn-outline-warning">Warning</button>
 					<button type="button" class="btn btn-outline-danger">Danger</button>
 				</p>
-				
+
 				<div class="bs-component">
 					<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
 						<button type="button" class="btn btn-primary">Primary</button>
@@ -653,7 +654,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
 						<button type="button" class="btn btn-success">Success</button>
 						<div class="btn-group" role="group">
@@ -665,7 +666,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
 						<button type="button" class="btn btn-info">Info</button>
 						<div class="btn-group" role="group">
@@ -677,7 +678,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
 						<button type="button" class="btn btn-danger">Danger</button>
 						<div class="btn-group" role="group">
@@ -690,7 +691,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="bs-component">
 					<button type="button" class="btn btn-primary btn-lg">Large button</button>
 					<button type="button" class="btn btn-primary">Default button</button>
@@ -704,7 +705,7 @@
 						<button class="btn btn-lg btn-primary" type="button">Block button</button>
 					</div>
 				</div>
-				
+
 				<div class="bs-component mb-3">
 					<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
 						<input type="checkbox" class="btn-check" id="btncheck1" checked autocomplete="off">
@@ -714,8 +715,22 @@
 						<input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
 						<label class="btn btn-primary" for="btncheck3">Checkbox 3</label>
 					</div>
+
+            <div class="bs-component">
+              <h2>
+                Share buttons
+              </h2>
+              <div class="mt-1">
+                <a role="button"
+                   data-fmd-share-btn-fbidentification="123456789123456"
+                   class="btn btn-primary js-btn-share">
+                  share
+                </a>
+              </div>
+            </div>
+
 				</div>
-				
+
 				<div class="bs-component mb-3">
 					<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 						<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
@@ -726,7 +741,7 @@
 						<label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
 					</div>
 				</div>
-				
+
 				<div class="bs-component">
 					<div class="btn-group-vertical">
 						<button type="button" class="btn btn-primary">Button</button>
@@ -737,7 +752,7 @@
 						<button type="button" class="btn btn-primary">Button</button>
 					</div>
 				</div>
-				
+
 				<div class="bs-component mb-3">
 					<div class="btn-group" role="group" aria-label="Basic example">
 						<button type="button" class="btn btn-secondary">Left</button>
@@ -745,7 +760,7 @@
 						<button type="button" class="btn btn-secondary">Right</button>
 					</div>
 				</div>
-				
+
 				<div class="bs-component mb-3">
 					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
 						<div class="btn-group me-2" role="group" aria-label="First group">
@@ -767,7 +782,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Typography
 	================================================== -->
 	<div class="bs-docs-section">
@@ -778,9 +793,9 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- Headings -->
-		
+
 		<div class="row">
 			<div class="col-lg-4">
 				<div class="bs-component">
@@ -822,9 +837,9 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- Blockquotes -->
-		
+
 		<div class="row">
 			<div class="col-lg-12">
 				<h2 id="type-blockquotes">Blockquotes</h2>
@@ -837,7 +852,7 @@
 						<blockquote class="blockquote">
 							<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
 								erat a ante.</p>
-						
+
 						</blockquote>
 						<figcaption class="blockquote-footer">
 							Someone famous in <cite title="Source Title">Source Title</cite>
@@ -851,7 +866,7 @@
 						<blockquote class="blockquote">
 							<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
 								erat a ante.</p>
-						
+
 						</blockquote>
 						<figcaption class="blockquote-footer">
 							Someone famous in <cite title="Source Title">Source Title</cite>
@@ -865,7 +880,7 @@
 						<blockquote class="blockquote">
 							<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
 								erat a ante.</p>
-						
+
 						</blockquote>
 						<figcaption class="blockquote-footer">
 							Someone famous in <cite title="Source Title">Source Title</cite>
@@ -875,7 +890,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Tables
 	================================================== -->
 	<div class="bs-docs-section">
@@ -884,7 +899,7 @@
 				<div class="page-header">
 					<h1 id="tables">Tables</h1>
 				</div>
-				
+
 				<div class="bs-component">
 					<table class="table table-hover">
 						<thead>
@@ -962,7 +977,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Forms
 	================================================== -->
 	<div class="bs-docs-section">
@@ -973,7 +988,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-lg-6">
 				<div class="bs-component">
@@ -1103,7 +1118,7 @@
 							       placeholder="Disabled input here..." disabled>
 						</fieldset>
 					</div>
-					
+
 					<div class="form-group">
 						<fieldset>
 							<label class="form-label" for="readOnlyInput">Readonly input</label>
@@ -1111,36 +1126,36 @@
 							       placeholder="Readonly input here..." readonly>
 						</fieldset>
 					</div>
-					
+
 					<div class="form-group has-success">
 						<label class="form-label" for="inputValid">Valid input</label>
 						<input type="text" value="correct value" class="form-control is-valid" id="inputValid">
 						<div class="valid-feedback">Success! You've done it.</div>
 					</div>
-					
+
 					<div class="form-group has-danger">
 						<label class="form-label" for="inputInvalid">Invalid input</label>
 						<input type="text" value="wrong value" class="form-control is-invalid" id="inputInvalid">
 						<div class="invalid-feedback">Sorry, that username's taken. Try another?</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label class="col-form-label col-form-label-lg" for="inputLarge">Large input</label>
 						<input class="form-control form-control-lg" type="text" placeholder=".form-control-lg"
 						       id="inputLarge">
 					</div>
-					
+
 					<div class="form-group">
 						<label class="col-form-label" for="inputDefault">Default input</label>
 						<input type="text" class="form-control" placeholder="Default input" id="inputDefault">
 					</div>
-					
+
 					<div class="form-group">
 						<label class="col-form-label col-form-label-sm" for="inputSmall">Small input</label>
 						<input class="form-control form-control-sm" type="text" placeholder=".form-control-sm"
 						       id="inputSmall">
 					</div>
-					
+
 					<div class="form-group">
 						<label class="form-label mt-4">Input addons</label>
 						<div class="form-group">
@@ -1151,7 +1166,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label class="form-label mt-4">Floating labels</label>
 						<div class="form-floating mb-3">
@@ -1164,11 +1179,11 @@
 						</div>
 					</div>
 				</form>
-			
+
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Navs
 	================================================== -->
 	<div class="bs-docs-section">
@@ -1179,7 +1194,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="row mb-5">
 			<div class="col-lg-6">
 				<h2 id="nav-tabs">Tabs</h2>
@@ -1238,7 +1253,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="col-lg-6">
 				<h2 id="nav-pills">Pills</h2>
 				<div class="bs-component">
@@ -1292,7 +1307,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-lg-6">
 				<h2 id="nav-breadcrumbs">Breadcrumbs</h2>
@@ -1311,7 +1326,7 @@
 					</ol>
 				</div>
 			</div>
-			
+
 			<div class="col-lg-6">
 				<h2 id="pagination">Pagination</h2>
 				<div class="bs-component">
@@ -1340,7 +1355,7 @@
 							</li>
 						</ul>
 					</div>
-					
+
 					<div>
 						<ul class="pagination pagination-lg">
 							<li class="page-item disabled">
@@ -1366,7 +1381,7 @@
 							</li>
 						</ul>
 					</div>
-					
+
 					<div>
 						<ul class="pagination pagination-sm">
 							<li class="page-item disabled">
@@ -1396,7 +1411,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Indicators
 	================================================== -->
 	<div class="bs-docs-section">
@@ -1407,7 +1422,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-lg-12">
 				<h2>Alerts</h2>
@@ -1504,7 +1519,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Progress
 	================================================== -->
 	<div class="bs-docs-section">
@@ -1513,7 +1528,7 @@
 				<div class="page-header">
 					<h1 id="progress">Progress</h1>
 				</div>
-				
+
 				<h3 id="progress-basic">Basic</h3>
 				<div class="bs-component">
 					<div class="progress">
@@ -1521,7 +1536,7 @@
 						     aria-valuemin="0" aria-valuemax="100"></div>
 					</div>
 				</div>
-				
+
 				<h3 id="progress-alternatives">Contextual alternatives</h3>
 				<div class="bs-component">
 					<div class="progress">
@@ -1541,7 +1556,7 @@
 						     aria-valuemin="0" aria-valuemax="100"></div>
 					</div>
 				</div>
-				
+
 				<h3 id="progress-multiple">Multiple bars</h3>
 				<div class="bs-component">
 					<div class="progress">
@@ -1553,7 +1568,7 @@
 						     aria-valuemin="0" aria-valuemax="100"></div>
 					</div>
 				</div>
-				
+
 				<h3 id="progress-striped">Striped</h3>
 				<div class="bs-component">
 					<div class="progress">
@@ -1577,7 +1592,7 @@
 						     aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
 					</div>
 				</div>
-				
+
 				<h3 id="progress-animated">Animated</h3>
 				<div class="bs-component">
 					<div class="progress">
@@ -1588,7 +1603,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Containers
 	================================================== -->
 	<div class="bs-docs-section">
@@ -1612,13 +1627,13 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-lg-12">
 				<h2>List groups</h2>
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-lg-4">
 				<div class="bs-component">
@@ -1672,13 +1687,13 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-lg-12">
 				<h2>Cards</h2>
 			</div>
 		</div>
-		
+
 		<div class="row">
 			<div class="col-lg-4">
 				<div class="bs-component">
@@ -1816,7 +1831,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="col-lg-4">
 				<div class="bs-component">
 					<div class="card mb-3">
@@ -1863,7 +1878,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Dialogs
 	================================================== -->
 	<div class="bs-docs-section">
@@ -1907,17 +1922,17 @@
 					        data-bs-toggle="popover" data-bs-placement="left"
 					        data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Left
 					</button>
-					
+
 					<button type="button" class="btn btn-secondary" title="Popover Title" data-bs-container="body"
 					        data-bs-toggle="popover" data-bs-placement="top"
 					        data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Top
 					</button>
-					
+
 					<button type="button" class="btn btn-secondary" title="Popover Title" data-bs-container="body"
 					        data-bs-toggle="popover" data-bs-placement="bottom"
 					        data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Bottom
 					</button>
-					
+
 					<button type="button" class="btn btn-secondary" title="Popover Title" data-bs-container="body"
 					        data-bs-toggle="popover" data-bs-placement="right"
 					        data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">Right
@@ -1928,15 +1943,15 @@
 					<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left"
 					        title="Tooltip on left">Left
 					</button>
-					
+
 					<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top"
 					        title="Tooltip on top">Top
 					</button>
-					
+
 					<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom"
 					        title="Tooltip on bottom">Bottom
 					</button>
-					
+
 					<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right"
 					        title="Tooltip on right">Right
 					</button>
@@ -1960,11 +1975,11 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Imagens para trocar
 	================================================== -->
 	<div class="bs-docs-section">
-		
+
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="page-header">
@@ -2127,11 +2142,11 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!--Inifinte Scroll Loading Icon-->
 	<h2>Ícone do Infinite Scroll</h2>
 	<div class="ic-infinite-scroll-loading"></div>
-	
+
 	<div id="source-modal" class="modal fade" tabindex="-1">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
@@ -2145,11 +2160,11 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<footer id="footer">
 		<div class="row">
 			<div class="col-lg-12">
-				
+
 				<ul class="list-unstyled">
 					<li class="float-lg-right">
 						<a href="#top">Back to top</a>
@@ -2202,7 +2217,7 @@
 					</a>
 					.
 				</p>
-			
+
 			</div>
 		</div>
 	</footer>
