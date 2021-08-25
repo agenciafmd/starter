@@ -20,7 +20,7 @@ $swal2-hide-animation: swal2-hide .15s forwards;
 $swal2-background: radial-gradient(87.83% 87.83% at 50% 12.17%, #FFFFFF 0%, #E1E1E1 100%);
 
 // TYPOGRAPHY
-$swal2-font: get-font-family($regular-font-map);
+$swal2-font: $font-family-base;
 $swal2-font-size: 1rem;
 
 // BACKDROP
@@ -127,7 +127,7 @@ $swal2-close-button-border-radius: 0;
 $swal2-close-button-outline: initial;
 $swal2-close-button-background: transparent;
 $swal2-close-button-color: $danger;
-$swal2-close-button-font-family: get-font-family($regular-font-map);
+$swal2-close-button-font-family: $btn-font-family;
 $swal2-close-button-font-size: 2.5em;
 
 // CLOSE BUTTON:HOVER

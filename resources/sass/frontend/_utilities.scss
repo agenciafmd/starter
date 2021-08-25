@@ -3,10 +3,12 @@ $utilities: map-merge(
         (
             "fill": (
                 property: fill,
+                state: hover,
                 values: $theme-colors
             ),
             "stroke": (
                 property: stroke,
+                state: hover,
                 values: $theme-colors
             ),
             "font-size": map-merge(

@@ -3,56 +3,63 @@
 // There's 5 generic family groups ‘serif’, ‘sans-serif’, ‘cursive’, ‘fantasy’, and ‘monospace’
 
 $fonts-base-path: '/fonts';
+$should-use-local-font-face: false;
 
 // Generate @font-face's content body based on a map of font family.
 // e.g.: $open-sans-regular: (
-//    family: 'open_sansregular',
 //    file-name: 'open_sans_regular', -> WITHOUT FONT EXTENSION
+//    font-family: 'open sans',
+//    font-weight: 400,
+//    font-style: normal,
+//    font-display: swap,
 //  );
 
 @mixin font-face($font-map) {
-	$family: map-get($font-map, 'family');
-	$file-name: map-get($font-map, 'file-name');
-	$weight: map-get($font-map, 'weight');
-	//$style: map-get($font-map, 'style');
-	
-	font-family: '#{$family}';
-	src: url('#{$fonts-base-path}/#{$file-name}.woff2') format('woff2');
-	font-weight: $weight;
-	font-style: normal;
-	font-display: swap;
+  $file-name: map-get($font-map, 'file-name');
+  $font-family: map-get($font-map, 'font-family');
+  $font-weight: map-get($font-map, 'font-weight');
+  $font-style: map-get($font-map, 'font-style');
+  $font-display: map-get($font-map, 'font-display');
+
+  font-family: $font-family;
+  src: url('#{$fonts-base-path}/#{$file-name}.woff2') format('woff2');
+  font-weight: $font-weight;
+  font-style: if($font-style, $font-style, normal);
+  font-display: if($font-display, $font-display, swap);
 }
 
 $light-font-map: (
-	family: 'Roboto',
-	file-name: 'Roboto-Light',
-	weight: 300,
+    font-family: 'Roboto',
+    file-name: 'Roboto-Light',
+    font-weight: 300,
 );
 
 $regular-font-map: (
-	family: 'Roboto',
-	file-name: 'Roboto-Regular',
-	weight: 400,
+    font-family: 'Roboto',
+    file-name: 'Roboto-Regular',
+    font-weight: 400,
 );
 
 $bold-font-map: (
-	family: 'Roboto',
-	file-name: 'Roboto-Bold',
-	weight: 700,
+    font-family: 'Roboto',
+    file-name: 'Roboto-Bold',
+    font-weight: 700,
 );
 
 $project-fonts: (
-	light: $light-font-map,
-	regular: $regular-font-map,
-	bold: $bold-font-map,
+    'light': $light-font-map,
+    'regular': $regular-font-map,
+    'bold': $bold-font-map,
 );
 
-@each $font-key, $font-map in $project-fonts {
-	@font-face {
-		@include font-face($font-map);
-	}
+@if ($should-use-local-font-face) {
+  @each $font-key, $font-map in $project-fonts {
+    @font-face {
+      @include font-face($font-map);
+    }
+  }
 }
 
 @function get-font-family($font-map) {
-	@return map-get($font-map, 'family');
+  @return map-get($font-map, 'font-family');
 }
