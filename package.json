@@ -28,7 +28,7 @@
     },
     "dependencies": {
         "@fancyapps/fancybox": "^3.5.7",
-        "bootstrap": "^4.6.0",
+        "bootstrap": "^5.1.0",
         "imask": "^6.0.7",
         "infinite-scroll": "^4.0.1",
         "jquery": "^3.6.0",
@@ -37,7 +37,7 @@
         "lax.js": "^2.0.3",
         "lodash": "^4.17.21",
         "moment": "^2.18.1",
-        "popper.js": "^1.12",
+        "popper.js": "^1.16.1",
         "select2": "^4.0.13",
         "share-api-polyfill": "^1.0.21",
         "sweetalert2": "^9.7.2",
