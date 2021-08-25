@@ -78,6 +78,7 @@ mix
     .copy('resources/images/**', 'public/images')
     .copy('resources/images/icons/favicon.ico', 'public')
     .babel(frontendImports, 'public/js/frontend.js')
+    .sourceMaps(false, 'source-map')
     .criticalCss({
       enabled: mix.inProduction(),
       paths: {
@@ -135,12 +136,6 @@ mix
       },
     })
     .webpackConfig(wpConfig);
-
-if (!mix.inProduction()) {
-
-  wpConfig.devtool = 'source-map';
-  mix.sourceMaps();
-}
 
 if (mix.inProduction()) {
 
