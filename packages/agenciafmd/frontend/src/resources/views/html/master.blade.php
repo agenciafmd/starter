@@ -30,6 +30,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
     <!-- fim PWA -->
 
+    @include('agenciafmd/frontend::partials.fonts-preload')
+
     <link rel="preload" href="/css/frontend.css" as="style"
           onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
