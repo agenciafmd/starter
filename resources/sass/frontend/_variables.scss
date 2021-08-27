@@ -555,12 +555,12 @@ $transition-collapse-width: width .35s ease !default;
 // scss-docs-start aspect-ratios
 $aspect-ratios: (
     "1x1": 100%,
-    "4x3": calc(#{math.div(3, 4)} * 100%),
-    "16x9": calc(#{math.div(9, 16)} * 100%),
-    "21x9": calc(#{math.div(9, 21)} * 100%),
-    "3x4": calc(#{math.div(4, 3)} * 100%),
-    "9x16": calc(#{math.div(16, 9)} * 100%),
-    "9x21": calc(#{math.div(21, 9)} * 100%),
+    "4x3": calc(3 / 4 * 100%),
+    "16x9": calc(9 / 16 * 100%),
+    "21x9": calc(9 / 21 * 100%),
+    "3x4": calc(4 / 3 * 100%),
+    "9x16": calc(16 / 9 * 100%),
+    "9x21": calc(21 / 9 * 100%),
 ) !default;
 // scss-docs-end aspect-ratios
 // stylelint-enable function-disallowed-list
