@@ -9,7 +9,7 @@
 	<meta http-equiv="X-UA-Compatible"
 	      content="IE=edge"/>
 
-	<link href="{{ mix('/css/frontend.css') }}"
+  <link href="/css/frontend.css"
 	      rel="stylesheet">
 
 	<style>
@@ -467,8 +467,9 @@
 
 							<div class="collapse navbar-collapse" id="navbarColor01">
 								<ul class="navbar-nav me-auto">
-									<li class="nav-item active">
-										<a class="nav-link" href="#">Home
+                  <li class="nav-item">
+                    <a class="nav-link active"
+                       href="#">Home
 											<span class="visually-hidden">(current)</span>
 										</a>
 									</li>
@@ -514,8 +515,9 @@
 
 							<div class="collapse navbar-collapse" id="navbarColor02">
 								<ul class="navbar-nav me-auto">
-									<li class="nav-item active">
-										<a class="nav-link" href="#">Home
+                  <li class="nav-item">
+                    <a class="nav-link active"
+                       href="#">Home
 											<span class="visually-hidden">(current)</span>
 										</a>
 									</li>
@@ -561,8 +563,9 @@
 
 							<div class="collapse navbar-collapse" id="navbarColor03">
 								<ul class="navbar-nav me-auto">
-									<li class="nav-item active">
-										<a class="nav-link" href="#">Home
+                  <li class="nav-item">
+                    <a class="nav-link active"
+                       href="#">Home
 											<span class="visually-hidden">(current)</span>
 										</a>
 									</li>
@@ -619,8 +622,18 @@
 					<button type="button" class="btn btn-success">Success</button>
 					<button type="button" class="btn btn-info">Info</button>
 					<button type="button" class="btn btn-warning">Warning</button>
-					<button type="button" class="btn btn-danger">Danger</button>
-					<button type="button" class="btn btn-link">Link</button>
+          <button type="button"
+                  class="btn btn-danger">Danger
+          </button>
+          <button type="button"
+                  class="btn btn-light">Light
+          </button>
+          <button type="button"
+                  class="btn btn-dark">Dark
+          </button>
+          <button type="button"
+                  class="btn btn-link">Link
+          </button>
 				</p>
 
 				<p class="bs-component">
@@ -629,7 +642,15 @@
 					<button type="button" class="btn btn-success disabled">Success</button>
 					<button type="button" class="btn btn-info disabled">Info</button>
 					<button type="button" class="btn btn-warning disabled">Warning</button>
-					<button type="button" class="btn btn-danger disabled">Danger</button>
+          <button type="button"
+                  class="btn btn-danger disabled">Danger
+          </button>
+          <button type="button"
+                  class="btn btn-light disabled">Light
+          </button>
+          <button type="button"
+                  class="btn btn-dark disabled">Dark
+          </button>
 					<button type="button" class="btn btn-link disabled">Link</button>
 				</p>
 
@@ -639,7 +660,15 @@
 					<button type="button" class="btn btn-outline-success">Success</button>
 					<button type="button" class="btn btn-outline-info">Info</button>
 					<button type="button" class="btn btn-outline-warning">Warning</button>
-					<button type="button" class="btn btn-outline-danger">Danger</button>
+          <button type="button"
+                  class="btn btn-outline-danger">Danger
+          </button>
+          <button type="button"
+                  class="btn btn-outline-light">Light
+          </button>
+          <button type="button"
+                  class="btn btn-outline-dark">Dark
+          </button>
 				</p>
 
 				<div class="bs-component">
@@ -703,35 +732,39 @@
 					<div class="d-grid gap-2">
 						<button class="btn btn-lg btn-primary" type="button">Block button</button>
 						<button class="btn btn-lg btn-primary" type="button">Block button</button>
-					</div>
 				</div>
-
-				<div class="bs-component mb-3">
-					<div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-						<input type="checkbox" class="btn-check" id="btncheck1" checked autocomplete="off">
-						<label class="btn btn-primary" for="btncheck1">Checkbox 1</label>
-						<input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
-						<label class="btn btn-primary" for="btncheck2">Checkbox 2</label>
-						<input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
-						<label class="btn btn-primary" for="btncheck3">Checkbox 3</label>
 					</div>
 
-            <div class="bs-component">
-              <h2>
-                Share buttons
-              </h2>
-              <div class="mt-1">
-                <a role="button"
-                   data-fmd-share-btn-fbidentification="123456789123456"
-                   class="btn btn-primary js-btn-share">
-                  share
-                </a>
+        <div class="bs-component mb-1">
+          <div class="btn-group"
+               role="group"
+               aria-label="Basic checkbox toggle button group">
+            <input type="checkbox"
+                   class="btn-check"
+                   id="btncheck1"
+                   checked
+                   autocomplete="off">
+            <label class="btn btn-primary"
+                   for="btncheck1">Checkbox 1
+            </label>
+            <input type="checkbox"
+                   class="btn-check"
+                   id="btncheck2"
+                   autocomplete="off">
+            <label class="btn btn-primary"
+                   for="btncheck2">Checkbox 2
+            </label>
+            <input type="checkbox"
+                   class="btn-check"
+                   id="btncheck3"
+                   autocomplete="off">
+            <label class="btn btn-primary"
+                   for="btncheck3">Checkbox 3
+            </label>
               </div>
             </div>
 
-				</div>
-
-				<div class="bs-component mb-3">
+        <div class="bs-component mb-1">
 					<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
 						<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
 						<label class="btn btn-outline-primary" for="btnradio1">Radio 1</label>
@@ -753,7 +786,7 @@
 					</div>
 				</div>
 
-				<div class="bs-component mb-3">
+        <div class="bs-component mb-1">
 					<div class="btn-group" role="group" aria-label="Basic example">
 						<button type="button" class="btn btn-secondary">Left</button>
 						<button type="button" class="btn btn-secondary">Middle</button>
@@ -761,25 +794,71 @@
 					</div>
 				</div>
 
-				<div class="bs-component mb-3">
-					<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-						<div class="btn-group me-2" role="group" aria-label="First group">
-							<button type="button" class="btn btn-secondary">1</button>
-							<button type="button" class="btn btn-secondary">2</button>
-							<button type="button" class="btn btn-secondary">3</button>
-							<button type="button" class="btn btn-secondary">4</button>
+        <div class="bs-component mb-1">
+          <div class="btn-toolbar"
+               role="toolbar"
+               aria-label="Toolbar with button groups">
+            <div class="btn-group me-2"
+                 role="group"
+                 aria-label="First group">
+              <button type="button"
+                      class="btn btn-secondary">
+                1
+              </button>
+              <button type="button"
+                      class="btn btn-secondary">
+                2
+              </button>
+              <button type="button"
+                      class="btn btn-secondary">
+                3
+              </button>
+              <button type="button"
+                      class="btn btn-secondary">
+                4
+              </button>
+            </div>
+            <div class="btn-group me-2"
+                 role="group"
+                 aria-label="Second group">
+              <button type="button"
+                      class="btn btn-secondary">
+                5
+              </button>
+              <button type="button"
+                      class="btn btn-secondary">
+                6
+              </button>
+              <button type="button"
+                      class="btn btn-secondary">
+                7
+              </button>
+            </div>
+            <div class="btn-group"
+                 role="group"
+                 aria-label="Third group">
+              <button type="button"
+                      class="btn btn-secondary">
+                8
+              </button>
 						</div>
-						<div class="btn-group me-2" role="group" aria-label="Second group">
-							<button type="button" class="btn btn-secondary">5</button>
-							<button type="button" class="btn btn-secondary">6</button>
-							<button type="button" class="btn btn-secondary">7</button>
 						</div>
-						<div class="btn-group" role="group" aria-label="Third group">
-							<button type="button" class="btn btn-secondary">8</button>
 						</div>
 					</div>
 				</div>
 			</div>
+
+  <!--Share Buttons-->
+  <div class="bs-component">
+    <h1>
+      Share buttons
+    </h1>
+    <div class="mt-1">
+      <a role="button"
+         data-fmd-share-btn-fbidentification="123456789123456"
+         class="btn btn-primary js-btn-share">
+        share
+      </a>
 		</div>
 	</div>
 
@@ -1003,19 +1082,25 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="exampleInputEmail1">Email address</label>
+                <label for="exampleInputEmail1"
+                       class="form-label mt-1h">Email address
+                </label>
 								<input type="email" class="form-control" id="exampleInputEmail1"
 								       aria-describedby="emailHelp" placeholder="Enter email">
 								<small id="emailHelp" class="form-text text-muted">We'll never share your email with
 									anyone else.</small>
 							</div>
 							<div class="form-group">
-								<label for="exampleInputPassword1">Password</label>
+                <label for="exampleInputPassword1"
+                       class="form-label mt-1h">Password
+                </label>
 								<input type="password" class="form-control" id="exampleInputPassword1"
 								       placeholder="Password">
 							</div>
 							<div class="form-group">
-								<label for="exampleSelect1">Example select</label>
+                <label for="exampleSelect1"
+                       class="form-label mt-1h">Example select
+                </label>
 								<select class="form-select" id="exampleSelect1">
 									<option>1</option>
 									<option>2</option>
@@ -1025,7 +1110,9 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="exampleSelect2">Example multiple select</label>
+                <label for="exampleSelect2"
+                       class="form-label mt-1h">Example multiple select
+                </label>
 								<select multiple class="form-select" id="exampleSelect2">
 									<option>1</option>
 									<option>2</option>
@@ -1035,15 +1122,19 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="exampleTextarea">Example textarea</label>
+                <label for="exampleTextarea"
+                       class="form-label mt-1h">Example textarea
+                </label>
 								<textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
 							</div>
 							<div class="form-group">
-								<label for="formFile" class="form-label">Default file input example</label>
+                <label for="formFile"
+                       class="form-label mt-1h">Default file input example
+                </label>
 								<input class="form-control" type="file" id="formFile">
 							</div>
 							<fieldset class="form-group">
-								<legend>Radio buttons</legend>
+                <legend class="mt-1h">Radio buttons</legend>
 								<div class="form-check">
 									<label class="form-check-label">
 										<input type="radio" class="form-check-input" name="optionsRadios"
@@ -1067,7 +1158,7 @@
 								</div>
 							</fieldset>
 							<fieldset class="form-group">
-								<legend>Checkboxes</legend>
+                <legend class="mt-1h">Checkboxes</legend>
 								<div class="form-check">
 									<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
 									<label class="form-check-label" for="flexCheckDefault">
@@ -1083,7 +1174,7 @@
 								</div>
 							</fieldset>
 							<fieldset>
-								<legend>Switches</legend>
+                <legend class="mt-1h">Switches</legend>
 								<div class="form-check form-switch">
 									<input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
 									<label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox
@@ -1096,7 +1187,7 @@
 								</div>
 							</fieldset>
 							<fieldset class="form-group">
-								<legend>Ranges</legend>
+                <legend class="mt-1h">Ranges</legend>
 								<label for="customRange1" class="form-label">Example range</label>
 								<input type="range" class="form-range" id="customRange1">
 								<label for="disabledRange" class="form-label">Disabled range</label>
@@ -1121,55 +1212,78 @@
 
 					<div class="form-group">
 						<fieldset>
-							<label class="form-label" for="readOnlyInput">Readonly input</label>
+              <label class="form-label mt-1h"
+                     for="readOnlyInput">Readonly input
+              </label>
 							<input class="form-control" id="readOnlyInput" type="text"
 							       placeholder="Readonly input here..." readonly>
 						</fieldset>
 					</div>
 
 					<div class="form-group has-success">
-						<label class="form-label" for="inputValid">Valid input</label>
+            <label class="form-label mt-1h"
+                   for="inputValid">Valid input
+            </label>
 						<input type="text" value="correct value" class="form-control is-valid" id="inputValid">
 						<div class="valid-feedback">Success! You've done it.</div>
 					</div>
 
 					<div class="form-group has-danger">
-						<label class="form-label" for="inputInvalid">Invalid input</label>
+            <label class="form-label mt-1h"
+                   for="inputInvalid">Invalid input
+            </label>
 						<input type="text" value="wrong value" class="form-control is-invalid" id="inputInvalid">
 						<div class="invalid-feedback">Sorry, that username's taken. Try another?</div>
 					</div>
 
 					<div class="form-group">
-						<label class="col-form-label col-form-label-lg" for="inputLarge">Large input</label>
+            <label class="col-form-label col-form-label-lg mt-1h"
+                   for="inputLarge">Large input
+            </label>
 						<input class="form-control form-control-lg" type="text" placeholder=".form-control-lg"
 						       id="inputLarge">
 					</div>
 
 					<div class="form-group">
-						<label class="col-form-label" for="inputDefault">Default input</label>
+            <label class="col-form-label mt-1h"
+                   for="inputDefault">Default input
+            </label>
 						<input type="text" class="form-control" placeholder="Default input" id="inputDefault">
 					</div>
 
 					<div class="form-group">
-						<label class="col-form-label col-form-label-sm" for="inputSmall">Small input</label>
+            <label class="col-form-label col-form-label-sm mt-1h"
+                   for="inputSmall">Small input
+            </label>
 						<input class="form-control form-control-sm" type="text" placeholder=".form-control-sm"
 						       id="inputSmall">
 					</div>
 
 					<div class="form-group">
-						<label class="form-label mt-4">Input addons</label>
+            <label class="form-label mt-1h">Input addons</label>
 						<div class="form-group">
-							<div class="input-group mb-3">
+              <div class="input-group mb-1">
 								<span class="input-group-text">$</span>
 								<input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
 								<span class="input-group-text">.00</span>
+              </div>
+              <div class="input-group mb-1">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Recipient's username"
+                       aria-label="Recipient's username"
+                       aria-describedby="button-addon2">
+                <button class="btn btn-primary"
+                        type="button"
+                        id="button-addon2">Button
+                </button>
 							</div>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="form-label mt-4">Floating labels</label>
-						<div class="form-floating mb-3">
+            <label class="form-label mt-1h">Floating labels</label>
+            <div class="form-floating mb-1">
 							<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
 							<label for="floatingInput">Email address</label>
 						</div>
@@ -1612,19 +1726,6 @@
 				<div class="page-header">
 					<h1 id="containers">Containers</h1>
 				</div>
-				<div class="bs-component">
-					<div class="jumbotron">
-						<h1 class="display-3">Hello, world!</h1>
-						<p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
-							attention to featured content or information.</p>
-						<hr class="my-4">
-						<p>It uses utility classes for typography and spacing to space content out within the larger
-							container.</p>
-						<p class="lead">
-							<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-						</p>
-					</div>
-				</div>
 			</div>
 		</div>
 
@@ -1640,15 +1741,15 @@
 					<ul class="list-group">
 						<li class="list-group-item d-flex justify-content-between align-items-center">
 							Cras justo odio
-							<span class="badge bg-primary badge-pill">14</span>
+              <span class="badge bg-primary rounded-pill">14</span>
 						</li>
 						<li class="list-group-item d-flex justify-content-between align-items-center">
 							Dapibus ac facilisis in
-							<span class="badge bg-primary badge-pill">2</span>
+              <span class="badge bg-primary rounded-pill">2</span>
 						</li>
 						<li class="list-group-item d-flex justify-content-between align-items-center">
 							Morbi leo risus
-							<span class="badge bg-primary badge-pill">1</span>
+              <span class="badge bg-primary rounded-pill">1</span>
 						</li>
 					</ul>
 				</div>
@@ -1697,7 +1798,8 @@
 		<div class="row">
 			<div class="col-lg-4">
 				<div class="bs-component">
-					<div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+          <div class="card text-white bg-primary mb-1"
+               style="max-width: 20rem;">
 						<div class="card-header">Header</div>
 						<div class="card-body">
 							<h4 class="card-title">Primary card title</h4>
@@ -1705,7 +1807,8 @@
 								of the card's content.</p>
 						</div>
 					</div>
-					<div class="card bg-secondary mb-3" style="max-width: 20rem;">
+          <div class="card text-white bg-secondary mb-1"
+               style="max-width: 20rem;">
 						<div class="card-header">Header</div>
 						<div class="card-body">
 							<h4 class="card-title">Secondary card title</h4>
@@ -1713,7 +1816,8 @@
 								of the card's content.</p>
 						</div>
 					</div>
-					<div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+          <div class="card text-white bg-success mb-1"
+               style="max-width: 20rem;">
 						<div class="card-header">Header</div>
 						<div class="card-body">
 							<h4 class="card-title">Success card title</h4>
@@ -1721,7 +1825,8 @@
 								of the card's content.</p>
 						</div>
 					</div>
-					<div class="card text-white bg-danger mb-3" style="max-width: 20rem;">
+          <div class="card text-white bg-danger mb-1"
+               style="max-width: 20rem;">
 						<div class="card-header">Header</div>
 						<div class="card-body">
 							<h4 class="card-title">Danger card title</h4>
@@ -1729,7 +1834,8 @@
 								of the card's content.</p>
 						</div>
 					</div>
-					<div class="card text-white bg-warning mb-3" style="max-width: 20rem;">
+          <div class="card bg-warning mb-1"
+               style="max-width: 20rem;">
 						<div class="card-header">Header</div>
 						<div class="card-body">
 							<h4 class="card-title">Warning card title</h4>
@@ -1737,7 +1843,8 @@
 								of the card's content.</p>
 						</div>
 					</div>
-					<div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+          <div class="card text-white bg-info mb-1"
+               style="max-width: 20rem;">
 						<div class="card-header">Header</div>
 						<div class="card-body">
 							<h4 class="card-title">Info card title</h4>
@@ -1745,7 +1852,8 @@
 								of the card's content.</p>
 						</div>
 					</div>
-					<div class="card bg-light mb-3" style="max-width: 20rem;">
+          <div class="card bg-light mb-1"
+               style="max-width: 20rem;">
 						<div class="card-header">Header</div>
 						<div class="card-body">
 							<h4 class="card-title">Light card title</h4>
@@ -1753,7 +1861,8 @@
 								of the card's content.</p>
 						</div>
 					</div>
-					<div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+          <div class="card text-white bg-dark mb-1"
+               style="max-width: 20rem;">
 						<div class="card-header">Header</div>
 						<div class="card-body">
 							<h4 class="card-title">Dark card title</h4>
@@ -1765,7 +1874,8 @@
 			</div>
 			<div class="col-lg-4">
 				<div class="bs-component">
-					<div class="card border-primary mb-3" style="max-width: 20rem;">
+          <div class="card border-primary mb-1"
+               style="max-width: 20rem;">
 						<div class="card-header">Header</div>
 						<div class="card-body">
 							<h4 class="card-title">Primary card title</h4>
@@ -1773,7 +1883,8 @@
 								of the card's content.</p>
 						</div>
 					</div>
-					<div class="card border-secondary mb-3" style="max-width: 20rem;">
+          <div class="card border-secondary mb-1"
+               style="max-width: 20rem;">
 						<div class="card-header">Header</div>
 						<div class="card-body">
 							<h4 class="card-title">Secondary card title</h4>
@@ -1781,7 +1892,8 @@
 								of the card's content.</p>
 						</div>
 					</div>
-					<div class="card border-success mb-3" style="max-width: 20rem;">
+          <div class="card border-success mb-1"
+               style="max-width: 20rem;">
 						<div class="card-header">Header</div>
 						<div class="card-body">
 							<h4 class="card-title">Success card title</h4>
@@ -1789,7 +1901,8 @@
 								of the card's content.</p>
 						</div>
 					</div>
-					<div class="card border-danger mb-3" style="max-width: 20rem;">
+          <div class="card border-danger mb-1"
+               style="max-width: 20rem;">
 						<div class="card-header">Header</div>
 						<div class="card-body">
 							<h4 class="card-title">Danger card title</h4>
@@ -1797,7 +1910,8 @@
 								of the card's content.</p>
 						</div>
 					</div>
-					<div class="card border-warning mb-3" style="max-width: 20rem;">
+          <div class="card border-warning mb-1"
+               style="max-width: 20rem;">
 						<div class="card-header">Header</div>
 						<div class="card-body">
 							<h4 class="card-title">Warning card title</h4>
@@ -1805,7 +1919,8 @@
 								of the card's content.</p>
 						</div>
 					</div>
-					<div class="card border-info mb-3" style="max-width: 20rem;">
+          <div class="card border-info mb-1"
+               style="max-width: 20rem;">
 						<div class="card-header">Header</div>
 						<div class="card-body">
 							<h4 class="card-title">Info card title</h4>
@@ -1813,7 +1928,8 @@
 								of the card's content.</p>
 						</div>
 					</div>
-					<div class="card border-light mb-3" style="max-width: 20rem;">
+          <div class="card border-light mb-1"
+               style="max-width: 20rem;">
 						<div class="card-header">Header</div>
 						<div class="card-body">
 							<h4 class="card-title">Light card title</h4>
@@ -1821,7 +1937,8 @@
 								of the card's content.</p>
 						</div>
 					</div>
-					<div class="card border-dark mb-3" style="max-width: 20rem;">
+          <div class="card border-dark mb-1"
+               style="max-width: 20rem;">
 						<div class="card-header">Header</div>
 						<div class="card-body">
 							<h4 class="card-title">Dark card title</h4>
@@ -1834,7 +1951,7 @@
 
 			<div class="col-lg-4">
 				<div class="bs-component">
-					<div class="card mb-3">
+          <div class="card mb-1">
 						<h3 class="card-header">Card header</h3>
 						<div class="card-body">
 							<h5 class="card-title">Special title treatment</h5>
@@ -1872,12 +1989,284 @@
 								of the card's content.</p>
 							<a href="#" class="card-link">Card link</a>
 							<a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-lg-12">
+        <h2>Accordions</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="bs-component">
+          <div class="accordion"
+               id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header"
+                  id="headingOne">
+                <button class="accordion-button"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne"
+                        aria-expanded="true"
+                        aria-controls="collapseOne">
+                  Accordion Item #1
+                </button>
+              </h2>
+              <div id="collapseOne"
+                   class="accordion-collapse collapse show"
+                   aria-labelledby="headingOne"
+                   data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>This is the first item's accordion body.</strong> It
+                                                                            is
+                                                                            shown
+                                                                            by
+                                                                            default,
+                                                                            until
+                                                                            the
+                                                                            collapse
+                                                                            plugin
+                                                                            adds
+                                                                            the
+                                                                            appropriate
+                                                                            classes
+                                                                            that
+                                                                            we
+                                                                            use
+                                                                            to
+                                                                            style
+                                                                            each
+                                                                            element.
+                                                                            These
+                                                                            classes
+                                                                            control
+                                                                            the
+                                                                            overall
+                                                                            appearance,
+                                                                            as
+                                                                            well
+                                                                            as
+                                                                            the
+                                                                            showing
+                                                                            and
+                                                                            hiding
+                                                                            via
+                                                                            CSS
+                                                                            transitions.
+                                                                            You
+                                                                            can
+                                                                            modify
+                                                                            any
+                                                                            of
+                                                                            this
+                                                                            with
+                                                                            custom
+                                                                            CSS
+                                                                            or
+                                                                            overriding
+                                                                            our
+                                                                            default
+                                                                            variables.
+                                                                            It's
+                                                                            also
+                                                                            worth
+                                                                            noting
+                                                                            that
+                                                                            just
+                                                                            about
+                                                                            any
+                                                                            HTML
+                                                                            can
+                                                                            go
+                                                                            within
+                                                                            the
+                  <code>.accordion-body</code>, though the transition does limit
+                                                                            overflow.
+                </div>
+              </div>
 						</div>
+            <div class="accordion-item">
+              <h2 class="accordion-header"
+                  id="headingTwo">
+                <button class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo"
+                        aria-expanded="false"
+                        aria-controls="collapseTwo">
+                  Accordion Item #2
+                </button>
+              </h2>
+              <div id="collapseTwo"
+                   class="accordion-collapse collapse"
+                   aria-labelledby="headingTwo"
+                   data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>This is the second item's accordion body.</strong> It
+                                                                             is
+                                                                             hidden
+                                                                             by
+                                                                             default,
+                                                                             until
+                                                                             the
+                                                                             collapse
+                                                                             plugin
+                                                                             adds
+                                                                             the
+                                                                             appropriate
+                                                                             classes
+                                                                             that
+                                                                             we
+                                                                             use
+                                                                             to
+                                                                             style
+                                                                             each
+                                                                             element.
+                                                                             These
+                                                                             classes
+                                                                             control
+                                                                             the
+                                                                             overall
+                                                                             appearance,
+                                                                             as
+                                                                             well
+                                                                             as
+                                                                             the
+                                                                             showing
+                                                                             and
+                                                                             hiding
+                                                                             via
+                                                                             CSS
+                                                                             transitions.
+                                                                             You
+                                                                             can
+                                                                             modify
+                                                                             any
+                                                                             of
+                                                                             this
+                                                                             with
+                                                                             custom
+                                                                             CSS
+                                                                             or
+                                                                             overriding
+                                                                             our
+                                                                             default
+                                                                             variables.
+                                                                             It's
+                                                                             also
+                                                                             worth
+                                                                             noting
+                                                                             that
+                                                                             just
+                                                                             about
+                                                                             any
+                                                                             HTML
+                                                                             can
+                                                                             go
+                                                                             within
+                                                                             the
+                  <code>.accordion-body</code>, though the transition does limit
+                                                                             overflow.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header"
+                  id="headingThree">
+                <button class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree"
+                        aria-expanded="false"
+                        aria-controls="collapseThree">
+                  Accordion Item #3
+                </button>
+              </h2>
+              <div id="collapseThree"
+                   class="accordion-collapse collapse"
+                   aria-labelledby="headingThree"
+                   data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  <strong>This is the third item's accordion body.</strong> It
+                                                                            is
+                                                                            hidden
+                                                                            by
+                                                                            default,
+                                                                            until
+                                                                            the
+                                                                            collapse
+                                                                            plugin
+                                                                            adds
+                                                                            the
+                                                                            appropriate
+                                                                            classes
+                                                                            that
+                                                                            we
+                                                                            use
+                                                                            to
+                                                                            style
+                                                                            each
+                                                                            element.
+                                                                            These
+                                                                            classes
+                                                                            control
+                                                                            the
+                                                                            overall
+                                                                            appearance,
+                                                                            as
+                                                                            well
+                                                                            as
+                                                                            the
+                                                                            showing
+                                                                            and
+                                                                            hiding
+                                                                            via
+                                                                            CSS
+                                                                            transitions.
+                                                                            You
+                                                                            can
+                                                                            modify
+                                                                            any
+                                                                            of
+                                                                            this
+                                                                            with
+                                                                            custom
+                                                                            CSS
+                                                                            or
+                                                                            overriding
+                                                                            our
+                                                                            default
+                                                                            variables.
+                                                                            It's
+                                                                            also
+                                                                            worth
+                                                                            noting
+                                                                            that
+                                                                            just
+                                                                            about
+                                                                            any
+                                                                            HTML
+                                                                            can
+                                                                            go
+                                                                            within
+                                                                            the
+                  <code>.accordion-body</code>, though the transition does limit
+                                                                            overflow.
+                </div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+    </div>
+
+  </div>
 
 	<!-- Dialogs
 	================================================== -->
@@ -2166,22 +2555,20 @@
 			<div class="col-lg-12">
 
 				<ul class="list-unstyled">
-					<li class="float-lg-right">
+          <li class="float-end">
 						<a href="#top">Back to top</a>
 					</li>
 					<li>
-						<a href="http://blog.bootswatch.com"
-						   onclick="pageTracker._link(this.href); return false;">Blog
-						</a>
+            <a href="https://blog.bootswatch.com/">Blog</a>
 					</li>
 					<li>
-						<a href="https://feeds.feedburner.com/bootswatch">RSS</a>
+            <a href="https://blog.bootswatch.com/rss/">RSS</a>
 					</li>
 					<li>
 						<a href="https://twitter.com/bootswatch">Twitter</a>
 					</li>
 					<li>
-						<a href="https://github.com/thomaspark/bootswatch/">GitHub</a>
+            <a href="https://github.com/thomaspark/bootswatch">GitHub</a>
 					</li>
 					<li>
 						<a href="../help/#api">API</a>
@@ -2191,7 +2578,7 @@
 					</li>
 				</ul>
 				<p>Made by
-					<a href="http://thomaspark.co">Thomas Park</a>
+          <a href="https://thomaspark.co/">Thomas Park</a>
 					.
 				</p>
 				<p>Code released under the
@@ -2202,12 +2589,11 @@
 					.
 				</p>
 				<p>Based on
-					<a href="https://getbootstrap.com"
+          <a href="https://getbootstrap.com/"
 					   rel="nofollow">Bootstrap
 					</a>
 					. Icons from
-					<a
-						href="http://fontawesome.io/"
+          <a href="https://fontawesome.com/"
 						rel="nofollow">Font Awesome
 					</a>
 					. Web fonts from
@@ -2223,7 +2609,7 @@
 	</footer>
 </div>
 
-<script src="{{ mix('/js/frontend.js') }}"></script>
+<script src="/js/frontend.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js" data-manual></script>
 
 <script>
@@ -2237,11 +2623,11 @@
 			} else {
 				$('#home > .navbar').addClass('navbar-transparent');
 			}
-		})
+    });
 
 		$('a[href="#"]').click(function (event) {
 			event.preventDefault();
-		})
+    });
 
 		$('.bs-component').each(function () {
 			var $component = $(this);
@@ -2253,15 +2639,17 @@
 			}
 		});
 
-		var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverTriggerList = [].slice.call(document.querySelectorAll(
+        '[data-bs-toggle="popover"]'));
 		var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-			return new bootstrap.Popover(popoverTriggerEl)
-		})
+      return new bootstrap.Popover(popoverTriggerEl);
+    });
 
-		var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll(
+        '[data-bs-toggle="tooltip"]'));
 		var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-			return new bootstrap.Tooltip(tooltipTriggerEl)
-		})
+      return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
 
 		var sourceModalElem = document.getElementById('source-modal');
 		if (sourceModalElem) {
@@ -2278,14 +2666,14 @@
 			html = Prism.highlight(html, Prism.languages.html, 'html');
 			$('#source-modal code').html(html);
 			sourceModal.show();
-		})
+    });
 
 		function cleanSource(html) {
 			html = html.replace(/×/g, '&times;')
 			.replace(/«/g, '&laquo;')
 			.replace(/»/g, '&raquo;')
 			.replace(/←/g, '&larr;')
-			.replace(/→/g, '&rarr;')
+                 .replace(/→/g, '&rarr;');
 
 			var lines = html.split(/\n/);
 
