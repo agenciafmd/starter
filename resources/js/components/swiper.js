@@ -79,6 +79,10 @@ function setupDefaultSlider() {
         createSlider({
 
           container: defaultSliderContainerElement,
+          navigation: {
+            prevEl: `${ defaultSliderSelector } .swiper-button-prev`,
+            nextEl: `${ defaultSliderSelector } .swiper-button-next`,
+          },
         });
       });
 }
