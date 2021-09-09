@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+const mix = require('laravel-mix');
 require('laravel-mix-purgecss');
 require('laravel-mix-criticalcss');
 require('laravel-mix-webp');
@@ -40,53 +40,23 @@ const wpConfig = {
 mix
     .sass('resources/sass/frontend.scss', 'public/css')
     .purgeCss({
-      enabled: mix.inProduction(),
-      globs: [
-        path.join(__dirname, 'packages/agenciafmd/frontend/src/**/*.php'),
-        path.join(__dirname, 'node_modules/@fancyapps/fancybox/dist/*.js'),
-        path.join(__dirname, 'node_modules/swiper/**/*.js'),
-        path.join(__dirname, 'node_modules/jquery/dist/jquery.min.js'),
-        path.join(__dirname, 'node_modules/select2/dist/**/*.js'),
-        path.join(__dirname, 'node_modules/sweetalert2/dist/*.js'),
-        path.join(
-            __dirname,
-            'node_modules/bootstrap/dist/js/bootstrap.min.js',
-        ),
-      ],
-      // Include classes we don't have direct access
-      whitelistPatterns: [/hs-*/, /tns-*/, /js-*/, /swiper-*/],
-    })
-    .options({
-      imgLoaderOptions: {
-        enabled: true,
-        gifsicle: {},
-        mozjpeg: {
-          quality: 85,
-          progressive: true,
-        },
-        optipng: {
-          enabled: false,
-        },
-        pngquant: {
-          quality: '85-90',
-          speed: 4,
-        },
-        svgo: {},
+      extend: {
+        content: [
+          path.join(__dirname, 'packages/agenciafmd/frontend/src/**/*.php'),
+          path.join(__dirname, 'node_modules/@fancyapps/fancybox/dist/*.js'),
+          path.join(__dirname, 'node_modules/swiper/**/*.js'),
+          path.join(__dirname, 'node_modules/jquery/dist/jquery.min.js'),
+          path.join(__dirname, 'node_modules/select2/dist/**/*.js'),
+          path.join(__dirname, 'node_modules/sweetalert2/dist/*.js'),
+          path.join(
+              __dirname,
+              'node_modules/bootstrap/dist/js/bootstrap.min.js',
+          ),
+        ],
+        // Include classes we don't have direct access
+        safelist: [/hs-*/, /tns-*/, /js-*/, /swiper-*/],
       },
-      processCssUrls: false,
     })
-    .copy('resources/fonts', 'public/fonts')
-    .ImageWebp({
-      from: 'resources/images',
-      to: 'resources/images',
-      imageminWebpOptions: {
-        quality: 95
-      }
-    })
-    .copy('resources/images/**', 'public/images')
-    .copy('resources/images/icons/favicon.ico', 'public')
-    .babel(frontendImports, 'public/js/frontend.js')
-    .sourceMaps(false, 'source-map')
     .criticalCss({
       enabled: mix.inProduction(),
       paths: {
@@ -120,9 +90,44 @@ mix
           width: 1366,
           height: 768,
         },
+        {
+          width: 1920,
+          height: 1080,
+        },
       ],
       ignore: ['@font-face'],
     })
+    .options({
+      imgLoaderOptions: {
+        enabled: true,
+        gifsicle: {},
+        mozjpeg: {
+          quality: 85,
+          progressive: true,
+        },
+        optipng: {
+          enabled: false,
+        },
+        pngquant: {
+          quality: '85-90',
+          speed: 4,
+        },
+        svgo: {},
+      },
+      processCssUrls: false,
+    })
+    .copy('resources/fonts', 'public/fonts')
+    .ImageWebp({
+      from: 'resources/images',
+      to: 'resources/images',
+      imageminWebpOptions: {
+        quality: 95
+      }
+    })
+    .copy('resources/images/**', 'public/images')
+    .copy('resources/images/icons/favicon.ico', 'public')
+    .babel(frontendImports, 'public/js/frontend.js')
+    .sourceMaps(false, 'source-map')
     .browserSync({
       host: '192.168.10.10',
       proxy: projectProxy,
@@ -132,11 +137,12 @@ mix
         'app/**/*.php',
         'resources/views/**/*.php',
         'packages/agenciafmd/frontend/src/**/*.php',
-        'resources/js/**/*.js',
-        '!resources/js/**/*-imports.js',
-        'resources/sass/**/*.scss',
-        'public/js/**/*.js',
         'public/css/**/*.css',
+        'public/fonts/*',
+        'public/images/*',
+        'public/js/**/*.js',
+        'public/json/*',
+        'public/svg/*',
       ],
       watchOptions: {
         usePolling: true,
