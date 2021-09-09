@@ -20,7 +20,7 @@ const projectProxy = process.env.APP_URL.replace(new RegExp(httpRegex), '');
  * */
 const wpConfig = {
   plugins: [
-    new SVGSpritemapPlugin('resources/svg/*.svg', {
+    new SVGSpritemapPlugin('resources/svg/sprite/*.svg', {
       output: {
         filename: 'svg/sprite.svg',
         svgo: {
@@ -125,6 +125,7 @@ mix
       }
     })
     .copy('resources/images/**', 'public/images')
+    .copy('resources/svg/*.svg', 'public/svg')
     .copy('resources/images/icons/favicon.ico', 'public')
     .babel(frontendImports, 'public/js/frontend.js')
     .sourceMaps(false, 'source-map')
