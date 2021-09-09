@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+const mix = require('laravel-mix');
 require('laravel-mix-purgecss');
 require('laravel-mix-criticalcss');
 require('laravel-mix-webp');
@@ -57,37 +57,6 @@ mix
         safelist: [/hs-*/, /tns-*/, /js-*/, /swiper-*/],
       },
     })
-    .options({
-      imgLoaderOptions: {
-        enabled: true,
-        gifsicle: {},
-        mozjpeg: {
-          quality: 85,
-          progressive: true,
-        },
-        optipng: {
-          enabled: false,
-        },
-        pngquant: {
-          quality: '85-90',
-          speed: 4,
-        },
-        svgo: {},
-      },
-      processCssUrls: false,
-    })
-    .copy('resources/fonts', 'public/fonts')
-    .ImageWebp({
-      from: 'resources/images',
-      to: 'resources/images',
-      imageminWebpOptions: {
-        quality: 95
-      }
-    })
-    .copy('resources/images/**', 'public/images')
-    .copy('resources/images/icons/favicon.ico', 'public')
-    .babel(frontendImports, 'public/js/frontend.js')
-    .sourceMaps(false, 'source-map')
     .criticalCss({
       enabled: mix.inProduction(),
       paths: {
@@ -121,9 +90,44 @@ mix
           width: 1366,
           height: 768,
         },
+        {
+          width: 1920,
+          height: 1080,
+        },
       ],
       ignore: ['@font-face'],
     })
+    .options({
+      imgLoaderOptions: {
+        enabled: true,
+        gifsicle: {},
+        mozjpeg: {
+          quality: 85,
+          progressive: true,
+        },
+        optipng: {
+          enabled: false,
+        },
+        pngquant: {
+          quality: '85-90',
+          speed: 4,
+        },
+        svgo: {},
+      },
+      processCssUrls: false,
+    })
+    .copy('resources/fonts', 'public/fonts')
+    .ImageWebp({
+      from: 'resources/images',
+      to: 'resources/images',
+      imageminWebpOptions: {
+        quality: 95
+      }
+    })
+    .copy('resources/images/**', 'public/images')
+    .copy('resources/images/icons/favicon.ico', 'public')
+    .babel(frontendImports, 'public/js/frontend.js')
+    .sourceMaps(false, 'source-map')
     .browserSync({
       host: '192.168.10.10',
       proxy: projectProxy,
