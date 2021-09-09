@@ -1,6 +1,7 @@
 let mix = require('laravel-mix');
 require('laravel-mix-purgecss');
 require('laravel-mix-criticalcss');
+require('laravel-mix-webp');
 const path = require('path');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 let frontendImports = require('./resources/js/frontend-imports');
@@ -75,6 +76,13 @@ mix
       processCssUrls: false,
     })
     .copy('resources/fonts', 'public/fonts')
+    .ImageWebp({
+      from: 'resources/images',
+      to: 'resources/images',
+      imageminWebpOptions: {
+        quality: 95
+      }
+    })
     .copy('resources/images/**', 'public/images')
     .copy('resources/images/icons/favicon.ico', 'public')
     .babel(frontendImports, 'public/js/frontend.js')
