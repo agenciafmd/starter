@@ -16,6 +16,7 @@
         "browser-sync-webpack-plugin": "^2.3.0",
         "cross-env": "^7.0.3",
         "imagemin-webpack-plugin": "^2.4.2",
+        "laravel-mix-webp": "^0.1.1",
         "laravel-mix": "^6.0.28",
         "laravel-mix-criticalcss": "^1.0.2",
         "laravel-mix-purgecss": "^6.0.0",
@@ -41,7 +42,7 @@
         "select2": "^4.0.13",
         "share-api-polyfill": "^1.0.21",
         "sweetalert2": "^9.7.2",
-        "swiper": "^6.4.15",
+        "swiper": "^7.0.1",
         "tiny-slider": "^2.9.2",
         "wow.js": "^1.2.2"
     }
