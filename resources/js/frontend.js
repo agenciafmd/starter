@@ -482,7 +482,7 @@ function setupInfiniteScroll() {
 
 function setupShareWindow() {
 
-  $('.share')
+  $('.js-btn-share')
       .click(function (e) {
         e.preventDefault();
         window.open(
