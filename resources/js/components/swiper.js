@@ -45,6 +45,9 @@ function createSlider(options) {
     slidesPerView: 1,
     centeredSlides: false,
     loop: false,
+    mousewheel: {
+      forceToAxis: true,
+    },
     breakpoints: {
       // when window width is >= 576px
       [getThemeVariables().breakpoints.sm]: {

@@ -1,80 +1,139 @@
 $utilities: map-merge(
-        $utilities,
-        (
-            "fill": (
-                property: fill,
-                state: hover,
-                values: $theme-colors
+    $utilities,
+    (
+      "fill": (
+        property: fill,
+        state: hover,
+        values: $theme-colors
+      ),
+      "stroke": (
+        property: stroke,
+        state: hover,
+        values: $theme-colors
+      ),
+      "font-size": map-merge(
+          map-get($utilities, "font-size"),
+          (
+            responsive: true,
+            values: map-merge(
+                map-get(map-get($utilities, "font-size"), "values"),
+                (
+                  "small": $font-size-sm,
+                  "base": $font-size-base,
+                  "large": $font-size-lg,
+                ),
             ),
-            "stroke": (
-                property: stroke,
-                state: hover,
-                values: $theme-colors
+          ),
+      ),
+      "line-height": map-merge(
+          map-get($utilities, "line-height"),
+          (
+            values: map-merge(
+                map-get(map-get($utilities, "line-height"), "values"),
+                (
+                  "0": 0,
+                  "0q": .25,
+                  "0h": .5,
+                  "0hq": .75,
+                  "1": 1,
+                ),
             ),
-            "font-size": map-merge(
-                    map-get($utilities, "font-size"),
-                    (
-                        responsive: true,
-                        values: map-merge(
-                                map-get(map-get($utilities, "font-size"), "values"),
-                                (
-                                    "small": $font-size-sm,
-                                    "base": $font-size-base,
-                                    "large": $font-size-lg,
-                                ),
-                        ),
-                    ),
-            ),
-            "line-height": map-merge(
-                    map-get($utilities, "line-height"),
-                    (
-                        values: map-merge(
-                                map-get(map-get($utilities, "line-height"), "values"),
-                                (
-                                    "0": 0,
-                                    "0q": .25,
-                                    "0h": .5,
-                                    "0hq": .75,
-                                    "1": 1,
-                                ),
-                        ),
-                    ),
-            ),
-            "letter-spacing": (
-                property: letter-spacing,
-                class: ls,
-                values: (
-                    "0": 0,
-                    "1": 0.05em,
-                    "2": 0.1em,
-                    "3": 0.15em,
-                    "4": 0.2em,
-                    "5": 0.25em,
-                )
-            ),
-            "opacity": (
-                property: opacity,
-                class: opac,
-                responsive: true,
-                values: (
-                    "0": 0,
-                    "25": .25,
-                    "50": .5,
-                    "75": .75,
-                    "100": 1,
-                )
-            ),
-            "z-index": (
-                property: z-index,
-                values: (
-                    "n3": -3,
-                    "n2": -2,
-                    "n1": -1,
-                    "0": 0,
-                    "1": 1,
-                    "2": 2,
-                    "3": 3,
-                )
-            )
+          ),
+      ),
+      "letter-spacing": (
+        property: letter-spacing,
+        class: ls,
+        values: (
+          "0": 0,
+          "1": 1px,
+          "2": 2px,
+          "3": 3px,
+          "4": 4px,
         )
+      ),
+      "opacity": map-merge(
+          map-get($utilities, "opacity"),
+          (
+            responsive: true,
+            class: opac,
+            state: hover,
+          ),
+      ),
+      "z-index": (
+        property: z-index,
+        values: (
+          "n3": -3,
+          "n2": -2,
+          "n1": -1,
+          "0": 0,
+          "1": 1,
+          "2": 2,
+          "3": 3,
+        )
+      ),
+      "width": map-merge(
+          map-get($utilities, "width"),
+          (
+            responsive: true,
+            values: $sizing-values
+          ),
+      ),
+      "max-width": map-merge(
+          map-get($utilities, "max-width"),
+          (
+            responsive: true,
+            values: $sizing-values
+          ),
+      ),
+      "height": map-merge(
+          map-get($utilities, "height"),
+          (
+            responsive: true,
+            values: $sizing-values
+          ),
+      ),
+      "max-height": map-merge(
+          map-get($utilities, "max-height"),
+          (
+            responsive: true,
+            values: $sizing-values
+          ),
+      ),
+      "position": map-merge(
+          map-get($utilities, "position"),
+          (
+            responsive: true,
+          ),
+      ),
+      "translate-middle": map-merge(
+          map-get($utilities, "translate-middle"),
+          (
+            responsive: true,
+          ),
+      ),
+      "top": map-merge(
+          map-get($utilities, "top"),
+          (
+            responsive: true,
+          ),
+      ),
+      "end": map-merge(
+          map-get($utilities, "end"),
+          (
+            responsive: true,
+          ),
+      ),
+      "bottom": map-merge(
+          map-get($utilities, "bottom"),
+          (
+            responsive: true,
+          ),
+      ),
+      "start": map-merge(
+          map-get($utilities, "start"),
+          (
+            responsive: true,
+          ),
+      ),
+    )
 );

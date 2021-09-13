@@ -1,3 +1,11 @@
+%heading {
+	text-transform: $headings-text-transform;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
 .text-underline {
 	text-decoration: underline;
 }
