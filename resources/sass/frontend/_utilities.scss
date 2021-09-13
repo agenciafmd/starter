@@ -45,11 +45,10 @@ $utilities: map-merge(
         class: ls,
         values: (
           "0": 0,
-          "1": 0.05em,
-          "2": 0.1em,
-          "3": 0.15em,
-          "4": 0.2em,
-          "5": 0.25em,
+          "1": 1px,
+          "2": 2px,
+          "3": 3px,
+          "4": 4px,
         )
       ),
       "opacity": map-merge(
@@ -76,28 +75,28 @@ $utilities: map-merge(
           map-get($utilities, "width"),
           (
             responsive: true,
-            values: $position-values
+            values: $sizing-values
           ),
       ),
       "max-width": map-merge(
           map-get($utilities, "max-width"),
           (
             responsive: true,
-            values: $position-values
+            values: $sizing-values
           ),
       ),
       "height": map-merge(
           map-get($utilities, "height"),
           (
             responsive: true,
-            values: $position-values
+            values: $sizing-values
           ),
       ),
       "max-height": map-merge(
           map-get($utilities, "max-height"),
           (
             responsive: true,
-            values: $position-values
+            values: $sizing-values
           ),
       ),
       "position": map-merge(
@@ -116,48 +115,24 @@ $utilities: map-merge(
           map-get($utilities, "top"),
           (
             responsive: true,
-            values: map-merge(
-                map-get(map-get($utilities, "top"), "values"),
-                (
-                  "auto": auto,
-                ),
-            ),
           ),
       ),
       "end": map-merge(
           map-get($utilities, "end"),
           (
             responsive: true,
-            values: map-merge(
-                map-get(map-get($utilities, "end"), "values"),
-                (
-                  "auto": auto,
-                ),
-            ),
           ),
       ),
       "bottom": map-merge(
           map-get($utilities, "bottom"),
           (
             responsive: true,
-            values: map-merge(
-                map-get(map-get($utilities, "bottom"), "values"),
-                (
-                  "auto": auto,
-                ),
-            ),
           ),
       ),
       "start": map-merge(
           map-get($utilities, "start"),
           (
             responsive: true,
-            values: map-merge(
-                map-get(map-get($utilities, "start"), "values"),
-                (
-                  "auto": auto,
-                ),
-            ),
           ),
       ),
     )

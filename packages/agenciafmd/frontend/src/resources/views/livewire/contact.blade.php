@@ -1,5 +1,5 @@
 <form wire:submit.prevent="submit" novalidate>
-  <div class="row g-1">
+  <div class="row gy-2">
     <div class="col-md-4">
       <label for="name" class="form-label">Nome</label>
       <input wire:model.lazy="name" type="text"
