@@ -4,7 +4,12 @@ $utilities: map-merge(
       "fill": (
         property: fill,
         state: hover,
-        values: $theme-colors
+        values: map-merge(
+            $theme-colors,
+            (
+              "inherit": currentColor,
+            ),
+        ),
       ),
       "stroke": (
         property: stroke,
