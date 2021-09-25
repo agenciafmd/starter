@@ -14621,18 +14621,30 @@ function setupFmdHeader() {
 }
 
 function getThemeVariables() {
-  return {
-    breakpoints: {
-      xs: 0,
-      sm: 425,
-      // Read 'from 425px' (min-width)
-      md: 1024,
-      // Read 'from 1024px' (min-width)
-      lg: 1366,
-      // Read 'from 1366px' (min-width)
-      xl: 1680 // Read 'from 1680px' (min-width)
+  var breakpoints = {
+    xs: 0,
+    sm: 425,
+    // Read 'from 425px' (min-width)
+    md: 1024,
+    // Read 'from 1024px' (min-width)
+    lg: 1366,
+    // Read 'from 1366px' (min-width)
+    xl: 1680,
+    // Read 'from 1680px' (min-width)
+    xxl: 1900 // Read 'from 1900px' (min-width)
 
-    },
+  };
+
+  function isWindowWidthUp(breakpoint) {
+    return window.innerWidth >= breakpoints[breakpoint];
+  }
+
+  function isWindowWidthDown(breakpoint) {
+    return window.innerWidth < breakpoints[breakpoint];
+  }
+
+  return {
+    breakpoints: breakpoints,
     collapseTransitionTime: 350,
     // In milliseconds
     colors: {
@@ -14644,7 +14656,9 @@ function getThemeVariables() {
       danger: '#',
       light: '#',
       dark: '#'
-    }
+    },
+    isWindowWidthUp: isWindowWidthUp,
+    isWindowWidthDown: isWindowWidthDown
   };
 }
 
