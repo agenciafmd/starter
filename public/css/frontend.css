@@ -20297,6 +20297,14 @@ textarea.form-control-lg {
   fill: #212529 !important;
 }
 
+.fill-inherit {
+  fill: currentColor !important;
+}
+
+.fill-inherit-hover:hover {
+  fill: currentColor !important;
+}
+
 .stroke-primary {
   stroke: #0d6efd !important;
 }
