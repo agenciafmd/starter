@@ -83,9 +83,13 @@ function guideUserToTheFirstError() {
       .scrollTop();
   const invalidInputsSelectors = [
     '.form-control:invalid',
-    '.custom-control-input:invalid',
+    '.form-select:invalid',
+    '.form-check-input:invalid',
+    '.form-range:invalid',
     '.form-control.is-invalid',
-    '.custom-control-input.is-invalid',
+    '.form-select.is-invalid',
+    '.form-check-input.is-invalid',
+    '.form-range.is-invalid',
   ];
   const $invalidInputs = $(invalidInputsSelectors.join(', '));
   // Selects the parent to get input label
