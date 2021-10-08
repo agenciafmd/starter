@@ -14149,7 +14149,7 @@ function setValidInput(_ref14) {
 
 function guideUserToTheFirstError() {
   var currentScrollPosition = $(window).scrollTop();
-  var invalidInputsSelectors = ['.form-control:invalid', '.custom-control-input:invalid', '.form-control.is-invalid', '.custom-control-input.is-invalid'];
+  var invalidInputsSelectors = ['.form-control:invalid', '.form-select:invalid', '.form-check-input:invalid', '.form-range:invalid', '.form-control.is-invalid', '.form-select.is-invalid', '.form-check-input.is-invalid', '.form-range.is-invalid'];
   var $invalidInputs = $(invalidInputsSelectors.join(', ')); // Selects the parent to get input label
 
   var $firstInvalidInput = $invalidInputs.first().parent();
@@ -14498,7 +14498,7 @@ var CpfCnpjValidators = /*#__PURE__*/function () {
 function setupFmdHeader() {
   // Return element's offset top
   function getOffsetTop(selector) {
-    return document.getElementsByClassName(selector)[0].getBoundingClientRect().top + document.body.scrollTop;
+    return document.getElementsByClassName(selector)[0].getBoundingClientRect().top + window.pageYOffset;
   } // Return if selector was found
 
 
