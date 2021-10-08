@@ -354,6 +354,7 @@ $enable-validation-icons: true !default;
 $enable-negative-margins: true !default;
 $enable-deprecation-messages: true !default;
 $enable-important-utilities: true !default;
+$enable-floating-label-over-the-line: true !default;
 
 // Prefix for :root CSS variables
 
@@ -1027,6 +1028,18 @@ $form-floating-input-padding-b: .625rem !default;
 $form-floating-label-opacity: .65 !default;
 $form-floating-label-transform: scale(.85) translateY(-.5rem) translateX(.15rem) !default;
 $form-floating-transition: opacity .1s ease-in-out, transform .1s ease-in-out !default;
+
+@if $enable-floating-label-over-the-line {
+  $form-floating-height: $input-height;
+  $form-floating-line-height: $input-line-height;
+  $form-floating-padding-y: $input-padding-y;
+  $form-floating-padding-x: $input-padding-x;
+  $form-floating-input-padding-t: $input-padding-y;
+  $form-floating-input-padding-b: $input-padding-y;
+  $form-floating-label-opacity: 1;
+  $form-floating-label-transform: scale(.85) translateY(-1rem) translateX(.15rem);
+  $form-floating-transition: $transition-base;
+}
 // scss-docs-end form-floating-variables
 
 // Form validation

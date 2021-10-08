@@ -1,0 +1,31 @@
+.form-floating {
+	textarea.form-control {
+		height: calc(#{$input-height} * 3);
+	}
+
+	@if $enable-floating-label-over-the-line {
+		> label {
+			top: $form-floating-padding-y;
+			left: $input-padding-x - 0.5rem;
+			padding: 0 0.5rem;
+			margin: auto;
+			height: auto;
+			background: $body-bg;
+		}
+
+		> .form-control:focus,
+		> .form-control:not(:placeholder-shown),
+		> .form-select {
+			~ label {
+				top: 0;
+			}
+		}
+
+		// Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
+		> .form-control:-webkit-autofill {
+			~ label {
+				top: 0;
+			}
+		}
+	}
+}
