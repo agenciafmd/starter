@@ -2,7 +2,7 @@
 function setupFmdHeader() {
 	// Return element's offset top
 	function getOffsetTop(selector) {
-		return document.getElementsByClassName(selector)[0].getBoundingClientRect().top + document.body.scrollTop;
+		return document.getElementsByClassName(selector)[0].getBoundingClientRect().top + window.pageYOffset;
 	}
 
 	// Return if selector was found
