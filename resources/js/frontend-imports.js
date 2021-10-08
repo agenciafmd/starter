@@ -11,7 +11,7 @@ module.exports = (function () {
     // 'node_modules/clipboard/dist/clipboard.min.js',
     'node_modules/share-api-polyfill/dist/share-min.js',
     // 'node_modules/wow.js/dist/wow.min.js',
-    // 'node_modules/swiper/swiper-bundle.min.js',
+    'node_modules/swiper/swiper-bundle.min.js',
     // 'node_modules/lax.js/lib/lax.min.js',
 
     // Vendors
@@ -25,7 +25,7 @@ module.exports = (function () {
     // Components
     'resources/js/components/fmd-header.js',
     // 'resources/js/components/fancybox.js',
-    // 'resources/js/components/swiper.js',
+    'resources/js/components/swiper.js',
     // 'resources/js/components/lax.js',
 
     // Global usages

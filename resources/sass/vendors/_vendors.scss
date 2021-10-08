@@ -1,7 +1,7 @@
 //@import "~sweetalert2/dist/sweetalert2.min.css";
 //@import "~@fancyapps/fancybox/dist/jquery.fancybox.min.css";
 //@import "~wow.js/css/libs/animate.css";
-//@import "~swiper/swiper-bundle.min.css";
+@import "../../node_modules/swiper/swiper-bundle.min.css";
 
 // Overwriting vendors css with frontend css
 //@import "fancybox/fancybox";
@@ -9,5 +9,5 @@
 @import "infinite-scroll";
 //@import "select2";
 @import "sweetalert2/sweetalert2";
-//@import "swiper";
+@import "swiper";
 //@import "wowjs";
