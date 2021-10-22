@@ -30,7 +30,7 @@
     </div>
     <div class="col-sm-6 col-md-4">
       <label for="phone" class="form-label">Telefone ou celular</label>
-      <input wire:model.lazy="phone" type="text"
+      <input wire:model.lazy="phone" type="tel"
              id="phone"
              placeholder="Telefone"
              required
@@ -44,7 +44,7 @@
     </div>
     <div class="col-sm-6">
       <label for="state" class="form-label">Estado</label>
-      <select wire:model.lazy="state" type="text"
+      <select wire:model.lazy="state"
               id="state"
               required
               aria-label="estado"
@@ -62,7 +62,7 @@
     </div>
     <div class="col-sm-6">
       <label for="city" class="form-label">Cidade</label>
-      <select wire:model.lazy="city" type="text"
+      <select wire:model.lazy="city"
               id="city"
               required
               aria-label="city"
@@ -100,7 +100,7 @@
               aria-label="enviar formulário"
               class="btn btn-primary">
         <span wire:loading.remove>Enviar</span>
-        <span wire:loading wire:target="submit">
+        <span wire:loading>
           Enviando...
           <span class="spinner-grow spinner-grow-sm ms-0h" role="status" aria-hidden="true"></span>
         </span>

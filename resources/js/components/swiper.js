@@ -37,30 +37,9 @@ function createSlider(options) {
   }
 
   return new Swiper(options.container, {
-    speed: 300,
-    direction: 'horizontal',
-    autoHeight: false,
     roundLengths: true, //prevent blurry texts on usual resolution screens
-    spaceBetween: 10,
-    slidesPerView: 1,
-    centeredSlides: false,
-    loop: false,
     mousewheel: {
       forceToAxis: true,
-    },
-    breakpoints: {
-      // when window width is >= 576px
-      [getThemeVariables().breakpoints.sm]: {
-        slidesPerView: 3,
-      },
-      // when window width is >= 1200px
-      [getThemeVariables().breakpoints.lg]: {
-        slidesPerView: 4,
-      },
-      // when window width is >= 1600px
-      // [getThemeVariables().breakpoints.xl]: {
-      //   slidesPerView: 4,
-      // },
     },
     ...options,
   });
@@ -90,13 +69,25 @@ function setupDefaultSlider() {
       });
 }
 
+/* Example of a swiper constructor with most common options */
+
 // createSlider({
 //   container: '.js-banner-slider',
+//   autoHeight: false,
+//   direction: 'horizontal',
+//   speed: 300,
+//   centerInsufficientSlides: false,
+//   centeredSlides: false,
 //   slidesPerView: 1,
 //   spaceBetween: 0,
+//   loop: false,
 //   navigation: {
 //     nextEl: '.swiper-button-next',
 //     prevEl: '.swiper-button-prev',
+//   },
+//   pagination: {
+//     el: '.swiper-pagination',
+//     type: 'bullets',
 //   },
 //   autoplay: {
 //     delay: 5000,

@@ -60,7 +60,6 @@ $utilities: map-merge(
           map-get($utilities, "opacity"),
           (
             responsive: true,
-            class: opac,
             state: hover,
           ),
       ),
