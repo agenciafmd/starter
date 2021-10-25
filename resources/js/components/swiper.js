@@ -94,16 +94,16 @@ function setupDefaultSlider() {
 //     disableOnInteraction: false,
 //   },
 //   breakpoints: {
-//     768: {
+//     [getThemeVariables().breakpoints.sm]: {
 //       slidesPerView: 2,
 //       spaceBetween: 16,
 //     },
-//     992: {
+//     [getThemeVariables().breakpoints.md]: {
 //       slidesPerView: 3,
-//       spaceBetween: 16,
+//       spaceBetween: 32,
 //     },
-//     1440: {
-//       slidesPerView: 3,
+//     [getThemeVariables().breakpoints.lg]: {
+//       slidesPerView: 4,
 //       spaceBetween: 32,
 //     },
 //   },
