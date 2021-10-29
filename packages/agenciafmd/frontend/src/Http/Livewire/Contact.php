@@ -9,17 +9,17 @@ use Livewire\Component;
 
 class Contact extends Component
 {
-    public $name;
+    public string $name = '';
 
-    public $email;
+    public string $email = '';
 
-    public $phone;
+    public string $phone = '';
 
-    public $state;
+    public string $state = '';
 
-    public $city;
+    public string $city = '';
 
-    public $message;
+    public string $message = '';
 
     public function render()
     {
