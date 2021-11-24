@@ -297,11 +297,44 @@ function setupSelect2() {
       });
 }
 
+function getBrowser() {
+
+  const userAgent = navigator.userAgent.toLowerCase();
+  const hasUserAgentSafariToken = userAgent.indexOf('safari') > -1;
+  const hasUserAgentChromeToken = userAgent.indexOf('chrome') > -1;
+
+  if (hasUserAgentSafariToken) {
+
+    if (hasUserAgentChromeToken) {
+
+      return 'chrome';
+    }
+
+    return 'safari';
+  }
+}
+
+function isSafari() {
+
+  return getBrowser() === 'safari';
+}
+
 function setupInputMasks() {
 
   function setMaskToAllElements(elements, maskOptions) {
-    Array.prototype.forEach.call(elements, function (element) {
+
+    elements.forEach(function (element) {
+
       const mask = IMask(element, maskOptions);
+
+      mask.on('complete', function () {
+
+        // Safari doesn't detect the latest input changes
+        if (isSafari()) {
+
+          element.dispatchEvent(new InputEvent('change'));
+        }
+      });
     });
   }
 

@@ -1298,6 +1298,15 @@
 		</div>
 	</div>
 
+  <!-- Livewire example
+	================================================== -->
+  <div class="bs-docs-section">
+    <div class="page-header">
+      <h1 id="livewireExample">Livewire Example</h1>
+    </div>
+    <livewire:frontend::contact/>
+  </div>
+
 	<!-- Navs
 	================================================== -->
 	<div class="bs-docs-section">
