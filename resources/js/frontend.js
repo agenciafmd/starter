@@ -1,12 +1,13 @@
 function getThemeVariables() {
+  const root = getComputedStyle(document.documentElement);
 
   const breakpoints = {
-    xs: 0,
-    sm: 425, // Read 'from 425px' (min-width)
-    md: 1024, // Read 'from 1024px' (min-width)
-    lg: 1366, // Read 'from 1366px' (min-width)
-    xl: 1680, // Read 'from 1680px' (min-width)
-    xxl: 1900, // Read 'from 1900px' (min-width)
+    xs: Number(root.getPropertyValue('--bs-breakpoint-xs').replace('px', '')),
+    sm: Number(root.getPropertyValue('--bs-breakpoint-sm').replace('px', '')), // Read 'from 425px' (min-width)
+    md: Number(root.getPropertyValue('--bs-breakpoint-md').replace('px', '')), // Read 'from 1024px' (min-width)
+    lg: Number(root.getPropertyValue('--bs-breakpoint-lg').replace('px', '')), // Read 'from 1366px' (min-width)
+    xl: Number(root.getPropertyValue('--bs-breakpoint-xl').replace('px', '')), // Read 'from 1680px' (min-width)
+    xxl: Number(root.getPropertyValue('--bs-breakpoint-xxl').replace('px', '')), // Read 'from 1900px' (min-width)
   };
 
   function isWindowWidthUp(breakpoint) {
@@ -23,14 +24,14 @@ function getThemeVariables() {
     breakpoints,
     collapseTransitionTime: 350, // In milliseconds
     colors: {
-      primary: '#',
-      secondary: '#',
-      success: '#',
-      info: '#',
-      warning: '#',
-      danger: '#',
-      light: '#',
-      dark: '#',
+      primary: root.getPropertyValue('--bs-primary'),
+      secondary: root.getPropertyValue('--bs-secondary'),
+      success: root.getPropertyValue('--bs-success'),
+      info: root.getPropertyValue('--bs-info'),
+      warning: root.getPropertyValue('--bs-warning'),
+      danger: root.getPropertyValue('--bs-danger'),
+      light: root.getPropertyValue('--bs-light'),
+      dark: root.getPropertyValue('--bs-dark'),
     },
     isWindowWidthUp,
     isWindowWidthDown,
