@@ -45,11 +45,7 @@
 
             // Vitor
             'Quem responde antes de ouvir mostra que é insensato e passa vergonha.',
-            'As pessoas aprendem umas com as outras, assim como o ferro afia o próprio ferro.',
-
-            // Tarsísio
-            'Eu teria escrito um texto mais curto, mas não tive tempo.',
-            'O homem é escravo de suas falas e senhor de seu silêncio.'
+            'As pessoas aprendem umas com as outras, assim como o ferro afia o próprio ferro.'
         ]);
     @endphp
 
