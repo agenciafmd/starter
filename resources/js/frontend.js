@@ -180,9 +180,15 @@ function preventInvalidFormSubmit() {
 
 function disableButtonOnSubmit(form) {
 
-  const buttons = form.querySelectorAll('button');
+  const coupledFormBbuttons = form.querySelectorAll('button');
+  const uncoupledFormButtons = document.querySelectorAll(`button[form=${ form.id }]`);
 
-  buttons.forEach((button) => {
+  const foundFormButtons = [
+    ...coupledFormBbuttons,
+    ...uncoupledFormButtons,
+  ];
+
+  foundFormButtons.forEach((button) => {
 
     button.setAttribute('disabled', 'disabled');
 
