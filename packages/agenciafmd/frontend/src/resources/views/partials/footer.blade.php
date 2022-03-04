@@ -1,3 +1,3 @@
 <footer class="footer text-center">
-  <x-frontend::fmd-link class=""/>
+  © {{ date('Y') }} {{ config('app.name') }} - Todos os direitos reservados. <x-frontend::fmd-link class=""/>
 </footer>
