@@ -1,13 +1,14 @@
 function getThemeVariables() {
   const root = getComputedStyle(document.documentElement);
 
+  // Read 'from --bs-breakpoint-??' (min-width)
   const breakpoints = {
     xs: Number(root.getPropertyValue('--bs-breakpoint-xs').replace('px', '')),
-    sm: Number(root.getPropertyValue('--bs-breakpoint-sm').replace('px', '')), // Read 'from 425px' (min-width)
-    md: Number(root.getPropertyValue('--bs-breakpoint-md').replace('px', '')), // Read 'from 1024px' (min-width)
-    lg: Number(root.getPropertyValue('--bs-breakpoint-lg').replace('px', '')), // Read 'from 1366px' (min-width)
-    xl: Number(root.getPropertyValue('--bs-breakpoint-xl').replace('px', '')), // Read 'from 1680px' (min-width)
-    xxl: Number(root.getPropertyValue('--bs-breakpoint-xxl').replace('px', '')), // Read 'from 1900px' (min-width)
+    sm: Number(root.getPropertyValue('--bs-breakpoint-sm').replace('px', '')),
+    md: Number(root.getPropertyValue('--bs-breakpoint-md').replace('px', '')),
+    lg: Number(root.getPropertyValue('--bs-breakpoint-lg').replace('px', '')),
+    xl: Number(root.getPropertyValue('--bs-breakpoint-xl').replace('px', '')),
+    xxl: Number(root.getPropertyValue('--bs-breakpoint-xxl').replace('px', '')),
   };
 
   function isWindowWidthUp(breakpoint) {
@@ -716,47 +717,6 @@ function setupShareAPI() {
                ));
     });
   });
-}
-
-function setupDataLayerEventClickButton() {
-
-  const buttons = document.querySelectorAll('.js-btn-data-layer');
-
-  if (!buttons.length) {
-
-    return;
-  }
-
-  buttons.forEach((button) => {
-
-    button.addEventListener('click', (clickEvent) => {
-
-      const nameDataLayerAction = 'data-fmd-datalayer-action';
-      const linkDataLayerAction = clickEvent.currentTarget.getAttribute(
-          nameDataLayerAction);
-
-      if (!linkDataLayerAction) {
-
-        throw new Error(`Adicione atributo ${ nameDataLayerAction } com seu valor`);
-      }
-
-      const dataLayerOptions = getDataLayerOptions({ action: linkDataLayerAction });
-      window.dataLayer.push(dataLayerOptions);
-    });
-  });
-}
-
-function getDataLayerOptions(options) {
-
-  window.dataLayer = window.dataLayer || [];
-
-  return {
-    ...options,
-    event: options.event || 'gaEvent',
-    category: options.category || 'clique',
-    action: options.action || '',
-    label: options.label || 'enviado',
-  };
 }
 
 $(function () {
