@@ -18,6 +18,7 @@ module.exports = (function () {
 
     // Helpers
     'resources/js/helpers/utm-helper.js',
+    // 'resources/js/helpers/data-layer.js',
     'resources/js/helpers/form-helpers.js',
     'resources/js/helpers/cpf-cnpj-validators.js',
     // 'resources/js/helpers/user-interaction-helpers.js',
