@@ -389,6 +389,19 @@ $spacers: () !default;
   $spacers: map-merge($spacers, $unit-variations);
 }
 
+$block-spacer: 4rem;
+$block-spacer-small: $block-spacer * .5;
+$block-spacer-large: $block-spacer * 2;
+
+$custom-spacers: (
+  "block": $block-spacer,
+  "block-small": $block-spacer-small,
+  "block-large": $block-spacer-large,
+  "header-height": var(--header-height)
+);
+
+$spacers: map-merge($spacers, $custom-spacers);
+
 $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
 // scss-docs-end spacer-variables-maps
 
