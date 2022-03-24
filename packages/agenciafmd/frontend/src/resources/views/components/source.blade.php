@@ -1,13 +1,13 @@
 @props([
-'title',
-'image',
-'alt' => $alt ?? $title,
+    'title',
+    'image',
+    'alt' => $alt ?? $title,
 ])
 
 @foreach([
-    'min-width: 1600px' => '-xl',
-    'min-width: 768px' => '-lg',
-    'max-width: 767px' => '',
+    'min-width: 1200px' => '-lg',
+    'min-width: 576px' => '-md',
+    'max-width: 576px' => '',
 ] as $breakpoint => $prefix)
     <source type="image/webp"
             media="({{ $breakpoint }})"
@@ -18,4 +18,4 @@
 
 <x-frontend::image :alt="$alt"
                    :title="$title"
-        {{ $attributes }} />
+                   {{ $attributes }} />
