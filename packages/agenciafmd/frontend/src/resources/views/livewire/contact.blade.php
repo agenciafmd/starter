@@ -99,8 +99,8 @@
               wire:target="submit"
               aria-label="enviar formulário"
               class="btn btn-primary">
-        <span wire:loading.remove>Enviar</span>
-        <span wire:loading>
+        <span wire:loading.remove wire:target="submit">Enviar</span>
+        <span wire:loading wire:target="submit">
           Enviando...
           <span class="spinner-grow spinner-grow-sm ms-0h" role="status" aria-hidden="true"></span>
         </span>
