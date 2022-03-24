@@ -1,7 +1,23 @@
 .breadcrumb {
+	flex-wrap: nowrap;
+
 	&-item {
+		flex: 0 0 auto;
+
 		&.active {
 			font-weight: $font-weight-bold;
+			flex: 0 1 100%;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+	}
+
+	.text-center & {
+		justify-content: center;
+
+		.breadcrumb-item.active {
+			flex: 0 1 auto;
 		}
 	}
 }
