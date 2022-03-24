@@ -7,7 +7,7 @@ $utilities: map-merge(
         values: map-merge(
             $theme-colors,
             (
-              "inherit": currentColor,
+              "reset": currentColor,
             ),
         ),
       ),
