@@ -46,17 +46,11 @@ $bold-font-map: (
     font-weight: 700,
 );
 
-$external-fonts: (
-    //'title': $title-font-map,
-);
-
 $local-fonts: (
   'light': $light-font-map,
   'regular': $regular-font-map,
   'bold': $bold-font-map,
 );
-
-$project-fonts: map-merge($external-fonts, $local-fonts);
 
 @if ($should-use-local-font-face) {
   @each $font-key, $font-map in $local-fonts {
