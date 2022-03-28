@@ -10,7 +10,7 @@
 	text-decoration: underline;
 }
 
-.limit-lines {
+.text-truncate {
 	@for $i from 1 through 6 {
 		&-#{$i} {
 			overflow: hidden;
