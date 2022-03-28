@@ -57571,7 +57571,11 @@ h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:la
   left: 0;
   right: 0;
   z-index: 1020;
+  margin-top: 0;
   transition: all 0.25s ease-in-out;
+}
+.fmd-header-is-hidden {
+  margin-top: calc(var(--header-height) * -1);
 }
 .fmd-header-is-fixed {
   background: #fff;
@@ -57712,9 +57716,8 @@ img:not([loading=lazy]) {
   margin-top: 0.5rem;
 }
 .navbar .offcanvas, .navbar .offcanvas-backdrop {
-  position: absolute;
-  top: 100%;
-  height: calc(100vh - 100%);
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
 }
 .navbar .offcanvas.show ~ .navbar-toggler:before {
   margin-top: 0;
@@ -57746,40 +57749,40 @@ img:not([loading=lazy]) {
   width: 8.5rem;
   height: 2.5rem;
 }
-.navbar-expand-xs .offcanvas,
-.navbar-expand-xs .offcanvas-backdrop {
-  position: inherit;
+.fmd-header-is-fixed .navbar .offcanvas,
+.fmd-header-is-fixed .navbar .offcanvas-backdrop {
+  top: calc(var(--header-height) - 2rem);
+  height: calc(100vh - var(--header-height) + 2rem);
+}
+.navbar.navbar-expand-xs .offcanvas,
+.navbar.navbar-expand-xs .offcanvas-backdrop {
   top: 0;
   height: auto;
 }
 @media (min-width: 576px) {
-  .navbar-expand-sm .offcanvas,
-.navbar-expand-sm .offcanvas-backdrop {
-    position: inherit;
+  .navbar.navbar-expand-sm .offcanvas,
+.navbar.navbar-expand-sm .offcanvas-backdrop {
     top: 0;
     height: auto;
   }
 }
 @media (min-width: 992px) {
-  .navbar-expand-md .offcanvas,
-.navbar-expand-md .offcanvas-backdrop {
-    position: inherit;
+  .navbar.navbar-expand-md .offcanvas,
+.navbar.navbar-expand-md .offcanvas-backdrop {
     top: 0;
     height: auto;
   }
 }
 @media (min-width: 1200px) {
-  .navbar-expand-lg .offcanvas,
-.navbar-expand-lg .offcanvas-backdrop {
-    position: inherit;
+  .navbar.navbar-expand-lg .offcanvas,
+.navbar.navbar-expand-lg .offcanvas-backdrop {
     top: 0;
     height: auto;
   }
 }
 @media (min-width: 1600px) {
-  .navbar-expand-xl .offcanvas,
-.navbar-expand-xl .offcanvas-backdrop {
-    position: inherit;
+  .navbar.navbar-expand-xl .offcanvas,
+.navbar.navbar-expand-xl .offcanvas-backdrop {
     top: 0;
     height: auto;
   }

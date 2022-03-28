@@ -60,34 +60,3 @@
         </div>
     </nav>
 </header>
-
-@push('scripts')
-<script type="text/javascript">
-  const header = document.querySelector('.header');
-  const navbar = header.querySelector('.navbar');
-  const myOffcanvas = header.querySelector('.offcanvas');
-
-  function handleHeaderOverflow() {
-    const navbarExpandBreakpoint = [...navbar.classList].find(navbarClass => navbarClass.split('navbar-expand-')[1]).split('navbar-expand-')[1];
-
-    // console.log(getThemeVariables().breakpoints[navbarExpandBreakpoint], navbarExpandBreakpoint);
-
-    if (window.innerWidth < getThemeVariables().breakpoints[navbarExpandBreakpoint]) {
-      header.style.overflow = 'hidden';
-
-      myOffcanvas.addEventListener('show.bs.offcanvas', function () {
-        header.style.overflow = 'visible';
-      });
-
-      myOffcanvas.addEventListener('hidden.bs.offcanvas', function () {
-        header.style.overflow = 'hidden';
-      });
-    } else {
-      header.style.overflow = 'visible';
-    }
-  }
-
-  window.addEventListener('load', handleHeaderOverflow);
-  window.addEventListener('resize', handleHeaderOverflow);
-</script>
-@endpush

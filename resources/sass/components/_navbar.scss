@@ -64,9 +64,8 @@ $navbar-toggler-bar-height: 3px;
 	.offcanvas {
 		&,
 		&-backdrop {
-			position: absolute;
-      top: 100%;
-			height: calc(100vh - 100%);
+			top: var(--header-height);
+			height: calc(100vh - var(--header-height));
 		}
 
 		&.show ~ .navbar-toggler {
@@ -109,14 +108,19 @@ $navbar-toggler-bar-height: 3px;
 			width: $navbar-brand-is-fixed-width;
 			height: $navbar-brand-is-fixed-height;
 		}
+
+		.offcanvas,
+		.offcanvas-backdrop {
+			top: calc(var(--header-height) - #{($navbar-brand-height - $navbar-brand-is-fixed-height) * 2});
+			height: calc(100vh - var(--header-height) + #{($navbar-brand-height - $navbar-brand-is-fixed-height) * 2});
+		}
 	}
 
 	@each $breakpoint, $value in $grid-breakpoints {
 		@include media-breakpoint-up($breakpoint) {
-			&-expand-#{$breakpoint} {
+			&.navbar-expand-#{$breakpoint} {
 				.offcanvas,
 				.offcanvas-backdrop {
-					position: inherit;
 					top: 0;
 					height: auto;
 				}
