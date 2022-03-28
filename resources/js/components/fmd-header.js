@@ -12,12 +12,12 @@ function setupFmdHeader() {
 
 	function showHeader() {
 		header.classList.remove(hideClass);
-		header.style.transform = 'none';
+		// header.style.transform = 'none';
 	}
 
 	function hideHeader() {
 		header.classList.add(hideClass);
-		header.style.transform = 'translateY(-100%)';
+		// header.style.transform = 'translateY(-100%)';
 	}
 
 	function setStickyHeader() {
