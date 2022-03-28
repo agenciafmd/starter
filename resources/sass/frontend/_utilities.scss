@@ -7,7 +7,7 @@ $utilities: map-merge(
         values: map-merge(
             $theme-colors,
             (
-              "inherit": currentColor,
+              "reset": currentColor,
             ),
         ),
       ),
@@ -73,6 +73,15 @@ $utilities: map-merge(
           "1": 1,
           "2": 2,
           "3": 3,
+          "dropdown": $zindex-dropdown,
+          "sticky": $zindex-sticky,
+          "fixed": $zindex-fixed,
+          "offcanvas-backdrop": $zindex-offcanvas-backdrop,
+          "offcanvas": $zindex-offcanvas,
+          "modal-backdrop": $zindex-modal-backdrop,
+          "modal": $zindex-modal,
+          "popover": $zindex-popover,
+          "tooltip": $zindex-tooltip,
         )
       ),
       "width": map-merge(

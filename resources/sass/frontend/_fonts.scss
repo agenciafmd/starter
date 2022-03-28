@@ -46,14 +46,14 @@ $bold-font-map: (
     font-weight: 700,
 );
 
-$project-fonts: (
-    'light': $light-font-map,
-    'regular': $regular-font-map,
-    'bold': $bold-font-map,
+$local-fonts: (
+  'light': $light-font-map,
+  'regular': $regular-font-map,
+  'bold': $bold-font-map,
 );
 
 @if ($should-use-local-font-face) {
-  @each $font-key, $font-map in $project-fonts {
+  @each $font-key, $font-map in $local-fonts {
     @font-face {
       @include font-face($font-map);
     }

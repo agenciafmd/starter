@@ -1,7 +1,37 @@
 .breadcrumb {
+	max-width: 100%;
+	display: inline-flex;
+	flex-wrap: nowrap;
+	//flex-direction: row-reverse;
+	//direction: rtl;
+
 	&-item {
+		flex: 0 1 auto;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+
 		&.active {
 			font-weight: $font-weight-bold;
+			flex-shrink: 1;
+		}
+
+		&:first-child,
+		&:nth-last-child(2) {
+			flex-shrink: 0;
+		}
+
+		@include media-breakpoint-down(sm) {
+			font-size: $font-size-sm;
+
+			&:nth-child(1),
+			&:nth-child(2):before {
+				display: none;
+			}
+
+			&:nth-child(2) {
+				padding-left: 0;
+			}
 		}
 	}
 }

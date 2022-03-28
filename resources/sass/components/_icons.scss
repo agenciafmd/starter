@@ -1,21 +1,30 @@
-$icon-sm-x: 2rem !default;
-$icon-sm-y: 2rem !default;
-$icon-md-x: 3rem !default;
-$icon-md-y: 3rem !default;
-$icon-lg-x: 4rem !default;
-$icon-lg-y: 4rem !default;
+$icon-sm: 2rem !default;
+$icon-md: 3rem !default;
+$icon-lg: 4rem !default;
 
 .ic {
 	@extend .img-fluid;
-	width: $icon-md-x;
-	height: $icon-md-y;
-	
-	&-rotate-right {
+	width: $icon-md;
+	height: $icon-md;
+
+	&-rotate-n90 {
 		transform: rotate(-90deg);
 	}
-	
+
+	&-rotate-90 {
+		transform: rotate(90deg);
+	}
+
 	&-inverse {
+		transform: scale(-1);
+	}
+
+	&-inverse-x {
 		transform: scaleX(-1);
+	}
+
+	&-inverse-y {
+		transform: scaleY(-1);
 	}
 	
 	&-infinite-scroll-loading {
@@ -29,12 +38,12 @@ $icon-lg-y: 4rem !default;
 	}
 	
 	&-sm {
-		width: $icon-sm-x;
-		height: $icon-sm-y;
+		width: $icon-sm;
+		height: $icon-sm;
 	}
 	
 	&-lg {
-		width: $icon-lg-x;
-		height: $icon-lg-y;
+		width: $icon-lg;
+		height: $icon-lg;
 	}
 }

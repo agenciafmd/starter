@@ -19854,7 +19854,9 @@ function setupFmdHeader() {
   var endTarget = isElementSet(endTargetClass) ? getOffsetTop(endTargetClass) : document.body.scrollHeight; // Set variable that is used to apply padding-top to the body
 
   header.style.position = 'absolute';
-  document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px'); // Scroll event listener
+  setTimeout(function () {
+    document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+  }, headerTransition); // Scroll event listener
 
   window.addEventListener('scroll', function () {
     didScroll = true;
@@ -20011,19 +20013,15 @@ function setupDefaultSlider() {
 
 
 function getThemeVariables() {
-  var root = getComputedStyle(document.documentElement);
+  var root = getComputedStyle(document.documentElement); // Read 'from --bs-breakpoint-??' (min-width)
+
   var breakpoints = {
     xs: Number(root.getPropertyValue('--bs-breakpoint-xs').replace('px', '')),
     sm: Number(root.getPropertyValue('--bs-breakpoint-sm').replace('px', '')),
-    // Read 'from 425px' (min-width)
     md: Number(root.getPropertyValue('--bs-breakpoint-md').replace('px', '')),
-    // Read 'from 1024px' (min-width)
     lg: Number(root.getPropertyValue('--bs-breakpoint-lg').replace('px', '')),
-    // Read 'from 1366px' (min-width)
     xl: Number(root.getPropertyValue('--bs-breakpoint-xl').replace('px', '')),
-    // Read 'from 1680px' (min-width)
-    xxl: Number(root.getPropertyValue('--bs-breakpoint-xxl').replace('px', '')) // Read 'from 1900px' (min-width)
-
+    xxl: Number(root.getPropertyValue('--bs-breakpoint-xxl').replace('px', ''))
   };
 
   function isWindowWidthUp(breakpoint) {
@@ -20149,8 +20147,10 @@ function preventInvalidFormSubmit() {
 }
 
 function disableButtonOnSubmit(form) {
-  var buttons = form.querySelectorAll('button');
-  buttons.forEach(function (button) {
+  var coupledFormBbuttons = form.querySelectorAll('button');
+  var uncoupledFormButtons = document.querySelectorAll("button[form=".concat(form.id, "]"));
+  var foundFormButtons = [].concat(_toConsumableArray(coupledFormBbuttons), _toConsumableArray(uncoupledFormButtons));
+  foundFormButtons.forEach(function (button) {
     button.setAttribute('disabled', 'disabled');
     var buttonText = button.innerText;
     button.innerHTML = "<span class=\"spinner-container\">\n                            <span class=\"spinner-border spinner-border-sm text-light\"\n                                  role=\"status\"></span>\n                            ".concat(buttonText, "\n                        </span>");
@@ -20566,40 +20566,6 @@ function setupShareAPI() {
         return console.log('Ops! Algo de errado aconteceu:\'(\n', error);
       });
     });
-  });
-}
-
-function setupDataLayerEventClickButton() {
-  var buttons = document.querySelectorAll('.js-btn-data-layer');
-
-  if (!buttons.length) {
-    return;
-  }
-
-  buttons.forEach(function (button) {
-    button.addEventListener('click', function (clickEvent) {
-      var nameDataLayerAction = 'data-fmd-datalayer-action';
-      var linkDataLayerAction = clickEvent.currentTarget.getAttribute(nameDataLayerAction);
-
-      if (!linkDataLayerAction) {
-        throw new Error("Adicione atributo ".concat(nameDataLayerAction, " com seu valor"));
-      }
-
-      var dataLayerOptions = getDataLayerOptions({
-        action: linkDataLayerAction
-      });
-      window.dataLayer.push(dataLayerOptions);
-    });
-  });
-}
-
-function getDataLayerOptions(options) {
-  window.dataLayer = window.dataLayer || [];
-  return _objectSpread(_objectSpread({}, options), {}, {
-    event: options.event || 'gaEvent',
-    category: options.category || 'clique',
-    action: options.action || '',
-    label: options.label || 'enviado'
   });
 }
 

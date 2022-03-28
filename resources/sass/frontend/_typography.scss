@@ -9,3 +9,16 @@
 .text-underline {
 	text-decoration: underline;
 }
+
+.text-truncate {
+	@for $i from 1 through 6 {
+		&-#{$i} {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: $i; /* number of lines to limit */
+			line-clamp: $i;
+		}
+	}
+}

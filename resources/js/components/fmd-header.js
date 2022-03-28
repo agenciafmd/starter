@@ -69,7 +69,9 @@ function setupFmdHeader() {
 
 	// Set variable that is used to apply padding-top to the body
 	header.style.position = 'absolute';
-	document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+	setTimeout(function () {
+		document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+	}, headerTransition);
 
 	// Scroll event listener
 	window.addEventListener('scroll', function () {
