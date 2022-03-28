@@ -7,6 +7,7 @@
 @section('description', 'Descrição da página')
 
 @section('content')
+<main>
     <section class="py-block py-md-block-large text-center">
         <div class="container">
             <div class="row justify-content-center">
@@ -64,4 +65,5 @@
             </div>
         </div>
     </section>
+</main>
 @endsection
