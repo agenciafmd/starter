@@ -1,4 +1,6 @@
-![Logo](https://github.com/agenciafmd/starter/raw/master/public/images/logo.png "Logo")
+<p align="center"><a href="https://fmd.ag/" target="_blank"><img src="https://github.com/agenciafmd/starter/raw/master/public/images/logo.png"></a></p>
+
+<br>
 
 Ponta pé inicial para o desenvolvimento dos nossos maravilhosos sites.
 
@@ -13,6 +15,11 @@ Lembrando que trabalhamos sempre no **dev-master** porque somos malacos.
 - [Analytics](https://github.com/agenciafmd/admix-analytics)
 - [Email](https://github.com/agenciafmd/admix-postal)
 - [e mais](https://github.com/agenciafmd?utf8=%E2%9C%93&q=admix-&type=&language=)
+
+## Requisitos do projeto
+
+- Versão do PHP: **^8.0**
+- Versão do Node: **14**
 
 ## Licença
 
