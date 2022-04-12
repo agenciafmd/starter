@@ -1,4 +1,4 @@
-![Logo](https://github.com/agenciafmd/starter/raw/master/public/images/logo.png "Logo")
+[![Logo FMD](https://github.com/agenciafmd/starter/raw/master/public/images/logo.png "Logo FMD")](https://fmd.ag/ "Logo FMD")
 
 Ponta pé inicial para o desenvolvimento dos nossos maravilhosos sites.
 
@@ -14,8 +14,15 @@ Lembrando que trabalhamos sempre no **dev-master** porque somos malacos.
 - [Email](https://github.com/agenciafmd/admix-postal)
 - [e mais](https://github.com/agenciafmd?utf8=%E2%9C%93&q=admix-&type=&language=)
 
+## Requisitos do projeto
+
+- Versão do PHP: **^8.0**
+- Versão do Node: **14**
+
 ## Licença
 
-Nossos pacotes são abertos, [MIT](https://opensource.org/licenses/MIT) para os mais chegados.
+Nossos pacotes são abertos, [MIT](https://opensource.org/licenses/MIT) para os
+mais chegados.
 
-Fique a vontade para começar a montar sua aplicação, mas não se esqueça, a responsabilidade pelo sucesso dela não é nossa 😊 .
+Fique a vontade para começar a montar sua aplicação, mas não se esqueça, a
+responsabilidade pelo sucesso dela não é nossa 😊 .
