@@ -20,6 +20,8 @@ class Contact extends Component
     public string $city = '';
 
     public string $message = '';
+    
+    public $terms = null;
 
     public function render()
     {
@@ -63,6 +65,9 @@ class Contact extends Component
                 'required',
                 'min:15',
             ],
+            'terms' => [
+                'accepted',
+            ],
         ];
     }
 
@@ -74,6 +79,7 @@ class Contact extends Component
             'state' => 'estado',
             'city' => 'cidade',
             'message' => 'mensagem',
+            'terms' => 'políticas de privacidade',
         ];
     }
 
@@ -91,6 +97,7 @@ class Contact extends Component
                     '**Telefone:** ' . $data['phone'],
                     '**Cidade:** ' . $data['city'] . ' - ' . $data['state'],
                     '**Mensagem:** ' . nl2br($data['message']),
+                    '**Política de Privacidade:** ' . (($data['terms']) ? 'Sim' : 'Não'),
                 ],
             ], [$data['email'] => $data['name']]));
 
