@@ -3,6 +3,7 @@ $icon-md: 3rem !default;
 $icon-lg: 4rem !default;
 
 .ic {
+	max-width: 100%;
 	width: $icon-md;
 	height: $icon-md;
 
