@@ -9,17 +9,22 @@ img {
 	}
 }
 
+picture.ratio {
+	display: block;
+}
+
 .img {
 	&-fluid {
 		width: auto;
 	}
 	
 	&-sanitize {
+		max-width: 100%;
 		width: auto;
+		height: auto;
 		display: block;
 		margin-right: auto;
 		margin-left: auto;
-		@extend .img-fluid;
 	}
 	
 	&-cover {

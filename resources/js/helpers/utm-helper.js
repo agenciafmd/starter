@@ -10,17 +10,17 @@ function setupUtmHelpers() {
   function _createUtmObject() {
 
     return urlSearchParamsList
-        .reduce((previous, currentParam) => {
+    .reduce((previous, currentParam) => {
 
-          const splattedParam = currentParam.split('=');
-          const paramKey = splattedParam[0];
-          const paramValue = splattedParam[1];
+      const splattedParam = currentParam.split('=');
+      const paramKey = splattedParam[0];
+      const paramValue = splattedParam[1];
 
-          return {
-            ...previous,
-            [paramKey]: paramValue,
-          };
-        }, {});
+      return {
+        ...previous,
+        [paramKey]: paramValue,
+      };
+    }, {});
   }
 
   function hasUtmParameter(searchTerm) {
@@ -31,6 +31,14 @@ function setupUtmHelpers() {
   function getUtmValueFromUrl(searchTerm) {
 
     return utmObject[searchTerm];
+  }
+
+  function setInputValue({ name, value }) {
+    const inputs = document.getElementsByName(name);
+
+    [...inputs].map((input) => {
+      input.value = value;
+    });
   }
 
   function setCookie({ name, value, expirationInDays }) {
@@ -61,22 +69,40 @@ function setupUtmHelpers() {
 
   function manageUtmHelpers() {
 
-    function setCookieFromUrl(cookieName) {
+    function setUtm({ name, value }) {
 
-      if (!hasUtmParameter(cookieName)) {
+      setCookie({
+        name: name,
+        value: value,
+      });
+
+      setInputValue({
+        name: name,
+        value: value,
+      });
+    }
+
+    function setUtmFromUrl(utmName) {
+
+      if (!hasUtmParameter(utmName)) {
 
         return;
       }
 
       setCookie({
-        name: cookieName,
-        value: getUtmValueFromUrl(cookieName),
+        name: utmName,
+        value: getUtmValueFromUrl(utmName),
+      });
+
+      setInputValue({
+        name: utmName,
+        value: getUtmValueFromUrl(utmName),
       });
     }
 
     function setupUtmSource() {
 
-      setCookie({
+      setUtm({
         name: 'utm_today',
         value: 1,
       });
@@ -88,12 +114,12 @@ function setupUtmHelpers() {
 
       if (!hasUtmSourceInUrl && !hasUtmTodayInStorage && hasReferrer && hasComeFromGoogleSearch) {
 
-        setCookie({
+        setUtm({
           name: 'utm_source',
           value: 'google',
         });
 
-        setCookie({
+        setUtm({
           name: 'utm_medium',
           value: 'organic',
         });
@@ -102,28 +128,28 @@ function setupUtmHelpers() {
 
       if (!hasUtmSourceInUrl && !hasUtmTodayInStorage && hasReferrer) {
 
-        setCookie({
+        setUtm({
           name: 'utm_source',
           value: 'referral',
         });
 
-        setCookie({
+        setUtm({
           name: 'utm_medium',
           value: document.referrer,
         });
         return;
       }
 
-      setCookieFromUrl('utm_source');
+      setUtmFromUrl('utm_source');
     }
 
     // This is specific because it has additional logic
     setupUtmSource();
-    setCookieFromUrl('utm_medium');
-    setCookieFromUrl('utm_campaign');
-    setCookieFromUrl('utm_term');
-    setCookieFromUrl('utm_content');
-    setCookieFromUrl('gclid');
+    setUtmFromUrl('utm_medium');
+    setUtmFromUrl('utm_campaign');
+    setUtmFromUrl('utm_term');
+    setUtmFromUrl('utm_content');
+    setUtmFromUrl('gclid');
   }
 
   manageUtmHelpers();

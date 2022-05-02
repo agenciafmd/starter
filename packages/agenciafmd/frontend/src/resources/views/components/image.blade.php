@@ -1,20 +1,16 @@
 @props([
-'title',
-'image' => $image ?? null,
-'alt',
+    'image',
+    'title',
+    'alt' => $title,
+    'isSingleImage' => false,
 ])
 
-<img src="data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-     @if($image)
-        srcset="{{ $image }}, {{ Str::replaceLast('.', '@2x.', $image) }} 2x"
-     @endif
+<img loading="lazy"
+     decoding="async"
+     src="data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+     srcset="{{ $image.($isSingleImage ? '' : ', '.Str::replaceLast('.', '@2x.', $image).' 2x') }}"
      alt="{{ $alt ?? $title }}"
      title="{{ $title }}"
-        {{ $attributes->merge([
-           'loading' => 'lazy',
-           'decoding' => 'async',
-           'width' => '1',
-           'height' => '1',
-           'class' => '',
-        ])
-        }}>
+     width="1"
+     height="1"
+     {{ $attributes->merge(['class' => 'img-fluid']) }}>

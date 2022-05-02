@@ -94,6 +94,30 @@
       @enderror
     </div>
     <div class="col-12">
+      <div class="form-check">
+        <input wire:model.lazy="terms"
+               type="checkbox"
+               name="privacy-terms"
+               required
+               class="form-check-input @error('terms') is-invalid @enderror"
+               id="privacy-terms">
+        <label class="form-check-label text-reset" for="privacy-terms">
+          Li e estou de acordo com a
+          <a href="#"
+             target="_blank"
+             class="fw-bold">
+            Políticas de Privacidade
+          </a>
+        </label>
+    
+        @error('terms')
+        <span class="d-block invalid-feedback">
+              {{ $message }}
+          </span>
+        @enderror
+      </div>
+    </div>
+    <div class="col-12">
       <button type="submit"
               wire:loading.attr="disabled"
               wire:target="submit"

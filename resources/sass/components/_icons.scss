@@ -3,9 +3,19 @@ $icon-md: 3rem !default;
 $icon-lg: 4rem !default;
 
 .ic {
-	@extend .img-fluid;
+	max-width: 100%;
 	width: $icon-md;
 	height: $icon-md;
+
+	&-sm {
+		width: $icon-sm;
+		height: $icon-sm;
+	}
+
+	&-lg {
+		width: $icon-lg;
+		height: $icon-lg;
+	}
 
 	&-rotate-n90 {
 		transform: rotate(-90deg);
@@ -35,15 +45,5 @@ $icon-lg: 4rem !default;
 		
 		min-height: $infinite-scroll-loading-icon-size;
 		background: $infinite-scroll-loading-icon-background;
-	}
-	
-	&-sm {
-		width: $icon-sm;
-		height: $icon-sm;
-	}
-	
-	&-lg {
-		width: $icon-lg;
-		height: $icon-lg;
 	}
 }
