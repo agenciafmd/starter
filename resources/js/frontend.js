@@ -1,25 +1,42 @@
 function getThemeVariables() {
+    const root = getComputedStyle(document.documentElement);
 
-  return {
-    breakpoints: {
-      xs: 0,
-      sm: 425, // Read 'from 425px' (min-width)
-      md: 1024, // Read 'from 1024px' (min-width)
-      lg: 1366, // Read 'from 1366px' (min-width)
-      xl: 1680, // Read 'from 1680px' (min-width)
-    },
-    collapseTransitionTime: 350, // In milliseconds
-    colors: {
-      primary: '#',
-      secondary: '#',
-      success: '#',
-      info: '#',
-      warning: '#',
-      danger: '#',
-      light: '#',
-      dark: '#',
-    },
-  };
+    // Read 'from --bs-breakpoint-??' (min-width)
+    const breakpoints = {
+        xs: Number(root.getPropertyValue('--bs-breakpoint-xs').replace('px', '')),
+        sm: Number(root.getPropertyValue('--bs-breakpoint-sm').replace('px', '')),
+        md: Number(root.getPropertyValue('--bs-breakpoint-md').replace('px', '')),
+        lg: Number(root.getPropertyValue('--bs-breakpoint-lg').replace('px', '')),
+        xl: Number(root.getPropertyValue('--bs-breakpoint-xl').replace('px', '')),
+        xxl: Number(root.getPropertyValue('--bs-breakpoint-xxl').replace('px', '')),
+    };
+
+    function isWindowWidthUp(breakpoint) {
+
+        return window.innerWidth >= breakpoints[breakpoint];
+    }
+
+    function isWindowWidthDown(breakpoint) {
+
+        return window.innerWidth < breakpoints[breakpoint];
+    }
+
+    return {
+        breakpoints,
+        collapseTransitionTime: 350, // In milliseconds
+        colors: {
+            primary: root.getPropertyValue('--bs-primary'),
+            secondary: root.getPropertyValue('--bs-secondary'),
+            success: root.getPropertyValue('--bs-success'),
+            info: root.getPropertyValue('--bs-info'),
+            warning: root.getPropertyValue('--bs-warning'),
+            danger: root.getPropertyValue('--bs-danger'),
+            light: root.getPropertyValue('--bs-light'),
+            dark: root.getPropertyValue('--bs-dark'),
+        },
+        isWindowWidthUp,
+        isWindowWidthDown,
+    };
 }
 
 function setupStateCityOptions() {
@@ -164,17 +181,23 @@ function preventInvalidFormSubmit() {
 
 function disableButtonOnSubmit(form) {
 
-  const buttons = form.querySelectorAll('button');
+    const coupledFormBbuttons = form.querySelectorAll('button');
+    const uncoupledFormButtons = document.querySelectorAll(`button[form=${form.id}]`);
 
-  buttons.forEach((button) => {
+    const foundFormButtons = [
+        ...coupledFormBbuttons,
+        ...uncoupledFormButtons,
+    ];
 
-    button.setAttribute('disabled', 'disabled');
+    foundFormButtons.forEach((button) => {
 
-    const buttonText = button.innerText;
-    button.innerHTML = `<span class="spinner-container">
+        button.setAttribute('disabled', 'disabled');
+
+        const buttonText = button.innerText;
+        button.innerHTML = `<span class="spinner-container">
                             <span class="spinner-border spinner-border-sm text-light"
                                   role="status"></span>
-                            ${ buttonText }
+                            ${buttonText}
                         </span>`;
 
     const spinner = button.querySelector('.spinner-container');
@@ -185,7 +208,7 @@ function disableButtonOnSubmit(form) {
 function setupSmoothScroll() {
 
   // Smooth page scroll
-  const elementsScrollTo = document.querySelectorAll('a.js-scroll-to');
+    const elementsScrollTo = document.querySelectorAll('a.js-scroll-top');
 
   Array.prototype.forEach.call(elementsScrollTo, function (el, i) {
     el.addEventListener('click', function (event) {
@@ -202,15 +225,15 @@ function setupSmoothScroll() {
 
     if (!target) {
 
-      console.error(`Alvo não encontrado, verifique se existe um elemento na página com o id ${targetSelector}.`);
+        console.error(`Alvo não encontrado, verifique se existe um elemento na página com o id ${targetSelector}.`);
       return;
     }
 
     const scrollTop = target.getBoundingClientRect().top + document.body.scrollTop + additionOffset;
 
     window.scrollBy({
-      top: scrollTop,
-      behavior: 'smooth'
+        top: scrollTop,
+        behavior: 'smooth',
     });
   }
 }
@@ -275,67 +298,145 @@ function onChangeSelectLink() {
 
 function setupSelect2() {
 
-  $('select.js-select2')
-      .select2({
-        theme: 'bootstrap',
-        language: 'pt-BR',
-      });
+    $('select.js-select2')
+        .select2({
+            theme: 'bootstrap',
+            language: 'pt-BR',
+        });
+}
+
+function getBrowser() {
+
+    const userAgent = navigator.userAgent.toLowerCase();
+    const hasUserAgentSafariToken = userAgent.indexOf('safari') > -1;
+    const hasUserAgentChromeToken = userAgent.indexOf('chrome') > -1;
+
+    if (hasUserAgentSafariToken) {
+
+        if (hasUserAgentChromeToken) {
+
+            return 'chrome';
+        }
+
+        return 'safari';
+    }
+}
+
+function isSafari() {
+
+    return getBrowser() === 'safari';
 }
 
 function setupInputMasks() {
 
-  function setMaskToAllElements(elements, maskOptions) {
-    Array.prototype.forEach.call(elements, function (element){
-      const mask = IMask(element, maskOptions);
-    })
-  }
+    function setMaskToAllElements(elements, maskOptions) {
 
-  const phoneMaskOptions = {mask: [{mask: '(00) 0000-0000'}, {mask: '(00) 00000-0000'}]};
-  setMaskToAllElements(document.querySelectorAll('.js-mask-phone'), phoneMaskOptions);
+        elements.forEach(function (element) {
 
-  const cpfMaskOptions = {mask: '000.000.000-00'};
-  setMaskToAllElements(document.querySelectorAll('.js-mask-cpf'), cpfMaskOptions);
+            const mask = IMask(element, maskOptions);
 
-  const cnpjMaskOptions = {mask: '00.000.000/0000-00'};
-  setMaskToAllElements(document.querySelectorAll('.js-mask-cnpj'), cnpjMaskOptions);
+            mask.on('complete', function () {
 
-  const cpfcnpjMaskOptions = {mask: [cpfMaskOptions, cnpjMaskOptions]};
-  setMaskToAllElements(document.querySelectorAll('.js-mask-cpfcnpj'), cpfcnpjMaskOptions);
+                // Safari doesn't detect the latest input changes
+                if (isSafari()) {
 
-  const cepMaskOptions = {mask: '00000-000'};
-  setMaskToAllElements(document.querySelectorAll('.js-mask-cep'), cepMaskOptions);
-
-  const moneyMaskOptions = {
-    mask: 'R$ num',
-    blocks: {
-      num: {
-        mask: Number,
-        thousandsSeparator: '.'
-      }
+                    element.dispatchEvent(new InputEvent('change'));
+                }
+            });
+        });
     }
-  }
-  setMaskToAllElements(document.querySelectorAll('.js-mask-money'), moneyMaskOptions);
 
-  const dateMaskOptions = {
-    mask: Date,
-    autofix: true,
-    blocks: {
-      d: {mask: IMask.MaskedRange, from: 1, to: 31, maxLength: 2},
-      m: {mask: IMask.MaskedRange, from: 1, to: 12, maxLength: 2},
-      Y: {mask: IMask.MaskedRange, from: 1900, to: 2999}
-    }
-  };
-  setMaskToAllElements(document.querySelectorAll('.js-mask-date'), dateMaskOptions);
+    const phoneMaskOptions = {
+        mask: [
+            {mask: '(00) 0000-0000'},
+            {mask: '(00) 00000-0000'},
+        ],
+    };
 
-  const cpfCnpjValidators = new CpfCnpjValidators();
-  const cpfInput = document.querySelector(cpfCnpjValidators.selectors.cpf);
-  const cnpjInput = document.querySelector(cpfCnpjValidators.selectors.cnpj);
+    setMaskToAllElements(
+        document.querySelectorAll('.js-mask-phone'),
+        phoneMaskOptions,
+    );
 
-  if (cpfInput) {
+    const cpfMaskOptions = {mask: '000.000.000-00'};
 
-    cpfInput.addEventListener('blur', function (event) {
+    setMaskToAllElements(
+        document.querySelectorAll('.js-mask-cpf'),
+        cpfMaskOptions,
+    );
 
-      cpfCnpjValidators.checkCPF(event.target);
+    const cnpjMaskOptions = {mask: '00.000.000/0000-00'};
+
+    setMaskToAllElements(
+        document.querySelectorAll('.js-mask-cnpj'),
+        cnpjMaskOptions,
+    );
+
+    const cpfcnpjMaskOptions = {mask: [cpfMaskOptions, cnpjMaskOptions]};
+
+    setMaskToAllElements(
+        document.querySelectorAll('.js-mask-cpfcnpj'),
+        cpfcnpjMaskOptions,
+    );
+
+    const cepMaskOptions = {mask: '00000-000'};
+    setMaskToAllElements(
+        document.querySelectorAll('.js-mask-cep'),
+        cepMaskOptions,
+    );
+
+    const moneyMaskOptions = {
+        mask: 'R$ num',
+        blocks: {
+            num: {
+                mask: Number,
+                thousandsSeparator: '.',
+            },
+        },
+    };
+
+    setMaskToAllElements(
+        document.querySelectorAll('.js-mask-money'),
+        moneyMaskOptions,
+    );
+
+    const dateMaskOptions = {
+        mask: Date,
+        autofix: true,
+        blocks: {
+            d: {
+                mask: IMask.MaskedRange,
+                from: 1,
+                to: 31,
+                maxLength: 2,
+            },
+            m: {
+                mask: IMask.MaskedRange,
+                from: 1,
+                to: 12,
+                maxLength: 2,
+            },
+            Y: {
+                mask: IMask.MaskedRange,
+                from: 1900,
+                to: 2999,
+            },
+        },
+    };
+    setMaskToAllElements(
+        document.querySelectorAll('.js-mask-date'),
+        dateMaskOptions,
+    );
+
+    const cpfCnpjValidators = new CpfCnpjValidators();
+    const cpfInput = document.querySelector(cpfCnpjValidators.selectors.cpf);
+    const cnpjInput = document.querySelector(cpfCnpjValidators.selectors.cnpj);
+
+    if (cpfInput) {
+
+        cpfInput.addEventListener('blur', function (event) {
+
+            cpfCnpjValidators.checkCPF(event.target);
     });
   }
 
@@ -396,14 +497,22 @@ function setupCepSearch() {
 
 function setupPopover() {
 
-  $('[data-toggle="popover"]')
-      .popover();
+    const popoverTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="popover"]'));
+
+    popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl);
+    });
 }
 
 function setupTooltip() {
 
-  $('[data-toggle="tooltip"]')
-      .tooltip();
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll(
+        '[data-bs-toggle="tooltip"]'));
+
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
 }
 
 function setupAnchorReloadPrevention() {
@@ -417,18 +526,27 @@ function setupAnchorReloadPrevention() {
 
 function setupInfiniteScroll() {
 
-  new InfiniteScroll('.infinite-scroll', {
-    path: 'a[rel~="next"]',
-    append: '.infinite-scroll-content',
-    scrollThreshold: 100,
-    status: '.page-load-status',
-    history: false
-  });
+    const scrollContainerElement = document.querySelector('.infinite-scroll');
+    const nextElementSelector = 'a[rel~="next"]';
+    const nextPageElement = document.querySelector(nextElementSelector);
+
+    if (!scrollContainerElement || !nextPageElement) {
+
+        return;
+    }
+
+    new InfiniteScroll(scrollContainerElement, {
+        path: nextElementSelector,
+        append: '.infinite-scroll-content',
+        scrollThreshold: 100,
+        status: '.page-load-status',
+        history: 'push',
+    });
 }
 
 function setupShareWindow() {
 
-  $('.share')
+    $('.js-btn-share')
       .click(function (e) {
         e.preventDefault();
         window.open(
@@ -552,45 +670,53 @@ function setupClipboardJS() {
   }
 }
 
-function setupDataLayerEventClickButton() {
+function setupShareAPI() {
 
-  const buttons = document.querySelectorAll('.js-btn-data-layer');
+    const shareButtonElements = document.querySelectorAll('.js-btn-share');
 
-  if (!buttons.length) {
+    if (!shareButtonElements.length) {
 
-    return;
-  }
+        return;
+    }
 
-  buttons.forEach((button) => {
+    const pageTitle = document.querySelector('title').textContent;
+    const pageDescription = document.querySelector('meta[name="description"]')
+        .getAttribute('content');
 
-    button.addEventListener('click', (clickEvent) => {
+    shareButtonElements.forEach(buttonItem => {
 
-      const nameDataLayerAction = 'data-fmd-datalayer-action';
-      const linkDataLayerAction = clickEvent.currentTarget.getAttribute(
-          nameDataLayerAction);
+        buttonItem.addEventListener('click', function () {
 
-      if (!linkDataLayerAction) {
-
-        throw new Error(`Adicione atributo ${ nameDataLayerAction } com seu valor`);
-      }
-
-      const dataLayerOptions = getDataLayerOptions({ action: linkDataLayerAction });
-      window.dataLayer.push(dataLayerOptions);
-    });
+            navigator.share(
+                {
+                    title: pageTitle,
+                    text: pageDescription,
+                    url: location.href,
+                    fbId: buttonItem.getAttribute('data-fmd-share-btn-fbidentification'),
+                },
+                {
+                    // change this configurations to hide specific unnecessary icons
+                    copy: true,
+                    email: true,
+                    print: true,
+                    sms: true,
+                    messenger: true,
+                    facebook: true,
+                    whatsapp: true,
+                    twitter: true,
+                    linkedin: true,
+                    telegram: true,
+                    skype: true,
+                    language: 'pt', // specify the default language
+                },
+            )
+                .then(() => console.log('Compartilhado com sucesso!'))
+                .catch(error => console.log(
+                    'Ops! Algo de errado aconteceu:\'(\n',
+                    error,
+                ));
+        });
   });
-}
-
-function getDataLayerOptions(options) {
-
-  window.dataLayer = window.dataLayer || [];
-
-  return {
-    ...options,
-    event: options.event || 'gaEvent',
-    category: options.category || 'clique',
-    action: options.action || '',
-    label: options.label || 'enviado',
-  };
 }
 
 $(function () {
@@ -621,17 +747,21 @@ $(function () {
 
   // setupAnchorReloadPrevention();
 
-  // setupShareWindow();
+    // setupShareWindow();
 
-  // insertCopyrightYear();
+    // insertCopyrightYear();
 
-  initializeFormHelpers();
+    initializeFormHelpers();
 
-  // setupDefaultSlider();
+    // setupDefaultSlider();
 
-  // setupClipboardJS();
+    // setupClipboardJS();
 
-  // setupDataLayerEventClickButton();
+    setupShareAPI();
+
+    // setupDataLayerEventClickButton();
+
+    setupUtmHelpers();
 });
 
 window.addEventListener('load', function () {
@@ -646,7 +776,7 @@ window.addEventListener('load', function () {
     // setupLax();
   }
 
-  // setupInfiniteScroll();
+    setupInfiniteScroll();
 });
 
 setupLivewire();

@@ -1,9 +1,7 @@
 .video {
-
   &-film {
-
     position: absolute;
-    background: $backdrop-color url("/images/video-film.png");
+    background: rgba($black, 0.3) url("/images/video-film.png");
     top: 0;
     left: 0;
     right: 0;

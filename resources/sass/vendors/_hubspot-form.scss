@@ -6,7 +6,6 @@
 
 /* Form */
 .hs-form {
-
   /* Form Field (selector for form field wrapper) */
   .hs-input {
 
@@ -17,9 +16,7 @@
   }
 
   .hs-form-radio {
-
     label {
-
       span {
 
       }
@@ -38,11 +35,9 @@
   }
 
   .hs-form-field {
-
     label {
 
-      @extend .bold-text;
-
+      font-weight: $font-weight-bold;
       color: $input-color;
     }
 
@@ -51,28 +46,23 @@
   }
 
   .inputs-list {
-
-    @extend .list-unstyled;
-
+    list-style: none;
+    padding-left: 0;
     margin: 0;
 
     label {
-
       position: relative;
       margin: 0;
 
       a {
-
-        @extend .text-reset;
+        text-decoration: none !important;
       }
 
       span {
-
-        @extend .regular-text;
+        font-weight: $font-weight-normal;
       }
 
       input[type="checkbox"] {
-
         float: none;
         position: absolute;
         top: 50%;
@@ -100,11 +90,10 @@
   textarea,
   select {
     @extend .form-control;
-    @extend .mb-1q;
+    margin-bottom: 1.5rem;
   }
 
   select.hs-input {
-
     @extend .custom-select;
   }
 
@@ -165,7 +154,6 @@
 
   /* Error message (selector for validation messages) */
   .hs-error-msgs {
-
     @extend .invalid-feedback;
     position: absolute;
     top: 100%;
@@ -173,19 +161,14 @@
     padding: 0;
 
     label.hs-error-msg {
-
-      @extend .regular-text;
-
+      font-weight: $font-weight-normal;
       color: $danger;
     }
   }
 
   .hs_error_rollup {
-
     label {
-
-      @extend .regular-text;
-
+      font-weight: $font-weight-normal;
       position: absolute;
       color: $danger;
       bottom: 10px;
@@ -193,11 +176,9 @@
   }
 
   .hs-submit {
-
   }
 
   .hs_error_rollup {
-
   }
 
   /* Placeholder Text (styles the placeholder attribute text) */
@@ -214,13 +195,12 @@
   }
 
   /* Multi Column Form (selectors for fieldsets and field wrappers)
-     ========================================================================== */
+       ========================================================================== */
 
   .form-columns-1 {
   }
 
   .form-columns-1 {
-
     .hs-form-field {
     }
   }
@@ -229,7 +209,6 @@
   }
 
   .form-columns-2 {
-
     .hs-form-field {
     }
   }
@@ -238,36 +217,30 @@
   }
 
   .form-columns-3 {
-
     .hs-form-field {
     }
   }
 
   /* Submit buttons (selectors for all non-CTA buttons)
-     ========================================================================== */
+       ========================================================================== */
 
   .hs-button.primary,
   input[type="submit"],
   input[type="button"] {
-
     @extend .btn;
     @extend .btn-block;
     @extend .btn-warning;
     @extend .text-uppercase;
-
     margin-top: 2rem;
 
     &:focus {
-
     }
 
     &:hover {
-
     }
   }
 }
 
 .submitted-message {
-
-  @extend .text-white;
+  color: $white;
 }

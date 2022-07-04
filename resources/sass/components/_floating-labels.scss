@@ -1,0 +1,84 @@
+$form-floating-label-height: 100%;
+$form-floating-label-top: 0;
+$form-floating-label-left: 0;
+$form-floating-label-padding: $form-floating-padding-y $form-floating-padding-x;
+$form-floating-label-bg: none;
+
+@if $enable-floating-label-over-the-line {
+  $form-floating-height: $input-height;
+  $form-floating-line-height: $input-line-height;
+  $form-floating-padding-y: $input-padding-y;
+  $form-floating-input-padding-t: $input-padding-y;
+  $form-floating-input-padding-b: $input-padding-y;
+  $form-floating-label-padding: 0 0.5rem;
+  $form-floating-label-height: auto;
+  $form-floating-label-top: $form-floating-padding-y;
+  $form-floating-label-left: $input-padding-x - 0.5rem;
+  $form-floating-label-opacity: 1;
+  $form-floating-label-bg: $input-bg;
+  $form-floating-label-transform: scale(.85) translateY(-1rem) translateX(.15rem);
+  $form-floating-transition: $transition-base;
+}
+
+.form-floating {
+  > .form-control,
+  > .form-select {
+    height: $form-floating-height;
+  }
+
+  > textarea.form-control {
+    height: calc(#{$input-height} * 3);
+  }
+
+  > label {
+    top: $form-floating-label-top;
+    left: $form-floating-label-left;
+    height: $form-floating-label-height;
+    padding: $form-floating-label-padding;
+    background: $form-floating-label-bg;
+    margin: auto;
+  }
+
+  // stylelint-disable no-duplicate-selectors
+  > .form-control {
+    padding: $form-floating-padding-y $form-floating-padding-x;
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      padding-top: $form-floating-input-padding-t;
+      padding-bottom: $form-floating-input-padding-b;
+    }
+
+    // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
+    &:-webkit-autofill {
+      padding-top: $form-floating-input-padding-t;
+      padding-bottom: $form-floating-input-padding-b;
+    }
+  }
+
+  > .form-select {
+    padding-top: $form-floating-input-padding-t;
+    padding-bottom: $form-floating-input-padding-b;
+  }
+
+  > .form-control:focus,
+  > .form-control:not(:placeholder-shown),
+  > .form-select {
+    ~ label {
+      top: 0;
+      opacity: $form-floating-label-opacity;
+      transform: $form-floating-label-transform;
+    }
+  }
+
+  // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
+  > .form-control:-webkit-autofill {
+    ~ label {
+      top: 0;
+      opacity: $form-floating-label-opacity;
+      transform: $form-floating-label-transform;
+    }
+  }
+
+  // stylelint-enable no-duplicate-selectors
+}
