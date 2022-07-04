@@ -24,7 +24,10 @@ const wpConfig = {
       output: {
         filename: 'svg/sprite.svg',
         svgo: {
-          removeTitle: true,
+          plugins: [
+            { name: 'removeTitle', active: true },
+            { name: 'convertColors', params: { currentColor: 'black' }},
+          ],
         },
         chunk: {
           name: '../resources/js/spritemap',
