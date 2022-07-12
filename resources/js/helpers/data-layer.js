@@ -14,30 +14,30 @@
 
 function setupDataLayerEventClickButton() {
 
-  const buttons = document.querySelectorAll('.js-btn-data-layer');
+    const buttons = document.querySelectorAll('.js-btn-data-layer');
 
-  if (!buttons.length) {
+    if (!buttons.length) {
 
-    return;
-  }
+        return;
+    }
 
-  buttons.forEach((button) => {
+    buttons.forEach((button) => {
 
-    button.addEventListener('click', (clickEvent) => {
+        button.addEventListener('click', (clickEvent) => {
 
-      const nameDataLayerAction = 'data-fmd-datalayer-action';
-      const linkDataLayerAction = clickEvent.currentTarget.getAttribute(
-          nameDataLayerAction);
+            const nameDataLayerAction = 'data-fmd-datalayer-action';
+            const linkDataLayerAction = clickEvent.currentTarget.getAttribute(
+                nameDataLayerAction);
 
-      if (!linkDataLayerAction) {
+            if (!linkDataLayerAction) {
 
-        throw new Error(`Adicione atributo ${ nameDataLayerAction } com seu valor`);
-      }
+                throw new Error(`Adicione atributo ${nameDataLayerAction} com seu valor`);
+            }
 
-      const dataLayerClickEvent = genarateDataLayerEvent({ action: linkDataLayerAction });
-      updateDataLayer(dataLayerClickEvent);
+            const dataLayerClickEvent = genarateDataLayerEvent({action: linkDataLayerAction});
+            updateDataLayer(dataLayerClickEvent);
+        });
     });
-  });
 }
 
 /**
@@ -47,13 +47,13 @@ function setupDataLayerEventClickButton() {
  * */
 function genarateDataLayerEvent(options) {
 
-  return {
-    ...options,
-    event: options.event || 'gaEvent',
-    category: options.category || 'clique',
-    action: options.action || '',
-    label: options.label || 'enviado',
-  };
+    return {
+        ...options,
+        event: options.event || 'gaEvent',
+        category: options.category || 'clique',
+        action: options.action || '',
+        label: options.label || 'enviado',
+    };
 }
 
 /**
@@ -62,16 +62,16 @@ function genarateDataLayerEvent(options) {
  * */
 function updateDataLayer(dataToBePushed) {
 
-  const hasDataLayer = !!window.dataLayer && !!window.dataLayer.length;
+    const hasDataLayer = !!window.dataLayer && !!window.dataLayer.length;
 
-  if (hasDataLayer) {
+    if (hasDataLayer) {
 
-    window.dataLayer = [
-      ...window.dataLayer,
-      dataToBePushed,
-    ];
-    return;
-  }
+        window.dataLayer = [
+            ...window.dataLayer,
+            dataToBePushed,
+        ];
+        return;
+    }
 
-  window.dataLayer = [dataToBePushed];
+    window.dataLayer = [dataToBePushed];
 }

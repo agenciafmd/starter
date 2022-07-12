@@ -19,7 +19,7 @@ updated section, for example:_
 
 # Metadados (Metadata)
 
-Se a PR resolver algum problema que esteja mapeado nas issues, adicione link 
+Se a PR resolver algum problema que esteja mapeado nas issues, adicione link
 para issue reportada para que possamos fechá-la.
 
 _If the PR resolves some bug reported in issues, add the link to the related

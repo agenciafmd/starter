@@ -20,7 +20,7 @@ class Contact extends Component
     public string $city = '';
 
     public string $message = '';
-    
+
     public $terms = null;
 
     public function render()

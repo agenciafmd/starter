@@ -72,10 +72,18 @@
     });
 
     window.livewire.on('datalayer', (param) => {
+        const defaultDataLayerOptions = {
+            event: 'formFired',
+            action: 'success',
+            details: param.message || 'Formulário Disparado!',
+            form_name: 'Formulário Qualquer',
+            form_id: '00000',
+        };
+
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
-            event: param.event || 'form',
-            form_name: param.form_name || 'nao-configurado-pelo-backend',
+            ...defaultDataLayerOptions,
+            ...param,
         });
     });
 </script>

@@ -82,14 +82,14 @@ function guideUserToTheFirstError() {
   const currentScrollPosition = $(window)
       .scrollTop();
   const invalidInputsSelectors = [
-    '.form-control:invalid',
-    '.form-select:invalid',
-    '.form-check-input:invalid',
-    '.form-range:invalid',
-    '.form-control.is-invalid',
-    '.form-select.is-invalid',
-    '.form-check-input.is-invalid',
-    '.form-range.is-invalid',
+      '.form-control:invalid',
+      '.form-select:invalid',
+      '.form-check-input:invalid',
+      '.form-range:invalid',
+      '.form-control.is-invalid',
+      '.form-select.is-invalid',
+      '.form-check-input.is-invalid',
+      '.form-range.is-invalid',
   ];
   const $invalidInputs = $(invalidInputsSelectors.join(', '));
   // Selects the parent to get input label

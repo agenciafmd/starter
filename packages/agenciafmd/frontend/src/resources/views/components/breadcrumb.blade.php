@@ -1,5 +1,5 @@
 @props([
-    'list',
+'list',
 ])
 
 <nav aria-label="breadcrumb" {{ $attributes }}>

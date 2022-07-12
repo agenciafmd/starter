@@ -44,89 +44,89 @@ const wpConfig = {
 mix
     .sass('resources/sass/frontend.scss', 'public/css')
     .purgeCss({
-      extend: {
-        content: [
-          path.join(__dirname, 'packages/agenciafmd/frontend/src/**/*.php'),
-          path.join(__dirname, 'node_modules/@fancyapps/fancybox/dist/*.js'),
-          path.join(__dirname, 'node_modules/swiper/**/*.js'),
-          path.join(__dirname, 'node_modules/jquery/dist/jquery.min.js'),
-          path.join(__dirname, 'node_modules/select2/dist/**/*.js'),
-          path.join(__dirname, 'node_modules/sweetalert2/dist/*.js'),
-          path.join(
-              __dirname,
-              'node_modules/bootstrap/dist/js/bootstrap.min.js',
-          ),
-        ],
-        // Include classes we don't have direct access
-        safelist: [/hs-*/, /fancybox-*/, /js-*/, /swiper-*/, /swal2-*/],
-      },
+        extend: {
+            content: [
+                path.join(__dirname, 'packages/agenciafmd/frontend/src/**/*.php'),
+                path.join(__dirname, 'node_modules/@fancyapps/fancybox/dist/*.js'),
+                path.join(__dirname, 'node_modules/swiper/**/*.js'),
+                path.join(__dirname, 'node_modules/jquery/dist/jquery.min.js'),
+                path.join(__dirname, 'node_modules/select2/dist/**/*.js'),
+                path.join(__dirname, 'node_modules/sweetalert2/dist/*.js'),
+                path.join(
+                    __dirname,
+                    'node_modules/bootstrap/dist/js/bootstrap.min.js',
+                ),
+            ],
+            // Include classes we don't have direct access
+            safelist: [/hs-*/, /fancybox-*/, /js-*/, /swiper-*/, /swal2-*/],
+        },
     })
     .criticalCss({
-      enabled: mix.inProduction(),
-      paths: {
-        base: process.env.APP_URL + '/html/',
-        templates: 'public/css/critical/',
-        suffix: '',
-      },
-      urls: [
-        // urls que temos no /html
-        {
-          url: 'index',
-          template: 'index',
+        enabled: mix.inProduction(),
+        paths: {
+            base: process.env.APP_URL + '/html/',
+            templates: 'public/css/critical/',
+            suffix: '',
         },
-        // {url: 'contato', template: 'contato'},
-        // {url: 'quem-somos', template: 'quem-somos'},
-      ],
-      dimensions: [
-        {
-          width: 375,
-          height: 667,
-        },
-        {
-          width: 1024,
-          height: 768,
-        },
-        {
-          width: 1280,
-          height: 720,
-        },
-        {
-          width: 1366,
-          height: 768,
-        },
-        {
-          width: 1920,
-          height: 1080,
-        },
-      ],
-      ignore: ['@font-face'],
+        urls: [
+            // urls que temos no /html
+            {
+                url: 'index',
+                template: 'index',
+            },
+            // {url: 'contato', template: 'contato'},
+            // {url: 'quem-somos', template: 'quem-somos'},
+        ],
+        dimensions: [
+            {
+                width: 375,
+                height: 667,
+            },
+            {
+                width: 1024,
+                height: 768,
+            },
+            {
+                width: 1280,
+                height: 720,
+            },
+            {
+                width: 1366,
+                height: 768,
+            },
+            {
+                width: 1920,
+                height: 1080,
+            },
+        ],
+        ignore: ['@font-face'],
     })
     .options({
-      imgLoaderOptions: {
-        enabled: true,
-        gifsicle: {},
-        mozjpeg: {
-          quality: 85,
-          progressive: true,
+        imgLoaderOptions: {
+            enabled: true,
+            gifsicle: {},
+            mozjpeg: {
+                quality: 85,
+                progressive: true,
+            },
+            optipng: {
+                enabled: false,
+            },
+            pngquant: {
+                quality: '85-90',
+                speed: 4,
+            },
+            svgo: {},
         },
-        optipng: {
-          enabled: false,
-        },
-        pngquant: {
-          quality: '85-90',
-          speed: 4,
-        },
-        svgo: {},
-      },
-      processCssUrls: false,
+        processCssUrls: false,
     })
     .copy('resources/fonts', 'public/fonts')
     .ImageWebp({
-      from: 'resources/images',
-      to: 'resources/images',
-      imageminWebpOptions: {
-        quality: 95
-      }
+        from: 'resources/images',
+        to: 'resources/images',
+        imageminWebpOptions: {
+            quality: 95
+        }
     })
     .copy('resources/images/**', 'public/images')
     .copy('resources/svg/*.svg', 'public/svg')
@@ -134,29 +134,29 @@ mix
     .babel(frontendImports, 'public/js/frontend.js')
     .sourceMaps(false, 'source-map')
     .browserSync({
-      host: '192.168.10.10',
-      proxy: projectProxy,
-      open: false,
-      watch: true,
-      files: [
-        'app/**/*.php',
-        'resources/views/**/*.php',
-        'packages/agenciafmd/frontend/src/**/*.php',
-        'public/css/**/*.css',
-        'public/fonts/*',
-        'public/images/*',
-        'public/js/**/*.js',
-        'public/json/*',
-        'public/svg/*',
-      ],
-      watchOptions: {
-        usePolling: true,
-        interval: 500,
-      },
+        host: '192.168.10.10',
+        proxy: projectProxy,
+        open: false,
+        watch: true,
+        files: [
+            'app/**/*.php',
+            'resources/views/**/*.php',
+            'packages/agenciafmd/frontend/src/**/*.php',
+            'public/css/**/*.css',
+            'public/fonts/*',
+            'public/images/*',
+            'public/js/**/*.js',
+            'public/json/*',
+            'public/svg/*',
+        ],
+        watchOptions: {
+            usePolling: true,
+            interval: 500,
+        },
     })
     .webpackConfig(wpConfig);
 
 if (mix.inProduction()) {
 
-  mix.version();
+    mix.version();
 }

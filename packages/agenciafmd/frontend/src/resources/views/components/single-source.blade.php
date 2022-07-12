@@ -1,7 +1,7 @@
 @props([
-    'image',
-    'title',
-    'alt' => $title,
+'image',
+'title',
+'alt' => $title,
 ])
 
 <source type="image/webp"
@@ -11,4 +11,4 @@
 <x-frontend::image :image="$image"
                    :alt="$alt"
                    :title="$title"
-                   {{ $attributes }} />
+        {{ $attributes }} />

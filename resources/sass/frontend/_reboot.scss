@@ -1,16 +1,16 @@
 section {
-	position: relative;
+  position: relative;
 }
 
 textarea {
-	resize: none;
+  resize: none;
 }
 
 p:last-child {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 a {
-	outline: none !important;
-	transition: $transition-base;
+  outline: none !important;
+  transition: $transition-base;
 }

@@ -1,13 +1,13 @@
 @props([
-    'image',
-    'title',
-    'alt' => $title,
-    'pictureClass' => null,
-    'hasBreakpoints' => false,
-    'breakpointDesktopWidth' => null,
-    'breakpointDesktopSuffix' => null,
-    'breakpointNotebookWidth' => null,
-    'breakpointNotebookSuffix' => null,
+'image',
+'title',
+'alt' => $title,
+'pictureClass' => null,
+'hasBreakpoints' => false,
+'breakpointDesktopWidth' => null,
+'breakpointDesktopSuffix' => null,
+'breakpointNotebookWidth' => null,
+'breakpointNotebookSuffix' => null,
 ])
 
 <picture class="{{ $pictureClass }}">
@@ -19,6 +19,6 @@
                          :breakpointDesktopSuffix="$breakpointDesktopSuffix"
                          :breakpointNotebookWidth="$breakpointNotebookWidth"
                          :breakpointNotebookSuffix="$breakpointNotebookSuffix"
-    
-                         {{ $attributes }}></x-dynamic-component>
+
+            {{ $attributes }}></x-dynamic-component>
 </picture>

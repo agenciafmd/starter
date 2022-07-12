@@ -29,27 +29,27 @@ $should-use-local-font-face: false;
 }
 
 $light-font-map: (
-    font-family: 'Roboto',
-    file-name: 'Roboto-Light',
-    font-weight: 300,
+        font-family: 'Roboto',
+        file-name: 'Roboto-Light',
+        font-weight: 300,
 );
 
 $regular-font-map: (
-    font-family: 'Roboto',
-    file-name: 'Roboto-Regular',
-    font-weight: 400,
+        font-family: 'Roboto',
+        file-name: 'Roboto-Regular',
+        font-weight: 400,
 );
 
 $bold-font-map: (
-    font-family: 'Roboto',
-    file-name: 'Roboto-Bold',
-    font-weight: 700,
+        font-family: 'Roboto',
+        file-name: 'Roboto-Bold',
+        font-weight: 700,
 );
 
 $local-fonts: (
-  'light': $light-font-map,
-  'regular': $regular-font-map,
-  'bold': $bold-font-map,
+        'light': $light-font-map,
+        'regular': $regular-font-map,
+        'bold': $bold-font-map,
 );
 
 @if ($should-use-local-font-face) {

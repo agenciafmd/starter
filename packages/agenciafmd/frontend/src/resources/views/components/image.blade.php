@@ -1,8 +1,8 @@
 @props([
-    'image',
-    'title',
-    'alt' => $title,
-    'isSingleImage' => false,
+'image',
+'title',
+'alt' => $title,
+'isSingleImage' => false,
 ])
 
 <img loading="lazy"
@@ -13,4 +13,4 @@
      title="{{ $title }}"
      width="1"
      height="1"
-     {{ $attributes->merge(['class' => 'img-fluid']) }}>
+        {{ $attributes->merge(['class' => 'img-fluid']) }}>
