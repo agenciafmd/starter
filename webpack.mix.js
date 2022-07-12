@@ -25,7 +25,6 @@ const wpConfig = {
         filename: 'svg/sprite.svg',
         svgo: {
           plugins: [
-            { name: 'cleanupIDs', active: false },
             { name: 'removeTitle', active: true },
             { name: 'convertColors', params: { currentColor: 'black' }},
           ],
