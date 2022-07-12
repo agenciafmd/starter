@@ -19,22 +19,25 @@ const projectProxy = process.env.APP_URL.replace(new RegExp(httpRegex), '');
  * </svg>
  * */
 const wpConfig = {
-    plugins: [
-        new SVGSpritemapPlugin('resources/svg/sprite/*.svg', {
-            output: {
-                filename: 'svg/sprite.svg',
-                svgo: {
-                    removeTitle: true,
-                },
-                chunk: {
-                    name: '../resources/js/spritemap',
-                },
-            },
-            sprite: {
-                prefix: false,
-            },
-        }),
-    ],
+  plugins: [
+    new SVGSpritemapPlugin('resources/svg/sprite/*.svg', {
+      output: {
+        filename: 'svg/sprite.svg',
+        svgo: {
+          plugins: [
+            { name: 'removeTitle', active: true },
+            { name: 'convertColors', params: { currentColor: 'black' }},
+          ],
+        },
+        chunk: {
+          name: '../resources/js/spritemap',
+        },
+      },
+      sprite: {
+        prefix: false,
+      },
+    }),
+  ],
 };
 
 mix
