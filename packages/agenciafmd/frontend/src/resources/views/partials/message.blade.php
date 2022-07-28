@@ -73,11 +73,11 @@
 
     window.livewire.on('datalayer', (param) => {
         const defaultDataLayerOptions = {
-            event: 'formFired',
-            action: 'success',
+            event: param.event || 'form',
+            action: param.action || 'success',
             details: param.message || 'Formulário Disparado!',
-            form_name: 'Formulário Qualquer',
-            form_id: '00000',
+            form_name: param.form_name || 'Contato',
+            form_id: param.form_id || '00000',
         };
 
         window.dataLayer = window.dataLayer || [];
