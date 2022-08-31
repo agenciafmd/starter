@@ -1,0 +1,5 @@
+$custom-utilities-colors: (
+  //"custom-color": to-rgb($custom-color)
+);
+
+$utilities-colors: map-merge($theme-colors-rgb, $custom-utilities-colors);
