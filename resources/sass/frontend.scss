@@ -4,10 +4,18 @@
 // scss-docs-start import-stack
 // Configuration
 @import "~bootstrap/scss/functions";
+
+// Custom fonts
 @import "frontend/fonts";
+
+// Override variables
 @import "frontend/variables";
 @import "~bootstrap/scss/variables";
+
+// Override maps
+@import "frontend/maps";
 @import "~bootstrap/scss/maps";
+
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/utilities";
 @import "frontend/utilities";

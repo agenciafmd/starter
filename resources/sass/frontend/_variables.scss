@@ -321,6 +321,20 @@ $theme-colors: (
 ) !default;
 // scss-docs-end theme-colors-map
 
+// Custom colors
+$custom-color-1: #df711b;
+$custom-color-2: #712cf9;
+
+// Usage: Alert, Border, Btn, Table, Text color, Backgroynd color, Etc...
+$custom-theme-colors: (
+  "custom-color-1": $custom-color-1
+);
+
+// Usage: Text, Background and Border color only
+$custom-utilities-colors: map-loop((
+  "custom-color-2": $custom-color-2
+), to-rgb, "$value");
+
 // Characters which are escaped by the escape-svg function
 $escaped-characters: (
     ("<", "%3c"),
