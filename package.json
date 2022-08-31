@@ -29,7 +29,7 @@
     },
     "dependencies": {
         "@fancyapps/fancybox": "^3.5.7",
-        "bootstrap": "^5.1.0",
+        "bootstrap": "^5.2.0",
         "imask": "^6.0.7",
         "infinite-scroll": "^4.0.1",
         "jquery": "^3.6.0",
