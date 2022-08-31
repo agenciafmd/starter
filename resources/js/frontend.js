@@ -322,31 +322,38 @@ function setupInputMasks() {
             {mask: '(00) 00000-0000'},
         ],
     };
-
     setMaskToAllElements(
         document.querySelectorAll('.js-mask-phone'),
         phoneMaskOptions,
     );
 
     const cpfMaskOptions = {mask: '000.000.000-00'};
-
     setMaskToAllElements(
         document.querySelectorAll('.js-mask-cpf'),
         cpfMaskOptions,
     );
 
     const cnpjMaskOptions = {mask: '00.000.000/0000-00'};
-
     setMaskToAllElements(
         document.querySelectorAll('.js-mask-cnpj'),
         cnpjMaskOptions,
     );
 
     const cpfcnpjMaskOptions = {mask: [cpfMaskOptions, cnpjMaskOptions]};
-
     setMaskToAllElements(
         document.querySelectorAll('.js-mask-cpfcnpj'),
         cpfcnpjMaskOptions,
+    );
+
+    const rgMaskOptions = {
+      mask: '00.000.000-X',
+      definitions: {
+        'X': /[0-9Xx]/
+      }
+    };
+    setMaskToAllElements(
+        document.querySelectorAll('.js-mask-rg'),
+        rgMaskOptions,
     );
 
     const cepMaskOptions = {mask: '00000-000'};
@@ -364,34 +371,41 @@ function setupInputMasks() {
             },
         },
     };
-
     setMaskToAllElements(
         document.querySelectorAll('.js-mask-money'),
         moneyMaskOptions,
     );
 
     const dateMaskOptions = {
-        mask: Date,
-        autofix: true,
-        blocks: {
-            d: {
-                mask: IMask.MaskedRange,
-                from: 1,
-                to: 31,
-                maxLength: 2,
-            },
-            m: {
-                mask: IMask.MaskedRange,
-                from: 1,
-                to: 12,
-                maxLength: 2,
-            },
-            Y: {
-                mask: IMask.MaskedRange,
-                from: 1900,
-                to: 2999,
-            },
+      mask: Date,
+      autofix: true,
+      pattern: 'd{/}`m{/}`Y',
+      blocks: {
+        Y: {
+          mask: IMask.MaskedRange,
+          from: 1900,
+          to: 2999,
         },
+      },
+      format: function (date) {
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        const year = date.getFullYear();
+
+        if (day < 10) day = "0" + day;
+        if (month < 10) month = "0" + month;
+
+        return [day, month, year].join('/');
+      },
+      parse: function (str) {
+        const yearMonthDay = str.split('/');
+        const day = yearMonthDay[0];
+        const month = yearMonthDay[1] - 1;
+        const year = yearMonthDay[2];
+
+        // console.log(new Date(year, month, day))
+        return new Date(year, month, day);
+      },
     };
     setMaskToAllElements(
         document.querySelectorAll('.js-mask-date'),
