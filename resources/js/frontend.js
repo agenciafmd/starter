@@ -160,11 +160,7 @@ function preventInvalidFormSubmit() {
 
         guideUserToTheFirstError();
         form.classList.add('was-validated');
-        return;
       }
-
-      // Execute the function only when form was submitted and is valid
-      disableButtonOnSubmit(form);
     }, false);
   });
 
@@ -177,32 +173,6 @@ function preventInvalidFormSubmit() {
             .removeClass('is-invalid');
         $(this)[0].setCustomValidity('');
       });
-}
-
-function disableButtonOnSubmit(form) {
-
-    const coupledFormBbuttons = form.querySelectorAll('button');
-    const uncoupledFormButtons = document.querySelectorAll(`button[form=${form.id}]`);
-
-    const foundFormButtons = [
-        ...coupledFormBbuttons,
-        ...uncoupledFormButtons,
-    ];
-
-    foundFormButtons.forEach((button) => {
-
-        button.setAttribute('disabled', 'disabled');
-
-        const buttonText = button.innerText;
-        button.innerHTML = `<span class="spinner-container">
-                            <span class="spinner-border spinner-border-sm text-light"
-                                  role="status"></span>
-                            ${buttonText}
-                        </span>`;
-
-    const spinner = button.querySelector('.spinner-container');
-    spinner.classList.add('d-inline-block');
-  });
 }
 
 function setupSmoothScroll() {
