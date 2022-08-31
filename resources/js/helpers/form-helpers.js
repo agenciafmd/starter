@@ -67,8 +67,10 @@ function setCustomFileLabel() {
 
 function setInvalidInput({ input, message }) {
 
-  input.setCustomValidity(message || 'invalid');
-  input.classList.add('is-invalid');
+  if (input.hasAttribute('required')) {
+    input.setCustomValidity(message || 'invalid');
+    input.classList.add('is-invalid');
+  }
 }
 
 function setValidInput({ input }) {
