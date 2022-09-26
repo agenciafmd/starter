@@ -6,10 +6,6 @@
   }
 }
 
-.text-underline {
-  text-decoration: underline;
-}
-
 .text-truncate {
   @for $i from 1 through 6 {
     &-#{$i} {
