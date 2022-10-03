@@ -340,7 +340,13 @@ function setupInputMasks() {
                 // Safari doesn't detect the latest input changes
                 if (isSafari()) {
 
-                    element.dispatchEvent(new InputEvent('change'));
+                  if ("createEvent" in document) {
+                    const evt = new Event("change", { "bubbles": true, "cancelable": false });
+                    element.dispatchEvent(evt);
+                    return
+                  }
+
+                  element.dispatchEvent(new InputEvent('change'));
                 }
             });
         });
