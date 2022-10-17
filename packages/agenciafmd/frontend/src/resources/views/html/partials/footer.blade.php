@@ -1,4 +1,4 @@
-<footer class="footer text-center">
+<footer class="footer text-center py-block-small bg-light">
     <p>
         © {{ date('Y') }} {{ config('app.name') }} - Todos os direitos reservados.
 

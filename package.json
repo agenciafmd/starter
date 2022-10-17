@@ -1,5 +1,6 @@
 {
     "private": true,
+    "name": "starter",
     "scripts": {
         "clean-npm-install": "rm -rf node_modules && rm package-lock.json && npm cache clean --force && npm i",
         "dev": "npm run development",
@@ -29,7 +30,7 @@
     },
     "dependencies": {
         "@fancyapps/fancybox": "^3.5.7",
-        "bootstrap": "^5.1.0",
+        "bootstrap": "^5.2.0",
         "imask": "^6.0.7",
         "infinite-scroll": "^4.0.1",
         "jquery": "^3.6.0",

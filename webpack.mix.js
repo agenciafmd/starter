@@ -57,7 +57,7 @@ mix
                 ),
             ],
             // Include classes we don't have direct access
-            safelist: [/hs-*/, /fancybox-*/, /js-*/, /swiper-*/, /swal2-*/],
+            safelist: [/hs-*/, /fancybox-*/, /js-*/, /swiper-*/, /swal2-*/, /file-upload-button*/],
         },
     })
     .criticalCss({

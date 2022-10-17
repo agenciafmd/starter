@@ -20,13 +20,10 @@
     "/images/logo-email.webp": "/images/logo-email.webp",
     "/images/logo.png": "/images/logo.png",
     "/images/logo.webp": "/images/logo.webp",
-    "/images/logo@2x.png": "/images/logo@2x.png",
-    "/images/logo@2x.webp": "/images/logo@2x.webp",
     "/images/sem-imagem.jpg": "/images/sem-imagem.jpg",
     "/images/sem-imagem.webp": "/images/sem-imagem.webp",
     "/images/video-film.png": "/images/video-film.png",
     "/images/video-film.webp": "/images/video-film.webp",
     "/favicon.ico": "/favicon.ico",
-    "/js/frontend.js": "/js/frontend.js",
-    "/svg/sprite.svg": "/svg/sprite.svg"
+    "/js/frontend.js": "/js/frontend.js"
 }
