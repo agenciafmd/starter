@@ -20300,11 +20300,8 @@ function setCustomFileLabel() {
 function setInvalidInput(_ref47) {
   var input = _ref47.input,
       message = _ref47.message;
-
-  if (input.hasAttribute('required')) {
-    input.setCustomValidity(message || 'invalid');
-    input.classList.add('is-invalid');
-  }
+  input.setCustomValidity(message || 'invalid');
+  input.classList.add('is-invalid');
 }
 
 function setValidInput(_ref48) {
