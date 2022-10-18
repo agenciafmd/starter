@@ -1,17 +1,26 @@
-// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "~bootstrap/scss/mixins/banner";
+@include bsBanner("");
+
+// scss-docs-start import-stack
+// Configuration
 @import "~bootstrap/scss/functions";
+
+// Custom fonts
 @import "frontend/fonts";
 
-// 2. Include any default variable overrides here
+// Override variables
 @import "frontend/variables";
-
-// 3. Include remainder of required Bootstrap stylesheets
 @import "~bootstrap/scss/variables";
+
+// Override maps
+@import "frontend/maps";
+@import "~bootstrap/scss/maps";
+
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/utilities";
 @import "frontend/utilities";
 
-// 4. Include any optional Bootstrap components as you like
+// Layout & components
 @import "~bootstrap/scss/root";
 @import "~bootstrap/scss/reboot";
 @import "~bootstrap/scss/type";
@@ -42,15 +51,16 @@
 @import "~bootstrap/scss/carousel";
 @import "~bootstrap/scss/spinners";
 @import "~bootstrap/scss/offcanvas";
+@import "~bootstrap/scss/placeholders";
+
+// Helpers
 @import "~bootstrap/scss/helpers";
+
+// Utilities
 @import "~bootstrap/scss/utilities/api";
 
-// 5. Add additional custom code here
-
-// 5.1 Vendors
+// Custom
 @import "vendors/vendors";
-
-// 5.2 Common (global) styles
 @import "frontend/reboot";
 @import "frontend/root";
 @import "frontend/typography";
