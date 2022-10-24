@@ -1,70 +1,58 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="utf-8">
-    <title>Tema</title>
-    <meta name="description" content="Página para visualização de todos os componentes">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible"
-          content="IE=edge"/>
+@extends('agenciafmd/frontend::html.master')
 
-    <link href="/css/frontend.css"
-          rel="stylesheet">
+@section('title', 'Tema')
+@section('description', 'Página para visualização de todos os componentes')
 
+@push('head')
     <style>
-        body {
-            padding-top: 120px
-        }
-
         iframe {
             overflow: hidden;
             border: none
         }
-
+    
         @media (min-width: 768px) {
             body > .navbar-transparent {
                 box-shadow: none
             }
-
+    
             body > .navbar-transparent .navbar-nav > .open > a {
                 box-shadow: none
             }
         }
-
+    
         .navbar .fa, .navbar .fab {
             margin-right: .25rem;
             font-size: 1rem
         }
-
+    
         #home .navbar, #help .navbar {
             background: #375ee3;
             background: linear-gradient(145deg, #375ee3 0%, #6543e0 80%);
             transition: box-shadow 200ms ease-in
         }
-
+    
         #home .navbar-brand .nav-link, #help .navbar-brand .nav-link {
             display: inline-block;
             margin-right: -30px
         }
-
+    
         #home {
             padding-top: 0
         }
-
+    
         #home .btn {
             padding: .5rem .9rem
         }
-
-        .bs-docs-section {
+    
+        .bs-docs-section:not(:first-child) {
             margin-top: 4em
         }
-
+    
         .bs-docs-section .page-header h1 {
             padding: 2rem 0;
             font-size: 3rem
         }
-
+    
         .dropdown-menu.show[aria-labelledby="themes"] {
             display: -ms-flexbox;
             display: flex;
@@ -72,27 +60,27 @@
             -ms-flex-wrap: wrap;
             flex-wrap: wrap
         }
-
+    
         .dropdown-menu.show[aria-labelledby="themes"] .dropdown-item {
             width: 33.333%
         }
-
+    
         .dropdown-menu.show[aria-labelledby="themes"] .dropdown-item:first-child {
             width: 100%
         }
-
+    
         .bs-component {
             position: relative
         }
-
+    
         .bs-component + .bs-component {
             margin-top: 1rem
         }
-
+    
         .bs-component .card {
             margin-bottom: 1rem
         }
-
+    
         .bs-component .modal {
             position: relative;
             top: auto;
@@ -102,18 +90,18 @@
             z-index: 1;
             display: block
         }
-
+    
         .bs-component .modal-dialog {
             width: 90%
         }
-
+    
         .bs-component .popover {
             position: relative;
             display: inline-block;
             width: 220px;
             margin: 20px
         }
-
+    
         .source-button {
             display: none;
             position: absolute;
@@ -122,42 +110,42 @@
             z-index: 100;
             font-weight: 700
         }
-
+    
         .source-button:hover {
             cursor: pointer
         }
-
+    
         .bs-component:hover .source-button {
             display: block
         }
-
+    
         #source-modal pre {
             max-height: calc(100vh - 11rem)
         }
-
+    
         .nav-tabs {
             margin-bottom: 15px
         }
-
+    
         .progress {
             margin-bottom: 10px
         }
-
+    
         #footer {
             margin: 5em 0
         }
-
+    
         #footer li {
             float: left;
             margin-right: 1.5em;
             margin-bottom: 1.5em
         }
-
+    
         #footer p {
             clear: left;
             margin-bottom: 0
         }
-
+    
         .splash {
             position: relative;
             padding: 12em 0 6em;
@@ -168,36 +156,36 @@
             color: #fff;
             text-align: center
         }
-
+    
         .splash .logo {
             width: 160px
         }
-
+    
         .splash h1 {
             font-size: 3em;
             color: #fff
         }
-
+    
         .splash #social {
             margin: 2em 0 3em
         }
-
+    
         .splash .alert {
             margin: 2em 0;
             border: none
         }
-
+    
         .splash .sponsor a {
             color: #fff
         }
-
+    
         .section-tout {
             padding: 6em 0 1em;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             background-color: #eaf1f1;
             text-align: center
         }
-
+    
         .section-tout .icon {
             display: -ms-flexbox;
             display: flex;
@@ -214,100 +202,100 @@
             font-size: 2rem;
             color: rgba(255, 255, 255, 0.9)
         }
-
+    
         .section-tout p {
             margin-bottom: 5em
         }
-
+    
         .section-preview {
             padding: 4em 0
         }
-
+    
         .section-preview .preview {
             margin-bottom: 4em;
             background-color: #eaf1f1
         }
-
+    
         .section-preview .preview .image {
             position: relative
         }
-
+    
         .section-preview .preview .image img {
             width: 100%;
             height: auto
         }
-
+    
         .section-preview .preview .options {
             padding: 2em;
             border-top: 1px solid rgba(0, 0, 0, 0.125);
             text-align: center
         }
-
+    
         .section-preview .preview .options p {
             margin-bottom: 2em
         }
-
+    
         .section-preview .dropdown-menu {
             text-align: left
         }
-
+    
         .section-preview .lead {
             margin-bottom: 2em
         }
-
+    
         .sponsor a {
             text-decoration: none
         }
-
+    
         .sponsor #carbonads {
             max-width: 240px;
             margin: 0 auto
         }
-
+    
         .sponsor .carbon-text {
             display: block;
             margin-top: 1em;
             font-size: 12px
         }
-
+    
         .sponsor .carbon-poweredby {
             float: right;
             margin-top: 1em;
             font-size: 10px
         }
-
+    
         @media (max-width: 767px) {
             .splash {
                 padding-top: 8em
             }
-
+    
             .splash .logo {
                 width: 100px
             }
-
+    
             .splash h1 {
                 font-size: 2em
             }
-
+    
             #banner {
                 margin-bottom: 2em;
                 text-align: center
             }
         }
-
+    
         @media (max-width: 991px) {
             .navbar .fa {
                 display: none
             }
         }
-
+    
         @media (min-width: 992px) {
             .navbar-transparent {
                 background: none !important;
                 box-shadow: none
             }
         }
-
+    
         code[class*="language-"],
         pre[class*="language-"] {
             user-select: all;
@@ -322,17 +310,17 @@
             word-break: normal;
             word-wrap: normal;
             line-height: 1.5;
-
+    
             -moz-tab-size: 4;
             -o-tab-size: 4;
             tab-size: 4;
-
+    
             -webkit-hyphens: none;
             -moz-hyphens: none;
             -ms-hyphens: none;
             hyphens: none;
         }
-
+    
         /* Code blocks */
         pre[class*="language-"] {
             padding: 1em;
@@ -340,34 +328,34 @@
             overflow: auto;
             border-radius: 0.3em;
         }
-
+    
         :not(pre) > code[class*="language-"],
         pre[class*="language-"] {
             background: #272822;
         }
-
+    
         /* Inline code */
         :not(pre) > code[class*="language-"] {
             padding: .1em;
             border-radius: .3em;
             white-space: normal;
         }
-
+    
         .token.comment,
         .token.prolog,
         .token.doctype,
         .token.cdata {
             color: #8292a2;
         }
-
+    
         .token.punctuation {
             color: #f8f8f2;
         }
-
+    
         .token.namespace {
             opacity: .7;
         }
-
+    
         .token.property,
         .token.tag,
         .token.constant,
@@ -375,12 +363,12 @@
         .token.deleted {
             color: #f92672;
         }
-
+    
         .token.boolean,
         .token.number {
             color: #ae81ff;
         }
-
+    
         .token.selector,
         .token.attr-name,
         .token.string,
@@ -389,7 +377,7 @@
         .token.inserted {
             color: #a6e22e;
         }
-
+    
         .token.operator,
         .token.entity,
         .token.url,
@@ -398,105 +386,41 @@
         .token.variable {
             color: #f8f8f2;
         }
-
+    
         .token.atrule,
         .token.attr-value,
         .token.function,
         .token.class-name {
             color: #e6db74;
         }
-
+    
         .token.keyword {
             color: #66d9ef;
         }
-
+    
         .token.regex,
         .token.important {
             color: #fd971f;
         }
-
+    
         .token.important,
         .token.bold {
             font-weight: bold;
         }
-
+    
         .token.italic {
             font-style: italic;
         }
-
+    
         .token.entity {
             cursor: help;
         }
     </style>
+@endpush
 
-</head>
-<body>
-<header class="header fmd-header">
-    <nav class="navbar navbar-expand-md bg-white">
-        <div class="container">
-            <a href="/html"
-               class="navbar-brand"
-               title="{{ config('app.name') }}">
-                <svg role="img" class="d-inline-block align-text-bottom me-1">
-                    <use xlink:href="/svg/sprite.svg#fmd-logo"></use>
-                </svg>
-                <span class="h1">Tema</span>
-            </a>
-            <div class="offcanvas offcanvas-end align-items-md-end"
-                 tabindex="-1"
-                 id="offcanvasNavbar"
-                 aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="/html" class="nav-link active">
-                                Home
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/html/quem-somos" class="nav-link">
-                                Quem somos
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle"
-                               href="#"
-                               id="navbarDropdown"
-                               role="button"
-                               data-bs-toggle="dropdown"
-                               data-bs-auto-close="outside"
-                               aria-expanded="false">
-                                Produtos
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/html/contato" class="nav-link">
-                                Contato
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <button class="navbar-toggler"
-                    type="button"
-                    title="Menu"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar"
-                    aria-controls="offcanvasNavbar"
-                    aria-label="Menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
-</header>
+@section('content')
 
-
-<div id="banner" class="container">
+<main id="banner" class="container">
 
     <!-- Navbar
     ================================================== -->
@@ -2668,104 +2592,95 @@
             </div>
         </div>
     </footer>
-</div>
+</main>
 
-<script src="/js/frontend.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js" data-manual></script>
-
-<script>
-    (function () {
-        'use strict';
-
-        $(window).scroll(function () {
-            var top = $(document).scrollTop();
-            if (top > 50) {
-                $('#home > .navbar').removeClass('navbar-transparent');
-            } else {
-                $('#home > .navbar').addClass('navbar-transparent');
-            }
-        });
-
-        $('a[href="#"]').click(function (event) {
-            event.preventDefault();
-        });
-
-        $('.bs-component').each(function () {
-            var $component = $(this);
-            var $button = $('<button class="source-button btn btn-primary btn-xs" role="button" tabindex="0">&lt; &gt;</button>');
-            $component.append($button);
-
-            if ($component.find('[data-bs-toggle="tooltip"]').length > 0) {
-                $component.attr('data-html', $component.html().trim());
-            }
-        });
-
-        var popoverTriggerList = [].slice.call(document.querySelectorAll(
-            '[data-bs-toggle="popover"]'));
-        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-            return new bootstrap.Popover(popoverTriggerEl);
-        });
-
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll(
-            '[data-bs-toggle="tooltip"]'));
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl);
-        });
-
-        var sourceModalElem = document.getElementById('source-modal');
-        if (sourceModalElem) {
-            var sourceModal = new bootstrap.Modal(document.getElementById('source-modal'));
-        }
-
-        $('body').on('click', '.source-button', function (event) {
-            event.preventDefault();
-
-            var component = $(this).parent();
-            var html = component.attr('data-html') ? component.attr('data-html') : component.html();
-
-            html = cleanSource(html);
-            html = Prism.highlight(html, Prism.languages.html, 'html');
-            $('#source-modal code').html(html);
-            sourceModal.show();
-        });
-
-        function cleanSource(html) {
-            html = html.replace(/×/g, '&times;')
-                .replace(/«/g, '&laquo;')
-                .replace(/»/g, '&raquo;')
-                .replace(/←/g, '&larr;')
-                .replace(/→/g, '&rarr;');
-
-            var lines = html.split(/\n/);
-
-            lines.shift();
-            lines.splice(-1, 1);
-
-            var indentSize = lines[0].length - lines[0].trim().length;
-            var re = new RegExp(' {' + indentSize + '}');
-
-            lines = lines.map(function (line) {
-                if (line.match(re)) {
-                    line = line.slice(Math.max(0, indentSize));
+@endsection
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js" data-manual></script>
+    
+    <script>
+        (function () {
+            'use strict';
+    
+            $(window).scroll(function () {
+                var top = $(document).scrollTop();
+                if (top > 50) {
+                    $('#home > .navbar').removeClass('navbar-transparent');
+                } else {
+                    $('#home > .navbar').addClass('navbar-transparent');
                 }
-
-                return line;
             });
-
-            lines = lines.join('\n');
-
-            return lines;
-        }
-    })();
-</script>
-
-<script id="__bs_script__">//<![CDATA[
-    document.write(
-        '<script async src=\'//HOST:3000/browser-sync/browser-sync-client.js?v=2.18.6\'><\/script>'.replace(
-            'HOST',
-            location.hostname,
-        ));
-    //]]>
-</script>
-</body>
-</html>
+    
+            $('a[href="#"]').click(function (event) {
+                event.preventDefault();
+            });
+    
+            $('.bs-component').each(function () {
+                var $component = $(this);
+                var $button = $('<button class="source-button btn btn-primary btn-xs" role="button" tabindex="0">&lt; &gt;</button>');
+                $component.append($button);
+    
+                if ($component.find('[data-bs-toggle="tooltip"]').length > 0) {
+                    $component.attr('data-html', $component.html().trim());
+                }
+            });
+    
+            var popoverTriggerList = [].slice.call(document.querySelectorAll(
+                '[data-bs-toggle="popover"]'));
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl);
+            });
+    
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll(
+                '[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+    
+            var sourceModalElem = document.getElementById('source-modal');
+            if (sourceModalElem) {
+                var sourceModal = new bootstrap.Modal(document.getElementById('source-modal'));
+            }
+    
+            $('body').on('click', '.source-button', function (event) {
+                event.preventDefault();
+    
+                var component = $(this).parent();
+                var html = component.attr('data-html') ? component.attr('data-html') : component.html();
+    
+                html = cleanSource(html);
+                html = Prism.highlight(html, Prism.languages.html, 'html');
+                $('#source-modal code').html(html);
+                sourceModal.show();
+            });
+    
+            function cleanSource(html) {
+                html = html.replace(/×/g, '&times;')
+                    .replace(/«/g, '&laquo;')
+                    .replace(/»/g, '&raquo;')
+                    .replace(/←/g, '&larr;')
+                    .replace(/→/g, '&rarr;');
+    
+                var lines = html.split(/\n/);
+    
+                lines.shift();
+                lines.splice(-1, 1);
+    
+                var indentSize = lines[0].length - lines[0].trim().length;
+                var re = new RegExp(' {' + indentSize + '}');
+    
+                lines = lines.map(function (line) {
+                    if (line.match(re)) {
+                        line = line.slice(Math.max(0, indentSize));
+                    }
+    
+                    return line;
+                });
+    
+                lines = lines.join('\n');
+    
+                return lines;
+            }
+        })();
+    </script>
+@endpush

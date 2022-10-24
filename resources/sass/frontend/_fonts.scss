@@ -54,8 +54,10 @@ $local-fonts: (
 
 @if ($should-use-local-font-face) {
   @each $font-key, $font-map in $local-fonts {
-    @font-face {
-      @include font-face($font-map);
+    @if (map-get($font-map, "file-name")) {
+      @font-face {
+        @include font-face($font-map);
+      }
     }
   }
 }
