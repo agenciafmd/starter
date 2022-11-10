@@ -703,6 +703,10 @@ function setupShareAPI() {
   });
 }
 
+function setupWOWJS() {
+  new WOW().init();
+}
+
 $(function () {
 
   setupServiceWorker();
@@ -744,6 +748,8 @@ $(function () {
   // setupDataLayerEventClickButton();
 
   setupUtmHelpers();
+
+  setupWOWJS();
 });
 
 window.addEventListener('load', function () {
