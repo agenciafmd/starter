@@ -14,9 +14,9 @@ function createFancybox(options) {
       pt: {
 
         SHARE: 'Compartilhar',
-      }
+      },
     },
-    afterLoad: function(instance, slide, current) {
+    afterLoad: function (instance, slide, current) {
 
       const alt = $(slide.opts.$orig).next().attr('alt');
 
@@ -32,15 +32,15 @@ $(function () {
 
     selector: '.custom-layout',
     baseClass: 'fancybox-custom-layout',
-    caption: function() {
+    caption: function () {
 
       const caption = $(this).attr('data-caption');
       const title = $(this).attr('data-fancybox');
       const subtitle = $(this).attr('data-subtitle');
 
-      return `<h3 class="fancybox-caption-title">${title}</h3>
-      <p class="fancybox-caption-subtitle">${subtitle}</p>
-      <span class="fancybox-caption-description">${caption}</span>`;
+      return `<h3 class="fancybox-caption-title">${ title }</h3>
+      <p class="fancybox-caption-subtitle">${ subtitle }</p>
+      <span class="fancybox-caption-description">${ caption }</span>`;
     },
   });
 });
