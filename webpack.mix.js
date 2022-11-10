@@ -51,6 +51,7 @@ mix
                 path.join(__dirname, 'node_modules/jquery/dist/jquery.min.js'),
                 path.join(__dirname, 'node_modules/select2/dist/**/*.js'),
                 path.join(__dirname, 'node_modules/sweetalert2/dist/*.js'),
+                path.join(__dirname, 'node_modules/wow.js/dist/*.js'),
                 path.join(
                     __dirname,
                     'node_modules/bootstrap/dist/js/bootstrap.min.js',
