@@ -749,7 +749,7 @@ $(function () {
 
   setupUtmHelpers();
 
-  setupWOWJS();
+  // setupWOWJS();
 });
 
 window.addEventListener('load', function () {
