@@ -1,3 +1,29 @@
+function getCookiesAsObject() {
+  return document.cookie
+                 .split('; ')
+                 .reduce((prev, next) => {
+                   const splattedCookieString = next.split('=');
+                   const key = splattedCookieString[0];
+                   const value = splattedCookieString[1];
+                   return {
+                     ...prev,
+                     [key]: value,
+                   };
+                 }, {});
+}
+
+function getCookieByName(cookieName) {
+
+  // Got from StackOverflow - https://stackoverflow.com/a/15724300/5542331
+  const value = `; ${ document.cookie }`;
+  const parts = value.split(`; ${ cookieName }=`);
+
+  if (parts.length === 2) {
+
+    return parts.pop().split(';').shift();
+  }
+}
+
 function setupUtmHelpers() {
 
   const decodedUrlSearchParams =
@@ -62,18 +88,6 @@ function setupUtmHelpers() {
     document.cookie = name + '=' + value + ';' + expires + ';path=/';
   }
 
-  function getCookieByName(cookieName) {
-
-    // Got from StackOverflow - https://stackoverflow.com/a/15724300/5542331
-    const value = `; ${ document.cookie }`;
-    const parts = value.split(`; ${ cookieName }=`);
-
-    if (parts.length === 2) {
-
-      return parts.pop().split(';').shift();
-    }
-  }
-
   function manageUtmHelpers() {
 
     function setUtm({
@@ -112,17 +126,11 @@ function setupUtmHelpers() {
 
     function setupUtmSource() {
 
-      setUtm({
-        name: 'utm_today',
-        value: 1,
-      });
-
       const hasUtmSourceInUrl = !!getUtmValueFromUrl('utm_source');
-      const hasUtmTodayInStorage = !!getCookieByName('utm_today');
       const hasReferrer = !!document.referrer;
       const hasComeFromGoogleSearch = document.referrer.search('google') > 0;
 
-      if (!hasUtmSourceInUrl && !hasUtmTodayInStorage && hasReferrer && hasComeFromGoogleSearch) {
+      if (!hasUtmSourceInUrl && !hasReferrer && hasComeFromGoogleSearch) {
 
         setUtm({
           name: 'utm_source',
@@ -136,7 +144,7 @@ function setupUtmHelpers() {
         return;
       }
 
-      if (!hasUtmSourceInUrl && !hasUtmTodayInStorage && hasReferrer) {
+      if (!hasUtmSourceInUrl && hasReferrer) {
 
         setUtm({
           name: 'utm_source',
