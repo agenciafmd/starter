@@ -28,6 +28,7 @@ module.exports = (function () {
     // 'resources/js/components/fancybox.js',
     'resources/js/components/swiper.js',
     // 'resources/js/components/lax.js',
+    'resources/js/components/smooth-scroll.js',
 
     // Global usages
     'resources/js/frontend.js',

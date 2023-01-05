@@ -175,39 +175,6 @@ function preventInvalidFormSubmit() {
       });
 }
 
-function setupSmoothScroll() {
-
-  // Smooth page scroll
-  const elementsScrollTo = document.querySelectorAll('a.js-scroll-top');
-
-  Array.prototype.forEach.call(elementsScrollTo, function (el, i) {
-    el.addEventListener('click', function (event) {
-      event.preventDefault();
-
-      const additionalOffset = Number(this.getAttribute('data-scroll-offset')) || 0;
-
-      doScrollAnimate(this.hash, additionalOffset);
-    });
-  });
-
-  function doScrollAnimate(targetSelector, additionOffset) {
-    const target = document.querySelector(targetSelector);
-
-    if (!target) {
-
-      console.error(`Alvo não encontrado, verifique se existe um elemento na página com o id ${ targetSelector }.`);
-      return;
-    }
-
-    const scrollTop = target.getBoundingClientRect().top + document.body.scrollTop + additionOffset;
-
-    window.scrollBy({
-      top: scrollTop,
-      behavior: 'smooth',
-    });
-  }
-}
-
 function verifyUserAgent() {
 
   var OSNome = '';
@@ -716,6 +683,7 @@ $(function () {
   verifyUserAgent();
 
   setupSmoothScroll();
+  setupSmoothScrollInOffcanvas();
 
   // setupSideDrawer();
 
