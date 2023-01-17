@@ -511,15 +511,23 @@ function setupInfiniteScroll() {
   });
 }
 
-function setupSideDrawer() {
+function getHTMLElementBySelector(selector) {
 
-  const $body = $('body');
-  const $mainContent = $('.js-main-content');
-  const $navbar = $('.navbar');
-  const $navbarCollapse = $('.navbar-collapse');
-  const $navbarToggler = $('.navbar-toggler');
-  const headerHeight = $navbar
-      .innerHeight();
+  if (!selector) {
+    throw Error('Please, getHTMLElementBySelector() needs a selector parameter!')
+  }
+
+  return document.querySelector(selector);
+}
+
+function setupSideDrawer() {
+  
+  const body = getHTMLElementBySelector('body');
+  const mainContent = getHTMLElementBySelector('.js-main-content');
+  const navbar = getHTMLElementBySelector('.navbar');
+  const navbarCollapse = getHTMLElementBySelector('.navbar');
+  const navbarToggler = getHTMLElementBySelector('.navbar-toggle');
+  const headerHeight = navbar.offsetHeight;
 
   resetSideDrawerConfig();
 
@@ -528,24 +536,26 @@ function setupSideDrawer() {
     return;
   }
 
-  $navbarCollapse.css('margin-top', `${ headerHeight }px`);
+  navbarCollapse.style.marginTop = `${ headerHeight }px`;
 
   function resetSideDrawerConfig() {
 
-    $navbarCollapse.css('margin-top', '');
-    $navbarCollapse.removeClass('show');
-    $mainContent.removeClass('show-backdrop');
-    $body.removeClass('overflow-hidden');
+    navbarCollapse.style.marginTop = '';
+    navbarCollapse.classList.remove('show');
+    mainContent.classList.remove('show-backdrop');
+    body.classList.remove('overflow-hidden');
   }
 
   function navbarToggleHandler() {
 
-    $navbarCollapse.toggleClass('show');
-    $mainContent.toggleClass('show-backdrop');
-    $body.toggleClass('overflow-hidden');
+    navbarCollapse.classList.toggle('show');
+    mainContent.classList.toggle('show-backdrop');
+    body.classList.toggle('overflow-hidden');
   }
 
-  $navbarToggler.click(navbarToggleHandler);
+  navbarToggler.addEventListener('click', () => {
+    navbarToggleHandler();
+  })
 }
 
 function insertCopyrightYear() {
@@ -683,6 +693,7 @@ $(function () {
   verifyUserAgent();
 
   setupSmoothScroll();
+
   setupSmoothScrollInOffcanvas();
 
   // setupSideDrawer();
