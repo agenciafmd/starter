@@ -511,43 +511,6 @@ function setupInfiniteScroll() {
   });
 }
 
-function setupSideDrawer() {
-
-  const $body = $('body');
-  const $mainContent = $('.js-main-content');
-  const $navbar = $('.navbar');
-  const $navbarCollapse = $('.navbar-collapse');
-  const $navbarToggler = $('.navbar-toggler');
-  const headerHeight = $navbar
-      .innerHeight();
-
-  resetSideDrawerConfig();
-
-  if (window.innerWidth > getThemeVariables().breakpoints.md) {
-
-    return;
-  }
-
-  $navbarCollapse.css('margin-top', `${ headerHeight }px`);
-
-  function resetSideDrawerConfig() {
-
-    $navbarCollapse.css('margin-top', '');
-    $navbarCollapse.removeClass('show');
-    $mainContent.removeClass('show-backdrop');
-    $body.removeClass('overflow-hidden');
-  }
-
-  function navbarToggleHandler() {
-
-    $navbarCollapse.toggleClass('show');
-    $mainContent.toggleClass('show-backdrop');
-    $body.toggleClass('overflow-hidden');
-  }
-
-  $navbarToggler.click(navbarToggleHandler);
-}
-
 function insertCopyrightYear() {
 
   const copyrightContainerSelector = '.js-copyright-container';
@@ -683,9 +646,8 @@ $(function () {
   verifyUserAgent();
 
   setupSmoothScroll();
-  setupSmoothScrollInOffcanvas();
 
-  // setupSideDrawer();
+  setupSmoothScrollInOffcanvas();
 
   // setupCepSearch();
 
