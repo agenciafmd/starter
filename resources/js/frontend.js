@@ -177,40 +177,67 @@ function preventInvalidFormSubmit() {
 
 function verifyUserAgent() {
 
-  var OSNome = '';
-  if (window.navigator.userAgent.indexOf('Windows NT 10.0') !== -1) {
-    OSNome = 'Windows 10';
-  }
-  if (window.navigator.userAgent.indexOf('Windows NT 6.2') !== -1) {
-    OSNome = 'Windows 8';
-  }
-  if (window.navigator.userAgent.indexOf('Windows NT 6.1') !== -1) {
-    OSNome = 'Windows 7';
-  }
-  if (window.navigator.userAgent.indexOf('Windows NT 6.0') !== -1) {
-    OSNome = 'Windows Vista';
-  }
-  if (window.navigator.userAgent.indexOf('Windows NT 5.1') !== -1) {
-    OSNome = 'Windows XP';
-  }
-  if (window.navigator.userAgent.indexOf('Windows NT 5.0') !== -1) {
-    OSNome = 'Windows 2000';
-  }
-  if (window.navigator.userAgent.indexOf('Mac') !== -1) {
-    OSNome = 'Mac/iOS';
-  }
-  if (window.navigator.userAgent.indexOf('X11') !== -1) {
-    OSNome = 'UNIX';
-  }
-  if (window.navigator.userAgent.indexOf('Linux') !== -1) {
-    OSNome = 'Linux';
-  }
+  let operationalSystemName = '';
 
-  if (OSNome !== 'Mac/iOS') {
+  const operationalSystemsData = [
+    {
+      osUserAgent: 'Windows NT 10.0',
+      osSystemName: 'Windows 10',
+    },
+    {
+      osUserAgent: 'Windows NT 6.2',
+      osSystemName: 'Windows 8',
+    },
+    {
+      osUserAgent: 'Windows NT 6.1',
+      osSystemName: 'Windows 7',
+    },
+    {
+      osUserAgent: 'Windows NT 6.0',
+      osSystemName: 'Windows Vista',
+    },
+    {
+      osUserAgent: 'Windows NT 5.1',
+      osSystemName: 'Windows XP',
+    },
+    {
+      osUserAgent: 'Windows NT 5.0',
+      osSystemName: 'Windows 2000',
+    },
+    {
+      osUserAgent: 'Mac',
+      osSystemName: 'Mac/iOS',
+    },
+    {
+      osUserAgent: 'X11',
+      osSystemName: 'UNIX',
+    },
+    {
+      osUserAgent: 'Linux',
+      osSystemName: 'Linux',
+    },
+  ];
+
+  operationalSystemsData.forEach((operationalSystemData) => {
+    operationalSystemName = getOperationalSystemName(operationalSystemData);
+  });
+
+  if (operationalSystemName !== 'Mac/iOS') {
 
     let body = document.querySelector('body');
     body.classList.add('style-scroll');
   }
+}
+
+function getOperationalSystemName(operationalSystemData) {
+
+  let operationalSystemName;
+
+  if (window.navigator.userAgent.indexOf(operationalSystemData.osUserAgent) !== -1) {
+    operationalSystemName = operationalSystemData.osSystemName;
+  }
+
+  return operationalSystemName;
 }
 
 function onChangeSelectLink() {
