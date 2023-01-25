@@ -177,8 +177,6 @@ function preventInvalidFormSubmit() {
 
 function verifyUserAgent() {
 
-  let operationalSystemName = '';
-
   const operationalSystemsData = [
     {
       osUserAgent: 'Windows NT 10.0',
@@ -218,8 +216,15 @@ function verifyUserAgent() {
     },
   ];
 
-  operationalSystemsData.forEach((operationalSystemData) => {
-    operationalSystemName = getOperationalSystemName(operationalSystemData);
+  const operationalSystemName = operationalSystemsData
+      .reduce((previousSystemData, currentSystemdata) => {
+
+    if (window.navigator.userAgent.indexOf(currentSystemdata.osUserAgent) !== -1) {
+
+      return currentSystemdata.osSystemName;
+    }
+
+    return previousSystemData;
   });
 
   if (operationalSystemName !== 'Mac/iOS') {
@@ -227,17 +232,6 @@ function verifyUserAgent() {
     let body = document.querySelector('body');
     body.classList.add('style-scroll');
   }
-}
-
-function getOperationalSystemName(operationalSystemData) {
-
-  let operationalSystemName;
-
-  if (window.navigator.userAgent.indexOf(operationalSystemData.osUserAgent) !== -1) {
-    operationalSystemName = operationalSystemData.osSystemName;
-  }
-
-  return operationalSystemName;
 }
 
 function onChangeSelectLink() {
