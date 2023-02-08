@@ -41,9 +41,12 @@ function createSlider(options) {
     mousewheel: {
       forceToAxis: true,
     },
+    navigation: {
+      prevEl: '.swiper-button-prev',
+      nextEl: '.swiper-button-next',
+    },
     ...options,
   });
-
 }
 
 function setupDefaultSlider() {
@@ -61,10 +64,6 @@ function setupDefaultSlider() {
         createSlider({
 
           container: defaultSliderContainerElement,
-          navigation: {
-            prevEl: `${ defaultSliderSelector } .swiper-button-prev`,
-            nextEl: `${ defaultSliderSelector } .swiper-button-next`,
-          },
         });
       });
 }
@@ -81,10 +80,6 @@ function setupDefaultSlider() {
 //   slidesPerView: 1,
 //   spaceBetween: 0,
 //   loop: false,
-//   navigation: {
-//     nextEl: '.swiper-button-next',
-//     prevEl: '.swiper-button-prev',
-//   },
 //   pagination: {
 //     el: '.swiper-pagination',
 //     type: 'bullets',
