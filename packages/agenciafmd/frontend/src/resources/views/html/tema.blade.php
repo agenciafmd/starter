@@ -2350,6 +2350,21 @@
         </div>
     </div>
 
+    <!-- Ícones do projeto
+    ================================================== -->
+  <div class="bs-docs-section">
+    <h2>
+      Ícones
+    </h2>
+    <div class="row g-1 mb-2 bg-light">
+      <div class="col-auto">
+        <div class="bs-component">
+          <x-frontend::icon class="ic-lg text-primary" name="fmd-logo"/>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <!-- Imagens para trocar
     ================================================== -->
     <div class="bs-docs-section">
