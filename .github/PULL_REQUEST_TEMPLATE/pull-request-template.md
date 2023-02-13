@@ -1,26 +1,30 @@
----
-name: Template de Pull Request (Pull Request Template)
-about: Template para abrir um Pull Request (Template for opening a Pull Request)
-. title: "Descrição curta do PR (Short PR description)"
-labels: ''
-assignees: ''
+## PR Checklist
+Por favor, verifique se o seu PR cumpre os seguintes requisitos:
 
----
+- [ ] A mensagem de commit segue o padrão do Commit Amigão: [https://github.com/angular/angular/blob/main/CONTRIBUTING.md#commit](https://github.com/BeeTech-global/bee-stylish/blob/master/commits/README.md)
+- [ ] Documentações foram adicionadas/atualizadas
 
-# Atualização da Wiki (Wiki update):
+## PR Type
+Que tipo de mudança esse PR introduz?
 
-Adicionou ou atualizou alguma funcionalidade? Então precisamos da Wiki
-atualizada também. Adicione o link para a seção atualizada, por exemplo:
+<!-- Marque aquele que se aplica a esta PR usando "x". -->
 
-_Added or updated some feature? So we need Wiki updated too. Add the link to the
-updated section, for example:_
+- [ ] feat (nova funcionalidade)
+- [ ] style (formatação geral no código. Não confundir com CSS)
+- [ ] refactor (refatoração de código de produção)
+- [ ] test (adicionar/refatorar testes)
+- [ ] fix (adivinha qual é esse)
+- [ ] docs (e esse também)
+- [ ] chore (atualização de tarefas ou código que não está relacionado a produção)
 
-- https://github.com/agenciafmd/starter/wiki/Funcionalidades-JS-Disponiveis#lax-js-anima%C3%A7%C3%B5es
 
-# Metadados (Metadata)
+## Qual é o comportamento atual?
 
-Se a PR resolver algum problema que esteja mapeado nas issues, adicione link
-para issue reportada para que possamos fechá-la.
 
-_If the PR resolves some bug reported in issues, add the link to the related
-issue so we can close it_
+Issue Number: N/A
+
+
+## Qual é o novo comportamento?
+
+
+## Outra informação
