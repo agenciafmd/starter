@@ -164,15 +164,16 @@ function preventInvalidFormSubmit() {
     }, false);
   });
 
-  $('.is-invalid')
-      .each(function () {
-        $(this)[0].setCustomValidity('needs validate');
-      })
-      .on('focusout', function () {
-        $(this)
-            .removeClass('is-invalid');
-        $(this)[0].setCustomValidity('');
-      });
+  document.querySelectorAll('.is-invalid').forEach(function (element) {
+
+    element.setCustomValidity('needs validate');
+
+    element.addEventListener('focusout', function () {
+
+      element.classList.remove('is-invalid');
+      element.setCustomValidity('');
+    });
+  });
 }
 
 function verifyUserAgent() {
