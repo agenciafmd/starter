@@ -505,11 +505,11 @@ function setupTooltip() {
 
 function setupAnchorReloadPrevention() {
 
-  $('a[href="#"]')
-      .click(function (e) {
+  document.querySelector('a[href="#"]')
+    .click(function (e){
 
-        e.preventDefault();
-      });
+      e.preventDefault();
+    });
 }
 
 function setupInfiniteScroll() {
