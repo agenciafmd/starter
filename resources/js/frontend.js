@@ -505,11 +505,16 @@ function setupTooltip() {
 
 function setupAnchorReloadPrevention() {
 
-  document.querySelector('a[href="#"]')
-    .click(function (e){
+  const targetClickLink = document.querySelector('a[href="#"]') ;
 
-      e.preventDefault();
-    });
+  if(!targetClickLink){
+
+    return;
+  }
+  targetClickLink.addEventListener("click", function (e){
+
+    e.preventDefault();
+  });
 }
 
 function setupInfiniteScroll() {
