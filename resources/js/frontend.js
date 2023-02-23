@@ -246,12 +246,9 @@ function onChangeSelectLink() {
   //   <option class="" value="/html/faq">FAQ</option>
   //</select>
 
-  $('.js-onchange')
-      .change(function () {
-
-        window.location = $(this)
-            .val();
-      });
+  document.querySelector('.js-onchange').change(function () {
+    window.location = document.querySelector(this).value;
+  });
 }
 
 function setupSelect2() {
