@@ -249,7 +249,7 @@ function onChangeSelectLink() {
   const select = document.querySelector('.js-onchange');
   if(select){
     select.addEventListener("change",function (e){
-      window.location = e.value;
+      window.location = select.value;
     })
   }
 }
