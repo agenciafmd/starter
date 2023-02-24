@@ -246,9 +246,12 @@ function onChangeSelectLink() {
   //   <option class="" value="/html/faq">FAQ</option>
   //</select>
 
-  document.querySelector('.js-onchange').change(function () {
-    window.location = document.querySelector(this).value;
-  });
+  const selects = document.querySelector('.js-onchange');
+  selects.forEach(select => {
+    select.addEventListener("change", function (e){
+      window.location = document.querySelector(e).value;
+    })
+  })
 }
 
 function setupSelect2() {
