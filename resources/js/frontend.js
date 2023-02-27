@@ -505,15 +505,19 @@ function setupTooltip() {
 
 function setupAnchorReloadPrevention() {
 
-  const targetClickLink = document.querySelector('a[href="#"]') ;
+  const targetClickLink = document.querySelectorAll('a[href="#"]');
 
-  if(!targetClickLink){
+  if (!targetClickLink) {
 
     return;
   }
-  targetClickLink.addEventListener("click", function (e){
+  targetClickLink.forEach(function (button) {
 
-    e.preventDefault();
+    button.addEventListener('click', function (e) {
+
+      e.preventDefault();
+      console.log('teste');
+    });
   });
 }
 
