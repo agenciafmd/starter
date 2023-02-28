@@ -505,11 +505,19 @@ function setupTooltip() {
 
 function setupAnchorReloadPrevention() {
 
-  $('a[href="#"]')
-      .click(function (e) {
+  const targetClickLinkElements = document.querySelectorAll('a[href="#"]');
 
-        e.preventDefault();
-      });
+  if (!targetClickLinkElements) {
+
+    return;
+  }
+  targetClickLinkElements.forEach(function (linkElement) {
+
+    linkElement.addEventListener('click', function (clickEvent) {
+
+      clickEvent.preventDefault();
+    });
+  });
 }
 
 function setupInfiniteScroll() {
