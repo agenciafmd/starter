@@ -220,13 +220,13 @@ function verifyUserAgent() {
   const operationalSystemName = operationalSystemsData
       .reduce((previousSystemData, currentSystemdata) => {
 
-    if (window.navigator.userAgent.indexOf(currentSystemdata.osUserAgent) !== -1) {
+        if (window.navigator.userAgent.indexOf(currentSystemdata.osUserAgent) !== -1) {
 
-      return currentSystemdata.osSystemName;
-    }
+          return currentSystemdata.osSystemName;
+        }
 
-    return previousSystemData;
-  });
+        return previousSystemData;
+      });
 
   if (operationalSystemName !== 'Mac/iOS') {
 
@@ -244,15 +244,18 @@ function onChangeSelectLink() {
   //     selected>Link
   //   </option>
   //   <option class="" value="/html/index">Home</option>
-  //   <option class="" value="/html/faq">FAQ</option>
+  //   <option class="" value="/html/tema">FAQ</option>
   //</select>
 
-  $('.js-onchange')
-      .change(function () {
-
-        window.location = $(this)
-            .val();
-      });
+  const selects = document.querySelectorAll('.js-onchange');
+  if (!selects) {
+    return;
+  }
+  selects.forEach(select => {
+    select.addEventListener('change', function () {
+      window.location = select.value;
+    });
+  });
 }
 
 function setupSelect2() {
@@ -506,11 +509,19 @@ function setupTooltip() {
 
 function setupAnchorReloadPrevention() {
 
-  $('a[href="#"]')
-      .click(function (e) {
+  const targetClickLinkElements = document.querySelectorAll('a[href="#"]');
 
-        e.preventDefault();
-      });
+  if (!targetClickLinkElements) {
+
+    return;
+  }
+  targetClickLinkElements.forEach(function (linkElement) {
+
+    linkElement.addEventListener('click', function (clickEvent) {
+
+      clickEvent.preventDefault();
+    });
+  });
 }
 
 function setupInfiniteScroll() {
