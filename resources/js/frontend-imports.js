@@ -23,6 +23,9 @@ module.exports = (function () {
     'resources/js/helpers/cpf-cnpj-validators.js',
     // 'resources/js/helpers/user-interaction-helpers.js',
 
+    // PWA
+    'resources/js/pwa/setup-service-worker.js',
+
     // Components
     'resources/js/components/fmd-header.js',
     // 'resources/js/components/fancybox.js',
