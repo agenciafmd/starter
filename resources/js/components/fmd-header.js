@@ -76,12 +76,16 @@ function setupFmdHeader() {
 
   // Set variable that is used to apply padding-top to the body
   header.style.position = 'absolute';
-  setTimeout(function () {
-    document.documentElement.style.setProperty(
-        '--header-height',
-        header.offsetHeight + 'px',
-    );
-  }, headerTransition);
+  document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+
+  window.addEventListener('resize', (event) => {
+
+    setTimeout(function () {
+
+      document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+    }, headerTransition);
+  });
+
 
   // Scroll event listener
   window.addEventListener('scroll', function () {
