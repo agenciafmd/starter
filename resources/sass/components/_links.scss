@@ -1,0 +1,12 @@
+@import "../frontend/warnings";
+
+a {
+  &:not([aria-label]){
+    @include outline-or-border-alert(true);
+  }
+
+  &:not([title]){
+    border: 4px solid orange;
+    @include outline-or-border-alert(false);
+  }
+}
