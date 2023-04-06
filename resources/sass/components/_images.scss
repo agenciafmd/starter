@@ -1,11 +1,12 @@
+@import "../frontend/warnings";
+
 img {
   &:not([alt]) {
-    outline: 4px solid red;
-    outline-offset: -8px;
+    @include outline-or-border-alert(true);
   }
 
   &:not([loading="lazy"]) {
-    border: 4px solid orange;
+    @include outline-or-border-alert(false);
   }
 }
 
