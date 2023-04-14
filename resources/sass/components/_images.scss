@@ -2,11 +2,11 @@
 
 img {
   &:not([alt]) {
-    @include outline-or-border-alert(true);
+    @include warning-outline();
   }
 
   &:not([loading="lazy"]) {
-    @include outline-or-border-alert(false);
+    @include warning-border();
   }
 }
 

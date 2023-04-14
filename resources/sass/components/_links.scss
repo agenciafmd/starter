@@ -2,11 +2,10 @@
 
 a {
   &:not([aria-label]){
-    @include outline-or-border-alert(true);
+    @include warning-outline();
   }
 
   &:not([title]){
-    border: 4px solid orange;
-    @include outline-or-border-alert(false);
+    @include warning-border();
   }
 }
