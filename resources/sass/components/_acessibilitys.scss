@@ -1,0 +1,13 @@
+@import "../frontend/warnings";
+
+a {
+  &:not([aria-label], [title]){
+    @include accessibility-warning;
+  }
+}
+
+img {
+  &:not([alt], [loading="lazy"]) {
+    @include accessibility-warning;
+  }
+}

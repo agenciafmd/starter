@@ -1,15 +1,5 @@
 @import "../frontend/warnings";
 
-img {
-  &:not([alt]) {
-    @include warning-outline();
-  }
-
-  &:not([loading="lazy"]) {
-    @include warning-border();
-  }
-}
-
 picture.ratio {
   display: block;
 }
