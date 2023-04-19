@@ -606,7 +606,7 @@ function setupWOWJS() {
 
 $(function () {
 
-  setupServiceWorker();
+  pwaManager();
 
   preventInvalidFormSubmit();
 

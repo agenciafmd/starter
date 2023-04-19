@@ -24,7 +24,7 @@ module.exports = (function () {
     // 'resources/js/helpers/user-interaction-helpers.js',
 
     // PWA
-    'resources/js/pwa/setup-service-worker.js',
+    'resources/js/pwa/pwa-manager.js',
 
     // Components
     'resources/js/components/fmd-header.js',

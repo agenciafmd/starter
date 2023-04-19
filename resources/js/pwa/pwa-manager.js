@@ -1,4 +1,4 @@
-function setupServiceWorker() {
+function pwaManager() {
 
     if (!('serviceWorker' in navigator)) {
 
