@@ -2,7 +2,7 @@ const applicationName = "fmd-starter";
 const assets = [
   "/",
   "/index.html",
-  "/css/style.css",
+  "/css/frontend.css",
   "/js/frontend.js",
 ];
 
