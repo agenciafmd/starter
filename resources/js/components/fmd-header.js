@@ -34,6 +34,11 @@ function setupFmdHeader() {
     header.style.transitionDuration = `${ newTransition }ms`;
   }
 
+  function setHeaderHeight(headerHeight) {
+
+    document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
+  }
+
   // Initialize variables
   let didScroll;
   let lastScrollTop = 0;
@@ -76,12 +81,16 @@ function setupFmdHeader() {
 
   // Set variable that is used to apply padding-top to the body
   header.style.position = 'absolute';
-  setTimeout(function () {
-    document.documentElement.style.setProperty(
-        '--header-height',
-        header.offsetHeight + 'px',
-    );
-  }, headerTransition);
+  setHeaderHeight(header.offsetHeight);
+
+  window.addEventListener('resize', (event) => {
+
+    setTimeout(function () {
+
+      setHeaderHeight(header.offsetHeight);
+    }, headerTransition);
+  });
+
 
   // Scroll event listener
   window.addEventListener('scroll', function () {
