@@ -131,8 +131,7 @@ mix
     .copy('resources/images/**', 'public/images')
     .copy('resources/svg/*.svg', 'public/svg')
     .copy('resources/images/icons/favicon.ico', 'public')
-    .copy('resources/js/pwa/service-worker.js', 'public')
-    .copy('resources/js/pwa/manifest.json', 'public')
+    .copy('resources/js/pwa/**', 'public')
     .babel(frontendImports, 'public/js/frontend.js')
     .sourceMaps(false, 'source-map')
     .browserSync({
