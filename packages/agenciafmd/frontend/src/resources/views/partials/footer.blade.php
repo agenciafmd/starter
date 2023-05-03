@@ -1,7 +1,5 @@
 <footer class="footer text-center">
-    <p>
-        © {{ date('Y') }} {{ config('app.name') }} - Todos os direitos reservados.
-
+    <p class="js-copyright-container">
         <a href="//fmd.ag"
            target="_blank"
            title="Desenvolvido por F&MD">

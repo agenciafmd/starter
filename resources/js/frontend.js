@@ -544,21 +544,26 @@ function setupInfiniteScroll() {
 }
 
 function insertCopyrightYear() {
-
   const copyrightContainerSelector = '.js-copyright-container';
 
-  const hasCopyrightSelector = $('footer')
-      .find(copyrightContainerSelector).length;
-
-  if (!hasCopyrightSelector) {
-
-    console.error(`${ copyrightContainerSelector } class is required to insert copyright text`);
+  const footer = document.querySelector('footer');
+  if (!footer) {
+    console.error('No footer element found.');
     return;
   }
 
-  const $yearContainer = $(copyrightContainerSelector);
+  const yearContainer = footer.querySelector(
+      copyrightContainerSelector
+  );
+  if (!yearContainer) {
+    console.error(
+        `${ copyrightContainerSelector } class is required to insert copyright text`
+    );
+    return;
+  }
 
-  $yearContainer.text(`Todos os direitos reservados © ${ new Date().getFullYear() }`);
+  const yearText = `Todos os direitos reservados © ${new Date().getFullYear()}`;
+  yearContainer.insertAdjacentHTML('afterbegin', yearText);
 }
 
 function setupClipboardJS() {
@@ -671,7 +676,7 @@ $(function () {
 
   // setupAnchorReloadPrevention();
 
-  // insertCopyrightYear();
+  insertCopyrightYear();
 
   initializeFormHelpers();
 
