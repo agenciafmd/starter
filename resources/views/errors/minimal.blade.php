@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    @include('agenciafmd/frontend::partials.pwa')
+
     <title>@yield('title')</title>
 
     <!-- Fonts -->
@@ -57,6 +59,8 @@
     <div class="message" style="padding: 10px;">
         @yield('message')
     </div>
+
+    <script src="/js/frontend.js"></script>
 </div>
 </body>
 </html>
