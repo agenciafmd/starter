@@ -604,6 +604,18 @@ function setupWOWJS() {
   new WOW().init();
 }
 
+function setupModalConfig() {
+
+  const modalElements = document.querySelectorAll('.modal');
+
+  modalElements.forEach((modalElement) => {
+    return new bootstrap.Modal(modalElement, {
+      focus: false
+    })
+  });
+}
+
+
 $(function () {
 
   pwaManager();
@@ -647,6 +659,8 @@ $(function () {
   setupUtmHelpers();
 
   // setupWOWJS();
+
+  setupModalConfig();
 });
 
 window.addEventListener('load', function () {

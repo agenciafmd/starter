@@ -2374,6 +2374,7 @@
                 <div class="page-header">
                     <h1 id="dialogs">
                         <a href="https://realfavicongenerator.net/"
+                           aria-label="Images"
                            target="_blank">Images
                         </a>
                     </h1>
@@ -2390,6 +2391,27 @@
                 </div>
             </div>
         </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="page-header">
+            <h1 id="links-warnings">
+              <a href="https://realfavicongenerator.net/"
+                 target="_blank">Links
+              </a>
+            </h1>
+            <div class="d-flex align-items-center mb-1">
+              <div class="bg-danger mr-0h"
+                   style="width: 20px; height: 20px;"></div>
+              Missing <kbd class="ml-0h">aria-label=""</kbd>
+            </div>
+            <div class="d-flex align-items-center mb-2">
+              <div class="bg-warning mr-0h"
+                   style="width: 20px; height: 20px"></div>
+              Missing <kbd class="ml-0h">title=""</kbd>
+            </div>
+          </div>
+        </div>
+      </div>
         <div class="row">
             <div class="col-6">
                 <div class="p-3 mb-2 bg-light">
