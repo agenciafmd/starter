@@ -42,7 +42,6 @@
         "lodash": "^4.17.21",
         "moment": "^2.18.1",
         "popper.js": "^1.16.1",
-        "select2": "^4.0.13",
         "share-api-polyfill": "^1.0.21",
         "sweetalert2": "^9.7.2",
         "swiper": "^7.0.1",

@@ -5,7 +5,6 @@ module.exports = (function () {
     // 'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js',
     'node_modules/imask/dist/imask.min.js',
     // 'node_modules/select2/dist/js/i18n/pt-BR.js',
-    // 'node_modules/select2/dist/js/select2.min.js',
     'node_modules/sweetalert2/dist/sweetalert2.min.js',
     'node_modules/infinite-scroll/dist/infinite-scroll.pkgd.min.js',
     // 'node_modules/clipboard/dist/clipboard.min.js',

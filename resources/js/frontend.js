@@ -218,15 +218,6 @@ function onChangeSelectLink() {
   });
 }
 
-function setupSelect2() {
-
-  $('select.js-select2')
-      .select2({
-        theme: 'bootstrap',
-        language: 'pt-BR',
-      });
-}
-
 function getBrowser() {
 
   const userAgent = navigator.userAgent.toLowerCase();
@@ -633,8 +624,6 @@ $(function () {
   // setupStateCityOptions();
 
   // onChangeSelectLink();
-
-  // setupSelect2();
 
   setupInputMasks();
 

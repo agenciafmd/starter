@@ -1,6 +1,6 @@
 {
     "/../resources/js/spritemap.js": "/../resources/js/spritemap.js?id=d41d8cd98f00b204e980",
-    "/css/frontend.css": "/css/frontend.css?id=cb58684981abca0e7673",
+    "/css/frontend.css": "/css/frontend.css?id=8da0caf07eeb8c9d36ce",
     "/fonts/Roboto-Bold.woff2": "/fonts/Roboto-Bold.woff2?id=5e7ccbfff307366caffb",
     "/fonts/Roboto-Light.woff2": "/fonts/Roboto-Light.woff2?id=8c5c0ee80a4a8d364b4a",
     "/fonts/Roboto-Regular.woff2": "/fonts/Roboto-Regular.woff2?id=0220c6a90c947b4780c2",
@@ -25,7 +25,8 @@
     "/images/video-film.png": "/images/video-film.png?id=e8b925366fec23d0d6e0",
     "/images/video-film.webp": "/images/video-film.webp?id=286a1a29a27ee6a6308c",
     "/favicon.ico": "/favicon.ico?id=60aff7b7aab1897a0662",
-    "/service-worker.js": "/service-worker.js?id=dbfd586a86362e816a98",
     "/manifest.json": "/manifest.json?id=95d8a2bda2345b165498",
-    "/js/frontend.js": "/js/frontend.js?id=76fa62e3e786d9adca8e"
+    "/pwa-manager.js": "/pwa-manager.js?id=9cf2dfcff89a26a689eb",
+    "/service-worker.js": "/service-worker.js?id=dbfd586a86362e816a98",
+    "/js/frontend.js": "/js/frontend.js?id=decfa7bdd9b222c1f187"
 }
