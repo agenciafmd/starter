@@ -495,29 +495,6 @@ function setupInfiniteScroll() {
   });
 }
 
-function insertCopyrightYear() {
-  const copyrightContainerSelector = '.js-copyright-container';
-
-  const footer = document.querySelector('footer');
-  if (!footer) {
-    console.error('No footer element found.');
-    return;
-  }
-
-  const yearContainer = footer.querySelector(
-      copyrightContainerSelector
-  );
-  if (!yearContainer) {
-    console.error(
-        `${ copyrightContainerSelector } class is required to insert copyright text`
-    );
-    return;
-  }
-
-  const yearText = `Todos os direitos reservados © ${new Date().getFullYear()}`;
-  yearContainer.insertAdjacentHTML('afterbegin', yearText);
-}
-
 function setupClipboardJS() {
 
   // Don't forget to install the package: npm install clipboard --save
@@ -637,8 +614,6 @@ $(function () {
   // setupTooltip();
 
   // setupAnchorReloadPrevention();
-
-  insertCopyrightYear();
 
   initializeFormHelpers();
 
