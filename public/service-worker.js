@@ -1,0 +1,1 @@
+const applicationName="fmd-starter",assets=["/","/index.html","/css/frontend.css","/js/frontend.js"];self.addEventListener("install",(e=>{e.waitUntil(caches.open("fmd-starter").then((e=>{e.addAll(assets)})))})),self.addEventListener("fetch",(e=>{e.respondWith(caches.match(e.request).then((t=>t||fetch(e.request))))}));
