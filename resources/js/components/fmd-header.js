@@ -36,7 +36,44 @@ function setupFmdHeader() {
 
   function setHeaderHeight(headerHeight) {
 
-    document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
+    document.documentElement.style.setProperty(
+        '--header-height',
+        headerHeight + 'px',
+    );
+  }
+
+  function handleResize() {
+
+    const previousDimensions = {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    };
+
+    function setupResize() {
+
+      const currentDimensions = {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+      const hasHeaderFixed = header.classList.contains(fixedClass);
+
+      // check the width and height of the screen to prevent when the browser
+      // bar hides or when rotating the mobile screen in the landscape model
+      // to not perform the resize
+      if (currentDimensions.width === previousDimensions.width
+          && currentDimensions.height >= previousDimensions.height
+          || hasHeaderFixed) {
+
+        return;
+      }
+
+      setTimeout(() => {
+
+        setHeaderHeight(header.offsetHeight);
+      }, headerTransition);
+    }
+
+    window.addEventListener('resize', setupResize);
   }
 
   // Initialize variables
@@ -81,15 +118,10 @@ function setupFmdHeader() {
 
   // Set variable that is used to apply padding-top to the body
   header.style.position = 'absolute';
+
   setHeaderHeight(header.offsetHeight);
 
-  window.addEventListener('resize', (event) => {
-
-    setTimeout(function () {
-
-      setHeaderHeight(header.offsetHeight);
-    }, headerTransition);
-  });
+  handleResize();
 
 
   // Scroll event listener
