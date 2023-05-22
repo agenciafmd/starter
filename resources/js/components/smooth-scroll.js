@@ -1,13 +1,13 @@
 function doScrollAnimate(targetSelector) {
   const target = document.querySelector(targetSelector);
 
-  const additionalOffset = Number(target.getAttribute('data-scroll-offset')) || 0;
-
   if (!target) {
 
     console.error(`Alvo não encontrado, verifique se existe um elemento na página com o seletor ${ targetSelector }. Dê preferência a um ID, para evitar conflito no scroll.`);
     return;
   }
+
+  const additionalOffset = Number(target.getAttribute('data-scroll-offset')) || 0;
 
   const scrollTop = target.getBoundingClientRect().top + document.body.scrollTop + additionalOffset;
 
