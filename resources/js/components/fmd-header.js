@@ -42,14 +42,14 @@ function setupFmdHeader() {
     );
   }
 
-  function handleResize() {
+  function setupResizeScreenHeader() {
 
-    const previousDimensions = {
+    const initialDimensions = {
       width: window.innerWidth,
       height: window.innerHeight,
     };
 
-    function setupResize() {
+    function handleResize() {
 
       const currentDimensions = {
         width: window.innerWidth,
@@ -60,8 +60,8 @@ function setupFmdHeader() {
       // check the width and height of the screen to prevent when the browser
       // bar hides or when rotating the mobile screen in the landscape model
       // to not perform the resize
-      if (currentDimensions.width === previousDimensions.width
-          && currentDimensions.height >= previousDimensions.height
+      if (currentDimensions.width === initialDimensions.width
+          && currentDimensions.height >= initialDimensions.height
           || hasHeaderFixed) {
 
         return;
@@ -73,7 +73,7 @@ function setupFmdHeader() {
       }, headerTransition);
     }
 
-    window.addEventListener('resize', setupResize);
+    window.addEventListener('resize', handleResize);
   }
 
   // Initialize variables
@@ -121,7 +121,7 @@ function setupFmdHeader() {
 
   setHeaderHeight(header.offsetHeight);
 
-  handleResize();
+  setupResizeScreenHeader();
 
 
   // Scroll event listener
