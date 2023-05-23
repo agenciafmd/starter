@@ -96,7 +96,7 @@ function setupFmdHeader() {
   }
 
   // Select fixed header
-  const header = document.getElementsByClassName(headerClass)[0];
+  const header = document.querySelector(`.${ headerClass }`);
   const headerTransition = Number(getComputedStyle(header)['transition-duration'].replace(
       's',
       '',
