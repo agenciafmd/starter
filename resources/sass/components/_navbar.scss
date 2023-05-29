@@ -111,8 +111,8 @@ $navbar-toggler-bar-height: 3px;
 
     .offcanvas,
     .offcanvas-backdrop {
-      top: calc(var(--header-height) - #{($navbar-brand-height - $navbar-brand-is-fixed-height) * 2});
-      height: calc(100vh - var(--header-height) + #{($navbar-brand-height - $navbar-brand-is-fixed-height) * 2});
+      top: calc(var(--header-height) - #{($navbar-brand-height - $navbar-brand-is-fixed-height)});
+      height: calc(100vh - var(--header-height) + #{($navbar-brand-height - $navbar-brand-is-fixed-height)});
     }
   }
 

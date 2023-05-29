@@ -36,7 +36,44 @@ function setupFmdHeader() {
 
   function setHeaderHeight(headerHeight) {
 
-    document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
+    document.documentElement.style.setProperty(
+        '--header-height',
+        headerHeight + 'px',
+    );
+  }
+
+  function setupResizeScreenHeader() {
+
+    const initialDimensions = {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    };
+
+    function handleResize() {
+
+      const currentDimensions = {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+      const hasHeaderFixed = header.classList.contains(fixedClass);
+
+      // check the width and height of the screen to prevent when the browser
+      // bar hides or when rotating the mobile screen in the landscape model
+      // to not perform the resize
+      if (currentDimensions.width === initialDimensions.width
+          && currentDimensions.height >= initialDimensions.height
+          || hasHeaderFixed) {
+
+        return;
+      }
+
+      setTimeout(() => {
+
+        setHeaderHeight(header.offsetHeight);
+      }, headerTransition);
+    }
+
+    window.addEventListener('resize', handleResize);
   }
 
   // Initialize variables
@@ -59,7 +96,7 @@ function setupFmdHeader() {
   }
 
   // Select fixed header
-  const header = document.getElementsByClassName(headerClass)[0];
+  const header = document.querySelector(`.${ headerClass }`);
   const headerTransition = Number(getComputedStyle(header)['transition-duration'].replace(
       's',
       '',
@@ -81,15 +118,10 @@ function setupFmdHeader() {
 
   // Set variable that is used to apply padding-top to the body
   header.style.position = 'absolute';
+
   setHeaderHeight(header.offsetHeight);
 
-  window.addEventListener('resize', (event) => {
-
-    setTimeout(function () {
-
-      setHeaderHeight(header.offsetHeight);
-    }, headerTransition);
-  });
+  setupResizeScreenHeader();
 
 
   // Scroll event listener
