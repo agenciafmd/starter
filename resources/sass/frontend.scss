@@ -10,7 +10,9 @@
 
 // Override variables
 @import "frontend/variables";
+@import "frontend/variables-dark";
 @import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/variables-dark";
 
 // Override maps
 @import "frontend/maps";
