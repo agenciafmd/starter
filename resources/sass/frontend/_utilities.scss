@@ -59,28 +59,28 @@ $utilities: map-merge(
           map-get($utilities, "width"),
           (
             responsive: true,
-            values: $sizing-values
+            values: $position-values
           ),
       ),
       "max-width": map-merge(
           map-get($utilities, "max-width"),
           (
             responsive: true,
-            values: $sizing-values
+            values: $position-values
           ),
       ),
       "height": map-merge(
           map-get($utilities, "height"),
           (
             responsive: true,
-            values: $sizing-values
+            values: $position-values
           ),
       ),
       "max-height": map-merge(
           map-get($utilities, "max-height"),
           (
             responsive: true,
-            values: $sizing-values
+            values: $position-values
           ),
       ),
       "position": map-merge(
