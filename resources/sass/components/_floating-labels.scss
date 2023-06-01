@@ -31,6 +31,7 @@ $form-floating-label-bg: none;
   > label {
     top: $form-floating-label-top;
     left: $form-floating-label-left;
+    height: $form-floating-label-height;
     padding: $form-floating-label-padding;
     background: $form-floating-label-bg;
     width: auto;
