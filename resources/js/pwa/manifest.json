@@ -3,8 +3,8 @@
     "short_name": "FMD Starter",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#fdfdfd",
-    "theme_color": "#db4938",
+    "background_color": "#FFFFFF",
+    "theme_color": "#212529",
     "orientation": "portrait-primary",
     "icons": [
         {
@@ -14,8 +14,8 @@
             "purpose": "maskable any"
         },
         {
-            "src": "/images/mstile-150x150.webp",
-            "type": "image/webp",
+            "src": "/images/mstile-150x150.png",
+            "type": "image/png",
             "sizes": "150x150",
             "purpose": "maskable any"
         },
