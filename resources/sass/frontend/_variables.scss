@@ -462,6 +462,8 @@ $position-values: (
 ) !default;
 // scss-docs-end position-map
 
+$sizing-values: $position-values; // Not a Bootstrap standard variable
+
 // Body
 //
 // Settings for the `<body>` element.
