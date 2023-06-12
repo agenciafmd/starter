@@ -34,27 +34,6 @@ $utilities: map-merge(
             state: hover,
           ),
       ),
-      "z-index": (
-        property: z-index,
-        values: (
-          "n3": -3,
-          "n2": -2,
-          "n1": -1,
-          "0": 0,
-          "1": 1,
-          "2": 2,
-          "3": 3,
-          "dropdown": $zindex-dropdown,
-          "sticky": $zindex-sticky,
-          "fixed": $zindex-fixed,
-          "offcanvas-backdrop": $zindex-offcanvas-backdrop,
-          "offcanvas": $zindex-offcanvas,
-          "modal-backdrop": $zindex-modal-backdrop,
-          "modal": $zindex-modal,
-          "popover": $zindex-popover,
-          "tooltip": $zindex-tooltip,
-        )
-      ),
       "width": map-merge(
           map-get($utilities, "width"),
           (

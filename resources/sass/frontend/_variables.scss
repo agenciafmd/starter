@@ -1187,7 +1187,16 @@ $zindex-levels: (
     0: 0,
     1: 1,
     2: 2,
-    3: 3
+    3: 3,
+    dropdown: $zindex-dropdown,
+    sticky: $zindex-sticky,
+    fixed: $zindex-fixed,
+    offcanvasbackdrop: $zindex-offcanvas-backdrop,
+    offcanvas: $zindex-offcanvas,
+    modalbackdrop: $zindex-modal-backdrop,
+    modal: $zindex-modal,
+    popover: $zindex-popover,
+    tooltip: $zindex-tooltip,
 ) !default;
 // scss-docs-end zindex-levels-map
 
