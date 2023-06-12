@@ -690,10 +690,10 @@ $font-sizes: (
 $headings-margin-bottom:      $spacer * .5 !default;
 $headings-font-family:        null !default;
 $headings-font-style:         null !default;
-$headings-font-weight:        500 !default;
+$headings-font-weight:        $font-weight-bold !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              inherit !default;
-$headings-text-transform:     'uppercase'; // Not a Bootstrap standard variable
+$headings-text-transform:     null; // Not a Bootstrap standard variable
 // scss-docs-end headings-variables
 
 // scss-docs-start display-headings
