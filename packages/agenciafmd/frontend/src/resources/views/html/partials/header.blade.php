@@ -1,5 +1,5 @@
 <header class="header fmd-header">
-  <nav class="navbar navbar-expand-md bg-white">
+  <nav class="navbar navbar-expand-md bg-secondary">
     <div class="container">
       <a href="/html"
          class="navbar-brand"

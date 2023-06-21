@@ -8,7 +8,7 @@
 
 @section('content')
     <main>
-        <section class="py-block py-md-block-large text-center">
+        <section class="py-block py-md-block-large text-center text-black bg-secondary">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-6">
