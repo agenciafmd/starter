@@ -6,6 +6,21 @@
 @section('title', 'Home')
 @section('description', 'Descrição da página')
 
+@push('head')
+<style>
+    main {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+    }
+
+    section {
+
+        width: 100%;
+    }
+</style>
+@endpush
+
 @section('content')
     <main>
         <section class="py-block py-md-block-large text-center">
