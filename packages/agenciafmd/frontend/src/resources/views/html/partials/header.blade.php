@@ -3,6 +3,7 @@
     <div class="container">
       <a href="/html"
          class="navbar-brand"
+         aria-label="{{ config('app.name') }}"
          title="{{ config('app.name') }}">
         <svg role="img">
           <use xlink:href="/svg/sprite.svg#fmd-logo"></use>
@@ -16,18 +17,24 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <a href="/html"
+                 aria-label="Home"
+                 title="Home"
                  class="nav-link active">
                 Home
               </a>
             </li>
             <li class="nav-item">
               <a href="/html/quem-somos"
+                 aria-label="Quem somos"
+                 title="Quem somos"
                  class="nav-link">
                 Quem somos
               </a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle"
+                 aria-label="Produtos"
+                 title="Produtos"
                  href="#"
                  id="navbarDropdown"
                  role="button"
@@ -39,18 +46,24 @@
               <ul class="dropdown-menu">
                 <li>
                   <a class="dropdown-item"
+                     aria-label="Action"
+                     title="Action"
                      href="#">
                     Action
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item"
+                     aria-label="Another action"
+                     title="Another action"
                      href="#">
                     Another action
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item"
+                     aria-label="Something else here"
+                     title="Something else here"
                      href="#">
                     Something else here
                   </a>
@@ -59,6 +72,8 @@
             </li>
             <li class="nav-item">
               <a href="/html/contato"
+                 aria-label="Contato"
+                 title="Contato"
                  data-bs-dismiss="offcanvas"
                  data-bs-target="#offcanvasNavbar"
                  class="nav-link js-scroll-top">

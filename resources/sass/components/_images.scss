@@ -1,13 +1,3 @@
-img {
-  &:not([alt]) {
-    outline: 4px solid red;
-    outline-offset: -8px;
-  }
-
-  &:not([loading="lazy"]) {
-    border: 4px solid orange;
-  }
-}
 
 picture.ratio {
   display: block;

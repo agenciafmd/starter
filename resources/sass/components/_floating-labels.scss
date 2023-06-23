@@ -1,4 +1,3 @@
-$form-floating-label-height: 100%;
 $form-floating-label-top: 0;
 $form-floating-label-left: 0;
 $form-floating-label-padding: $form-floating-padding-y $form-floating-padding-x;
@@ -11,7 +10,6 @@ $form-floating-label-bg: none;
   $form-floating-input-padding-t: $input-padding-y;
   $form-floating-input-padding-b: $input-padding-y;
   $form-floating-label-padding: 0 0.5rem;
-  $form-floating-label-height: auto;
   $form-floating-label-top: $form-floating-padding-y;
   $form-floating-label-left: $input-padding-x - 0.5rem;
   $form-floating-label-opacity: 1;
@@ -36,6 +34,7 @@ $form-floating-label-bg: none;
     height: $form-floating-label-height;
     padding: $form-floating-label-padding;
     background: $form-floating-label-bg;
+    width: auto;
     margin: auto;
   }
 
