@@ -621,7 +621,7 @@ $(function () {
 
   // setupClipboardJS();
 
-  setupShareAPI();
+  // setupShareAPI();
 
   // setupDataLayerEventClickButton();
 
