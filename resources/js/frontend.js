@@ -41,70 +41,74 @@ function getThemeVariables() {
 
 function setupStateCityOptions() {
 
-  if (!$('.js-state').length) {
+  const stateSelect = document.querySelector('.js-state');
 
+  if(!stateSelect.length){
     return;
   }
 
-  $.getJSON('/json/estados-cidades.json', function (data) {
+  const myHeaders = new Headers();
+  myHeaders.set('content-type', 'application/json');
 
-    const $state = $('.js-state');
-    let $options = '<option value="">-</option>';
+  const params = {
+    method: 'GET',
+    headers: myHeaders
+  }
 
-    $.each(data, function (key, val) {
+  fetch('/json/estados-cidades.json', params)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        addStatesInSelect({ data, stateSelect });
+        addCitiesInTheSelectChangingTheStateField({data, stateSelect});
+  })
+      .catch(error => console.log('Houve um erro ao retornar os dados de estados e cidades'))
+}
 
-      var selected = '';
+function addStatesInSelect({ data, stateSelect }){
+  data.forEach((state) => {
+    let selected;
 
-      if (val.nome === $state.attr('data-selected')) {
+    if (state.nome === stateSelect.getAttribute('data-selected')) {
+      selected = 'selected';
+    }
 
-        selected = 'selected';
+    stateSelect.innerHTML += `<option value="${state.nome}" ${selected}>${state.nome}</option>`;
+  });
+
+}
+
+function addCitiesInTheSelectChangingTheStateField({data, stateSelect}){
+  stateSelect.addEventListener('change', () => {
+
+    const selectedState = stateSelect.querySelector('option:checked').value;
+
+    const citySelect = document.querySelector('.js-city');
+
+    data.forEach((stateSelected) => {
+
+      let optionsCity = '';
+
+      if (stateSelected.nome !== selectedState) {
+        return;
       }
 
-      $options +=
-          `<option value="${ val.nome }" ${ selected }>${ val.nome }</option>`;
-    });
+      stateSelected.cidades.forEach((city) => {
+        let selected;
 
-    $state.html($options);
-
-    $state.change(function () {
-
-      let $optionsCity = '<option value="">-</option>';
-
-      let str = '';
-
-      $('.js-state option:selected')
-          .each(function () {
-            str += $(this)
-                .text();
-          });
-
-      var city = $('.js-city');
-
-      $.each(data, function (key, val) {
-
-        if (val.nome !== str) {
-
-          return;
+        if (city === citySelect.getAttribute('data-selected')) {
+          selected = 'selected';
         }
 
-        $.each(val.cidades, function (key_city, val_city) {
-
-          let selected = '';
-
-          if (val_city === city.attr('data-selected')) {
-
-            selected = 'selected';
-          }
-
-          $optionsCity +=
-              `<option value="${ val_city }" ${ selected }>${ val_city }</option>`;
-        });
+        optionsCity += `<option value="${city}" ${selected}>${city}</option>`;
       });
 
-      city.html($optionsCity);
-    })
-          .change();
+      citySelect.innerHTML = optionsCity;
+    });
+
   });
+  stateSelect.dispatchEvent(new Event('change'))
 }
 
 function setupServiceWorker() {
@@ -657,7 +661,7 @@ $(function () {
 
   // setupCepSearch();
 
-  // setupStateCityOptions();
+  setupStateCityOptions();
 
   // onChangeSelectLink();
 
