@@ -1,5 +1,5 @@
 <header class="header fmd-header">
-  <nav class="navbar navbar-expand-md bg-white">
+  <nav class="navbar navbar-expand-md">
     <div class="container">
       <a href="/html"
          class="navbar-brand"
@@ -14,11 +14,12 @@
            id="offcanvasNavbar"
            aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-body">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav nav-underline">
             <li class="nav-item">
               <a href="/html"
                  aria-label="Home"
                  title="Home"
+                 aria-current="page"
                  class="nav-link active">
                 Home
               </a>
