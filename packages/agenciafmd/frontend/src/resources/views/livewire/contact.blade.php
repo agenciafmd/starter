@@ -104,6 +104,8 @@
                 <label class="form-check-label text-reset" for="privacy-terms">
                     Li e estou de acordo com a
                     <a href="#"
+                       title="Políticas de Privacidade"
+                       aria-label="link para Políticas de Privacidade"
                        target="_blank"
                        class="fw-bold">
                         Políticas de Privacidade
