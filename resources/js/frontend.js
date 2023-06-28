@@ -53,6 +53,52 @@ function setupStateCityOptions() {
   const params = {
     method: 'GET',
     headers: myHeaders
+  };
+
+  const addStatesInSelect = ({ data, stateSelect }) => {
+    data.forEach((state) => {
+      let selected;
+
+      if (state.nome === stateSelect.getAttribute('data-selected')) {
+        selected = 'selected';
+      }
+
+      stateSelect.innerHTML += `<option value="${state.nome}" ${selected}>${state.nome}</option>`;
+    });
+
+  }
+
+  const addCitiesInTheSelectChangingTheStateField = ({data, stateSelect}) => {
+    stateSelect.addEventListener('change', () => {
+
+      const selectedState = stateSelect.querySelector('option:checked').value;
+
+      const citySelect = document.querySelector('.js-city');
+
+      data.forEach((stateSelected) => {
+
+        let optionsCity = '';
+
+        if (stateSelected.nome !== selectedState) {
+          return;
+        }
+
+        stateSelected.cidades.forEach((city) => {
+          let selected;
+
+          if (city === citySelect.getAttribute('data-selected')) {
+            selected = 'selected';
+          }
+
+          optionsCity += `<option value="${city}" ${selected}>${city}</option>`;
+        });
+
+        citySelect.innerHTML = optionsCity;
+      });
+
+    });
+
+    stateSelect.dispatchEvent(new Event('change'))
   }
 
   fetch('/json/estados-cidades.json', params)
@@ -66,50 +112,6 @@ function setupStateCityOptions() {
       .catch(error => console.log('Houve um erro ao retornar os dados de estados e cidades'))
 }
 
-function addStatesInSelect({ data, stateSelect }){
-  data.forEach((state) => {
-    let selected;
-
-    if (state.nome === stateSelect.getAttribute('data-selected')) {
-      selected = 'selected';
-    }
-
-    stateSelect.innerHTML += `<option value="${state.nome}" ${selected}>${state.nome}</option>`;
-  });
-
-}
-
-function addCitiesInTheSelectChangingTheStateField({data, stateSelect}){
-  stateSelect.addEventListener('change', () => {
-
-    const selectedState = stateSelect.querySelector('option:checked').value;
-
-    const citySelect = document.querySelector('.js-city');
-
-    data.forEach((stateSelected) => {
-
-      let optionsCity = '';
-
-      if (stateSelected.nome !== selectedState) {
-        return;
-      }
-
-      stateSelected.cidades.forEach((city) => {
-        let selected;
-
-        if (city === citySelect.getAttribute('data-selected')) {
-          selected = 'selected';
-        }
-
-        optionsCity += `<option value="${city}" ${selected}>${city}</option>`;
-      });
-
-      citySelect.innerHTML = optionsCity;
-    });
-
-  });
-  stateSelect.dispatchEvent(new Event('change'))
-}
 
 function preventInvalidFormSubmit() {
 
