@@ -31,6 +31,7 @@ module.exports = (function () {
     'resources/js/components/swiper.js',
     // 'resources/js/components/lax.js',
     'resources/js/components/smooth-scroll.js',
+    'resources/js/components/light-dark-controller.js',
 
     // Global usages
     'resources/js/frontend.js',

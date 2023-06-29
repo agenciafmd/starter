@@ -630,6 +630,8 @@ $(function () {
   // setupWOWJS();
 
   setupModalConfig();
+
+  setupLightDarkModeController();
 });
 
 window.addEventListener('load', function () {
