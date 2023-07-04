@@ -1,6 +1,6 @@
 function setupLightDarkModeController() {
 
-  const toggleLightDarkTheme = document.getElementById('switchControllerLightDarkTheme');
+  const toggleLightDarkTheme = document.getElementById('jsSwitchControllerLightDarkTheme');
 
   if (!toggleLightDarkTheme) {
     throw new Error(

@@ -2,7 +2,7 @@
     <input class="form-check-input"
            type="checkbox"
            role="switch"
-           id="switchControllerLightDarkTheme">
+           id="jsSwitchControllerLightDarkTheme">
     <label class="form-check-label"
-           for="switchControllerLightDarkTheme"></label>
+           for="jsSwitchControllerLightDarkTheme"></label>
 </div>
