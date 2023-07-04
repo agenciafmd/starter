@@ -45,6 +45,8 @@ function setupLightDarkModeController() {
   window.addEventListener('load', () => {
 
     updateToggleThemeStatus();
-    verifyPreferenceClientTheme();
+
+    // Activate the preferred theme already on load
+    activatePreferenceTheme(getPreferenceTheme());
   });
 }
