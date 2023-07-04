@@ -14,11 +14,11 @@ function setupLightDarkModeController() {
 
   preferenceThemeElement.addEventListener('change', (event) => {
 
-    event.target.checked ? activePreferedTheme('dark') : activePreferedTheme('light');
+    event.target.checked ? activatePreferenceTheme('dark') : activatePreferenceTheme('light');
   });
 
   // Enables the customer's preferred theme type
-  function activePreferedTheme(theme) {
+  function activatePreferenceTheme(theme) {
 
     setPreferenceTheme(theme);
     setDataBSThemeAttributeInDocument(theme);
@@ -33,7 +33,7 @@ function setupLightDarkModeController() {
   // Check the client's theme preference in the localStorage
   function verifyPreferenceClientTheme() {
 
-    activePreferedTheme(getPreferenceTheme());
+    activatePreferenceTheme(getPreferenceTheme());
   }
 
   // Check if the theme is dark to set the toggle as active or not
