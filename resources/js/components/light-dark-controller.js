@@ -8,9 +8,9 @@ function setupLightDarkModeController() {
   }
 
   // Gets the theme value saved in localStorage
-  const getStoragedTheme = () => localStorage.getItem('theme');
+  const getPreferenceTheme = () => localStorage.getItem('theme');
   // Defines a new theme item by storing the theme type in localStorage
-  const setStoragedTheme = (theme) => localStorage.setItem('theme', theme);
+  const setPreferenceTheme = (theme) => localStorage.setItem('theme', theme);
 
   preferenceThemeElement.addEventListener('change', (event) => {
 
@@ -20,7 +20,7 @@ function setupLightDarkModeController() {
   // Enables the customer's preferred theme type
   function activePreferedTheme(theme) {
 
-    setStoragedTheme(theme);
+    setPreferenceTheme(theme);
     setDataBSThemeAttributeInDocument(theme);
   }
 
@@ -33,13 +33,13 @@ function setupLightDarkModeController() {
   // Check the client's theme preference in the localStorage
   function verifyPreferenceClientTheme() {
 
-    activePreferedTheme(getStoragedTheme());
+    activePreferedTheme(getPreferenceTheme());
   }
 
   // Check if the theme is dark to set the toggle as active or not
   function updateToggleThemeStatus() {
 
-    getStoragedTheme() === 'dark' ? preferenceThemeElement.checked = true : preferenceThemeElement.checked = false;
+    getPreferenceTheme() === 'dark' ? preferenceThemeElement.checked = true : preferenceThemeElement.checked = false;
   }
 
   window.addEventListener('load', () => {
