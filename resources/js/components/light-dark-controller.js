@@ -10,7 +10,7 @@ function setupLightDarkModeController() {
   // Gets the theme value saved in localStorage
   const getStoragedTheme = () => localStorage.getItem('theme');
   // Defines a new theme item by storing the theme type in localStorage
-  const setStoragedTheme = theme => localStorage.setItem('theme', theme);
+  const setStoragedTheme = (theme) => localStorage.setItem('theme', theme);
 
   preferenceThemeElement.addEventListener('change', (event) => {
 
