@@ -12,11 +12,6 @@ function setupLightDarkModeController() {
   // Defines a new theme item by storing the theme type in localStorage
   const setPreferenceTheme = (theme) => localStorage.setItem('theme', theme);
 
-  preferenceThemeElement.addEventListener('change', (event) => {
-
-    event.target.checked ? activatePreferenceTheme('dark') : activatePreferenceTheme('light');
-  });
-
   // Enables the customer's preferred theme type
   function activatePreferenceTheme(theme) {
 
@@ -35,6 +30,11 @@ function setupLightDarkModeController() {
 
     getPreferenceTheme() === 'dark' ? preferenceThemeElement.checked = true : preferenceThemeElement.checked = false;
   }
+
+  preferenceThemeElement.addEventListener('change', (event) => {
+
+    event.target.checked ? activatePreferenceTheme('dark') : activatePreferenceTheme('light');
+  });
 
   window.addEventListener('load', () => {
 
