@@ -30,12 +30,6 @@ function setupLightDarkModeController() {
     document.documentElement.setAttribute('data-bs-theme', theme);
   }
 
-  // Check the client's theme preference in the localStorage
-  function verifyPreferenceClientTheme() {
-
-    activatePreferenceTheme(getPreferenceTheme());
-  }
-
   // Check if the theme is dark to set the toggle as active or not
   function updateToggleThemeStatus() {
 
