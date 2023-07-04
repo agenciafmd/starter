@@ -1,8 +1,8 @@
 function setupLightDarkModeController() {
 
-  const toggleLightDarkTheme = document.getElementById('jsSwitchControllerLightDarkTheme');
+  const preferenceThemeElement = document.getElementById('jsSwitchControllerLightDarkTheme');
 
-  if (!toggleLightDarkTheme) {
+  if (!preferenceThemeElement) {
     throw new Error(
       'Sorry, we couldn\'t find toggle element for light and dark theme :(');
   }
@@ -12,7 +12,7 @@ function setupLightDarkModeController() {
   // Defines a new theme item by storing the theme type in localStorage
   const setStoragedTheme = theme => localStorage.setItem('theme', theme);
 
-  toggleLightDarkTheme.addEventListener('change', (event) => {
+  preferenceThemeElement.addEventListener('change', (event) => {
 
     event.target.checked ? activePreferedTheme('dark') : activePreferedTheme('light');
   });
@@ -39,7 +39,7 @@ function setupLightDarkModeController() {
   // Check if the theme is dark to set the toggle as active or not
   function updateToggleThemeStatus() {
 
-    getStoragedTheme() === 'dark' ? toggleLightDarkTheme.checked = true : toggleLightDarkTheme.checked = false;
+    getStoragedTheme() === 'dark' ? preferenceThemeElement.checked = true : preferenceThemeElement.checked = false;
   }
 
   window.addEventListener('load', () => {
