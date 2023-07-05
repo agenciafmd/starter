@@ -84,6 +84,7 @@
           </ul>
         </div>
       </div>
+      <x-frontend::light-dark-toggle/>
       <button class="navbar-toggler"
               type="button"
               title="Menu"
