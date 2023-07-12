@@ -4,7 +4,7 @@
 ])
 
 @section('title', 'Home')
-@section('description', 'Descrição da página')
+@section('description', 'Home - Starter')
 
 @push('head')
     <style>
