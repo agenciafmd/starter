@@ -7,7 +7,7 @@ $toggle-check-background-checked: '/svg/ic-dark-theme.svg';
 .light-dark-toggle {
 
   position: relative;
-  z-index: 1046;
+  z-index: $zindex-offcanvas + 1;
 
   &.form {
 
