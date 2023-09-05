@@ -64,8 +64,14 @@ $navbar-toggler-bar-height: 3px;
   .offcanvas {
     &,
     &-backdrop {
-      top: var(--header-height);
-      height: calc(100vh - var(--header-height));
+      padding-top: var(--header-height);
+      height: 100vh;
+
+      @include media-breakpoint-up(md) {
+        padding-top: 0;
+        top: var(--header-height);
+        height: calc(100vh - var(--header-height));
+      }
     }
 
     &.show ~ .navbar-toggler {

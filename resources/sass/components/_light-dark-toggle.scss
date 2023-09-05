@@ -6,6 +6,9 @@ $toggle-check-background-checked: '/svg/ic-dark-theme.svg';
 
 .light-dark-toggle {
 
+  position: relative;
+  z-index: 1046;
+
   &.form {
 
     &-switch {
