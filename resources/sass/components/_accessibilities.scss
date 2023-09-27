@@ -7,7 +7,7 @@ a {
 }
 
 img {
-  &:not([alt], [loading="lazy"]) {
+  &:not([alt], [loading="lazy"], .wysiwyg img) {
     @include accessibility-warning;
   }
 }
