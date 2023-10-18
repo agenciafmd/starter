@@ -14,3 +14,8 @@ a {
   outline: none !important;
   transition: $transition-base;
 }
+
+.wysiwyg img {
+  max-width: 100%;
+  height: auto;
+}

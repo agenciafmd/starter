@@ -1,13 +1,13 @@
 @import "../frontend/warnings";
 
 a {
-  &:not([aria-label], [title]){
+  &:not([aria-label], [title], .wysiwyg a){
     @include accessibility-warning;
   }
 }
 
 img {
-  &:not([alt], [loading="lazy"]) {
+  &:not([alt], [loading="lazy"], .wysiwyg img) {
     @include accessibility-warning;
   }
 }
