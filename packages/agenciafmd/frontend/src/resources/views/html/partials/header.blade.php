@@ -39,7 +39,9 @@
                 <a href="{{ $item['link'] }}"
                    aria-label="{{ $item['descriptionLink'] }}"
                    title="{{ $item['title'] }}"
-                   class="nav-link">
+                   class="nav-link"
+                   data-bs-dismiss="offcanvas"
+                   data-bs-target="#offcanvasNavbar">
                       {{ $item['title'] }}
                 </a>
             </li>
@@ -76,7 +78,9 @@
                       <a href="{{ $item['link'] }}"
                          aria-label="{{ $item['descriptionLink'] }}"
                          title="{{ $item['title'] }}"
-                         class="dropdown-item">
+                         class="dropdown-item"
+                         data-bs-dismiss="offcanvas"
+                         data-bs-target="#offcanvasNavbar">
                           {{ $item['title'] }}
                       </a>
                   </li>
