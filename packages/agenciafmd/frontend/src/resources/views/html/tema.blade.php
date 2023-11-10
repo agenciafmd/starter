@@ -849,10 +849,10 @@
             </div>
         </div>
 
-        <!-- Headings -->
+      <!-- Headings -->
 
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="bs-component">
                     <h1>Heading 1</h1>
                     <h2>Heading 2</h2>
@@ -867,7 +867,19 @@
                     <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
+                <div class="bs-component">
+                    <h2>Fonts</h2>
+                    <p class="fw-lighter">Roboto -  font-weight: 100</p>
+                    <p class="fw-light">Roboto - font-weight: 300</p>
+                    <p class="fw-normal">Roboto -  font-weight: 400</p>
+                    <p class="fw-medium">Roboto - font-weight: 500</p>
+                    <p class="fw-semibold">Roboto - font-weight: 600</p>
+                    <p class="fw-bold">Roboto - font-weight: 700</p>
+                    <p class="font-monospace">SFMono-Regular, Monospace - font-weight: 400</p>
+              </div>
+            </div>
+            <div class="col-lg-3">
                 <div class="bs-component">
                     <h2>Example body text</h2>
                     <p>Nullam quis risus eget <a href="#">urna mollis ornare</a> vel eu leo. Cum sociis natoque
@@ -879,7 +891,7 @@
                     <p>An abbreviation of the word attribute is <abbr title="attribute">attr</abbr>.</p>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="bs-component">
                     <h2>Emphasis classes</h2>
                     <p class="text-muted">Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.</p>

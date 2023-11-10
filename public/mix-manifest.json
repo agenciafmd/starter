@@ -1,6 +1,6 @@
 {
     "/../resources/js/spritemap.js": "/../resources/js/spritemap.js?id=d41d8cd98f00b204e980",
-    "/css/frontend.css": "/css/frontend.css?id=527773802b1b663b9585",
+    "/css/frontend.css": "/css/frontend.css?id=834fb9b8de1a006aaca6",
     "/fonts/Roboto-Bold.woff2": "/fonts/Roboto-Bold.woff2?id=5e7ccbfff307366caffb",
     "/fonts/Roboto-Light.woff2": "/fonts/Roboto-Light.woff2?id=8c5c0ee80a4a8d364b4a",
     "/fonts/Roboto-Regular.woff2": "/fonts/Roboto-Regular.woff2?id=0220c6a90c947b4780c2",
@@ -30,5 +30,5 @@
     "/manifest.json": "/manifest.json?id=228983f0c312d60befec",
     "/pwa-manager.js": "/pwa-manager.js?id=9cf2dfcff89a26a689eb",
     "/service-worker.js": "/service-worker.js?id=dbfd586a86362e816a98",
-    "/js/frontend.js": "/js/frontend.js?id=f60b5a36a6b5458ebf50"
+    "/js/frontend.js": "/js/frontend.js?id=9b77f583fb96693ddf56"
 }
