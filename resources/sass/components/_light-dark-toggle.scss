@@ -1,0 +1,28 @@
+$toggle-width: 2.5em;
+$toggle-height: 1.25em;
+$toggle-border-color: $dark;
+$toggle-check-background: '/svg/ic-light-theme.svg';
+$toggle-check-background-checked: '/svg/ic-dark-theme.svg';
+
+.light-dark-toggle {
+
+  &.form {
+
+    &-switch {
+
+      .form-check-input {
+
+        background-image: url($toggle-check-background);
+        width: $toggle-width;
+        height: $toggle-height;
+        border-color: $toggle-border-color;
+
+        &:checked {
+
+          background-image: url($toggle-check-background-checked);
+        }
+      }
+    }
+  }
+}
+
