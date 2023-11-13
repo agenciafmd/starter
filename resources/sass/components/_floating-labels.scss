@@ -32,6 +32,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     pointer-events: none;
+    line-height: $form-floating-line-height;
     border: $input-border-width solid transparent; // Required for aligning label's text with the input as it affects inner box model
     transform-origin: 0 0;
     @include transition($form-floating-transition);
@@ -106,6 +107,11 @@
   }
 
   // Not a Bootstrap standard option
+  > textarea.form-control {
+    height: calc(#{$input-height} * 3);
+    border-radius: var(--#{$prefix}border-radius);
+  }
+
   > .form-select {
     @include transition($form-floating-transition);
 
