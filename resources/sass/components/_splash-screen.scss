@@ -1,0 +1,47 @@
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: $zindex-toast + 1;
+  background: $primary;
+  display: flex;
+  opacity: 1;
+  justify-content: center;
+  align-items: center;
+  transition: opacity ease-in-out 0.5s;
+
+  svg {
+    display: none;
+  }
+
+  &-hidden {
+    opacity: 0;
+  }
+
+  &-first-load {
+    #logoPath {
+      fill: rgba($black, 0);
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      stroke: rgba($black, 20);
+      animation: draw-logo 3s linear forwards 0.75s, fill-logo .5s forwards 2s;
+    }
+  }
+
+  @keyframes draw-logo {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes fill-logo {
+    to {
+      fill: rgba($black, 1);
+      stroke: rgba($black, 0);
+    }
+  }
+}
+
+

@@ -87,6 +87,8 @@
 
 @stack('footer')
 
+{{-- <x-frontend::splash-screen/> --}}
+
 <script src="/js/frontend.js"></script>
 
 <livewire:scripts/>
