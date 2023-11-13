@@ -106,6 +106,10 @@
   }
 
   // Not a Bootstrap standard option
+  > textarea.form-control {
+    height: calc(#{$input-height} * 3);
+  }
+
   > .form-select {
     @include transition($form-floating-transition);
 
