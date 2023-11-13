@@ -98,5 +98,29 @@ $utilities: map-merge(
             responsive: true,
           ),
       ),
+      'font-size': map-merge(
+          map-get($utilities, 'font-size'),
+          (
+            responsive: true,
+            rfs: false,
+            values: map-merge(
+              map-get(map-get($utilities, 'font-size'), 'values'),
+              (
+                'xxsmall': $font-size-xxs,
+                'xsmall': $font-size-xs,
+                'small': $font-size-sm,
+                'base': $font-size-base,
+                'large': $font-size-lg,
+                'xlarge': $font-size-xl,
+              ),
+            ),
+          ),
+      ),
+      'color': map-merge(
+          map-get($utilities, 'color'),
+          (
+            state: hover,
+          ),
+      ),
     )
 );
