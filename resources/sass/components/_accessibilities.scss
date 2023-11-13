@@ -1,13 +1,25 @@
-@import "../frontend/warnings";
+@import '../frontend/warnings';
 
 a {
-  &:not([aria-label], [title]){
-    @include accessibility-warning;
+
+  &:not(.skip-warning) {
+
+    &:empty:not([aria-label], [title]) {
+      @include accessibility-warning;
+    }
+
+    &:has(img):not([aria-label]):not([aria-labelledby]) {
+      @include accessibility-warning;
+    }
   }
 }
 
 img {
-  &:not([alt], [loading="lazy"]) {
-    @include accessibility-warning;
+
+  &:not(.skip-warning) {
+
+    &:not([alt], [loading='lazy']) {
+      @include accessibility-warning;
+    }
   }
 }
