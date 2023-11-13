@@ -8,11 +8,12 @@
   &-item {
     flex: 0 1 auto;
     white-space: nowrap;
-    overflow: hidden;
+    //overflow: hidden;
     text-overflow: ellipsis;
+    text-decoration: none;
 
     &.active {
-      font-weight: $font-weight-bold;
+      font-weight: $font-weight-extrabold;
       flex-shrink: 1;
     }
 
@@ -21,16 +22,33 @@
       flex-shrink: 0;
     }
 
-    @include media-breakpoint-down(sm) {
-      font-size: $font-size-sm;
+    a {
+      text-decoration: none;
+      color: var(--#{$prefix}body-color);
 
-      &:nth-child(1),
-      &:nth-child(2):before {
-        display: none;
+      &:hover {
+        color: var(--#{$prefix}link-hover-color);
       }
+    }
+    + .breadcrumb-item::before {
 
-      &:nth-child(2) {
-        padding-left: 0;
+      background: #{escape-svg($form-select-indicator)} no-repeat;
+      background-size: contain;
+      width: 0.8rem;
+      height: 0.8rem;
+      transform: rotate(-90deg);
+      margin-right: var(--bs-breadcrumb-item-padding-x);
+      display: inline-block;
+      vertical-align: middle;
+      float: unset;
+    }
+  }
+
+  &-dark {
+    .breadcrumb-item {
+
+      a, &.active {
+        color: $white;
       }
     }
   }
