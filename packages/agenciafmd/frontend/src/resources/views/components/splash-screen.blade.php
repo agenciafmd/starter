@@ -1,7 +1,7 @@
 <div class="splash-screen">
+<!--    Adicionar stroke-dashoffset="1000" no path do svg-->
   <svg width="138" height="76" viewBox="0 0 88 26" fill="none"
        xmlns="http://www.w3.org/2000/svg">
-    <title> </title>
     <path fill-rule="evenodd" clip-rule="evenodd"
           id="logoPath"
           stroke-dashoffset="1000"

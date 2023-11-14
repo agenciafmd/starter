@@ -1,11 +1,13 @@
-function AnimateSplashScreen() {
+function AnimateSplashScreen(hastFirstLoadSplashScreen) {
   const splashScreen = document.querySelector('.splash-screen')
   const svg = splashScreen.querySelector('svg')
   svg.classList.add("d-block")
-  if (!sessionStorage.isVisited) {
-    sessionStorage.isVisited = true;
-    setTimeout(firstLoadSplashScreen(splashScreen), 100)
-    return
+  if (hastFirstLoadSplashScreen === true) {
+    if (!sessionStorage.isVisited) {
+      sessionStorage.isVisited = true;
+      setTimeout(firstLoadSplashScreen(splashScreen), 100)
+      return
+    }
   }
   reloadSplashScreen(splashScreen)
 }
@@ -32,6 +34,6 @@ function firstLoadSplashScreen(splashScreen) {
 
 window.addEventListener('DOMContentLoaded', function () {
 
-  AnimateSplashScreen()
+  AnimateSplashScreen(true)
 
 });
