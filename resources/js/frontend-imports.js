@@ -32,6 +32,7 @@ module.exports = (function () {
     // 'resources/js/components/lax.js',
     'resources/js/components/smooth-scroll.js',
     'resources/js/components/light-dark-controller.js',
+    // 'resources/js/components/splash-screen.js',
 
     // Global usages
     'resources/js/frontend.js',
