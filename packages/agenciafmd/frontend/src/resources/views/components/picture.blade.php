@@ -12,7 +12,7 @@
 
 <picture class="{{ $pictureClass }}">
     <x-dynamic-component :component="$hasBreakpoints ? 'frontend::sources' : 'frontend::single-source'"
-                         :image="$image"
+                         :image="Str::startsWith(request()->route()->getName(), ['frontend.html']) ? $image : mix($image)"
                          :title="$title"
                          :alt="$alt"
                          :breakpointDesktopWidth="$breakpointDesktopWidth"
