@@ -6,7 +6,7 @@
     &.bg-outline-#{$color} {
       @include button-outline-variant($value);
       color: var(--#{$prefix}btn-color);
-      border: 1px solid var(--#{$prefix}btn-color);
+      border: $border-width solid var(--#{$prefix}btn-color);
     }
   }
 }
