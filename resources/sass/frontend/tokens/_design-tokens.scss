@@ -22,10 +22,10 @@ $ds-border-width: .09375rem; //1.5
 
 //opacity-levels
 $ds-opacity-level-default: 1;
-$ds-opacity-level-semi-opaque: .72;
-$ds-opacity-level-intense: .64;
-$ds-opacity-level-medium: .32;
-$ds-opacity-level-light: .16;
+$ds-opacity-level-semi-opaque: .75;
+$ds-opacity-level-intense: .5;
+$ds-opacity-level-medium: .25;
+$ds-opacity-level-light: .15;
 $ds-opacity-level-semi-transparent: .08;
 
 //shade-levels
@@ -46,7 +46,6 @@ $ds-box-shadow-inset: inset 0 1px 2px rgba($ds-black, $ds-opacity-level-semi-opa
 
 //gradient
 $ds-gradient: linear-gradient(128.65deg, tint-color($ds-primary, $ds-shade-level-2) 30.34%, tint-color($ds-secondary, $ds-shade-level-2) 97.09%);
-$ds-gradient-video: linear-gradient(180deg, rgba($ds-black, 0.00) 21.36%, rgba($ds-black, 0.64) 93.21%);
 
 //body
 $ds-body-color: $ds-dark;
