@@ -3318,37 +3318,11 @@
                     </div>
                 </div>
                 <h2 class="font-dongle">Componente Modal</h2>
-                @php
-                $documents = [
-                [
-                'title' => 'Documentos pessoais',
-                'list' => [
-                'RG, CPF ou CNH válida;',
-                'Comprovante de endereço e renda atual;',
-                'Certidão de Nascimento ou Certidão de Casamento (em caso de divórcio é necessário constar a averbação);',
-                'Declaração de Imposto de Renda (quando declarado);',
-                'Certidão de nascimento dos filhos (se menores de 18 anos);',
-                'Para casados, documentação de ambos.'
-                ],
-                ],
-                [
-                'title' => 'Documentos para comprovação de renda',
-                'list' => [
-                'Assalariado: dois últimos holerites, carteira de trabalho, número do PIS, extrato do benefício em caso de recebimento pelo INSS, extrato do FGTS, caso possua;',
-                'Empresário ou Autônomo: Contrato social e pró-labore;',
-                'Não assalariado: Extrato da conta corrente constando o valor do limite do cheque especial dos últimos 6 meses, faturas do cartão de crédito dos últimos 3 meses, contas pagas dos últimos 3 meses em nome do titular da proposta e Guia da Previdência Social (GPS) dos últimos 6 meses.',
-                ],
-                ],
-                ];
 
-                @endphp
                 <button class="btn btn-primary"
                         data-bs-toggle="modal"
-                        data-bs-target="#modalDocumentList">Abrir modal</button>
-                {{--
-                <x-frontend::modals.document-list subtitle="Confira os documentos necessários para que você possa realizar o sonho da casa própria."
-                                                  :documents="$documents"/>
-                --}}
+                        data-bs-target="#modalBase">Abrir modal</button>
+
                 <h2>Offcanvas</h2>
                 <div class="bs-component">
                     <a class="btn btn-primary"
@@ -3810,6 +3784,12 @@
 </main>
 
 @endsection
+
+@push('footer')
+    <x-frontend::modals.modal-base></x-frontend::modals.modal-base>
+@endpush
+
+
 @push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js" data-manual></script>
 
