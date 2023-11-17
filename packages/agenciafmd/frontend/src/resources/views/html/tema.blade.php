@@ -1852,7 +1852,7 @@
                                                id="privacy-terms">
                                         <label class="form-check-label text-reset"
                                                for="privacy-terms">
-                                            @include('agenciafmd/frontend::html.partials.privacy-terms-message')
+                                            <x-frontend::privacy-terms-message />
                                         </label>
 
                                         @error('terms')
