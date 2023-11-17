@@ -1,14 +1,3 @@
-//font-weight
-$ds-font-weight-lighter: lighter !default;
-$ds-font-weight-light: 300 !default;
-$ds-font-weight-normal: 400 !default;
-$ds-font-weight-medium: 500 !default;
-$ds-font-weight-semibold: 600 !default;
-$ds-font-weight-bold: 700 !default;
-$ds-font-weight-extrabold: 800 !default;
-$ds-font-weight-black: 900 !default;
-$ds-font-weight-bolder: bolder !default;
-
 //font-size
 $ds-font-size: 1rem;
 $ds-font-size-xxs: $ds-font-size * .625 !default;  //10
@@ -29,7 +18,12 @@ $ds-display-1: $ds-font-size * 5 !default; //80
 $ds-display-2: $ds-font-size * 4.5 !default; //72
 $ds-display-3: $ds-font-size * 4 !default; //64
 $ds-display-4: $ds-font-size * 3.5 !default; //56
+$ds-display-5: $ds-display-4 * .5 !default; //28
+$ds-display-6: $ds-display-4 * .25 !default; //14
 
 $ds-headings-font-family: null;
-$ds-headings-font-weight: $ds-font-weight-bold;
+$ds-headings-font-weight: 700;
 $ds-headings-line-height: $ds-line-height-base;
+
+//body
+$ds-font-family-sans-serif: get-font-family($regular-font-map);
