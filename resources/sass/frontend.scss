@@ -9,6 +9,9 @@
 @import "frontend/fonts";
 
 // Override variables
+@import "frontend/tokens/color-tokens";
+@import "frontend/tokens/design-tokens";
+@import "frontend/tokens/font-tokens";
 @import "frontend/variables";
 @import "frontend/variables-dark";
 @import "~bootstrap/scss/variables";
@@ -78,6 +81,7 @@
 @import "components/navbar";
 @import "components/videos";
 @import "components/light-dark-toggle";
+@import "components/badges";
 @import "styles";
 
 // 5.3 Partial`s styles

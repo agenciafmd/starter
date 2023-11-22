@@ -1,0 +1,52 @@
+//letter-spacing
+$ds-letter-spacing-md: 0.1rem;
+$ds-letter-spacing-lg: 0.2rem;
+
+//line-height
+$ds-line-height-base: 1.5;
+$ds-line-height-sm: 1.0;
+$ds-line-height-md: 1.25;
+$ds-line-height-lg: 2;
+
+//border-radius
+$ds-border-radius: 1rem !default; //16
+$ds-border-radius-sm: 2rem !default; //32
+$ds-border-radius-md: 3rem !default; //48
+$ds-border-radius-lg: 3.5rem !default; //56
+$ds-border-radius-pill: 31.25rem !default; //500
+
+//border-width
+$ds-border-width-xs: .03125rem; //0.5
+$ds-border-width-sm: .0625rem; //1
+$ds-border-width: .09375rem; //1.5
+
+//opacity-levels
+$ds-opacity-level-default: 1;
+$ds-opacity-level-semi-opaque: .75;
+$ds-opacity-level-intense: .5;
+$ds-opacity-level-medium: .25;
+$ds-opacity-level-light: .15;
+$ds-opacity-level-semi-transparent: .08;
+
+//shade-levels
+$ds-shade-level-1: 16%;
+$ds-shade-level-2: 48%;
+$ds-shade-level-3: 88%;
+
+//tint-levels
+$ds-tint-level-1: 16%;
+$ds-tint-level-2: 48%;
+$ds-tint-level-3: 88%;
+
+//shadow
+$ds-box-shadow: 0 .5rem 1.25rem 0 rgba($ds-primary, $ds-opacity-level-light);
+$ds-box-shadow-sm: 0 .125rem .25rem rgba($ds-black, $ds-opacity-level-semi-opaque);
+$ds-box-shadow-lg: 0 1.5rem 2.5rem 0 rgba($ds-info, $ds-opacity-level-medium);
+$ds-box-shadow-inset: inset 0 1px 2px rgba($ds-black, $ds-opacity-level-semi-opaque);
+
+//gradient
+$ds-gradient: linear-gradient(128.65deg, tint-color($ds-primary, $ds-shade-level-2) 30.34%, tint-color($ds-secondary, $ds-shade-level-2) 97.09%);
+
+//body
+$ds-body-color: $ds-dark;
+$ds-body-bg: $ds-primary;

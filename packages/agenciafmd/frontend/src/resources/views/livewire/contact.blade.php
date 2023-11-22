@@ -102,12 +102,7 @@
                        class="form-check-input @error('terms') is-invalid @enderror"
                        id="privacy-terms">
                 <label class="form-check-label text-reset" for="privacy-terms">
-                    Li e estou de acordo com a
-                    <a href="#"
-                       target="_blank"
-                       class="fw-bold">
-                        Políticas de Privacidade
-                    </a>
+                    <x-frontend::privacy-terms-message />
                 </label>
 
                 @error('terms')
