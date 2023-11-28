@@ -1,7 +1,7 @@
 @props([
-'name' => null,
+'name',
 'class' => null,
-'label' => null,
+'label',
 'title' => 'Clique para acessar agora o pdf',
 'arialabel' => 'Link para visualização do pdf',
 'download' => false,
