@@ -1,13 +1,14 @@
 @props([
 'name' => null,
 'class' => null,
-'title' => null,
+'title' => 'Clique para acessar agora o pdf',
+'arialabel' => 'Link para visualização do pdf',
 'download' => false,
 ])
 
-<a href="/pdf/{{ $name }}"
-   title="Clique e {{ $title }}"
-   aria-label="Clique e {{ $title }}"
+<a href="{{ Str::startsWith(request()->route()->getName(), 'frontend.html') ? '/pdf/' . $name : mix('/pdf/' . $name) }}"
+   title="{{ $title }}"
+   aria-label="{{ $arialabel }}"
    @if($download) download @else target="_blank" @endif
    class="{{ $class }}">
   <span aria-hidden="true">
