@@ -1,6 +1,7 @@
 @props([
 'name' => null,
 'class' => null,
+'label' => null,
 'title' => 'Clique para acessar agora o pdf',
 'arialabel' => 'Link para visualização do pdf',
 'download' => false,
@@ -12,6 +13,6 @@
    @if($download) download @else target="_blank" @endif
    class="{{ $class }}">
   <span aria-hidden="true">
-    {{ $title }}
+    {{ $label }}
   </span>
 </a>
