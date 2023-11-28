@@ -24,7 +24,7 @@
     <div id="collapse{{ $loop->iteration }}"
          class="accordion-collapse collapse {{ ($loop->first ? 'show' : '' ) }}"
          aria-labelledby="heading{{ $loop->iteration }}"
-         data-bs-parent="#accordionFaq">
+         data-bs-parent="#{{ $id }}">
       <div class="accordion-body">
         <p>
           {!! $accordion['description'] !!}
