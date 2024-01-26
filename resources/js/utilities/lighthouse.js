@@ -68,8 +68,9 @@ function generateReports() {
   return new Promise((resolve) => {
     
     const createLighthouseReportFolder = 'rm -rf ./public/web-vitals/ && mkdir -p ./public/web-vitals';
+    const createLighthouseReportJSONFolder = 'rm -rf ./resources/web-vitals/ && mkdir -p ./resources/web-vitals';
     
-    exec(createLighthouseReportFolder, function (error, stdout) {
+    exec(`${createLighthouseReportFolder} && ${createLighthouseReportJSONFolder}`, function (error, stdout) {
       
       console.log(stdout);
       
@@ -149,7 +150,7 @@ function generateReports() {
 
 generateReports().then((resolve) => {
   
-  fs.writeFile('./public/web-vitals/web-vitals.json', JSON.stringify(resolve), (err) => {
+  fs.writeFile('./resources/web-vitals/web-vitals.json', JSON.stringify(resolve), (err) => {
     
     if (err) {
       console.log(err);
