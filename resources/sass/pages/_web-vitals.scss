@@ -1,0 +1,23 @@
+.web-vitals {
+  header, footer {
+    display: none;
+  }
+
+  .form-select:focus {
+    border-color: var(--bs-border-color);
+  }
+
+  .progress {
+    --bs-progress-height: .625rem;
+    --bs-progress-bg: #CFCFCF;
+  }
+
+  .btn {
+    --bs-btn-border-radius: 50rem;
+  }
+
+  .ic-status {
+    width: 1.375rem;
+    height: 1.375rem;
+  }
+}
