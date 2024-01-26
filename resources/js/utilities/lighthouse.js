@@ -104,7 +104,7 @@ function generateReports() {
             const report = JSON.parse(data).categories;
             const reportComplete = {
               pageName: page,
-              reports: {
+              categories: {
                 performance: {
                   label: 'Performance',
                   score: scoreStatus(report.performance.score).score,
@@ -116,17 +116,17 @@ function generateReports() {
                   status: scoreStatus(report.accessibility.score).status
                 },
                 bestPractices: {
-                  label: 'Acessibilidade',
+                  label: 'Melhores Práticas',
                   score: scoreStatus(report['best-practices'].score).score,
                   status: scoreStatus(report['best-practices'].score).status
                 },
                 seo: {
-                  label: 'Acessibilidade',
+                  label: 'SEO',
                   score: scoreStatus(report.seo.score).score,
                   status: scoreStatus(report.seo.score).status
                 },
                 pwa:{
-                  label: 'Acessibilidade',
+                  label: 'PWA',
                   score: scoreStatus(report.pwa.score).score,
                   status: scoreStatus(report.pwa.score).status
                 },
