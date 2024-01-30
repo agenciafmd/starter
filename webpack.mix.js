@@ -71,7 +71,7 @@ mix
         urls: [
 						{"url":"index","template":"index"}
 				],
-				// fmd:criticalPath
+				// fmd:criticalPath  !! This comment should not be removed !!
         dimensions: [
             {
                 width: 375,
