@@ -605,7 +605,7 @@ $(function () {
 
   // setupStateCityOptions();
 
-  // onChangeSelectLink();
+  onChangeSelectLink();
 
   setupInputMasks();
 

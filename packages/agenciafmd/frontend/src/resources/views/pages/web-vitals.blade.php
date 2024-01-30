@@ -6,30 +6,15 @@
 @section('title', 'Título')
 @section('description', 'Descrição curta.')
 
-@push('head')
-<style>
-    :root {
-        --bs-body-bg: #EFEFEF;
-        --bs-border-color: #7C7C7C;
-        --bs-border-radius: 8px;
-
-        --bs-success-rgb: 124, 204, 87;
-        --bs-info-rgb: 107, 181, 249;
-        --bs-warning-rgb: 249, 200, 107;
-        --bs-danger-rgb: 249, 107, 107;
-    }
-</style>
-@endpush
-
 @section('content')
-<main class="py-block-small py-md-block">
+<main class="py-block-small py-md-block text-dark">
   <div class="container">
     <div class="row gy-1 justify-content-md-between align-items-md-end">
       <div class="col-md-4">
         <h1 class="fs-3 fs-md-1 mb-0">
           Web Vitals
         </h1>
-        <p class="fs-small">
+        <p class="fs-small fs-md-base">
           entenda como está a saúde do seu site.
         </p>
       </div>
@@ -38,9 +23,13 @@
           <select class="form-select js-onchange"
                   id="allPages"
                   aria-label="Páginas">
-            <option selected>todas</option>
+            <option selected
+                    value="/webvitals">todas
+            </option>
             @foreach($pages as $page)
-            <option value="{{ url()->current() . '?' .'page=' . $page }}">{{ $page }}</option>
+            <option @if(request()->page === $page) selected @endif value="{{ url()->current() . '?' .'page=' . $page
+              }}">{{ $page }}
+            </option>
             @endforeach
           </select>
           <label for="allPages">Páginas</label>
@@ -51,7 +40,7 @@
       <div class="d-flex flex-column gap-2">
         @forelse($webvitals as $webvital)
         <div>
-          <h2 class="fs-5 fs-md-4 fw-normal">
+          <h2 class="fs-6 fs-md-5">
             /{{ $webvital['pageName'] }}
           </h2>
           <div class="row justify-content-md-between gx-md-3 gy-1h">
@@ -98,13 +87,12 @@
           </div>
         </div>
         @empty
-        <div class="alert alert-warning">
-          Nenhum dado encontrado.
+        <div class="bg-warning bg-opacity-25 p-1 rounded fs-small">
+          Nenhum dado encontrado. Por favor, rode <code class="px-0q">npm run lighthouse</code> para gerar os dados necessários.
         </div>
-      @endforelse
+        @endforelse
       </div>
     </section>
   </div>
 </main>
-
 @endsection
