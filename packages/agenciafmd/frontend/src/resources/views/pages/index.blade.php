@@ -1,5 +1,5 @@
 @extends('agenciafmd/frontend::master', [
-'bodyClass' => 'index bg-dark',
+'bodyClass' => 'index bg-black',
 'critical' => 'index.css',
 ])
 
@@ -14,7 +14,7 @@
 
 @section('content')
 <main>
-  <div class="text-opacity-75 position-fixed top-0 start-50 translate-middle-x p-1 py-md-1h w-100 text-center bg-dark z-1 text-light fs-xsmall fw-bold">
+  <div class="text-opacity-75 position-fixed top-0 start-50 translate-middle-x p-1 py-md-1h w-100 text-center bg-black z-1 text-light fs-xsmall fw-bold">
     @php
     $phrases = collect([
     // Irineu
