@@ -8,7 +8,7 @@ function createBladePHPPage(pageName) {
 
     const pagePath = `packages/agenciafmd/frontend/src/resources/views/html/${pageName}.blade.php`;
 
-    const templateFile = fs.readFileSync('packages/agenciafmd/frontend/src/resources/views/html/template.blade.php', 'utf8');
+    const templateFile = fs.readFileSync('packages/agenciafmd/frontend/src/resources/views/html/create-page-template.blade.php', 'utf8');
     const pageTemplate = templateFile.replaceAll('<!--fmd:pageName-->', pageName);
 
     exec(`touch ${pagePath}`, function (error, stdout) {
