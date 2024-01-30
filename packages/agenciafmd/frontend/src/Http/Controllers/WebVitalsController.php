@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\File;
 
 class WebVitalsController extends Controller
 {
-    public function index(string $page = ''): Factory|View|Application
+    public function index(): Factory|View|Application
     {
         $result = [];
         $pages = [];
@@ -40,10 +40,10 @@ class WebVitalsController extends Controller
             }
         }
 
-        if($page) {
-            $result = collect($result)->filter(function ($item) use ($page) {
-                return $item['pageName'] === $page;
-            })->first();
+        if (request()->page) {
+            $result = collect($result)->filter(function ($item) {
+                return $item['pageName'] === request()->page;
+            });
         }
 
         $view['webvitals'] = $result;

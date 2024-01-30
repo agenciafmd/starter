@@ -8,7 +8,7 @@ Route::get('html/{any?}', [HtmlController::class, 'index'])
     ->name('frontend.html');
 Route::get('/', [FrontendController::class, 'index'])
     ->name('frontend.index');
-Route::get('/webvitals/{page?}', [WebVitalsController::class, 'index'])
+Route::get('/webvitals', [WebVitalsController::class, 'index'])
     ->name('frontend.webvitals');
 Route::view('/offline', 'agenciafmd/frontend::pages.offline')
     ->name('frontend.offline');

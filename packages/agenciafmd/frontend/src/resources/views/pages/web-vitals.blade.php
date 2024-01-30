@@ -40,7 +40,7 @@
                                 aria-label="Páginas">
                             <option selected>todas</option>
                             @foreach($pages as $page)
-                                <option value="{{ url()->current() . '?' .'page=' . $page }}">{{ $page }}</option>
+                                <option @if(request()->page === $page) selected @endif value="{{ url()->current() . '?' .'page=' . $page }}">{{ $page }}</option>
                             @endforeach
                         </select>
                         <label for="allPages">Páginas</label>
