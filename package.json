@@ -6,7 +6,7 @@
         "setup-project": "composer i && npm i && cp .env.example .env && art key:generate && art storage:link && npm run greetings",
         "greetings": "echo 'Confira e altere o APP_URL se necessário. Caso o mapeamento do projeto esteja correto, tudo está pronto para uso e desenvolvimento. Obrigado por utilizar nosso starter!'",
         "dev": "npm run development",
-        "prod": "npm run production && npm run lh",
+        "prod": "npm run production && npm run lighthouse",
         "lighthouse": "node resources/js/utilities/lighthouse.js",
         "critical": "node resources/js/utilities/critical.js",
         "create-page": "node resources/js/utilities/create-page.js",
