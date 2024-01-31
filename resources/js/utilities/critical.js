@@ -9,6 +9,7 @@ function formatPageArrayFiles() {
     'internal',
     'master',
     'partials',
+    'create-page-template',
     'tema'
   ];
 

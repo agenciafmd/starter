@@ -14,7 +14,7 @@ function formatPageArrayFiles() {
     'internal',
     'master',
     'partials',
-    'template',
+    'create-page-template',
     'web-vitals',
     'tema'
   ];
