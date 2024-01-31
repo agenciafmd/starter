@@ -72,8 +72,8 @@
               <h3 class="fw-normal fs-small fs-md-base mb-0">
                 PWA
               </h3>
-              <x-frontend::icon class="ic-status text-{{ $category['status'] }}"
-                                name="ic-web-vitals-{{ $category['status'] }}"/>
+              <x-frontend::icon class="ic-status text-{{ $webvital['pwa'] }}"
+                                name="ic-web-vitals-{{ $webvital['pwa'] }}"/>
             </div>
 
             <div class="col-6 col-md-auto align-self-end order-md-2">
