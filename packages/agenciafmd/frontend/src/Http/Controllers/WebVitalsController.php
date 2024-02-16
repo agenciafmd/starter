@@ -23,18 +23,22 @@ class WebVitalsController extends Controller
                 $pageName = $data['pageName'];
                 $dataCategories = $data['categories'];
                 $categories = [];
+
                 foreach ($dataCategories as $key => $value) {
-                    if ($key !== 'pwa') {
-                        $categories[] = [
-                            'label' => $value['label'],
-                            'score' => $value['score'],
-                            'status' => $value['status'],
-                        ];
+                    if ($key === 'pwa') {
+                        $pwa = $value['status'];
+                        continue;
                     }
+                    $categories[] = [
+                        'label' => $value['label'],
+                        'score' => $value['score'],
+                        'status' => $value['status'],
+                    ];
                 }
 
                 $result[] = [
                     'pageName' => $pageName,
+                    'pwa' => $pwa ?? null,
                     'categories' => $categories,
                 ];
             }
