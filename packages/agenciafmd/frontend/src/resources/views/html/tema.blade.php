@@ -42,7 +42,7 @@
 
   /* Table of contents */
   .bd-aside a {
-    padding: .1875rem .5rem;
+    padding: 0.5rem;
     margin-top: .125rem;
     margin-left: .3125rem;
     color: var(--bs-body-color);
@@ -51,7 +51,7 @@
   .bd-aside a:hover,
   .bd-aside a:focus {
     color: var(--bs-body-color);
-    background-color: rgba(121, 82, 179, .1);
+    background-color: rgba(232, 255, 0, 0.50);
   }
 
   .bd-aside .active {
@@ -60,7 +60,7 @@
   }
 
   .bd-aside .btn {
-    padding: .25rem .5rem;
+    padding: 1rem;
     font-weight: 600;
     color: var(--bs-body-color);
   }
@@ -68,11 +68,11 @@
   .bd-aside .btn:hover,
   .bd-aside .btn:focus {
     color: var(--bs-body-color);
-    background-color: rgba(121, 82, 179, .1);
+    background-color: rgba(232, 255, 0, 0.50);
   }
 
   .bd-aside .btn:focus {
-    box-shadow: 0 0 0 1px rgba(121, 82, 179, .7);
+    box-shadow: 0 0 0 1px rgb(232, 255, 0);
   }
 
   .bd-aside .btn::before {
@@ -113,7 +113,6 @@
       gap: 1rem;
     }
 
-    .bd-aside,
     .bd-cheatsheet {
       padding-top: 4rem;
     }
@@ -130,7 +129,9 @@
 
     .bd-aside {
       grid-area: 1 / 3;
-      scroll-margin-top: 4rem;
+      padding-top: 2rem;
+      max-height: 100vh;
+      overflow-y: auto;
     }
 
     .bd-cheatsheet section,
@@ -166,12 +167,12 @@
 
 @section('content')
 <section class="bg-white">
-  <aside class="bd-aside sticky-md-top text-body-secondary align-self-start mb-3 mb-xl-5 px-2">
+  <aside class="bd-aside sticky-md-top align-self-start px-xl-1">
     <h1 class="h6 my-1 py-1 border-bottom">Tema</h1>
     <nav class="small"
          id="toc">
       <ul class="list-unstyled">
-        <li class="my-2">
+        <li class="my-0h">
           <button class="btn d-inline-flex align-items-center collapsed border-0"
                   data-bs-toggle="collapse"
                   aria-expanded="false"
@@ -202,7 +203,7 @@
             </li>
           </ul>
         </li>
-        <li class="my-2">
+        <li class="my-0h">
           <button class="btn d-inline-flex align-items-center collapsed border-0"
                   data-bs-toggle="collapse"
                   aria-expanded="false"
@@ -243,7 +244,7 @@
             </li>
           </ul>
         </li>
-        <li class="my-2">
+        <li class="my-0h">
           <button class="btn d-inline-flex align-items-center collapsed border-0"
                   data-bs-toggle="collapse"
                   aria-expanded="false"
@@ -354,7 +355,7 @@
             </li>
           </ul>
         </li>
-        <li class="my-2">
+        <li class="my-0h">
           <button class="btn d-inline-flex align-items-center collapsed border-0"
                   data-bs-toggle="collapse"
                   aria-expanded="false"
