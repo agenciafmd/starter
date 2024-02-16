@@ -3457,10 +3457,6 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Source Code</h4>
-                    <button type="button"
-                            class="btn btn-primary btn-copy">
-                        <i class="bi bi-clipboard"></i> Copy Code
-                    </button>
                 </div>
                 <div class="modal-body">
                     <pre class="language-html"><code></code></pre>
@@ -3542,74 +3538,88 @@
         (function () {
             'use strict';
 
-            $(window).scroll(function () {
-                var top = $(document).scrollTop();
-                if (top > 50) {
-                    $('#home > .navbar').removeClass('navbar-transparent');
-                } else {
-                    $('#home > .navbar').addClass('navbar-transparent');
+            const anchorLinks = document.querySelectorAll('a[href="#"]');
+
+            anchorLinks.forEach(function (link) {
+
+                link.addEventListener('click', function (event) {
+
+                    event.preventDefault();
+                });
+            });
+
+            const bsComponents = document.querySelectorAll('.bs-component');
+
+            bsComponents.forEach(function (component) {
+
+                const button = document.createElement('button');
+                button.className = 'source-button btn btn-primary btn-xs';
+                button.setAttribute('role', 'button');
+                button.setAttribute('tabindex', '0');
+                button.textContent = '< >';
+                component.appendChild(button);
+
+                if (component.querySelector('[data-bs-toggle="tooltip"]')) {
+
+                    component.dataset.html = component.innerHTML.trim();
                 }
             });
 
-            $('a[href="#"]').click(function (event) {
-                event.preventDefault();
+            const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+
+            popoverTriggerList.forEach(function (popoverTriggerEl) {
+
+                new bootstrap.Popover(popoverTriggerEl);
             });
 
-            $('.bs-component').each(function () {
-                var $component = $(this);
-                var $button = $('<button class="source-button btn btn-primary btn-xs" role="button" tabindex="0">&lt; &gt;</button>');
-                $component.append($button);
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
 
-                if ($component.find('[data-bs-toggle="tooltip"]').length > 0) {
-                    $component.attr('data-html', $component.html().trim());
-                }
+            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+
+                new bootstrap.Tooltip(tooltipTriggerEl);
             });
 
-            var popoverTriggerList = [].slice.call(document.querySelectorAll(
-                '[data-bs-toggle="popover"]'));
-            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-                return new bootstrap.Popover(popoverTriggerEl);
-            });
+            const sourceModalElem = document.getElementById('source-modal');
+            let sourceModal;
 
-            var tooltipTriggerList = [].slice.call(document.querySelectorAll(
-                '[data-bs-toggle="tooltip"]'));
-            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl);
-            });
-
-            var sourceModalElem = document.getElementById('source-modal');
             if (sourceModalElem) {
-                var sourceModal = new bootstrap.Modal(document.getElementById('source-modal'));
+
+                sourceModal = new bootstrap.Modal(sourceModalElem);
             }
 
-            $('body').on('click', '.source-button', function (event) {
-                event.preventDefault();
+            document.body.addEventListener('click', function (event) {
 
-                var component = $(this).parent();
-                var html = component.attr('data-html') ? component.attr('data-html') : component.html();
+                if (event.target.classList.contains('source-button')) {
 
-                html = cleanSource(html);
-                html = Prism.highlight(html, Prism.languages.html, 'html');
-                $('#source-modal code').html(html);
-                sourceModal.show();
+                    event.preventDefault();
+
+                    const component = event.target.parentElement;
+                    let html = component.dataset.html ? component.dataset.html : component.innerHTML;
+
+                    html = cleanSource(html);
+                    html = Prism.highlight(html, Prism.languages.html, 'html');
+
+                    document.querySelector('#source-modal code').innerHTML = html;
+                    sourceModal.show();
+                }
             });
 
             function cleanSource(html) {
+
                 html = html.replace(/×/g, '&times;')
                     .replace(/«/g, '&laquo;')
                     .replace(/»/g, '&raquo;')
                     .replace(/←/g, '&larr;')
                     .replace(/→/g, '&rarr;');
 
-                var lines = html.split(/\n/);
-
+                let lines = html.split(/\n/);
                 lines.shift();
                 lines.splice(-1, 1);
-
-                var indentSize = lines[0].length - lines[0].trim().length;
-                var re = new RegExp(' {' + indentSize + '}');
+                const indentSize = lines[0].length - lines[0].trim().length;
+                const re = new RegExp(' {' + indentSize + '}');
 
                 lines = lines.map(function (line) {
+
                     if (line.match(re)) {
                         line = line.slice(Math.max(0, indentSize));
                     }
@@ -3617,10 +3627,9 @@
                     return line;
                 });
 
-                lines = lines.join('\n');
-
-                return lines;
+                return lines.join('\n');
             }
         })();
+
     </script>
 @endpush

@@ -41,76 +41,63 @@ function getThemeVariables() {
 
 function setupStateCityOptions() {
 
-  if (!$('.js-state').length) {
+  const stateSelect = document.querySelector('.js-state');
+  const citySelect = document.querySelector('.js-city');
+
+  if (!stateSelect) {
 
     return;
   }
 
-  $.getJSON('/json/estados-cidades.json', function (data) {
+  fetch('/json/estados-cidades.json')
+      .then(response => response.json())
+      .then(data => {
 
-    const $state = $('.js-state');
-    let $options = '<option value="">-</option>';
+        let stateOptions = '<option value="">-</option>';
 
-    $.each(data, function (key, val) {
+        data.forEach(state => {
 
-      var selected = '';
+          const selected = state.nome === stateSelect.getAttribute(
+              'data-selected') ? 'selected' : '';
+          stateOptions += `<option value="${ state.nome }" ${ selected }>${ state.nome }</option>`;
+        });
 
-      if (val.nome === $state.attr('data-selected')) {
+        stateSelect.innerHTML = stateOptions;
 
-        selected = 'selected';
-      }
+        stateSelect.addEventListener('change', () => {
 
-      $options +=
-          `<option value="${ val.nome }" ${ selected }>${ val.nome }</option>`;
-    });
+          let cityOptions = '<option value="">-</option>';
+          const selectedState = stateSelect.value;
 
-    $state.html($options);
+          data.forEach(state => {
 
-    $state.change(function () {
+            if (state.nome !== selectedState) {
 
-      let $optionsCity = '<option value="">-</option>';
+              return;
+            }
 
-      let str = '';
+            state.cidades.forEach(city => {
 
-      $('.js-state option:selected')
-          .each(function () {
-            str += $(this)
-                .text();
+              const selected = city === citySelect.getAttribute('data-selected') ? 'selected' : '';
+              cityOptions += `<option value="${ city }" ${ selected }>${ city }</option>`;
+            });
           });
 
-      var city = $('.js-city');
-
-      $.each(data, function (key, val) {
-
-        if (val.nome !== str) {
-
-          return;
-        }
-
-        $.each(val.cidades, function (key_city, val_city) {
-
-          let selected = '';
-
-          if (val_city === city.attr('data-selected')) {
-
-            selected = 'selected';
-          }
-
-          $optionsCity +=
-              `<option value="${ val_city }" ${ selected }>${ val_city }</option>`;
+          citySelect.innerHTML = cityOptions;
         });
-      });
 
-      city.html($optionsCity);
-    })
-          .change();
-  });
+        stateSelect.dispatchEvent(new Event('change'));
+      })
+      .catch(error => {
+
+        console.error('Error fetching data:', error);
+      });
 }
 
 function preventInvalidFormSubmit() {
 
-  var forms = document.getElementsByClassName('needs-validation');
-  var validation = Array.prototype.filter.call(forms, function (form) {
+  const forms = document.getElementsByClassName('needs-validation');
+  const validation = Array.prototype.filter.call(forms, function (form) {
 
     form.addEventListener('submit', function (event) {
 
@@ -125,15 +112,28 @@ function preventInvalidFormSubmit() {
     }, false);
   });
 
-  $('.is-invalid')
-      .each(function () {
-        $(this)[0].setCustomValidity('needs validate');
-      })
-      .on('focusout', function () {
-        $(this)
-            .removeClass('is-invalid');
-        $(this)[0].setCustomValidity('');
+  setupInvalidElements();
+
+  function setupInvalidElements() {
+
+    const invalidElements = document.querySelectorAll('.is-invalid');
+
+    if (!invalidElements) {
+
+      return;
+    }
+
+    invalidElements.forEach(element => {
+
+      element.setCustomValidity('needs validate');
+
+      element.addEventListener('focusout', () => {
+
+        this.classList.remove('is-invalid');
+        this.setCustomValidity('');
       });
+    });
+  }
 }
 
 function verifyUserAgent() {
@@ -394,48 +394,63 @@ function setupInputMasks() {
 
 function setupCepSearch() {
 
-  $('.js-zipcode')
-      .on('blur', function () {
+  const zipcodeInputs = document.querySelectorAll('.js-zipcode');
 
-        var $this = $(this);
-        var cep = $this.val()
-                       .replace('-', '');
+  if (!zipcodeInputs) {
 
-        if (cep.length === 8) {
-          $.getJSON('https://api.mixd.com.br/cep/' + cep, {},
-              function (result) {
+    return;
+  }
 
-                if (!result) {
+  zipcodeInputs.forEach(zipcodeInput => {
 
-                  console.log(result.message || 'Houve um erro desconhecido');
-                  return;
-                }
+    zipcodeInput.addEventListener('blur', () => {
 
-                var stateInput = $('.js-state');
-                var cityInput = $('.js-city');
+      const cep = zipcodeInput.value.replace('-', '');
 
-                $('.js-neighborhood')
-                    .val(result.bairro);
-                $('.js-address')
-                    .val(result.logradouro);
+      if (cep.length === 8) {
+        fetch('https://viacep.com.br/ws/' + cep + '/json')
+            .then(response => response.json())
+            .then(result => {
 
-                if (stateInput.is('input')) {
-                  stateInput.val(result.uf_nome);
-                }
+              if (!result) {
 
-                if (cityInput.is('input')) {
-                  cityInput.val(result.cidade);
-                }
+                console.log(result.message || 'Houve um erro desconhecido');
+                return;
+              }
 
-                if (stateInput.is('select')) {
-                  stateInput.val(result.uf_nome);
-                  stateInput.trigger('change');
-                  cityInput.val(result.cidade);
-                }
-              },
-          );
-        }
-      });
+              const neighborhoodInput = document.querySelector(
+                  '.js-neighborhood');
+              const addressInput = document.querySelector('.js-address');
+              const stateInput = document.querySelector('.js-state');
+              const cityInput = document.querySelector('.js-city');
+
+              neighborhoodInput.value = result.bairro;
+              addressInput.value = result.logradouro;
+
+              if (stateInput.tagName === 'INPUT') {
+
+                stateInput.value = result.uf;
+              }
+
+              if (cityInput.tagName === 'INPUT') {
+
+                cityInput.value = result.localidade;
+              }
+
+              if (stateInput.tagName === 'SELECT') {
+
+                stateInput.value = result.uf;
+                stateInput.dispatchEvent(new Event('change'));
+                cityInput.value = result.localidade;
+              }
+            })
+            .catch(error => {
+
+              console.error('Erro:', error);
+            });
+      }
+    });
+  });
 }
 
 function setupPopover() {
@@ -508,18 +523,18 @@ function setupClipboardJS() {
 
   function showTooltip(targetElement) {
 
-    const successTooltip = $(targetElement).tooltip({
+    const successTooltip = bootstrap.Tooltip.getOrCreateInstance(targetElement, {
 
       title: 'Copiado para a área de transferência',
       placement: 'bottom',
       trigger: 'manual',
     });
 
-    successTooltip.tooltip('show');
+    successTooltip.show();
 
     setTimeout(() => {
 
-      successTooltip.tooltip('hide');
+      successTooltip.hide();
     }, 2000);
   }
 }
@@ -535,7 +550,7 @@ function setupShareAPI() {
 
   const pageTitle = document.querySelector('title').textContent;
   const pageDescription = document.querySelector('meta[name="description"]')
-                                  .getAttribute('content');
+      .getAttribute('content');
 
   shareButtonElements.forEach(buttonItem => {
 
@@ -564,11 +579,11 @@ function setupShareAPI() {
             language: 'pt', // specify the default language
           },
       )
-               .then(() => console.log('Compartilhado com sucesso!'))
-               .catch(error => console.log(
-                   'Ops! Algo de errado aconteceu:\'(\n',
-                   error,
-               ));
+          .then(() => console.log('Compartilhado com sucesso!'))
+          .catch(error => console.log(
+              'Ops! Algo de errado aconteceu:\'(\n',
+              error,
+          ));
     });
   });
 }
@@ -583,13 +598,12 @@ function setupModalConfig() {
 
   modalElements.forEach((modalElement) => {
     return new bootstrap.Modal(modalElement, {
-      focus: false
-    })
+      focus: false,
+    });
   });
 }
 
-
-$(function () {
+(function () {
 
   pwaManager();
 
@@ -632,7 +646,7 @@ $(function () {
   setupModalConfig();
 
   setupLightDarkModeController();
-});
+})();
 
 window.addEventListener('load', function () {
 
