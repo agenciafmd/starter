@@ -1,6 +1,19 @@
 require('dotenv').config();
 const exec = require("child_process").exec;
 const fs = require("fs");
+const inquirer = require('inquirer');
+const path = require("path");
+
+const environmentsSetup = {
+  local: {
+    domain: `${process.env.APP_URL}/`,
+    pagesPathToAudit: 'packages/agenciafmd/frontend/src/resources/views/html'
+  },
+  homologation: {
+    domain: `https://${path.basename(process.cwd()).replace(/-/g, "")}.fmd.dev/`,
+    pagesPathToAudit: 'packages/agenciafmd/frontend/src/resources/views/html'
+  },
+}
 
 let HTMLPagesFiles = fs.readdirSync('packages/agenciafmd/frontend/src/resources/views/html');
 
@@ -16,7 +29,9 @@ function formatPageArrayFiles() {
     'partials',
     'create-page-template',
     'web-vitals',
-    'tema'
+    'tema',
+    'critical-path-demo',
+    'offline'
   ];
   
   HTMLPagesFiles = HTMLPagesFiles.map(page => page.replace('.blade.php', ''))
@@ -148,15 +163,28 @@ function generateReports() {
   });
 }
 
-generateReports().then((resolve) => {
+const environmentsPromptQuestion = inquirer.prompt([
+  {
+    type: 'checkbox',
+    name: 'environmentsSelected',
+    message: 'Deseja rodar a auditoria em quais ambientes?',
+    choices: ['Local', 'Homologação', 'Produção'],
+  }
+]);
+
+environmentsPromptQuestion.then(environments => {
+  const environmentsSelected = environments.environmentsSelected;
   
-  fs.writeFile('./resources/web-vitals/web-vitals.json', JSON.stringify(resolve), (err) => {
+  generateReports().then((resolve) => {
     
-    if (err) {
-      console.log(err);
-      return
-    }
-    
-    console.log(`✅ Reports adicionados com sucesso.`);
-  });
+    fs.writeFile('./resources/web-vitals/web-vitals.json', JSON.stringify(resolve), (err) => {
+      
+      if (err) {
+        console.log(err);
+        return
+      }
+      
+      console.log(`✅ Reports adicionados com sucesso.`);
+    });
+  })
 })
