@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\File;
 
 class WebVitalsController extends Controller
 {
-    public function index(): Factory|View|Application
+    public function index(string $environment): Factory|View|Application
     {
         $result = [];
         $pages = [];
-        $filePath = resource_path('web-vitals/web-vitals.json');
+        $filePath = resource_path('web-vitals/web-vitals-' . $environment . '.json');
         if (File::exists($filePath)) {
             $jsonContent = File::get($filePath);
             $dataArray = json_decode($jsonContent, true);
@@ -50,6 +50,7 @@ class WebVitalsController extends Controller
             });
         }
 
+        $view['environment'] = $environment;
         $view['webvitals'] = $result;
         $view['pages'] = $pages;
 
