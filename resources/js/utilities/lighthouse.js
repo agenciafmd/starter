@@ -175,33 +175,36 @@ const environmentsPromptQuestion = inquirer.prompt([
 ]);
 
 environmentsPromptQuestion.then(environments => {
+  
   const environmentsSelected = environments.environmentsSelected;
   
-  generateReports(environmentsSetup.local).then((resolveReports) => {
-    
-    fs.writeFile(`./resources/web-vitals/web-vitals-${environmentsSetup.local.id}.json`, JSON.stringify(resolveReports), (err) => {
+  if (environmentsSelected.includes('Local')) {
+    generateReports(environmentsSetup.local).then((resolveReports) => {
       
-      if (err) {
-        console.log(err);
-        return
-      }
-      
-      console.log(`✅ Reportes de ${environmentsSetup.local.domain} adicionados com sucesso.`);
-      
-      if (environmentsSelected.length > 1) {
-        generateReports(environmentsSetup.homologation).then((resolveReports) => {
-          
-          fs.writeFile(`./resources/web-vitals/web-vitals-${environmentsSetup.homologation.id}.json`, JSON.stringify(resolveReports), (err) => {
-            
-            if (err) {
-              console.log(err);
-              return
-            }
-            
-            console.log(`✅ Reportes de ${environmentsSetup.homologation.domain} adicionados com sucesso.`);
-          });
-        })
-      }
+      fs.writeFile(`./resources/web-vitals/web-vitals-${environmentsSetup.local.id}.json`, JSON.stringify(resolveReports), (err) => {
+        
+        if (err) {
+          console.log(err);
+          return
+        }
+        
+        console.log(`✅ Reportes de ${environmentsSetup.local.domain} adicionados com sucesso.`);
+      });
     });
-  })
+  }
+  
+  if (environmentsSelected.includes('Homologação')) {
+    generateReports(environmentsSetup.homologation).then((resolveReports) => {
+      
+      fs.writeFile(`./resources/web-vitals/web-vitals-${environmentsSetup.homologation.id}.json`, JSON.stringify(resolveReports), (err) => {
+        
+        if (err) {
+          console.log(err);
+          return
+        }
+        
+        console.log(`✅ Reportes de ${environmentsSetup.homologation.domain} adicionados com sucesso.`);
+      });
+    });
+  }
 })
