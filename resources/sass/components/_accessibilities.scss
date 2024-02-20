@@ -18,7 +18,7 @@ img {
 
   &:not(.skip-warning) {
 
-    &:not([alt], [loading='lazy'], .fancybox-image) {
+    &:not([alt], [loading='lazy'], .fslightbox-source) {
       @include accessibility-warning;
     }
   }

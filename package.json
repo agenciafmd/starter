@@ -31,13 +31,10 @@
         "svg-spritemap-webpack-plugin": "^4.2.0"
     },
     "dependencies": {
-        "@fancyapps/fancybox": "^3.5.7",
         "bootstrap": "^5.3.0",
+        "fslightbox": "^3.4.1",
         "imask": "^6.0.7",
         "infinite-scroll": "^4.0.1",
-        "jquery": "^3.6.0",
-        "jquery-maskmoney": "^3.0.2",
-        "jquery.maskedinput": "^1.4.1",
         "lax.js": "^2.0.3",
         "lodash": "^4.17.21",
         "moment": "^2.18.1",
