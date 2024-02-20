@@ -6,11 +6,13 @@ const path = require("path");
 
 const environmentsSetup = {
   local: {
-    domain: `${process.env.APP_URL}/`,
+    id: 'local',
+    domain: `${process.env.APP_URL}`,
     pagesPathToAudit: 'packages/agenciafmd/frontend/src/resources/views/html'
   },
   homologation: {
-    domain: `https://${path.basename(process.cwd()).replace(/-/g, "")}.fmd.dev/`,
+    id: 'dev',
+    domain: `https://${path.basename(process.cwd()).replace(/-/g, "")}.fmd.dev`,
     pagesPathToAudit: 'packages/agenciafmd/frontend/src/resources/views/html'
   },
 }
@@ -79,7 +81,7 @@ function scoreStatus(score) {
   return reportComplete;
 }
 
-function generateReports() {
+function generateReports(environment) {
   return new Promise((resolve) => {
     
     const createLighthouseReportFolder = 'rm -rf ./public/web-vitals/ && mkdir -p ./public/web-vitals';
@@ -96,9 +98,9 @@ function generateReports() {
       
       HTMLPagesFiles.forEach((page, index) => {
         
-        const projectURL = `${process.env.APP_URL}/html/${page}`;
+        const projectURL = `${environment.domain}/html/${page}`;
         const chromeFlags = '--headless --no-sandbox';
-        const reportPath = `./public/web-vitals/${page}`;
+        const reportPath = `./public/web-vitals/${page}-${environment.id}`;
         
         const runLighthouse = `lighthouse ${projectURL} --chrome-flags="${chromeFlags}" --output='json,html' --output-path=${reportPath}`;
         
@@ -168,23 +170,38 @@ const environmentsPromptQuestion = inquirer.prompt([
     type: 'checkbox',
     name: 'environmentsSelected',
     message: 'Deseja rodar a auditoria em quais ambientes?',
-    choices: ['Local', 'Homologação', 'Produção'],
+    choices: ['Local', 'Homologação'],
   }
 ]);
 
 environmentsPromptQuestion.then(environments => {
   const environmentsSelected = environments.environmentsSelected;
   
-  generateReports().then((resolve) => {
+  generateReports(environmentsSetup.local).then((resolveReports) => {
     
-    fs.writeFile('./resources/web-vitals/web-vitals.json', JSON.stringify(resolve), (err) => {
+    fs.writeFile(`./resources/web-vitals/web-vitals-${environmentsSetup.local.id}.json`, JSON.stringify(resolveReports), (err) => {
       
       if (err) {
         console.log(err);
         return
       }
       
-      console.log(`✅ Reports adicionados com sucesso.`);
+      console.log(`✅ Reportes de ${environmentsSetup.local.domain} adicionados com sucesso.`);
+      
+      if (environmentsSelected.length > 1) {
+        generateReports(environmentsSetup.homologation).then((resolveReports) => {
+          
+          fs.writeFile(`./resources/web-vitals/web-vitals-${environmentsSetup.homologation.id}.json`, JSON.stringify(resolveReports), (err) => {
+            
+            if (err) {
+              console.log(err);
+              return
+            }
+            
+            console.log(`✅ Reportes de ${environmentsSetup.homologation.domain} adicionados com sucesso.`);
+          });
+        })
+      }
     });
   })
 })
