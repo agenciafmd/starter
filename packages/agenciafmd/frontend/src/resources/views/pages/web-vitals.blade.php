@@ -3,8 +3,8 @@
 'bodyClass' => 'web-vitals'
 ])
 
-@section('title', 'Título')
-@section('description', 'Descrição curta.')
+@section('title', 'Web Vitals')
+@section('description', 'Entenda como está a saúde do seu site.')
 
 @section('content')
     <main class="py-block-small py-md-block text-dark">
@@ -45,8 +45,7 @@
                         <a class="nav-link @if($environment === 'local') active @endif"
                            aria-label="Link Local"
                            title="Local"
-                           href="{{ route('frontend.webvitals', ['environment' => 'local' , http_build_query(request()->except(['environment']))]) }}"
-                           aria-selected="true">
+                           href="{{ route('frontend.webvitals', ['environment' => 'local' , http_build_query(request()->except(['environment']))]) }}">
                             Local
                         </a>
                     </li>
@@ -59,19 +58,19 @@
                             Homologação (.dev)
                         </a>
                     </li>
-                    <li class="nav-item"
+                    {{--<li class="nav-item"
                         role="presentation">
-                        <a class="nav-link @if($environment === 'prod') active @endif"
+                        <a class="nav-link @if($environment === 'prod') active @endif disabled"
                            aria-label="Link Produção"
                            title="Produção"
                            href="{{ route('frontend.webvitals', ['environment' => 'prod' , http_build_query(request()->except(['environment']))])}}">
                             Produção
                         </a>
-                    </li>
+                    </li>--}}
                 </ul>
                 <div id="myTabContent"
                      class="tab-content">
-                    <div class="tab-pane pt-2 fade active show"
+                    <div class="tab-pane pt-2 fade @if($environment === 'local') active show @endif"
                          id="local"
                          role="tabpanel">
                         <div class="d-flex flex-column gap-2">
@@ -115,7 +114,7 @@
 
                                         <div class="col-6 col-md-auto align-self-end order-md-2">
                                             <div class="d-grid">
-                                                <a href="/web-vitals/{{ $webvital['pageName'] }}.report.html"
+                                                <a href="/web-vitals/{{ $webvital['pageName'] }}-local.report.html"
                                                    class="btn btn-outline-dark">
                                                     ver detalhes
                                                 </a>
@@ -132,7 +131,7 @@
                             @endforelse
                         </div>
                     </div>
-                    <div class="tab-pane pt-2 fade"
+                    <div class="tab-pane pt-2 fade @if($environment === 'dev') active show @endif"
                          id="hml"
                          role="tabpanel">
                         <div class="d-flex flex-column gap-2">
@@ -176,7 +175,7 @@
 
                                         <div class="col-6 col-md-auto align-self-end order-md-2">
                                             <div class="d-grid">
-                                                <a href="/web-vitals/{{ $webvital['pageName'] }}.report.html"
+                                                <a href="/web-vitals/{{ $webvital['pageName'] }}-dev.report.html"
                                                    class="btn btn-outline-dark">
                                                     ver detalhes
                                                 </a>
@@ -193,7 +192,7 @@
                             @endforelse
                         </div>
                     </div>
-                    <div class="tab-pane pt-2 fade"
+                    <div class="tab-pane pt-2 fade @if($environment === 'prod') active show @endif"
                          id="prod"
                          role="tabpanel">
                         <div class="d-flex flex-column gap-2">
@@ -216,6 +215,7 @@
                                                             </span>
                                                             <div class="progress flex-grow-1"
                                                                  role="progressbar"
+                                                                 aria-label="barra de progresso"
                                                                  aria-valuenow="{{ $category['score'] }}"
                                                                  aria-valuemin="0"
                                                                  aria-valuemax="100">
@@ -237,7 +237,7 @@
 
                                         <div class="col-6 col-md-auto align-self-end order-md-2">
                                             <div class="d-grid">
-                                                <a href="/web-vitals/{{ $webvital['pageName'] }}.report.html"
+                                                <a href="/web-vitals/{{ $webvital['pageName'] }}-prod.report.html"
                                                    class="btn btn-outline-dark">
                                                     ver detalhes
                                                 </a>
