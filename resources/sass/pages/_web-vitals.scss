@@ -8,6 +8,9 @@
   --bs-warning-rgb: 249, 200, 107;
   --bs-danger-rgb: 249, 107, 107;
   --bs-dark-rgb: 72, 72, 72;
+
+  --bs-nav-link-color: rgb(108 108 108);
+  --bs-nav-link-hover-bg: rgb(219, 219, 219);
 }
 
 .web-vitals {
@@ -41,5 +44,19 @@
     z-index: -1;
     opacity: 0.05;
     filter: blur(2px);
+  }
+
+  .nav-link {
+    transition: background-color .2s ease-in-out;
+
+    @include media-breakpoint-up(lg) {
+      &:not(.active):hover {
+        background-color: var(--bs-nav-link-hover-bg);
+      }
+    }
+
+    &.disabled {
+      color: var(--bs-nav-link-color);
+    }
   }
 }
