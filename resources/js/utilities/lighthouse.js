@@ -189,6 +189,7 @@ environmentsPromptQuestion.then(environments => {
         }
         
         console.log(`✅ Reportes de ${environmentsSetup.local.domain} adicionados com sucesso.`);
+        allReportsPerPage = [];
       });
     });
   }
@@ -204,6 +205,7 @@ environmentsPromptQuestion.then(environments => {
         }
         
         console.log(`✅ Reportes de ${environmentsSetup.homologation.domain} adicionados com sucesso.`);
+        allReportsPerPage = [];
       });
     });
   }
