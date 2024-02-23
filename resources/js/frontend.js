@@ -605,8 +605,6 @@ function setupModalConfig() {
 
 (function () {
 
-  pwaManager();
-
   preventInvalidFormSubmit();
 
   verifyUserAgent();

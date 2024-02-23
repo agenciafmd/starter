@@ -142,7 +142,6 @@ function guideUserToTheFirstError() {
 
   function _scrollToError(container) {
 
-    console.log(_getStickyHeaderOffset());
     const animateConfig = {
 
       top: firstInvalidInputOffsetTop + currentScrollPosition - _getStickyHeaderOffset(),
