@@ -1,7 +1,7 @@
 module.exports = (function () {
   return [
     'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
-    'node_modules/fslightbox/index.js',
+    // 'node_modules/fslightbox/index.js',
     'node_modules/imask/dist/imask.min.js',
     // 'node_modules/select2/dist/js/i18n/pt-BR.js',
     'node_modules/sweetalert2/dist/sweetalert2.min.js',
