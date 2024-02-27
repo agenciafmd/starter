@@ -123,18 +123,18 @@ function guideUserToTheFirstError() {
   const firstInvalidInput = invalidInputs[0].parentNode;
   const firstInvalidInputOffsetTop = firstInvalidInput.getBoundingClientRect().top;
 
+  const scrollContainerClass = 'js-scroll-container';
+  const scrollContainerElement = document.querySelector(`.${scrollContainerClass}`);
+
   if (_isFormOnModal()) {
 
     _scrollToError('.modal.show .modal-body');
     return;
   }
 
-  if (currentScrollPosition === 0 && firstInvalidInputOffsetTop < 0) {
+  if (scrollContainerElement) {
 
-    //Remove the alert after adding the class
-    throw new Error(
-        'Apparently, you are using a structure with grid or a layout with 100vh screen, access the document and add a class with content with scroll.');
-    _scrollToError('.scroll-content-containing-class');
+    _scrollToError(`.${scrollContainerClass}`);
     return;
   }
 
