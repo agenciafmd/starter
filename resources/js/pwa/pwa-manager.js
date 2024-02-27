@@ -5,20 +5,6 @@ function pwaManager() {
         return;
     }
 
-    window.addEventListener('load', function () {
-
-        if (navigator.onLine) {
-
-            return;
-        }
-
-        $('<style type=\'text/css\'>' +
-            ' .is-online { display: none } ' +
-            ' .is-offline { display: block } ' +
-            '</style>')
-            .appendTo('head');
-    });
-
     if (navigator.serviceWorker.controller) {
 
         console.log(

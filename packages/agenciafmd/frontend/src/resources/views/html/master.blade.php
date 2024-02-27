@@ -101,5 +101,11 @@
         //]]>
     </script>
 @endif
+
+@if(config('app.env') !== 'local')
+    <script>
+        pwaManager();
+    </script>
+@endif
 </body>
 </html>
