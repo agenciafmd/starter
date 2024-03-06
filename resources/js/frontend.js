@@ -617,7 +617,7 @@ function setupModalConfig() {
 
   // setupStateCityOptions();
 
-  // onChangeSelectLink();
+  onChangeSelectLink();
 
   setupInputMasks();
 

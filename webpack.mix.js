@@ -69,14 +69,9 @@ mix
             suffix: '',
         },
         urls: [
-            // urls que temos no /html
-            {
-                url: 'index',
-                template: 'index',
-            },
-            // {url: 'contato', template: 'contato'},
-            // {url: 'quem-somos', template: 'quem-somos'},
-        ],
+						{"url":"index","template":"index"}
+				],
+				// fmd:criticalPath  !! This comment should not be removed !!
         dimensions: [
             {
                 width: 375,
