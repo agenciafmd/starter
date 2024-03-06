@@ -1,13 +1,12 @@
 @props([
 'link',
-'gallery',
+'gallery' => 'gallery',
 'title',
 ])
 
 <a href="{{ $link }}"
-   data-fancybox="{{ $gallery }}"
+   data-fslightbox="{{ $gallery }}"
    title="{{ $title }}"
-   data-caption="{{ $title }}"
         {{ $attributes }}>
     {{ $slot }}
 </a>

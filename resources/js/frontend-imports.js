@@ -1,8 +1,7 @@
 module.exports = (function () {
   return [
-    'node_modules/jquery/dist/jquery.min.js',
     'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
-    // 'node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js',
+    // 'node_modules/fslightbox/index.js',
     'node_modules/imask/dist/imask.min.js',
     // 'node_modules/select2/dist/js/i18n/pt-BR.js',
     'node_modules/sweetalert2/dist/sweetalert2.min.js',
@@ -27,7 +26,6 @@ module.exports = (function () {
 
     // Components
     'resources/js/components/fmd-header.js',
-    // 'resources/js/components/fancybox.js',
     'resources/js/components/swiper.js',
     // 'resources/js/components/lax.js',
     'resources/js/components/smooth-scroll.js',
