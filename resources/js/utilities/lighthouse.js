@@ -1,8 +1,7 @@
 require('dotenv').config();
-const exec = require("child_process").exec;
+const childProcess = require("child_process");
 const fs = require("fs");
 const inquirer = require('inquirer');
-const path = require("path");
 
 let HTMLPagesFiles = fs.readdirSync('packages/agenciafmd/frontend/src/resources/views/html');
 
@@ -76,7 +75,7 @@ function generateReports(environment) {
     const createLighthouseReportFolder = 'rm -rf ./public/web-vitals/ && mkdir -p ./public/web-vitals';
     const createLighthouseReportJSONFolder = 'rm -rf ./resources/web-vitals/ && mkdir -p ./resources/web-vitals';
     
-    exec(`${createLighthouseReportFolder} && ${createLighthouseReportJSONFolder}`, function (error, stdout) {
+    childProcess.exec(`${createLighthouseReportFolder} && ${createLighthouseReportJSONFolder}`, function (error, stdout) {
       
       console.log(stdout);
       
@@ -93,7 +92,7 @@ function generateReports(environment) {
         
         const runLighthouse = `lighthouse ${projectURL} --chrome-flags="${chromeFlags}" --output='json,html' --output-path=${reportPath}`;
         
-        exec(runLighthouse, function (error, stdout) {
+        childProcess.exec(runLighthouse, function (error, stdout) {
           
           console.log(stdout);
           
