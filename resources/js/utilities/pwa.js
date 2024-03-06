@@ -14,23 +14,34 @@ function getThemeColor() {
         return;
       }
       
-      const commentTarget = "//primary";
+      const primaryColorVariableName = getStringInFile(data, '$ds-primary', ' $', ';');
+      const primaryColorVariableHexadecimal = getStringInFile(data, primaryColorVariableName, '#', ';');
       
-      const lines = data.split('\n');
-      
-      lines.forEach((line) => {
-        if (line.includes(commentTarget)) {
-          const indexOfHexaInitial = line.indexOf('#');
-          const indexOfHexaEnd = line.indexOf(';', indexOfHexaInitial);
-          
-          resolve(line.substring(indexOfHexaInitial, indexOfHexaEnd).trim());
-        }
-      })
+      resolve(primaryColorVariableHexadecimal);
     });
   })
 }
 
+function getStringInFile(file, keyword, initialSelector, finalSelector) {
+  
+  const lines = file.split('\n');
+  
+  let occurrences = [];
+  
+  lines.forEach((line) => {
+    if (line.includes(keyword)) {
+      const indexOfHexaInitial = line.indexOf(initialSelector);
+      const indexOfHexaEnd = line.indexOf(finalSelector, indexOfHexaInitial);
+      
+      occurrences.push(line.substring(indexOfHexaInitial, indexOfHexaEnd).trim());
+    }
+  })
+  
+  return occurrences[0];
+}
+
 getThemeColor().then((themeColor) => {
+  
   const pwa = {
     name: process.env.APP_NAME,
     short_name: process.env.APP_NAME,
