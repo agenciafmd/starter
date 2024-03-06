@@ -4,7 +4,6 @@
 <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#FFFFFF">
 <meta name="msapplication-TileColor" content="#2b5797">
-<meta name="theme-color" content="{{ config('pwa.manifest.theme_color') }}">
 
 <!-- IOS -->
 <meta name="mobile-web-app-capable" content="yes"/>
