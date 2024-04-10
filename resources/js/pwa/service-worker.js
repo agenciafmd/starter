@@ -3,6 +3,7 @@ const assets = [
   '/',
   '/css/frontend.css',
   '/js/frontend.js',
+  '/vendor/livewire/livewire.js',
 ];
 
 self.addEventListener('install', (e) => {
@@ -23,6 +24,11 @@ self.addEventListener('fetch', (e) => {
 
   e.respondWith(
       (async () => {
+
+        if (e.request.method !== 'GET') {
+
+          return fetch(e.request);
+        }
 
         const resource = await caches.match(e.request);
         console.log(`[Service Worker] Fetching resource: ${ e.request.url }`);
