@@ -20,6 +20,7 @@ module.exports = (function () {
     'resources/js/helpers/form-helpers.js',
     'resources/js/helpers/cpf-cnpj-validators.js',
     // 'resources/js/helpers/user-interaction-helpers.js',
+    // 'resources/js/helpers/smooth-scroll-main/smooth-scroll.js',
 
     // PWA
     'resources/js/pwa/pwa-manager.js',
