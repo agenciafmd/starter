@@ -8,4 +8,13 @@
   &-button-next {
     fill: var(--swiper-theme-color);
   }
+
+  &-slide {
+
+    height: auto;
+
+    img {
+      aspect-ratio: auto;
+    }
+  }
 }
