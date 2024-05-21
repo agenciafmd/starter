@@ -30,19 +30,39 @@ self.addEventListener('fetch', (e) => {
           return fetch(e.request);
         }
 
-        const resource = await caches.match(e.request);
-        console.log(`[Service Worker] Fetching resource: ${ e.request.url }`);
+        try {
 
-        if (resource) {
+          //usado para fazer uma solicitação de rede para a URL especificada na solicitação
+          const networkResponse = await fetch(e.request);
 
-          return resource;
+          if (networkResponse && networkResponse.status === 200) {
+            //usado para abrir um cache específico pelo seu nome
+            const cache = await caches.open(applicationName);
+            cache.put(e.request, networkResponse.clone());
+            console.log(`[Service Worker] Caching new resource: ${ e.request.url }`);
+            return networkResponse;
+          }
+
+        } catch (err) {
+          //usado para verificar se existe uma resposta em cache para uma solicitação específica
+          const cachedResponse = await caches.match(e.request);
+
+          if (cachedResponse) {
+
+            console.log(`[Service Worker] Returning cached resource: ${ e.request.url }`);
+            return cachedResponse;
+          }
+
+          console.log(`[Service Worker] Resource not found in cache: ${ e.request.url }`);
+
+          return new Response(
+              'You are offline and this resource is not cached.',
+              {
+                status: 503,
+                statusText: 'Service Unavailable',
+              },
+          );
         }
-
-        const response = await fetch(e.request);
-        const cache = await caches.open(applicationName);
-        console.log(`[Service Worker] Caching new resource: ${ e.request.url }`);
-        await cache.put(e.request, response.clone());
-        return response;
       })(),
   );
 });
@@ -55,15 +75,14 @@ self.addEventListener('activate', (e) => {
         return Promise.all(
             keyList.map((key) => {
 
-              if (key === applicationName) {
+              if (key !== applicationName) {
 
-                return;
+                console.log(`[Service Worker] Deleting old cache: ${ key }`);
+                return caches.delete(key);
               }
-              return caches.delete(key);
             }),
         );
       }),
   );
 });
 
-//https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Tutorials/js13kGames/Offline_Service_workers
