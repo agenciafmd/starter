@@ -3,10 +3,10 @@
 'icon' => null,
 'iconClass' => null,
 'content' => [],
-'sanitizeList' => null,
+'isUnstyled' => null,
 ])
 
-<ul {{ $attributes->merge(['class' => ($sanitizeList ? 'list-unstyled' : '' )]) }}>
+<ul {{ $attributes->merge(['class' => ($isUnstyled ? 'list-unstyled' : '' )]) }}>
   @foreach($content as $list)
     <li class="{{ $listClass }}">
       @if($icon)

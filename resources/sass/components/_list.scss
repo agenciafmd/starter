@@ -2,7 +2,7 @@
   &-unstyled {
     li {
       display: flex;
-      gap: .5rem;
+      gap: $spacer * .5;
     }
   }
 }
