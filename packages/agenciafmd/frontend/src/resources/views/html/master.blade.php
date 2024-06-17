@@ -17,8 +17,6 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    @include('agenciafmd/frontend::partials.pwa')
-
     @include('agenciafmd/frontend::partials.fonts-preload')
 
     <link rel="preload" href="/css/frontend.css" as="style"
@@ -99,12 +97,6 @@
     <script id="__bs_script__">//<![CDATA[
         document.write("<script async src='//HOST:3000/browser-sync/browser-sync-client.js?v=2.18.6'><\/script>".replace("HOST", location.hostname));
         //]]>
-    </script>
-@endif
-
-@if(config('app.env') !== 'local')
-    <script>
-        pwaManager();
     </script>
 @endif
 </body>
