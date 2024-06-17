@@ -7,7 +7,7 @@
         "greetings": "echo 'Confira e altere o APP_URL se necessário. Caso o mapeamento do projeto esteja correto, tudo está pronto para uso e desenvolvimento. Obrigado por utilizar nosso starter!'",
         "update-version-pwa": "node resources/js/pwa/update-version-pwa.js",
         "dev": "npm run development",
-        "prod": "npm run production && npm run update-version-pwa",
+        "prod": "npm run production && npm run update-version-pwa && npm run lighthouse",
         "pwa": "node resources/js/utilities/pwa.js",
         "lighthouse": "node resources/js/utilities/lighthouse.js",
         "critical": "node resources/js/utilities/critical.js",
@@ -37,8 +37,8 @@
     },
     "dependencies": {
         "bootstrap": "^5.3.0",
-        "fslightbox": "^3.4.1",
         "chrome-launcher": "^1.1.0",
+        "fslightbox": "^3.4.1",
         "imask": "^6.0.7",
         "infinite-scroll": "^4.0.1",
         "inquirer": "^8.2.6",

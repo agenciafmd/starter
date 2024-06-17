@@ -1,21 +1,7 @@
 require('dotenv').config();
-const exec = require("child_process").exec;
+const childProcess = require("child_process");
 const fs = require("fs");
 const inquirer = require('inquirer');
-const path = require("path");
-
-const environmentsSetup = {
-  local: {
-    id: 'local',
-    domain: `${process.env.APP_URL}`,
-    pagesPathToAudit: 'packages/agenciafmd/frontend/src/resources/views/html'
-  },
-  homologation: {
-    id: 'dev',
-    domain: `https://${path.basename(process.cwd()).replace(/-/g, "")}.fmd.dev`,
-    pagesPathToAudit: 'packages/agenciafmd/frontend/src/resources/views/html'
-  },
-}
 
 let HTMLPagesFiles = fs.readdirSync('packages/agenciafmd/frontend/src/resources/views/html');
 
@@ -84,10 +70,12 @@ function scoreStatus(score) {
 function generateReports(environment) {
   return new Promise((resolve) => {
     
+    console.log(environment.domain);
+    
     const createLighthouseReportFolder = 'rm -rf ./public/web-vitals/ && mkdir -p ./public/web-vitals';
     const createLighthouseReportJSONFolder = 'rm -rf ./resources/web-vitals/ && mkdir -p ./resources/web-vitals';
     
-    exec(`${createLighthouseReportFolder} && ${createLighthouseReportJSONFolder}`, function (error, stdout) {
+    childProcess.exec(`${createLighthouseReportFolder} && ${createLighthouseReportJSONFolder}`, function (error, stdout) {
       
       console.log(stdout);
       
@@ -104,7 +92,7 @@ function generateReports(environment) {
         
         const runLighthouse = `lighthouse ${projectURL} --chrome-flags="${chromeFlags}" --output='json,html' --output-path=${reportPath}`;
         
-        exec(runLighthouse, function (error, stdout) {
+        childProcess.exec(runLighthouse, function (error, stdout) {
           
           console.log(stdout);
           
@@ -176,6 +164,17 @@ const environmentsPromptQuestion = inquirer.prompt([
 
 environmentsPromptQuestion.then(environments => {
   
+  const environmentsSetup = {
+    local: {
+      id: 'local',
+      domain: `${process.env.APP_URL}`,
+    },
+    homologation: {
+      id: 'dev',
+      domain: ``,
+    },
+  }
+  
   const environmentsSelected = environments.environmentsSelected;
   
   if (environmentsSelected.includes('Local')) {
@@ -195,17 +194,34 @@ environmentsPromptQuestion.then(environments => {
   }
   
   if (environmentsSelected.includes('Homologação')) {
-    generateReports(environmentsSetup.homologation).then((resolveReports) => {
+    
+    const homologationURLPromptQuestion = inquirer.prompt([
+      {
+        type: 'text',
+        name: 'homologationURLInserted',
+        message: 'Qual a URL de homologação?',
+      }
+    ]);
+    
+    homologationURLPromptQuestion.then(homologationURL => {
       
-      fs.writeFile(`./resources/web-vitals/web-vitals-${environmentsSetup.homologation.id}.json`, JSON.stringify(resolveReports), (err) => {
-        
-        if (err) {
-          console.log(err);
-          return
-        }
-        
-        console.log(`✅ Reportes de ${environmentsSetup.homologation.domain} adicionados com sucesso.`);
-        allReportsPerPage = [];
+      const sanitazedURL = homologationURL.homologationURLInserted.endsWith("/") ?
+        homologationURL.homologationURLInserted.slice(0, -1)
+        : homologationURL.homologationURLInserted;
+      
+      environmentsSetup.homologation.domain = sanitazedURL;
+      
+      generateReports(environmentsSetup.homologation).then((resolveReports) => {
+        fs.writeFile(`./resources/web-vitals/web-vitals-${environmentsSetup.homologation.id}.json`, JSON.stringify(resolveReports), (err) => {
+          
+          if (err) {
+            console.log(err);
+            return
+          }
+          
+          console.log(`✅ Reportes de ${environmentsSetup.homologation.domain} adicionados com sucesso.`);
+          allReportsPerPage = [];
+        });
       });
     });
   }
