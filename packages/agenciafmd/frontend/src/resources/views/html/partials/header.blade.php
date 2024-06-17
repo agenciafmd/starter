@@ -15,23 +15,37 @@
            aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-body">
           <ul class="navbar-nav nav-underline">
+            @php
+              $headerLinks = [
+                  [
+                      'title' => 'Home',
+                      'descriptionLink' => 'Link para Home',
+                      'link' => '/html',
+                  ],
+                  [
+                      'title' => 'Quem Somos',
+                      'descriptionLink' => 'Link para Quem Somos',
+                      'link' => '/quem-somos',
+                  ],
+                  [
+                      'title' => 'Contato',
+                      'descriptionLink' => 'Link para Contato',
+                      'link' => '/Contato',
+                  ],
+              ];
+            @endphp
+            @foreach ($headerLinks as $item)
             <li class="nav-item">
-              <a href="/html"
-                 aria-label="Home"
-                 title="Home"
-                 aria-current="page"
-                 class="nav-link active">
-                Home
-              </a>
+                <a href="{{ $item['link'] }}"
+                   aria-label="{{ $item['descriptionLink'] }}"
+                   title="{{ $item['title'] }}"
+                   class="nav-link"
+                   data-bs-dismiss="offcanvas"
+                   data-bs-target="#offcanvasNavbar">
+                      {{ $item['title'] }}
+                </a>
             </li>
-            <li class="nav-item">
-              <a href="/html/quem-somos"
-                 aria-label="Quem somos"
-                 title="Quem somos"
-                 class="nav-link">
-                Quem somos
-              </a>
-            </li>
+            @endforeach
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle"
                  aria-label="Produtos"
@@ -45,41 +59,33 @@
                 Produtos
               </a>
               <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item"
-                     aria-label="Action"
-                     title="Action"
-                     href="#">
-                    Action
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item"
-                     aria-label="Another action"
-                     title="Another action"
-                     href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item"
-                     aria-label="Something else here"
-                     title="Something else here"
-                     href="#">
-                    Something else here
-                  </a>
-                </li>
+                @php
+                  $productsLinks = [
+                  [
+                      'title' => 'Starter',
+                      'descriptionLink' => 'Link para produto Starter',
+                      'link' => 'https://github.com/agenciafmd/starter',
+                  ],
+                  [
+                      'title' => 'DCode',
+                      'descriptionLink' => 'Link para produto DCode',
+                      'link' => 'https://dcode.link/',
+                  ],
+                  ];
+                  @endphp
+                @foreach ($productsLinks as $item)
+                  <li class="nav-item">
+                      <a href="{{ $item['link'] }}"
+                         aria-label="{{ $item['descriptionLink'] }}"
+                         title="{{ $item['title'] }}"
+                         class="dropdown-item"
+                         data-bs-dismiss="offcanvas"
+                         data-bs-target="#offcanvasNavbar">
+                          {{ $item['title'] }}
+                      </a>
+                  </li>
+               @endforeach
               </ul>
-            </li>
-            <li class="nav-item">
-              <a href="/html/contato"
-                 aria-label="Contato"
-                 title="Contato"
-                 data-bs-dismiss="offcanvas"
-                 data-bs-target="#offcanvasNavbar"
-                 class="nav-link js-scroll-top">
-                Contato
-              </a>
             </li>
           </ul>
         </div>
