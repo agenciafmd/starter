@@ -1,36 +1,39 @@
 function setupCustomFormFieldsVisibility() {
 
-  $.fn.disableFormFields = function () {
-    this.find('select')
-        .each(function () {
-          $(this)
-              .attr('disabled', true);
-        });
-    this.find('input')
-        .each(function () {
-          $(this)
-              .attr('disabled', true);
-        });
+  HTMLElement.prototype.disableFormFields = function () {
+
+    this.querySelectorAll('select').forEach(function (select) {
+
+      select.disabled = true;
+    });
+
+    this.querySelectorAll('input').forEach(function (input) {
+
+      input.disabled = true;
+    });
 
     // Bootstrap styles required
-    this.addClass('d-none');
+    this.classList.add('d-none');
   };
 
-  $.fn.enableFormFields = function () {
-    this.find('select')
-        .each(function () {
-          $(this)
-              .attr('disabled', false);
-        });
+  HTMLElement.prototype.enableFormFields = function () {
 
-    this.find('input')
-        .each(function () {
-          $(this)
-              .attr('disabled', false);
-        });
+    const selects = this.querySelectorAll('select');
+
+    selects.forEach(function (select) {
+
+      select.disabled = false;
+    });
+
+    const inputs = this.querySelectorAll('input');
+
+    inputs.forEach(function (input) {
+
+      input.disabled = false;
+    });
 
     // Bootstrap styles required
-    this.removeClass('d-none');
+    this.classList.remove('d-none');
   };
 }
 
@@ -43,26 +46,44 @@ function getFieldValue({ name, type }) {
 
   if (type === 'input') {
 
-    return $(`${ type }[name="${ name }"]`)
-        .val();
+    const inputElement = document.querySelector(`input[name="${ name }"]`);
+    return inputElement ? inputElement.value : '';
   }
 
   if (type === 'select') {
 
-    return $(`${ type }[name="${ name }"]`)
-        .children('option:selected')
-        .text();
+    const selectElement = document.querySelector(`select[name="${ name }"]`);
+
+    if (selectElement) {
+
+      const selectedOption = selectElement.options[selectElement.selectedIndex];
+      return selectedOption ? selectedOption.textContent : '';
+    }
+
+    return '';
   }
 }
 
 function setCustomFileLabel() {
 
-  $('.custom-file-input')
-      .change(function () {
-        const file = $(this)[0].files[0].name;
-        const fileName = $('.custom-file-label');
-        fileName.text(file);
-      });
+  const inputFile = document.querySelector('.js-custom-file-input');
+  const fileLabel = document.querySelector('.js-custom-file-label');
+
+  if (!inputFile) {
+
+    return;
+  }
+
+  inputFile.addEventListener('change', function () {
+
+    if (!fileLabel) {
+
+      throw new Error(`Adiciona classe '.js-custom-file-label' ao label do input file.`);
+    }
+
+    const file = this.files[0].name;
+    fileLabel.textContent = file;
+  });
 }
 
 function setInvalidInput({ input, message }) {
@@ -79,68 +100,71 @@ function setValidInput({ input }) {
 
 function guideUserToTheFirstError() {
 
-  const currentScrollPosition = $(window)
-      .scrollTop();
+  const currentScrollPosition = window.scrollY;
   const invalidInputsSelectors = [
-      '.form-control:invalid',
-      '.form-select:invalid',
-      '.form-check-input:invalid',
-      '.form-range:invalid',
-      '.form-control.is-invalid',
-      '.form-select.is-invalid',
-      '.form-check-input.is-invalid',
-      '.form-range.is-invalid',
+    '.form-control:invalid',
+    '.form-select:invalid',
+    '.form-check-input:invalid',
+    '.form-range:invalid',
+    '.form-control.is-invalid',
+    '.form-select.is-invalid',
+    '.form-check-input.is-invalid',
+    '.form-range.is-invalid',
   ];
-  const $invalidInputs = $(invalidInputsSelectors.join(', '));
-  // Selects the parent to get input label
-  const $firstInvalidInput = $invalidInputs.first()
-      .parent();
-  const firstInvalidInputOffsetTop = $firstInvalidInput.offset().top;
 
-  if (currentScrollPosition <= firstInvalidInputOffsetTop) {
+  const invalidInputs = document.querySelectorAll(invalidInputsSelectors.join(
+      ', '));
+
+  if (!invalidInputs.length) {
 
     return;
   }
+
+  const firstInvalidInput = invalidInputs[0].parentNode;
+  const firstInvalidInputOffsetTop = firstInvalidInput.getBoundingClientRect().top;
+
+  const scrollContainerClass = 'js-scroll-container';
+  const scrollContainerElement = document.querySelector(`.${scrollContainerClass}`);
 
   if (_isFormOnModal()) {
 
-    _scrollToError({ container: '.modal.show' });
-
+    _scrollToError('.modal.show .modal-body');
     return;
   }
 
-  _scrollToError({ container: 'html, body' });
+  if (scrollContainerElement) {
 
-  function _scrollToError({ container }) {
+    _scrollToError(`.${scrollContainerClass}`);
+    return;
+  }
+
+  _scrollToError('html, body');
+
+  function _scrollToError(container) {
 
     const animateConfig = {
-      properties: {
-        scrollTop: $firstInvalidInput.offset().top - _getStickyHeaderOffset(),
-      },
-      options: {
-        duration: 1000,
-      },
+
+      top: firstInvalidInputOffsetTop + currentScrollPosition - _getStickyHeaderOffset(),
+      behavior: 'smooth',
     };
 
-    $(container)
-        .animate(animateConfig.properties, animateConfig.options);
+    _animateScroll(container, animateConfig);
+  }
+
+  function _animateScroll(container, animateConfig) {
+
+    document.querySelector(container).scrollTo(animateConfig);
   }
 
   function _isFormOnModal() {
 
-    return $('body').hasClass('modal-open');
+    return document.body.classList.contains('modal-open');
   }
 
   function _getStickyHeaderOffset() {
 
-    const $stickyHeaderSticky = $('.js-header-sticky');
-
-    if (!$stickyHeaderSticky.length) {
-
-      return 0;
-    }
-
-    return $stickyHeaderSticky.innerHeight();
+    const stickyHeaderSticky = document.querySelector('.fmd-header-is-fixed');
+    return stickyHeaderSticky ? stickyHeaderSticky.getBoundingClientRect().height : 0;
   }
 }
 

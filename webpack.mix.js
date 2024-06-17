@@ -69,14 +69,9 @@ mix
             suffix: '',
         },
         urls: [
-            // urls que temos no /html
-            {
-                url: 'index',
-                template: 'index',
-            },
-            // {url: 'contato', template: 'contato'},
-            // {url: 'quem-somos', template: 'quem-somos'},
-        ],
+						{"url":"index","template":"index"}
+				],
+				// fmd:criticalPath  !! This comment should not be removed !!
         dimensions: [
             {
                 width: 375,
@@ -131,7 +126,8 @@ mix
     .copy('resources/images/**', 'public/images')
     .copy('resources/svg/*.svg', 'public/svg')
     .copy('resources/images/icons/favicon.ico', 'public')
-    .copy('resources/js/pwa/**', 'public')
+    .copy('resources/js/pwa/manifest.json', 'public')
+    .copy('resources/js/pwa/pwa-manager.js', 'public')
     .babel(frontendImports, 'public/js/frontend.js')
     .sourceMaps(false, 'source-map')
     .browserSync({

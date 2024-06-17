@@ -1,13 +1,25 @@
-@import "../frontend/warnings";
+@import '../frontend/warnings';
 
 a {
-  &:not([aria-label], [title], .wysiwyg a){
-    @include accessibility-warning;
+
+  &:not(.skip-warning) {
+
+    &:empty:not([aria-label], [title], [class*='adopt-'], .wysiwyg a) {
+      @include accessibility-warning;
+    }
+
+    &:has(img):not([aria-label]):not([aria-labelledby]) {
+      @include accessibility-warning;
+    }
   }
 }
 
 img {
-  &:not([alt], [loading="lazy"], .wysiwyg img) {
-    @include accessibility-warning;
+
+  &:not(.skip-warning) {
+
+    &:not([alt], [loading='lazy'], .fslightbox-source, .wysiwyg img) {
+      @include accessibility-warning;
+    }
   }
 }

@@ -26,3 +26,18 @@ mais chegados.
 
 Fique a vontade para começar a montar sua aplicação, mas não se esqueça, a
 responsabilidade pelo sucesso dela não é nossa 😊 .
+
+---
+
+## Instalação do Lighthouse usando o headless Chrome
+```sh
+# Lighthouse requires Node 18 LTS (18.x) or later.
+curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash - &&\
+sudo apt-get install -y nodejs npm
+
+# get chromium (stable)
+apt-get install chromium-browser
+
+# install lighthouse
+npm i -g lig
+```
