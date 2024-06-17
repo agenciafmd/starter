@@ -1,10 +1,10 @@
-@import "../frontend/warnings";
+@import '../frontend/warnings';
 
 a {
 
   &:not(.skip-warning) {
 
-    &:empty:not([aria-label], [title], [class*="adopt-"]) {
+    &:empty:not([aria-label], [title], [class*='adopt-'], .wysiwyg a) {
       @include accessibility-warning;
     }
 
@@ -18,7 +18,7 @@ img {
 
   &:not(.skip-warning) {
 
-    &:not([alt], [loading='lazy'], .fslightbox-source) {
+    &:not([alt], [loading='lazy'], .fslightbox-source, .wysiwyg img) {
       @include accessibility-warning;
     }
   }
