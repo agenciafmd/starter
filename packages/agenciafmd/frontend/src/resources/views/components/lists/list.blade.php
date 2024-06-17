@@ -3,7 +3,7 @@
 'icon' => null,
 'iconClass' => null,
 'content' => [],
-'isUnstyled' => null,
+'isUnstyled' => true,
 ])
 
 <ul {{ $attributes->merge(['class' => ($isUnstyled ? 'list-unstyled' : '' )]) }}>
