@@ -6,9 +6,9 @@
         "setup-project": "composer i && npm i && cp .env.example .env && art key:generate && art storage:link && npm run greetings",
         "greetings": "echo 'Confira e altere o APP_URL se necessário. Caso o mapeamento do projeto esteja correto, tudo está pronto para uso e desenvolvimento. Obrigado por utilizar nosso starter!'",
         "update-version-pwa": "node resources/js/pwa/update-version-pwa.js",
+        "pwa": "npm run update-version-pwa && node resources/js/utilities/pwa.js",
         "dev": "npm run development",
-        "prod": "npm run production && npm run update-version-pwa && npm run lighthouse",
-        "pwa": "node resources/js/utilities/pwa.js",
+        "prod": "npm run production",
         "lighthouse": "node resources/js/utilities/lighthouse.js",
         "critical": "node resources/js/utilities/critical.js",
         "create-page": "node resources/js/utilities/create-page.js",
@@ -16,7 +16,7 @@
         "watch": "mix watch",
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
-        "production": "mix --production"
+        "production": "npm run critical && mix --production && npm run pwa && npm run lighthouse"
     },
     "devDependencies": {
         "accounting": "^0.4.1",
