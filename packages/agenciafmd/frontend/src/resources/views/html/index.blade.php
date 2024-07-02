@@ -6,6 +6,16 @@
 @section('title', 'Em desenvolvimento')
 @section('description', 'em breve, seu site estará logo aqui.')
 
+@push('head')
+<style>
+    :root {
+        --glow-color: #E9FF00;
+        --bs-dark-rgb: 0, 0, 0;
+    }
+
+</style>
+@endpush
+
 @section('content')
 <main>
   <div class="text-opacity-75 p-1 py-md-1h w-100 text-center bg-black z-1 text-light fs-xsmall fw-bold">
