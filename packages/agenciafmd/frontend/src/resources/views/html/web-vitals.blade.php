@@ -17,6 +17,10 @@
         --bs-info-rgb: 107, 181, 249;
         --bs-warning-rgb: 249, 200, 107;
         --bs-danger-rgb: 249, 107, 107;
+        --bs-dark-rgb: 72, 72, 72;
+
+        --bs-nav-link-color: rgb(108 108 108);
+        --bs-nav-link-hover-bg: rgb(219, 219, 219);
     }
 </style>
 @endpush
