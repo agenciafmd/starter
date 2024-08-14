@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'domain' => null,
+    'domain' => env('HORIZON_DOMAIN'),
 
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'path' => 'horizon',
+    'path' => env('HORIZON_PATH', 'horizon'),
 
     /*
     |--------------------------------------------------------------------------
@@ -70,7 +70,10 @@ return [
     |
     */
 
-    'middleware' => ['web', 'auth:admix-web'],
+    'middleware' => [
+        'web',
+        'auth:admix-web',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -105,6 +108,21 @@ return [
         'recent_failed' => 10080,
         'failed' => 10080,
         'monitored' => 10080,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Silenced Jobs
+    |--------------------------------------------------------------------------
+    |
+    | Silencing a job will instruct Horizon to not place the job in the list
+    | of completed jobs within the Horizon dashboard. This setting may be
+    | used to fully remove any noisy jobs from the completed jobs list.
+    |
+    */
+
+    'silenced' => [
+        // App\Jobs\ExampleJob::class,
     ],
 
     /*
@@ -173,13 +191,14 @@ return [
                 'low',
             ],
             'balance' => 'auto',
+            'autoScalingStrategy' => 'time',
             'maxProcesses' => 1,
-            'memory' => 512,
-            'tries' => 3,
-            'nice' => 0,
             'maxTime' => 3600,
             'maxJobs' => 500,
+            'memory' => 512,
+            'tries' => 3,
             'timeout' => 180,
+            'nice' => 0,
         ],
     ],
 
@@ -191,10 +210,9 @@ return [
                 'balanceCooldown' => 3,
             ],
         ],
-
         'local' => [
             'supervisor-1' => [
-                'maxProcesses' => 10,
+                'maxProcesses' => 20,
             ],
         ],
     ],

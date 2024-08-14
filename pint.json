@@ -1,0 +1,15 @@
+{
+  "preset": "laravel",
+  "rules": {
+    "concat_space": {
+      "spacing": "one"
+    },
+    "explicit_string_variable": true,
+    "logical_operators": true,
+    "not_operator_with_successor_space": false,
+    "no_useless_concat_operator": true,
+    "return_assignment": true,
+    "simple_to_complex_string_variable": true,
+    "unary_operator_spaces": false
+  }
+}

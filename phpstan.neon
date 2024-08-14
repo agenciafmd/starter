@@ -4,7 +4,6 @@ includes:
 parameters:
 
     paths:
-        - app
         - packages
 
     # The level 8 is the highest level

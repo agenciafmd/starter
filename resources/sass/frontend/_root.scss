@@ -1,9 +1,0 @@
-:root {
-  @each $breakpoint, $value in $grid-breakpoints {
-    --#{$variable-prefix}breakpoint-#{$breakpoint}: #{$value};
-  }
-
-  @each $color, $value in $custom-utilities-colors {
-    --bs-#{$color}-rgb: #{$value};
-  }
-}
