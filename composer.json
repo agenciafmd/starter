@@ -7,8 +7,18 @@
         "framework"
     ],
     "license": "MIT",
+    "repositories": {
+        "agenciafmd/frontend": {
+            "type": "path",
+            "url": "packages/agenciafmd/frontend",
+            "options": {
+                "symlink": true
+            }
+        }
+    },
     "require": {
         "php": "^8.2",
+        "agenciafmd/frontend": "*",
         "agenciafmd/admix": "v11.x-dev",
         "agenciafmd/admix-leads": "v11.x-dev",
         "agenciafmd/admix-postal": "v11.x-dev",
@@ -81,6 +91,6 @@
             "pestphp/pest-plugin-laravel": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }

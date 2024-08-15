@@ -1,0 +1,36 @@
+<?php
+
+namespace Agenciafmd\Frontend\Providers;
+
+use Illuminate\Support\ServiceProvider;
+
+class FrontendServiceProvider extends ServiceProvider
+{
+    public function boot(): void
+    {
+        $this->providers();
+
+        $this->publish();
+    }
+
+    public function register(): void
+    {
+        $this->loadConfigs();
+    }
+
+    private function providers(): void
+    {
+        $this->app->register(BladeServiceProvider::class);
+        $this->app->register(RouteServiceProvider::class);
+    }
+
+    private function publish(): void
+    {
+        //
+    }
+
+    private function loadConfigs(): void
+    {
+        $this->mergeConfigFrom(__DIR__ . '/../../config/frontend.php', 'frontend');
+    }
+}

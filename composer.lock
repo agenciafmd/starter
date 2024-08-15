@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "67694bea95b76b2a63a7bcd01f013b7d",
+    "content-hash": "5b2d4e2731d2aec88e223035dcec6791",
     "packages": [
         {
             "name": "agenciafmd/admix",
@@ -221,6 +221,44 @@
                 "source": "https://github.com/agenciafmd/admix-ui/tree/v11"
             },
             "time": "2024-08-14T19:45:43+00:00"
+        },
+        {
+            "name": "agenciafmd/frontend",
+            "version": "11.x-dev",
+            "dist": {
+                "type": "path",
+                "url": "packages/agenciafmd/frontend",
+                "reference": "3000d87805cc9c78a85c6658d8ed261a9b998ced"
+            },
+            "require": {
+                "laravel/framework": "^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Agenciafmd\\Frontend\\Providers\\FrontendServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Agenciafmd\\Frontend\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Irineu Martins Junior",
+                    "email": "irineu@fmd",
+                    "homepage": "https://fmd.ag/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Frontend - Agência F&MD",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "agenciafmd/laravel-support",
@@ -13690,7 +13728,7 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "agenciafmd/admix": 20,
         "agenciafmd/admix-leads": 20,
