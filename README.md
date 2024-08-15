@@ -1,66 +1,80 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://fmd.ag/?utm_source=github" target="_blank"><img src="https://raw.githubusercontent.com/agenciafmd/starter/v11/public/vendor/admix-ui/images/fmd.svg" width="250" alt="Agência F&MD Logo"></a></p>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<a href="https://packagist.org/packages/agenciafmd/starter"><img src="https://img.shields.io/packagist/dt/agenciafmd/starter" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/agenciafmd/starter"><img src="https://img.shields.io/packagist/l/agenciafmd/starter" alt="License"></a>
 </p>
 
-## About Laravel
+## O que é?
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Este é o esqueleto de desenvolvimento dos nossos sites e apps.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Como começar?
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Para começar, crie o projeto com o comando:
 
-## Learning Laravel
+```bash
+composer create-project agenciafmd/starter:v11.x-dev nome-do-projeto
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+> O `v11.x-dev` no comando, irá garantir que a versão 11 do Laravel será usada.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Do que preciso?
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+TODO: Adicionar os requisitos do projeto / Docker / Podman
 
-## Laravel Sponsors
+## Como alimento o projeto?
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Uma vez que o projeto foi criado, você pode alimentá-lo com dados fictícios usando o comando:
 
-### Premium Partners
+```bash
+php artisan migrate:fresh --seed
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Caso sinta lentidão, você pode alterar a configuração do processamento de fila no arquivo `.env`,
+alterando o valor do `QUEUE_CONNECTION` de `sync` para `redis`.
 
-## Contributing
+Refaça o processo de alimentação e execute o horizon após o término.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+php artisan migrate:fresh --seed && php artisan horizon
+```
 
-## Code of Conduct
+Para ter melhor visão sobre o processo do horizon, abra o dashboard dele no seu projeto.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+http://nome-do-projeto.local/horizon
+```
 
-## Security Vulnerabilities
+## Vixi, deu erro de banco
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Provavelmente, não temos o banco criado.
+Por padrão, agora usamos o SQLite, então você pode criar o banco com o comando:
 
-## License
+```bash
+touch database/database.sqlite
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Não consigo ver as imagens, e agora?
+
+Vamos deixar o storage publico. Assim, todas as imagens que salvarmos no storage, poderão ser acessadas diretamente.
+
+```bash
+php artisan storage:link
+```
+
+## Conheça nossa família
+
+- [Área Administrativa](https://github.com/agenciafmd/admix)
+- [Banners](https://github.com/agenciafmd/admix-banners)
+- [Email](https://github.com/agenciafmd/admix-postal)
+- [e mais](https://github.com/agenciafmd?utf8=%E2%9C%93&q=admix-&type=&language=)
+
+## Requisitos do projeto
+
+- Versão do PHP: **^8.2**
+- Versão do Node: **XX**
+
+## Licença
+
+Nossos pacotes são abertos, [MIT](https://opensource.org/licenses/MIT) para os mais chegados.
