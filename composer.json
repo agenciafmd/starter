@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "agenciafmd/starter",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "Agência F&MD - Laravel 11",
     "keywords": [
         "laravel",
         "framework"
@@ -10,6 +10,8 @@
     "require": {
         "php": "^8.2",
         "agenciafmd/admix": "v11.x-dev",
+        "agenciafmd/admix-leads": "v11.x-dev",
+        "agenciafmd/admix-postal": "v11.x-dev",
         "agenciafmd/admix-ui": "v11.x-dev",
         "agenciafmd/laravel-support": "v11.x-dev",
         "laravel/framework": "^11.9",

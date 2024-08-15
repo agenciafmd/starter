@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0fcd090503acd01677702e686aa9bde",
+    "content-hash": "67694bea95b76b2a63a7bcd01f013b7d",
     "packages": [
         {
             "name": "agenciafmd/admix",
@@ -65,6 +65,106 @@
                 "source": "https://github.com/agenciafmd/admix/tree/v11"
             },
             "time": "2024-08-14T17:42:05+00:00"
+        },
+        {
+            "name": "agenciafmd/admix-leads",
+            "version": "v11.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/agenciafmd/admix-leads.git",
+                "reference": "311d5be688db6ec29f238743a246ef4ea931252f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/agenciafmd/admix-leads/zipball/311d5be688db6ec29f238743a246ef4ea931252f",
+                "reference": "311d5be688db6ec29f238743a246ef4ea931252f",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "11.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Agenciafmd\\Leads\\Providers\\LeadServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Agenciafmd\\Leads\\": "src/",
+                    "Agenciafmd\\Leads\\Database\\Seeders\\": "database/seeders/",
+                    "Agenciafmd\\Leads\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Irineu Junior",
+                    "email": "irineu@fmd.ag",
+                    "homepage": "https://fmd.ag/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Keep all your leads safe",
+            "support": {
+                "issues": "https://github.com/agenciafmd/admix-leads/issues",
+                "source": "https://github.com/agenciafmd/admix-leads/tree/v11"
+            },
+            "time": "2024-04-24T16:38:39+00:00"
+        },
+        {
+            "name": "agenciafmd/admix-postal",
+            "version": "v11.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/agenciafmd/admix-postal.git",
+                "reference": "3094db80420487b40ebb283a6f8a76d36e18a04b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/agenciafmd/admix-postal/zipball/3094db80420487b40ebb283a6f8a76d36e18a04b",
+                "reference": "3094db80420487b40ebb283a6f8a76d36e18a04b",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Agenciafmd\\Postal\\Providers\\PostalServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Agenciafmd\\Postal\\": "src/",
+                    "Agenciafmd\\Postal\\Database\\Seeders\\": "database/seeders/",
+                    "Agenciafmd\\Postal\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Irineu Junior",
+                    "email": "irineu@fmd.ag",
+                    "homepage": "https://fmd.ag/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Postal - Agência F&MD",
+            "homepage": "https://github.com/agenciafmd/admix-postal",
+            "support": {
+                "issues": "https://github.com/agenciafmd/admix-postal/issues",
+                "source": "https://github.com/agenciafmd/admix-postal/tree/v11"
+            },
+            "time": "2024-04-24T16:38:38+00:00"
         },
         {
             "name": "agenciafmd/admix-ui",
@@ -13593,6 +13693,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "agenciafmd/admix": 20,
+        "agenciafmd/admix-leads": 20,
+        "agenciafmd/admix-postal": 20,
         "agenciafmd/admix-ui": 20,
         "agenciafmd/laravel-support": 20,
         "roave/security-advisories": 20
