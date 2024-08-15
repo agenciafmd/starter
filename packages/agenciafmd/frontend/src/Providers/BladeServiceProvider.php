@@ -43,6 +43,7 @@ class BladeServiceProvider extends ServiceProvider
     private function loadViews(): void
     {
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'frontend');
+        $this->loadViewsFrom(base_path('resources/views/errors'), 'errors');
         $this->loadViewsFrom(__DIR__ . '/../../resources/mail', 'frontend-mail');
     }
 
