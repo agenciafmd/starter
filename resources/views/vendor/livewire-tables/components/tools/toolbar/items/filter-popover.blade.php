@@ -13,7 +13,7 @@
             <div
                 wire:key="{{ $tableName }}-filter-{{ $filter->getKey() }}-toolbar"
                 @class([
-                    'p-2' => $this->isBootstrap,
+                    'dropdown-item d-block' => $this->isBootstrap,
                 ])
                 id="{{ $tableName }}-filter-{{ $filter->getKey() }}-wrapper"
             >

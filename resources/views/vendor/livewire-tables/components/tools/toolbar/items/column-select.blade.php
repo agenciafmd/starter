@@ -46,7 +46,7 @@
                         >
                             <input
                                 class="text-indigo-600 transition duration-150 ease-in-out border-gray-300 rounded shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-900 dark:text-white dark:border-gray-600 dark:hover:bg-gray-600 dark:focus:bg-gray-600 disabled:opacity-50 disabled:cursor-wait"
-                                wire:loading.attr="disabled"
+                                wire:loading.attr="disabled" 
                                 type="checkbox"
                                 @checked($component->getSelectableSelectedColumns()->count() == $component->getSelectableColumns()->count())
                                 @if($component->getSelectableSelectedColumns()->count() == $component->getSelectableColumns()->count())  wire:click="deselectAllColumns" @else wire:click="selectAllColumns" @endif
@@ -81,6 +81,7 @@
 @elseif ($isBootstrap)
 <div
     @class([
+        'ms-0 ms-md-2' => !$component->getColumnSelectIsHiddenOnMobile() && !$component->getColumnSelectIsHiddenOnTablet(),
         'd-none d-sm mb-3 mb-md-0 pl-0 pl-md-2' => $component->getColumnSelectIsHiddenOnMobile() && $isBootstrap4,
         'd-none d-md-block mb-3 mb-md-0 pl-0 pl-md-2' => $component->getColumnSelectIsHiddenOnTablet() && $isBootstrap4,
         'd-none d-sm-block mb-3 mb-md-0 md-0 ms-md-2' => $component->getColumnSelectIsHiddenOnMobile() && $isBootstrap5,
@@ -129,15 +130,14 @@
                     </label>
                 </div>
             @elseif($isBootstrap5)
-                <div class="form-check ms-2" wire:key="{{ $tableName }}-columnSelect-selectAll-{{ rand(0,1000) }}">
+                <div wire:key="{{ $tableName }}-columnSelect-selectAll-{{ rand(0,1000) }}">
+                    <label wire:loading.attr="disabled" class="dropdown-item">
                     <input
                         wire:loading.attr="disabled"
                         type="checkbox"
                         class="form-check-input m-0 me-2"
                         @if($component->getSelectableSelectedColumns()->count() == $component->getSelectableColumns()->count()) checked wire:click="deselectAllColumns" @else unchecked wire:click="selectAllColumns" @endif
                     />
-
-                    <label wire:loading.attr="disabled" class="form-check-label">
                         {{ __('All Columns') }}
                     </label>
                 </div>
@@ -147,7 +147,7 @@
                 <div
                     wire:key="{{ $tableName }}-columnSelect-{{ $loop->index }}"
                     @class([
-//                        'form-check ms-2' => $component->isBootstrap5(),
+//                        'form-check ms-2' => $isBootstrap5,
                     ])
                 >
                     @if ($isBootstrap4)
@@ -173,15 +173,16 @@
                             @class([
                                 'dropdown-item',
                                 'mb-0' => $loop->last,
+                                'mb-1' => !$loop->last,
                             ])
                         >
                             <input
-                                wire:model.live="selectedColumns"
-                                wire:target="selectedColumns"
-                                wire:loading.attr="disabled"
-                                type="checkbox"
-                                class="form-check-input m-0 me-2"
-                                value="{{ $columnSlug }}"
+                                    wire:model.live="selectedColumns"
+                                    wire:target="selectedColumns"
+                                    wire:loading.attr="disabled"
+                                    type="checkbox"
+                                    class="form-check-input m-0 me-2"
+                                    value="{{ $columnSlug }}"
                             />
                             {{ str($columnTitle)->ucfirst() }}
                         </label>
