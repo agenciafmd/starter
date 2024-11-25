@@ -50,12 +50,10 @@ function setupUtmHelpers() {
   }
 
   function hasUtmParameter(searchTerm) {
-
     return !!utmObject[searchTerm];
   }
 
   function getUtmValueFromUrl(searchTerm) {
-
     return utmObject[searchTerm];
   }
 
@@ -109,60 +107,16 @@ function setupUtmHelpers() {
     function setUtmFromUrl(utmName) {
 
       if (!hasUtmParameter(utmName)) {
-
         return;
       }
 
-      setCookie({
-        name: utmName,
-        value: getUtmValueFromUrl(utmName),
-      });
-
-      setInputValue({
+      setUtm({
         name: utmName,
         value: getUtmValueFromUrl(utmName),
       });
     }
 
-    function setupUtmSource() {
-
-      const hasUtmSourceInUrl = !!getUtmValueFromUrl('utm_source');
-      const hasReferrer = !!document.referrer;
-      const hasComeFromGoogleSearch = document.referrer.search('google') > 0;
-
-      if (!hasUtmSourceInUrl && !hasReferrer && hasComeFromGoogleSearch) {
-
-        setUtm({
-          name: 'utm_source',
-          value: 'google',
-        });
-
-        setUtm({
-          name: 'utm_medium',
-          value: 'organic',
-        });
-        return;
-      }
-
-      if (!hasUtmSourceInUrl && hasReferrer) {
-
-        setUtm({
-          name: 'utm_source',
-          value: 'referral',
-        });
-
-        setUtm({
-          name: 'utm_medium',
-          value: document.referrer,
-        });
-        return;
-      }
-
-      setUtmFromUrl('utm_source');
-    }
-
-    // This is specific because it has additional logic
-    setupUtmSource();
+    setUtmFromUrl('utm_source');
     setUtmFromUrl('utm_medium');
     setUtmFromUrl('utm_campaign');
     setUtmFromUrl('utm_term');
