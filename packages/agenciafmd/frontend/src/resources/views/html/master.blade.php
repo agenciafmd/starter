@@ -17,6 +17,8 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @include('agenciafmd/frontend::partials.pwa')
+
     @include('agenciafmd/frontend::partials.fonts-preload')
 
     <link rel="preload" href="/css/frontend.css" as="style"

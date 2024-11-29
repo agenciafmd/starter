@@ -1,7 +1,7 @@
 <!-- PWA Configuration -->
 <link rel="manifest" href="/manifest.json">
 <link rel="apple-touch-icon" sizes="192x192" href="/images/apple-touch-icon.png">
-<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/images/favicon.svg" type="image/svg">
 <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#FFFFFF">
 <meta name="msapplication-TileColor" content="#2b5797">
 
