@@ -13,6 +13,15 @@ const { APP_URL } = {
   ),
 };
 
+const purgeCheckPaths = [
+  'packages/agenciafmd/frontend/resources/views/**/*.php',
+  'node_modules/swiper/**/*.js',
+  'node_modules/sweetalert2/dist/*.js',
+  'node_modules/wow.js/dist/*.js',
+  'node_modules/bootstrap/dist/js/bootstrap.min.js',
+]
+    .map((path) => join(__dirname, path));
+
 export default defineConfig({
   plugins: [
     laravel({
@@ -53,23 +62,11 @@ export default defineConfig({
             width: 1920,
             height: 1080,
           },
-        ]
-      }
+        ],
+      },
     }),
     purge({
-      paths: [
-        join(
-            __dirname,
-            'packages/agenciafmd/frontend/resources/views/**/*.php',
-        ),
-        join(__dirname, 'node_modules/swiper/**/*.js'),
-        join(__dirname, 'node_modules/sweetalert2/dist/*.js'),
-        join(__dirname, 'node_modules/wow.js/dist/*.js'),
-        join(
-            __dirname,
-            'node_modules/bootstrap/dist/js/bootstrap.min.js',
-        ),
-      ],
+      paths: purgeCheckPaths,
       // Include classes we don't have direct access
       safelist: [
         /hs-*/,
@@ -88,3 +85,4 @@ export default defineConfig({
     },
   },
 });
+
