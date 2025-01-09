@@ -5,9 +5,7 @@
                class="navbar-brand"
                aria-label="{{ config('app.name') }}"
                title="{{ config('app.name') }}">
-                <svg role="img">
-                    <use xlink:href="/svg/sprite.svg#fmd-logo"></use>
-                </svg>
+                <x-frontend::icon name="fmd-logo"/>
             </a>
             <div class="offcanvas offcanvas-end align-items-md-end"
                  tabindex="-1"
