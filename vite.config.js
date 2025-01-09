@@ -1,8 +1,17 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import VitePluginSvgSpritemap from '@spiriit/vite-plugin-svg-spritemap';
 import purge from '@erbelion/vite-plugin-laravel-purgecss';
 import { join } from 'node:path';
+import PluginCritical from 'rollup-plugin-critical';
+
+const { APP_URL } = {
+  ...loadEnv(
+      process.env.NODE_ENV,
+      process.cwd(),
+      ['VITE', 'APP'],
+  ),
+};
 
 export default defineConfig({
   plugins: [
@@ -14,19 +23,62 @@ export default defineConfig({
       refresh: true, // TODO add all paths to watch and refresh on change
     }),
     VitePluginSvgSpritemap('resources/svg/sprite/*.svg'),
+    PluginCritical({
+      criticalUrl: `${ APP_URL }/html/`,
+      criticalBase: 'public/css/critical',
+      criticalPages: [
+        {
+          uri: '', template: 'index',
+        },
+      ],
+      criticalConfig: {
+        dimensions: [
+          {
+            width: 375,
+            height: 667,
+          },
+          {
+            width: 1024,
+            height: 768,
+          },
+          {
+            width: 1280,
+            height: 720,
+          },
+          {
+            width: 1366,
+            height: 768,
+          },
+          {
+            width: 1920,
+            height: 1080,
+          },
+        ]
+      }
+    }),
     purge({
       paths: [
-        join(__dirname, 'packages/agenciafmd/frontend/resources/views/**/*.php'),
+        join(
+            __dirname,
+            'packages/agenciafmd/frontend/resources/views/**/*.php',
+        ),
         join(__dirname, 'node_modules/swiper/**/*.js'),
         join(__dirname, 'node_modules/sweetalert2/dist/*.js'),
         join(__dirname, 'node_modules/wow.js/dist/*.js'),
         join(
             __dirname,
             'node_modules/bootstrap/dist/js/bootstrap.min.js',
-        )
+        ),
       ],
       // Include classes we don't have direct access
-      safelist: [/hs-*/, /glightbox-*/, /js-*/, /swiper-*/, /swal2-*/, /file-upload-button*/],
+      safelist: [
+        /hs-*/,
+        /glightbox-*/,
+        /js-*/,
+        /swiper-*/,
+        /swal2-*/,
+        /file-upload-button*/,
+      ],
     }),
   ],
   resolve: {
