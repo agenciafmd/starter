@@ -1,8 +1,8 @@
 <!-- PWA Configuration -->
 <link rel="manifest" href="{{ asset('/manifest.json') }}">
-<link rel="apple-touch-icon" sizes="192x192" href="{{ asset('/images/apple-touch-icon.png') }}">
-<link rel="shortcut icon" href="{{ asset('/images/favicon.ico') }}" type="image/x-icon">
-<link rel="mask-icon" href="{{ asset('/images/safari-pinned-tab.svg') }}" color="#FFFFFF">
+<link rel="apple-touch-icon" sizes="192x192" href="{{ Vite::image('icons/apple-touch-icon.png') }}">
+<link rel="shortcut icon" href="{{ Vite::image('icons/favicon.ico') }}" type="image/x-icon">
+<link rel="mask-icon" href="{{ Vite::image('icons/safari-pinned-tab.svg') }}" color="#FFFFFF">
 <meta name="msapplication-TileColor" content="#FFFFFF">
 <meta name="theme-color" content="#FFFFFF">
 

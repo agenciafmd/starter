@@ -1,0 +1,49 @@
+$icon-sm: 2rem !default;
+$icon-md: 3rem !default;
+$icon-lg: 4rem !default;
+
+.ic {
+  max-width: 100%;
+  width: $icon-md;
+  height: $icon-md;
+
+  &-sm {
+    width: $icon-sm;
+    height: $icon-sm;
+  }
+
+  &-lg {
+    width: $icon-lg;
+    height: $icon-lg;
+  }
+
+  &-rotate-n90 {
+    transform: rotate(-90deg);
+  }
+
+  &-rotate-90 {
+    transform: rotate(90deg);
+  }
+
+  &-inverse {
+    transform: scale(-1);
+  }
+
+  &-inverse-x {
+    transform: scaleX(-1);
+  }
+
+  &-inverse-y {
+    transform: scaleY(-1);
+  }
+
+  &-infinite-scroll-loading {
+    $infinite-scroll-loading-icon-size: 64px !default;
+    $infinite-scroll-loading-icon-indicator-color: $primary !default;
+    $infinite-scroll-loading-icon-indicator: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' version='1.0' width='#{$infinite-scroll-loading-icon-size}' height='#{$infinite-scroll-loading-icon-size}' viewBox='0 0 128 128' fill='#{$infinite-scroll-loading-icon-indicator-color}'><g><circle cx='16' cy='64' r='16'/><circle cx='16' cy='64' r='14.344' transform='rotate(45 64 64)'/><circle cx='16' cy='64' r='12.531' transform='rotate(90 64 64)'/><circle cx='16' cy='64' r='10.75' transform='rotate(135 64 64)'/><circle cx='16' cy='64' r='10.063' transform='rotate(180 64 64)'/><circle cx='16' cy='64' r='8.063' transform='rotate(225 64 64)'/><circle cx='16' cy='64' r='6.438' transform='rotate(270 64 64)'/><circle cx='16' cy='64' r='5.375' transform='rotate(315 64 64)'/><animateTransform attributeName='transform' type='rotate' values='0 64 64;315 64 64;270 64 64;225 64 64;180 64 64;135 64 64;90 64 64;45 64 64' calcMode='discrete' dur='1040ms' repeatCount='indefinite'/></g></svg>") !default;
+    $infinite-scroll-loading-icon-background: escape-svg($infinite-scroll-loading-icon-indicator) no-repeat center !default;
+
+    min-height: $infinite-scroll-loading-icon-size;
+    background: $infinite-scroll-loading-icon-background;
+  }
+}

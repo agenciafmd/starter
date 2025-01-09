@@ -1,0 +1,52 @@
+
+picture.ratio {
+  display: block;
+}
+
+.img {
+  &-fluid {
+    width: auto;
+  }
+
+  &-sanitize {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  &-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &-width {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &-full-page {
+      width: 100vw;
+      height: 100dvh;
+      object-fit: cover;
+    }
+  }
+
+  &-contain {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &-bg {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

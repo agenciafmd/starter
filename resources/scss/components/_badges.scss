@@ -1,0 +1,12 @@
+.badge {
+
+  line-height: $line-height-sm;
+
+  @each $color, $value in $theme-colors {
+    &.bg-outline-#{$color} {
+      @include button-outline-variant($value);
+      color: var(--#{$prefix}btn-color);
+      border: $border-width solid var(--#{$prefix}btn-color);
+    }
+  }
+}

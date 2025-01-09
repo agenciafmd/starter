@@ -1,0 +1,113 @@
+// Not a Bootstrap standard option
+@if $enable-floating-label-over-the-line {
+  $form-floating-input-padding-t: $input-padding-y;
+  $form-floating-input-padding-b: $input-padding-y;
+  $form-floating-padding-y: $input-padding-y;
+  $form-floating-height: $input-height;
+  $form-floating-line-height: $input-line-height;
+  $form-floating-label-transform: scale(.85) translateY(calc(-.5 * #{$input-height})) translateX(.15rem);
+  $form-floating-transition: $transition-base;
+}
+
+.form-floating {
+
+  > .form-control,
+  > .form-control-plaintext,
+  > .form-select {
+    height: $form-floating-height;
+    min-height: $form-floating-height;
+    line-height: $form-floating-line-height;
+  }
+
+  > label {
+
+    padding: $form-floating-padding-y $form-floating-padding-x;
+    line-height: $form-floating-line-height;
+    @include transition($form-floating-transition);
+  }
+
+  > .form-control,
+  > .form-control-plaintext {
+    padding: $form-floating-padding-y $form-floating-padding-x;
+
+    &::placeholder {
+    }
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      padding-top: $form-floating-input-padding-t;
+      padding-bottom: $form-floating-input-padding-b;
+    }
+
+    // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
+    &:-webkit-autofill {
+      padding-top: $form-floating-input-padding-t;
+      padding-bottom: $form-floating-input-padding-b;
+    }
+  }
+
+  > .form-select {
+    padding-top: $form-floating-input-padding-t;
+    padding-bottom: $form-floating-input-padding-b;
+  }
+
+  > .form-control:focus,
+  > .form-control:not(:placeholder-shown),
+  > .form-control-plaintext,
+  > .form-select {
+    ~ label {
+      transform: $form-floating-label-transform;
+
+      &::after {
+        inset: $form-floating-padding-y ($form-floating-padding-x * .5);
+        content: "";
+      }
+    }
+  }
+
+  // Duplicated because `:-webkit-autofill` invalidates other selectors when grouped
+  > .form-control:-webkit-autofill {
+    ~ label {
+      transform: $form-floating-label-transform;
+    }
+  }
+
+  > .form-control-plaintext {
+    ~ label {
+    }
+  }
+
+  > :disabled ~ label {
+
+    &::after {
+    }
+  }
+
+  // Not a Bootstrap standard option
+  > textarea {
+    &.form-control {
+      height: calc(#{$input-height} * 3);
+      border-radius: var(--#{$prefix}border-radius);
+    }
+  }
+
+  > .form-select {
+    @include transition($form-floating-transition);
+
+    &:required:valid,
+    &:has(option:not(:empty):checked) {
+      ~ label {
+        top: 0;
+        transform: $form-floating-label-transform;
+        color: rgba(var(--#{$prefix}body-color-rgb), #{$form-floating-label-opacity});
+      }
+    }
+
+    ~ label {
+      opacity: 1;
+      transform: none;
+      transition: .125s ease-in;
+      color: inherit;
+    }
+  }
+}

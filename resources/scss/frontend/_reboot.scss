@@ -1,0 +1,21 @@
+section {
+  position: relative;
+}
+
+textarea {
+  resize: none;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a {
+  outline: none !important;
+  transition: $transition-base;
+}
+
+.wysiwyg img {
+  max-width: 100%;
+  height: auto;
+}

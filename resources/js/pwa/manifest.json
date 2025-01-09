@@ -1,0 +1,47 @@
+{
+  "name": "FMD",
+  "short_name": "FMD",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#bababa",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/mstile-150x150.webp",
+      "type": "image/webp",
+      "sizes": "150x150",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/images/mstile-150x150.png",
+      "type": "image/png",
+      "sizes": "150x150",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/images/icon-192x192.webp",
+      "type": "image/webp",
+      "sizes": "192x192",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/images/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/images/icon-512x512.webp",
+      "type": "image/webp",
+      "sizes": "512x512",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/images/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable any"
+    }
+  ]
+}

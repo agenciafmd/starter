@@ -1,0 +1,114 @@
+$utilities: map-merge(
+    $utilities,
+    (
+      "fill": (
+        property: fill,
+        state: hover,
+        values: map-merge(
+            $theme-colors,
+            (
+              "reset": currentColor,
+            ),
+        ),
+      ),
+      "stroke": (
+        property: stroke,
+        state: hover,
+        values: $theme-colors
+      ),
+      "letter-spacing": (
+        property: letter-spacing,
+        class: ls,
+        values: (
+          "0": 0,
+          "1": 1px,
+          "2": 2px,
+          "3": 3px,
+          "4": 4px,
+        )
+      ),
+      "opacity": map-merge(
+          map-get($utilities, "opacity"),
+          (
+            responsive: true,
+            state: hover,
+          ),
+      ),
+      "width": map-merge(
+          map-get($utilities, "width"),
+          (
+            responsive: true,
+            values: $sizing-values
+          ),
+      ),
+      "max-width": map-merge(
+          map-get($utilities, "max-width"),
+          (
+            responsive: true,
+            values: $sizing-values
+          ),
+      ),
+      "height": map-merge(
+          map-get($utilities, "height"),
+          (
+            responsive: true,
+            values: $sizing-values
+          ),
+      ),
+      "max-height": map-merge(
+          map-get($utilities, "max-height"),
+          (
+            responsive: true,
+            values: $sizing-values
+          ),
+      ),
+      "position": map-merge(
+          map-get($utilities, "position"),
+          (
+            responsive: true,
+          ),
+      ),
+      "translate-middle": map-merge(
+          map-get($utilities, "translate-middle"),
+          (
+            responsive: true,
+          ),
+      ),
+      "top": map-merge(
+          map-get($utilities, "top"),
+          (
+            responsive: true,
+          ),
+      ),
+      "end": map-merge(
+          map-get($utilities, "end"),
+          (
+            responsive: true,
+          ),
+      ),
+      "bottom": map-merge(
+          map-get($utilities, "bottom"),
+          (
+            responsive: true,
+          ),
+      ),
+      "start": map-merge(
+          map-get($utilities, "start"),
+          (
+            responsive: true,
+          ),
+      ),
+      'font-size': map-merge(
+          map-get($utilities, 'font-size'),
+          (
+            responsive: true,
+          ),
+      ),
+      'color': map-merge(
+          map-get($utilities, 'color'),
+          (
+            state: hover,
+          ),
+      ),
+    )
+);

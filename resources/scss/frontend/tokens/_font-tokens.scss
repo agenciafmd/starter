@@ -1,0 +1,29 @@
+//font-size
+$ds-font-size: 1rem;
+$ds-font-size-xxs: $ds-font-size * .625 !default;  //10
+$ds-font-size-xs: $ds-font-size * .75 !default;  //12
+$ds-font-size-sm: $ds-font-size * .875 !default; //14
+$ds-font-size-lg: $ds-font-size * 1.125 !default; //18
+$ds-font-size-xl: $ds-font-size * 1.25 !default; //20
+
+//headings
+$ds-h1-font-size: $ds-font-size * 3 !default; //48
+$ds-h2-font-size: $ds-font-size * 2.25 !default; //36
+$ds-h3-font-size: $ds-font-size * 2 !default; //32
+$ds-h4-font-size: $ds-font-size * 1.75 !default; //28
+$ds-h5-font-size: $ds-font-size * 1.5 !default; //24
+$ds-h6-font-size: $ds-font-size * 1.375 !default; //22
+
+$ds-display-1: $ds-font-size * 5 !default; //80
+$ds-display-2: $ds-font-size * 4.5 !default; //72
+$ds-display-3: $ds-font-size * 4 !default; //64
+$ds-display-4: $ds-font-size * 3.5 !default; //56
+$ds-display-5: $ds-display-4 * .5 !default; //28
+$ds-display-6: $ds-display-4 * .25 !default; //14
+
+$ds-headings-font-family: null;
+$ds-headings-font-weight: 700;
+$ds-headings-line-height: $ds-line-height-base;
+
+//body
+$ds-font-family-sans-serif: get-font-family($regular-font-map);

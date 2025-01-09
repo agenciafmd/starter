@@ -25,13 +25,15 @@ TODO: Adicionar os requisitos do projeto / Docker / Podman
 
 ## Como alimento o projeto?
 
-Uma vez que o projeto foi criado, você pode alimentá-lo com dados fictícios usando o comando:
+Uma vez que o projeto foi criado, você pode alimentá-lo com dados fictícios
+usando o comando:
 
 ```bash
 php artisan migrate:fresh --seed
 ```
 
-Caso sinta lentidão, você pode alterar a configuração do processamento de fila no arquivo `.env`,
+Caso sinta lentidão, você pode alterar a configuração do processamento de fila
+no arquivo `.env`,
 alterando o valor do `QUEUE_CONNECTION` de `sync` para `redis`.
 
 Refaça o processo de alimentação e execute o horizon após o término.
@@ -40,7 +42,8 @@ Refaça o processo de alimentação e execute o horizon após o término.
 php artisan migrate:fresh --seed && php artisan horizon
 ```
 
-Para ter melhor visão sobre o processo do horizon, abra o dashboard dele no seu projeto.
+Para ter melhor visão sobre o processo do horizon, abra o dashboard dele no seu
+projeto.
 
 ```
 http://nome-do-projeto.local/horizon
@@ -57,11 +60,16 @@ touch database/database.sqlite
 
 ## Não consigo ver as imagens, e agora?
 
-Vamos deixar o storage publico. Assim, todas as imagens que salvarmos no storage, poderão ser acessadas diretamente.
+Vamos deixar o storage publico. Assim, todas as imagens que salvarmos no
+storage, poderão ser acessadas diretamente.
 
 ```bash
 php artisan storage:link
 ```
+
+## Vai codar front-end?
+
+Acesse a [documentação específica](./resources/README.md).
 
 ## Conheça nossa família
 
@@ -73,8 +81,9 @@ php artisan storage:link
 ## Requisitos do projeto
 
 - Versão do PHP: **^8.2**
-- Versão do Node: **XX**
+- Versão do Node: **20+**
 
 ## Licença
 
-Nossos pacotes são abertos, [MIT](https://opensource.org/licenses/MIT) para os mais chegados.
+Nossos pacotes são abertos, [MIT](https://opensource.org/licenses/MIT) para os
+mais chegados.

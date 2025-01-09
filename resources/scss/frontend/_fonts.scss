@@ -1,0 +1,67 @@
+// Project's font configuration
+
+// There's 5 generic family groups ‘serif’, ‘sans-serif’, ‘cursive’, ‘fantasy’, and ‘monospace’
+
+$fonts-base-path: '/resources/fonts';
+$should-use-local-font-face: true;
+
+// Generate @font-face's content body based on a map of font family.
+// e.g.: $open-sans-regular: (
+//    file-name: 'open_sans_regular', -> WITHOUT FONT EXTENSION
+//    font-family: 'open sans',
+//    font-weight: 400,
+//    font-style: normal,
+//    font-display: swap,
+//  );
+
+@mixin font-face($font-map) {
+  $file-name: map-get($font-map, 'file-name');
+  $font-family: map-get($font-map, 'font-family');
+  $font-weight: map-get($font-map, 'font-weight');
+  $font-style: map-get($font-map, 'font-style');
+  $font-display: map-get($font-map, 'font-display');
+
+  font-family: $font-family;
+  src: url('#{$fonts-base-path}/#{$file-name}.woff2') format('woff2');
+  font-weight: $font-weight;
+  font-style: if($font-style, $font-style, normal);
+  font-display: if($font-display, $font-display, swap);
+}
+
+$light-font-map: (
+        font-family: 'Roboto',
+        file-name: 'Roboto-Light',
+        font-weight: 300,
+);
+
+$regular-font-map: (
+        font-family: 'Roboto',
+        file-name: 'Roboto-Regular',
+        font-weight: 400,
+);
+
+$bold-font-map: (
+        font-family: 'Roboto',
+        file-name: 'Roboto-Bold',
+        font-weight: 700,
+);
+
+$local-fonts: (
+        'light': $light-font-map,
+        'regular': $regular-font-map,
+        'bold': $bold-font-map,
+);
+
+@if ($should-use-local-font-face) {
+  @each $font-key, $font-map in $local-fonts {
+    @if (map-get($font-map, "file-name")) {
+      @font-face {
+        @include font-face($font-map);
+      }
+    }
+  }
+}
+
+@function get-font-family($font-map) {
+  @return map-get($font-map, 'font-family');
+}

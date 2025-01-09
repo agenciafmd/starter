@@ -1,0 +1,28 @@
+@import "variables";
+
+.fancybox {
+  &-image {
+    // Reset
+    outline: none !important;
+    border: none !important;
+  }
+
+  &-bg {
+    background: $fancybox-bg;
+  }
+
+  &-caption {
+    background: linear-gradient(0deg, rgba($fancybox-caption-bg, .85) 0,
+            rgba($fancybox-caption-bg, .3) 50%,
+            rgba($fancybox-caption-bg, .15) 65%,
+            rgba($fancybox-caption-bg, .075) 75.5%,
+            rgba($fancybox-caption-bg, .037) 82.85%,
+            rgba($fancybox-caption-bg, .019) 88%,
+            transparent);
+    font-size: $fancybox-caption-font-size;
+    color: $fancybox-caption-color;
+  }
+}
+
+
+

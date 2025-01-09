@@ -1,0 +1,25 @@
+@import '../frontend/warnings';
+
+a {
+
+  &:not(.skip-warning) {
+
+    &:empty:not([aria-label], [title], [class*='adopt-'], .wysiwyg a) {
+      @include accessibility-warning;
+    }
+
+    &:has(img):not([aria-label]):not([aria-labelledby]) {
+      @include accessibility-warning;
+    }
+  }
+}
+
+img {
+
+  &:not(.skip-warning) {
+
+    &:not([alt], [loading='lazy'], .fslightbox-source, .wysiwyg img) {
+      @include accessibility-warning;
+    }
+  }
+}

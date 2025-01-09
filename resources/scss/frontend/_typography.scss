@@ -1,0 +1,20 @@
+%heading {
+  text-transform: $headings-text-transform;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.text-truncate {
+  @for $i from 1 through 6 {
+    &-#{$i} {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: $i; /* number of lines to limit */
+      line-clamp: $i;
+    }
+  }
+}

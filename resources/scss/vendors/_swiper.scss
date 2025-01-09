@@ -1,0 +1,11 @@
+:root {
+  --swiper-theme-color: #{$secondary};
+}
+
+.swiper {
+
+  &-button-prev,
+  &-button-next {
+    fill: var(--swiper-theme-color);
+  }
+}

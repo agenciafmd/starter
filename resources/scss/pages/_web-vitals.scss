@@ -1,0 +1,47 @@
+.web-vitals {
+  header, footer {
+    display: none;
+  }
+
+  .form-select:focus {
+    border-color: var(--bs-border-color);
+  }
+
+  .progress {
+    --bs-progress-height: .625rem;
+    --bs-progress-bg: #CFCFCF;
+  }
+
+  .btn {
+    --bs-btn-border-radius: 50rem;
+  }
+
+  .ic-status {
+    width: 1.375rem;
+    height: 1.375rem;
+  }
+
+  .logo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0.05;
+    filter: blur(2px);
+  }
+
+  .nav-link {
+    transition: background-color .2s ease-in-out;
+
+    @include media-breakpoint-up(lg) {
+      &:not(.active):hover {
+        background-color: var(--bs-nav-link-hover-bg);
+      }
+    }
+
+    &.disabled {
+      color: var(--bs-nav-link-color);
+    }
+  }
+}
