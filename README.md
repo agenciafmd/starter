@@ -21,7 +21,11 @@ composer create-project agenciafmd/starter:v11.x-dev nome-do-projeto
 
 ## Do que preciso?
 
-TODO: Adicionar os requisitos do projeto / Docker / Podman
+Estamos usando o [Laravel Sail](https://laravel.com/docs/11.x/sail) para desenvolvimento.
+
+Veja mais na nossa documentação:
+
+https://agenciafmd.github.io/docs/sail/
 
 ## Como alimento o projeto?
 
@@ -29,7 +33,7 @@ Uma vez que o projeto foi criado, você pode alimentá-lo com dados fictícios
 usando o comando:
 
 ```bash
-php artisan migrate:fresh --seed
+sail artisan migrate:fresh --seed
 ```
 
 Caso sinta lentidão, você pode alterar a configuração do processamento de fila
@@ -39,7 +43,7 @@ alterando o valor do `QUEUE_CONNECTION` de `sync` para `redis`.
 Refaça o processo de alimentação e execute o horizon após o término.
 
 ```bash
-php artisan migrate:fresh --seed && php artisan horizon
+sail artisan migrate:fresh --seed && sail artisan horizon
 ```
 
 Para ter melhor visão sobre o processo do horizon, abra o dashboard dele no seu
@@ -80,7 +84,7 @@ Acesse a [documentação específica](./resources/README.md).
 
 ## Requisitos do projeto
 
-- Versão do PHP: **^8.2**
+- Versão do PHP: **^8.4**
 - Versão do Node: **20+**
 
 ## Licença
