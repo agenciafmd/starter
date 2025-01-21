@@ -24,10 +24,10 @@ uses(
     Illuminate\Foundation\Testing\RefreshDatabase::class,
 )->in('../packages/agenciafmd/*/tests/Feature');
 
-//uses(
+// uses(
 //    Tests\TestCase::class,
 //    Illuminate\Foundation\Testing\RefreshDatabase::class,
-//)->in('../vendor/agenciafmd/*/tests/Feature');
+// )->in('../vendor/agenciafmd/*/tests/Feature');
 
 /*
 |--------------------------------------------------------------------------
@@ -40,9 +40,9 @@ uses(
 |
 */
 
-//expect()->extend('toBeOne', function () {
+// expect()->extend('toBeOne', function () {
 //    return $this->toBe(1);
-//});
+// });
 
 /*
 |--------------------------------------------------------------------------

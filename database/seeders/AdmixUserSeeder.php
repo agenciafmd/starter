@@ -15,13 +15,13 @@ class AdmixUserSeeder extends Seeder
         User::factory(100)
             ->create();
 
-//        Removido momentaneamente pois quebra o layout do seed
-//        $this->command->withProgressBar(range(1, 1000), function () {
-//            User::factory()
-//                ->create();
-//        });
-//
-//        $this->command->getOutput()
-//            ->writeln(''); // evita o % no final
+        //        Removido momentaneamente pois quebra o layout do seed
+        //        $this->command->withProgressBar(range(1, 1000), function () {
+        //            User::factory()
+        //                ->create();
+        //        });
+        //
+        //        $this->command->getOutput()
+        //            ->writeln(''); // evita o % no final
     }
 }
