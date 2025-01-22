@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5a21fbf441f4df4a0e7ea02d1aea1c64",
+    "content-hash": "e0944b703588c8cd38f67a32ead1d58d",
     "packages": [
         {
             "name": "agenciafmd/admix",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix.git",
-                "reference": "38d527e1757f69e8de82f7c2f55839799c8b138b"
+                "reference": "21f978effcfd931fbe6f94466b8dd2f62043090b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix/zipball/38d527e1757f69e8de82f7c2f55839799c8b138b",
-                "reference": "38d527e1757f69e8de82f7c2f55839799c8b138b",
+                "url": "https://api.github.com/repos/agenciafmd/admix/zipball/21f978effcfd931fbe6f94466b8dd2f62043090b",
+                "reference": "21f978effcfd931fbe6f94466b8dd2f62043090b",
                 "shasum": ""
             },
             "require": {
@@ -64,7 +64,7 @@
                 "issues": "https://github.com/agenciafmd/admix/issues",
                 "source": "https://github.com/agenciafmd/admix/tree/v11"
             },
-            "time": "2024-12-10T16:58:08+00:00"
+            "time": "2025-01-21T20:11:47+00:00"
         },
         {
             "name": "agenciafmd/admix-icons",
@@ -122,12 +122,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-leads.git",
-                "reference": "cd3511b0f420c1e3c8391b597b75b1a670a44247"
+                "reference": "90b5704b3a8179b7dca43e857c9cf1fbbbbcc6f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix-leads/zipball/cd3511b0f420c1e3c8391b597b75b1a670a44247",
-                "reference": "cd3511b0f420c1e3c8391b597b75b1a670a44247",
+                "url": "https://api.github.com/repos/agenciafmd/admix-leads/zipball/90b5704b3a8179b7dca43e857c9cf1fbbbbcc6f8",
+                "reference": "90b5704b3a8179b7dca43e857c9cf1fbbbbcc6f8",
                 "shasum": ""
             },
             "require": {
@@ -162,7 +162,7 @@
                 "issues": "https://github.com/agenciafmd/admix-leads/issues",
                 "source": "https://github.com/agenciafmd/admix-leads/tree/v11"
             },
-            "time": "2024-08-15T20:48:11+00:00"
+            "time": "2025-01-21T20:11:47+00:00"
         },
         {
             "name": "agenciafmd/admix-postal",
@@ -170,12 +170,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-postal.git",
-                "reference": "1f561a66b74c34c10e048c8a268a375e825ff209"
+                "reference": "85dbdf1b3a1420f5742aebcbe30bbfb761d392e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix-postal/zipball/1f561a66b74c34c10e048c8a268a375e825ff209",
-                "reference": "1f561a66b74c34c10e048c8a268a375e825ff209",
+                "url": "https://api.github.com/repos/agenciafmd/admix-postal/zipball/85dbdf1b3a1420f5742aebcbe30bbfb761d392e8",
+                "reference": "85dbdf1b3a1420f5742aebcbe30bbfb761d392e8",
                 "shasum": ""
             },
             "require": {
@@ -214,7 +214,7 @@
                 "issues": "https://github.com/agenciafmd/admix-postal/issues",
                 "source": "https://github.com/agenciafmd/admix-postal/tree/v11"
             },
-            "time": "2024-08-15T20:48:11+00:00"
+            "time": "2025-01-21T20:11:47+00:00"
         },
         {
             "name": "agenciafmd/admix-ui",
@@ -222,12 +222,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-ui.git",
-                "reference": "6f028b4202854f9617184ef7eb9c029373fb58f2"
+                "reference": "65a696d3a6df859042a5f431328bad70d12d4fdb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix-ui/zipball/6f028b4202854f9617184ef7eb9c029373fb58f2",
-                "reference": "6f028b4202854f9617184ef7eb9c029373fb58f2",
+                "url": "https://api.github.com/repos/agenciafmd/admix-ui/zipball/65a696d3a6df859042a5f431328bad70d12d4fdb",
+                "reference": "65a696d3a6df859042a5f431328bad70d12d4fdb",
                 "shasum": ""
             },
             "require": {
@@ -271,7 +271,7 @@
                 "issues": "https://github.com/agenciafmd/admix-ui/issues",
                 "source": "https://github.com/agenciafmd/admix-ui/tree/v11"
             },
-            "time": "2025-01-09T00:21:14+00:00"
+            "time": "2025-01-22T17:23:54+00:00"
         },
         {
             "name": "agenciafmd/frontend",
@@ -317,12 +317,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/laravel-support.git",
-                "reference": "4dcf24b3987dec1a0edae6d20d6880d725044401"
+                "reference": "ee9b9d632c4948b0589658aaa0cae741b2c5c29c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/laravel-support/zipball/4dcf24b3987dec1a0edae6d20d6880d725044401",
-                "reference": "4dcf24b3987dec1a0edae6d20d6880d725044401",
+                "url": "https://api.github.com/repos/agenciafmd/laravel-support/zipball/ee9b9d632c4948b0589658aaa0cae741b2c5c29c",
+                "reference": "ee9b9d632c4948b0589658aaa0cae741b2c5c29c",
                 "shasum": ""
             },
             "require": {
@@ -359,7 +359,7 @@
                 "issues": "https://github.com/agenciafmd/laravel-support/issues",
                 "source": "https://github.com/agenciafmd/laravel-support/tree/v11"
             },
-            "time": "2024-11-07T20:44:12+00:00"
+            "time": "2025-01-21T20:11:47+00:00"
         },
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -1718,16 +1718,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v11.38.2",
+            "version": "v11.39.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "9d290aa90fcad44048bedca5219d2b872e98772a"
+                "reference": "3d693dd36e78121bcd51fc02eda4bc137d2a17f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/9d290aa90fcad44048bedca5219d2b872e98772a",
-                "reference": "9d290aa90fcad44048bedca5219d2b872e98772a",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/3d693dd36e78121bcd51fc02eda4bc137d2a17f2",
+                "reference": "3d693dd36e78121bcd51fc02eda4bc137d2a17f2",
                 "shasum": ""
             },
             "require": {
@@ -1928,7 +1928,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-01-15T00:06:46+00:00"
+            "time": "2025-01-22T17:01:46+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -4764,16 +4764,16 @@
         },
         {
             "name": "spatie/laravel-package-tools",
-            "version": "1.18.2",
+            "version": "1.18.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-package-tools.git",
-                "reference": "d41c44a7eab604c3eb0cad93210612d4c1429c20"
+                "reference": "ba67eee37d86ed775dab7dad58a7cbaf9a6cfe78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/d41c44a7eab604c3eb0cad93210612d4c1429c20",
-                "reference": "d41c44a7eab604c3eb0cad93210612d4c1429c20",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/ba67eee37d86ed775dab7dad58a7cbaf9a6cfe78",
+                "reference": "ba67eee37d86ed775dab7dad58a7cbaf9a6cfe78",
                 "shasum": ""
             },
             "require": {
@@ -4812,7 +4812,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-package-tools/issues",
-                "source": "https://github.com/spatie/laravel-package-tools/tree/1.18.2"
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.18.3"
             },
             "funding": [
                 {
@@ -4820,7 +4820,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-01-20T14:14:17+00:00"
+            "time": "2025-01-22T08:51:18+00:00"
         },
         {
             "name": "spatie/temporary-directory",
@@ -10077,16 +10077,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.12.15",
+            "version": "1.12.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "c91d4e8bc056f46cf653656e6f71004b254574d1"
+                "reference": "e0bb5cb78545aae631220735aa706eac633a6be9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/c91d4e8bc056f46cf653656e6f71004b254574d1",
-                "reference": "c91d4e8bc056f46cf653656e6f71004b254574d1",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/e0bb5cb78545aae631220735aa706eac633a6be9",
+                "reference": "e0bb5cb78545aae631220735aa706eac633a6be9",
                 "shasum": ""
             },
             "require": {
@@ -10131,7 +10131,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-01-05T16:40:22+00:00"
+            "time": "2025-01-21T14:50:05+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -11136,12 +11136,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "e7a38fcc13e4ddfe9a28d5c7bf50aa9a9da758ec"
+                "reference": "fb6b00411f2c212631318ab412b2208632e507ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/e7a38fcc13e4ddfe9a28d5c7bf50aa9a9da758ec",
-                "reference": "e7a38fcc13e4ddfe9a28d5c7bf50aa9a9da758ec",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/fb6b00411f2c212631318ab412b2208632e507ba",
+                "reference": "fb6b00411f2c212631318ab412b2208632e507ba",
                 "shasum": ""
             },
             "conflict": {
@@ -11236,7 +11236,7 @@
                 "cockpit-hq/cockpit": "<2.7|==2.7",
                 "codeception/codeception": "<3.1.3|>=4,<4.1.22",
                 "codeigniter/framework": "<3.1.9",
-                "codeigniter4/framework": "<4.4.7",
+                "codeigniter4/framework": "<4.5.8",
                 "codeigniter4/shield": "<1.0.0.0-beta8",
                 "codiad/codiad": "<=2.8.4",
                 "composer/composer": "<1.10.27|>=2,<2.2.24|>=2.3,<2.7.7",
@@ -11251,7 +11251,7 @@
                 "contao/managed-edition": "<=1.5",
                 "corveda/phpsandbox": "<1.3.5",
                 "cosenary/instagram": "<=2.3",
-                "craftcms/cms": "<4.13.2|>=5,<5.5.2",
+                "craftcms/cms": "<4.13.8|>=5,<5.5.5",
                 "croogo/croogo": "<4",
                 "cuyz/valinor": "<0.12",
                 "czim/file-handling": "<1.5|>=2,<2.3",
@@ -11618,7 +11618,7 @@
                 "phpmyfaq/phpmyfaq": "<3.2.5|==3.2.5|>=3.2.10,<=4.0.1",
                 "phpoffice/common": "<0.2.9",
                 "phpoffice/phpexcel": "<1.8.1",
-                "phpoffice/phpspreadsheet": "<=1.29.6|>=2,<=2.1.5|>=2.2,<=2.3.4|>=3,<3.7",
+                "phpoffice/phpspreadsheet": "<1.29.8|>=2,<2.1.7|>=2.2,<2.3.6|>=3,<3.8",
                 "phpseclib/phpseclib": "<2.0.47|>=3,<3.0.36",
                 "phpservermon/phpservermon": "<3.6",
                 "phpsysinfo/phpsysinfo": "<3.4.3",
@@ -11906,7 +11906,7 @@
                 "xataface/xataface": "<3",
                 "xpressengine/xpressengine": "<3.0.15",
                 "yab/quarx": "<2.4.5",
-                "yeswiki/yeswiki": "<=4.4.4",
+                "yeswiki/yeswiki": "<=4.4.5",
                 "yetiforce/yetiforce-crm": "<6.5",
                 "yidashi/yii2cmf": "<=2",
                 "yii2mod/yii2-cms": "<1.9.2",
@@ -11997,7 +11997,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-01-15T23:05:13+00:00"
+            "time": "2025-01-21T22:04:49+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -13943,6 +13943,7 @@
         "agenciafmd/admix-leads": 20,
         "agenciafmd/admix-postal": 20,
         "agenciafmd/admix-ui": 20,
+        "agenciafmd/frontend": 20,
         "agenciafmd/laravel-support": 20,
         "roave/security-advisories": 20
     },
