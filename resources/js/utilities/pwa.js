@@ -4,44 +4,44 @@ const fs = require('fs');
 console.log("🌀 Capturando informações do PWA...");
 
 function getThemeColor() {
-  
+
   return new Promise((resolve) => {
-    const colorTokensFilePath = './resources/sass/frontend/tokens/_color-tokens.scss';
-    
+    const colorTokensFilePath = './resources/scss/frontend/tokens/_color-tokens.scss';
+
     fs.readFile(colorTokensFilePath, 'utf8', (err, data) => {
       if (err) {
         console.error('Erro ao ler o arquivo:', err);
         return;
       }
-      
+
       const primaryColorVariableName = getStringInFile(data, '$ds-primary', ' $', ';');
       const primaryColorVariableHexadecimal = getStringInFile(data, primaryColorVariableName, '#', ';');
-      
+
       resolve(primaryColorVariableHexadecimal);
     });
   })
 }
 
 function getStringInFile(file, keyword, initialSelector, finalSelector) {
-  
+
   const lines = file.split('\n');
-  
+
   let occurrences = [];
-  
+
   lines.forEach((line) => {
     if (line.includes(keyword)) {
       const indexOfHexaInitial = line.indexOf(initialSelector);
       const indexOfHexaEnd = line.indexOf(finalSelector, indexOfHexaInitial);
-      
+
       occurrences.push(line.substring(indexOfHexaInitial, indexOfHexaEnd).trim());
     }
   })
-  
+
   return occurrences[0];
 }
 
 getThemeColor().then((themeColor) => {
-  
+
   const pwa = {
     name: process.env.APP_NAME,
     short_name: process.env.APP_NAME,
@@ -89,7 +89,7 @@ getThemeColor().then((themeColor) => {
       }
     ]
   }
-  
+
   const pwaString = JSON.stringify(pwa, null, 2); // O segundo parâmetro é para a formatação e o terceiro é a quantidade de espaços de indentação
 
   const manifestFilePath = './resources/js/pwa/manifest.json';

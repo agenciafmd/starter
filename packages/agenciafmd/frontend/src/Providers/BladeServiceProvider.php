@@ -2,13 +2,12 @@
 
 namespace Agenciafmd\Frontend\Providers;
 
-use Agenciafmd\Frontend\Http\Components\SocialMeta;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class BladeServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         $this->loadBladeComponents();
 
@@ -17,31 +16,39 @@ class BladeServiceProvider extends ServiceProvider
         $this->loadBladeComposers();
 
         $this->loadViews();
+
+        $this->publish();
     }
 
-    public function register()
+    public function register(): void
     {
         //
     }
 
-    protected function loadBladeComponents()
+    private function loadBladeComponents(): void
     {
-//        Blade::component('social-meta', SocialMeta::class);
+        Blade::componentNamespace('Agenciafmd\\Frontend\\Http\\Components', 'frontend');
     }
 
-    protected function loadBladeComposers()
+    private function loadBladeComposers(): void
     {
         //
     }
 
-    protected function loadBladeDirectives()
+    private function loadBladeDirectives(): void
     {
         //
     }
 
-    protected function loadViews()
+    private function loadViews(): void
     {
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'agenciafmd/frontend');
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'frontend');
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'frontend');
+        $this->loadViewsFrom(base_path('resources/views/errors'), 'errors');
+        $this->loadViewsFrom(__DIR__ . '/../../resources/mail', 'frontend-mail');
+    }
+
+    private function publish(): void
+    {
+        //
     }
 }

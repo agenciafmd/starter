@@ -1,4 +1,4 @@
-function setupLightDarkModeController() {
+export function setupLightDarkModeController() {
 
   const preferenceThemeElement = document.getElementById('jsSwitchControllerLightDarkTheme');
 

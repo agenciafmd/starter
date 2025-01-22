@@ -86,88 +86,6 @@ function setCustomFileLabel() {
   });
 }
 
-function setInvalidInput({ input, message }) {
-
-  input.setCustomValidity(message || 'invalid');
-  input.classList.add('is-invalid');
-}
-
-function setValidInput({ input }) {
-
-  input.setCustomValidity('');
-  input.classList.remove('is-invalid');
-}
-
-function guideUserToTheFirstError() {
-
-  const currentScrollPosition = window.scrollY;
-  const invalidInputsSelectors = [
-    '.form-control:invalid',
-    '.form-select:invalid',
-    '.form-check-input:invalid',
-    '.form-range:invalid',
-    '.form-control.is-invalid',
-    '.form-select.is-invalid',
-    '.form-check-input.is-invalid',
-    '.form-range.is-invalid',
-  ];
-
-  const invalidInputs = document.querySelectorAll(invalidInputsSelectors.join(
-      ', '));
-
-  if (!invalidInputs.length) {
-
-    return;
-  }
-
-  const firstInvalidInput = invalidInputs[0].parentNode;
-  const firstInvalidInputOffsetTop = firstInvalidInput.getBoundingClientRect().top;
-
-  const scrollContainerClass = 'js-scroll-container';
-  const scrollContainerElement = document.querySelector(`.${scrollContainerClass}`);
-
-  if (_isFormOnModal()) {
-
-    _scrollToError('.modal.show .modal-body');
-    return;
-  }
-
-  if (scrollContainerElement) {
-
-    _scrollToError(`.${scrollContainerClass}`);
-    return;
-  }
-
-  _scrollToError('html, body');
-
-  function _scrollToError(container) {
-
-    const animateConfig = {
-
-      top: firstInvalidInputOffsetTop + currentScrollPosition - _getStickyHeaderOffset(),
-      behavior: 'smooth',
-    };
-
-    _animateScroll(container, animateConfig);
-  }
-
-  function _animateScroll(container, animateConfig) {
-
-    document.querySelector(container).scrollTo(animateConfig);
-  }
-
-  function _isFormOnModal() {
-
-    return document.body.classList.contains('modal-open');
-  }
-
-  function _getStickyHeaderOffset() {
-
-    const stickyHeaderSticky = document.querySelector('.fmd-header-is-fixed');
-    return stickyHeaderSticky ? stickyHeaderSticky.getBoundingClientRect().height : 0;
-  }
-}
-
 function validateFullName({ fullNameElement, invalidMessage }) {
 
   const fullName = fullNameElement.value;
@@ -286,7 +204,89 @@ function setupBrazilianPhoneValidate() {
   }
 }
 
-function initializeFormHelpers() {
+export function setInvalidInput({ input, message }) {
+
+  input.setCustomValidity(message || 'invalid');
+  input.classList.add('is-invalid');
+}
+
+export function setValidInput({ input }) {
+
+  input.setCustomValidity('');
+  input.classList.remove('is-invalid');
+}
+
+export function guideUserToTheFirstError() {
+
+  const currentScrollPosition = window.scrollY;
+  const invalidInputsSelectors = [
+    '.form-control:invalid',
+    '.form-select:invalid',
+    '.form-check-input:invalid',
+    '.form-range:invalid',
+    '.form-control.is-invalid',
+    '.form-select.is-invalid',
+    '.form-check-input.is-invalid',
+    '.form-range.is-invalid',
+  ];
+
+  const invalidInputs = document.querySelectorAll(invalidInputsSelectors.join(
+      ', '));
+
+  if (!invalidInputs.length) {
+
+    return;
+  }
+
+  const firstInvalidInput = invalidInputs[0].parentNode;
+  const firstInvalidInputOffsetTop = firstInvalidInput.getBoundingClientRect().top;
+
+  const scrollContainerClass = 'js-scroll-container';
+  const scrollContainerElement = document.querySelector(`.${scrollContainerClass}`);
+
+  if (_isFormOnModal()) {
+
+    _scrollToError('.modal.show .modal-body');
+    return;
+  }
+
+  if (scrollContainerElement) {
+
+    _scrollToError(`.${scrollContainerClass}`);
+    return;
+  }
+
+  _scrollToError('html, body');
+
+  function _scrollToError(container) {
+
+    const animateConfig = {
+
+      top: firstInvalidInputOffsetTop + currentScrollPosition - _getStickyHeaderOffset(),
+      behavior: 'smooth',
+    };
+
+    _animateScroll(container, animateConfig);
+  }
+
+  function _animateScroll(container, animateConfig) {
+
+    document.querySelector(container).scrollTo(animateConfig);
+  }
+
+  function _isFormOnModal() {
+
+    return document.body.classList.contains('modal-open');
+  }
+
+  function _getStickyHeaderOffset() {
+
+    const stickyHeaderSticky = document.querySelector('.fmd-header-is-fixed');
+    return stickyHeaderSticky ? stickyHeaderSticky.getBoundingClientRect().height : 0;
+  }
+}
+
+export function initializeFormHelpers() {
 
   // Form usability
   setCustomFileLabel();

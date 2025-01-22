@@ -1,3 +1,5 @@
+import Swiper from 'swiper';
+
 function createSlider(options) {
 
   if (!options.container) {

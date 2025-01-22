@@ -1,3 +1,18 @@
+import {
+  setupSmoothScroll,
+  setupSmoothScrollInOffcanvas,
+} from './components/smooth-scroll.js';
+import { CpfCnpjValidators } from './helpers/cpf-cnpj-validators.js';
+import {
+  guideUserToTheFirstError,
+  initializeFormHelpers,
+} from './helpers/form-helpers.js';
+import { setupUtmHelpers } from './helpers/utm-helper.js';
+import { setupFmdHeader } from './components/fmd-header.js';
+import IMask from 'imask';
+import ClipboardJS from 'clipboard';
+import WOW from 'wow.js';
+
 function getThemeVariables() {
   const root = getComputedStyle(document.documentElement);
 
@@ -78,7 +93,9 @@ function setupStateCityOptions() {
 
             state.cidades.forEach(city => {
 
-              const selected = city === citySelect.getAttribute('data-selected') ? 'selected' : '';
+              const selected = city === citySelect.getAttribute('data-selected')
+                               ? 'selected'
+                               : '';
               cityOptions += `<option value="${ city }" ${ selected }>${ city }</option>`;
             });
           });
@@ -97,9 +114,9 @@ function setupStateCityOptions() {
 function preventInvalidFormSubmit() {
 
   const forms = document.getElementsByClassName('needs-validation');
-  const validation = Array.prototype.filter.call(forms, function (form) {
+  const validation = Array.prototype.filter.call(forms, function(form) {
 
-    form.addEventListener('submit', function (event) {
+    form.addEventListener('submit', function(event) {
 
       if (form.checkValidity() === false) {
 
@@ -180,7 +197,8 @@ function verifyUserAgent() {
   const operationalSystemName = operationalSystemsData
       .reduce((previousSystemData, currentSystemdata) => {
 
-        if (window.navigator.userAgent.indexOf(currentSystemdata.osUserAgent) !== -1) {
+        if (window.navigator.userAgent.indexOf(currentSystemdata.osUserAgent)
+            !== -1) {
 
           return currentSystemdata.osSystemName;
         }
@@ -212,7 +230,7 @@ function onChangeSelectLink() {
     return;
   }
   selects.forEach(select => {
-    select.addEventListener('change', function () {
+    select.addEventListener('change', function() {
       window.location = select.value;
     });
   });
@@ -236,7 +254,6 @@ function getBrowser() {
 }
 
 function isSafari() {
-
   return getBrowser() === 'safari';
 }
 
@@ -244,11 +261,11 @@ function setupInputMasks() {
 
   function setMaskToAllElements(elements, maskOptions) {
 
-    elements.forEach(function (element) {
+    elements.forEach(function(element) {
 
       const mask = IMask(element, maskOptions);
 
-      mask.on('complete', function () {
+      mask.on('complete', function() {
 
         // Safari doesn't detect the latest input changes
         if (isSafari()) {
@@ -294,10 +311,10 @@ function setupInputMasks() {
       cnpjMaskOptions,
   );
 
-  const cpfcnpjMaskOptions = { mask: [cpfMaskOptions, cnpjMaskOptions] };
+  const cpfCnpjMaskOptions = { mask: [cpfMaskOptions, cnpjMaskOptions] };
   setMaskToAllElements(
       document.querySelectorAll('.js-mask-cpfcnpj'),
-      cpfcnpjMaskOptions,
+      cpfCnpjMaskOptions,
   );
 
   const rgMaskOptions = {
@@ -342,7 +359,7 @@ function setupInputMasks() {
         to: 2999,
       },
     },
-    format: function (date) {
+    format: function(date) {
       let day = date.getDate();
       let month = date.getMonth() + 1;
       const year = date.getFullYear();
@@ -356,7 +373,7 @@ function setupInputMasks() {
 
       return [day, month, year].join('/');
     },
-    parse: function (str) {
+    parse: function(str) {
       const yearMonthDay = str.split('/');
       const day = yearMonthDay[0];
       const month = yearMonthDay[1] - 1;
@@ -377,7 +394,7 @@ function setupInputMasks() {
 
   if (cpfInput) {
 
-    cpfInput.addEventListener('blur', function (event) {
+    cpfInput.addEventListener('blur', function(event) {
 
       cpfCnpjValidators.checkCPF(event.target);
     });
@@ -385,7 +402,7 @@ function setupInputMasks() {
 
   if (cnpjInput) {
 
-    cnpjInput.addEventListener('blur', function (event) {
+    cnpjInput.addEventListener('blur', function(event) {
 
       cpfCnpjValidators.checkCNPJ(event.target);
     });
@@ -458,7 +475,7 @@ function setupPopover() {
   const popoverTriggerList = [].slice.call(
       document.querySelectorAll('[data-bs-toggle="popover"]'));
 
-  popoverTriggerList.map(function (popoverTriggerEl) {
+  popoverTriggerList.map(function(popoverTriggerEl) {
     return new bootstrap.Popover(popoverTriggerEl);
   });
 }
@@ -468,7 +485,7 @@ function setupTooltip() {
   const tooltipTriggerList = [].slice.call(document.querySelectorAll(
       '[data-bs-toggle="tooltip"]'));
 
-  tooltipTriggerList.map(function (tooltipTriggerEl) {
+  tooltipTriggerList.map(function(tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
 }
@@ -481,9 +498,9 @@ function setupAnchorReloadPrevention() {
 
     return;
   }
-  targetClickLinkElements.forEach(function (linkElement) {
+  targetClickLinkElements.forEach(function(linkElement) {
 
-    linkElement.addEventListener('click', function (clickEvent) {
+    linkElement.addEventListener('click', function(clickEvent) {
 
       clickEvent.preventDefault();
     });
@@ -523,12 +540,15 @@ function setupClipboardJS() {
 
   function showTooltip(targetElement) {
 
-    const successTooltip = bootstrap.Tooltip.getOrCreateInstance(targetElement, {
+    const successTooltip = bootstrap.Tooltip.getOrCreateInstance(
+        targetElement,
+        {
 
-      title: 'Copiado para a área de transferência',
-      placement: 'bottom',
-      trigger: 'manual',
-    });
+          title: 'Copiado para a área de transferência',
+          placement: 'bottom',
+          trigger: 'manual',
+        },
+    );
 
     successTooltip.show();
 
@@ -550,40 +570,40 @@ function setupShareAPI() {
 
   const pageTitle = document.querySelector('title').textContent;
   const pageDescription = document.querySelector('meta[name="description"]')
-      .getAttribute('content');
+                                  .getAttribute('content');
 
   shareButtonElements.forEach(buttonItem => {
 
-    buttonItem.addEventListener('click', function () {
+    buttonItem.addEventListener('click', function() {
 
       navigator.share(
-          {
-            title: pageTitle,
-            text: pageDescription,
-            url: location.href,
-            fbId: buttonItem.getAttribute('data-fmd-share-btn-fbidentification'),
-          },
-          {
-            // change this configurations to hide specific unnecessary icons
-            copy: true,
-            email: true,
-            print: true,
-            sms: true,
-            messenger: true,
-            facebook: true,
-            whatsapp: true,
-            twitter: true,
-            linkedin: true,
-            telegram: true,
-            skype: true,
-            language: 'pt', // specify the default language
-          },
-      )
-          .then(() => console.log('Compartilhado com sucesso!'))
-          .catch(error => console.log(
-              'Ops! Algo de errado aconteceu:\'(\n',
-              error,
-          ));
+                   {
+                     title: pageTitle,
+                     text: pageDescription,
+                     url: location.href,
+                     fbId: buttonItem.getAttribute('data-fmd-share-btn-fbidentification'),
+                   },
+                   {
+                     // change this configurations to hide specific unnecessary icons
+                     copy: true,
+                     email: true,
+                     print: true,
+                     sms: true,
+                     messenger: true,
+                     facebook: true,
+                     whatsapp: true,
+                     twitter: true,
+                     linkedin: true,
+                     telegram: true,
+                     skype: true,
+                     language: 'pt', // specify the default language
+                   },
+               )
+               .then(() => console.log('Compartilhado com sucesso!'))
+               .catch(error => console.log(
+                   'Ops! Algo de errado aconteceu:\'(\n',
+                   error,
+               ));
     });
   });
 }
@@ -603,7 +623,7 @@ function setupModalConfig() {
   });
 }
 
-(function () {
+(function() {
 
   preventInvalidFormSubmit();
 
@@ -643,10 +663,10 @@ function setupModalConfig() {
 
   setupModalConfig();
 
-  setupLightDarkModeController();
+  // setupLightDarkModeController();
 })();
 
-window.addEventListener('load', function () {
+window.addEventListener('load', function() {
 
   /**
    * Usually the header triggers after the first section which has the

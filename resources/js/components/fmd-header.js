@@ -1,5 +1,5 @@
 // Hide Header on scroll down
-function setupFmdHeader() {
+export function setupFmdHeader() {
   // Return element's offset top
   function getOffsetTop(selector) {
     return document.getElementsByClassName(selector)[0].getBoundingClientRect().top + window.pageYOffset;

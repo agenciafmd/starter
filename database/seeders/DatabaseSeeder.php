@@ -4,10 +4,14 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 class DatabaseSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-//        $this->call(PostalTableSeeder::class);
+        $this->call([
+            AdmixUserSeeder::class,
+        ]);
     }
 }

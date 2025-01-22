@@ -1,4 +1,6 @@
-class CpfCnpjValidators {
+import { setInvalidInput, setValidInput } from './form-helpers.js';
+
+export class CpfCnpjValidators {
 
   constructor() {
 

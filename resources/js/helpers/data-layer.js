@@ -12,7 +12,7 @@
  * @property {string} label - The name of the label of event.
  * */
 
-function setupDataLayerEventClickButton() {
+export function setupDataLayerEventClickButton() {
 
   const buttons = document.querySelectorAll('.js-btn-data-layer');
 
@@ -34,7 +34,7 @@ function setupDataLayerEventClickButton() {
         throw new Error(`Adicione atributo ${ nameDataLayerAction } com seu valor`);
       }
 
-      const dataLayerClickEvent = genarateDataLayerEvent({ action: linkDataLayerAction });
+      const dataLayerClickEvent = generateDataLayerEvent({ action: linkDataLayerAction });
       updateDataLayer(dataLayerClickEvent);
     });
   });
@@ -45,7 +45,7 @@ function setupDataLayerEventClickButton() {
  * @param {DataLayerEvent} options - Data Layer event options
  * @return {DataLayerEvent} - The new (or udpated) Data Layer event options
  * */
-function genarateDataLayerEvent(options) {
+function generateDataLayerEvent(options) {
 
   return {
     ...options,

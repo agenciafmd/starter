@@ -1,10 +1,10 @@
 {
     "name": "agenciafmd/starter",
     "type": "project",
-    "description": "Agência F&MD - Laravel 8",
+    "description": "Agência F&MD - Laravel 11",
     "keywords": [
-        "framework",
-        "laravel"
+        "laravel",
+        "framework"
     ],
     "license": "MIT",
     "repositories": {
@@ -17,36 +17,29 @@
         }
     },
     "require": {
-        "php": "^8.0",
-        "ext-json": "*",
-        "agenciafmd/admix": "dev-master",
-        "agenciafmd/frontend": "*",
-        "agenciafmd/laravel-sitemap": "dev-master",
-        "agenciafmd/laravel-social-meta": "dev-master",
-        "fideloper/proxy": "^4.2",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/framework": "^8.0",
-        "laravel/horizon": "^5.7",
-        "laravel/tinker": "^2.0",
-        "spatie/laravel-robots-middleware": "^1.3"
+        "php": "^8.2",
+        "agenciafmd/frontend": "v11.x-dev",
+        "agenciafmd/admix": "v11.x-dev",
+        "agenciafmd/admix-leads": "v11.x-dev",
+        "agenciafmd/admix-postal": "v11.x-dev",
+        "agenciafmd/admix-ui": "v11.x-dev",
+        "agenciafmd/laravel-support": "v11.x-dev",
+        "laravel/framework": "^11.38",
+        "laravel/tinker": "^2.10"
     },
     "require-dev": {
-        "facade/ignition": "^2.3.6",
-        "friendsofphp/php-cs-fixer": "^2.16",
-        "fakerphp/faker": "^1.9.1",
-        "itsgoingd/clockwork": "^5.0",
-        "laravel/envoy": "^2.4",
-        "mixdinternet/homestead-ngrok": "dev-master",
-        "mockery/mockery": "^1.3.1",
-        "nunomaduro/collision": "^5.0",
-        "nunomaduro/larastan": "^0.6",
-        "phpunit/phpunit": "^9.3"
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
+        "barryvdh/laravel-ide-helper": "^3.5",
+        "brianium/paratest": "^7.4",
+        "fakerphp/faker": "^1.23",
+        "larastan/larastan": "^2.9",
+        "laravel/pint": "^1.20",
+        "laravel/sail": "*",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.5",
+        "nunomaduro/phpinsights": "^2.11",
+        "pestphp/pest": "^2.35",
+        "pestphp/pest-plugin-laravel": "^2.4",
+        "roave/security-advisories": "dev-latest"
     },
     "autoload": {
         "psr-4": {
@@ -60,37 +53,45 @@
             "Tests\\": "tests/"
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "scripts": {
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
         ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan vendor:publish --tag=admix-ui:views --ansi --force",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta",
+            "@php artisan ide-helper:models 'packages/agenciafmd/*/src/Models' --nowrite"
+        ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan migrate --graceful --ansi"
         ],
-        "post-update-cmd": [
-            "Google\\Task\\Composer::cleanup",
-            "@php artisan vendor:publish --force --tag=admix:assets --ansi",
-            "@php artisan vendor:publish --force --tag=admix-analytics:assets --ansi",
-            "@php artisan vendor:publish --force --tag=livewire:assets --ansi",
-            "@php artisan horizon:publish --ansi"
-        ],
-        "phpstan": "vendor/bin/phpstan analyse"
+        "phpstan": "vendor/bin/phpstan analyse",
+        "pint": "vendor/bin/pint packages -v"
     },
     "extra": {
         "laravel": {
             "dont-discover": []
-        },
-        "google/apiclient-services": [
-            "Analytics",
-            "AnalyticsData",
-            "AnalyticsReporting",
-            "YouTube"
-        ]
-    }
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "pestphp/pest-plugin-laravel": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

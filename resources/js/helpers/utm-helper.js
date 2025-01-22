@@ -24,7 +24,7 @@ function getCookieByName(cookieName) {
   }
 }
 
-function setupUtmHelpers() {
+export function setupUtmHelpers() {
 
   const decodedUrlSearchParams =
       decodeURIComponent(window.location.search.substring(1));
