@@ -9,17 +9,7 @@
 
 Este é o esqueleto de desenvolvimento dos nossos sites e apps.
 
-## Como começar?
-
-Para começar, crie o projeto com o comando:
-
-```bash
-composer create-project agenciafmd/starter:v11.x-dev nome-do-projeto
-```
-
-> O `v11.x-dev` no comando, irá garantir que a versão 11 do Laravel será usada.
-
-## Do que preciso?
+## Requisitos
 
 Estamos usando o [Laravel Sail](https://laravel.com/docs/11.x/sail) para desenvolvimento.
 
@@ -27,48 +17,43 @@ Veja mais na nossa documentação:
 
 https://agenciafmd.github.io/docs/sail/
 
-## Como alimento o projeto?
+## Criando o projeto
 
-Uma vez que o projeto foi criado, você pode alimentá-lo com dados fictícios
-usando o comando:
+Para começar, crie o projeto com o comando:
+
+```bash
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php84-composer:latest \
+    composer create-project agenciafmd/starter:v11.x-dev nome-do-projeto --ignore-platform-reqs
+```
+
+> O `v11.x-dev` no comando, irá garantir que a versão 11 do Laravel será usada.
+
+## Alimentando o projeto
+
+Alimente o projeto com dados fictícios usando o comando:
 
 ```bash
 sail artisan migrate:fresh --seed
 ```
 
-Caso sinta lentidão, você pode alterar a configuração do processamento de fila
-no arquivo `.env`,
-alterando o valor do `QUEUE_CONNECTION` de `sync` para `redis`.
+## Banco não encontrado?
 
-Refaça o processo de alimentação e execute o horizon após o término.
-
-```bash
-sail artisan migrate:fresh --seed && sail artisan horizon
-```
-
-Para ter melhor visão sobre o processo do horizon, abra o dashboard dele no seu
-projeto.
-
-```
-http://nome-do-projeto.local/horizon
-```
-
-## Vixi, deu erro de banco
-
-Provavelmente, não temos o banco criado.
 Por padrão, agora usamos o SQLite, então você pode criar o banco com o comando:
 
 ```bash
 touch database/database.sqlite
 ```
 
-## Não consigo ver as imagens, e agora?
+## Imagens quebradas?
 
-Vamos deixar o storage publico. Assim, todas as imagens que salvarmos no
-storage, poderão ser acessadas diretamente.
+Linke corretamente o `storage` para o public:
 
 ```bash
-php artisan storage:link
+sail artisan storage:link
 ```
 
 ## Vai codar front-end?
