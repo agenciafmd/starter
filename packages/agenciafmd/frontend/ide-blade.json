@@ -1,7 +1,7 @@
 {
     "namespaces": [
         {
-            "namespace": "agenciafmd/frontend",
+            "namespace": "frontend",
             "path": "src/resources/views"
         }
     ]
