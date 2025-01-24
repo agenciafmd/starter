@@ -27,7 +27,7 @@ class BladeServiceProvider extends ServiceProvider
 
     private function loadBladeComponents(): void
     {
-        Blade::componentNamespace('Agenciafmd\\Frontend\\Http\\Components', 'frontend');
+        Blade::componentNamespace('Agenciafmd\\Frontend\\View\\Components', 'frontend');
     }
 
     private function loadBladeComposers(): void

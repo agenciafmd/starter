@@ -1,44 +1,32 @@
 <!doctype html>
 <html lang="{{ strtolower(str_replace('_', '-', app()->getLocale())) }}">
 <head>
-    <x-admix-analytics::gtm.head/>
+    <x-frontend::gtm-head/>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5.0">
     <meta name="format-detection" content="telephone=no">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @if(config('app.env') !== 'production')
         <meta name="robots" content="noindex,nofollow">
         <meta name="googlebot" content="noindex,nofollow">
-    @endif
-
-    <x-social-meta
-        title="{{ $__env->yieldContent('title', 'A cultura come a estratégia no café da manhã') }} | {{ config('app.name') }}"
-        description="{{ $__env->yieldContent('description') }}"
-    />
-
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    @include('frontend::partials.pwa')
-
-    @if(config('app.env') === 'production')
+    @else
         <script>
             console.log = function () {
             };
         </script>
     @endif
 
-    <x-admix-analytics::site-verification/>
+    {{--    <x-social-meta--}}
+    {{--        title="{{ $__env->yieldContent('title', 'A cultura come a estratégia no café da manhã') }} | {{ config('app.name') }}"--}}
+    {{--        description="{{ $__env->yieldContent('description') }}"--}}
+    {{--    />--}}
 
-    {{-- refatorar --}}
-    @if(isset($critical) && ($critical))
-        <style>
-            {!! @file_get_contents(public_path('/css/critical/' . $critical)) !!}
-        </style>
-    @endif
-
-    @include('frontend::partials.fonts-preload')
+    <x-frontend::pwa/>
+    <x-frontend::fonts-preload/>
+    <x-frontend::site-verification/>
+    <x-frontend::critical-css :$critical/>
 
     @vite('resources/scss/frontend.scss')
 
@@ -48,7 +36,7 @@
 </head>
 <body class="{{ ($bodyClass) ?? '' }}">
 
-<x-admix-analytics::gtm.body/>
+<x-frontend::gtm-body/>
 
 @stack('header')
 
@@ -64,7 +52,7 @@
 
 <livewire:scripts/>
 
-@include('agenciafmd/frontend::partials.message')
+@include('frontend::partials.message')
 
 @stack('scripts')
 

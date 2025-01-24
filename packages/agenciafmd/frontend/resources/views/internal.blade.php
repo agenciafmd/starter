@@ -1,8 +1,8 @@
-@extends('agenciafmd/frontend::master', [
+@extends('frontend::master', [
     'critical' => ($critical) ?? '',
     'bodyClass' => 'internal'
 ])
 
 {{--@section('header')--}}
-{{--    @include('agenciafmd/frontend::partials.internal-header')--}}
+{{--    @include('frontend::partials.internal-header')--}}
 {{--@endsection--}}
