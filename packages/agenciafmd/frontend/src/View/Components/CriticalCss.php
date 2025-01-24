@@ -13,8 +13,8 @@ class CriticalCss extends Component
     public function __construct(
         public ?string $critical = null,
     ) {
-        $this->content = Cache::rememberForever('critical-css-' . $critical, static function () {
-            $criticalCss = Str::of($filename)->beforeLast('.css')->append('_critical.min.css');
+        $this->content = Cache::rememberForever('critical-css-' . $critical, static function () use ($critical) {
+            $criticalCss = Str::of($critical)->beforeLast('.css')->append('_critical.min.css');
 
             return @file_get_contents(public_path('/css/critical/' . $criticalCss));
         });
