@@ -1,6 +1,9 @@
-@extends('errors::minimal')
+@extends('frontend::master', [
+    'bodyClass' => 'index bg-black text-white',
+    'critical' => 'index.css',
+])
 
-@section('message')
+@section('content')
     @php
         $phrases = collect([
             // Irineu
