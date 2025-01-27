@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0944b703588c8cd38f67a32ead1d58d",
+    "content-hash": "6bfbebe5ad9623115c68a13a0368549e",
     "packages": [
         {
             "name": "agenciafmd/admix",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix.git",
-                "reference": "21f978effcfd931fbe6f94466b8dd2f62043090b"
+                "reference": "777af5205963384a8805121c608105a3399a7261"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix/zipball/21f978effcfd931fbe6f94466b8dd2f62043090b",
-                "reference": "21f978effcfd931fbe6f94466b8dd2f62043090b",
+                "url": "https://api.github.com/repos/agenciafmd/admix/zipball/777af5205963384a8805121c608105a3399a7261",
+                "reference": "777af5205963384a8805121c608105a3399a7261",
                 "shasum": ""
             },
             "require": {
@@ -52,7 +52,7 @@
             ],
             "authors": [
                 {
-                    "name": "Irineu Martins Junior",
+                    "name": "Irineu Junior",
                     "email": "irineu@fmd.ag",
                     "homepage": "https://fmd.ag/",
                     "role": "Developer"
@@ -64,7 +64,7 @@
                 "issues": "https://github.com/agenciafmd/admix/issues",
                 "source": "https://github.com/agenciafmd/admix/tree/v11"
             },
-            "time": "2025-01-21T20:11:47+00:00"
+            "time": "2025-01-22T18:00:20+00:00"
         },
         {
             "name": "agenciafmd/admix-icons",
@@ -170,12 +170,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-postal.git",
-                "reference": "85dbdf1b3a1420f5742aebcbe30bbfb761d392e8"
+                "reference": "d6958f9091dd698889b1512836cc2df73d3f5876"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix-postal/zipball/85dbdf1b3a1420f5742aebcbe30bbfb761d392e8",
-                "reference": "85dbdf1b3a1420f5742aebcbe30bbfb761d392e8",
+                "url": "https://api.github.com/repos/agenciafmd/admix-postal/zipball/d6958f9091dd698889b1512836cc2df73d3f5876",
+                "reference": "d6958f9091dd698889b1512836cc2df73d3f5876",
                 "shasum": ""
             },
             "require": {
@@ -212,9 +212,9 @@
             "homepage": "https://github.com/agenciafmd/admix-postal",
             "support": {
                 "issues": "https://github.com/agenciafmd/admix-postal/issues",
-                "source": "https://github.com/agenciafmd/admix-postal/tree/v11"
+                "source": "https://github.com/agenciafmd/admix-postal/tree/master"
             },
-            "time": "2025-01-21T20:11:47+00:00"
+            "time": "2025-01-22T18:29:29+00:00"
         },
         {
             "name": "agenciafmd/admix-ui",
@@ -317,12 +317,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/laravel-support.git",
-                "reference": "ee9b9d632c4948b0589658aaa0cae741b2c5c29c"
+                "reference": "2051178d73caed4f364df5b6a51e601505e13b7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/laravel-support/zipball/ee9b9d632c4948b0589658aaa0cae741b2c5c29c",
-                "reference": "ee9b9d632c4948b0589658aaa0cae741b2c5c29c",
+                "url": "https://api.github.com/repos/agenciafmd/laravel-support/zipball/2051178d73caed4f364df5b6a51e601505e13b7c",
+                "reference": "2051178d73caed4f364df5b6a51e601505e13b7c",
                 "shasum": ""
             },
             "require": {
@@ -357,9 +357,9 @@
             "homepage": "https://github.com/agenciafmd/laravel-support",
             "support": {
                 "issues": "https://github.com/agenciafmd/laravel-support/issues",
-                "source": "https://github.com/agenciafmd/laravel-support/tree/v11"
+                "source": "https://github.com/agenciafmd/laravel-support/tree/master"
             },
-            "time": "2025-01-21T20:11:47+00:00"
+            "time": "2025-01-22T18:49:55+00:00"
         },
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -1718,16 +1718,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v11.39.1",
+            "version": "v11.40.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "3d693dd36e78121bcd51fc02eda4bc137d2a17f2"
+                "reference": "599a28196d284fee158cc10086fd56ac625ad7a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/3d693dd36e78121bcd51fc02eda4bc137d2a17f2",
-                "reference": "3d693dd36e78121bcd51fc02eda4bc137d2a17f2",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/599a28196d284fee158cc10086fd56ac625ad7a3",
+                "reference": "599a28196d284fee158cc10086fd56ac625ad7a3",
                 "shasum": ""
             },
             "require": {
@@ -1753,7 +1753,7 @@
                 "league/flysystem-local": "^3.25.1",
                 "league/uri": "^7.5.1",
                 "monolog/monolog": "^3.0",
-                "nesbot/carbon": "^2.72.2|^3.4",
+                "nesbot/carbon": "^2.72.6|^3.8.4",
                 "nunomaduro/termwind": "^2.0",
                 "php": "^8.2",
                 "psr/container": "^1.1.1|^2.0.1",
@@ -1828,6 +1828,7 @@
                 "fakerphp/faker": "^1.24",
                 "guzzlehttp/promises": "^2.0.3",
                 "guzzlehttp/psr7": "^2.4",
+                "laravel/pint": "^1.18",
                 "league/flysystem-aws-s3-v3": "^3.25.1",
                 "league/flysystem-ftp": "^3.25.1",
                 "league/flysystem-path-prefixing": "^3.25.1",
@@ -1928,7 +1929,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2025-01-22T17:01:46+00:00"
+            "time": "2025-01-24T16:17:42+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -2825,31 +2826,32 @@
         },
         {
             "name": "maennchen/zipstream-php",
-            "version": "3.1.1",
+            "version": "3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maennchen/ZipStream-PHP.git",
-                "reference": "6187e9cc4493da94b9b63eb2315821552015fca9"
+                "reference": "aeadcf5c412332eb426c0f9b4485f6accba2a99f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maennchen/ZipStream-PHP/zipball/6187e9cc4493da94b9b63eb2315821552015fca9",
-                "reference": "6187e9cc4493da94b9b63eb2315821552015fca9",
+                "url": "https://api.github.com/repos/maennchen/ZipStream-PHP/zipball/aeadcf5c412332eb426c0f9b4485f6accba2a99f",
+                "reference": "aeadcf5c412332eb426c0f9b4485f6accba2a99f",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
                 "ext-zlib": "*",
-                "php-64bit": "^8.1"
+                "php-64bit": "^8.2"
             },
             "require-dev": {
+                "brianium/paratest": "^7.7",
                 "ext-zip": "*",
                 "friendsofphp/php-cs-fixer": "^3.16",
                 "guzzlehttp/guzzle": "^7.5",
                 "mikey179/vfsstream": "^1.6",
                 "php-coveralls/php-coveralls": "^2.5",
-                "phpunit/phpunit": "^10.0",
-                "vimeo/psalm": "^5.0"
+                "phpunit/phpunit": "^11.0",
+                "vimeo/psalm": "^6.0"
             },
             "suggest": {
                 "guzzlehttp/psr7": "^2.4",
@@ -2890,7 +2892,7 @@
             ],
             "support": {
                 "issues": "https://github.com/maennchen/ZipStream-PHP/issues",
-                "source": "https://github.com/maennchen/ZipStream-PHP/tree/3.1.1"
+                "source": "https://github.com/maennchen/ZipStream-PHP/tree/3.1.2"
             },
             "funding": [
                 {
@@ -2898,7 +2900,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-10-10T12:33:01+00:00"
+            "time": "2025-01-27T12:07:53+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -4652,6 +4654,88 @@
                 "source": "https://github.com/spatie/image-optimizer/tree/1.8.0"
             },
             "time": "2024-11-04T08:24:54+00:00"
+        },
+        {
+            "name": "spatie/laravel-google-fonts",
+            "version": "1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-google-fonts.git",
+                "reference": "2ddd1c05ad56434c44b529c14403b5f5262b38d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-google-fonts/zipball/2ddd1c05ad56434c44b529c14403b5f5262b38d0",
+                "reference": "2ddd1c05ad56434c44b529c14403b5f5262b38d0",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.3|^7.2",
+                "illuminate/contracts": "^8.37|^9.0|^10.0|^11.0",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.7.0"
+            },
+            "require-dev": {
+                "brianium/paratest": "^6.3|^7.4",
+                "nunomaduro/collision": "^5.4|^6.0|^8.0",
+                "orchestra/testbench": "^6.17|^7.0|^8.0|^9.0",
+                "pestphp/pest": "^1.22|^2.34",
+                "spatie/laravel-ray": "^1.17",
+                "spatie/pest-plugin-snapshots": "^1.1|^2.1",
+                "spatie/phpunit-snapshot-assertions": "^4.2|^5.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "GoogleFonts": "Spatie\\GoogleFonts\\GoogleFontsFacade"
+                    },
+                    "providers": [
+                        "Spatie\\GoogleFonts\\GoogleFontsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\GoogleFonts\\": "src",
+                    "Spatie\\GoogleFonts\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian De Deyne",
+                    "email": "sebastian@spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Freek Van der herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Manage self-hosted Google Fonts in Laravel apps",
+            "homepage": "https://github.com/spatie/laravel-google-fonts",
+            "keywords": [
+                "google fonts",
+                "laravel",
+                "laravel-google-fonts",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-google-fonts/issues",
+                "source": "https://github.com/spatie/laravel-google-fonts/tree/1.4.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-03-14T09:50:35+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",
@@ -8266,16 +8350,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.16.0",
+            "version": "2.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "befcdc0e5dce67252aa6322d82424be928214fa2"
+                "reference": "075bc0c26631110584175de6523ab3f1652eb28e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/befcdc0e5dce67252aa6322d82424be928214fa2",
-                "reference": "befcdc0e5dce67252aa6322d82424be928214fa2",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/075bc0c26631110584175de6523ab3f1652eb28e",
+                "reference": "075bc0c26631110584175de6523ab3f1652eb28e",
                 "shasum": ""
             },
             "require": {
@@ -8325,7 +8409,7 @@
             ],
             "support": {
                 "issues": "https://github.com/filp/whoops/issues",
-                "source": "https://github.com/filp/whoops/tree/2.16.0"
+                "source": "https://github.com/filp/whoops/tree/2.17.0"
             },
             "funding": [
                 {
@@ -8333,7 +8417,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-09-25T12:00:00+00:00"
+            "time": "2025-01-25T12:00:00+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",
@@ -11136,12 +11220,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "fb6b00411f2c212631318ab412b2208632e507ba"
+                "reference": "fa05b1cdeb1d38692aea5d34bed226b682403a6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/fb6b00411f2c212631318ab412b2208632e507ba",
-                "reference": "fb6b00411f2c212631318ab412b2208632e507ba",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/fa05b1cdeb1d38692aea5d34bed226b682403a6d",
+                "reference": "fa05b1cdeb1d38692aea5d34bed226b682403a6d",
                 "shasum": ""
             },
             "conflict": {
@@ -11614,7 +11698,7 @@
                 "phpfastcache/phpfastcache": "<6.1.5|>=7,<7.1.2|>=8,<8.0.7",
                 "phpmailer/phpmailer": "<6.5",
                 "phpmussel/phpmussel": ">=1,<1.6",
-                "phpmyadmin/phpmyadmin": "<5.2.1",
+                "phpmyadmin/phpmyadmin": "<5.2.2",
                 "phpmyfaq/phpmyfaq": "<3.2.5|==3.2.5|>=3.2.10,<=4.0.1",
                 "phpoffice/common": "<0.2.9",
                 "phpoffice/phpexcel": "<1.8.1",
@@ -11648,6 +11732,7 @@
                 "prestashop/gamification": "<2.3.2",
                 "prestashop/prestashop": "<8.1.6",
                 "prestashop/productcomments": "<5.0.2",
+                "prestashop/ps_contactinfo": "<=3.3.2",
                 "prestashop/ps_emailsubscription": "<2.6.1",
                 "prestashop/ps_facetedsearch": "<3.4.1",
                 "prestashop/ps_linklist": "<3.1",
@@ -11997,7 +12082,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-01-21T22:04:49+00:00"
+            "time": "2025-01-23T18:06:21+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -12982,16 +13067,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.11.2",
+            "version": "3.11.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "1368f4a58c3c52114b86b1abe8f4098869cb0079"
+                "reference": "ba05f990e79cbe69b9f35c8c1ac8dca7eecc3a10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/1368f4a58c3c52114b86b1abe8f4098869cb0079",
-                "reference": "1368f4a58c3c52114b86b1abe8f4098869cb0079",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/ba05f990e79cbe69b9f35c8c1ac8dca7eecc3a10",
+                "reference": "ba05f990e79cbe69b9f35c8c1ac8dca7eecc3a10",
                 "shasum": ""
             },
             "require": {
@@ -13056,9 +13141,13 @@
                 {
                     "url": "https://opencollective.com/php_codesniffer",
                     "type": "open_collective"
+                },
+                {
+                    "url": "https://thanks.dev/phpcsstandards",
+                    "type": "thanks_dev"
                 }
             ],
-            "time": "2024-12-11T16:04:26+00:00"
+            "time": "2025-01-23T17:04:15+00:00"
         },
         {
             "name": "symfony/cache",
@@ -13943,7 +14032,6 @@
         "agenciafmd/admix-leads": 20,
         "agenciafmd/admix-postal": 20,
         "agenciafmd/admix-ui": 20,
-        "agenciafmd/frontend": 20,
         "agenciafmd/laravel-support": 20,
         "roave/security-advisories": 20
     },

@@ -1,17 +1,14 @@
-<link rel="preload"
-      href="{{ Vite::font('Roboto-Light.woff2') }}"
-      as="font"
-      type="font/woff2"
-      crossorigin>
+@googlefonts
 
-<link rel="preload"
-      href="{{ Vite::font('Roboto-Regular.woff2') }}"
-      as="font"
-      type="font/woff2"
-      crossorigin>
+{{-- exmplo de importação de fontes externas --}}
+{{--<link rel="preconnect"--}}
+{{--      href="https://use.typekit.net">--}}
+{{--<link href="https://use.typekit.net/jkg4xth.css"--}}
+{{--      rel="stylesheet">--}}
 
-<link rel="preload"
-      href="{{ Vite::font('Roboto-Bold.woff2') }}"
-      as="font"
-      type="font/woff2"
-      crossorigin>
+{{-- exmplo de importação de fontes locais --}}
+{{--<link rel="preload"--}}
+{{--      href="{{ Vite::font('Roboto-Light.woff2') }}"--}}
+{{--      as="font"--}}
+{{--      type="font/woff2"--}}
+{{--      crossorigin>--}}

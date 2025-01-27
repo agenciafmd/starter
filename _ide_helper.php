@@ -5,7 +5,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 11.39.1.
+ * Generated for Laravel 11.40.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -23546,6 +23546,51 @@ namespace Illuminate\Http {
             }
     }
 
+namespace Illuminate\Foundation {
+    /**
+     * 
+     *
+     */
+    class Vite {
+        /**
+         * 
+         *
+         * @see \Agenciafmd\Frontend\Providers\FrontendServiceProvider::loadViteMacros()
+         * @param string $asset
+         * @static 
+         */
+        public static function image($asset)
+        {
+            return \Illuminate\Foundation\Vite::image($asset);
+        }
+
+        /**
+         * 
+         *
+         * @see \Agenciafmd\Frontend\Providers\FrontendServiceProvider::loadViteMacros()
+         * @param string $asset
+         * @static 
+         */
+        public static function font($asset)
+        {
+            return \Illuminate\Foundation\Vite::font($asset);
+        }
+
+        /**
+         * 
+         *
+         * @see \Agenciafmd\Frontend\Providers\FrontendServiceProvider::loadViteMacros()
+         * @param string $asset
+         * @static 
+         */
+        public static function sprite($asset)
+        {
+            return \Illuminate\Foundation\Vite::sprite($asset);
+        }
+
+            }
+    }
+
 namespace Illuminate\Routing {
     /**
      * 
@@ -23675,51 +23720,6 @@ namespace Illuminate\View {
         public static function response($callback)
         {
             return \Illuminate\View\View::response($callback);
-        }
-
-            }
-    }
-
-namespace Illuminate\Foundation {
-    /**
-     * 
-     *
-     */
-    class Vite {
-        /**
-         * 
-         *
-         * @see \App\Providers\AppServiceProvider::boot()
-         * @param string $asset
-         * @static 
-         */
-        public static function image($asset)
-        {
-            return \Illuminate\Foundation\Vite::image($asset);
-        }
-
-        /**
-         * 
-         *
-         * @see \App\Providers\AppServiceProvider::boot()
-         * @param string $asset
-         * @static 
-         */
-        public static function font($asset)
-        {
-            return \Illuminate\Foundation\Vite::font($asset);
-        }
-
-        /**
-         * 
-         *
-         * @see \App\Providers\AppServiceProvider::boot()
-         * @param string $asset
-         * @static 
-         */
-        public static function sprite($asset)
-        {
-            return \Illuminate\Foundation\Vite::sprite($asset);
         }
 
             }
@@ -24491,6 +24491,22 @@ namespace  {
         {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
             return $instance->newModelInstance($attributes);
+        }
+
+        /**
+         * Specify attributes that should be added to any new models created by this builder.
+         * 
+         * The given key / value pairs will also be added as where conditions to the query.
+         *
+         * @param \Illuminate\Contracts\Database\Query\Expression|array|string $attributes
+         * @param mixed $value
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function withAttributes($attributes, $value = null)
+        {
+            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+            return $instance->withAttributes($attributes, $value);
         }
 
         /**
@@ -25329,7 +25345,7 @@ namespace  {
          * Add a morph-to relationship condition to the query.
          *
          * @param \Illuminate\Database\Eloquent\Relations\MorphTo<*, *>|string $relation
-         * @param \Illuminate\Database\Eloquent\Model|string|null $model
+         * @param \Illuminate\Database\Eloquent\Model|iterable<int, \Illuminate\Database\Eloquent\Model>|string|null $model
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -25343,7 +25359,7 @@ namespace  {
          * Add a not morph-to relationship condition to the query.
          *
          * @param \Illuminate\Database\Eloquent\Relations\MorphTo<*, *>|string $relation
-         * @param \Illuminate\Database\Eloquent\Model|string $model
+         * @param \Illuminate\Database\Eloquent\Model|iterable<int, \Illuminate\Database\Eloquent\Model>|string $model
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -25357,7 +25373,7 @@ namespace  {
          * Add a morph-to relationship condition to the query with an "or where" clause.
          *
          * @param \Illuminate\Database\Eloquent\Relations\MorphTo<*, *>|string $relation
-         * @param \Illuminate\Database\Eloquent\Model|string|null $model
+         * @param \Illuminate\Database\Eloquent\Model|iterable<int, \Illuminate\Database\Eloquent\Model>|string|null $model
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -25371,7 +25387,7 @@ namespace  {
          * Add a not morph-to relationship condition to the query with an "or where" clause.
          *
          * @param \Illuminate\Database\Eloquent\Relations\MorphTo<*, *>|string $relation
-         * @param \Illuminate\Database\Eloquent\Model|string $model
+         * @param \Illuminate\Database\Eloquent\Model|iterable<int, \Illuminate\Database\Eloquent\Model>|string $model
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -28134,11 +28150,6 @@ namespace  {
 }
 
 
-namespace Facades\Livewire\Features\SupportFileUploads {
-    /**
-     * @mixin \Livewire\Features\SupportFileUploads\GenerateSignedUploadUrl     */
-    class GenerateSignedUploadUrl extends \Livewire\Features\SupportFileUploads\GenerateSignedUploadUrl {}
-}
 namespace Facades\Agenciafmd\Support {
     /**
      * @mixin \Agenciafmd\Support\Helper     */
