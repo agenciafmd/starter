@@ -22361,6 +22361,38 @@ namespace Illuminate\Support\Facades {
             }
     }
 
+namespace Facades\Agenciafmd\SocialMeta\Services {
+    /**
+     * 
+     *
+     * @mixin \Agenciafmd\SocialMeta\Services\OpenGraphImage
+     */
+    class OpenGraphImage {
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function generate($title = 'A cultura come a estratégia no café da manhã', $url = 'https://fmd.ag/blog/minha-url-amigavel', $type = 'facebook')
+        {
+            /** @var \Agenciafmd\SocialMeta\Services\OpenGraphImage $instance */
+            return $instance->generate($title, $url, $type);
+        }
+
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function render($title = 'A cultura come a estratégia no café da manhã', $url = 'https://fmd.ag/blog/minha-url-amigavel', $type = 'facebook')
+        {
+            /** @var \Agenciafmd\SocialMeta\Services\OpenGraphImage $instance */
+            return $instance->render($title, $url, $type);
+        }
+
+            }
+    }
+
 namespace Facades\Agenciafmd\Support {
     /**
      * 
@@ -28143,6 +28175,7 @@ namespace  {
     class Validator extends \Illuminate\Support\Facades\Validator {}
     class View extends \Illuminate\Support\Facades\View {}
     class Vite extends \Illuminate\Support\Facades\Vite {}
+    class OpenGraphImage extends \Facades\Agenciafmd\SocialMeta\Services\OpenGraphImage {}
     class Helper extends \Facades\Agenciafmd\Support\Helper {}
     class Clockwork extends \Clockwork\Support\Laravel\Facade {}
     class Horizon extends \Laravel\Horizon\Horizon {}
@@ -28154,6 +28187,11 @@ namespace Facades\Agenciafmd\Support {
     /**
      * @mixin \Agenciafmd\Support\Helper     */
     class Helper extends \Agenciafmd\Support\Helper {}
+}
+namespace Facades\Agenciafmd\SocialMeta\Services {
+    /**
+     * @mixin \Agenciafmd\SocialMeta\Services\OpenGraphImage     */
+    class OpenGraphImage extends \Agenciafmd\SocialMeta\Services\OpenGraphImage {}
 }
 
 

@@ -17,12 +17,10 @@
             };
         </script>
     @endif
-
-    {{--    <x-social-meta--}}
-    {{--        title="{{ $__env->yieldContent('title', 'A cultura come a estratégia no café da manhã') }} | {{ config('app.name') }}"--}}
-    {{--        description="{{ $__env->yieldContent('description') }}"--}}
-    {{--    />--}}
-
+    <x-social-meta
+        title="{{ $__env->yieldContent('title', 'A cultura come a estratégia no café da manhã') }} | {{ config('app.name') }}"
+        description="{{ $__env->yieldContent('description') }}"
+    />
     <x-frontend::pwa/>
     <x-frontend::fonts-preload/>
     <x-frontend::site-verification/>
