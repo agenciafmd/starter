@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix.git",
-                "reference": "777af5205963384a8805121c608105a3399a7261"
+                "reference": "7f41d393f56d91163fb76b5977eba0c31a348128"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix/zipball/777af5205963384a8805121c608105a3399a7261",
-                "reference": "777af5205963384a8805121c608105a3399a7261",
+                "url": "https://api.github.com/repos/agenciafmd/admix/zipball/7f41d393f56d91163fb76b5977eba0c31a348128",
+                "reference": "7f41d393f56d91163fb76b5977eba0c31a348128",
                 "shasum": ""
             },
             "require": {
@@ -64,7 +64,7 @@
                 "issues": "https://github.com/agenciafmd/admix/issues",
                 "source": "https://github.com/agenciafmd/admix/tree/v11"
             },
-            "time": "2025-01-22T18:00:20+00:00"
+            "time": "2025-01-25T20:47:03+00:00"
         },
         {
             "name": "agenciafmd/admix-icons",
@@ -222,12 +222,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-ui.git",
-                "reference": "65a696d3a6df859042a5f431328bad70d12d4fdb"
+                "reference": "1468aa81e85198fa40d0cfaa6c80d5b78ccc12fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix-ui/zipball/65a696d3a6df859042a5f431328bad70d12d4fdb",
-                "reference": "65a696d3a6df859042a5f431328bad70d12d4fdb",
+                "url": "https://api.github.com/repos/agenciafmd/admix-ui/zipball/1468aa81e85198fa40d0cfaa6c80d5b78ccc12fa",
+                "reference": "1468aa81e85198fa40d0cfaa6c80d5b78ccc12fa",
                 "shasum": ""
             },
             "require": {
@@ -271,7 +271,7 @@
                 "issues": "https://github.com/agenciafmd/admix-ui/issues",
                 "source": "https://github.com/agenciafmd/admix-ui/tree/v11"
             },
-            "time": "2025-01-22T17:23:54+00:00"
+            "time": "2025-01-25T20:47:03+00:00"
         },
         {
             "name": "agenciafmd/frontend",
