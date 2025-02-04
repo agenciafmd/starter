@@ -4,6 +4,7 @@
 /public/hot
 /public/storage
 /storage/*.key
+/storage/media-library
 /vendor
 .env
 .env.backup
