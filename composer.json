@@ -17,7 +17,7 @@
         }
     },
     "require": {
-        "php": "^8.2",
+        "php": "^8.4",
         "agenciafmd/admix": "v11.x-dev",
         "agenciafmd/admix-leads": "v11.x-dev",
         "agenciafmd/admix-postal": "v11.x-dev",
@@ -25,6 +25,7 @@
         "agenciafmd/frontend": "*",
         "agenciafmd/laravel-social-meta": "v11.x-dev",
         "agenciafmd/laravel-support": "v11.x-dev",
+        "agenciafmd/laravel-turbo": "v11.x-dev",
         "laravel/framework": "^11.38",
         "laravel/tinker": "^2.10",
         "spatie/laravel-google-fonts": "^1.4"
@@ -65,7 +66,7 @@
             "@php artisan vendor:publish --tag=admix-ui:views --ansi --force",
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
-            "@php artisan ide-helper:models 'packages/agenciafmd/*/src/Models' --nowrite",
+            "@php artisan ide-helper:models --dir='packages/agenciafmd/*/src/Models' --nowrite",
             "@php artisan google-fonts:fetch"
         ],
         "post-root-package-install": [
