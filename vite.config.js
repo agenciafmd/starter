@@ -75,6 +75,8 @@ export default defineConfig({
         /swiper-*/,
         /swal2-*/,
         /file-upload-button*/,
+        /fmd-header-*/,
+        /was-*/,
       ],
     }),
   ],
@@ -82,6 +84,8 @@ export default defineConfig({
     // to improve JS imports
     alias: {
       '@fonts': '/resources/fonts',
+      '@svg': '/resources/svg',
+      '@images': '/resources/images',
     },
   },
 });

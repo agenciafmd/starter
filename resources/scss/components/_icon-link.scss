@@ -1,0 +1,19 @@
+.icon-link {
+  text-decoration-color: inherit;
+
+  @include icons-size-setup;
+
+  &.hover-effect {
+    .bi {
+      transition: transform 0.3s ease-in-out;
+    }
+  }
+
+  &.hover-rotate-center:hover .bi {
+    transform: scale(1.1) rotate(45deg);
+  }
+
+  &.hover-scale-center:hover .bi {
+    transform: scale(1.2);
+  }
+}
