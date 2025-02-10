@@ -3,8 +3,9 @@
     "type": "module",
     "scripts": {
         "dev": "npm run webp && vite",
-        "build": "npm run webp && vite build",
+        "build": "npm run webp && vite build && npm run pwa",
         "webp": "node resources/js/utilities/webp.js",
+        "pwa": "node resources/js/utilities/create-manifest.js",
         "setup-project": "composer i && npm i && cp .env.example .env && art key:generate && art storage:link && npm run greetings",
         "greetings": "echo 'Confira e altere o APP_URL se necessário. Caso o mapeamento do projeto esteja correto, tudo está pronto para uso e desenvolvimento. Obrigado por utilizar nosso starter!'"
     },
