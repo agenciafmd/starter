@@ -1,6 +1,5 @@
 import { defineConfig, loadEnv } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import VitePluginSvgSpritemap from '@spiriit/vite-plugin-svg-spritemap';
 import purge from '@erbelion/vite-plugin-laravel-purgecss';
 import { join } from 'node:path';
 import PluginCritical from 'rollup-plugin-critical';
@@ -31,7 +30,6 @@ export default defineConfig({
       ],
       refresh: true, // TODO add all paths to watch and refresh on change
     }),
-    VitePluginSvgSpritemap('resources/svg/sprite/*.svg'),
     PluginCritical({
       criticalUrl: `${ APP_URL }/html/`,
       criticalBase: 'public/css/critical',
