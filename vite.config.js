@@ -27,6 +27,8 @@ export default defineConfig({
       input: [
         'resources/scss/frontend.scss',
         'resources/js/frontend-imports.js',
+        'resources/js/frontend-imports.js',
+        'resources/js/pages/theme.js',
       ],
       refresh: true, // TODO add all paths to watch and refresh on change
     }),

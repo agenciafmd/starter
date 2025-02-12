@@ -1,0 +1,1 @@
+Estou de acordo com a <x-frontend::privacy-policy-link /> e autorizo o contato para possíveis parcerias.

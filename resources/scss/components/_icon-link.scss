@@ -1,19 +1,27 @@
 .icon-link {
+
   text-decoration-color: inherit;
 
   @include icons-size-setup;
 
-  &.hover-effect {
-    .bi {
-      transition: transform 0.3s ease-in-out;
+  $hover-effects: (
+    none: none,
+    rotate-center: scale(1.1) rotate(45deg),
+    scale-center: scale(1.2),
+    flip-horizontal: scaleX(-1),
+    flip-vertical: scaleY(-1),
+    pulse: scale(1.1),
+  );
+
+  @each $name, $transform in $hover-effects {
+    &-hover-#{$name} {
+      &:hover {
+        .bi {
+          transform: $transform;
+          transition: transform .25s ease-in-out;
+          will-change: transform;
+        }
+      }
     }
-  }
-
-  &.hover-rotate-center:hover .bi {
-    transform: scale(1.1) rotate(45deg);
-  }
-
-  &.hover-scale-center:hover .bi {
-    transform: scale(1.2);
   }
 }

@@ -559,7 +559,7 @@ function setupClipboardJS() {
   }
 }
 
-function setupShareAPI() {
+export function setupShareAPI() {
 
   const shareButtonElements = document.querySelectorAll('.js-btn-share');
 
@@ -574,7 +574,9 @@ function setupShareAPI() {
 
   shareButtonElements.forEach(buttonItem => {
 
-    buttonItem.addEventListener('click', function() {
+    buttonItem.addEventListener('click', (e) => {
+
+      e.preventDefault();
 
       navigator.share(
                    {

@@ -14,12 +14,12 @@ $navbar-toggler-bar-height: 3px;
     position: relative;
     z-index: $zindex-offcanvas + 1;
 
-    svg,
-    img {
+    svg, &.icon-link svg,
+    img, &.icon-link img {
       max-width: calc(100vw - 6rem);
       width: $navbar-brand-width;
       height: $navbar-brand-height;
-      transition: width .25s, height .25s;
+      transition: width .25s, height .25s, transform .25s;
     }
   }
 
