@@ -7,12 +7,12 @@
 @section('description', 'Página para visualização de todos os componentes')
 
 @section('content')
-<main class="py-block">
+<main class="py-block-small">
   <div class="container">
     <div class="row gx-1 gy-block-small">
       <div class="col-md-2">
 
-        <div class="navbar bd-example hstack gap-block-small position-sticky top-0">
+        <div class="navbar bd-example vstack flex-md-row align-items-stretch gap-block-small position-sticky top-0 h-md-100vh overflow-y-auto">
 
           <div>
             <h2 class="fs-xlarge">Components</h2>
@@ -20,11 +20,23 @@
                 class="navbar-nav flex-column">
               @php
               $componentsLinks = [
+              (object) ['name' => 'Accordion'],
+              (object) ['name' => 'Alerts'],
+              (object) ['name' => 'Badge'],
+              (object) ['name' => 'Breadcrumb'],
               (object) ['name' => 'Buttons'],
               (object) ['name' => 'Button Group'],
               (object) ['name' => 'Button Share'],
-              (object) ['name' => 'Navbars'],
+              (object) ['name' => 'Card'],
+              (object) ['name' => 'List Group'],
+              (object) ['name' => 'Modal'],
+              (object) ['name' => 'Navbar'],
               (object) ['name' => 'Navs - Tabs'],
+              (object) ['name' => 'Pagination'],
+              (object) ['name' => 'Popovers'],
+              (object) ['name' => 'Progress'],
+              (object) ['name' => 'Toasts'],
+              (object) ['name' => 'Tooltips'],
               ];
               @endphp
 
@@ -89,6 +101,27 @@
             </ul>
           </div>
 
+          <div>
+            <h2 class="fs-xlarge">Helpers</h2>
+            <ul id="nav-links-helpers"
+                class="navbar-nav flex-column">
+              @php
+              $iconLinks = [
+              (object) ['name' => 'Icons'],
+              ];
+              @endphp
+
+              @foreach($iconLinks as $link)
+              <li class="nav-item">
+                <x-frontend::link link="#{{ Str::slug($link->name) }}"
+                                  label="{{ $link->name }}"
+                                  title="Ir para {{ $link->name }}"
+                                  class="px-0 nav-link js-scroll-top"/>
+              </li>
+              @endforeach
+            </ul>
+          </div>
+
         </div>
 
       </div>
@@ -100,6 +133,284 @@
                data-bs-target="#nav-links-components"
                data-bs-smooth-scroll="true"
                tabindex="0">
+
+            <div id="accordion"
+                 class="bd-example">
+              <h2 class="mb-block-small h6">Accordion</h2>
+              <div class="vstack gap-1">
+
+                <div>
+                  <x-frontend::accordions.accordion-faq></x-frontend::accordions.accordion-faq>
+                </div>
+
+              </div>
+            </div>
+
+            <div id="alerts"
+                 class="bd-example">
+              <h2 class="mb-block-small h6">Alerts</h2>
+              <div class="vstack gap-1">
+
+                <div>
+                  <div class="row g-1">
+                    <div class="col-md-4">
+                      <x-frontend::alert message="An example alert primary"
+                                         class="alert-primary"/>
+                    </div>
+                    <div class="col-md-4">
+                      <x-frontend::alert message="An example alert secondary"
+                                         class="alert-secondary"/>
+                    </div>
+                    <div class="col-md-4">
+                      <x-frontend::alert message="An example alert info"
+                                         class="alert-info"/>
+                    </div>
+                    <div class="col-md-4">
+                      <x-frontend::alert message="An example alert warning"
+                                         class="alert-warning"/>
+                    </div>
+                    <div class="col-md-4">
+                      <x-frontend::alert message="An example alert danger"
+                                         class="alert-danger"/>
+                    </div>
+                    <div class="col-md-4">
+                      <x-frontend::alert message="An example alert success"
+                                         class="alert-success"/>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example alert with icon and link</h2>
+
+                  <x-frontend::alert icon="ic-info"
+                                     icon-class="ic-sm"
+                                     class="alert-primary hstack gap-1">
+                    <p>
+                      An example alert primary with
+                      <x-frontend::link link="#"
+                                        class="alert-heading"
+                                        label="link"/>
+                    </p>
+                  </x-frontend::alert>
+
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">
+                    Example alert with icon, link and btn-close
+                  </h2>
+
+                  <x-frontend::alert icon="ic-info"
+                                     icon-class="ic-sm"
+                                     has-dismissible="true"
+                                     class="alert-primary hstack gap-1">
+                    <p class="mb-0">
+                      An example alert primary with
+                      <x-frontend::link link="#"
+                                        class="alert-heading"
+                                        label="link"/>
+                    </p>
+                  </x-frontend::alert>
+
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">
+                    Example alert with icon, title, link and btn-close
+                  </h2>
+
+                  <x-frontend::alert has-dismissible="true"
+                                     class="alert-primary hstack gap-1">
+                    <x-frontend-icon class="bi flex-shrink-0 ic-sm"
+                                     name="ic-info"/>
+                    <div>
+                      <h4 class="mb-0">Title alert</h4>
+                      <p class="mb-0">
+                        An example alert primary with
+                        <x-frontend::link link="#"
+                                          class="alert-heading"
+                                          label="link"/>
+                      </p>
+                    </div>
+                  </x-frontend::alert>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div id="badge"
+                 class="bd-example">
+              <h2 class="mb-block-small h6">Badge</h2>
+              <div class="vstack gap-1">
+
+                <div>
+                  <span class="badge text-bg-primary">Primary</span>
+                  <span class="badge text-bg-secondary">Secondary</span>
+                  <span class="badge text-bg-success">Success</span>
+                  <span class="badge text-bg-danger">Danger</span>
+                  <span class="badge text-bg-warning">Warning</span>
+                  <span class="badge text-bg-info">Info</span>
+                  <span class="badge text-bg-light">Light</span>
+                  <span class="badge text-bg-dark">Dark</span>
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example badge outline</h2>
+
+                  <span class="badge text-bg-outline-primary">Primary</span>
+                  <span class="badge text-bg-outline-secondary">Secondary</span>
+                  <span class="badge text-bg-outline-success">Success</span>
+                  <span class="badge text-bg-outline-danger">Danger</span>
+                  <span class="badge text-bg-outline-warning">Warning</span>
+                  <span class="badge text-bg-outline-info">Info</span>
+                  <span class="badge text-bg-outline-light">Light</span>
+                  <span class="badge text-bg-outline-dark">Dark</span>
+
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example badge pill</h2>
+
+                  <span class="badge rounded-pill text-bg-primary">
+                    Primary
+                  </span>
+                  <span class="badge rounded-pill text-bg-secondary">
+                    Secondary
+                  </span>
+                  <span class="badge rounded-pill text-bg-success">
+                    Success
+                  </span>
+                  <span class="badge rounded-pill text-bg-danger">
+                    Danger
+                  </span>
+                  <span class="badge rounded-pill text-bg-warning">
+                    Warning
+                  </span>
+                  <span class="badge rounded-pill text-bg-info">
+                    Info
+                  </span>
+                  <span class="badge rounded-pill text-bg-light">
+                    Light
+                  </span>
+                  <span class="badge rounded-pill text-bg-dark">
+                    Dark
+                  </span>
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example badge outline pill</h2>
+
+                  <span class="badge rounded-pill text-bg-outline-primary">
+                    Primary
+                  </span>
+                  <span class="badge rounded-pill text-bg-outline-secondary">
+                    Secondary
+                  </span>
+                  <span class="badge rounded-pill text-bg-outline-success">
+                    Success
+                  </span>
+                  <span class="badge rounded-pill text-bg-outline-danger">
+                    Danger
+                  </span>
+                  <span class="badge rounded-pill text-bg-outline-warning">
+                    Warning
+                  </span>
+                  <span class="badge rounded-pill text-bg-outline-info">
+                    Info
+                  </span>
+                  <span class="badge rounded-pill text-bg-outline-light">
+                    Light
+                  </span>
+                  <span class="badge rounded-pill text-bg-outline-dark">
+                    Dark
+                  </span>
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example badge button</h2>
+
+                  <button type="button"
+                          class="btn btn-primary">
+                    Notifications
+                    <span class="badge text-bg-secondary">4</span>
+                  </button>
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example badge button positioned</h2>
+
+                  <button type="button"
+                          class="btn btn-primary position-relative">
+                    Inbox
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      99+
+                      <span class="visually-hidden">unread messages</span>
+                    </span>
+                  </button>
+
+                  <button type="button"
+                          class="btn btn-primary position-relative">
+                    Profile
+                    <span class="position-absolute top-0 start-100 translate-middle p-0h bg-danger border border-light rounded-circle">
+                      <span class="visually-hidden">New alerts</span>
+                    </span>
+                  </button>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div id="breadcrumb"
+                 class="bd-example overflow-hidden">
+              <h2 class="mb-block-small h6">Breadcrumb</h2>
+              <div class="vstack gap-1">
+                @php
+                $breadcrumb = [
+                'Home' => '/html',
+                'Produtos' => '/html/produtos',
+                'Categoria' => '/html/produtos/categoria',
+                'Nome do produto' => '',
+                ];
+                @endphp
+
+                <div>
+                  @php
+                  $breadcrumb = [
+                  'Home' => '/html',
+                  'Produtos' => '/html/produtos',
+                  'Categoria' => '/html/produtos/categoria',
+                  'Nome do produto' => '',
+                  ];
+                  @endphp
+
+                  <x-frontend::breadcrumb :list="$breadcrumb"
+                                          class=""/>
+
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example breadcrumb dark</h2>
+                  <div class="bg-primary p-1">
+                    <x-frontend::breadcrumb :list="$breadcrumb"
+                                            isDarkMode="true"
+                                            class=""/>
+                  </div>
+                </div>
+
+              </div>
+            </div>
 
             <div id="buttons"
                  class="bd-example">
@@ -383,239 +694,462 @@
               </div>
             </div>
 
-            <div id="navbars"
+            <div id="card"
                  class="bd-example">
-              <h2 class="mb-block-small h6">Navbars</h2>
+              <h2 class="mb-block-small h6">Card</h2>
               <div class="vstack gap-1">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                  <div class="container-fluid">
-                    <a class="navbar-brand"
-                       href="#">Navbar
-                    </a>
-                    <button class="navbar-toggler"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#navbarColor01"
-                            aria-controls="navbarColor01"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                    </button>
 
-                    <div class="collapse navbar-collapse"
-                         id="navbarColor01">
-                      <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                          <a class="nav-link active"
-                             href="#">Home
-                            <span class="visually-hidden">(current)</span>
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link"
-                             href="#">Features
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link"
-                             href="#">Pricing
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link"
-                             href="#">About
-                          </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle"
-                             data-bs-toggle="dropdown"
-                             href="#"
-                             role="button"
-                             aria-haspopup="true"
-                             aria-expanded="false">Dropdown
-                          </a>
-                          <div class="dropdown-menu">
-                            <a class="dropdown-item"
-                               href="#">Action
-                            </a>
-                            <a class="dropdown-item"
-                               href="#">Another action
-                            </a>
-                            <a class="dropdown-item"
-                               href="#">Something else here
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item"
-                               href="#">Separated link
-                            </a>
-                          </div>
-                        </li>
-                      </ul>
-                      <form class="d-flex">
-                        <input class="form-control me-sm-2"
-                               type="text"
-                               placeholder="Search">
-                        <button class="btn btn-secondary my-2 my-sm-0"
-                                type="submit">Search
-                        </button>
-                      </form>
+                <div>
+                  <div class="row g-1">
+                    <div class="col-md-6">
+                      <x-frontend::cards.card>
+                        <h5 class="card-title">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">
+                          Card subtitle
+                        </h6>
+                        <p class="card-text">
+                          Some quick example text to build on the card title and
+                          make up the bulk of the card's content.
+                        </p>
+                        <x-frontend::link link="#"
+                                          label="Card link"
+                                          class="card-link"/>
+                      </x-frontend::cards.card>
+                    </div>
+                    <div class="col-md-6">
+                      <x-frontend::cards.card has-shadow="true"
+                                              class="vstack bg-light">
+                        <h5 class="card-title">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">
+                          Card subtitle
+                        </h6>
+                        <p class="card-text">
+                          Some quick example text to build on the card title and
+                          make up the bulk of the card's content.
+                        </p>
+                        <x-frontend::link link="#"
+                                          label="Card link"
+                                          class="card-link"/>
+                      </x-frontend::cards.card>
                     </div>
                   </div>
-                </nav>
 
-                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                  <div class="container-fluid">
-                    <a class="navbar-brand"
-                       href="#">Navbar
-                    </a>
-                    <button class="navbar-toggler"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#navbarColor02"
-                            aria-controls="navbarColor02"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                    </button>
+                </div>
 
-                    <div class="collapse navbar-collapse"
-                         id="navbarColor02">
-                      <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                          <a class="nav-link active"
-                             href="#">Home
-                            <span class="visually-hidden">(current)</span>
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link"
-                             href="#">Features
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link"
-                             href="#">Pricing
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link"
-                             href="#">About
-                          </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle"
-                             data-bs-toggle="dropdown"
-                             href="#"
-                             role="button"
-                             aria-haspopup="true"
-                             aria-expanded="false">Dropdown
-                          </a>
-                          <div class="dropdown-menu">
-                            <a class="dropdown-item"
-                               href="#">Action
-                            </a>
-                            <a class="dropdown-item"
-                               href="#">Another action
-                            </a>
-                            <a class="dropdown-item"
-                               href="#">Something else here
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item"
-                               href="#">Separated link
-                            </a>
-                          </div>
-                        </li>
-                      </ul>
-                      <form class="d-flex">
-                        <input class="form-control me-sm-2"
-                               type="text"
-                               placeholder="Search">
-                        <button class="btn btn-secondary my-2 my-sm-0"
-                                type="submit">Search
-                        </button>
-                      </form>
+                <div>
+
+                  <div class="row">
+                    <hr>
+                    <h2 class="fs-xlarge">Example card with image</h2>
+                    <div class="col-md-6">
+                      @php
+                      $image = (object) [
+                      'src' => 'img-16x9.jpg',
+                      'name' => 'Imagem 16x9',
+                      'pictureClass' => 'ratio ratio-16x9',
+                      'imageClass' => 'img-cover',
+                      ];
+                      @endphp
+                      <x-frontend::cards.card-picture :image="$image"
+                                                      cardBody="vstack pt-1"
+                                                      class="bg-light overflow-hidden h-100">
+                        <p class="card-text">
+                          Some quick example text to build on
+                          the card title and make up the bulk
+                          of the card's content.
+                        </p>
+                      </x-frontend::cards.card-picture>
                     </div>
                   </div>
-                </nav>
+                </div>
+              </div>
+            </div>
 
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                  <div class="container-fluid">
-                    <a class="navbar-brand"
-                       href="#">Navbar
-                    </a>
-                    <button class="navbar-toggler"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#navbarColor03"
-                            aria-controls="navbarColor03"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                    </button>
+            <div id="list-group"
+                 class="bd-example">
+              <h2 class="mb-block-small h6">List group</h2>
 
-                    <div class="collapse navbar-collapse"
-                         id="navbarColor03">
-                      <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                          <a class="nav-link active"
-                             href="#">Home
-                            <span class="visually-hidden">(current)</span>
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link"
-                             href="#">Features
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link"
-                             href="#">Pricing
-                          </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link"
-                             href="#">About
-                          </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle"
-                             data-bs-toggle="dropdown"
-                             href="#"
-                             role="button"
-                             aria-haspopup="true"
-                             aria-expanded="false">Dropdown
-                          </a>
-                          <div class="dropdown-menu">
-                            <a class="dropdown-item"
-                               href="#">Action
-                            </a>
-                            <a class="dropdown-item"
-                               href="#">Another action
-                            </a>
-                            <a class="dropdown-item"
-                               href="#">Something else here
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item"
-                               href="#">Separated link
-                            </a>
-                          </div>
-                        </li>
-                      </ul>
-                      <form class="d-flex">
-                        <input class="form-control me-sm-2"
-                               type="text"
-                               placeholder="Search">
-                        <button class="btn btn-secondary my-2 my-sm-0"
-                                type="submit">Search
-                        </button>
-                      </form>
-                    </div>
+              <div class="vstack gap-1">
+
+                <div>
+                  <ul class="list-group d-inline-flex">
+                    <li class="list-group-item">An item</li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">A fourth item</li>
+                    <li class="list-group-item">And a fifth one</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example list-group active</h2>
+
+                  <ul class="list-group d-inline-flex">
+                    <li class="list-group-item active"
+                        aria-current="true">An active item
+                    </li>
+                    <li class="list-group-item">A second item</li>
+                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">A fourth item</li>
+                    <li class="list-group-item">And a fifth one</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example list group links / buttons</h2>
+
+                  <div class="list-group d-inline-flex">
+                    <x-frontend::link link="#"
+                                      label="The current link item"
+                                      class="list-group-item list-group-item-action active"
+                                      aria-current="true"/>
+
+                    <x-frontend::link link="#"
+                                      label="A second link item"
+                                      class="list-group-item list-group-item-action"
+                                      aria-current="true"/>
+
+                    <x-frontend::link link="#"
+                                      label="A third link item"
+                                      class="list-group-item list-group-item-action"
+                                      aria-current="true"/>
+
+                    <x-frontend::link link="#"
+                                      label="A fourth link item"
+                                      class="list-group-item list-group-item-action"
+                                      aria-current="true"/>
+
+                    <x-frontend::link link="#"
+                                      label="A disabled link item"
+                                      class="list-group-item list-group-item-action"
+                                      aria-current="true"/>
+
                   </div>
-                </nav>
+
+                  <div class="list-group d-inline-flex">
+                    <button type="button"
+                            class="list-group-item list-group-item-action active"
+                            aria-current="true">
+                      The current button
+                    </button>
+                    <button type="button"
+                            class="list-group-item list-group-item-action">
+                      A second button item
+                    </button>
+                    <button type="button"
+                            class="list-group-item list-group-item-action">
+                      A third button item
+                    </button>
+                    <button type="button"
+                            class="list-group-item list-group-item-action">
+                      A fourth button item
+                    </button>
+                    <button type="button"
+                            class="list-group-item list-group-item-action"
+                            disabled>
+                      A disabled button item
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example list-group numbered</h2>
+
+                  <ol class="list-group list-group-numbered d-inline-flex">
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Subheading</div>
+                        Content for list item
+                      </div>
+                      <span class="badge text-bg-primary rounded-pill">14</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Subheading</div>
+                        Content for list item
+                      </div>
+                      <span class="badge text-bg-primary rounded-pill">14</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Subheading</div>
+                        Content for list item
+                      </div>
+                      <span class="badge text-bg-primary rounded-pill">14</span>
+                    </li>
+                  </ol>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div id="modal"
+                 class="bd-example">
+              <h2 class="mb-block-small h6">Modal</h2>
+              <div class="vstack gap-1">
+
+                <div>
+                  <button type="button"
+                          class="btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#modalBase">Modal Base
+                  </button>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div id="navbar"
+                 class="bd-example">
+              <h2 class="mb-block-small h6">Navbar</h2>
+              <div class="vstack gap-1">
 
                 @include('frontend::html.partials.header')
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example navbar-dark</h2>
+                  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                    <div class="container-fluid">
+                      <a class="navbar-brand"
+                         href="#">Navbar
+                      </a>
+                      <button class="navbar-toggler"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#navbarColor01"
+                              aria-controls="navbarColor01"
+                              aria-expanded="false"
+                              aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+
+                      <div class="collapse navbar-collapse"
+                           id="navbarColor01">
+                        <ul class="navbar-nav me-auto">
+                          <li class="nav-item">
+                            <a class="nav-link active"
+                               href="#">Home
+                              <span class="visually-hidden">(current)</span>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link"
+                               href="#">Features
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link"
+                               href="#">Pricing
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link"
+                               href="#">About
+                            </a>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                               data-bs-toggle="dropdown"
+                               href="#"
+                               role="button"
+                               aria-haspopup="true"
+                               aria-expanded="false">Dropdown
+                            </a>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item"
+                                 href="#">Action
+                              </a>
+                              <a class="dropdown-item"
+                                 href="#">Another action
+                              </a>
+                              <a class="dropdown-item"
+                                 href="#">Something else here
+                              </a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item"
+                                 href="#">Separated link
+                              </a>
+                            </div>
+                          </li>
+                        </ul>
+                        <form class="d-flex">
+                          <input class="form-control me-sm-2"
+                                 type="text"
+                                 placeholder="Search">
+                          <button class="btn btn-secondary my-2 my-sm-0"
+                                  type="submit">Search
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                  </nav>
+                </div>
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example navbar-dark</h2>
+                  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <div class="container-fluid">
+                      <a class="navbar-brand"
+                         href="#">Navbar
+                      </a>
+                      <button class="navbar-toggler"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#navbarColor02"
+                              aria-controls="navbarColor02"
+                              aria-expanded="false"
+                              aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+
+                      <div class="collapse navbar-collapse"
+                           id="navbarColor02">
+                        <ul class="navbar-nav me-auto">
+                          <li class="nav-item">
+                            <a class="nav-link active"
+                               href="#">Home
+                              <span class="visually-hidden">(current)</span>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link"
+                               href="#">Features
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link"
+                               href="#">Pricing
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link"
+                               href="#">About
+                            </a>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                               data-bs-toggle="dropdown"
+                               href="#"
+                               role="button"
+                               aria-haspopup="true"
+                               aria-expanded="false">Dropdown
+                            </a>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item"
+                                 href="#">Action
+                              </a>
+                              <a class="dropdown-item"
+                                 href="#">Another action
+                              </a>
+                              <a class="dropdown-item"
+                                 href="#">Something else here
+                              </a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item"
+                                 href="#">Separated link
+                              </a>
+                            </div>
+                          </li>
+                        </ul>
+                        <form class="d-flex">
+                          <input class="form-control me-sm-2"
+                                 type="text"
+                                 placeholder="Search">
+                          <button class="btn btn-secondary my-2 my-sm-0"
+                                  type="submit">Search
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                  </nav>
+                </div>
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example navbar-light</h2>
+                  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                      <a class="navbar-brand"
+                         href="#">Navbar
+                      </a>
+                      <button class="navbar-toggler"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#navbarColor03"
+                              aria-controls="navbarColor03"
+                              aria-expanded="false"
+                              aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+
+                      <div class="collapse navbar-collapse"
+                           id="navbarColor03">
+                        <ul class="navbar-nav me-auto">
+                          <li class="nav-item">
+                            <a class="nav-link active"
+                               href="#">Home
+                              <span class="visually-hidden">(current)</span>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link"
+                               href="#">Features
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link"
+                               href="#">Pricing
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link"
+                               href="#">About
+                            </a>
+                          </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                               data-bs-toggle="dropdown"
+                               href="#"
+                               role="button"
+                               aria-haspopup="true"
+                               aria-expanded="false">Dropdown
+                            </a>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item"
+                                 href="#">Action
+                              </a>
+                              <a class="dropdown-item"
+                                 href="#">Another action
+                              </a>
+                              <a class="dropdown-item"
+                                 href="#">Something else here
+                              </a>
+                              <div class="dropdown-divider"></div>
+                              <a class="dropdown-item"
+                                 href="#">Separated link
+                              </a>
+                            </div>
+                          </li>
+                        </ul>
+                        <form class="d-flex">
+                          <input class="form-control me-sm-2"
+                                 type="text"
+                                 placeholder="Search">
+                          <button class="btn btn-secondary my-2 my-sm-0"
+                                  type="submit">Search
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                  </nav>
+                </div>
+
               </div>
             </div>
 
@@ -1033,6 +1567,475 @@
                     </li>
                   </ul>
 
+                </div>
+
+              </div>
+            </div>
+
+            <div id="pagination"
+                 class="bd-example">
+              <h2 class="mb-block-small h6">Pagination</h2>
+              <div class="vstack gap-1">
+
+                <div>
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          label="Previous"
+                                          class="page-link"/>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          label="1"
+                                          class="page-link"/>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          label="2"
+                                          class="page-link"/>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          label="3"
+                                          class="page-link"/>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          label="Next"
+                                          class="page-link"/>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example pagination small</h2>
+
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination pagination-sm">
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          aria-label="Previous"
+                                          class="page-link">
+                          <span aria-hidden="true">&laquo;</span>
+                        </x-frontend::link>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          label="1"
+                                          class="page-link"/>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          label="2"
+                                          class="page-link"/>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          label="3"
+                                          class="page-link"/>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          aria-label="Next"
+                                          class="page-link">
+                          <span aria-hidden="true">&raquo;</span>
+                        </x-frontend::link>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example pagination large</h2>
+
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination pagination-lg">
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          aria-label="Previous"
+                                          class="page-link">
+                          <span aria-hidden="true">&laquo;</span>
+                        </x-frontend::link>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          label="1"
+                                          class="page-link"/>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          label="2"
+                                          class="page-link"/>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          label="3"
+                                          class="page-link"/>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          aria-label="Next"
+                                          class="page-link">
+                          <span aria-hidden="true">&raquo;</span>
+                        </x-frontend::link>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example pagination with icon</h2>
+
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          aria-label="Previous"
+                                          class="page-link">
+                          <span aria-hidden="true">&laquo;</span>
+                        </x-frontend::link>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          label="1"
+                                          class="page-link"/>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          label="2"
+                                          class="page-link"/>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          label="3"
+                                          class="page-link"/>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          aria-label="Next"
+                                          class="page-link">
+                          <span aria-hidden="true">&raquo;</span>
+                        </x-frontend::link>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">
+                    Example pagination disabled and active states
+                  </h2>
+
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                      <li class="page-item disabled">
+                        <x-frontend::link link="#"
+                                          aria-label="Previous"
+                                          class="page-link">
+                          <span aria-hidden="true">&laquo;</span>
+                        </x-frontend::link>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          label="1"
+                                          class="page-link"/>
+                      </li>
+                      <li class="page-item active">
+                        <x-frontend::link link="#"
+                                          label="2"
+                                          class="page-link"/>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          label="3"
+                                          class="page-link"/>
+                      </li>
+                      <li class="page-item">
+                        <x-frontend::link link="#"
+                                          aria-label="Next"
+                                          class="page-link">
+                          <span aria-hidden="true">&raquo;</span>
+                        </x-frontend::link>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+
+              </div>
+            </div>
+
+            <div id="popovers"
+                 class="bd-example">
+              <h2 class="mb-block-small h6">Popovers</h2>
+              <div class="vstack gap-1">
+
+                <div class="vstack flex-md-row gap-1">
+
+                  <button type="button"
+                          class="btn btn-lg btn-danger"
+                          data-bs-toggle="popover"
+                          data-bs-title="Popover title"
+                          data-bs-content="And here's some amazing content. It's very engaging. Right?">
+                    Click to toggle popover
+                  </button>
+
+                  <button type="button"
+                          class="btn btn-secondary"
+                          data-bs-container="body"
+                          data-bs-toggle="popover"
+                          data-bs-placement="top"
+                          data-bs-content="Top popover">
+                    Popover on top
+                  </button>
+                  <button type="button"
+                          class="btn btn-secondary"
+                          data-bs-container="body"
+                          data-bs-toggle="popover"
+                          data-bs-placement="right"
+                          data-bs-content="Right popover">
+                    Popover on right
+                  </button>
+                  <button type="button"
+                          class="btn btn-secondary"
+                          data-bs-container="body"
+                          data-bs-toggle="popover"
+                          data-bs-placement="bottom"
+                          data-bs-content="Bottom popover">
+                    Popover on bottom
+                  </button>
+                  <button type="button"
+                          class="btn btn-secondary"
+                          data-bs-container="body"
+                          data-bs-toggle="popover"
+                          data-bs-placement="left"
+                          data-bs-content="Left popover">
+                    Popover on left
+                  </button>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div id="progress"
+                 class="bd-example">
+              <h2 class="mb-block-small h6">Progress</h2>
+              <div class="vstack gap-1">
+
+                <div>
+
+                  <div class="vstack gap-1">
+                    <div class="progress"
+                         role="progressbar"
+                         aria-label="Basic example"
+                         aria-valuenow="0"
+                         aria-valuemin="0"
+                         aria-valuemax="100">
+                      <div class="progress-bar"
+                           style="width: 0%"></div>
+                    </div>
+
+                    <div class="progress"
+                         role="progressbar"
+                         aria-label="Basic example"
+                         aria-valuenow="75"
+                         aria-valuemin="0"
+                         aria-valuemax="75">
+                      <div class="progress-bar"
+                           style="width: 75%"></div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example label progress</h2>
+
+                  <div class="progress"
+                       role="progressbar"
+                       aria-label="Example with label"
+                       aria-valuenow="25"
+                       aria-valuemin="0"
+                       aria-valuemax="100">
+                    <div class="progress-bar"
+                         style="width: 25%">25%
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example progress background</h2>
+
+                  <div class="vstack gap-1">
+                    <div class="progress"
+                         role="progressbar"
+                         aria-label="Success example"
+                         aria-valuenow="25"
+                         aria-valuemin="0"
+                         aria-valuemax="100">
+                      <div class="progress-bar bg-success"
+                           style="width: 25%">25%
+                      </div>
+                    </div>
+                    <div class="progress"
+                         role="progressbar"
+                         aria-label="Info example"
+                         aria-valuenow="50"
+                         aria-valuemin="0"
+                         aria-valuemax="100">
+                      <div class="progress-bar bg-info text-dark"
+                           style="width: 50%">50%
+                      </div>
+                    </div>
+                    <div class="progress"
+                         role="progressbar"
+                         aria-label="Warning example"
+                         aria-valuenow="75"
+                         aria-valuemin="0"
+                         aria-valuemax="100">
+                      <div class="progress-bar bg-warning text-dark"
+                           style="width: 75%">75%
+                      </div>
+                    </div>
+                    <div class="progress"
+                         role="progressbar"
+                         aria-label="Danger example"
+                         aria-valuenow="100"
+                         aria-valuemin="0"
+                         aria-valuemax="100">
+                      <div class="progress-bar bg-danger"
+                           style="width: 100%">100%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example progress animated stripes</h2>
+
+                  <div class="progress"
+                       role="progressbar"
+                       aria-label="Animated striped example"
+                       aria-valuenow="75"
+                       aria-valuemin="0"
+                       aria-valuemax="100">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated"
+                         style="width: 75%"></div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div id="toasts"
+                 class="bd-example">
+              <h2 class="mb-block-small h6">Toasts</h2>
+              <div class="vstack gap-1">
+
+                <div class="vstack gap-1">
+
+                  <div>
+                    <div class="toast d-block"
+                         role="alert"
+                         aria-live="assertive"
+                         aria-atomic="true">
+                      <div class="toast-header">
+                        <strong class="me-auto">Bootstrap</strong>
+                        <small>11 mins ago</small>
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="toast"
+                                aria-label="Close"></button>
+                      </div>
+                      <div class="toast-body">
+                        Hello, world! This is a toast message.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <button type="button"
+                            class="btn btn-primary js-button-toast">
+                      Toast
+                    </button>
+
+                    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                      <div class="toast"
+                           role="alert"
+                           aria-live="assertive"
+                           aria-atomic="true">
+                        <div class="toast-header">
+                          <strong class="me-auto">Bootstrap</strong>
+                          <small>11 mins ago</small>
+                          <button type="button"
+                                  class="btn-close"
+                                  data-bs-dismiss="toast"
+                                  aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                          Hello, world! This is a toast message.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div id="tooltips"
+                 class="bd-example">
+              <h2 class="mb-block-small h6">Tooltips</h2>
+              <div class="vstack gap-1">
+
+                <div class="vstack flex-md-row gap-1">
+                  <button type="button"
+                          class="btn btn-secondary"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          data-bs-custom-class="custom-tooltip"
+                          data-bs-title="This top tooltip is themed via CSS variables.">
+                    Custom tooltip
+                  </button>
+
+                  <button type="button"
+                          class="btn btn-secondary"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          data-bs-title="Tooltip on top">
+                    Tooltip on top
+                  </button>
+                  <button type="button"
+                          class="btn btn-secondary"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="right"
+                          data-bs-title="Tooltip on right">
+                    Tooltip on right
+                  </button>
+                  <button type="button"
+                          class="btn btn-secondary"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="bottom"
+                          data-bs-title="Tooltip on bottom">
+                    Tooltip on bottom
+                  </button>
+                  <button type="button"
+                          class="btn btn-secondary"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="left"
+                          data-bs-title="Tooltip on left">
+                    Tooltip on left
+                  </button>
                 </div>
 
               </div>
@@ -2634,6 +3637,54 @@
 
           </div>
 
+          <div class="vstack gap-block-small gap-md-block"
+               data-bs-spy="scroll"
+               data-bs-target="#nav-links-helpers"
+               data-bs-smooth-scroll="true"
+               tabindex="0">
+
+            <div id="icons"
+                 class="bd-example">
+
+              <h2 class="mb-block-small h6">Icons</h2>
+              <div class="vstack gap-1">
+
+                <div>
+                  @php
+                  $icons = [
+                  'ic-arrow-down',
+                  'ic-arrow-right',
+                  'ic-arrow-slider',
+                  'ic-cup-coffee',
+                  'ic-info',
+                  'ic-information',
+                  'ic-loading',
+                  'ic-search',
+                  'ic-share',
+                  'ic-shield',
+                  'ic-web-vitals-danger',
+                  'ic-web-vitals-success',
+                  'logo-fmd',
+                  'logo-mdm',
+                  ];
+                  @endphp
+                  <div class="row">
+                    @foreach($icons as $icon)
+                    <div class="col-auto">
+                      <div class="bs-component">
+                        <x-frontend-icon name="{{ $icon }}"
+                                         class="ic-xl"/>
+                      </div>
+                    </div>
+                    @endforeach
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
         </div>
 
       </div>
@@ -2657,6 +3708,10 @@
     background: #f8f9fa;
   }
 </style>
+@endpush
+
+@push('footer')
+<x-frontend::modals.modal-base></x-frontend::modals.modal-base>
 @endpush
 
 @section('footer') @endsection

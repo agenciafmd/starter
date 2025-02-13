@@ -16,10 +16,12 @@
   @each $name, $transform in $hover-effects {
     &-hover-#{$name} {
       &:hover {
-        .bi {
-          transform: $transform;
-          transition: transform .25s ease-in-out;
-          will-change: transform;
+        @include media-breakpoint-up(md) {
+          .bi {
+            transform: $transform;
+            transition: transform .25s ease-in-out;
+            will-change: transform;
+          }
         }
       }
     }
