@@ -128,6 +128,42 @@
       <div class="col-md-10">
 
         <div class="vstack gap-block-small gap-md-block">
+
+          <div class="bd-example">
+            <h2 class="mb-block-small h6">
+              Design System do {{ config('app.name') }}
+            </h2>
+            <p>
+              Bem-vindo ao Design System do projeto {{ config('app.name') }}, um
+              guia completo para a construção de interfaces consistentes,
+              acessíveis e escaláveis.
+              Aqui, centralizamos os padrões visuais, componentes reutilizáveis
+              e diretrizes que garantem uma experiência coesa em todo o nosso
+              ecossistema digital.
+            </p>
+            <p>
+              Nosso objetivo é facilitar o desenvolvimento, promover a
+              identidade da marca e otimizar a colaboração entre designers e
+              desenvolvedores.
+            </p>
+            <p>
+              📖 Explore nossa documentação para conhecer os princípios, tokens
+              de
+              design e componentes disponíveis.
+            </p>
+            <p class="text-end">
+              <x-frontend::link link="//fmd.ag"
+                                is-extern="true"
+                                class="icon-link icon-link-hover-pulse text-decoration-none"
+                                title="Agência F&MD">
+                <span class="bi w-auto">
+                  Feito com ❤️ por Agência F&MD
+                </span>
+              </x-frontend::link>
+            </p>
+
+          </div>
+
           <div class="vstack gap-block-small gap-md-block"
                data-bs-spy="scroll"
                data-bs-target="#nav-links-components"
@@ -2049,6 +2085,62 @@
                data-bs-smooth-scroll="true"
                tabindex="0">
 
+            <div id="images"
+                 class="bd-example">
+              <h2 class="mb-block-small h6">Images</h2>
+              <div class="vstack gap-1">
+
+                <div>
+                  <div class="row g-1">
+                    <div class="col-md-6">
+                      <x-frontend::cards.card card-body-class="vstack bd-example-code align-items-center gap-1">
+                        <picture class="ratio ratio-16x9">
+                          <x-frontend::image image="img-16x9.jpg"
+                                             title="imagem titulo"
+                                             alt="imagem alt"
+                                             class="img-cover"/>
+                        </picture>
+                        <small class="text-center">
+                          <kbd>Componente x-frontend::imagem</kbd>
+                        </small>
+                      </x-frontend::cards.card>
+                    </div>
+                    <div class="col-md-6">
+                      <x-frontend::cards.card card-body-class="vstack bd-example-code align-items-center gap-1">
+                        <picture class="ratio ratio-16x9">
+                          <x-frontend::single-source image="img-16x9.jpg"
+                                                     title="imagem titulo"
+                                                     alt="imagem alt"
+                                                     class="img-cover"/>
+                        </picture>
+                        <small class="text-center">
+                          <kbd>Componente x-frontend::single-source</kbd>
+                        </small>
+                      </x-frontend::cards.card>
+                    </div>
+                    <div class="col-md-6">
+                      <x-frontend::cards.card card-body-class="vstack bd-example-code align-items-center gap-1">
+                        <x-frontend::picture image="img-16x9.jpg"
+                                             title="imagem titulo"
+                                             alt="imagem alt"
+                                             pictureClass="ratio ratio-16x9"
+                                             class="img-cover"
+                                             has-breakpoints="true"
+                                             breakpointDesktopWidth="1400px"
+                                             breakpointDesktopSuffix="xl"
+                                             breakpointNotebookWidth="768px"
+                                             breakpointNotebookSuffix="lg"/>
+                        <small class="text-center">
+                          <kbd>Componente x-frontend::picture</kbd>
+                        </small>
+                      </x-frontend::cards.card>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
             <div id="typography"
                  class="bd-example">
               <h2 class="mb-block-small h6">Typography</h2>
@@ -3461,6 +3553,7 @@
               <div class="vstack gap-1">
 
                 <form wire:submit.prevent="submit"
+                      class="needs-validation"
                       novalidate>
                   <div class="row gx-1 gy-1h">
                     <div class="col-12">
@@ -3643,6 +3736,114 @@
                data-bs-smooth-scroll="true"
                tabindex="0">
 
+            <div id="accessibility"
+                 class="bd-example">
+
+              <h2 class="mb-block-small h6">Accessibility</h2>
+              <div class="vstack gap-1">
+
+                <div>
+                  <h2 class="fs-xlarge">Example images warning state</h2>
+
+                  <div class="hstack gap-0q">
+                    <div class="bg-danger"
+                         style="width: 20px; height: 20px;"></div>
+                    <span> Missing <kbd>alt=""</kbd></span>
+                  </div>
+                  <div class="hstack gap-0q">
+                    <div class="bg-warning"
+                         style="width: 20px; height: 20px"></div>
+                    <span> Missing <kbd>loading=""</kbd></span>
+                  </div>
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example links warning state</h2>
+
+                  <div class="hstack gap-0q">
+                    <div class="bg-danger"
+                         style="width: 20px; height: 20px;"></div>
+                    <span>Missing <kbd>aria-label=""</kbd></span>
+                  </div>
+                  <div class="hstack gap-0q">
+                    <div class="bg-warning"
+                         style="width: 20px; height: 20px"></div>
+                    <span>Missing <kbd>title=""</kbd></span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div id="gallery"
+                 class="bd-example">
+
+              <h2 class="mb-block-small h6">Gallery</h2>
+              <div class="vstack gap-1">
+
+                <div class="row g-1">
+                  <div class="col-md-6">
+                    <x-frontend::glightbox.image description="descrição da imagem"
+                                                 link="img-16x9-xl@2x.jpg">
+                      <x-frontend::picture image="img-16x9.jpg"
+                                           title="imagem titulo"
+                                           alt="imagem alt"
+                                           pictureClass="ratio ratio-16x9"
+                                           class="img-cover"
+                                           has-breakpoints="true"
+                                           breakpointDesktopWidth="1400px"
+                                           breakpointDesktopSuffix="xl"
+                                           breakpointNotebookWidth="768px"
+                                           breakpointNotebookSuffix="lg"/>
+                    </x-frontend::glightbox.image>
+                  </div>
+                  <div class="col-md-6">
+                    <x-frontend::glightbox.image description="descrição da imagem"
+                                                 link="img-16x9-xl@2x.jpg">
+                      <x-frontend::picture image="img-16x9.jpg"
+                                           title="imagem titulo"
+                                           alt="imagem alt"
+                                           pictureClass="ratio ratio-16x9"
+                                           class="img-cover"
+                                           has-breakpoints="true"
+                                           breakpointDesktopWidth="1400px"
+                                           breakpointDesktopSuffix="xl"
+                                           breakpointNotebookWidth="768px"
+                                           breakpointNotebookSuffix="lg"/>
+                    </x-frontend::glightbox.image>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div id="video"
+                 class="bd-example">
+
+              <h2 class="mb-block-small h6">Video</h2>
+              <div class="vstack gap-1">
+
+                <div class="row g-1">
+                  <div class="col-md-6">
+                    <x-frontend::glightbox.video link="https://youtu.be/lG7o0r-7coo?si=a8uCcwaD_hsqgQM3">
+                      <x-frontend::picture image="img-16x9.jpg"
+                                           title="imagem titulo"
+                                           alt="imagem alt"
+                                           pictureClass="ratio ratio-16x9"
+                                           class="img-cover"
+                                           has-breakpoints="true"
+                                           breakpointDesktopWidth="1400px"
+                                           breakpointDesktopSuffix="xl"
+                                           breakpointNotebookWidth="768px"
+                                           breakpointNotebookSuffix="lg"/>
+                    </x-frontend::glightbox.video>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
             <div id="icons"
                  class="bd-example">
 
@@ -3682,6 +3883,143 @@
 
               </div>
 
+            </div>
+
+            <div id="infinite-scroll"
+                 class="bd-example">
+
+              <h2 class="mb-block-small h6">Infinite scroll</h2>
+              <div class="vstack gap-1">
+                <div class="page-load-status mx-auto">
+                  <div class="infinite-scroll-request text-center text-primary">
+                    <x-frontend-icon name="ic-loading"/>
+                  </div>
+                  <p class="infinite-scroll-last"></p>
+                  <p class="infinite-scroll-error"></p>
+                </div>
+              </div>
+            </div>
+
+            <div id="pwa-icons"
+                 class="bd-example">
+
+              <h2 class="mb-block-small h6">Pwa icons</h2>
+              <div class="vstack gap-1">
+
+                <div>
+                  <div class="row g-1">
+                    <div class="col-md-6">
+                      <x-frontend::cards.card card-body-class="vstack bd-example-code align-items-center gap-1">
+                        <x-frontend::image image="logo.png"
+                                           is-single-image="true"
+                                           title="200x70 - logo.png"
+                                           alt="200x70 - logo.png"
+                                           class="img-sanitize"/>
+                        <small class="text-center">
+                          200x70 - logo.png
+                        </small>
+                      </x-frontend::cards.card>
+                    </div>
+                    <div class="col-md-6">
+                      <x-frontend::cards.card card-body-class="vstack bd-example-code align-items-center gap-1">
+                        <x-frontend::image image="logo-email.png"
+                                           is-single-image="true"
+                                           title="200x70 - logo-email.png"
+                                           alt="200x70 - logo-email.png"
+                                           class="img-sanitize"/>
+                        <small class="text-center">
+                          200x70 - logo-email.png
+                        </small>
+                      </x-frontend::cards.card>
+                    </div>
+                    <div class="col-md-6">
+                      <x-frontend::cards.card card-body-class="vstack bd-example-code align-items-center gap-1">
+                        <x-frontend::image image="icons/favicon.ico"
+                                           is-single-image="true"
+                                           title="48x48 - favicon.ico"
+                                           alt="48x48 - favicon.ico"
+                                           class="img-sanitize"/>
+                        <small class="text-center">
+                          48x48 - favicon.ico
+                        </small>
+                      </x-frontend::cards.card>
+                    </div>
+                    <div class="col-md-6">
+                      <x-frontend::cards.card card-body-class="vstack bd-example-code align-items-center gap-1">
+                        <x-frontend::image image="logo-amp.png"
+                                           is-single-image="true"
+                                           title="60x60 - logo-amp.png"
+                                           alt="60x60 - logo-amp.png"
+                                           class="img-sanitize"/>
+                        <small class="text-center">
+                          60x60 - logo-amp.png
+                        </small>
+                      </x-frontend::cards.card>
+                    </div>
+                    <div class="col-md-6">
+                      <x-frontend::cards.card card-body-class="vstack bd-example-code align-items-center gap-1">
+                        <x-frontend::image image="icons/mstile-150x150.png"
+                                           is-single-image="true"
+                                           title="150x150 - mstile-150x150.png"
+                                           alt="150x150 - mstile-150x150.png"
+                                           class="img-sanitize"/>
+                        <small class="text-center">
+                          150x150 - mstile-150x150.png
+                        </small>
+                      </x-frontend::cards.card>
+                    </div>
+                    <div class="col-md-6">
+                      <x-frontend::cards.card card-body-class="vstack bd-example-code align-items-center gap-1">
+                        <x-frontend::image image="icons/safari-pinned-tab.svg"
+                                           is-single-image="true"
+                                           title="192x192 - safari-pinned-tab.svg"
+                                           alt="192x192 - safari-pinned-tab.svg"
+                                           class="img-sanitize"/>
+                        <small class="text-center">
+                          192x192 - safari-pinned-tab.svg
+                        </small>
+                      </x-frontend::cards.card>
+                    </div>
+                    <div class="col-md-6">
+                      <x-frontend::cards.card card-body-class="vstack bd-example-code align-items-center gap-1">
+                        <x-frontend::image image="icons/apple-touch-icon.png"
+                                           is-single-image="true"
+                                           title="192x192 - apple-touch-icon.png"
+                                           alt="192x192 - apple-touch-icon.png"
+                                           class="img-sanitize"/>
+                        <small class="text-center">
+                          192x192 - apple-touch-icon.png
+                        </small>
+                      </x-frontend::cards.card>
+                    </div>
+                    <div class="col-md-6">
+                      <x-frontend::cards.card card-body-class="vstack bd-example-code align-items-center gap-1">
+                        <x-frontend::image image="icons/icon-192x192.png"
+                                           is-single-image="true"
+                                           title="192x192 - icon-192x192.png"
+                                           alt="192x192 - icon-192x192.png"
+                                           class="img-sanitize"/>
+                        <small class="text-center">
+                          192x192 - icon-192x192.png
+                        </small>
+                      </x-frontend::cards.card>
+                    </div>
+                    <div class="col-md-6">
+                      <x-frontend::cards.card card-body-class="vstack bd-example-code align-items-center gap-1">
+                        <x-frontend::image image="icons/icon-512x512.png"
+                                           is-single-image="true"
+                                           title="512x512 - icon-512x512.png"
+                                           alt="512x512 - icon-512x512.png"
+                                           class="img-sanitize"/>
+                        <small class="text-center">
+                          512x512 - icon-512x512.png
+                        </small>
+                      </x-frontend::cards.card>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
             </div>
 
           </div>

@@ -13,7 +13,6 @@ import IMask from 'imask';
 import ClipboardJS from 'clipboard';
 import WOW from 'wow.js';
 import { Modal, Popover, Tooltip, Toast } from 'bootstrap';
-import Swal from 'sweetalert2';
 
 export function getThemeVariables() {
   const root = getComputedStyle(document.documentElement);
@@ -640,14 +639,7 @@ function setupModalConfig() {
   });
 }
 
-function setupSweetAlert() {
-
-  return window.Swal = Swal;
-}
-
-(function () {
-
-  setupSweetAlert();
+(() => {
 
   preventInvalidFormSubmit();
 
@@ -690,7 +682,7 @@ function setupSweetAlert() {
   // setupLightDarkModeController();
 })();
 
-window.addEventListener('load', function () {
+window.addEventListener('load', () => {
 
   /**
    * Usually the header triggers after the first section which has the

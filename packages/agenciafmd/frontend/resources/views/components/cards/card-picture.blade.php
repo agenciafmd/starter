@@ -1,7 +1,7 @@
 @props([
 'id' => null,
 'cardClass' => null,
-'cardBody' => null,
+'cardBodyClass' => null,
 'picture' => [],
 'image' => [],
 'hasShadow' => null,
@@ -42,7 +42,7 @@
                           breakpointNotebookSuffix="lg"/>
      @endif
 
-    <div class="card-body {{ $cardBody }}">
+    <div class="card-body {{ $cardBodyClass }}">
         {{ $slot }}
     </div>
 </div>
