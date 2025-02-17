@@ -1,0 +1,46 @@
+.dropdown {
+
+  &-toggle {
+
+    $caret-color: $primary;
+    display: flex;
+    gap: $spacer * .5;
+
+    &:after {
+      content: "";
+      width: $spacer * .75;
+      height: $spacer * .75;
+      display: unset;
+      margin-left: auto;
+      border: none;
+      position: relative;
+      top: $spacer * .375;
+      background: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$caret-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/></svg>"));
+      transition: $transition-base;
+    }
+  }
+
+  &-menu {
+
+    box-shadow: var(--#{$prefix}dropdown-box-shadow);
+    overflow: hidden;
+
+    li:not(:first-child) {
+      padding-top: $spacer * .375;
+    }
+  }
+
+  &-item {
+    font-size: $font-size-sm;
+  }
+
+  &:hover {
+
+    @include media-breakpoint-up(lg) {
+
+      .dropdown-menu:not(.show) {
+        display: block;
+      }
+    }
+  }
+}

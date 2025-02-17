@@ -1,0 +1,47 @@
+{
+  "name": "Starter",
+  "short_name": "Starter",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#bababa",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "build/assets/mstile-150x150-B0fTGetO.webp",
+      "type": "image/webp",
+      "sizes": "150x150",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "build/assets/mstile-150x150-CEcUQiH0.png",
+      "type": "image/png",
+      "sizes": "150x150",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "build/assets/icon-192x192-BhYa9nbZ.webp",
+      "type": "image/webp",
+      "sizes": "192x192",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "build/assets/icon-192x192-BUflKfAP.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "build/assets/icon-512x512-Ctro2acp.webp",
+      "type": "image/webp",
+      "sizes": "512x512",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "build/assets/icon-512x512-AqRv5tjj.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable any"
+    }
+  ]
+}

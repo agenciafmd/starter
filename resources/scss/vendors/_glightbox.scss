@@ -1,0 +1,17 @@
+:root {
+  --plyr-color-main: #{$primary};
+}
+
+.glightbox {
+
+  &-clean .gslide-description {
+    background: unset;
+  }
+
+  &-clean .gdesc-inner {
+    padding: $spacer;
+    text-align: center;
+    color: $white;
+    font-size: $font-size-lg;
+  }
+}

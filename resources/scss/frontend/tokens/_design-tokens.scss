@@ -10,9 +10,9 @@ $ds-line-height-lg: 2;
 
 //border-radius
 $ds-border-radius: 1rem !default; //16
-$ds-border-radius-sm: 2rem !default; //32
-$ds-border-radius-md: 3rem !default; //48
-$ds-border-radius-lg: 3.5rem !default; //56
+$ds-border-radius-sm: .5rem !default; //8
+$ds-border-radius-md: 2rem !default; //32
+$ds-border-radius-lg: 2.5rem !default; //40
 $ds-border-radius-pill: 31.25rem !default; //500
 
 //border-width
@@ -49,4 +49,4 @@ $ds-gradient: linear-gradient(128.65deg, tint-color($ds-primary, $ds-shade-level
 
 //body
 $ds-body-color: $ds-dark;
-$ds-body-bg: $ds-primary;
+$ds-body-bg: $ds-white;

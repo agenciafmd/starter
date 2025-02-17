@@ -1,9 +1,23 @@
 @extends('frontend::master', [
-    'bodyClass' => 'index bg-black text-white',
+    'bodyClass' => 'greetings bg-black text-white vstack h-100vh',
     'critical' => 'index.css',
 ])
 
+@section('title', 'Bem-vindo(a)')
+@section('description', 'em breve, seu site estará logo aqui.')
+
+@push('head')
+<style>
+    :root {
+        --glow-color: #E9FF00;
+        --bs-dark-rgb: 0, 0, 0;
+    }
+</style>
+@endpush
+
 @section('content')
+<main class="vstack justify-content-around flex-grow-1">
+    <section class="text-opacity-75 p-1 py-md-1h w-100 text-center bg-black z-1 text-light fs-xsmall fw-bold">
     @php
         $phrases = collect([
             // Irineu
@@ -53,4 +67,27 @@
     @endphp
 
     {!! $phrases->random(1)->first() !!}
+    </section>
+    <section class="mb-block-large text-center justify-content-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="mb-0h text-uppercase fs-xxsmall ls-1">
+                        mais uma produção do:
+                    </div>
+                    <x-frontend-icon name="logo-mdm"
+                                     class="mb-block-small mb-md-block-large img-sanitize"/>
+
+                    <x-frontend::link link="/html/index"
+                                      class="glowing-btn text-decoration-none">
+                        <span class='glowing-txt'>
+                            I<span class='faulty-letter'>N</span>ICIAR
+                            <span class='faulty-letter'>J</span>ORN<span class='faulty-letter'>A</span>DA
+                        </span>
+                    </x-frontend::link>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 @endsection

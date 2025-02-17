@@ -1,3 +1,11 @@
-.infinite-scroll .pagination-custom {
-  display: none;
+.infinite-scroll {
+
+  + .pagination-custom, .infinite-scroll-last, .infinite-scroll-error {
+    display: none;
+  }
+
+  ~ .page-load-status .infinite-scroll-request {
+    margin-top: $block-spacer;
+  }
 }
+

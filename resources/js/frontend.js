@@ -12,8 +12,9 @@ import { setupFmdHeader } from './components/fmd-header.js';
 import IMask from 'imask';
 import ClipboardJS from 'clipboard';
 import WOW from 'wow.js';
+import { Modal, Popover, Tooltip, Toast } from 'bootstrap';
 
-function getThemeVariables() {
+export function getThemeVariables() {
   const root = getComputedStyle(document.documentElement);
 
   // Read 'from --bs-breakpoint-??' (min-width)
@@ -94,8 +95,8 @@ function setupStateCityOptions() {
             state.cidades.forEach(city => {
 
               const selected = city === citySelect.getAttribute('data-selected')
-                               ? 'selected'
-                               : '';
+                  ? 'selected'
+                  : '';
               cityOptions += `<option value="${ city }" ${ selected }>${ city }</option>`;
             });
           });
@@ -114,9 +115,9 @@ function setupStateCityOptions() {
 function preventInvalidFormSubmit() {
 
   const forms = document.getElementsByClassName('needs-validation');
-  const validation = Array.prototype.filter.call(forms, function(form) {
+  const validation = Array.prototype.filter.call(forms, function (form) {
 
-    form.addEventListener('submit', function(event) {
+    form.addEventListener('submit', function (event) {
 
       if (form.checkValidity() === false) {
 
@@ -230,7 +231,7 @@ function onChangeSelectLink() {
     return;
   }
   selects.forEach(select => {
-    select.addEventListener('change', function() {
+    select.addEventListener('change', function () {
       window.location = select.value;
     });
   });
@@ -261,11 +262,11 @@ function setupInputMasks() {
 
   function setMaskToAllElements(elements, maskOptions) {
 
-    elements.forEach(function(element) {
+    elements.forEach(function (element) {
 
       const mask = IMask(element, maskOptions);
 
-      mask.on('complete', function() {
+      mask.on('complete', function () {
 
         // Safari doesn't detect the latest input changes
         if (isSafari()) {
@@ -359,7 +360,7 @@ function setupInputMasks() {
         to: 2999,
       },
     },
-    format: function(date) {
+    format: function (date) {
       let day = date.getDate();
       let month = date.getMonth() + 1;
       const year = date.getFullYear();
@@ -373,7 +374,7 @@ function setupInputMasks() {
 
       return [day, month, year].join('/');
     },
-    parse: function(str) {
+    parse: function (str) {
       const yearMonthDay = str.split('/');
       const day = yearMonthDay[0];
       const month = yearMonthDay[1] - 1;
@@ -394,7 +395,7 @@ function setupInputMasks() {
 
   if (cpfInput) {
 
-    cpfInput.addEventListener('blur', function(event) {
+    cpfInput.addEventListener('blur', function (event) {
 
       cpfCnpjValidators.checkCPF(event.target);
     });
@@ -402,7 +403,7 @@ function setupInputMasks() {
 
   if (cnpjInput) {
 
-    cnpjInput.addEventListener('blur', function(event) {
+    cnpjInput.addEventListener('blur', function (event) {
 
       cpfCnpjValidators.checkCNPJ(event.target);
     });
@@ -470,23 +471,36 @@ function setupCepSearch() {
   });
 }
 
-function setupPopover() {
+export function setupPopover() {
 
   const popoverTriggerList = [].slice.call(
       document.querySelectorAll('[data-bs-toggle="popover"]'));
 
-  popoverTriggerList.map(function(popoverTriggerEl) {
-    return new bootstrap.Popover(popoverTriggerEl);
+  popoverTriggerList.map((popoverTriggerEl) => {
+    return new Popover(popoverTriggerEl, {});
   });
 }
 
-function setupTooltip() {
+export function setupTooltip() {
 
   const tooltipTriggerList = [].slice.call(document.querySelectorAll(
       '[data-bs-toggle="tooltip"]'));
 
-  tooltipTriggerList.map(function(tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl);
+  tooltipTriggerList.map((tooltipTriggerEl) => {
+    return new Tooltip(tooltipTriggerEl);
+  });
+}
+
+export function setupToast() {
+
+  const toastTriggerList = [].slice.call(document.querySelectorAll(
+      '.js-button-toast'));
+
+  toastTriggerList.map((toastTriggerEl) => {
+    return toastTriggerEl.addEventListener('click', () => {
+      Toast.getOrCreateInstance(toastTriggerEl.nextElementSibling.querySelector(
+          '.toast')).show();
+    });
   });
 }
 
@@ -498,9 +512,9 @@ function setupAnchorReloadPrevention() {
 
     return;
   }
-  targetClickLinkElements.forEach(function(linkElement) {
+  targetClickLinkElements.forEach(function (linkElement) {
 
-    linkElement.addEventListener('click', function(clickEvent) {
+    linkElement.addEventListener('click', function (clickEvent) {
 
       clickEvent.preventDefault();
     });
@@ -559,7 +573,7 @@ function setupClipboardJS() {
   }
 }
 
-function setupShareAPI() {
+export function setupShareAPI() {
 
   const shareButtonElements = document.querySelectorAll('.js-btn-share');
 
@@ -570,40 +584,42 @@ function setupShareAPI() {
 
   const pageTitle = document.querySelector('title').textContent;
   const pageDescription = document.querySelector('meta[name="description"]')
-                                  .getAttribute('content');
+      .getAttribute('content');
 
   shareButtonElements.forEach(buttonItem => {
 
-    buttonItem.addEventListener('click', function() {
+    buttonItem.addEventListener('click', (e) => {
+
+      e.preventDefault();
 
       navigator.share(
-                   {
-                     title: pageTitle,
-                     text: pageDescription,
-                     url: location.href,
-                     fbId: buttonItem.getAttribute('data-fmd-share-btn-fbidentification'),
-                   },
-                   {
-                     // change this configurations to hide specific unnecessary icons
-                     copy: true,
-                     email: true,
-                     print: true,
-                     sms: true,
-                     messenger: true,
-                     facebook: true,
-                     whatsapp: true,
-                     twitter: true,
-                     linkedin: true,
-                     telegram: true,
-                     skype: true,
-                     language: 'pt', // specify the default language
-                   },
-               )
-               .then(() => console.log('Compartilhado com sucesso!'))
-               .catch(error => console.log(
-                   'Ops! Algo de errado aconteceu:\'(\n',
-                   error,
-               ));
+          {
+            title: pageTitle,
+            text: pageDescription,
+            url: location.href,
+            fbId: buttonItem.getAttribute('data-fmd-share-btn-fbidentification'),
+          },
+          {
+            // change this configurations to hide specific unnecessary icons
+            copy: true,
+            email: true,
+            print: true,
+            sms: true,
+            messenger: true,
+            facebook: true,
+            whatsapp: true,
+            twitter: true,
+            linkedin: true,
+            telegram: true,
+            skype: true,
+            language: 'pt', // specify the default language
+          },
+      )
+          .then(() => console.log('Compartilhado com sucesso!'))
+          .catch(error => console.log(
+              'Ops! Algo de errado aconteceu:\'(\n',
+              error,
+          ));
     });
   });
 }
@@ -617,13 +633,13 @@ function setupModalConfig() {
   const modalElements = document.querySelectorAll('.modal');
 
   modalElements.forEach((modalElement) => {
-    return new bootstrap.Modal(modalElement, {
+    return new Modal(modalElement, {
       focus: false,
     });
   });
 }
 
-(function() {
+(() => {
 
   preventInvalidFormSubmit();
 
@@ -666,7 +682,7 @@ function setupModalConfig() {
   // setupLightDarkModeController();
 })();
 
-window.addEventListener('load', function() {
+window.addEventListener('load', () => {
 
   /**
    * Usually the header triggers after the first section which has the

@@ -1,0 +1,30 @@
+.modal {
+
+  $padding-md: $modal-inner-padding-md;
+
+  &-header {
+    border-bottom: 0;
+  }
+
+  @include media-breakpoint-up(md) {
+
+    .btn-close {
+      width: $btn-close-width * 1.5;
+      height: $btn-close-width * 1.5;
+      background: transparent var(--#{$prefix}btn-close-bg) center/#{$btn-close-width * 1.5} auto no-repeat
+    }
+
+    &-header {
+
+      padding: ($padding-md * .5) $padding-md 0 $padding-md;
+
+      &-container {
+        padding-left: $padding-md;
+      }
+    }
+
+    &-body {
+      padding: ($padding-md * .5) $padding-md ($padding-md * .5) $padding-md;
+    }
+  }
+}

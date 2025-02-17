@@ -1,3 +1,6 @@
+$link-color: $body-color;
+$link-dark-color: $white;
+
 .breadcrumb {
   max-width: 100%;
   display: inline-flex;
@@ -5,12 +8,18 @@
   //flex-direction: row-reverse;
   //direction: rtl;
 
+  @include media-breakpoint-down(md) {
+    overflow-x: hidden;
+  }
+
   &-item {
     flex: 0 1 auto;
     white-space: nowrap;
     //overflow: hidden;
     text-overflow: ellipsis;
     text-decoration: none;
+    --#{$prefix}link-color-rgb: #{to-rgb($link-color)};
+    --#{$prefix}breadcrumb-item-active-color: #{to-rgb($link-color)};
 
     &.active {
       font-weight: $font-weight-bold;
@@ -22,20 +31,12 @@
       flex-shrink: 0;
     }
 
-    a {
-      text-decoration: none;
-      color: var(--#{$prefix}body-color);
-
-      &:hover {
-        color: var(--#{$prefix}link-hover-color);
-      }
-    }
     + .breadcrumb-item::before {
 
       background: #{escape-svg($form-select-indicator)} no-repeat;
       background-size: contain;
-      width: 0.8rem;
-      height: 0.8rem;
+      width: $spacer * .8;
+      height: $spacer * .8;
       transform: rotate(-90deg);
       margin-right: var(--bs-breadcrumb-item-padding-x);
       display: inline-block;
@@ -45,10 +46,19 @@
   }
 
   &-dark {
+
     .breadcrumb-item {
 
-      a, &.active {
-        color: $white;
+      --#{$prefix}link-color-rgb: #{to-rgb($link-dark-color)};
+      --#{$prefix}breadcrumb-item-active-color: #{$link-dark-color};
+      --#{$prefix}breadcrumb-divider-color: #{$link-dark-color};
+      --#{$prefix}link-hover-color-rgb: #{to-rgb(shift-color($link-dark-color, $link-shade-percentage))};
+
+      + .breadcrumb-item::before {
+
+        $form-select-indicator-color: $link-dark-color;
+        $form-select-indicator: url('data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 16 16\'><path fill=\'none\' stroke=\'#{$form-select-indicator-color}\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'m2 5 6 6 6-6\'/></svg>');
+        background: #{escape-svg($form-select-indicator)} no-repeat;
       }
     }
   }

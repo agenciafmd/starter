@@ -2,13 +2,14 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "vite",
-        "build": "vite build",
+        "dev": "npm run webp && vite",
+        "build": "npm run webp && vite build && npm run pwa",
+        "webp": "node resources/js/utilities/webp.js",
+        "pwa": "node resources/js/utilities/create-manifest.js",
         "setup-project": "composer i && npm i && cp .env.example .env && art key:generate && art storage:link && npm run greetings",
         "greetings": "echo 'Confira e altere o APP_URL se necessário. Caso o mapeamento do projeto esteja correto, tudo está pronto para uso e desenvolvimento. Obrigado por utilizar nosso starter!'"
     },
     "devDependencies": {
-        "@spiriit/vite-plugin-svg-spritemap": "^3.0.0",
         "axios": "^1.6.4",
         "laravel-vite-plugin": "^1.0",
         "rollup-plugin-critical": "^1.0.14",
@@ -20,6 +21,8 @@
         "bootstrap": "^5.3.3",
         "clipboard": "^2.0.11",
         "glightbox": "^3.3.0",
+        "imagemin": "^9.0.0",
+        "imagemin-webp": "^8.0.0",
         "imask": "^7.6.1",
         "infinite-scroll": "^4.0.1",
         "share-api-polyfill": "^1.1.1",

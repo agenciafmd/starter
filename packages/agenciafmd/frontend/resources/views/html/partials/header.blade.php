@@ -1,95 +1,95 @@
 <header class="header fmd-header">
-    <nav class="navbar navbar-expand-md bg-white">
-        <div class="container">
-            <a href="/html"
-               class="navbar-brand"
-               aria-label="{{ config('app.name') }}"
-               title="{{ config('app.name') }}">
-                <x-frontend::icon name="fmd-logo"/>
-            </a>
-            <div class="offcanvas offcanvas-end align-items-md-end"
-                 tabindex="-1"
-                 id="offcanvasNavbar"
-                 aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="/html"
-                               aria-label="Home"
-                               title="Home"
-                               class="nav-link active">
-                                Home
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/html/quem-somos"
-                               aria-label="Quem somos"
-                               title="Quem somos"
-                               class="nav-link">
-                                Quem somos
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle"
-                               aria-label="Produtos"
-                               title="Produtos"
-                               href="#"
-                               id="navbarDropdown"
-                               role="button"
-                               data-bs-toggle="dropdown"
-                               data-bs-auto-close="outside"
-                               aria-expanded="false">
-                                Produtos
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item"
-                                       aria-label="Action"
-                                       title="Action"
-                                       href="#">
-                                        Action
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item"
-                                       aria-label="Another action"
-                                       title="Another action"
-                                       href="#">
-                                        Another action
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item"
-                                       aria-label="Something else here"
-                                       title="Something else here"
-                                       href="#">
-                                        Something else here
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/html/contato"
-                               aria-label="Contato"
-                               title="Contato"
-                               data-bs-dismiss="offcanvas"
-                               data-bs-target="#offcanvasNavbar"
-                               class="nav-link js-scroll-top">
-                                Contato
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <button class="navbar-toggler"
-                    type="button"
-                    title="Menu"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar"
-                    aria-controls="offcanvasNavbar"
-                    aria-label="Menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+  <nav class="navbar navbar-expand-md">
+    <div class="container">
+      <x-frontend::link link="/html"
+                        title="{{ config('app.name') }}"
+                        aria-label="{{ config('app.name') }}"
+                        icon="logo-fmd"
+                        class="navbar-brand icon-link-hover-scale-center"/>
+      <div class="offcanvas offcanvas-end align-items-md-end"
+           tabindex="-1"
+           id="offcanvasNavbar"
+           aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-body">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <x-frontend::link link="/html"
+                                title="Ir para Home"
+                                aria-label="Link para Home"
+                                label="Home"
+                                class="nav-link active"/>
+            </li>
+            <li class="nav-item">
+              <x-frontend::link link="/html/quem-somos"
+                                title="Ir para Quem somos"
+                                aria-label="Link para Quem somos"
+                                label="Quem somos"
+                                class="nav-link"/>
+            </li>
+            <li class="nav-item dropdown">
+              <x-frontend::link link="#"
+                                title="Ir para Contato"
+                                aria-label="Link para Contato"
+                                label="Produtos"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside"
+                                aria-expanded="false"
+                                class="nav-link dropdown-toggle"/>
+              <ul class="dropdown-menu">
+                <li>
+                  <x-frontend::link link="/html/"
+                                    title="Ir para Produto 1"
+                                    aria-label="Link para Produto 1"
+                                    label="Produto 1"
+                                    class="dropdown-item"/>
+                </li>
+                <li>
+                  <x-frontend::link link="/html/"
+                                    title="Ir para Produto 2"
+                                    aria-label="Link para Produto 2"
+                                    label="Produto 2"
+                                    class="dropdown-item"/>
+                </li>
+                <li>
+                  <x-frontend::link link="/html/"
+                                    title="Ir para Produto 3"
+                                    aria-label="Link para Produto 3"
+                                    label="Produto 3"
+                                    class="dropdown-item"/>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <x-frontend::link link="/html/contato"
+                                title="Ir para Contato"
+                                aria-label="Link para Contato"
+                                label="Contato"
+                                class="nav-link"/>
+            </li>
+            {{-- Exemplo para o modal
+            <li class="nav-item">
+              <x-frontend::link link="#"
+                                data-bs-dismiss="offcanvas"
+                                data-bs-target="#offcanvasNavbar"
+                                title="Ir para Modal"
+                                aria-label="Link para Modal"
+                                label="Modal"
+                                class="nav-link js-scroll-top"/>
+            </li>
+            --}}
+          </ul>
         </div>
-    </nav>
+      </div>
+      <button class="navbar-toggler"
+              type="button"
+              title="Menu"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasNavbar"
+              aria-controls="offcanvasNavbar"
+              aria-label="Menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
 </header>

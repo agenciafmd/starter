@@ -54,36 +54,38 @@
 {{ session()->forget('flash_notification') }}
 
 <script>
-    window.livewire.on('swal', (param) => {
-        const title = {
-            success: 'Sucesso',
-            danger: 'Falhou',
-            warning: 'Atenção',
-            info: 'Informação',
-        };
+    document.addEventListener('livewire:init', () => {
+        Livewire.on('swal', (param) => {
+            const title = {
+                success: 'Sucesso',
+                danger: 'Falhou',
+                warning: 'Atenção',
+                info: 'Informação',
+            };
 
-        Swal.fire({
-            text: param.message,
-            icon: param.level,
-            title: title[param.level],
-            showConfirmButton: false,
-            showCloseButton: true,
+            Swal.fire({
+                text: param.message,
+                icon: param.level,
+                title: title[param.level],
+                showConfirmButton: false,
+                showCloseButton: true,
+            });
         });
-    });
 
-    window.livewire.on('datalayer', (param) => {
-        const defaultDataLayerOptions = {
-            event: param.event || 'form',
-            action: param.action || 'success',
-            details: param.message || 'Formulário Disparado!',
-            form_name: param.form_name || 'Contato',
-            form_id: param.form_id || '00000',
-        };
+        Livewire.on('datalayer', (param) => {
+            const defaultDataLayerOptions = {
+                event: param.event || 'form',
+                action: param.action || 'success',
+                details: param.message || 'Formulário Disparado!',
+                form_name: param.form_name || 'Contato',
+                form_id: param.form_id || '00000',
+            };
 
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-            ...defaultDataLayerOptions,
-            ...param,
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                ...defaultDataLayerOptions,
+                ...param,
+            });
         });
     });
 </script>

@@ -1,3 +1,16 @@
 .btn {
   text-transform: $btn-text-transform;
+
+  &-whatsapp {
+    $whatsapp-green: #27B143;
+    @include button-variant($whatsapp-green, $whatsapp-green, $white);
+    --#{$prefix}btn-hover-color: #{$white};
+  }
+
+  //&-secondary, &-outline-secondary {
+  //  --#{$prefix}btn-color: #{$body-color};
+  //  --#{$prefix}btn-hover-color: #{$body-color};
+  //  --#{$prefix}btn-disabled-color: #{$body-color};
+  //  --#{$prefix}btn-active-color: #{$body-color};
+  //}
 }

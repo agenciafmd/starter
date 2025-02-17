@@ -1,11 +1,10 @@
-<footer class="footer text-center py-block-small bg-light">
+<footer class="py-block footer text-center">
     <p>
         © {{ date('Y') }} {{ config('app.name') }} - Todos os direitos reservados.
 
-        <a href="//fmd.ag"
-           target="_blank"
-           title="Desenvolvido por F&MD">
-            Desenvolvido por F&MD
-        </a>
+        <x-frontend::link link="//fmd.ag"
+                          is-extern="true"
+                          title="Desenvolvido por F&MD"
+                          label="Desenvolvido por F&MD"/>
     </p>
 </footer>
