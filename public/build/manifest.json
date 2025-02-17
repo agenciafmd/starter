@@ -1,0 +1,109 @@
+{
+  "resources/fonts/Roboto-Bold.woff2": {
+    "file": "assets/Roboto-Bold-B00cclMj.woff2",
+    "src": "resources/fonts/Roboto-Bold.woff2"
+  },
+  "resources/fonts/Roboto-Light.woff2": {
+    "file": "assets/Roboto-Light-T3rV-QX9.woff2",
+    "src": "resources/fonts/Roboto-Light.woff2"
+  },
+  "resources/fonts/Roboto-Regular.woff2": {
+    "file": "assets/Roboto-Regular-BJClQQEq.woff2",
+    "src": "resources/fonts/Roboto-Regular.woff2"
+  },
+  "resources/images/icons/apple-touch-icon.png": {
+    "file": "assets/apple-touch-icon-CN2f1Wcu.png",
+    "src": "resources/images/icons/apple-touch-icon.png"
+  },
+  "resources/images/icons/apple-touch-icon.webp": {
+    "file": "assets/apple-touch-icon-DEkhQySH.webp",
+    "src": "resources/images/icons/apple-touch-icon.webp"
+  },
+  "resources/images/icons/favicon.ico": {
+    "file": "assets/favicon-zDrDEgIK.ico",
+    "src": "resources/images/icons/favicon.ico"
+  },
+  "resources/images/icons/icon-192x192.png": {
+    "file": "assets/icon-192x192-BUflKfAP.png",
+    "src": "resources/images/icons/icon-192x192.png"
+  },
+  "resources/images/icons/icon-192x192.webp": {
+    "file": "assets/icon-192x192-BhYa9nbZ.webp",
+    "src": "resources/images/icons/icon-192x192.webp"
+  },
+  "resources/images/icons/icon-512x512.png": {
+    "file": "assets/icon-512x512-AqRv5tjj.png",
+    "src": "resources/images/icons/icon-512x512.png"
+  },
+  "resources/images/icons/icon-512x512.webp": {
+    "file": "assets/icon-512x512-Ctro2acp.webp",
+    "src": "resources/images/icons/icon-512x512.webp"
+  },
+  "resources/images/icons/mstile-150x150.png": {
+    "file": "assets/mstile-150x150-CEcUQiH0.png",
+    "src": "resources/images/icons/mstile-150x150.png"
+  },
+  "resources/images/icons/mstile-150x150.webp": {
+    "file": "assets/mstile-150x150-B0fTGetO.webp",
+    "src": "resources/images/icons/mstile-150x150.webp"
+  },
+  "resources/images/icons/safari-pinned-tab.svg": {
+    "file": "assets/safari-pinned-tab-D1KIlaRt.svg",
+    "src": "resources/images/icons/safari-pinned-tab.svg"
+  },
+  "resources/images/logo-amp.png": {
+    "file": "assets/logo-amp-DeuE3hbF.png",
+    "src": "resources/images/logo-amp.png"
+  },
+  "resources/images/logo-amp.webp": {
+    "file": "assets/logo-amp-VV1JanoM.webp",
+    "src": "resources/images/logo-amp.webp"
+  },
+  "resources/images/logo-email.png": {
+    "file": "assets/logo-wNWFdTgP.png",
+    "src": "resources/images/logo-email.png"
+  },
+  "resources/images/logo-email.webp": {
+    "file": "assets/logo-BX6E0705.webp",
+    "src": "resources/images/logo-email.webp"
+  },
+  "resources/images/logo.png": {
+    "file": "assets/logo-wNWFdTgP.png",
+    "src": "resources/images/logo-email.png"
+  },
+  "resources/images/logo.webp": {
+    "file": "assets/logo-BX6E0705.webp",
+    "src": "resources/images/logo-email.webp"
+  },
+  "resources/images/sem-imagem.jpg": {
+    "file": "assets/sem-imagem-JMoanD8a.jpg",
+    "src": "resources/images/sem-imagem.jpg"
+  },
+  "resources/images/sem-imagem.webp": {
+    "file": "assets/sem-imagem-3ky1Zb8c.webp",
+    "src": "resources/images/sem-imagem.webp"
+  },
+  "resources/images/video-film.png": {
+    "file": "assets/video-film-BmXcc39w.png",
+    "src": "resources/images/video-film.png"
+  },
+  "resources/images/video-film.webp": {
+    "file": "assets/video-film-UB40Aegl.webp",
+    "src": "resources/images/video-film.webp"
+  },
+  "resources/js/frontend-imports.js": {
+    "file": "assets/frontend-imports-BVqU8AaV.js",
+    "name": "frontend-imports",
+    "src": "resources/js/frontend-imports.js",
+    "isEntry": true
+  },
+  "resources/scss/frontend.scss": {
+    "file": "assets/frontend-EMCoD0Mz.css",
+    "src": "resources/scss/frontend.scss",
+    "isEntry": true
+  },
+  "spritemap.svg": {
+    "file": "assets/spritemap.92875422.svg",
+    "src": "spritemap.svg"
+  }
+}

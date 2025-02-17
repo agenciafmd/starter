@@ -1,6 +1,6 @@
 @forelse (session('flash_notification', collect())->toArray() as $message)
     <script>
-        @if($message['level'] == 'success')
+        @if($message['level'] === 'success')
         Swal.fire({
             text: '{!! $message['message'] !!}',
             icon: 'success',
@@ -8,7 +8,7 @@
             showConfirmButton: false,
             showCloseButton: true,
         });
-        @elseif($message['level'] == 'danger')
+        @elseif($message['level'] === 'danger')
         Swal.fire({
             text: '{!! $message['message'] !!}',
             icon: 'error',
@@ -16,7 +16,7 @@
             showConfirmButton: false,
             showCloseButton: true,
         });
-        @elseif($message['level'] == 'warning')
+        @elseif($message['level'] === 'warning')
         Swal.fire({
             text: '{!! $message['message'] !!}',
             icon: 'warning',
