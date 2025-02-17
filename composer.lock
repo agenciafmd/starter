@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b5f7e2bfe1c080ad23042c940d5ad3a2",
+    "content-hash": "95579c6dc06a975b6898e279566053cd",
     "packages": [
         {
             "name": "agenciafmd/admix",
@@ -275,7 +275,7 @@
         },
         {
             "name": "agenciafmd/frontend",
-            "version": "dev-master",
+            "version": "dev-feat/frontend-dependencies",
             "dist": {
                 "type": "path",
                 "url": "packages/agenciafmd/frontend",
@@ -14414,6 +14414,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "agenciafmd/admix": 20,
+        "agenciafmd/admix-icons": 20,
         "agenciafmd/admix-leads": 20,
         "agenciafmd/admix-postal": 20,
         "agenciafmd/admix-ui": 20,

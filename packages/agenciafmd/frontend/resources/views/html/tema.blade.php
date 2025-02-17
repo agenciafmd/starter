@@ -57,6 +57,7 @@
                 class="navbar-nav flex-column">
               @php
               $contentLinks = [
+              (object) ['name' => 'Images'],
               (object) ['name' => 'Typography'],
               (object) ['name' => 'Tables'],
               ];
@@ -107,7 +108,13 @@
                 class="navbar-nav flex-column">
               @php
               $iconLinks = [
+              (object) ['name' => 'Accessibility'],
+              (object) ['name' => 'Gallery'],
               (object) ['name' => 'Icons'],
+              (object) ['name' => 'Icon link'],
+              (object) ['name' => 'Infinite scroll'],
+              (object) ['name' => 'Pwa icons'],
+              (object) ['name' => 'Video'],
               ];
               @endphp
 
@@ -218,7 +225,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example alert with icon and link</h2>
+                  <h2 class="fs-xlarge">Example of an alert with an icon and a link</h2>
 
                   <x-frontend::alert icon="ic-info"
                                      icon-class="ic-sm"
@@ -236,7 +243,7 @@
                 <div>
                   <hr>
                   <h2 class="fs-xlarge">
-                    Example alert with icon, link and btn-close
+                    Example of an alert with an icon, link, and btn-close
                   </h2>
 
                   <x-frontend::alert icon="ic-info"
@@ -256,7 +263,7 @@
                 <div>
                   <hr>
                   <h2 class="fs-xlarge">
-                    Example alert with icon, title, link and btn-close
+                    Example of an alert with an icon, title, link, and btn-close
                   </h2>
 
                   <x-frontend::alert has-dismissible="true"
@@ -297,7 +304,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example badge outline</h2>
+                  <h2 class="fs-xlarge">Example of a badge outline</h2>
 
                   <span class="badge text-bg-outline-primary">Primary</span>
                   <span class="badge text-bg-outline-secondary">Secondary</span>
@@ -312,7 +319,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example badge pill</h2>
+                  <h2 class="fs-xlarge">Example of a badge pill</h2>
 
                   <span class="badge rounded-pill text-bg-primary">
                     Primary
@@ -342,7 +349,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example badge outline pill</h2>
+                  <h2 class="fs-xlarge">Example of a badge outline pill</h2>
 
                   <span class="badge rounded-pill text-bg-outline-primary">
                     Primary
@@ -372,7 +379,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example badge button</h2>
+                  <h2 class="fs-xlarge">Example of a badge button</h2>
 
                   <button type="button"
                           class="btn btn-primary">
@@ -383,7 +390,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example badge button positioned</h2>
+                  <h2 class="fs-xlarge">Example of a positioned badge button</h2>
 
                   <button type="button"
                           class="btn btn-primary position-relative">
@@ -437,7 +444,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example breadcrumb dark</h2>
+                  <h2 class="fs-xlarge">Example of a dark breadcrumb</h2>
                   <div class="bg-primary p-1">
                     <x-frontend::breadcrumb :list="$breadcrumb"
                                             isDarkMode="true"
@@ -819,7 +826,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example list-group active</h2>
+                  <h2 class="fs-xlarge">Example of an active list group</h2>
 
                   <ul class="list-group d-inline-flex">
                     <li class="list-group-item active"
@@ -834,7 +841,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example list group links / buttons</h2>
+                  <h2 class="fs-xlarge">Example of list group links/buttons</h2>
 
                   <div class="list-group d-inline-flex">
                     <x-frontend::link link="#"
@@ -892,7 +899,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example list-group numbered</h2>
+                  <h2 class="fs-xlarge">Example of a numbered list group</h2>
 
                   <ol class="list-group list-group-numbered d-inline-flex">
                     <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -950,7 +957,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example navbar-dark</h2>
+                  <h2 class="fs-xlarge">Example of a navbar-dark</h2>
                   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                     <div class="container-fluid">
                       <a class="navbar-brand"
@@ -1029,7 +1036,7 @@
                 </div>
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example navbar-dark</h2>
+                  <h2 class="fs-xlarge">Example of a navbar-dark</h2>
                   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div class="container-fluid">
                       <a class="navbar-brand"
@@ -1108,7 +1115,7 @@
                 </div>
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example navbar-light</h2>
+                  <h2 class="fs-xlarge">Example of a navbar-light</h2>
                   <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
                       <a class="navbar-brand"
@@ -1312,7 +1319,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example nav-tabs</h2>
+                  <h2 class="fs-xlarge">Example of nav-tabs</h2>
 
                   <ul class="nav nav-tabs">
                     <li class="nav-item">
@@ -1344,7 +1351,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example nav-tabs with dropdown</h2>
+                  <h2 class="fs-xlarge">Example of nav-tabs with a dropdown</h2>
 
                   <ul class="nav nav-tabs">
                     <li class="nav-item">
@@ -1409,7 +1416,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example nav-pills</h2>
+                  <h2 class="fs-xlarge">Example of nav-pills</h2>
 
                   <ul class="nav nav-pills">
                     <li class="nav-item">
@@ -1442,7 +1449,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example nav-pills with dropdown</h2>
+                  <h2 class="fs-xlarge">Example of nav-pills with a dropdown</h2>
 
                   <ul class="nav nav-pills">
                     <li class="nav-item">
@@ -1508,7 +1515,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example nav-underline</h2>
+                  <h2 class="fs-xlarge">Example of nav-underline</h2>
 
                   <ul class="nav nav-underline">
                     <li class="nav-item">
@@ -1541,7 +1548,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example nav-pills fill and justify</h2>
+                  <h2 class="fs-xlarge">Example of nav-pills with fill</h2>
 
                   <ul class="nav nav-pills nav-fill">
                     <li class="nav-item">
@@ -1574,7 +1581,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example nav-pills justify</h2>
+                  <h2 class="fs-xlarge">Example of nav-pills with justify</h2>
 
                   <ul class="nav nav-pills nav-justified">
                     <li class="nav-item">
@@ -1647,7 +1654,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example pagination small</h2>
+                  <h2 class="fs-xlarge">Example of small pagination</h2>
 
                   <nav aria-label="Page navigation example">
                     <ul class="pagination pagination-sm">
@@ -1686,7 +1693,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example pagination large</h2>
+                  <h2 class="fs-xlarge">Example of large pagination</h2>
 
                   <nav aria-label="Page navigation example">
                     <ul class="pagination pagination-lg">
@@ -1725,7 +1732,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example pagination with icon</h2>
+                  <h2 class="fs-xlarge">Example of pagination with an icon</h2>
 
                   <nav aria-label="Page navigation example">
                     <ul class="pagination">
@@ -1765,7 +1772,7 @@
                 <div>
                   <hr>
                   <h2 class="fs-xlarge">
-                    Example pagination disabled and active states
+                    Example of pagination with disabled and active states
                   </h2>
 
                   <nav aria-label="Page navigation example">
@@ -1892,7 +1899,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example label progress</h2>
+                  <h2 class="fs-xlarge">Example of a label progress</h2>
 
                   <div class="progress"
                        role="progressbar"
@@ -1908,7 +1915,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example progress background</h2>
+                  <h2 class="fs-xlarge">Example of progress background</h2>
 
                   <div class="vstack gap-1">
                     <div class="progress"
@@ -1956,7 +1963,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example progress animated stripes</h2>
+                  <h2 class="fs-xlarge">Example of animated progress stripes</h2>
 
                   <div class="progress"
                        role="progressbar"
@@ -2157,7 +2164,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example text-muted and lead</h2>
+                  <h2 class="fs-xlarge">Example of text-muted and lead</h2>
                   <h3>
                     Heading
                     <small class="text-muted">with muted text</small>
@@ -2170,7 +2177,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example body text</h2>
+                  <h2 class="fs-xlarge">Example of body text</h2>
                   <p>Nullam quis risus eget
                     <x-frontend::link link="#"
                                       label="urna mollis ornare"/>
@@ -2195,7 +2202,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example list-unstyled</h2>
+                  <h2 class="fs-xlarge">Example of list-unstyled</h2>
                   <ul class="list-unstyled">
                     <li>This is a list.</li>
                     <li>It appears completely unstyled.</li>
@@ -2216,7 +2223,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example list-inline</h2>
+                  <h2 class="fs-xlarge">Example of list-inline</h2>
                   <ul class="list-inline">
                     <li class="list-inline-item">This is a list item.</li>
                     <li class="list-inline-item">And another one.</li>
@@ -2227,7 +2234,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example blockquotes</h2>
+                  <h2 class="fs-xlarge">Example of blockquotes</h2>
                   <div class="row gy-block-small">
                     <div class="col-md-4">
                       <figure>
@@ -2400,7 +2407,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example Sizing</h2>
+                  <h2 class="fs-xlarge">Example of sizing</h2>
 
                   <div class="row gy-block-small">
                     <div class="col-md-4">
@@ -2435,7 +2442,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example Form text</h2>
+                  <h2 class="fs-xlarge">Example of form text</h2>
 
                   <div class="row align-items-center">
                     <div class="col-12">
@@ -2461,7 +2468,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example Disabled Input</h2>
+                  <h2 class="fs-xlarge">Example of a disabled input</h2>
 
                   <div>
                     <label class="form-label"
@@ -2477,7 +2484,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example Readonly Input</h2>
+                  <h2 class="fs-xlarge">Example of a readonly input</h2>
 
                   <div>
                     <label class="form-label"
@@ -2493,7 +2500,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example File Input</h2>
+                  <h2 class="fs-xlarge">Example of a file input</h2>
 
                   <div class="row gy-1">
                     <div class="col-md-6">
@@ -2585,7 +2592,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example Sizing</h2>
+                  <h2 class="fs-xlarge">Example of sizing</h2>
 
                   <div class="row gy-block-small">
                     <div class="col-md-4">
@@ -2631,7 +2638,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example Disabled Input</h2>
+                  <h2 class="fs-xlarge">Example of a disabled input</h2>
 
                   <div>
                     <label for="disabledSelect"
@@ -2685,7 +2692,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example Disabled Checkbox</h2>
+                  <h2 class="fs-xlarge">Example of a disabled checkbox</h2>
 
                   <div class="form-check">
                     <input class="form-check-input"
@@ -2714,7 +2721,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example Radio</h2>
+                  <h2 class="fs-xlarge">Example of a radio</h2>
 
                   <div class="form-check">
                     <input class="form-check-input"
@@ -2741,7 +2748,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example Disabled Radio</h2>
+                  <h2 class="fs-xlarge">Example of a disabled radio</h2>
 
                   <div class="form-check">
                     <input class="form-check-input"
@@ -2770,7 +2777,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example switches</h2>
+                  <h2 class="fs-xlarge">Example of a switches</h2>
 
                   <div class="form-check form-switch">
                     <input class="form-check-input"
@@ -2821,7 +2828,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example checkbox inline</h2>
+                  <h2 class="fs-xlarge">Example of a inline checkbox</h2>
 
                   <div class="form-check form-check-inline">
                     <input class="form-check-input"
@@ -2856,7 +2863,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example radio inline</h2>
+                  <h2 class="fs-xlarge">Example of inline radio</h2>
 
                   <div class="form-check form-check-inline">
                     <input class="form-check-input"
@@ -2894,7 +2901,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example checkbox toggle buttons</h2>
+                  <h2 class="fs-xlarge">Example of checkbox toggle buttons</h2>
 
                   <input type="checkbox"
                          class="btn-check"
@@ -2952,7 +2959,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example radio toggle buttons</h2>
+                  <h2 class="fs-xlarge">Example of radio toggle buttons</h2>
 
                   <input type="radio"
                          class="btn-check"
@@ -3034,7 +3041,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example outlined styles</h2>
+                  <h2 class="fs-xlarge">Example of outlined styles</h2>
 
                   <input type="checkbox"
                          class="btn-check"
@@ -3095,7 +3102,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example Disabled Range</h2>
+                  <h2 class="fs-xlarge">Example of a disabled range</h2>
 
                   <label for="disabledRange"
                          class="form-label">Disabled range
@@ -3109,7 +3116,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example Min and max Range</h2>
+                  <h2 class="fs-xlarge">Example of min and max range</h2>
 
                   <label for="customRange2"
                          class="form-label">Example range
@@ -3124,7 +3131,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example Steps Range</h2>
+                  <h2 class="fs-xlarge">Example of steps range</h2>
 
                   <label for="customRange3"
                          class="form-label">Example range
@@ -3249,7 +3256,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example Textarea</h2>
+                  <h2 class="fs-xlarge">Example of a textarea</h2>
                   <div class="form-floating">
                     <textarea class="form-control"
                               placeholder="Leave a comment here"
@@ -3260,7 +3267,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example Select</h2>
+                  <h2 class="fs-xlarge">Example of a select</h2>
 
                   <div class="form-floating">
                     <select class="form-select"
@@ -3278,7 +3285,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example Disabled</h2>
+                  <h2 class="fs-xlarge">Example of a disabled</h2>
 
                   <div class="row g-1">
                     <div class="col-md-6">
@@ -3453,7 +3460,7 @@
                 <div>
 
                   <hr>
-                  <h2 class="fs-xlarge">Example validation invalid</h2>
+                  <h2 class="fs-xlarge">Example of invalid validation</h2>
 
                   <form class="was-validated">
                     <div class="row g-1">
@@ -3743,7 +3750,7 @@
               <div class="vstack gap-1">
 
                 <div>
-                  <h2 class="fs-xlarge">Example images warning state</h2>
+                  <h2 class="fs-xlarge">Example of an image with a warning state</h2>
 
                   <div class="hstack gap-0q">
                     <div class="bg-danger"
@@ -3759,7 +3766,7 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example links warning state</h2>
+                  <h2 class="fs-xlarge">Example of links with a warning state</h2>
 
                   <div class="hstack gap-0q">
                     <div class="bg-danger"
@@ -3818,32 +3825,6 @@
               </div>
             </div>
 
-            <div id="video"
-                 class="bd-example">
-
-              <h2 class="mb-block-small h6">Video</h2>
-              <div class="vstack gap-1">
-
-                <div class="row g-1">
-                  <div class="col-md-6">
-                    <x-frontend::glightbox.video link="https://youtu.be/lG7o0r-7coo?si=a8uCcwaD_hsqgQM3">
-                      <x-frontend::picture image="img-16x9.jpg"
-                                           title="imagem titulo"
-                                           alt="imagem alt"
-                                           pictureClass="ratio ratio-16x9"
-                                           class="img-cover"
-                                           has-breakpoints="true"
-                                           breakpointDesktopWidth="1400px"
-                                           breakpointDesktopSuffix="xl"
-                                           breakpointNotebookWidth="768px"
-                                           breakpointNotebookSuffix="lg"/>
-                    </x-frontend::glightbox.video>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
             <div id="icons"
                  class="bd-example">
 
@@ -3879,6 +3860,58 @@
                     </div>
                     @endforeach
                   </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div id="icon-link"
+                 class="bd-example">
+
+              <h2 class="mb-block-small h6">Icon link</h2>
+              <div class="vstack gap-1">
+
+                <div>
+                  <x-frontend::link link="#"
+                                    label="Compartilhar"
+                                    icon="ic-share"
+                                    class="btn btn-primary"/>
+
+                </div>
+
+                <div>
+
+                  <hr>
+                  <h2 class="fs-xlarge">Example of a link icon with an inverted icon</h2>
+
+                  <x-frontend::link link="#"
+                                    label="Ver mais"
+                                    icon="ic-arrow-right"
+                                    icon-change-position="true"/>
+
+                </div>
+
+                <div>
+
+                  <hr>
+                  <h2 class="fs-xlarge">Example of a link icon with an animated icon</h2>
+
+                  <x-frontend::link link="#"
+                                    label="Compartilhar"
+                                    icon="ic-share"
+                                    class="btn btn-primary icon-link-hover-scale-center"/>
+
+                  <x-frontend::link link="#"
+                                    label="Ver mais"
+                                    icon="ic-arrow-right"
+                                    icon-change-position="true"/>
+
+                  <x-frontend::link link="#"
+                                    label="Ver mais"
+                                    icon="ic-info"
+                                    icon-change-position="true"
+                                    class="btn btn-primary icon-link-hover-flip-horizontal"/>
                 </div>
 
               </div>
@@ -4016,6 +4049,32 @@
                         </small>
                       </x-frontend::cards.card>
                     </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div id="video"
+                 class="bd-example">
+
+              <h2 class="mb-block-small h6">Video</h2>
+              <div class="vstack gap-1">
+
+                <div class="row g-1">
+                  <div class="col-md-6">
+                    <x-frontend::glightbox.video link="https://youtu.be/lG7o0r-7coo?si=a8uCcwaD_hsqgQM3">
+                      <x-frontend::picture image="img-16x9.jpg"
+                                           title="imagem titulo"
+                                           alt="imagem alt"
+                                           pictureClass="ratio ratio-16x9"
+                                           class="img-cover"
+                                           has-breakpoints="true"
+                                           breakpointDesktopWidth="1400px"
+                                           breakpointDesktopSuffix="xl"
+                                           breakpointNotebookWidth="768px"
+                                           breakpointNotebookSuffix="lg"/>
+                    </x-frontend::glightbox.video>
                   </div>
                 </div>
 

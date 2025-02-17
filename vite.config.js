@@ -15,6 +15,7 @@ const { APP_URL } = {
 const purgeCheckPaths = [
   'packages/agenciafmd/frontend/resources/views/**/*.php',
   'node_modules/swiper/**/*.js',
+  'node_modules/glightbox/dist/js/*.js',
   'node_modules/sweetalert2/dist/*.js',
   'node_modules/wow.js/dist/*.js',
   'node_modules/bootstrap/dist/js/bootstrap.min.js',
@@ -70,13 +71,14 @@ export default defineConfig({
       // Include classes we don't have direct access
       safelist: [
         /hs-*/,
-        /glightbox-*/,
         /js-*/,
         /swiper-*/,
         /swal2-*/,
         /file-upload-button*/,
         /fmd-header-*/,
         /was-*/,
+        /g*/,
+        /plyr*/,
       ],
     }),
   ],

@@ -35,8 +35,8 @@ $link-dark-color: $white;
 
       background: #{escape-svg($form-select-indicator)} no-repeat;
       background-size: contain;
-      width: 0.8rem;
-      height: 0.8rem;
+      width: $spacer * .8;
+      height: $spacer * .8;
       transform: rotate(-90deg);
       margin-right: var(--bs-breadcrumb-item-padding-x);
       display: inline-block;
