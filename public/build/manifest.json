@@ -1,4 +1,8 @@
 {
+  "_frontend-DzjIb59H.js": {
+    "file": "assets/frontend-DzjIb59H.js",
+    "name": "frontend"
+  },
   "resources/fonts/Roboto-Bold.woff2": {
     "file": "assets/Roboto-Bold-B00cclMj.woff2",
     "src": "resources/fonts/Roboto-Bold.woff2"
@@ -51,36 +55,84 @@
     "file": "assets/safari-pinned-tab-D1KIlaRt.svg",
     "src": "resources/images/icons/safari-pinned-tab.svg"
   },
+  "resources/images/img-16x9-lg.jpg": {
+    "file": "assets/img-16x9-lg-o3JK6_O8.jpg",
+    "src": "resources/images/img-16x9-lg.jpg"
+  },
+  "resources/images/img-16x9-lg.webp": {
+    "file": "assets/img-16x9-lg-CT-nW7J8.webp",
+    "src": "resources/images/img-16x9-lg.webp"
+  },
+  "resources/images/img-16x9-lg@2x.jpg": {
+    "file": "assets/img-16x9-lg@2x-D1AhT55_.jpg",
+    "src": "resources/images/img-16x9-lg@2x.jpg"
+  },
+  "resources/images/img-16x9-lg@2x.webp": {
+    "file": "assets/img-16x9-lg@2x-IKkAHl3A.webp",
+    "src": "resources/images/img-16x9-lg@2x.webp"
+  },
+  "resources/images/img-16x9-xl.jpg": {
+    "file": "assets/img-16x9-xl-fzL-9V2Z.jpg",
+    "src": "resources/images/img-16x9-xl.jpg"
+  },
+  "resources/images/img-16x9-xl.webp": {
+    "file": "assets/img-16x9-xl-CMb-7b3z.webp",
+    "src": "resources/images/img-16x9-xl.webp"
+  },
+  "resources/images/img-16x9-xl@2x.jpg": {
+    "file": "assets/img-16x9-xl@2x-BAHGbvSf.jpg",
+    "src": "resources/images/img-16x9-xl@2x.jpg"
+  },
+  "resources/images/img-16x9-xl@2x.webp": {
+    "file": "assets/img-16x9-xl@2x-BAlZVpMt.webp",
+    "src": "resources/images/img-16x9-xl@2x.webp"
+  },
+  "resources/images/img-16x9.jpg": {
+    "file": "assets/img-16x9-rAws5aF1.jpg",
+    "src": "resources/images/img-16x9.jpg"
+  },
+  "resources/images/img-16x9.webp": {
+    "file": "assets/img-16x9-hkb4DkF9.webp",
+    "src": "resources/images/img-16x9.webp"
+  },
+  "resources/images/img-16x9@2x.jpg": {
+    "file": "assets/img-16x9@2x-CrfW2PD8.jpg",
+    "src": "resources/images/img-16x9@2x.jpg"
+  },
+  "resources/images/img-16x9@2x.webp": {
+    "file": "assets/img-16x9@2x-BUPPc_1Y.webp",
+    "src": "resources/images/img-16x9@2x.webp"
+  },
   "resources/images/logo-amp.png": {
     "file": "assets/logo-amp-DeuE3hbF.png",
     "src": "resources/images/logo-amp.png"
   },
   "resources/images/logo-amp.webp": {
-    "file": "assets/logo-amp-VV1JanoM.webp",
+    "file": "assets/logo-amp-D4rTloZ3.webp",
     "src": "resources/images/logo-amp.webp"
   },
   "resources/images/logo-email.png": {
     "file": "assets/logo-wNWFdTgP.png",
-    "src": "resources/images/logo-email.png"
+    "src": "resources/images/logo.png"
   },
   "resources/images/logo-email.webp": {
-    "file": "assets/logo-BX6E0705.webp",
-    "src": "resources/images/logo-email.webp"
+    "file": "assets/logo-B-4kqgKn.webp",
+    "src": "resources/images/logo.webp"
   },
   "resources/images/logo.png": {
     "file": "assets/logo-wNWFdTgP.png",
-    "src": "resources/images/logo-email.png"
+    "src": "resources/images/logo.png"
   },
   "resources/images/logo.webp": {
-    "file": "assets/logo-BX6E0705.webp",
-    "src": "resources/images/logo-email.webp"
+    "file": "assets/logo-B-4kqgKn.webp",
+    "src": "resources/images/logo.webp"
   },
   "resources/images/sem-imagem.jpg": {
     "file": "assets/sem-imagem-JMoanD8a.jpg",
     "src": "resources/images/sem-imagem.jpg"
   },
   "resources/images/sem-imagem.webp": {
-    "file": "assets/sem-imagem-3ky1Zb8c.webp",
+    "file": "assets/sem-imagem-BaJde9AW.webp",
     "src": "resources/images/sem-imagem.webp"
   },
   "resources/images/video-film.png": {
@@ -88,22 +140,30 @@
     "src": "resources/images/video-film.png"
   },
   "resources/images/video-film.webp": {
-    "file": "assets/video-film-UB40Aegl.webp",
+    "file": "assets/video-film-i0ygZlra.webp",
     "src": "resources/images/video-film.webp"
   },
   "resources/js/frontend-imports.js": {
-    "file": "assets/frontend-imports-BVqU8AaV.js",
+    "file": "assets/frontend-imports-DgcARq5q.js",
     "name": "frontend-imports",
     "src": "resources/js/frontend-imports.js",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "_frontend-DzjIb59H.js"
+    ]
+  },
+  "resources/js/pages/theme.js": {
+    "file": "assets/theme-BUGEjNzS.js",
+    "name": "theme",
+    "src": "resources/js/pages/theme.js",
+    "isEntry": true,
+    "imports": [
+      "_frontend-DzjIb59H.js"
+    ]
   },
   "resources/scss/frontend.scss": {
-    "file": "assets/frontend-EMCoD0Mz.css",
+    "file": "assets/frontend-uAZf-Zr9.css",
     "src": "resources/scss/frontend.scss",
     "isEntry": true
-  },
-  "spritemap.svg": {
-    "file": "assets/spritemap.92875422.svg",
-    "src": "spritemap.svg"
   }
 }
