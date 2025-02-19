@@ -13,6 +13,7 @@ import IMask from 'imask';
 import ClipboardJS from 'clipboard';
 import WOW from 'wow.js';
 import { Modal, Popover, Tooltip, Toast } from 'bootstrap';
+import InfiniteScroll from 'infinite-scroll';
 
 export function getThemeVariables() {
   const root = getComputedStyle(document.documentElement);
