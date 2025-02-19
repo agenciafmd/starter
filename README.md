@@ -70,7 +70,7 @@ Acesse a [documentação específica](./resources/README.md).
 ## Requisitos do projeto
 
 - Versão do PHP: **^8.4**
-- Versão do Node: **20+**
+- Versão do Node: **22+**
 
 ## Licença
 
