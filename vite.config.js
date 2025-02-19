@@ -12,6 +12,10 @@ const { APP_URL } = {
   ),
 };
 
+const DEFAULT_URL = 'http://localhost';
+const url = APP_URL ? new URL(APP_URL) : new URL(DEFAULT_URL);
+const CRITICAL_URL = `${url.protocol}//${url.hostname}`;
+
 const purgeCheckPaths = [
   'packages/agenciafmd/frontend/resources/views/**/*.php',
   'node_modules/swiper/**/*.js',
@@ -34,7 +38,7 @@ export default defineConfig({
       refresh: true, // TODO add all paths to watch and refresh on change
     }),
     PluginCritical({
-      criticalUrl: `${ APP_URL }/html/`,
+      criticalUrl: `${ CRITICAL_URL }/html/`,
       criticalBase: 'public/css/critical',
       criticalPages: [
         {
