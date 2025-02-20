@@ -46,11 +46,8 @@
     </div>
     <div class="page-load-status mx-auto">
         <div class="infinite-scroll-request text-center">
-            <img src="/svg/loading.svg"
-                 loading="eager"
-                 title="Carregando solicitação"
-                 alt="Por gentileza, aguarde enquanto processamos a solicitação"
-                 class="border-0">
+            <x-frontend-icon name="ic-loading"
+                             class="ic-lg text-primary"/>
         </div>
         <p class="infinite-scroll-last"></p>
         <p class="infinite-scroll-error"></p>

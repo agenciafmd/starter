@@ -6,7 +6,6 @@ function setupGLightBox() {
     touchNavigation: true,
     loop: true,
     autoplayVideos: true,
-    videosWidth: '80vw',
   });
 }
 

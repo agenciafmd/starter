@@ -1,6 +1,6 @@
 {
-  "_frontend-DzjIb59H.js": {
-    "file": "assets/frontend-DzjIb59H.js",
+  "_frontend-76dg69cT.js": {
+    "file": "assets/frontend-76dg69cT.js",
     "name": "frontend"
   },
   "resources/fonts/Roboto-Bold.woff2": {
@@ -144,21 +144,21 @@
     "src": "resources/images/video-film.webp"
   },
   "resources/js/frontend-imports.js": {
-    "file": "assets/frontend-imports-DgcARq5q.js",
+    "file": "assets/frontend-imports-DA655LAP.js",
     "name": "frontend-imports",
     "src": "resources/js/frontend-imports.js",
     "isEntry": true,
     "imports": [
-      "_frontend-DzjIb59H.js"
+      "_frontend-76dg69cT.js"
     ]
   },
   "resources/js/pages/theme.js": {
-    "file": "assets/theme-BUGEjNzS.js",
+    "file": "assets/theme-DpKh2JlD.js",
     "name": "theme",
     "src": "resources/js/pages/theme.js",
     "isEntry": true,
     "imports": [
-      "_frontend-DzjIb59H.js"
+      "_frontend-76dg69cT.js"
     ]
   },
   "resources/scss/frontend.scss": {
