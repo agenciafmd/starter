@@ -5,7 +5,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 11.41.3.
+ * Generated for Laravel 11.43.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -663,9 +663,10 @@ namespace Illuminate\Support\Facades {
         /**
          * Resolve the given type from the container.
          *
-         * @param string $abstract
+         * @template TClass of object
+         * @param string|class-string<TClass> $abstract
          * @param array $parameters
-         * @return mixed 
+         * @return ($abstract is class-string<TClass> ? TClass : mixed)
          * @throws \Illuminate\Contracts\Container\BindingResolutionException
          * @static 
          */
@@ -1464,9 +1465,10 @@ namespace Illuminate\Support\Facades {
         /**
          * Register an existing instance as shared in the container.
          *
+         * @template TInstance of mixed
          * @param string $abstract
-         * @param mixed $instance
-         * @return mixed 
+         * @param TInstance $instance
+         * @return TInstance 
          * @static 
          */
         public static function instance($abstract, $instance)
@@ -1587,8 +1589,9 @@ namespace Illuminate\Support\Facades {
         /**
          * Get a closure to resolve the given type from the container.
          *
-         * @param string $abstract
-         * @return \Closure 
+         * @template TClass of object
+         * @param string|class-string<TClass> $abstract
+         * @return ($abstract is class-string<TClass> ? \Closure(): TClass : \Closure(): mixed)
          * @static 
          */
         public static function factory($abstract)
@@ -1601,9 +1604,10 @@ namespace Illuminate\Support\Facades {
         /**
          * An alias function name for make().
          *
-         * @param string|callable $abstract
+         * @template TClass of object
+         * @param string|class-string<TClass>|callable $abstract
          * @param array $parameters
-         * @return mixed 
+         * @return ($abstract is class-string<TClass> ? TClass : mixed)
          * @throws \Illuminate\Contracts\Container\BindingResolutionException
          * @static 
          */
@@ -1615,13 +1619,11 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Finds an entry of the container by its identifier and returns it.
+         * {@inheritdoc}
          *
-         * @return mixed 
-         * @param string $id Identifier of the entry to look for.
-         * @throws NotFoundExceptionInterface  No entry was found for **this** identifier.
-         * @throws ContainerExceptionInterface Error while retrieving the entry.
-         * @return mixed Entry.
+         * @template TClass of object
+         * @param string|class-string<TClass> $id
+         * @return ($id is class-string<TClass> ? TClass : mixed)
          * @static 
          */
         public static function get($id)
@@ -1634,8 +1636,9 @@ namespace Illuminate\Support\Facades {
         /**
          * Instantiate a concrete instance of the given type.
          *
-         * @param \Closure|string $concrete
-         * @return mixed 
+         * @template TClass of object
+         * @param \Closure(static, array):  TClass|class-string<TClass>  $concrete
+         * @return TClass 
          * @throws \Illuminate\Contracts\Container\BindingResolutionException
          * @throws \Illuminate\Contracts\Container\CircularDependencyException
          * @static 
@@ -5079,7 +5082,7 @@ namespace Illuminate\Support\Facades {
          */
         public static function lock($name, $seconds = 0, $owner = null)
         {
-            /** @var \Illuminate\Cache\DatabaseStore $instance */
+            /** @var \Illuminate\Cache\FileStore $instance */
             return $instance->lock($name, $seconds, $owner);
         }
 
@@ -5093,21 +5096,8 @@ namespace Illuminate\Support\Facades {
          */
         public static function restoreLock($name, $owner)
         {
-            /** @var \Illuminate\Cache\DatabaseStore $instance */
+            /** @var \Illuminate\Cache\FileStore $instance */
             return $instance->restoreLock($name, $owner);
-        }
-
-        /**
-         * Remove an item from the cache if it is expired.
-         *
-         * @param string $key
-         * @return bool 
-         * @static 
-         */
-        public static function forgetIfExpired($key)
-        {
-            /** @var \Illuminate\Cache\DatabaseStore $instance */
-            return $instance->forgetIfExpired($key);
         }
 
         /**
@@ -5118,33 +5108,71 @@ namespace Illuminate\Support\Facades {
          */
         public static function flush()
         {
-            /** @var \Illuminate\Cache\DatabaseStore $instance */
+            /** @var \Illuminate\Cache\FileStore $instance */
             return $instance->flush();
         }
 
         /**
-         * Get the underlying database connection.
+         * Get the full path for the given cache key.
          *
-         * @return \Illuminate\Database\SQLiteConnection 
+         * @param string $key
+         * @return string 
          * @static 
          */
-        public static function getConnection()
+        public static function path($key)
         {
-            /** @var \Illuminate\Cache\DatabaseStore $instance */
-            return $instance->getConnection();
+            /** @var \Illuminate\Cache\FileStore $instance */
+            return $instance->path($key);
         }
 
         /**
-         * Specify the name of the connection that should be used to manage locks.
+         * Get the Filesystem instance.
          *
-         * @param \Illuminate\Database\ConnectionInterface $connection
-         * @return \Illuminate\Cache\DatabaseStore 
+         * @return \Illuminate\Filesystem\Filesystem 
          * @static 
          */
-        public static function setLockConnection($connection)
+        public static function getFilesystem()
         {
-            /** @var \Illuminate\Cache\DatabaseStore $instance */
-            return $instance->setLockConnection($connection);
+            /** @var \Illuminate\Cache\FileStore $instance */
+            return $instance->getFilesystem();
+        }
+
+        /**
+         * Get the working directory of the cache.
+         *
+         * @return string 
+         * @static 
+         */
+        public static function getDirectory()
+        {
+            /** @var \Illuminate\Cache\FileStore $instance */
+            return $instance->getDirectory();
+        }
+
+        /**
+         * Set the working directory of the cache.
+         *
+         * @param string $directory
+         * @return \Illuminate\Cache\FileStore 
+         * @static 
+         */
+        public static function setDirectory($directory)
+        {
+            /** @var \Illuminate\Cache\FileStore $instance */
+            return $instance->setDirectory($directory);
+        }
+
+        /**
+         * Set the cache directory where locks should be stored.
+         *
+         * @param string|null $lockDirectory
+         * @return \Illuminate\Cache\FileStore 
+         * @static 
+         */
+        public static function setLockDirectory($lockDirectory)
+        {
+            /** @var \Illuminate\Cache\FileStore $instance */
+            return $instance->setLockDirectory($lockDirectory);
         }
 
         /**
@@ -5155,21 +5183,8 @@ namespace Illuminate\Support\Facades {
          */
         public static function getPrefix()
         {
-            /** @var \Illuminate\Cache\DatabaseStore $instance */
+            /** @var \Illuminate\Cache\FileStore $instance */
             return $instance->getPrefix();
-        }
-
-        /**
-         * Set the cache key prefix.
-         *
-         * @param string $prefix
-         * @return void 
-         * @static 
-         */
-        public static function setPrefix($prefix)
-        {
-            /** @var \Illuminate\Cache\DatabaseStore $instance */
-            $instance->setPrefix($prefix);
         }
 
             }
@@ -5639,6 +5654,19 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Determine if the given key is missing.
+         *
+         * @param string $key
+         * @return bool 
+         * @static 
+         */
+        public static function missing($key)
+        {
+            /** @var \Illuminate\Log\Context\Repository $instance */
+            return $instance->missing($key);
+        }
+
+        /**
          * Determine if the given key exists within the hidden context data.
          *
          * @param string $key
@@ -5649,6 +5677,19 @@ namespace Illuminate\Support\Facades {
         {
             /** @var \Illuminate\Log\Context\Repository $instance */
             return $instance->hasHidden($key);
+        }
+
+        /**
+         * Determine if the given key is missing within the hidden context data.
+         *
+         * @param string $key
+         * @return bool 
+         * @static 
+         */
+        public static function missingHidden($key)
+        {
+            /** @var \Illuminate\Log\Context\Repository $instance */
+            return $instance->missingHidden($key);
         }
 
         /**
@@ -9277,7 +9318,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Define a new ability.
          *
-         * @param \BackedEnum|string $ability
+         * @param \UnitEnum|string $ability
          * @param callable|array|string $callback
          * @return \Illuminate\Auth\Access\Gate 
          * @throws \InvalidArgumentException
@@ -9347,7 +9388,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if all of the given abilities should be granted for the current user.
          *
-         * @param iterable|\BackedEnum|string $ability
+         * @param iterable|\UnitEnum|string $ability
          * @param array|mixed $arguments
          * @return bool 
          * @static 
@@ -9361,7 +9402,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if any of the given abilities should be denied for the current user.
          *
-         * @param iterable|\BackedEnum|string $ability
+         * @param iterable|\UnitEnum|string $ability
          * @param array|mixed $arguments
          * @return bool 
          * @static 
@@ -9375,7 +9416,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if all of the given abilities should be granted for the current user.
          *
-         * @param iterable|\BackedEnum|string $abilities
+         * @param iterable|\UnitEnum|string $abilities
          * @param array|mixed $arguments
          * @return bool 
          * @static 
@@ -9389,7 +9430,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if any one of the given abilities should be granted for the current user.
          *
-         * @param iterable|\BackedEnum|string $abilities
+         * @param iterable|\UnitEnum|string $abilities
          * @param array|mixed $arguments
          * @return bool 
          * @static 
@@ -9403,7 +9444,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if all of the given abilities should be denied for the current user.
          *
-         * @param iterable|\BackedEnum|string $abilities
+         * @param iterable|\UnitEnum|string $abilities
          * @param array|mixed $arguments
          * @return bool 
          * @static 
@@ -9417,7 +9458,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if the given ability should be granted for the current user.
          *
-         * @param \BackedEnum|string $ability
+         * @param \UnitEnum|string $ability
          * @param array|mixed $arguments
          * @return \Illuminate\Auth\Access\Response 
          * @throws \Illuminate\Auth\Access\AuthorizationException
@@ -9432,7 +9473,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Inspect the user for the given ability.
          *
-         * @param \BackedEnum|string $ability
+         * @param \UnitEnum|string $ability
          * @param array|mixed $arguments
          * @return \Illuminate\Auth\Access\Response 
          * @static 
@@ -11934,6 +11975,7 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Process\PendingProcess options(array $options)
      * @method static \Illuminate\Contracts\Process\ProcessResult run(array|string|null $command = null, callable|null $output = null)
      * @method static \Illuminate\Process\InvokedProcess start(array|string|null $command = null, callable|null $output = null)
+     * @method static bool supportsTty()
      * @method static \Illuminate\Process\PendingProcess withFakeHandlers(array $fakeHandlers)
      * @method static \Illuminate\Process\PendingProcess|mixed when(\Closure|mixed|null $value = null, callable|null $callback = null, callable|null $default = null)
      * @method static \Illuminate\Process\PendingProcess|mixed unless(\Closure|mixed|null $value = null, callable|null $callback = null, callable|null $default = null)
@@ -12791,89 +12833,6 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Release a reserved job back onto the queue after (n) seconds.
-         *
-         * @param string $queue
-         * @param \Illuminate\Queue\Jobs\DatabaseJobRecord $job
-         * @param int $delay
-         * @return mixed 
-         * @static 
-         */
-        public static function release($queue, $job, $delay)
-        {
-            /** @var \Illuminate\Queue\DatabaseQueue $instance */
-            return $instance->release($queue, $job, $delay);
-        }
-
-        /**
-         * Delete a reserved job from the queue.
-         *
-         * @param string $queue
-         * @param string $id
-         * @return void 
-         * @throws \Throwable
-         * @static 
-         */
-        public static function deleteReserved($queue, $id)
-        {
-            /** @var \Illuminate\Queue\DatabaseQueue $instance */
-            $instance->deleteReserved($queue, $id);
-        }
-
-        /**
-         * Delete a reserved job from the reserved queue and release it.
-         *
-         * @param string $queue
-         * @param \Illuminate\Queue\Jobs\DatabaseJob $job
-         * @param int $delay
-         * @return void 
-         * @static 
-         */
-        public static function deleteAndRelease($queue, $job, $delay)
-        {
-            /** @var \Illuminate\Queue\DatabaseQueue $instance */
-            $instance->deleteAndRelease($queue, $job, $delay);
-        }
-
-        /**
-         * Delete all of the jobs from the queue.
-         *
-         * @param string $queue
-         * @return int 
-         * @static 
-         */
-        public static function clear($queue)
-        {
-            /** @var \Illuminate\Queue\DatabaseQueue $instance */
-            return $instance->clear($queue);
-        }
-
-        /**
-         * Get the queue or return the default.
-         *
-         * @param string|null $queue
-         * @return string 
-         * @static 
-         */
-        public static function getQueue($queue)
-        {
-            /** @var \Illuminate\Queue\DatabaseQueue $instance */
-            return $instance->getQueue($queue);
-        }
-
-        /**
-         * Get the underlying database instance.
-         *
-         * @return \Illuminate\Database\Connection 
-         * @static 
-         */
-        public static function getDatabase()
-        {
-            /** @var \Illuminate\Queue\DatabaseQueue $instance */
-            return $instance->getDatabase();
-        }
-
-        /**
          * Get the maximum number of attempts for an object-based queue handler.
          *
          * @param mixed $job
@@ -12883,7 +12842,7 @@ namespace Illuminate\Support\Facades {
         public static function getJobTries($job)
         {
             //Method inherited from \Illuminate\Queue\Queue 
-            /** @var \Illuminate\Queue\DatabaseQueue $instance */
+            /** @var \Illuminate\Queue\SyncQueue $instance */
             return $instance->getJobTries($job);
         }
 
@@ -12897,7 +12856,7 @@ namespace Illuminate\Support\Facades {
         public static function getJobBackoff($job)
         {
             //Method inherited from \Illuminate\Queue\Queue 
-            /** @var \Illuminate\Queue\DatabaseQueue $instance */
+            /** @var \Illuminate\Queue\SyncQueue $instance */
             return $instance->getJobBackoff($job);
         }
 
@@ -12911,7 +12870,7 @@ namespace Illuminate\Support\Facades {
         public static function getJobExpiration($job)
         {
             //Method inherited from \Illuminate\Queue\Queue 
-            /** @var \Illuminate\Queue\DatabaseQueue $instance */
+            /** @var \Illuminate\Queue\SyncQueue $instance */
             return $instance->getJobExpiration($job);
         }
 
@@ -12925,7 +12884,7 @@ namespace Illuminate\Support\Facades {
         public static function createPayloadUsing($callback)
         {
             //Method inherited from \Illuminate\Queue\Queue 
-            \Illuminate\Queue\DatabaseQueue::createPayloadUsing($callback);
+            \Illuminate\Queue\SyncQueue::createPayloadUsing($callback);
         }
 
         /**
@@ -12937,7 +12896,7 @@ namespace Illuminate\Support\Facades {
         public static function getContainer()
         {
             //Method inherited from \Illuminate\Queue\Queue 
-            /** @var \Illuminate\Queue\DatabaseQueue $instance */
+            /** @var \Illuminate\Queue\SyncQueue $instance */
             return $instance->getContainer();
         }
 
@@ -12951,7 +12910,7 @@ namespace Illuminate\Support\Facades {
         public static function setContainer($container)
         {
             //Method inherited from \Illuminate\Queue\Queue 
-            /** @var \Illuminate\Queue\DatabaseQueue $instance */
+            /** @var \Illuminate\Queue\SyncQueue $instance */
             $instance->setContainer($container);
         }
 
@@ -15702,7 +15661,7 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
-         * Retrieve data from the instnce as a Stringable instance.
+         * Retrieve data from the instance as a Stringable instance.
          *
          * @param string $key
          * @param mixed $default
@@ -16042,6 +16001,21 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Create a new event stream response.
+         *
+         * @param \Closure $callback
+         * @param array $headers
+         * @param string $endStreamWith
+         * @return \Symfony\Component\HttpFoundation\StreamedResponse 
+         * @static 
+         */
+        public static function eventStream($callback, $headers = [], $endStreamWith = '</stream>')
+        {
+            /** @var \Illuminate\Routing\ResponseFactory $instance */
+            return $instance->eventStream($callback, $headers, $endStreamWith);
+        }
+
+        /**
          * Create a new streamed response instance.
          *
          * @param callable $callback
@@ -16262,6 +16236,7 @@ namespace Illuminate\Support\Facades {
      * @method static \Illuminate\Routing\RouteRegistrar whereUuid(array|string $parameters)
      * @method static \Illuminate\Routing\RouteRegistrar whereIn(array|string $parameters, array $values)
      * @method static \Illuminate\Routing\RouteRegistrar as(string $value)
+     * @method static \Illuminate\Routing\RouteRegistrar can(\UnitEnum|string $ability, array|string $models = [])
      * @method static \Illuminate\Routing\RouteRegistrar controller(string $controller)
      * @method static \Illuminate\Routing\RouteRegistrar domain(\BackedEnum|string $value)
      * @method static \Illuminate\Routing\RouteRegistrar middleware(array|string|null $middleware)
@@ -20556,16 +20531,43 @@ namespace Illuminate\Support\Facades {
         }
 
         /**
+         * Set the URL origin for all generated URLs.
+         *
+         * @param string|null $root
+         * @return void 
+         * @static 
+         */
+        public static function useOrigin($root)
+        {
+            /** @var \Illuminate\Routing\UrlGenerator $instance */
+            $instance->useOrigin($root);
+        }
+
+        /**
          * Set the forced root URL.
          *
          * @param string|null $root
          * @return void 
+         * @deprecated Use useOrigin
          * @static 
          */
         public static function forceRootUrl($root)
         {
             /** @var \Illuminate\Routing\UrlGenerator $instance */
             $instance->forceRootUrl($root);
+        }
+
+        /**
+         * Set the URL origin for all generated asset URLs.
+         *
+         * @param string|null $root
+         * @return void 
+         * @static 
+         */
+        public static function useAssetOrigin($root)
+        {
+            /** @var \Illuminate\Routing\UrlGenerator $instance */
+            $instance->useAssetOrigin($root);
         }
 
         /**
@@ -23621,18 +23623,6 @@ namespace Illuminate\Foundation {
             return \Illuminate\Foundation\Vite::font($asset);
         }
 
-        /**
-         * 
-         *
-         * @see \Agenciafmd\Frontend\Providers\FrontendServiceProvider::loadViteMacros()
-         * @param string $asset
-         * @static 
-         */
-        public static function sprite($asset)
-        {
-            return \Illuminate\Foundation\Vite::sprite($asset);
-        }
-
             }
     }
 
@@ -24030,6 +24020,22 @@ namespace  {
         {
             /** @var \Illuminate\Database\Eloquent\Builder $instance */
             return $instance->find($id, $columns);
+        }
+
+        /**
+         * Find a sole model by its primary key.
+         *
+         * @param mixed $id
+         * @param array|string $columns
+         * @return TModel 
+         * @throws \Illuminate\Database\Eloquent\ModelNotFoundException<TModel>
+         * @throws \Illuminate\Database\MultipleRecordsFoundException
+         * @static 
+         */
+        public static function findSole($id, $columns = [])
+        {
+            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+            return $instance->findSole($id, $columns);
         }
 
         /**
@@ -24757,6 +24763,19 @@ namespace  {
         }
 
         /**
+         * Register a closure to be invoked on a clone.
+         *
+         * @param \Closure $callback
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function onClone($callback)
+        {
+            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+            return $instance->onClone($callback);
+        }
+
+        /**
          * Chunk the results of the query.
          *
          * @param int $count
@@ -24870,7 +24889,7 @@ namespace  {
          * Query lazily, by chunks of the given size.
          *
          * @param int $chunkSize
-         * @return \Illuminate\Support\LazyCollection 
+         * @return \Illuminate\Support\LazyCollection<int, TValue> 
          * @throws \InvalidArgumentException
          * @static 
          */
@@ -24886,7 +24905,7 @@ namespace  {
          * @param int $chunkSize
          * @param string|null $column
          * @param string|null $alias
-         * @return \Illuminate\Support\LazyCollection 
+         * @return \Illuminate\Support\LazyCollection<int, TValue> 
          * @throws \InvalidArgumentException
          * @static 
          */
@@ -24902,7 +24921,7 @@ namespace  {
          * @param int $chunkSize
          * @param string|null $column
          * @param string|null $alias
-         * @return \Illuminate\Support\LazyCollection 
+         * @return \Illuminate\Support\LazyCollection<int, TValue> 
          * @throws \InvalidArgumentException
          * @static 
          */
@@ -24990,11 +25009,12 @@ namespace  {
         /**
          * Add a relationship count / exists condition to the query.
          *
-         * @param \Illuminate\Database\Eloquent\Relations\Relation<*, *, *>|string $relation
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\Relation<TRelatedModel, *, *>|string $relation
          * @param string $operator
          * @param int $count
          * @param string $boolean
-         * @param \Closure|null $callback
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>): mixed)|null $callback
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @throws \RuntimeException
          * @static 
@@ -25023,9 +25043,10 @@ namespace  {
         /**
          * Add a relationship count / exists condition to the query.
          *
-         * @param \Illuminate\Database\Eloquent\Relations\Relation<*, *, *>|string $relation
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\Relation<TRelatedModel, *, *>|string $relation
          * @param string $boolean
-         * @param \Closure|null $callback
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>): mixed)|null $callback
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -25051,8 +25072,9 @@ namespace  {
         /**
          * Add a relationship count / exists condition to the query with where clauses.
          *
-         * @param \Illuminate\Database\Eloquent\Relations\Relation<*, *, *>|string $relation
-         * @param \Closure|null $callback
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\Relation<TRelatedModel, *, *>|string $relation
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>): mixed)|null $callback
          * @param string $operator
          * @param int $count
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -25067,10 +25089,10 @@ namespace  {
         /**
          * Add a relationship count / exists condition to the query with where clauses.
          * 
-         * Also load the relationship with same condition.
+         * Also load the relationship with the same condition.
          *
-         * @param \Illuminate\Database\Eloquent\Relations\Relation<*, *, *>|string $relation
-         * @param \Closure|null $callback
+         * @param string $relation
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<*>|\Illuminate\Database\Eloquent\Relations\Relation<*, *, *>): mixed)|null $callback
          * @param string $operator
          * @param int $count
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -25085,8 +25107,9 @@ namespace  {
         /**
          * Add a relationship count / exists condition to the query with where clauses and an "or".
          *
-         * @param \Illuminate\Database\Eloquent\Relations\Relation<*, *, *>|string $relation
-         * @param \Closure|null $callback
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\Relation<TRelatedModel, *, *>|string $relation
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>): mixed)|null $callback
          * @param string $operator
          * @param int $count
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -25101,8 +25124,9 @@ namespace  {
         /**
          * Add a relationship count / exists condition to the query with where clauses.
          *
-         * @param \Illuminate\Database\Eloquent\Relations\Relation<*, *, *>|string $relation
-         * @param \Closure|null $callback
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\Relation<TRelatedModel, *, *>|string $relation
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>): mixed)|null $callback
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -25115,8 +25139,9 @@ namespace  {
         /**
          * Add a relationship count / exists condition to the query with where clauses and an "or".
          *
-         * @param \Illuminate\Database\Eloquent\Relations\Relation<*, *, *>|string $relation
-         * @param \Closure|null $callback
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\Relation<TRelatedModel, *, *>|string $relation
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>): mixed)|null $callback
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -25129,12 +25154,13 @@ namespace  {
         /**
          * Add a polymorphic relationship count / exists condition to the query.
          *
-         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<*, *>|string $relation
-         * @param string|array $types
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<TRelatedModel, *>|string $relation
+         * @param string|array<int, string> $types
          * @param string $operator
          * @param int $count
          * @param string $boolean
-         * @param \Closure|null $callback
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>, string): mixed)|null $callback
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -25148,7 +25174,7 @@ namespace  {
          * Add a polymorphic relationship count / exists condition to the query with an "or".
          *
          * @param \Illuminate\Database\Eloquent\Relations\MorphTo<*, *>|string $relation
-         * @param string|array $types
+         * @param string|array<int, string> $types
          * @param string $operator
          * @param int $count
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -25163,10 +25189,11 @@ namespace  {
         /**
          * Add a polymorphic relationship count / exists condition to the query.
          *
-         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<*, *>|string $relation
-         * @param string|array $types
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<TRelatedModel, *>|string $relation
+         * @param string|array<int, string> $types
          * @param string $boolean
-         * @param \Closure|null $callback
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>, string): mixed)|null $callback
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -25180,7 +25207,7 @@ namespace  {
          * Add a polymorphic relationship count / exists condition to the query with an "or".
          *
          * @param \Illuminate\Database\Eloquent\Relations\MorphTo<*, *>|string $relation
-         * @param string|array $types
+         * @param string|array<int, string> $types
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -25193,9 +25220,10 @@ namespace  {
         /**
          * Add a polymorphic relationship count / exists condition to the query with where clauses.
          *
-         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<*, *>|string $relation
-         * @param string|array $types
-         * @param \Closure|null $callback
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<TRelatedModel, *>|string $relation
+         * @param string|array<int, string> $types
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>, string): mixed)|null $callback
          * @param string $operator
          * @param int $count
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -25210,9 +25238,10 @@ namespace  {
         /**
          * Add a polymorphic relationship count / exists condition to the query with where clauses and an "or".
          *
-         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<*, *>|string $relation
-         * @param string|array $types
-         * @param \Closure|null $callback
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<TRelatedModel, *>|string $relation
+         * @param string|array<int, string> $types
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>, string): mixed)|null $callback
          * @param string $operator
          * @param int $count
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -25227,9 +25256,10 @@ namespace  {
         /**
          * Add a polymorphic relationship count / exists condition to the query with where clauses.
          *
-         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<*, *>|string $relation
-         * @param string|array $types
-         * @param \Closure|null $callback
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<TRelatedModel, *>|string $relation
+         * @param string|array<int, string> $types
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>, string): mixed)|null $callback
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -25242,9 +25272,10 @@ namespace  {
         /**
          * Add a polymorphic relationship count / exists condition to the query with where clauses and an "or".
          *
-         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<*, *>|string $relation
-         * @param string|array $types
-         * @param \Closure|null $callback
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<TRelatedModel, *>|string $relation
+         * @param string|array<int, string> $types
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>, string): mixed)|null $callback
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -25257,8 +25288,9 @@ namespace  {
         /**
          * Add a basic where clause to a relationship query.
          *
-         * @param \Illuminate\Database\Eloquent\Relations\Relation<*, *, *>|string $relation
-         * @param \Closure|string|array|\Illuminate\Contracts\Database\Query\Expression $column
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\Relation<TRelatedModel, *, *>|string $relation
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>): mixed)|string|array|\Illuminate\Contracts\Database\Query\Expression $column
          * @param mixed $operator
          * @param mixed $value
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -25271,10 +25303,27 @@ namespace  {
         }
 
         /**
-         * Add an "or where" clause to a relationship query.
+         * Add a basic where clause to a relationship query and eager-load the relationship with the same conditions.
          *
          * @param \Illuminate\Database\Eloquent\Relations\Relation<*, *, *>|string $relation
          * @param \Closure|string|array|\Illuminate\Contracts\Database\Query\Expression $column
+         * @param mixed $operator
+         * @param mixed $value
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function withWhereRelation($relation, $column, $operator = null, $value = null)
+        {
+            /** @var \Illuminate\Database\Eloquent\Builder $instance */
+            return $instance->withWhereRelation($relation, $column, $operator, $value);
+        }
+
+        /**
+         * Add an "or where" clause to a relationship query.
+         *
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\Relation<TRelatedModel, *, *>|string $relation
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>): mixed)|string|array|\Illuminate\Contracts\Database\Query\Expression $column
          * @param mixed $operator
          * @param mixed $value
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -25289,8 +25338,9 @@ namespace  {
         /**
          * Add a basic count / exists condition to a relationship query.
          *
-         * @param \Illuminate\Database\Eloquent\Relations\Relation<*, *, *>|string $relation
-         * @param \Closure|string|array|\Illuminate\Contracts\Database\Query\Expression $column
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\Relation<TRelatedModel, *, *>|string $relation
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>): mixed)|string|array|\Illuminate\Contracts\Database\Query\Expression $column
          * @param mixed $operator
          * @param mixed $value
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -25305,8 +25355,9 @@ namespace  {
         /**
          * Add an "or where" clause to a relationship query.
          *
-         * @param \Illuminate\Database\Eloquent\Relations\Relation<*, *, *>|string $relation
-         * @param \Closure|string|array|\Illuminate\Contracts\Database\Query\Expression $column
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\Relation<TRelatedModel, *, *>|string $relation
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>): mixed)|string|array|\Illuminate\Contracts\Database\Query\Expression $column
          * @param mixed $operator
          * @param mixed $value
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -25321,9 +25372,10 @@ namespace  {
         /**
          * Add a polymorphic relationship condition to the query with a where clause.
          *
-         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<*, *>|string $relation
-         * @param string|array $types
-         * @param \Closure|string|array|\Illuminate\Contracts\Database\Query\Expression $column
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<TRelatedModel, *>|string $relation
+         * @param string|array<int, string> $types
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>): mixed)|string|array|\Illuminate\Contracts\Database\Query\Expression $column
          * @param mixed $operator
          * @param mixed $value
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -25338,9 +25390,10 @@ namespace  {
         /**
          * Add a polymorphic relationship condition to the query with an "or where" clause.
          *
-         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<*, *>|string $relation
-         * @param string|array $types
-         * @param \Closure|string|array|\Illuminate\Contracts\Database\Query\Expression $column
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<TRelatedModel, *>|string $relation
+         * @param string|array<int, string> $types
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>): mixed)|string|array|\Illuminate\Contracts\Database\Query\Expression $column
          * @param mixed $operator
          * @param mixed $value
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -25355,9 +25408,10 @@ namespace  {
         /**
          * Add a polymorphic relationship condition to the query with a doesn't have clause.
          *
-         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<*, *>|string $relation
-         * @param string|array $types
-         * @param \Closure|string|array|\Illuminate\Contracts\Database\Query\Expression $column
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<TRelatedModel, *>|string $relation
+         * @param string|array<int, string> $types
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>): mixed)|string|array|\Illuminate\Contracts\Database\Query\Expression $column
          * @param mixed $operator
          * @param mixed $value
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -25372,9 +25426,10 @@ namespace  {
         /**
          * Add a polymorphic relationship condition to the query with an "or doesn't have" clause.
          *
-         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<*, *>|string $relation
-         * @param string|array $types
-         * @param \Closure|string|array|\Illuminate\Contracts\Database\Query\Expression $column
+         * @template TRelatedModel of \Illuminate\Database\Eloquent\Model
+         * @param \Illuminate\Database\Eloquent\Relations\MorphTo<TRelatedModel, *>|string $relation
+         * @param string|array<int, string> $types
+         * @param (\Closure(\Illuminate\Database\Eloquent\Builder<TRelatedModel>): mixed)|string|array|\Illuminate\Contracts\Database\Query\Expression $column
          * @param mixed $operator
          * @param mixed $value
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -25640,7 +25695,6 @@ namespace  {
          * Add a new "raw" select expression to the query.
          *
          * @param string $expression
-         * @param array $bindings
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -25816,8 +25870,6 @@ namespace  {
          * Add a lateral join clause to the query.
          *
          * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<*>|string $query
-         * @param string $as
-         * @param string $type
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -25831,7 +25883,6 @@ namespace  {
          * Add a lateral left join to the query.
          *
          * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<*>|string $query
-         * @param string $as
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -26286,7 +26337,6 @@ namespace  {
          * Add a where between statement to the query.
          *
          * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-         * @param iterable $values
          * @param string $boolean
          * @param bool $not
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -26302,7 +26352,6 @@ namespace  {
          * Add a where between statement using columns to the query.
          *
          * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-         * @param array $values
          * @param string $boolean
          * @param bool $not
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -26318,7 +26367,6 @@ namespace  {
          * Add an or where between statement to the query.
          *
          * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-         * @param iterable $values
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -26332,7 +26380,6 @@ namespace  {
          * Add an or where between statement using columns to the query.
          *
          * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-         * @param array $values
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -26346,7 +26393,6 @@ namespace  {
          * Add a where not between statement to the query.
          *
          * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-         * @param iterable $values
          * @param string $boolean
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
@@ -26361,7 +26407,6 @@ namespace  {
          * Add a where not between statement using columns to the query.
          *
          * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-         * @param array $values
          * @param string $boolean
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
@@ -26376,7 +26421,6 @@ namespace  {
          * Add an or where not between statement to the query.
          *
          * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-         * @param iterable $values
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -26390,7 +26434,6 @@ namespace  {
          * Add an or where not between statement using columns to the query.
          *
          * @param \Illuminate\Contracts\Database\Query\Expression|string $column
-         * @param array $values
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -26571,7 +26614,6 @@ namespace  {
         /**
          * Add a nested where statement to the query.
          *
-         * @param \Closure $callback
          * @param string $boolean
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
@@ -26667,7 +26709,6 @@ namespace  {
         /**
          * Add an exists clause to the query.
          *
-         * @param \Illuminate\Database\Query\Builder $query
          * @param string $boolean
          * @param bool $not
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -27068,7 +27109,6 @@ namespace  {
          * Add a raw groupBy clause to the query.
          *
          * @param string $sql
-         * @param array $bindings
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -27112,7 +27152,6 @@ namespace  {
         /**
          * Add a nested having statement to the query.
          *
-         * @param \Closure $callback
          * @param string $boolean
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
@@ -27140,7 +27179,7 @@ namespace  {
         /**
          * Add a "having null" clause to the query.
          *
-         * @param string|array $columns
+         * @param array|string $columns
          * @param string $boolean
          * @param bool $not
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -27168,7 +27207,7 @@ namespace  {
         /**
          * Add a "having not null" clause to the query.
          *
-         * @param string|array $columns
+         * @param array|string $columns
          * @param string $boolean
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
@@ -27196,7 +27235,6 @@ namespace  {
          * Add a "having between " clause to the query.
          *
          * @param string $column
-         * @param iterable $values
          * @param string $boolean
          * @param bool $not
          * @return \Illuminate\Database\Eloquent\Builder<static> 
@@ -27212,7 +27250,6 @@ namespace  {
          * Add a raw having clause to the query.
          *
          * @param string $sql
-         * @param array $bindings
          * @param string $boolean
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
@@ -27227,7 +27264,6 @@ namespace  {
          * Add a raw or having clause to the query.
          *
          * @param string $sql
-         * @param array $bindings
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -27483,7 +27519,6 @@ namespace  {
         /**
          * Register a closure to be invoked before the query is executed.
          *
-         * @param callable $callback
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -27532,8 +27567,6 @@ namespace  {
         /**
          * Get a single expression value from the first result of a query.
          *
-         * @param string $expression
-         * @param array $bindings
          * @return mixed 
          * @static 
          */
@@ -27597,7 +27630,6 @@ namespace  {
         /**
          * Execute the given callback if no rows exist for the current query.
          *
-         * @param \Closure $callback
          * @return mixed 
          * @static 
          */
@@ -27610,7 +27642,6 @@ namespace  {
         /**
          * Execute the given callback if rows exist for the current query.
          *
-         * @param \Closure $callback
          * @return mixed 
          * @static 
          */
@@ -27729,7 +27760,6 @@ namespace  {
         /**
          * Insert new records into the database.
          *
-         * @param array $values
          * @return bool 
          * @static 
          */
@@ -27742,7 +27772,6 @@ namespace  {
         /**
          * Insert new records into the database while ignoring errors.
          *
-         * @param array $values
          * @return int 
          * @static 
          */
@@ -27755,7 +27784,6 @@ namespace  {
         /**
          * Insert a new record and get the value of the primary key.
          *
-         * @param array $values
          * @param string|null $sequence
          * @return int 
          * @static 
@@ -27769,7 +27797,6 @@ namespace  {
         /**
          * Insert new records into the table using a subquery.
          *
-         * @param array $columns
          * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<*>|string $query
          * @return int 
          * @static 
@@ -27783,7 +27810,6 @@ namespace  {
         /**
          * Insert new records into the table using a subquery while ignoring errors.
          *
-         * @param array $columns
          * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Eloquent\Builder<*>|string $query
          * @return int 
          * @static 
@@ -27797,7 +27823,6 @@ namespace  {
         /**
          * Update records in a PostgreSQL database using the update from syntax.
          *
-         * @param array $values
          * @return int 
          * @static 
          */
@@ -27810,8 +27835,6 @@ namespace  {
         /**
          * Insert or update a record matching the attributes, and fill it with values.
          *
-         * @param array $attributes
-         * @param array|callable $values
          * @return bool 
          * @static 
          */
@@ -27915,7 +27938,6 @@ namespace  {
         /**
          * Set the bindings on the query builder.
          *
-         * @param array $bindings
          * @param string $type
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @throws \InvalidArgumentException
@@ -27958,7 +27980,6 @@ namespace  {
         /**
          * Merge an array of bindings into our bindings.
          *
-         * @param \Illuminate\Database\Query\Builder $query
          * @return \Illuminate\Database\Eloquent\Builder<static> 
          * @static 
          */
@@ -27971,7 +27992,6 @@ namespace  {
         /**
          * Remove all of the expressions from a list of bindings.
          *
-         * @param array $bindings
          * @return array 
          * @static 
          */
@@ -28020,7 +28040,6 @@ namespace  {
         /**
          * Clone the query without the given properties.
          *
-         * @param array $properties
          * @return static 
          * @static 
          */
@@ -28033,7 +28052,6 @@ namespace  {
         /**
          * Clone the query without the given bindings.
          *
-         * @param array $except
          * @return static 
          * @static 
          */
@@ -28090,6 +28108,244 @@ namespace  {
         {
             /** @var \Illuminate\Database\Query\Builder $instance */
             return $instance->ddRawSql();
+        }
+
+        /**
+         * Add a where clause to determine if a "date" column is in the past to the query.
+         *
+         * @param array|string $columns
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function wherePast($columns)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->wherePast($columns);
+        }
+
+        /**
+         * Add a where clause to determine if a "date" column is in the past or now to the query.
+         *
+         * @param array|string $columns
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function whereNowOrPast($columns)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->whereNowOrPast($columns);
+        }
+
+        /**
+         * Add an "or where" clause to determine if a "date" column is in the past to the query.
+         *
+         * @param array|string $columns
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function orWherePast($columns)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->orWherePast($columns);
+        }
+
+        /**
+         * Add a where clause to determine if a "date" column is in the past or now to the query.
+         *
+         * @param array|string $columns
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function orWhereNowOrPast($columns)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->orWhereNowOrPast($columns);
+        }
+
+        /**
+         * Add a where clause to determine if a "date" column is in the future to the query.
+         *
+         * @param array|string $columns
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function whereFuture($columns)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->whereFuture($columns);
+        }
+
+        /**
+         * Add a where clause to determine if a "date" column is in the future or now to the query.
+         *
+         * @param array|string $columns
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function whereNowOrFuture($columns)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->whereNowOrFuture($columns);
+        }
+
+        /**
+         * Add an "or where" clause to determine if a "date" column is in the future to the query.
+         *
+         * @param array|string $columns
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function orWhereFuture($columns)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->orWhereFuture($columns);
+        }
+
+        /**
+         * Add an "or where" clause to determine if a "date" column is in the future or now to the query.
+         *
+         * @param array|string $columns
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function orWhereNowOrFuture($columns)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->orWhereNowOrFuture($columns);
+        }
+
+        /**
+         * Add a "where date" clause to determine if a "date" column is today to the query.
+         *
+         * @param array|string $columns
+         * @param string $boolean
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function whereToday($columns, $boolean = 'and')
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->whereToday($columns, $boolean);
+        }
+
+        /**
+         * Add a "where date" clause to determine if a "date" column is before today.
+         *
+         * @param array|string $columns
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function whereBeforeToday($columns)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->whereBeforeToday($columns);
+        }
+
+        /**
+         * Add a "where date" clause to determine if a "date" column is today or before to the query.
+         *
+         * @param array|string $columns
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function whereTodayOrBefore($columns)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->whereTodayOrBefore($columns);
+        }
+
+        /**
+         * Add a "where date" clause to determine if a "date" column is after today.
+         *
+         * @param array|string $columns
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function whereAfterToday($columns)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->whereAfterToday($columns);
+        }
+
+        /**
+         * Add a "where date" clause to determine if a "date" column is today or after to the query.
+         *
+         * @param array|string $columns
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function whereTodayOrAfter($columns)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->whereTodayOrAfter($columns);
+        }
+
+        /**
+         * Add an "or where date" clause to determine if a "date" column is today to the query.
+         *
+         * @param array|string $columns
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function orWhereToday($columns)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->orWhereToday($columns);
+        }
+
+        /**
+         * Add an "or where date" clause to determine if a "date" column is before today.
+         *
+         * @param array|string $columns
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function orWhereBeforeToday($columns)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->orWhereBeforeToday($columns);
+        }
+
+        /**
+         * Add an "or where date" clause to determine if a "date" column is today or before to the query.
+         *
+         * @param array|string $columns
+         * @param string $boolean
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function orWhereTodayOrBefore($columns)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->orWhereTodayOrBefore($columns);
+        }
+
+        /**
+         * Add an "or where date" clause to determine if a "date" column is after today.
+         *
+         * @param array|string $columns
+         * @param string $boolean
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function orWhereAfterToday($columns)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->orWhereAfterToday($columns);
+        }
+
+        /**
+         * Add an "or where date" clause to determine if a "date" column is today or after to the query.
+         *
+         * @param array|string $columns
+         * @param string $boolean
+         * @return \Illuminate\Database\Eloquent\Builder<static> 
+         * @static 
+         */
+        public static function orWhereTodayOrAfter($columns)
+        {
+            /** @var \Illuminate\Database\Query\Builder $instance */
+            return $instance->orWhereTodayOrAfter($columns);
         }
 
         /**
@@ -28196,6 +28452,16 @@ namespace  {
 }
 
 
+namespace Facades\Livewire\Features\SupportFileUploads {
+    /**
+     * @mixin \Livewire\Features\SupportFileUploads\GenerateSignedUploadUrl     */
+    class GenerateSignedUploadUrl extends \Livewire\Features\SupportFileUploads\GenerateSignedUploadUrl {}
+}
+namespace Facades\Agenciafmd\Categories {
+    /**
+     * @mixin \Agenciafmd\Categories\Helper     */
+    class Helper extends \Agenciafmd\Categories\Helper {}
+}
 namespace Facades\Agenciafmd\Support {
     /**
      * @mixin \Agenciafmd\Support\Helper     */
