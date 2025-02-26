@@ -9,15 +9,15 @@ class BladeServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        $this->loadBladeComponents();
+        $this->bootBladeComponents();
 
-        $this->loadBladeDirectives();
+        $this->bootBladeDirectives();
 
-        $this->loadBladeComposers();
+        $this->bootBladeComposers();
 
-        $this->loadViews();
+        $this->bootViews();
 
-        $this->publish();
+        $this->bootPublish();
     }
 
     public function register(): void
@@ -25,29 +25,29 @@ class BladeServiceProvider extends ServiceProvider
         //
     }
 
-    private function loadBladeComponents(): void
+    private function bootBladeComponents(): void
     {
         Blade::componentNamespace('Agenciafmd\\Frontend\\View\\Components', 'frontend');
     }
 
-    private function loadBladeComposers(): void
+    private function bootBladeComposers(): void
     {
         //
     }
 
-    private function loadBladeDirectives(): void
+    private function bootBladeDirectives(): void
     {
         //
     }
 
-    private function loadViews(): void
+    private function bootViews(): void
     {
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'frontend');
         $this->loadViewsFrom(base_path('resources/views/errors'), 'errors');
         //        $this->loadViewsFrom(__DIR__ . '/../../resources/mail', 'frontend-mail');
     }
 
-    private function publish(): void
+    private function bootPublish(): void
     {
         //
     }

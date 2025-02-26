@@ -17,12 +17,12 @@ class RouteServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        $this->loadBindings();
+        $this->registerBindings();
 
         parent::register();
     }
 
-    private function loadBindings(): void
+    private function registerBindings(): void
     {
         //
     }

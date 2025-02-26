@@ -9,30 +9,30 @@ class FrontendServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        $this->providers();
+        $this->bootProviders();
 
         $this->loadViteMacros();
 
-        $this->publish();
+        $this->bootPublish();
     }
 
     public function register(): void
     {
-        $this->loadConfigs();
+        $this->registerConfigs();
     }
 
-    private function providers(): void
+    private function bootProviders(): void
     {
         $this->app->register(BladeServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
     }
 
-    private function publish(): void
+    private function bootPublish(): void
     {
         //
     }
 
-    private function loadConfigs(): void
+    private function registerConfigs(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../../config/frontend.php', 'frontend');
     }
