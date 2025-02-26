@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
         /*
          * https://codecourse.com/articles/add-these-to-every-new-laravel-project?utm_campaign=laravelnews&utm_medium=link&utm_source=laravelnews
          */
+        Model::unguard();
         Model::shouldBeStrict(!app()->isProduction());
         DB::prohibitDestructiveCommands(app()->isProduction());
         Date::use(CarbonImmutable::class);
