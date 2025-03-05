@@ -28482,11 +28482,6 @@ namespace Facades\Livewire\Features\SupportFileUploads {
      * @mixin \Livewire\Features\SupportFileUploads\GenerateSignedUploadUrl     */
     class GenerateSignedUploadUrl extends \Livewire\Features\SupportFileUploads\GenerateSignedUploadUrl {}
 }
-namespace Facades\Agenciafmd\Categories {
-    /**
-     * @mixin \Agenciafmd\Categories\Helper     */
-    class Helper extends \Agenciafmd\Categories\Helper {}
-}
 namespace Facades\Agenciafmd\Support {
     /**
      * @mixin \Agenciafmd\Support\Helper     */
