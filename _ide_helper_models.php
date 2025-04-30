@@ -158,9 +158,11 @@ namespace Agenciafmd\Admix\Models{
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $auditable
  * @property-read mixed $log
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent|null $user
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Audit isActive()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Audit newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Audit newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Audit query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Audit sort()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Audit whereAuditableId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Audit whereAuditableType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Audit whereCreatedAt($value)
@@ -176,7 +178,7 @@ namespace Agenciafmd\Admix\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Audit whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Audit whereUserType($value)
  */
-	class Audit extends \Eloquent {}
+	class Audit extends \Eloquent implements \OwenIt\Auditing\Contracts\Audit {}
 }
 
 namespace Agenciafmd\Admix\Models{

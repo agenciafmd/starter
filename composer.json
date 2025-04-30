@@ -24,6 +24,7 @@
         "agenciafmd/admix-postal": "v11.x-dev",
         "agenciafmd/admix-ui": "v11.x-dev",
         "agenciafmd/frontend": "*",
+        "agenciafmd/laravel-sitemap": "v11.x-dev",
         "agenciafmd/laravel-social-meta": "v11.x-dev",
         "agenciafmd/laravel-support": "v11.x-dev",
         "agenciafmd/laravel-turbo": "v11.x-dev",
