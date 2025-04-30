@@ -12,6 +12,17 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->encryptCookies(except: [
+            'cid',
+            'gclid',
+            'hubspotutk',
+            'utm_campaign',
+            'utm_content',
+            'utm_medium',
+            'utm_source',
+            'utm_term',
+            'utm_today',
+        ]);
         $middleware->append(TrustProxies::class);
         $middleware->trustProxies('*');
         $middleware->validateCsrfTokens(except: [
