@@ -15,6 +15,4 @@ parameters:
     excludePaths:
         - ./app/Console/Commands/*.php
 
-    checkMissingIterableValueType: false
-
     reportUnmatchedIgnoredErrors: false
