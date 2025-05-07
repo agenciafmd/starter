@@ -2,6 +2,7 @@
 /node_modules
 !/public/build
 /public/hot
+/public/page-cache
 /public/storage
 /storage/*.key
 /storage/media-library
