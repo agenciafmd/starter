@@ -10,7 +10,7 @@
         "greetings": "echo 'Confira e altere o APP_URL se necessário. Caso o mapeamento do projeto esteja correto, tudo está pronto para uso e desenvolvimento. Obrigado por utilizar nosso starter!'"
     },
     "devDependencies": {
-        "axios": "^1.6.4",
+        "axios": "^1.8.2",
         "laravel-vite-plugin": "^1.0",
         "rollup-plugin-critical": "^1.0.14",
         "sass": "^1.79.4",
