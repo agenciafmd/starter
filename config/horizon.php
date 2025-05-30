@@ -210,6 +210,11 @@ return [
                 'balanceCooldown' => 3,
             ],
         ],
+        'develop' => [
+            'supervisor-1' => [
+                'maxProcesses' => 20,
+            ],
+        ],
         'local' => [
             'supervisor-1' => [
                 'maxProcesses' => 20,
