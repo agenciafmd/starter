@@ -29,7 +29,8 @@
         "agenciafmd/laravel-support": "v11.x-dev",
         "agenciafmd/laravel-turbo": "v11.x-dev",
         "laravel/framework": "^11.38",
-        "laravel/tinker": "^2.10"
+        "laravel/tinker": "^2.10",
+        "spatie/laravel-google-fonts": "^1.4"
     },
     "require-dev": {
         "agenciafmd/admix-generator": "v11.x-dev",
@@ -44,8 +45,7 @@
         "nunomaduro/phpinsights": "^2.11",
         "pestphp/pest": "^2.35",
         "pestphp/pest-plugin-laravel": "^2.4",
-        "roave/security-advisories": "dev-latest",
-        "spatie/laravel-google-fonts": "^1.4"
+        "roave/security-advisories": "dev-latest"
     },
     "autoload": {
         "psr-4": {
