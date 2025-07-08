@@ -787,7 +787,7 @@
                     <div class="col-md-6">
                       @php
                       $image = (object) [
-                      'src' => 'img-16x9.jpg',
+                      'src' => 'ratios/img-16x9.jpg',
                       'name' => 'Imagem 16x9',
                       'pictureClass' => 'ratio ratio-16x9',
                       'imageClass' => 'img-cover',
@@ -2102,7 +2102,7 @@
                     <div class="col-md-6">
                       <x-frontend::cards.card card-body-class="vstack bd-example-code align-items-center gap-1">
                         <picture class="ratio ratio-16x9">
-                          <x-frontend::image image="img-16x9.jpg"
+                          <x-frontend::image image="ratios/img-16x9.jpg"
                                              title="imagem titulo"
                                              alt="imagem alt"
                                              class="img-cover"/>
@@ -2115,7 +2115,7 @@
                     <div class="col-md-6">
                       <x-frontend::cards.card card-body-class="vstack bd-example-code align-items-center gap-1">
                         <picture class="ratio ratio-16x9">
-                          <x-frontend::single-source image="img-16x9.jpg"
+                          <x-frontend::single-source image="ratios/img-16x9.jpg"
                                                      title="imagem titulo"
                                                      alt="imagem alt"
                                                      class="img-cover"/>
@@ -2127,7 +2127,7 @@
                     </div>
                     <div class="col-md-6">
                       <x-frontend::cards.card card-body-class="vstack bd-example-code align-items-center gap-1">
-                        <x-frontend::picture image="img-16x9.jpg"
+                        <x-frontend::picture image="ratios/img-16x9.jpg"
                                              title="imagem titulo"
                                              alt="imagem alt"
                                              pictureClass="ratio ratio-16x9"
@@ -3792,8 +3792,8 @@
                 <div class="row g-1">
                   <div class="col-md-6">
                     <x-frontend::glightbox.image description="descrição da imagem"
-                                                 link="img-16x9-xl@2x.jpg">
-                      <x-frontend::picture image="img-16x9.jpg"
+                                                 link="ratios/img-16x9-xl@2x.jpg">
+                      <x-frontend::picture image="ratios/img-16x9.jpg"
                                            title="imagem titulo"
                                            alt="imagem alt"
                                            pictureClass="ratio ratio-16x9"
@@ -3807,8 +3807,8 @@
                   </div>
                   <div class="col-md-6">
                     <x-frontend::glightbox.image description="descrição da imagem"
-                                                 link="img-16x9-xl@2x.jpg">
-                      <x-frontend::picture image="img-16x9.jpg"
+                                                 link="ratios/img-16x9-xl@2x.jpg">
+                      <x-frontend::picture image="ratios/img-16x9.jpg"
                                            title="imagem titulo"
                                            alt="imagem alt"
                                            pictureClass="ratio ratio-16x9"
@@ -4064,7 +4064,7 @@
                 <div class="row g-1">
                   <div class="col-md-6">
                     <x-frontend::glightbox.video link="https://youtu.be/lG7o0r-7coo?si=a8uCcwaD_hsqgQM3">
-                      <x-frontend::picture image="img-16x9.jpg"
+                      <x-frontend::picture image="ratios/img-16x9.jpg"
                                            title="imagem titulo"
                                            alt="imagem alt"
                                            pictureClass="ratio ratio-16x9"
