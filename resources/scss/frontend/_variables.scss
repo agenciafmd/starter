@@ -325,11 +325,22 @@ $theme-colors: (
 // Usage: Alert, Border, Btn, Table, Text color, Background color, Etc...
 $custom-theme-colors: ();
 
-// Usage: Text, Background and Border color only
-$custom-utilities-colors: map-loop((
+$custom-colors-map: (
+  'gray-100': $gray-100,
+  //'gray-200': $gray-200,
+  //'gray-300': $gray-300,
+  //'gray-400': $gray-400,
+  //'gray-500': $gray-500,
+  //'gray-600': $gray-600,
+  //'gray-700': $gray-700,
+  //'gray-800': $gray-800,
+  //'gray-900': $gray-900,
   'primary-emphasis': shade-color($primary, $ds-shade-level-1),
   'primary-subtle': tint-color($primary, $ds-tint-level-1),
-), to-rgb, '$value');
+);
+
+// Usage: Text, Background and Border color only
+$custom-utilities-colors: map-loop($custom-colors-map, to-rgb, '$value');
 
 // scss-docs-start theme-text-variables
 $primary-text-emphasis: shade-color($primary, $ds-shade-level-1) !default;
@@ -470,6 +481,18 @@ $position-values: (
 
 $sizing-values: $position-values; // Not a Bootstrap standard variable
 
+// Opacity Levels
+$opacity-level-default: $ds-opacity-level-default;
+$opacity-level-semi-opaque: $ds-opacity-level-semi-opaque;
+$opacity-level-semi-intense: $ds-opacity-level-semi-intense;
+$opacity-level-intense: $ds-opacity-level-intense;
+$opacity-level-medium: $ds-opacity-level-medium;
+$opacity-level-light: $ds-opacity-level-light;
+$opacity-level-lighter: $ds-opacity-level-lighter;
+$opacity-level-faint: $ds-opacity-level-faint;
+$opacity-level-semi-transparent: $ds-opacity-level-semi-transparent;
+$opacity-level-transparent: $ds-opacity-level-transparent;
+
 // Body
 //
 // Settings for the `<body>` element.
@@ -478,10 +501,10 @@ $body-text-align: null !default;
 $body-color: $ds-body-color !default;
 $body-bg: $ds-body-bg !default;
 
-$body-secondary-color: rgba($body-color, $ds-opacity-level-semi-opaque) !default;
+$body-secondary-color: rgba($body-color, $opacity-level-semi-opaque) !default;
 $body-secondary-bg: $gray-200 !default;
 
-$body-tertiary-color: rgba($body-color, $ds-opacity-level-intense) !default;
+$body-tertiary-color: rgba($body-color, $opacity-level-intense) !default;
 $body-tertiary-bg: $gray-100 !default;
 
 $body-emphasis-color: $black !default;
@@ -566,14 +589,18 @@ $container-padding-x: $grid-gutter-width !default;
 // Define common padding and border radius sizes and more.
 
 // scss-docs-start border-variables
-$border-width: $ds-border-width !default;
+$border-width: $ds-border-width-base !default;
+$border-width-base: $ds-border-width-base !default;
+$border-width-sm: $ds-border-width-sm !default;
+$border-width-md: $ds-border-width-md !default;
 $border-widths: (
-  xs: $ds-border-width-xs,
-  sm: $ds-border-width-sm
+  null: $border-width,
+  sm: $border-width-sm,
+  md: $border-width-md
 ) !default;
 $border-style: solid !default;
 $border-color: $gray-300 !default;
-$border-color-translucent: rgba($black, $ds-opacity-level-light) !default;
+$border-color-translucent: rgba($black, $opacity-level-light) !default;
 // scss-docs-end border-variables
 
 // scss-docs-start border-radius-variables
@@ -581,10 +608,11 @@ $border-radius: $ds-border-radius !default;
 $border-radius-sm: $ds-border-radius-sm !default;
 $border-radius-md: $ds-border-radius-md !default;
 $border-radius-lg: $ds-border-radius-lg !default;
+$border-radius-xl: $ds-border-radius-xl !default;
 $border-radius-pill: $ds-border-radius-pill !default;
 // scss-docs-end border-radius-variables
 // fusv-disable
-$border-radius-2xl: $border-radius-lg !default; // Deprecated in v5.3.0
+$border-radius-2xl: $border-radius-xl !default; // Deprecated in v5.3.0
 // fusv-enable
 
 // scss-docs-start box-shadow-variables
@@ -599,7 +627,7 @@ $component-active-bg: $primary !default;
 
 // scss-docs-start focus-ring-variables
 $focus-ring-width: .25rem !default;
-$focus-ring-opacity: $ds-opacity-level-light !default;
+$focus-ring-opacity: $opacity-level-light !default;
 $focus-ring-color: rgba($primary, $focus-ring-opacity) !default;
 $focus-ring-blur: 0 !default;
 $focus-ring-box-shadow: 0 0 $focus-ring-blur $focus-ring-width $focus-ring-color !default;
@@ -668,7 +696,11 @@ $font-weight-base: $font-weight-normal !default;
 
 $line-height-base: $ds-line-height-base !default;
 $line-height-sm: $ds-line-height-sm !default;
+$line-height-md: $ds-line-height-md !default;
 $line-height-lg: $ds-line-height-lg !default;
+
+$letter-spacing-sm: $ds-letter-spacing-sm;
+$letter-spacing-md: $ds-letter-spacing-md;
 
 $h1-font-size: $ds-h1-font-size !default;
 $h2-font-size: $ds-h2-font-size !default;
@@ -750,7 +782,7 @@ $hr-height: null !default; // Deprecated in v5.2.0
 
 $hr-border-color: null !default; // Allows for inherited colors
 $hr-border-width: var(--#{$prefix}border-width) !default;
-$hr-opacity: $ds-opacity-level-light !default;
+$hr-opacity: $opacity-level-light !default;
 
 $legend-margin-bottom: .5rem !default;
 $legend-font-size: 1.5rem !default;
@@ -874,11 +906,11 @@ $btn-font-size-lg: $input-btn-font-size-lg !default;
 $btn-border-width: $input-btn-border-width !default;
 
 $btn-font-weight: $font-weight-normal !default;
-$btn-box-shadow: inset 0 1px 0 rgba($white, $ds-opacity-level-light), 0 1px 1px rgba($black, $ds-opacity-level-semi-opaque) !default;
+$btn-box-shadow: inset 0 1px 0 rgba($white, $opacity-level-light), 0 1px 1px rgba($black, $opacity-level-semi-opaque) !default;
 $btn-focus-width: $input-btn-focus-width !default;
 $btn-focus-box-shadow: $input-btn-focus-box-shadow !default;
-$btn-disabled-opacity: $ds-opacity-level-intense !default;
-$btn-active-box-shadow: inset 0 3px 5px rgba($black, $ds-opacity-level-light) !default;
+$btn-disabled-opacity: $opacity-level-intense !default;
+$btn-active-box-shadow: inset 0 3px 5px rgba($black, $opacity-level-light) !default;
 
 $btn-link-color: var(--#{$prefix}link-color) !default;
 $btn-link-hover-color: var(--#{$prefix}link-hover-color) !default;
@@ -1002,7 +1034,7 @@ $form-check-input-indeterminate-bg-color: $component-active-bg !default;
 $form-check-input-indeterminate-border-color: $form-check-input-indeterminate-bg-color !default;
 $form-check-input-indeterminate-bg-image: url('data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 20 20\'><path fill=\'none\' stroke=\'#{$form-check-input-indeterminate-color}\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'3\' d=\'M6 10h8\'/></svg>') !default;
 
-$form-check-input-disabled-opacity: $ds-opacity-level-medium !default;
+$form-check-input-disabled-opacity: $opacity-level-medium !default;
 $form-check-label-disabled-opacity: $form-check-input-disabled-opacity !default;
 $form-check-btn-check-disabled-opacity: $btn-disabled-opacity !default;
 
@@ -1010,7 +1042,7 @@ $form-check-inline-margin-end: 1rem !default;
 // scss-docs-end form-check-variables
 
 // scss-docs-start form-switch-variables
-$form-switch-color: rgba($black, $ds-opacity-level-medium) !default;
+$form-switch-color: rgba($black, $opacity-level-medium) !default;
 $form-switch-width: 2em !default;
 $form-switch-padding-start: $form-switch-width + .5em !default;
 $form-switch-bg-image: url('data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'-4 -4 8 8\'><circle r=\'3\' fill=\'#{$form-switch-color}\'/></svg>') !default;
@@ -1091,7 +1123,7 @@ $form-range-thumb-height: $form-range-thumb-width !default;
 $form-range-thumb-bg: $component-active-bg !default;
 $form-range-thumb-border: 0 !default;
 $form-range-thumb-border-radius: 1rem !default;
-$form-range-thumb-box-shadow: 0 .1rem .25rem rgba($black, $ds-opacity-level-light) !default;
+$form-range-thumb-box-shadow: 0 .1rem .25rem rgba($black, $opacity-level-light) !default;
 $form-range-thumb-focus-box-shadow: 0 0 0 1px $body-bg, $input-focus-box-shadow !default;
 $form-range-thumb-focus-box-shadow-width: $input-focus-width !default; // For focus box shadow issue in Edge
 $form-range-thumb-active-bg: tint-color($component-active-bg, 70%) !default;
@@ -1113,7 +1145,7 @@ $form-floating-padding-y: 1rem !default;
 $form-floating-input-padding-t: 1.625rem !default;
 $form-floating-input-padding-b: .625rem !default;
 $form-floating-label-height: 1.5em !default;
-$form-floating-label-opacity: $ds-opacity-level-intense !default;
+$form-floating-label-opacity: $opacity-level-intense !default;
 $form-floating-label-transform: scale(.85) translateY(-.5rem) translateX(.15rem) !default;
 $form-floating-label-disabled-color: $gray-600 !default;
 $form-floating-transition: opacity .1s ease-in-out, transform .1s ease-in-out !default;
@@ -1251,24 +1283,24 @@ $navbar-toggler-border-radius: $btn-border-radius !default;
 $navbar-toggler-focus-width: $btn-focus-width !default;
 $navbar-toggler-transition: box-shadow .15s ease-in-out !default;
 
-$navbar-light-color: rgba(var(--#{$prefix}emphasis-color-rgb), $ds-opacity-level-intense) !default;
-$navbar-light-hover-color: rgba(var(--#{$prefix}emphasis-color-rgb), $ds-opacity-level-semi-opaque) !default;
-$navbar-light-active-color: rgba(var(--#{$prefix}emphasis-color-rgb), $ds-opacity-level-default) !default;
-$navbar-light-disabled-color: rgba(var(--#{$prefix}emphasis-color-rgb), $ds-opacity-level-medium) !default;
-$navbar-light-icon-color: rgba($body-color, $ds-opacity-level-semi-opaque) !default;
+$navbar-light-color: rgba(var(--#{$prefix}emphasis-color-rgb), $opacity-level-intense) !default;
+$navbar-light-hover-color: rgba(var(--#{$prefix}emphasis-color-rgb), $opacity-level-semi-opaque) !default;
+$navbar-light-active-color: rgba(var(--#{$prefix}emphasis-color-rgb), $opacity-level-default) !default;
+$navbar-light-disabled-color: rgba(var(--#{$prefix}emphasis-color-rgb), $opacity-level-medium) !default;
+$navbar-light-icon-color: rgba($body-color, $opacity-level-semi-opaque) !default;
 $navbar-light-toggler-icon-bg: url('data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 30 30\'><path stroke=\'#{$navbar-light-icon-color}\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' stroke-width=\'2\' d=\'M4 7h22M4 15h22M4 23h22\'/></svg>') !default;
-$navbar-light-toggler-border-color: rgba(var(--#{$prefix}emphasis-color-rgb), $ds-opacity-level-light) !default;
+$navbar-light-toggler-border-color: rgba(var(--#{$prefix}emphasis-color-rgb), $opacity-level-light) !default;
 $navbar-light-brand-color: $navbar-light-active-color !default;
 $navbar-light-brand-hover-color: $navbar-light-active-color !default;
 // scss-docs-end navbar-variables
 
 // scss-docs-start navbar-dark-variables
-$navbar-dark-color: rgba($white, $ds-opacity-level-intense) !default;
-$navbar-dark-hover-color: rgba($white, $ds-opacity-level-semi-opaque) !default;
+$navbar-dark-color: rgba($white, $opacity-level-intense) !default;
+$navbar-dark-hover-color: rgba($white, $opacity-level-semi-opaque) !default;
 $navbar-dark-active-color: $white !default;
-$navbar-dark-disabled-color: rgba($white, $ds-opacity-level-medium) !default;
+$navbar-dark-disabled-color: rgba($white, $opacity-level-medium) !default;
 $navbar-dark-toggler-icon-bg: url('data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 30 30\'><path stroke=\'#{$navbar-dark-color}\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' stroke-width=\'2\' d=\'M4 7h22M4 15h22M4 23h22\'/></svg>') !default;
-$navbar-dark-toggler-border-color: rgba($white, $ds-opacity-level-light) !default;
+$navbar-dark-toggler-border-color: rgba($white, $opacity-level-light) !default;
 $navbar-dark-brand-color: $navbar-dark-active-color !default;
 $navbar-dark-brand-hover-color: $navbar-dark-active-color !default;
 // scss-docs-end navbar-dark-variables
@@ -1321,7 +1353,7 @@ $dropdown-dark-divider-bg: $dropdown-divider-bg !default;
 $dropdown-dark-box-shadow: null !default;
 $dropdown-dark-link-color: $dropdown-dark-color !default;
 $dropdown-dark-link-hover-color: $white !default;
-$dropdown-dark-link-hover-bg: rgba($white, $ds-opacity-level-light) !default;
+$dropdown-dark-link-hover-bg: rgba($white, $opacity-level-light) !default;
 $dropdown-dark-link-active-color: $dropdown-link-active-color !default;
 $dropdown-dark-link-active-bg: $dropdown-link-active-bg !default;
 $dropdown-dark-link-disabled-color: $gray-500 !default;
@@ -1373,8 +1405,8 @@ $pagination-border-radius-lg: var(--#{$prefix}border-radius-lg) !default;
 // Placeholders
 
 // scss-docs-start placeholders
-$placeholder-opacity-max: $ds-opacity-level-intense !default;
-$placeholder-opacity-min: $ds-opacity-level-medium !default;
+$placeholder-opacity-max: $opacity-level-intense !default;
+$placeholder-opacity-min: $opacity-level-medium !default;
 // scss-docs-end placeholders
 
 // Cards
@@ -1392,7 +1424,7 @@ $card-box-shadow: null !default;
 $card-inner-border-radius: subtract($card-border-radius, $card-border-width) !default;
 $card-cap-padding-y: $card-spacer-y * .5 !default;
 $card-cap-padding-x: $card-spacer-x !default;
-$card-cap-bg: rgba(var(--#{$prefix}body-color-rgb), $ds-opacity-level-medium) !default;
+$card-cap-bg: rgba(var(--#{$prefix}body-color-rgb), $opacity-level-medium) !default;
 $card-cap-color: null !default;
 $card-height: 100% !default;
 $card-color: null !default;
@@ -1445,7 +1477,7 @@ $tooltip-max-width: 200px !default;
 $tooltip-color: var(--#{$prefix}body-bg) !default;
 $tooltip-bg: var(--#{$prefix}emphasis-color) !default;
 $tooltip-border-radius: var(--#{$prefix}border-radius) !default;
-$tooltip-opacity: $ds-opacity-level-semi-opaque !default;
+$tooltip-opacity: $opacity-level-semi-opaque !default;
 $tooltip-padding-y: $spacer * .25 !default;
 $tooltip-padding-x: $spacer * .5 !default;
 $tooltip-margin: null !default; // TODO: remove this in v6
@@ -1507,7 +1539,7 @@ $toast-padding-x: .75rem !default;
 $toast-padding-y: .5rem !default;
 $toast-font-size: .875rem !default;
 $toast-color: null !default;
-$toast-background-color: rgba(var(--#{$prefix}body-bg-rgb), $ds-opacity-level-semi-opaque) !default;
+$toast-background-color: rgba(var(--#{$prefix}body-bg-rgb), $opacity-level-semi-opaque) !default;
 $toast-border-width: var(--#{$prefix}border-width) !default;
 $toast-border-color: var(--#{$prefix}border-color-translucent) !default;
 $toast-border-radius: var(--#{$prefix}border-radius-sm) !default;
@@ -1515,7 +1547,7 @@ $toast-box-shadow: var(--#{$prefix}box-shadow) !default;
 $toast-spacing: $container-padding-x !default;
 
 $toast-header-color: var(--#{$prefix}secondary-color) !default;
-$toast-header-background-color: rgba(var(--#{$prefix}body-bg-rgb), $ds-opacity-level-semi-opaque) !default;
+$toast-header-background-color: rgba(var(--#{$prefix}body-bg-rgb), $opacity-level-semi-opaque) !default;
 $toast-header-border-color: $toast-border-color !default;
 // scss-docs-end toast-variables
 
@@ -1553,7 +1585,7 @@ $modal-content-box-shadow-xs: $box-shadow-sm !default;
 $modal-content-box-shadow-sm-up: $box-shadow !default;
 
 $modal-backdrop-bg: $black !default;
-$modal-backdrop-opacity: $ds-opacity-level-intense !default;
+$modal-backdrop-opacity: $opacity-level-intense !default;
 
 $modal-header-border-color: var(--#{$prefix}border-color) !default;
 $modal-header-border-width: $modal-content-border-width !default;
@@ -1683,17 +1715,17 @@ $breadcrumb-border-radius: null !default;
 // scss-docs-start carousel-variables
 $carousel-control-color: $white !default;
 $carousel-control-width: 15% !default;
-$carousel-control-opacity: $ds-opacity-level-intense !default;
-$carousel-control-hover-opacity: $ds-opacity-level-semi-opaque !default;
+$carousel-control-opacity: $opacity-level-intense !default;
+$carousel-control-hover-opacity: $opacity-level-semi-opaque !default;
 $carousel-control-transition: opacity .15s ease !default;
 
 $carousel-indicator-width: 30px !default;
 $carousel-indicator-height: 3px !default;
 $carousel-indicator-hit-area-height: 10px !default;
 $carousel-indicator-spacer: 3px !default;
-$carousel-indicator-opacity: $ds-opacity-level-intense !default;
+$carousel-indicator-opacity: $opacity-level-intense !default;
 $carousel-indicator-active-bg: $white !default;
-$carousel-indicator-active-opacity: $ds-opacity-level-default !default;
+$carousel-indicator-active-opacity: $opacity-level-default !default;
 $carousel-indicator-transition: opacity .6s ease !default;
 
 $carousel-caption-width: 70% !default;
@@ -1740,10 +1772,10 @@ $btn-close-padding-y: $btn-close-padding-x !default;
 $btn-close-color: $black !default;
 $btn-close-bg: url('data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 16 16\' fill=\'#{$btn-close-color}\'><path d=\'M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z\'/></svg>') !default;
 $btn-close-focus-shadow: $focus-ring-box-shadow !default;
-$btn-close-opacity: $ds-opacity-level-intense !default;
-$btn-close-hover-opacity: $ds-opacity-level-semi-opaque !default;
-$btn-close-focus-opacity: $ds-opacity-level-default !default;
-$btn-close-disabled-opacity: $ds-opacity-level-medium !default;
+$btn-close-opacity: $opacity-level-intense !default;
+$btn-close-hover-opacity: $opacity-level-semi-opaque !default;
+$btn-close-focus-opacity: $opacity-level-default !default;
+$btn-close-disabled-opacity: $opacity-level-medium !default;
 $btn-close-white-filter: invert(1) grayscale(100%) brightness(200%) !default;
 // scss-docs-end close-variables
 

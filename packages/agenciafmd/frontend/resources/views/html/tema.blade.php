@@ -1,5 +1,5 @@
 @extends('frontend::html.master', [
-'bodyClass' => '',
+'bodyClass' => 'bg-white',
 'critical' => '',
 ])
 
@@ -45,7 +45,7 @@
                 <x-frontend::link link="#{{ Str::slug($link->name) }}"
                                   label="{{ $link->name }}"
                                   title="Ir para {{ $link->name }}"
-                                  class="px-0 nav-link js-scroll-top"/>
+                                  class="px-0 py-0h nav-link fs-base js-scroll-top"/>
               </li>
               @endforeach
             </ul>
@@ -68,7 +68,7 @@
                 <x-frontend::link link="#{{ Str::slug($link->name) }}"
                                   label="{{ $link->name }}"
                                   title="Ir para {{ $link->name }}"
-                                  class="px-0 nav-link js-scroll-top"/>
+                                  class="px-0 py-0h nav-link fs-base js-scroll-top"/>
               </li>
               @endforeach
             </ul>
@@ -96,7 +96,7 @@
                 <x-frontend::link link="#{{ Str::slug($link->name) }}"
                                   label="{{ $link->name }}"
                                   title="Ir para {{ $link->name }}"
-                                  class="px-0 nav-link js-scroll-top"/>
+                                  class="px-0 py-0h nav-link fs-base js-scroll-top"/>
               </li>
               @endforeach
             </ul>
@@ -123,7 +123,7 @@
                 <x-frontend::link link="#{{ Str::slug($link->name) }}"
                                   label="{{ $link->name }}"
                                   title="Ir para {{ $link->name }}"
-                                  class="px-0 nav-link js-scroll-top"/>
+                                  class="px-0 py-0h nav-link fs-base js-scroll-top"/>
               </li>
               @endforeach
             </ul>
@@ -4100,8 +4100,7 @@
 
   .bd-example-code {
     padding: 1rem;
-    border: 1px solid #dee2e6;
-    border-radius: .375rem;
+    border-radius: 1rem;
     background: #f8f9fa;
   }
 </style>

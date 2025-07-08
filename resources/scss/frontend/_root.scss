@@ -6,4 +6,8 @@
   @each $color, $value in $custom-utilities-colors {
     --bs-#{$color}-rgb: #{$value};
   }
+
+  --#{$prefix}border-width-md: #{$border-width-md};
+  --#{$prefix}border-width-sm: #{$border-width-sm};
+  --#{$prefix}border-radius-md: #{$border-radius-md};
 }
