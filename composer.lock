@@ -223,12 +223,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agenciafmd/admix-ui.git",
-                "reference": "929718bb7718d7549f2d502e7bd2d58a74099adf"
+                "reference": "2d32384f374f1b81f7420bba0cb1ede7d5c4a855"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agenciafmd/admix-ui/zipball/929718bb7718d7549f2d502e7bd2d58a74099adf",
-                "reference": "929718bb7718d7549f2d502e7bd2d58a74099adf",
+                "url": "https://api.github.com/repos/agenciafmd/admix-ui/zipball/2d32384f374f1b81f7420bba0cb1ede7d5c4a855",
+                "reference": "2d32384f374f1b81f7420bba0cb1ede7d5c4a855",
                 "shasum": ""
             },
             "require": {
@@ -269,9 +269,9 @@
             "homepage": "https://github.com/agenciafmd/admix-ui",
             "support": {
                 "issues": "https://github.com/agenciafmd/admix-ui/issues",
-                "source": "https://github.com/agenciafmd/admix-ui/tree/v11"
+                "source": "https://github.com/agenciafmd/admix-ui/tree/master"
             },
-            "time": "2025-07-03T14:50:47+00:00"
+            "time": "2025-07-08T17:11:06+00:00"
         },
         {
             "name": "agenciafmd/frontend",
