@@ -1,11 +1,11 @@
 //letter-spacing
-$ds-letter-spacing-md: 0.1rem;
-$ds-letter-spacing-lg: 0.2rem;
+$ds-letter-spacing-sm: -0.01rem; // -1%
+$ds-letter-spacing-md: 0.01rem; // 1%
 
 //line-height
-$ds-line-height-base: 1.5;
+$ds-line-height-base: 1.2;
 $ds-line-height-sm: 1.0;
-$ds-line-height-md: 1.25;
+$ds-line-height-md: 1.5;
 $ds-line-height-lg: 2;
 
 //border-radius
@@ -13,20 +13,25 @@ $ds-border-radius: 1rem !default; //16
 $ds-border-radius-sm: .5rem !default; //8
 $ds-border-radius-md: 2rem !default; //32
 $ds-border-radius-lg: 2.5rem !default; //40
+$ds-border-radius-xl: 3.75rem !default; //60
 $ds-border-radius-pill: 31.25rem !default; //500
 
 //border-width
-$ds-border-width-xs: .03125rem; //0.5
 $ds-border-width-sm: .0625rem; //1
-$ds-border-width: .09375rem; //1.5
+$ds-border-width-base: .125rem; //2
+$ds-border-width-md: .25rem; //4
 
 //opacity-levels
 $ds-opacity-level-default: 1;
-$ds-opacity-level-semi-opaque: .75;
-$ds-opacity-level-intense: .5;
-$ds-opacity-level-medium: .25;
-$ds-opacity-level-light: .15;
+$ds-opacity-level-semi-opaque: .80;
+$ds-opacity-level-semi-intense: .72;
+$ds-opacity-level-intense: .64;
+$ds-opacity-level-medium: .48;
+$ds-opacity-level-light: .32;
+$ds-opacity-level-lighter: .24;
+$ds-opacity-level-faint: .12;
 $ds-opacity-level-semi-transparent: .08;
+$ds-opacity-level-transparent: 0;
 
 //shade-levels
 $ds-shade-level-1: 16%;
