@@ -1,1 +1,30 @@
-.card {}
+.card {
+
+  &-title {
+    font-size: $font-size-xl;
+    line-height: $line-height-md;
+
+    @include media-breakpoint-up(xl) {
+      font-size: $h6-font-size;
+    }
+  }
+
+  &-subtitle {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semi-bold;
+    display: block;
+
+    @include media-breakpoint-up(xl) {
+      font-size: $font-size-xl;
+    }
+  }
+
+  &:not(.shadow) {
+    --#{$prefix}card-bg: none;
+  }
+
+  &.shadow {
+    --#{$prefix}card-border-width: none;
+    overflow: hidden;
+  }
+}

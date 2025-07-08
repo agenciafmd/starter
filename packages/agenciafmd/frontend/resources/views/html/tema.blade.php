@@ -225,7 +225,9 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example of an alert with an icon and a link</h2>
+                  <h2 class="fs-xlarge">Example of an alert with an icon and a
+                                        link
+                  </h2>
 
                   <x-frontend::alert icon="ic-info"
                                      icon-class="ic-sm"
@@ -292,28 +294,44 @@
               <div class="vstack gap-1">
 
                 <div>
-                  <span class="badge text-bg-primary">Primary</span>
-                  <span class="badge text-bg-secondary">Secondary</span>
-                  <span class="badge text-bg-success">Success</span>
-                  <span class="badge text-bg-danger">Danger</span>
-                  <span class="badge text-bg-warning">Warning</span>
-                  <span class="badge text-bg-info">Info</span>
-                  <span class="badge text-bg-light">Light</span>
-                  <span class="badge text-bg-dark">Dark</span>
+                  <x-frontend::badge label="Primary"
+                                     theme="text-bg-primary"/>
+                  <x-frontend::badge label="Secondary"
+                                     theme="text-bg-secondary"/>
+                  <x-frontend::badge label="Success"
+                                     theme="text-bg-success"/>
+                  <x-frontend::badge label="Danger"
+                                     theme="text-bg-danger"/>
+                  <x-frontend::badge label="Warning"
+                                     theme="text-bg-warning"/>
+                  <x-frontend::badge label="Info"
+                                     theme="text-bg-info"/>
+                  <x-frontend::badge label="Light"
+                                     theme="text-bg-light"/>
+                  <x-frontend::badge label="Dark"
+                                     theme="text-bg-dark"/>
                 </div>
 
                 <div>
                   <hr>
                   <h2 class="fs-xlarge">Example of a badge outline</h2>
 
-                  <span class="badge text-bg-outline-primary">Primary</span>
-                  <span class="badge text-bg-outline-secondary">Secondary</span>
-                  <span class="badge text-bg-outline-success">Success</span>
-                  <span class="badge text-bg-outline-danger">Danger</span>
-                  <span class="badge text-bg-outline-warning">Warning</span>
-                  <span class="badge text-bg-outline-info">Info</span>
-                  <span class="badge text-bg-outline-light">Light</span>
-                  <span class="badge text-bg-outline-dark">Dark</span>
+                  <x-frontend::badge label="Primary"
+                                     theme="text-bg-outline-primary"/>
+                  <x-frontend::badge label="Secondary"
+                                     theme="text-bg-outline-secondary"/>
+                  <x-frontend::badge label="Success"
+                                     theme="text-bg-outline-success"/>
+                  <x-frontend::badge label="Danger"
+                                     theme="text-bg-outline-danger"/>
+                  <x-frontend::badge label="Warning"
+                                     theme="text-bg-outline-warning"/>
+                  <x-frontend::badge label="Info"
+                                     theme="text-bg-outline-info"/>
+                  <x-frontend::badge label="Light"
+                                     theme="text-bg-outline-light"/>
+                  <x-frontend::badge label="Dark"
+                                     theme="text-bg-outline-dark"/>
 
                 </div>
 
@@ -321,60 +339,61 @@
                   <hr>
                   <h2 class="fs-xlarge">Example of a badge pill</h2>
 
-                  <span class="badge rounded-pill text-bg-primary">
-                    Primary
-                  </span>
-                  <span class="badge rounded-pill text-bg-secondary">
-                    Secondary
-                  </span>
-                  <span class="badge rounded-pill text-bg-success">
-                    Success
-                  </span>
-                  <span class="badge rounded-pill text-bg-danger">
-                    Danger
-                  </span>
-                  <span class="badge rounded-pill text-bg-warning">
-                    Warning
-                  </span>
-                  <span class="badge rounded-pill text-bg-info">
-                    Info
-                  </span>
-                  <span class="badge rounded-pill text-bg-light">
-                    Light
-                  </span>
-                  <span class="badge rounded-pill text-bg-dark">
-                    Dark
-                  </span>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Primary"
+                                     theme="text-bg-primary"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Secondary"
+                                     theme="text-bg-secondary"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Success"
+                                     theme="text-bg-success"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Danger"
+                                     theme="text-bg-danger"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Warning"
+                                     theme="text-bg-warning"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Info"
+                                     theme="text-bg-info"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Light"
+                                     theme="text-bg-light"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Dark"
+                                     theme="text-bg-dark"/>
                 </div>
 
                 <div>
                   <hr>
                   <h2 class="fs-xlarge">Example of a badge outline pill</h2>
 
-                  <span class="badge rounded-pill text-bg-outline-primary">
-                    Primary
-                  </span>
-                  <span class="badge rounded-pill text-bg-outline-secondary">
-                    Secondary
-                  </span>
-                  <span class="badge rounded-pill text-bg-outline-success">
-                    Success
-                  </span>
-                  <span class="badge rounded-pill text-bg-outline-danger">
-                    Danger
-                  </span>
-                  <span class="badge rounded-pill text-bg-outline-warning">
-                    Warning
-                  </span>
-                  <span class="badge rounded-pill text-bg-outline-info">
-                    Info
-                  </span>
-                  <span class="badge rounded-pill text-bg-outline-light">
-                    Light
-                  </span>
-                  <span class="badge rounded-pill text-bg-outline-dark">
-                    Dark
-                  </span>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Primary"
+                                     theme="text-bg-outline-primary"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Secondary"
+                                     theme="text-bg-outline-secondary"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Success"
+                                     theme="text-bg-outline-success"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Danger"
+                                     theme="text-bg-outline-danger"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Warning"
+                                     theme="text-bg-outline-warning"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Info"
+                                     theme="text-bg-outline-info"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Light"
+                                     theme="text-bg-outline-light"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Dark"
+                                     theme="text-bg-outline-dark"/>
+
                 </div>
 
                 <div>
@@ -384,26 +403,31 @@
                   <button type="button"
                           class="btn btn-primary">
                     Notifications
-                    <span class="badge text-bg-secondary">4</span>
+                    <x-frontend::badge label="4"
+                                       theme="text-bg-secondary"/>
                   </button>
                 </div>
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example of a positioned badge button</h2>
+                  <h2 class="fs-xlarge">Example of a positioned badge button
+                  </h2>
 
                   <button type="button"
                           class="btn btn-primary position-relative">
                     Inbox
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    <x-frontend::badge class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                       99+
                       <span class="visually-hidden">unread messages</span>
-                    </span>
+                    </x-frontend::badge>
                   </button>
 
                   <button type="button"
                           class="btn btn-primary position-relative">
                     Profile
+                    <x-frontend::badge class="position-absolute top-0 start-100 translate-middle p-0h bg-danger border border-light rounded-circle">
+                      <span class="visually-hidden">New alerts</span>
+                    </x-frontend::badge>
                     <span class="position-absolute top-0 start-100 translate-middle p-0h bg-danger border border-light rounded-circle">
                       <span class="visually-hidden">New alerts</span>
                     </span>
@@ -795,7 +819,7 @@
                       @endphp
                       <x-frontend::cards.card-picture :image="$image"
                                                       cardBody="vstack pt-1"
-                                                      class="bg-light overflow-hidden h-100">
+                                                      class="bg-light shadow h-100">
                         <p class="card-text">
                           Some quick example text to build on
                           the card title and make up the bulk
@@ -1449,7 +1473,8 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example of nav-pills with a dropdown</h2>
+                  <h2 class="fs-xlarge">Example of nav-pills with a dropdown
+                  </h2>
 
                   <ul class="nav nav-pills">
                     <li class="nav-item">
@@ -1874,25 +1899,38 @@
                 <div>
 
                   <div class="vstack gap-1">
-                    <div class="progress"
-                         role="progressbar"
-                         aria-label="Basic example"
-                         aria-valuenow="0"
-                         aria-valuemin="0"
-                         aria-valuemax="100">
-                      <div class="progress-bar"
-                           style="width: 0%"></div>
+
+                    @php
+                    $progressBars = [
+
+                    (object)[
+                    'name' => 'Rede e esgoto',
+                    'percentage' => '80%',
+                    ],
+
+                    (object)[
+                    'name' => 'Terraplanagem',
+                    'percentage' => '50%',
+                    ],
+
+                    (object)[
+                    'name' => 'Rede de água pluvial',
+                    'percentage' => '30%',
+                    ],
+
+                    ];
+                    @endphp
+
+                    <div class="row gy-2">
+                      @foreach($progressBars as $progress)
+                      <div class="col-md-4">
+
+                        <x-frontend::progress.bar :progress="$progress"/>
+
+                      </div>
+                      @endforeach
                     </div>
 
-                    <div class="progress"
-                         role="progressbar"
-                         aria-label="Basic example"
-                         aria-valuenow="75"
-                         aria-valuemin="0"
-                         aria-valuemax="75">
-                      <div class="progress-bar"
-                           style="width: 75%"></div>
-                    </div>
                   </div>
 
                 </div>
@@ -1901,16 +1939,9 @@
                   <hr>
                   <h2 class="fs-xlarge">Example of a label progress</h2>
 
-                  <div class="progress"
-                       role="progressbar"
-                       aria-label="Example with label"
-                       aria-valuenow="25"
-                       aria-valuemin="0"
-                       aria-valuemax="100">
-                    <div class="progress-bar"
-                         style="width: 25%">25%
-                    </div>
-                  </div>
+                  <x-frontend::progress.bar :progress="(object)['name' => 'Exemplo de barra de progresso','percentage' => '25%']"
+                                            :percentageEmbedded="true"
+                                            progress-height="16px"/>
                 </div>
 
                 <div>
@@ -1918,62 +1949,46 @@
                   <h2 class="fs-xlarge">Example of progress background</h2>
 
                   <div class="vstack gap-1">
-                    <div class="progress"
-                         role="progressbar"
-                         aria-label="Success example"
-                         aria-valuenow="25"
-                         aria-valuemin="0"
-                         aria-valuemax="100">
-                      <div class="progress-bar bg-success"
-                           style="width: 25%">25%
-                      </div>
-                    </div>
-                    <div class="progress"
-                         role="progressbar"
-                         aria-label="Info example"
-                         aria-valuenow="50"
-                         aria-valuemin="0"
-                         aria-valuemax="100">
-                      <div class="progress-bar bg-info text-dark"
-                           style="width: 50%">50%
-                      </div>
-                    </div>
-                    <div class="progress"
-                         role="progressbar"
-                         aria-label="Warning example"
-                         aria-valuenow="75"
-                         aria-valuemin="0"
-                         aria-valuemax="100">
-                      <div class="progress-bar bg-warning text-dark"
-                           style="width: 75%">75%
-                      </div>
-                    </div>
-                    <div class="progress"
-                         role="progressbar"
-                         aria-label="Danger example"
-                         aria-valuenow="100"
-                         aria-valuemin="0"
-                         aria-valuemax="100">
-                      <div class="progress-bar bg-danger"
-                           style="width: 100%">100%
-                      </div>
-                    </div>
+                    <x-frontend::progress.bar :progress="(object)['name' => 'Exemplo de barra de progresso','percentage' => '25%']"
+                                              :percentageEmbedded="true"
+                                              progress-height="16px"
+                                              theme="bg-success"/>
+
+                    <x-frontend::progress.bar :progress="(object)['name' => 'Exemplo de barra de progresso','percentage' => '50%']"
+                                              :percentageEmbedded="true"
+                                              progress-height="16px"
+                                              theme="bg-info text-dark"/>
+
+                    <x-frontend::progress.bar :progress="(object)['name' => 'Exemplo de barra de progresso','percentage' => '75%']"
+                                              :percentageEmbedded="true"
+                                              progress-height="16px"
+                                              theme="bg-warning text-dark"/>
+
+                    <x-frontend::progress.bar :progress="(object)['name' => 'Exemplo de barra de progresso','percentage' => '100%']"
+                                              :percentageEmbedded="true"
+                                              progress-height="16px"
+                                              theme="bg-warning bg-danger"/>
+
                   </div>
                 </div>
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example of animated progress stripes</h2>
+                  <h2 class="fs-xlarge">Example of animated progress stripes
+                  </h2>
 
-                  <div class="progress"
-                       role="progressbar"
-                       aria-label="Animated striped example"
-                       aria-valuenow="75"
-                       aria-valuemin="0"
-                       aria-valuemax="100">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated"
-                         style="width: 75%"></div>
-                  </div>
+                  <x-frontend::progress.bar :progress="(object)['name' => 'Exemplo de barra de progresso','percentage' => '100%']"
+                                            :percentageEmbedded="true"
+                                            progress-height="16px"
+                                            theme="progress-bar-striped progress-bar-animated"/>
+
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example of progress circle</h2>
+
+                  <x-frontend::progress.circle percentage="70"/>
                 </div>
 
               </div>
@@ -3750,7 +3765,9 @@
               <div class="vstack gap-1">
 
                 <div>
-                  <h2 class="fs-xlarge">Example of an image with a warning state</h2>
+                  <h2 class="fs-xlarge">Example of an image with a warning
+                                        state
+                  </h2>
 
                   <div class="hstack gap-0q">
                     <div class="bg-danger"
@@ -3766,7 +3783,8 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example of links with a warning state</h2>
+                  <h2 class="fs-xlarge">Example of links with a warning state
+                  </h2>
 
                   <div class="hstack gap-0q">
                     <div class="bg-danger"
@@ -3883,7 +3901,9 @@
                 <div>
 
                   <hr>
-                  <h2 class="fs-xlarge">Example of a link icon with an inverted icon</h2>
+                  <h2 class="fs-xlarge">Example of a link icon with an inverted
+                                        icon
+                  </h2>
 
                   <x-frontend::link link="#"
                                     label="Ver mais"
@@ -3895,7 +3915,9 @@
                 <div>
 
                   <hr>
-                  <h2 class="fs-xlarge">Example of a link icon with an animated icon</h2>
+                  <h2 class="fs-xlarge">Example of a link icon with an animated
+                                        icon
+                  </h2>
 
                   <x-frontend::link link="#"
                                     label="Compartilhar"
