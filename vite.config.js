@@ -14,7 +14,7 @@ const { APP_URL } = {
 
 const DEFAULT_URL = 'http://localhost';
 const url = APP_URL ? new URL(APP_URL) : new URL(DEFAULT_URL);
-const CRITICAL_URL = `${url.protocol}//${url.hostname}`;
+const CRITICAL_URL = `${ url.protocol }//${ url.hostname }`;
 
 const purgeCheckPaths = [
   'packages/agenciafmd/frontend/resources/views/**/*.php',
@@ -83,6 +83,7 @@ export default defineConfig({
         /was-*/,
         /g*/,
         /plyr*/,
+        /ts*/,
       ],
     }),
   ],

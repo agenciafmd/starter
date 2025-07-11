@@ -87,6 +87,7 @@
               (object) ['name' => 'Input Group'],
               (object) ['name' => 'Floating Label'],
               (object) ['name' => 'Validation'],
+              (object) ['name' => 'Search'],
               (object) ['name' => 'Livewire'],
               ];
               @endphp
@@ -3564,6 +3565,55 @@
                   </form>
                 </div>
 
+              </div>
+
+            </div>
+
+            <div id="search"
+                 class="bd-example">
+
+              <h2 class="h6">Search - Tom Select</h2>
+              <div class="vstack gap-1">
+                <div class="position-relative">
+
+                  <select wire:model.lazy="search"
+                          type="text"
+                          id="search-select"
+                          placeholder="Busque por cidade ou empreendimento"
+                          aria-label="busca"
+                          class="ps-2hq @error('search-select') is-invalid @enderror form-control form-control-lg -bg-transparent -border-0 -shadow-none js-tom-select">
+                    <option value=""></option>
+                    @php
+                    $developments = [
+
+                    (object)[
+                    'city' => 'São José do Rio Preto',
+                    ],
+
+                    (object)[
+                    'city' => 'São José do Rio Preto',
+                    'name' => 'Empreendimento 1',
+                    ],
+
+                    (object)[
+                    'city' => 'São José do Rio Preto',
+                    'name' => 'Empreendimento 2',
+                    ],
+                    ]
+                    @endphp
+                    @foreach($developments as $development)
+                    <option value="{{ isset($development->name) ? $development->name : $development->city }}"
+                            data-city="{{ isset($development->city) ? $development->city : '' }}"
+                            data-name="{{ isset($development->name) ? $development->name : '' }}">
+                      {{ isset($development->name) ? $development->name :
+                      $development->city }}
+                    </option>
+                    @endforeach
+                  </select>
+
+                  <x-frontend-icon name="ic-ui-search"
+                                   class="ms-0hq text-primary ic-xxsm position-absolute top-50 translate-middle-y start-0 z-1"/>
+                </div>
               </div>
 
             </div>

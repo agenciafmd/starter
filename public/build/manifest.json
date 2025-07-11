@@ -528,7 +528,7 @@
     "src": "resources/images/video-film.webp"
   },
   "resources/js/frontend-imports.js": {
-    "file": "assets/frontend-imports-DL9aNRq_.js",
+    "file": "assets/frontend-imports--0SgWEK1.js",
     "name": "frontend-imports",
     "src": "resources/js/frontend-imports.js",
     "isEntry": true,
@@ -546,7 +546,7 @@
     ]
   },
   "resources/scss/frontend.scss": {
-    "file": "assets/frontend-B08rP9jx.css",
+    "file": "assets/frontend-CJ8Al6TI.css",
     "src": "resources/scss/frontend.scss",
     "isEntry": true
   }
