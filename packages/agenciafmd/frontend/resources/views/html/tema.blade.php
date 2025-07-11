@@ -4098,6 +4098,16 @@
                                            breakpointNotebookSuffix="lg"/>
                     </x-frontend::glightbox.video>
                   </div>
+
+                  <div class="col-md-6">
+                    <x-frontend::glightbox.player-embed id="about-us-video"
+                                                        link="https://youtu.be/lG7o0r-7coo?si=a8uCcwaD_hsqgQM3"
+                                                        image="ratios/img-16x9.jpg"
+                                                        class="img-cover"
+                                                        title="imagem titulo"
+                                                        alt="imagem alt"
+                                                        aspect-ratio="h-100 ratio ratio-1x1 ratio-md-16x9"/>
+                  </div>
                 </div>
 
               </div>
