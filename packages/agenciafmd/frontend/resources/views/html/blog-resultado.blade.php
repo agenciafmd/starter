@@ -1,5 +1,5 @@
 @extends('frontend::html.master', [
-'bodyClass' => 'blog-result',
+'bodyClass' => 'blog-result -header-overlap',
 'critical' => 'blog-resultado.css',
 ])
 
@@ -28,7 +28,7 @@
                                     class="mb-0h my-md-0h"/>
           </div>
           <div class="col-12">
-            <h1>
+            <h1 class="h3 text-break">
               Resultado de busca: “empreendimento”
             </h1>
           </div>
