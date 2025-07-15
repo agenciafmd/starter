@@ -48,7 +48,7 @@
     height: $size-button;
     box-shadow: $box-shadow;
     border-radius: $ds-border-radius-pill;
-    background-color: rgba($white, $ds-opacity-level-intense);
+    background-color: rgba($white, $opacity-level-intense);
     backdrop-filter: blur(2px);
     position: absolute;
     top: 50%;
@@ -83,7 +83,7 @@
       margin: 0;
 
       border: $border-width solid var(--swiper-theme-color);
-      background-color: rgba($white, $ds-opacity-level-transparent);
+      background-color: rgba($white, $opacity-level-transparent);
       box-shadow: none;
     }
   }
