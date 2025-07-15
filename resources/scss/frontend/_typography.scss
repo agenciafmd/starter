@@ -18,3 +18,13 @@
     }
   }
 }
+
+.wysiwyg, .wysiwyg p  {
+
+  font-size: $font-size-sm;
+  letter-spacing: $letter-spacing-md;
+
+  @include media-breakpoint-up(xl) {
+    font-size: $font-size-lg;
+  }
+}

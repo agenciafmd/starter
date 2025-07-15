@@ -7,7 +7,7 @@
 @php
     $alertClasses = 'alert';
     if ($hasDismissible) {
-    $alertClasses .= ' alert-dismissible';
+        $alertClasses .= ' alert-dismissible';
     }
 @endphp
 
