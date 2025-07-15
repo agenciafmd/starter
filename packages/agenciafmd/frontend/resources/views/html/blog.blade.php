@@ -1,5 +1,5 @@
 @extends('frontend::html.master', [
-'bodyClass' => 'blog',
+'bodyClass' => 'blog -header-overlap',
 'critical' => 'blog.css',
 ])
 
@@ -30,7 +30,6 @@
               <div class="position-relative">
 
                 <select wire:model.lazy="search"
-                        type="text"
                         id="search-select"
                         placeholder="Pesquisar"
                         aria-label="busca"

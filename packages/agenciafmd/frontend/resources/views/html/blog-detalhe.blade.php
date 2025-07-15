@@ -1,5 +1,5 @@
 @extends('frontend::html.master', [
-'bodyClass' => 'blog-detail',
+'bodyClass' => 'blog-detail -header-overlap',
 'critical' => 'blog-detalhe.css',
 ])
 

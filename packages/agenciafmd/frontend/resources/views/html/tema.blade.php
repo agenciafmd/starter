@@ -45,7 +45,7 @@
                 <x-frontend::link link="#{{ Str::slug($link->name) }}"
                                   label="{{ $link->name }}"
                                   title="Ir para {{ $link->name }}"
-                                  class="px-0 py-0h nav-link fs-base js-scroll-top"/>
+                                  class="px-0 py-0h nav-link btn-link fs-base js-scroll-top"/>
               </li>
               @endforeach
             </ul>
@@ -3577,7 +3577,6 @@
                 <div class="position-relative">
 
                   <select wire:model.lazy="search"
-                          type="text"
                           id="search-select"
                           placeholder="Busque por cidade ou empreendimento"
                           aria-label="busca"
