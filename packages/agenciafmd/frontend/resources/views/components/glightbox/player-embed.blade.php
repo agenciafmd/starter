@@ -7,7 +7,7 @@
 'aspectRatio' => '',
 'alt' => '',
 'picture' => '',
-'iconClass' => 'text-white text-primary-hover',
+'iconClass' => '',
 ])
 
 <div class="position-relative js-player-embed-container {{ $aspectRatio }}">
@@ -39,11 +39,11 @@
                     data-plyr-provider="{{ $provider }}"
                     data-plyr-embed-id="{{ $link }}"
                     id="player-{{ $id }}"
-                    class="stretched-link {{ $iconClass }} js-player-embed-link"
+                    class="stretched-link {{ $iconClass }} js-player-embed-link ic-play"
                     aria-label="Clique para assistir o vídeo"
                     title="Ver vídeo">
-    <x-frontend-icon class="ic-play ic-xl position-absolute top-50 start-50 translate-middle z-1"
-                      name="ic-ui-play"/>
+    <x-frontend-icon class="vstack align-items-center justify-content-center rounded-circle icon position-absolute top-50 start-50 translate-middle z-1"
+                     name="ic-ui-play"/>
   </x-frontend::link>
 
 </div>

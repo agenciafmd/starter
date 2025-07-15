@@ -19,7 +19,7 @@ $navbar-toggler-bar-height: 3px;
       max-width: calc(100vw - 6rem);
       width: $navbar-brand-width;
       height: $navbar-brand-height;
-      transition: width .25s, height .25s, transform .25s;
+      transition: width .25s, height .25s, all .25s ease-in-out;
     }
   }
 
@@ -61,11 +61,27 @@ $navbar-toggler-bar-height: 3px;
     }
   }
 
+  &-nav {
+    //--#{$prefix}nav-link-color: #{$body-color};
+    //--#{$prefix}nav-link-hover-color: #{rgba($primary, $opacity-level-semi-opaque)};
+    //--#{$prefix}nav-link-active-color: #{rgba($primary, $opacity-level-semi-opaque)};
+    //--#{$prefix}nav-link-font-weight: #{$font-weight-normal};
+    //--#{$prefix}nav-link-font-size: #{$font-size-base};
+    //--#{$prefix}nav-link-padding-y: #{$spacer};
+    //--#{$prefix}nav-link-padding-x: #{$spacer * 2.5};
+    //--#{$prefix}navbar-nav-link-padding-x: #{$spacer};
+    //--#{$prefix}navbar-active-color: #{rgba($primary, $opacity-level-semi-opaque)};
+  }
+
   .offcanvas {
     &,
     &-backdrop {
-      top: var(--header-height);
-      height: calc(100vh - var(--header-height));
+      padding-top: var(--header-height);
+      height: 100vh;
+
+      @include media-breakpoint-up(md) {
+        padding-top: 0;
+      }
     }
 
     &.show ~ .navbar-toggler {
@@ -111,8 +127,12 @@ $navbar-toggler-bar-height: 3px;
 
     .offcanvas,
     .offcanvas-backdrop {
-      top: calc(var(--header-height) - #{($navbar-brand-height - $navbar-brand-is-fixed-height)} - #{$navbar-padding-y});
-      height: calc(100vh - var(--header-height) + #{($navbar-brand-height - $navbar-brand-is-fixed-height)} + #{$navbar-padding-y});
+      padding-top: var(--header-height);
+      height: 100vh;
+
+      @include media-breakpoint-up(md) {
+        padding-top: 0;
+      }
     }
   }
 

@@ -70,4 +70,41 @@ $icon-xl: 4rem !default; //64
   &-inverse-y {
     transform: scaleY(-1);
   }
+
+  &-play {
+
+    .icon {
+      color: $white;
+      background: rgba($primary, $opacity-level-semi-opaque);
+      transition: $transition-base;
+      width: $icon-md;
+      height: $icon-md;
+
+      @include media-breakpoint-up(xl) {
+        width: $icon-md * 1.5;
+        height: $icon-md * 1.5;
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      &:hover {
+        .icon {
+          box-shadow: $box-shadow;
+          background: rgba($primary, $opacity-level-intense);
+        }
+      }
+    }
+  }
+
+  &-glightbox-zoom {
+    background: rgba($primary, $ds-opacity-level-light);
+    backdrop-filter: blur(1px);
+    border-radius: $border-radius;
+    padding: $spacer * .5;
+
+    svg {
+      width: $icon-xsm;
+      height: $icon-xsm;
+    }
+  }
 }

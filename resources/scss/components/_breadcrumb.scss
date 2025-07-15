@@ -19,7 +19,6 @@ $link-dark-color: $white;
   &-item {
     flex: 0 1 auto;
     white-space: nowrap;
-    //overflow: hidden;
     text-overflow: ellipsis;
     text-decoration: none;
     font-size: $font-size-sm;
@@ -35,6 +34,10 @@ $link-dark-color: $white;
     &:first-child,
     &:nth-last-child(2) {
       flex-shrink: 0;
+    }
+
+    &:last-child {
+      overflow: hidden;
     }
 
     + .breadcrumb-item::before {
