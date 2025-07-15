@@ -1,11 +1,90 @@
 :root {
-  --swiper-theme-color: #{$secondary};
+  --swiper-theme-color: #{ $primary };
 }
 
 .swiper {
 
+  &-has-shadow {
+    padding: $spacer;
+    margin: -$spacer;
+  }
+
+  &-container {
+    position: relative;
+
+    .swiper:not(.swiper-initialized) {
+      + div .swiper-button-next, + div .swiper-button-prev {
+        opacity: 0;
+      }
+    }
+  }
+
+  &-slide {
+
+    height: auto;
+
+    img {
+      aspect-ratio: auto;
+    }
+  }
+
+  &-button-disabled {}
+
+  &-button-prev {
+    left: $spacer;
+  }
+
+  &-button-next {
+    right: $spacer;
+  }
+
   &-button-prev,
   &-button-next {
-    fill: var(--swiper-theme-color);
+
+    $size-button: 3rem;
+
+    color: var(--swiper-theme-color);
+    width: $size-button;
+    height: $size-button;
+    box-shadow: $box-shadow;
+    border-radius: $ds-border-radius-pill;
+    background-color: rgba($white, $ds-opacity-level-intense);
+    backdrop-filter: blur(2px);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @include media-breakpoint-up(xl) {
+      width: $size-button * 1.2;
+      height: $size-button * 1.2;
+    }
+
+    &:after {
+      content: none;
+    }
+
+    .ic {
+      filter: invert(1);
+      transition: $transition-base;
+      width: $size-button * .5;
+      height: $size-button * .5;
+
+      @include media-breakpoint-up(xl) {
+        width: $size-button * .75;
+        height: $size-button * .75;
+      }
+    }
+  }
+
+  &-button-block {
+    .swiper-button-next, .swiper-button-prev {
+      position: static;
+      transform: none;
+      margin: 0;
+
+      border: $border-width solid var(--swiper-theme-color);
+      background-color: rgba($white, $ds-opacity-level-transparent);
+      box-shadow: none;
+    }
   }
 }

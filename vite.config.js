@@ -34,6 +34,8 @@ export default defineConfig({
         'resources/js/frontend-imports.js',
         'resources/js/frontend-imports.js',
         'resources/js/pages/theme.js',
+        'resources/js/components/sliders/articles.js',
+        'resources/js/components/share-api.js',
       ],
       refresh: true, // TODO add all paths to watch and refresh on change
     }),
@@ -44,6 +46,15 @@ export default defineConfig({
         {
           uri: '', template: 'index',
         },
+        // {
+        //   uri: 'blog', template: 'blog',
+        // },
+        // {
+        //   uri: 'blog-resultado', template: 'blog-resultado',
+        // },
+        // {
+        //   uri: 'blog-detalhe', template: 'blog-detalhe',
+        // },
       ],
       criticalConfig: {
         dimensions: [

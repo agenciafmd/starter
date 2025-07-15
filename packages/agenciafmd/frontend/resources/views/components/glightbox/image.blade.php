@@ -11,7 +11,7 @@
                   data-description="{{ $description }}"
                   title="{{ $title ? $title : $description }}"
                   aria-label="Link: {{ $title ? $title : $description }}"
-                  {{ $attributes->merge(['class' => 'position-relative glightbox']) }}>
+                  {{ $attributes->merge(['class' => 'position-relative text-decoration-none glightbox']) }}>
   {{ $slot }}
 </x-frontend::link>
 

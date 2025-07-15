@@ -47,7 +47,7 @@
     <div class="page-load-status mx-auto">
         <div class="infinite-scroll-request text-center">
             <x-frontend-icon name="ic-loading"
-                             class="ic-lg text-primary"/>
+                             class="animation-spin-right ic-xl text-primary"/>
         </div>
         <p class="infinite-scroll-last"></p>
         <p class="infinite-scroll-error"></p>
