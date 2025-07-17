@@ -51,6 +51,7 @@ $ds-box-shadow-inset: inset 0 1px 2px rgba($ds-black, $ds-opacity-level-semi-opa
 
 //gradient
 $ds-gradient: linear-gradient(128.65deg, tint-color($ds-primary, $ds-shade-level-2) 30.34%, tint-color($ds-secondary, $ds-shade-level-2) 97.09%);
+$ds-gradient-banner: linear-gradient(256deg, rgba($ds-gray-900, $ds-opacity-level-transparent) 42.07%, rgba($ds-gray-900, $ds-opacity-level-medium) 73.8%), linear-gradient(0deg, rgba($ds-gray-900, $ds-opacity-level-medium) 0%, rgba($ds-gray-900, $ds-opacity-level-medium) 100%);
 
 //body
 $ds-body-color: $ds-dark;

@@ -1,0 +1,22 @@
+@mixin base-background-gradient($background, $background-md: null) {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    display: block;
+    background: $background;
+    opacity: $opacity-level-intense;
+
+    @if $background-md != null {
+      @include media-breakpoint-up(md) {
+        background: $background-md;
+      }
+    }
+  }
+}
