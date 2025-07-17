@@ -13,8 +13,6 @@
 
 namespace App\Models{
 /**
- * 
- *
  * @property int $id
  * @property string $name
  * @property string $email
@@ -55,8 +53,6 @@ namespace App\Models{
 
 namespace Agenciafmd\Leads\Models{
 /**
- * 
- *
  * @property int $id
  * @property bool $is_active
  * @property string|null $source
@@ -94,8 +90,6 @@ namespace Agenciafmd\Leads\Models{
 
 namespace Agenciafmd\Postal\Models{
 /**
- * 
- *
  * @property int $id
  * @property bool $is_active
  * @property string $name
@@ -138,8 +132,6 @@ namespace Agenciafmd\Postal\Models{
 
 namespace Agenciafmd\Admix\Models{
 /**
- * 
- *
  * @property int $id
  * @property string|null $user_type
  * @property int|null $user_id
@@ -183,8 +175,6 @@ namespace Agenciafmd\Admix\Models{
 
 namespace Agenciafmd\Admix\Models{
 /**
- * 
- *
  * @property int $id
  * @property bool $is_active
  * @property string $name
@@ -215,8 +205,6 @@ namespace Agenciafmd\Admix\Models{
 
 namespace Agenciafmd\Admix\Models{
 /**
- * 
- *
  * @property int $id
  * @property string $name
  * @property string $email
