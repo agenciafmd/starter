@@ -74,6 +74,15 @@
         height: $size-button * .75;
       }
     }
+
+    &.swiper-button-invert {
+
+      box-shadow: $box-shadow;
+
+      .ic {
+        filter: invert(0);
+      }
+    }
   }
 
   &-button-block {

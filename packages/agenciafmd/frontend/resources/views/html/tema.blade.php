@@ -113,9 +113,11 @@
               (object) ['name' => 'Gallery'],
               (object) ['name' => 'Icons'],
               (object) ['name' => 'Icon link'],
+              (object) ['name' => 'List icon'],
               (object) ['name' => 'Infinite scroll'],
               (object) ['name' => 'Pwa icons'],
-              (object) ['name' => 'Video'],
+              (object) ['name' => 'Vídeo'],
+              (object) ['name' => 'Slider'],
               ];
               @endphp
 
@@ -3854,6 +3856,8 @@
                  class="bd-example">
 
               <h2 class="mb-block-small h6">Gallery</h2>
+              <h2 class="fs-xlarge">Example of image gallery</h2>
+
               <div class="vstack gap-1">
 
                 <div class="row g-1">
@@ -3989,6 +3993,42 @@
 
             </div>
 
+            <div id="list-icon"
+                 class="bd-example">
+
+              <h2 class="mb-block-small h6">List icon</h2>
+              <div class="vstack gap-1">
+
+                <div>
+                  <h2 class="fs-xlarge">
+                    Example of a list icon component with icon
+                  </h2>
+
+                  <x-frontend::list-icon sanitizeList
+                                         icon-class="ic-xxsm text-primary"
+                                         class="mb-0 vstack gap-0h"
+                                         :content="[(object)['icon'=>'ic-differential', 'text'=> 'Descrição da lista'],
+                                                    (object)['icon'=>'ic-differential', 'text'=> 'Descrição da lista']]"/>
+
+                </div>
+
+                <div>
+
+                  <hr>
+                  <h2 class="fs-xlarge">
+                     Example of a list icon component without icon
+                  </h2>
+
+                  <x-frontend::list-icon sanitizeList
+                                         class="mb-0 vstack gap-0h"
+                                         :content="[(object)['text'=> 'Descrição da lista'],
+                                                    (object)['text'=> 'Descrição da lista']]"/>
+
+                </div>
+
+              </div>
+            </div>
+
             <div id="infinite-scroll"
                  class="bd-example">
 
@@ -3996,7 +4036,8 @@
               <div class="vstack gap-1">
                 <div class="page-load-status mx-auto">
                   <div class="infinite-scroll-request text-center text-primary">
-                    <x-frontend-icon name="ic-loading"/>
+                    <x-frontend-icon name="ic-loading"
+                                     class="animation-spin-right ic-xl text-primary"/>
                   </div>
                   <p class="infinite-scroll-last"></p>
                   <p class="infinite-scroll-error"></p>
@@ -4129,11 +4170,14 @@
             <div id="video"
                  class="bd-example">
 
-              <h2 class="mb-block-small h6">Video</h2>
+              <h2 class="mb-block-small h6">Vídeo</h2>
               <div class="vstack gap-1">
 
                 <div class="row g-1">
                   <div class="col-md-6">
+                    <h2 class="fs-xlarge">
+                      Modal video example
+                    </h2>
                     <x-frontend::glightbox.video link="https://youtu.be/lG7o0r-7coo?si=a8uCcwaD_hsqgQM3">
                       <x-frontend::picture image="ratios/img-16x9.jpg"
                                            title="imagem titulo"
@@ -4149,16 +4193,89 @@
                   </div>
 
                   <div class="col-md-6">
+                    <h2 class="fs-xlarge">
+                      Embedded video example
+                    </h2>
                     <x-frontend::glightbox.player-embed id="about-us-video"
                                                         link="https://youtu.be/lG7o0r-7coo?si=a8uCcwaD_hsqgQM3"
                                                         image="ratios/img-16x9.jpg"
                                                         class="img-cover"
                                                         title="imagem titulo"
                                                         alt="imagem alt"
-                                                        aspect-ratio="h-100 ratio ratio-1x1 ratio-md-16x9"/>
+                                                        aspect-ratio="-h-100 ratio ratio-1x1 ratio-md-16x9"/>
                   </div>
                 </div>
 
+              </div>
+            </div>
+
+            <div id="slider"
+                 class="bd-example">
+              <h2 class="mb-block-small h6">Slider</h2>
+
+              <div class="vstack gap-1">
+
+                <div>
+                  <h2 class="fs-xlarge">
+                    Example of a slider banner
+                  </h2>
+
+                  <div class="">
+
+                    {{-- @formatter:off --}}
+                    @php
+                    $banners = [
+
+                      (object)[
+                        'content' => (object)[
+                          'name' => 'Titulo do banner',
+                          'subtitle' => 'Subtitulo do banner',
+                          'route' => '/html/#',
+                          'details' => [
+                            (object)['icon' => 'ic-differential', 'text' => '100 a 200m²'],
+                            (object)['icon' => 'ic-differential', 'text' => '1 ou 2 dorms. (1 suíte)'],
+                          ],
+                        ],
+
+                        'image' => (object)[
+                          'src' => 'ratios/img-21x9.jpg',
+                          'name' => 'Imagem 21x9',
+                        ],
+                      ],
+
+                      (object)[
+                        'content' => (object)[
+                          'name' => 'Titulo do banner 2',
+                          'subtitle' => 'Subtitulo do banner 2',
+                          'route' => '/html/#',
+                          'details' => [
+                            (object)['icon' => 'ic-differential', 'text' => '100 a 200m²'],
+                            (object)['icon' => 'ic-differential', 'text' => '1 ou 2 dorms. (1 suíte)'],
+                          ],
+                        ],
+
+                        'image' => (object)[
+                          'src' => 'ratios/img-21x9.jpg',
+                          'name' => 'Imagem 21x9',
+                        ],
+                      ],
+
+                      (object)[
+                        'content' => false,
+
+                        'image' => (object)[
+                          'src' => 'ratios/img-21x9.jpg',
+                          'name' => 'Imagem 21x9',
+                        ],
+                      ],
+
+                    ];
+                    @endphp
+                    {{-- @formatter:on --}}
+                    <x-frontend::sliders.banner :banners="$banners"/>
+
+                  </div>
+                </div>
               </div>
             </div>
 

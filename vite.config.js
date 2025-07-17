@@ -35,6 +35,7 @@ export default defineConfig({
         'resources/js/frontend-imports.js',
         'resources/js/pages/theme.js',
         'resources/js/components/sliders/articles.js',
+        'resources/js/components/sliders/banners.js',
         'resources/js/components/share-api.js',
       ],
       refresh: true, // TODO add all paths to watch and refresh on change

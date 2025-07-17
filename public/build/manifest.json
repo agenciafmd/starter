@@ -1,7 +1,18 @@
 {
-  "_frontend-76dg69cT.js": {
-    "file": "assets/frontend-76dg69cT.js",
+  "_frontend-UQadoxIo.js": {
+    "file": "assets/frontend-UQadoxIo.js",
     "name": "frontend"
+  },
+  "_swiper-BmjqlY3u.js": {
+    "file": "assets/swiper-BmjqlY3u.js",
+    "name": "swiper",
+    "imports": [
+      "_swiper-core-CjM4C1qp.js"
+    ]
+  },
+  "_swiper-core-CjM4C1qp.js": {
+    "file": "assets/swiper-core-CjM4C1qp.js",
+    "name": "swiper-core"
   },
   "resources/fonts/Roboto-Bold.woff2": {
     "file": "assets/Roboto-Bold-B00cclMj.woff2",
@@ -527,26 +538,57 @@
     "file": "assets/video-film-DvW63Wvm.webp",
     "src": "resources/images/video-film.webp"
   },
+  "resources/js/components/share-api.js": {
+    "file": "assets/share-api-BDKgjPTI.js",
+    "name": "share-api",
+    "src": "resources/js/components/share-api.js",
+    "isEntry": true,
+    "imports": [
+      "_frontend-UQadoxIo.js"
+    ]
+  },
+  "resources/js/components/sliders/articles.js": {
+    "file": "assets/articles-B2Tps4Zv.js",
+    "name": "articles",
+    "src": "resources/js/components/sliders/articles.js",
+    "isEntry": true,
+    "imports": [
+      "_swiper-BmjqlY3u.js",
+      "_frontend-UQadoxIo.js",
+      "_swiper-core-CjM4C1qp.js"
+    ]
+  },
+  "resources/js/components/sliders/banners.js": {
+    "file": "assets/banners-DApp_qv9.js",
+    "name": "banners",
+    "src": "resources/js/components/sliders/banners.js",
+    "isEntry": true,
+    "imports": [
+      "_swiper-BmjqlY3u.js",
+      "_swiper-core-CjM4C1qp.js"
+    ]
+  },
   "resources/js/frontend-imports.js": {
-    "file": "assets/frontend-imports--0SgWEK1.js",
+    "file": "assets/frontend-imports-Cycz5IRg.js",
     "name": "frontend-imports",
     "src": "resources/js/frontend-imports.js",
     "isEntry": true,
     "imports": [
-      "_frontend-76dg69cT.js"
+      "_frontend-UQadoxIo.js",
+      "_swiper-core-CjM4C1qp.js"
     ]
   },
   "resources/js/pages/theme.js": {
-    "file": "assets/theme-DpKh2JlD.js",
+    "file": "assets/theme-DU4QINYv.js",
     "name": "theme",
     "src": "resources/js/pages/theme.js",
     "isEntry": true,
     "imports": [
-      "_frontend-76dg69cT.js"
+      "_frontend-UQadoxIo.js"
     ]
   },
   "resources/scss/frontend.scss": {
-    "file": "assets/frontend-CJ8Al6TI.css",
+    "file": "assets/frontend-Dl5-R0MG.css",
     "src": "resources/scss/frontend.scss",
     "isEntry": true
   }
