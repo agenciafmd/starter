@@ -1,5 +1,5 @@
 @extends('frontend::html.master', [
-'bodyClass' => '',
+'bodyClass' => 'bg-white',
 'critical' => '',
 ])
 
@@ -45,7 +45,7 @@
                 <x-frontend::link link="#{{ Str::slug($link->name) }}"
                                   label="{{ $link->name }}"
                                   title="Ir para {{ $link->name }}"
-                                  class="px-0 nav-link js-scroll-top"/>
+                                  class="px-0 py-0h nav-link btn-link fs-base js-scroll-top"/>
               </li>
               @endforeach
             </ul>
@@ -68,7 +68,7 @@
                 <x-frontend::link link="#{{ Str::slug($link->name) }}"
                                   label="{{ $link->name }}"
                                   title="Ir para {{ $link->name }}"
-                                  class="px-0 nav-link js-scroll-top"/>
+                                  class="px-0 py-0h nav-link fs-base js-scroll-top"/>
               </li>
               @endforeach
             </ul>
@@ -87,6 +87,7 @@
               (object) ['name' => 'Input Group'],
               (object) ['name' => 'Floating Label'],
               (object) ['name' => 'Validation'],
+              (object) ['name' => 'Search'],
               (object) ['name' => 'Livewire'],
               ];
               @endphp
@@ -96,7 +97,7 @@
                 <x-frontend::link link="#{{ Str::slug($link->name) }}"
                                   label="{{ $link->name }}"
                                   title="Ir para {{ $link->name }}"
-                                  class="px-0 nav-link js-scroll-top"/>
+                                  class="px-0 py-0h nav-link fs-base js-scroll-top"/>
               </li>
               @endforeach
             </ul>
@@ -112,9 +113,11 @@
               (object) ['name' => 'Gallery'],
               (object) ['name' => 'Icons'],
               (object) ['name' => 'Icon link'],
+              (object) ['name' => 'List icon'],
               (object) ['name' => 'Infinite scroll'],
               (object) ['name' => 'Pwa icons'],
-              (object) ['name' => 'Video'],
+              (object) ['name' => 'Vídeo'],
+              (object) ['name' => 'Slider'],
               ];
               @endphp
 
@@ -123,7 +126,7 @@
                 <x-frontend::link link="#{{ Str::slug($link->name) }}"
                                   label="{{ $link->name }}"
                                   title="Ir para {{ $link->name }}"
-                                  class="px-0 nav-link js-scroll-top"/>
+                                  class="px-0 py-0h nav-link fs-base js-scroll-top"/>
               </li>
               @endforeach
             </ul>
@@ -225,7 +228,9 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example of an alert with an icon and a link</h2>
+                  <h2 class="fs-xlarge">Example of an alert with an icon and a
+                                        link
+                  </h2>
 
                   <x-frontend::alert icon="ic-info"
                                      icon-class="ic-sm"
@@ -292,28 +297,44 @@
               <div class="vstack gap-1">
 
                 <div>
-                  <span class="badge text-bg-primary">Primary</span>
-                  <span class="badge text-bg-secondary">Secondary</span>
-                  <span class="badge text-bg-success">Success</span>
-                  <span class="badge text-bg-danger">Danger</span>
-                  <span class="badge text-bg-warning">Warning</span>
-                  <span class="badge text-bg-info">Info</span>
-                  <span class="badge text-bg-light">Light</span>
-                  <span class="badge text-bg-dark">Dark</span>
+                  <x-frontend::badge label="Primary"
+                                     theme="text-bg-primary"/>
+                  <x-frontend::badge label="Secondary"
+                                     theme="text-bg-secondary"/>
+                  <x-frontend::badge label="Success"
+                                     theme="text-bg-success"/>
+                  <x-frontend::badge label="Danger"
+                                     theme="text-bg-danger"/>
+                  <x-frontend::badge label="Warning"
+                                     theme="text-bg-warning"/>
+                  <x-frontend::badge label="Info"
+                                     theme="text-bg-info"/>
+                  <x-frontend::badge label="Light"
+                                     theme="text-bg-light"/>
+                  <x-frontend::badge label="Dark"
+                                     theme="text-bg-dark"/>
                 </div>
 
                 <div>
                   <hr>
                   <h2 class="fs-xlarge">Example of a badge outline</h2>
 
-                  <span class="badge text-bg-outline-primary">Primary</span>
-                  <span class="badge text-bg-outline-secondary">Secondary</span>
-                  <span class="badge text-bg-outline-success">Success</span>
-                  <span class="badge text-bg-outline-danger">Danger</span>
-                  <span class="badge text-bg-outline-warning">Warning</span>
-                  <span class="badge text-bg-outline-info">Info</span>
-                  <span class="badge text-bg-outline-light">Light</span>
-                  <span class="badge text-bg-outline-dark">Dark</span>
+                  <x-frontend::badge label="Primary"
+                                     theme="text-bg-outline-primary"/>
+                  <x-frontend::badge label="Secondary"
+                                     theme="text-bg-outline-secondary"/>
+                  <x-frontend::badge label="Success"
+                                     theme="text-bg-outline-success"/>
+                  <x-frontend::badge label="Danger"
+                                     theme="text-bg-outline-danger"/>
+                  <x-frontend::badge label="Warning"
+                                     theme="text-bg-outline-warning"/>
+                  <x-frontend::badge label="Info"
+                                     theme="text-bg-outline-info"/>
+                  <x-frontend::badge label="Light"
+                                     theme="text-bg-outline-light"/>
+                  <x-frontend::badge label="Dark"
+                                     theme="text-bg-outline-dark"/>
 
                 </div>
 
@@ -321,60 +342,61 @@
                   <hr>
                   <h2 class="fs-xlarge">Example of a badge pill</h2>
 
-                  <span class="badge rounded-pill text-bg-primary">
-                    Primary
-                  </span>
-                  <span class="badge rounded-pill text-bg-secondary">
-                    Secondary
-                  </span>
-                  <span class="badge rounded-pill text-bg-success">
-                    Success
-                  </span>
-                  <span class="badge rounded-pill text-bg-danger">
-                    Danger
-                  </span>
-                  <span class="badge rounded-pill text-bg-warning">
-                    Warning
-                  </span>
-                  <span class="badge rounded-pill text-bg-info">
-                    Info
-                  </span>
-                  <span class="badge rounded-pill text-bg-light">
-                    Light
-                  </span>
-                  <span class="badge rounded-pill text-bg-dark">
-                    Dark
-                  </span>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Primary"
+                                     theme="text-bg-primary"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Secondary"
+                                     theme="text-bg-secondary"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Success"
+                                     theme="text-bg-success"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Danger"
+                                     theme="text-bg-danger"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Warning"
+                                     theme="text-bg-warning"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Info"
+                                     theme="text-bg-info"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Light"
+                                     theme="text-bg-light"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Dark"
+                                     theme="text-bg-dark"/>
                 </div>
 
                 <div>
                   <hr>
                   <h2 class="fs-xlarge">Example of a badge outline pill</h2>
 
-                  <span class="badge rounded-pill text-bg-outline-primary">
-                    Primary
-                  </span>
-                  <span class="badge rounded-pill text-bg-outline-secondary">
-                    Secondary
-                  </span>
-                  <span class="badge rounded-pill text-bg-outline-success">
-                    Success
-                  </span>
-                  <span class="badge rounded-pill text-bg-outline-danger">
-                    Danger
-                  </span>
-                  <span class="badge rounded-pill text-bg-outline-warning">
-                    Warning
-                  </span>
-                  <span class="badge rounded-pill text-bg-outline-info">
-                    Info
-                  </span>
-                  <span class="badge rounded-pill text-bg-outline-light">
-                    Light
-                  </span>
-                  <span class="badge rounded-pill text-bg-outline-dark">
-                    Dark
-                  </span>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Primary"
+                                     theme="text-bg-outline-primary"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Secondary"
+                                     theme="text-bg-outline-secondary"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Success"
+                                     theme="text-bg-outline-success"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Danger"
+                                     theme="text-bg-outline-danger"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Warning"
+                                     theme="text-bg-outline-warning"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Info"
+                                     theme="text-bg-outline-info"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Light"
+                                     theme="text-bg-outline-light"/>
+                  <x-frontend::badge :is-rounded="true"
+                                     label="Dark"
+                                     theme="text-bg-outline-dark"/>
+
                 </div>
 
                 <div>
@@ -384,26 +406,31 @@
                   <button type="button"
                           class="btn btn-primary">
                     Notifications
-                    <span class="badge text-bg-secondary">4</span>
+                    <x-frontend::badge label="4"
+                                       theme="text-bg-secondary"/>
                   </button>
                 </div>
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example of a positioned badge button</h2>
+                  <h2 class="fs-xlarge">Example of a positioned badge button
+                  </h2>
 
                   <button type="button"
                           class="btn btn-primary position-relative">
                     Inbox
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    <x-frontend::badge class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                       99+
                       <span class="visually-hidden">unread messages</span>
-                    </span>
+                    </x-frontend::badge>
                   </button>
 
                   <button type="button"
                           class="btn btn-primary position-relative">
                     Profile
+                    <x-frontend::badge class="position-absolute top-0 start-100 translate-middle p-0h bg-danger border border-light rounded-circle">
+                      <span class="visually-hidden">New alerts</span>
+                    </x-frontend::badge>
                     <span class="position-absolute top-0 start-100 translate-middle p-0h bg-danger border border-light rounded-circle">
                       <span class="visually-hidden">New alerts</span>
                     </span>
@@ -787,7 +814,7 @@
                     <div class="col-md-6">
                       @php
                       $image = (object) [
-                      'src' => 'img-16x9.jpg',
+                      'src' => 'ratios/img-16x9.jpg',
                       'name' => 'Imagem 16x9',
                       'pictureClass' => 'ratio ratio-16x9',
                       'imageClass' => 'img-cover',
@@ -795,7 +822,7 @@
                       @endphp
                       <x-frontend::cards.card-picture :image="$image"
                                                       cardBody="vstack pt-1"
-                                                      class="bg-light overflow-hidden h-100">
+                                                      class="bg-light shadow h-100">
                         <p class="card-text">
                           Some quick example text to build on
                           the card title and make up the bulk
@@ -1449,7 +1476,8 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example of nav-pills with a dropdown</h2>
+                  <h2 class="fs-xlarge">Example of nav-pills with a dropdown
+                  </h2>
 
                   <ul class="nav nav-pills">
                     <li class="nav-item">
@@ -1874,25 +1902,38 @@
                 <div>
 
                   <div class="vstack gap-1">
-                    <div class="progress"
-                         role="progressbar"
-                         aria-label="Basic example"
-                         aria-valuenow="0"
-                         aria-valuemin="0"
-                         aria-valuemax="100">
-                      <div class="progress-bar"
-                           style="width: 0%"></div>
+
+                    @php
+                    $progressBars = [
+
+                    (object)[
+                    'name' => 'Rede e esgoto',
+                    'percentage' => '80%',
+                    ],
+
+                    (object)[
+                    'name' => 'Terraplanagem',
+                    'percentage' => '50%',
+                    ],
+
+                    (object)[
+                    'name' => 'Rede de água pluvial',
+                    'percentage' => '30%',
+                    ],
+
+                    ];
+                    @endphp
+
+                    <div class="row gy-2">
+                      @foreach($progressBars as $progress)
+                      <div class="col-md-4">
+
+                        <x-frontend::progress.bar :progress="$progress"/>
+
+                      </div>
+                      @endforeach
                     </div>
 
-                    <div class="progress"
-                         role="progressbar"
-                         aria-label="Basic example"
-                         aria-valuenow="75"
-                         aria-valuemin="0"
-                         aria-valuemax="75">
-                      <div class="progress-bar"
-                           style="width: 75%"></div>
-                    </div>
                   </div>
 
                 </div>
@@ -1901,16 +1942,9 @@
                   <hr>
                   <h2 class="fs-xlarge">Example of a label progress</h2>
 
-                  <div class="progress"
-                       role="progressbar"
-                       aria-label="Example with label"
-                       aria-valuenow="25"
-                       aria-valuemin="0"
-                       aria-valuemax="100">
-                    <div class="progress-bar"
-                         style="width: 25%">25%
-                    </div>
-                  </div>
+                  <x-frontend::progress.bar :progress="(object)['name' => 'Exemplo de barra de progresso','percentage' => '25%']"
+                                            :percentageEmbedded="true"
+                                            progress-height="16px"/>
                 </div>
 
                 <div>
@@ -1918,62 +1952,46 @@
                   <h2 class="fs-xlarge">Example of progress background</h2>
 
                   <div class="vstack gap-1">
-                    <div class="progress"
-                         role="progressbar"
-                         aria-label="Success example"
-                         aria-valuenow="25"
-                         aria-valuemin="0"
-                         aria-valuemax="100">
-                      <div class="progress-bar bg-success"
-                           style="width: 25%">25%
-                      </div>
-                    </div>
-                    <div class="progress"
-                         role="progressbar"
-                         aria-label="Info example"
-                         aria-valuenow="50"
-                         aria-valuemin="0"
-                         aria-valuemax="100">
-                      <div class="progress-bar bg-info text-dark"
-                           style="width: 50%">50%
-                      </div>
-                    </div>
-                    <div class="progress"
-                         role="progressbar"
-                         aria-label="Warning example"
-                         aria-valuenow="75"
-                         aria-valuemin="0"
-                         aria-valuemax="100">
-                      <div class="progress-bar bg-warning text-dark"
-                           style="width: 75%">75%
-                      </div>
-                    </div>
-                    <div class="progress"
-                         role="progressbar"
-                         aria-label="Danger example"
-                         aria-valuenow="100"
-                         aria-valuemin="0"
-                         aria-valuemax="100">
-                      <div class="progress-bar bg-danger"
-                           style="width: 100%">100%
-                      </div>
-                    </div>
+                    <x-frontend::progress.bar :progress="(object)['name' => 'Exemplo de barra de progresso','percentage' => '25%']"
+                                              :percentageEmbedded="true"
+                                              progress-height="16px"
+                                              theme="bg-success"/>
+
+                    <x-frontend::progress.bar :progress="(object)['name' => 'Exemplo de barra de progresso','percentage' => '50%']"
+                                              :percentageEmbedded="true"
+                                              progress-height="16px"
+                                              theme="bg-info text-dark"/>
+
+                    <x-frontend::progress.bar :progress="(object)['name' => 'Exemplo de barra de progresso','percentage' => '75%']"
+                                              :percentageEmbedded="true"
+                                              progress-height="16px"
+                                              theme="bg-warning text-dark"/>
+
+                    <x-frontend::progress.bar :progress="(object)['name' => 'Exemplo de barra de progresso','percentage' => '100%']"
+                                              :percentageEmbedded="true"
+                                              progress-height="16px"
+                                              theme="bg-warning bg-danger"/>
+
                   </div>
                 </div>
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example of animated progress stripes</h2>
+                  <h2 class="fs-xlarge">Example of animated progress stripes
+                  </h2>
 
-                  <div class="progress"
-                       role="progressbar"
-                       aria-label="Animated striped example"
-                       aria-valuenow="75"
-                       aria-valuemin="0"
-                       aria-valuemax="100">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated"
-                         style="width: 75%"></div>
-                  </div>
+                  <x-frontend::progress.bar :progress="(object)['name' => 'Exemplo de barra de progresso','percentage' => '100%']"
+                                            :percentageEmbedded="true"
+                                            progress-height="16px"
+                                            theme="progress-bar-striped progress-bar-animated"/>
+
+                </div>
+
+                <div>
+                  <hr>
+                  <h2 class="fs-xlarge">Example of progress circle</h2>
+
+                  <x-frontend::progress.circle percentage="70"/>
                 </div>
 
               </div>
@@ -2102,7 +2120,7 @@
                     <div class="col-md-6">
                       <x-frontend::cards.card card-body-class="vstack bd-example-code align-items-center gap-1">
                         <picture class="ratio ratio-16x9">
-                          <x-frontend::image image="img-16x9.jpg"
+                          <x-frontend::image image="ratios/img-16x9.jpg"
                                              title="imagem titulo"
                                              alt="imagem alt"
                                              class="img-cover"/>
@@ -2115,7 +2133,7 @@
                     <div class="col-md-6">
                       <x-frontend::cards.card card-body-class="vstack bd-example-code align-items-center gap-1">
                         <picture class="ratio ratio-16x9">
-                          <x-frontend::single-source image="img-16x9.jpg"
+                          <x-frontend::single-source image="ratios/img-16x9.jpg"
                                                      title="imagem titulo"
                                                      alt="imagem alt"
                                                      class="img-cover"/>
@@ -2127,7 +2145,7 @@
                     </div>
                     <div class="col-md-6">
                       <x-frontend::cards.card card-body-class="vstack bd-example-code align-items-center gap-1">
-                        <x-frontend::picture image="img-16x9.jpg"
+                        <x-frontend::picture image="ratios/img-16x9.jpg"
                                              title="imagem titulo"
                                              alt="imagem alt"
                                              pictureClass="ratio ratio-16x9"
@@ -3553,6 +3571,54 @@
 
             </div>
 
+            <div id="search"
+                 class="bd-example">
+
+              <h2 class="h6">Search - Tom Select</h2>
+              <div class="vstack gap-1">
+                <div class="position-relative">
+
+                  <select wire:model.lazy="search"
+                          id="search-select"
+                          placeholder="Busque por cidade ou empreendimento"
+                          aria-label="busca"
+                          class="ps-2hq @error('search-select') is-invalid @enderror form-control form-control-lg -bg-transparent -border-0 -shadow-none js-tom-select">
+                    <option value=""></option>
+                    @php
+                    $developments = [
+
+                    (object)[
+                    'city' => 'São José do Rio Preto',
+                    ],
+
+                    (object)[
+                    'city' => 'São José do Rio Preto',
+                    'name' => 'Empreendimento 1',
+                    ],
+
+                    (object)[
+                    'city' => 'São José do Rio Preto',
+                    'name' => 'Empreendimento 2',
+                    ],
+                    ]
+                    @endphp
+                    @foreach($developments as $development)
+                    <option value="{{ isset($development->name) ? $development->name : $development->city }}"
+                            data-city="{{ isset($development->city) ? $development->city : '' }}"
+                            data-name="{{ isset($development->name) ? $development->name : '' }}">
+                      {{ isset($development->name) ? $development->name :
+                      $development->city }}
+                    </option>
+                    @endforeach
+                  </select>
+
+                  <x-frontend-icon name="ic-ui-search"
+                                   class="ms-0hq text-primary ic-xxsm position-absolute top-50 translate-middle-y start-0 z-1"/>
+                </div>
+              </div>
+
+            </div>
+
             <div id="livewire"
                  class="bd-example">
 
@@ -3750,7 +3816,9 @@
               <div class="vstack gap-1">
 
                 <div>
-                  <h2 class="fs-xlarge">Example of an image with a warning state</h2>
+                  <h2 class="fs-xlarge">Example of an image with a warning
+                                        state
+                  </h2>
 
                   <div class="hstack gap-0q">
                     <div class="bg-danger"
@@ -3766,7 +3834,8 @@
 
                 <div>
                   <hr>
-                  <h2 class="fs-xlarge">Example of links with a warning state</h2>
+                  <h2 class="fs-xlarge">Example of links with a warning state
+                  </h2>
 
                   <div class="hstack gap-0q">
                     <div class="bg-danger"
@@ -3787,13 +3856,15 @@
                  class="bd-example">
 
               <h2 class="mb-block-small h6">Gallery</h2>
+              <h2 class="fs-xlarge">Example of image gallery</h2>
+
               <div class="vstack gap-1">
 
                 <div class="row g-1">
                   <div class="col-md-6">
                     <x-frontend::glightbox.image description="descrição da imagem"
-                                                 link="img-16x9-xl@2x.jpg">
-                      <x-frontend::picture image="img-16x9.jpg"
+                                                 link="ratios/img-16x9-xl@2x.jpg">
+                      <x-frontend::picture image="ratios/img-16x9.jpg"
                                            title="imagem titulo"
                                            alt="imagem alt"
                                            pictureClass="ratio ratio-16x9"
@@ -3807,8 +3878,8 @@
                   </div>
                   <div class="col-md-6">
                     <x-frontend::glightbox.image description="descrição da imagem"
-                                                 link="img-16x9-xl@2x.jpg">
-                      <x-frontend::picture image="img-16x9.jpg"
+                                                 link="ratios/img-16x9-xl@2x.jpg">
+                      <x-frontend::picture image="ratios/img-16x9.jpg"
                                            title="imagem titulo"
                                            alt="imagem alt"
                                            pictureClass="ratio ratio-16x9"
@@ -3883,7 +3954,9 @@
                 <div>
 
                   <hr>
-                  <h2 class="fs-xlarge">Example of a link icon with an inverted icon</h2>
+                  <h2 class="fs-xlarge">Example of a link icon with an inverted
+                                        icon
+                  </h2>
 
                   <x-frontend::link link="#"
                                     label="Ver mais"
@@ -3895,7 +3968,9 @@
                 <div>
 
                   <hr>
-                  <h2 class="fs-xlarge">Example of a link icon with an animated icon</h2>
+                  <h2 class="fs-xlarge">Example of a link icon with an animated
+                                        icon
+                  </h2>
 
                   <x-frontend::link link="#"
                                     label="Compartilhar"
@@ -3918,6 +3993,42 @@
 
             </div>
 
+            <div id="list-icon"
+                 class="bd-example">
+
+              <h2 class="mb-block-small h6">List icon</h2>
+              <div class="vstack gap-1">
+
+                <div>
+                  <h2 class="fs-xlarge">
+                    Example of a list icon component with icon
+                  </h2>
+
+                  <x-frontend::list-icon sanitizeList
+                                         icon-class="ic-xxsm text-primary"
+                                         class="mb-0 vstack gap-0h"
+                                         :content="[(object)['icon'=>'ic-differential', 'text'=> 'Descrição da lista'],
+                                                    (object)['icon'=>'ic-differential', 'text'=> 'Descrição da lista']]"/>
+
+                </div>
+
+                <div>
+
+                  <hr>
+                  <h2 class="fs-xlarge">
+                     Example of a list icon component without icon
+                  </h2>
+
+                  <x-frontend::list-icon sanitizeList
+                                         class="mb-0 vstack gap-0h"
+                                         :content="[(object)['text'=> 'Descrição da lista'],
+                                                    (object)['text'=> 'Descrição da lista']]"/>
+
+                </div>
+
+              </div>
+            </div>
+
             <div id="infinite-scroll"
                  class="bd-example">
 
@@ -3925,7 +4036,8 @@
               <div class="vstack gap-1">
                 <div class="page-load-status mx-auto">
                   <div class="infinite-scroll-request text-center text-primary">
-                    <x-frontend-icon name="ic-loading"/>
+                    <x-frontend-icon name="ic-loading"
+                                     class="animation-spin-right ic-xl text-primary"/>
                   </div>
                   <p class="infinite-scroll-last"></p>
                   <p class="infinite-scroll-error"></p>
@@ -4058,13 +4170,16 @@
             <div id="video"
                  class="bd-example">
 
-              <h2 class="mb-block-small h6">Video</h2>
+              <h2 class="mb-block-small h6">Vídeo</h2>
               <div class="vstack gap-1">
 
                 <div class="row g-1">
                   <div class="col-md-6">
+                    <h2 class="fs-xlarge">
+                      Modal video example
+                    </h2>
                     <x-frontend::glightbox.video link="https://youtu.be/lG7o0r-7coo?si=a8uCcwaD_hsqgQM3">
-                      <x-frontend::picture image="img-16x9.jpg"
+                      <x-frontend::picture image="ratios/img-16x9.jpg"
                                            title="imagem titulo"
                                            alt="imagem alt"
                                            pictureClass="ratio ratio-16x9"
@@ -4076,8 +4191,91 @@
                                            breakpointNotebookSuffix="lg"/>
                     </x-frontend::glightbox.video>
                   </div>
+
+                  <div class="col-md-6">
+                    <h2 class="fs-xlarge">
+                      Embedded video example
+                    </h2>
+                    <x-frontend::glightbox.player-embed id="about-us-video"
+                                                        link="https://youtu.be/lG7o0r-7coo?si=a8uCcwaD_hsqgQM3"
+                                                        image="ratios/img-16x9.jpg"
+                                                        class="img-cover"
+                                                        title="imagem titulo"
+                                                        alt="imagem alt"
+                                                        aspect-ratio="-h-100 ratio ratio-1x1 ratio-md-16x9"/>
+                  </div>
                 </div>
 
+              </div>
+            </div>
+
+            <div id="slider"
+                 class="bd-example">
+              <h2 class="mb-block-small h6">Slider</h2>
+
+              <div class="vstack gap-1">
+
+                <div>
+                  <h2 class="fs-xlarge">
+                    Example of a slider banner
+                  </h2>
+
+                  <div class="">
+
+                    {{-- @formatter:off --}}
+                    @php
+                    $banners = [
+
+                      (object)[
+                        'content' => (object)[
+                          'name' => 'Titulo do banner',
+                          'subtitle' => 'Subtitulo do banner',
+                          'route' => '/html/#',
+                          'details' => [
+                            (object)['icon' => 'ic-differential', 'text' => '100 a 200m²'],
+                            (object)['icon' => 'ic-differential', 'text' => '1 ou 2 dorms. (1 suíte)'],
+                          ],
+                        ],
+
+                        'image' => (object)[
+                          'src' => 'ratios/img-21x9.jpg',
+                          'name' => 'Imagem 21x9',
+                        ],
+                      ],
+
+                      (object)[
+                        'content' => (object)[
+                          'name' => 'Titulo do banner 2',
+                          'subtitle' => 'Subtitulo do banner 2',
+                          'route' => '/html/#',
+                          'details' => [
+                            (object)['icon' => 'ic-differential', 'text' => '100 a 200m²'],
+                            (object)['icon' => 'ic-differential', 'text' => '1 ou 2 dorms. (1 suíte)'],
+                          ],
+                        ],
+
+                        'image' => (object)[
+                          'src' => 'ratios/img-21x9.jpg',
+                          'name' => 'Imagem 21x9',
+                        ],
+                      ],
+
+                      (object)[
+                        'content' => false,
+
+                        'image' => (object)[
+                          'src' => 'ratios/img-21x9.jpg',
+                          'name' => 'Imagem 21x9',
+                        ],
+                      ],
+
+                    ];
+                    @endphp
+                    {{-- @formatter:on --}}
+                    <x-frontend::sliders.banner :banners="$banners"/>
+
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -4100,8 +4298,7 @@
 
   .bd-example-code {
     padding: 1rem;
-    border: 1px solid #dee2e6;
-    border-radius: .375rem;
+    border-radius: 1rem;
     background: #f8f9fa;
   }
 </style>

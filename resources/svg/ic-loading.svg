@@ -1,22 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
-     xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px"
-     height="64px" viewBox="0 0 128 128" xml:space="preserve"><g><circle cx="16" cy="64" r="16" fill="currentColor" fill-opacity="1"/><circle
-        cx="16" cy="64" r="14.344" fill="currentColor" fill-opacity="1"
-        transform="rotate(45 64 64)"/><circle cx="16" cy="64" r="12.531"
-                                              fill="currentColor" fill-opacity="1"
-                                              transform="rotate(90 64 64)"/><circle
-        cx="16" cy="64" r="10.75" fill="currentColor" fill-opacity="1"
-        transform="rotate(135 64 64)"/><circle cx="16" cy="64" r="10.063"
-                                               fill="currentColor" fill-opacity="1"
-                                               transform="rotate(180 64 64)"/><circle
-        cx="16" cy="64" r="8.063" fill="currentColor" fill-opacity="1"
-        transform="rotate(225 64 64)"/><circle cx="16" cy="64" r="6.438"
-                                               fill="currentColor" fill-opacity="1"
-                                               transform="rotate(270 64 64)"/><circle
-        cx="16" cy="64" r="5.375" fill="currentColor" fill-opacity="1"
-        transform="rotate(315 64 64)"/><animateTransform
-        attributeName="transform" type="rotate"
-        values="0 64 64;315 64 64;270 64 64;225 64 64;180 64 64;135 64 64;90 64 64;45 64 64"
-        calcMode="discrete" dur="1040ms"
-        repeatCount="indefinite"></animateTransform></g></svg>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+     xmlns="http://www.w3.org/2000/svg">
+    <path d="M16.96 4.15995C16.96 3.62976 16.5301 3.19995 16 3.19995C15.4698 3.19995 15.04 3.62976 15.04 4.15995V9.24795C15.04 9.77814 15.4698 10.208 16 10.208C16.5301 10.208 16.96 9.77814 16.96 9.24795V4.15995Z"
+          fill="currentColor"/>
+    <path d="M8.31451 6.93659C7.93961 6.56169 7.33178 6.56169 6.95688 6.93659C6.58198 7.31149 6.58198 7.91932 6.95688 8.29422L10.5546 11.8919C10.9295 12.2668 11.5373 12.2668 11.9122 11.8919C12.2871 11.517 12.2871 10.9092 11.9122 10.5343L8.31451 6.93659Z"
+          fill="currentColor"/>
+    <path d="M10.208 16C10.208 15.4698 9.77814 15.04 9.24795 15.04H4.15995C3.62976 15.04 3.19995 15.4698 3.19995 16C3.19995 16.5301 3.62976 16.96 4.15995 16.96H9.24795C9.77815 16.96 10.208 16.5301 10.208 16Z"
+          fill="currentColor"/>
+    <path d="M11.891 20.0881C11.5161 19.7132 10.9083 19.7132 10.5334 20.0881L6.93564 23.6858C6.56074 24.0607 6.56074 24.6686 6.93564 25.0435C7.31054 25.4184 7.91837 25.4184 8.29327 25.0435L11.891 21.4457C12.2659 21.0708 12.2659 20.463 11.891 20.0881Z"
+          fill="currentColor"/>
+    <path d="M16.96 22.752C16.96 22.2218 16.5301 21.792 16 21.792C15.4698 21.792 15.04 22.2218 15.04 22.752V27.84C15.04 28.3701 15.4698 28.7999 16 28.7999C16.5301 28.7999 16.96 28.3701 16.96 27.84V22.752Z"
+          fill="currentColor"/>
+    <path d="M21.4445 20.1085C21.0696 19.7336 20.4618 19.7336 20.0869 20.1085C19.712 20.4834 19.712 21.0912 20.0869 21.4661L23.6846 25.0638C24.0595 25.4387 24.6674 25.4387 25.0422 25.0638C25.4172 24.6889 25.4172 24.0811 25.0422 23.7062L21.4445 20.1085Z"
+          fill="currentColor"/>
+    <path d="M28.7998 16C28.7998 15.4698 28.37 15.04 27.8398 15.04H22.7518C22.2216 15.04 21.7918 15.4698 21.7918 16C21.7918 16.5301 22.2216 16.96 22.7518 16.96H27.8398C28.37 16.96 28.7998 16.5301 28.7998 16Z"
+          fill="currentColor"/>
+    <path d="M25.0635 6.95723C24.6886 6.58233 24.0807 6.58233 23.7058 6.95723L20.1081 10.555C19.7332 10.9299 19.7332 11.5377 20.1081 11.9126C20.483 12.2875 21.0908 12.2875 21.4657 11.9126L25.0635 8.31486C25.4384 7.93996 25.4384 7.33213 25.0635 6.95723Z"
+          fill="currentColor"/>
+</svg>

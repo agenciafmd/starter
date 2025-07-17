@@ -19,19 +19,63 @@ $utilities: map-merge(
       "letter-spacing": (
         property: letter-spacing,
         class: ls,
-        values: (
-          "0": 0,
-          "1": 1px,
-          "2": 2px,
-          "3": 3px,
-          "4": 4px,
-        )
+        values: $letter-spacing-map,
+      ),
+      "line-height": (
+        property: line-height,
+        class: lh,
+        values: $line-height-map,
+      ),
+      'overflow': map-merge(
+          map-get($utilities, 'overflow'),
+          (
+            responsive: true,
+          ),
+      ),
+      'ratio': (
+        property: --bs-aspect-ratio,
+        class: ratio,
+        responsive: true,
+        values: $aspect-ratios,
+      ),
+      "rounded": (
+        property: border-radius,
+        class: rounded,
+        values: $border-radius-map,
+      ),
+      "rounded-top-left": (
+        property: border-top-left-radius,
+        class: rounded-top-left,
+        responsive: true,
+        values: $border-radius-map,
+      ),
+      "rounded-top-right": (
+        property: border-top-right-radius,
+        class: rounded-top-right,
+        responsive: true,
+        values: $border-radius-map,
+      ),
+      "rounded-bottom-right": (
+        property: border-bottom-right-radius,
+        class: rounded-bottom-right,
+        responsive: true,
+        values: $border-radius-map,
+      ),
+      "rounded-bottom-left": (
+        property: border-bottom-left-radius,
+        class: rounded-bottom-left,
+        responsive: true,
+        values: $border-radius-map,
       ),
       "opacity": map-merge(
           map-get($utilities, "opacity"),
           (
             responsive: true,
             state: hover,
+            values: map-merge(
+                map-get(map-get($utilities, 'opacity'), 'values'),
+                $opacity-map,
+            ),
           ),
       ),
       "width": map-merge(
@@ -109,6 +153,21 @@ $utilities: map-merge(
           (
             state: hover,
           ),
+      ),
+      'background-color': map-merge(
+          map-get($utilities, 'background-color'),
+          (
+            state: hover,
+            values: map-merge(
+                map-get(map-get($utilities, 'background-color'), 'values'),
+                $custom-colors-map,
+            ),
+          ),
+      ),
+      "font-weight": (
+        property: font-weight,
+        class: fw,
+        values: $font-weight-map,
       ),
     )
 );

@@ -14,7 +14,7 @@ const { APP_URL } = {
 
 const DEFAULT_URL = 'http://localhost';
 const url = APP_URL ? new URL(APP_URL) : new URL(DEFAULT_URL);
-const CRITICAL_URL = `${url.protocol}//${url.hostname}`;
+const CRITICAL_URL = `${ url.protocol }//${ url.hostname }`;
 
 const purgeCheckPaths = [
   'packages/agenciafmd/frontend/resources/views/**/*.php',
@@ -34,6 +34,9 @@ export default defineConfig({
         'resources/js/frontend-imports.js',
         'resources/js/frontend-imports.js',
         'resources/js/pages/theme.js',
+        'resources/js/components/sliders/articles.js',
+        'resources/js/components/sliders/banners.js',
+        'resources/js/components/share-api.js',
       ],
       refresh: true, // TODO add all paths to watch and refresh on change
     }),
@@ -44,6 +47,15 @@ export default defineConfig({
         {
           uri: '', template: 'index',
         },
+        // {
+        //   uri: 'blog', template: 'blog',
+        // },
+        // {
+        //   uri: 'blog-resultado', template: 'blog-resultado',
+        // },
+        // {
+        //   uri: 'blog-detalhe', template: 'blog-detalhe',
+        // },
       ],
       criticalConfig: {
         dimensions: [
@@ -83,6 +95,7 @@ export default defineConfig({
         /was-*/,
         /g*/,
         /plyr*/,
+        /ts*/,
       ],
     }),
   ],

@@ -19,3 +19,15 @@ a {
   max-width: 100%;
   height: auto;
 }
+
+.stretch {
+  &-on-mobile {
+    @include media-breakpoint-down(md) {
+      width: 100vw;
+      position: relative;
+      transform: translateX(-50%);
+      left: 50%;
+      padding-inline: $spacer;
+    }
+  }
+}

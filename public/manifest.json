@@ -8,7 +8,7 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "build/assets/mstile-150x150-B0fTGetO.webp",
+      "src": "build/assets/mstile-150x150-B0nmQREE.webp",
       "type": "image/webp",
       "sizes": "150x150",
       "purpose": "maskable any"
@@ -20,7 +20,7 @@
       "purpose": "maskable any"
     },
     {
-      "src": "build/assets/icon-192x192-BhYa9nbZ.webp",
+      "src": "build/assets/icon-192x192-DL56Vtcs.webp",
       "type": "image/webp",
       "sizes": "192x192",
       "purpose": "maskable any"
@@ -32,7 +32,7 @@
       "purpose": "maskable any"
     },
     {
-      "src": "build/assets/icon-512x512-Ctro2acp.webp",
+      "src": "build/assets/icon-512x512-BEuahyzr.webp",
       "type": "image/webp",
       "sizes": "512x512",
       "purpose": "maskable any"

@@ -5,7 +5,7 @@
                         title="{{ config('app.name') }}"
                         aria-label="{{ config('app.name') }}"
                         icon="logo-fmd"
-                        class="navbar-brand icon-link-hover-scale-center"/>
+                        class="navbar-brand icon-link-hover-none"/>
       <div class="offcanvas offcanvas-end align-items-md-end"
            tabindex="-1"
            id="offcanvasNavbar"

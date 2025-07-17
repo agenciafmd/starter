@@ -1,3 +1,16 @@
 .transition-base {
   transition: $transition-base;
 }
+
+.animation {
+  &-spin-right {
+    animation: spin-right 3s linear infinite;
+    transform-origin: center;
+
+    @keyframes spin-right {
+      to {
+        transform: rotate(1turn);
+      }
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import Swiper from 'swiper';
+import { Navigation, Pagination, EffectFade, Autoplay } from 'swiper/modules';
 
-function createSlider(options) {
+export function createSlider(options) {
 
   if (!options.container) {
 
@@ -43,12 +44,13 @@ function createSlider(options) {
     mousewheel: {
       forceToAxis: true,
     },
+    modules: [Navigation, Pagination, EffectFade, Autoplay],
     ...options,
   });
 
 }
 
-function setupDefaultSlider() {
+export function setupDefaultSlider() {
 
   const defaultSliderSelector = '.js-slider';
 

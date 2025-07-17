@@ -1,5 +1,5 @@
 @extends('frontend::html.master', [
-'bodyClass' => 'greetings bg-black text-white vstack h-100vh',
+'bodyClass' => 'greetings bg-black text-white vstack h-100vh -header-overlap',
 'critical' => 'index.css',
 ])
 

@@ -1,0 +1,77 @@
+.ts-wrapper {
+
+  &.multi {
+
+    &.has-items {
+      .ts-control {
+        padding: inherit;
+      }
+    }
+
+    .ts-control > div {
+      background: $gray-200;
+      color: $input-color;
+      font-size: $font-size-xs;
+      border-radius: $border-radius;
+    }
+  }
+
+  &:not(.form-control-lg, .form-control-sm) {
+    &.form-control {
+      min-height: $input-height;
+    }
+  }
+}
+
+.ts-control {
+  font-size: inherit;
+  line-height: inherit;
+  border: inherit;
+  border-radius: inherit;
+  box-shadow: inherit;
+  padding: inherit;
+  color: inherit;
+  min-height: auto;
+  width: auto;
+  background-color: inherit;
+  position: absolute;
+  top: calc($input-border-width * -1);
+  left: calc($input-border-width * -1);
+  right: calc($input-border-width * -1);
+  bottom: calc($input-border-width * -1);
+  flex-direction: row;
+  align-items: center;
+
+  input, .item {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semi-bold;
+    color: $input-color;
+    min-width: auto;
+
+    &::placeholder {
+      font-weight: $font-weight-normal;
+      color: $input-color;
+    }
+  }
+}
+
+.ts-dropdown {
+  background: $gray-100;
+  color: $input-color;
+  font-size: $font-size-sm;
+  box-shadow: $box-shadow;
+  border: none;
+  @include border-bottom-radius($border-radius-sm);
+  overflow: hidden;
+
+  .option {
+    padding: 1rem;
+    color: $input-color;
+    font-size: $font-size-sm;
+    border-top: $border-width solid $gray-300;
+  }
+
+  .active {
+    background: $gray-100;
+  }
+}

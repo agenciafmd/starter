@@ -1,0 +1,34 @@
+.grid {
+  &-default {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+    grid-template-areas: "background" "content";
+
+    &-background {
+      grid-area: background;
+      grid-row: 1;
+
+      &.isStackContentMobile {
+        grid-row: 2;
+        @include media-breakpoint-up(md) {
+          grid-row: 1;
+        }
+      }
+    }
+
+    &-content {
+      grid-area: content;
+      grid-row: 1;
+      position: relative;
+
+      &.isStackContentMobile {
+        grid-row: 2;
+        @include media-breakpoint-up(md) {
+          grid-row: 1;
+        }
+      }
+    }
+
+  }
+}

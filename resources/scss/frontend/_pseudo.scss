@@ -1,0 +1,8 @@
+.pseudo {
+
+  &-gradient {
+    &-banner {
+      @include base-background-gradient($background: (url('@images/video-film.png'), $ds-gradient-banner));
+    }
+  }
+}
