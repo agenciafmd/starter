@@ -11,7 +11,7 @@ class FrontendServiceProvider extends ServiceProvider
     {
         $this->bootProviders();
 
-        $this->loadViteMacros();
+        $this->bootViteMacros();
 
         $this->bootPublish();
     }
@@ -24,6 +24,7 @@ class FrontendServiceProvider extends ServiceProvider
     private function bootProviders(): void
     {
         $this->app->register(BladeServiceProvider::class);
+        $this->app->register(LivewireServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
     }
 
@@ -32,14 +33,14 @@ class FrontendServiceProvider extends ServiceProvider
         //
     }
 
-    private function registerConfigs(): void
-    {
-        $this->mergeConfigFrom(__DIR__ . '/../../config/frontend.php', 'frontend');
-    }
-
-    private function loadViteMacros(): void
+    private function bootViteMacros(): void
     {
         Vite::macro('image', fn (string $asset) => $this->asset("resources/images/{$asset}"));
         Vite::macro('font', fn (string $asset) => $this->asset("resources/fonts/{$asset}"));
+    }
+
+    private function registerConfigs(): void
+    {
+        $this->mergeConfigFrom(__DIR__ . '/../../config/frontend.php', 'frontend');
     }
 }
