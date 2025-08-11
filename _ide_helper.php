@@ -13380,9 +13380,6 @@ namespace Illuminate\Support\Facades {
 
             }
     /**
-     * @method static array validate(array $rules, ...$params)
-     * @method static array validateWithBag(string $errorBag, array $rules, ...$params)
-     * @method static bool hasValidSignature(bool $absolute = true)
      * @see \Illuminate\Http\Request
      */
     class Request {
@@ -15887,6 +15884,79 @@ namespace Illuminate\Support\Facades {
         public static function flushMacros()
         {
             \Illuminate\Http\Request::flushMacros();
+        }
+
+        /**
+         * @see \Illuminate\Foundation\Providers\FoundationServiceProvider::registerRequestValidation()
+         * @param array $rules
+         * @param mixed $params
+         * @static
+         */
+        public static function validate($rules, ...$params)
+        {
+            return \Illuminate\Http\Request::validate($rules, ...$params);
+        }
+
+        /**
+         * @see \Illuminate\Foundation\Providers\FoundationServiceProvider::registerRequestValidation()
+         * @param string $errorBag
+         * @param array $rules
+         * @param mixed $params
+         * @static
+         */
+        public static function validateWithBag($errorBag, $rules, ...$params)
+        {
+            return \Illuminate\Http\Request::validateWithBag($errorBag, $rules, ...$params);
+        }
+
+        /**
+         * @see \Illuminate\Foundation\Providers\FoundationServiceProvider::registerRequestSignatureValidation()
+         * @param mixed $absolute
+         * @static
+         */
+        public static function hasValidSignature($absolute = true)
+        {
+            return \Illuminate\Http\Request::hasValidSignature($absolute);
+        }
+
+        /**
+         * @see \Illuminate\Foundation\Providers\FoundationServiceProvider::registerRequestSignatureValidation()
+         * @static
+         */
+        public static function hasValidRelativeSignature()
+        {
+            return \Illuminate\Http\Request::hasValidRelativeSignature();
+        }
+
+        /**
+         * @see \Illuminate\Foundation\Providers\FoundationServiceProvider::registerRequestSignatureValidation()
+         * @param mixed $ignoreQuery
+         * @param mixed $absolute
+         * @static
+         */
+        public static function hasValidSignatureWhileIgnoring($ignoreQuery = [], $absolute = true)
+        {
+            return \Illuminate\Http\Request::hasValidSignatureWhileIgnoring($ignoreQuery, $absolute);
+        }
+
+        /**
+         * @see \Illuminate\Foundation\Providers\FoundationServiceProvider::registerRequestSignatureValidation()
+         * @param mixed $ignoreQuery
+         * @static
+         */
+        public static function hasValidRelativeSignatureWhileIgnoring($ignoreQuery = [])
+        {
+            return \Illuminate\Http\Request::hasValidRelativeSignatureWhileIgnoring($ignoreQuery);
+        }
+
+        /**
+         * @see \Agenciafmd\Support\Providers\RequestServiceProvider::loadRequestMacros()
+         * @param mixed $routeNames
+         * @static
+         */
+        public static function currentRouteNameStartsWith($routeNames)
+        {
+            return \Illuminate\Http\Request::currentRouteNameStartsWith($routeNames);
         }
 
             }
@@ -22327,6 +22397,26 @@ namespace Illuminate\Support\Facades {
             \Illuminate\Foundation\Vite::flushMacros();
         }
 
+        /**
+         * @see \Agenciafmd\Frontend\Providers\FrontendServiceProvider::bootViteMacros()
+         * @param string $asset
+         * @static
+         */
+        public static function image($asset)
+        {
+            return \Illuminate\Foundation\Vite::image($asset);
+        }
+
+        /**
+         * @see \Agenciafmd\Frontend\Providers\FrontendServiceProvider::bootViteMacros()
+         * @param string $asset
+         * @static
+         */
+        public static function font($asset)
+        {
+            return \Illuminate\Foundation\Vite::font($asset);
+        }
+
             }
     }
 
@@ -22482,7 +22572,7 @@ namespace Facades\Agenciafmd\Support {
         }
 
         /**
-         * Normaliza o link do youtube para o formato de compartilhar
+         * Normaliza o link do YouTube para o formato de compartilhar
          *
          * @static
          */
@@ -22559,6 +22649,24 @@ namespace Facades\Agenciafmd\Support {
         public static function numbersToWords($value)
         {
             return \Agenciafmd\Support\Helper::numbersToWords($value);
+        }
+
+        /**
+         * Retorna a cor do texto baseado no RGB passado
+         *
+         * @static
+         */
+        public static function negativeColor($rgb, $dark = '#003D4C', $light = '#FFFFFF')
+        {
+            return \Agenciafmd\Support\Helper::negativeColor($rgb, $dark, $light);
+        }
+
+        /**
+         * @static
+         */
+        public static function hexToRgb($rgb)
+        {
+            return \Agenciafmd\Support\Helper::hexToRgb($rgb);
         }
 
             }
@@ -23295,7 +23403,7 @@ namespace Illuminate\Support {
 namespace Illuminate\Http {
     /**
      */
-    class Request {
+    class Request extends \Symfony\Component\HttpFoundation\Request {
         /**
          * @see \Illuminate\Foundation\Providers\FoundationServiceProvider::registerRequestValidation()
          * @param array $rules
@@ -23377,7 +23485,7 @@ namespace Illuminate\Foundation {
      */
     class Vite {
         /**
-         * @see \Agenciafmd\Frontend\Providers\FrontendServiceProvider::loadViteMacros()
+         * @see \Agenciafmd\Frontend\Providers\FrontendServiceProvider::bootViteMacros()
          * @param string $asset
          * @static
          */
@@ -23387,7 +23495,7 @@ namespace Illuminate\Foundation {
         }
 
         /**
-         * @see \Agenciafmd\Frontend\Providers\FrontendServiceProvider::loadViteMacros()
+         * @see \Agenciafmd\Frontend\Providers\FrontendServiceProvider::bootViteMacros()
          * @param string $asset
          * @static
          */
@@ -28195,11 +28303,6 @@ namespace  {
 }
 
 
-namespace Facades\Livewire\Features\SupportFileUploads {
-    /**
-     * @mixin \Livewire\Features\SupportFileUploads\GenerateSignedUploadUrl     */
-    class GenerateSignedUploadUrl extends \Livewire\Features\SupportFileUploads\GenerateSignedUploadUrl {}
-}
 namespace Facades\Agenciafmd\Support {
     /**
      * @mixin \Agenciafmd\Support\Helper     */

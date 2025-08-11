@@ -82,7 +82,7 @@ namespace Agenciafmd\Leads\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Lead wherePhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Lead whereSource($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Lead whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Lead withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Lead withTrashed(bool $withTrashed = true)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Lead withoutTrashed()
  */
 	class Lead extends \Eloquent implements \OwenIt\Auditing\Contracts\Auditable {}
@@ -124,7 +124,7 @@ namespace Agenciafmd\Postal\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Postal whereTo($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Postal whereToName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Postal whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Postal withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Postal withTrashed(bool $withTrashed = true)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Postal withoutTrashed()
  */
 	class Postal extends \Eloquent implements \OwenIt\Auditing\Contracts\Auditable {}
@@ -197,7 +197,7 @@ namespace Agenciafmd\Admix\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Role whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Role whereRules($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Role whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Role withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Role withTrashed(bool $withTrashed = true)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Role withoutTrashed()
  */
 	class Role extends \Eloquent implements \OwenIt\Auditing\Contracts\Auditable {}
@@ -249,7 +249,7 @@ namespace Agenciafmd\Admix\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereRoleId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|User withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User withTrashed(bool $withTrashed = true)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User withoutTrashed()
  */
 	class User extends \Eloquent implements \OwenIt\Auditing\Contracts\Auditable, \Spatie\MediaLibrary\HasMedia {}
