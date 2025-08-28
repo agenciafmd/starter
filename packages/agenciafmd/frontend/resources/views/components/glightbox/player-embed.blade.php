@@ -39,10 +39,10 @@
                     data-plyr-provider="{{ $provider }}"
                     data-plyr-embed-id="{{ $link }}"
                     id="player-{{ $id }}"
-                    class="stretched-link {{ $iconClass }} js-player-embed-link ic-play"
+                    class="stretched-link {{ $iconClass }} js-player-embed-link ic-play-container"
                     aria-label="Clique para assistir o vídeo"
                     title="Ver vídeo">
-    <x-frontend-icon class="vstack align-items-center justify-content-center rounded-circle icon position-absolute top-50 start-50 translate-middle z-1"
+    <x-frontend-icon class="vstack align-items-center justify-content-center rounded-circle ic-play position-absolute top-50 start-50 translate-middle z-1"
                      name="ic-ui-play"/>
   </x-frontend::link>
 
