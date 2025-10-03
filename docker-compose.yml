@@ -2,7 +2,7 @@ services:
     starter.local:
         build:
             context: ./vendor/laravel/sail/runtimes/8.4
-            dockerfile: Dockerfile
+            dockerfile: ../../../../../docker-override/Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP:-1000}'
         image: sail-8.4/app
