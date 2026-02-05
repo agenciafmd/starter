@@ -1,0 +1,138 @@
+{
+  "global": {
+    "color": {
+      "base": {
+        "gray": {
+          "100": {
+            "value": "#f8f9fa",
+            "type": "color"
+          },
+          "200": {
+            "value": "#e9ecef",
+            "type": "color"
+          },
+          "300": {
+            "value": "#dee2e6",
+            "type": "color"
+          },
+          "400": {
+            "value": "#ced4da",
+            "type": "color"
+          },
+          "500": {
+            "value": "#adb5bd",
+            "type": "color"
+          },
+          "600": {
+            "value": "#6c757d",
+            "type": "color"
+          },
+          "700": {
+            "value": "#495057",
+            "type": "color"
+          },
+          "800": {
+            "value": "#343a40",
+            "type": "color"
+          },
+          "900": {
+            "value": "#212529",
+            "type": "color"
+          }
+        },
+        "blue": {
+          "value": "#0d6efd",
+          "type": "color"
+        },
+        "indigo": {
+          "value": "#6610f2",
+          "type": "color"
+        },
+        "purple": {
+          "value": "#6f42c1",
+          "type": "color"
+        },
+        "pink": {
+          "value": "#d63384",
+          "type": "color"
+        },
+        "red": {
+          "value": "#dc3545",
+          "type": "color"
+        },
+        "orange": {
+          "value": "#fd7e14",
+          "type": "color"
+        },
+        "yellow": {
+          "value": "#ffc107",
+          "type": "color"
+        },
+        "green": {
+          "value": "#198754",
+          "type": "color"
+        },
+        "teal": {
+          "value": "#20c997",
+          "type": "color"
+        },
+        "cyan": {
+          "value": "#0dcaf0",
+          "type": "color"
+        },
+        "black": {
+          "value": "#000000",
+          "type": "color"
+        },
+        "white": {
+          "value": "#ffffff",
+          "type": "color"
+        }
+      },
+      "brand": {
+        "primary": {
+          "value": "#bababa",
+          "type": "color"
+        },
+        "secondary": {
+          "value": "#e8ff00",
+          "type": "color"
+        }
+      },
+      "feedback": {
+        "success": {
+          "value": "#008B00",
+          "type": "color"
+        },
+        "warning": {
+          "value": "#F8CC2C",
+          "type": "color"
+        },
+        "danger": {
+          "value": "#d72638",
+          "type": "color"
+        },
+        "info": {
+          "value": "{global.color.base.cyan}",
+          "type": "color"
+        }
+      },
+      "action": {
+        "link": {
+          "value": "#3461DB",
+          "type": "color"
+        }
+      },
+      "utility": {
+        "light": {
+          "value": "{global.color.base.gray.100}",
+          "type": "color"
+        },
+        "dark": {
+          "value": "{global.color.base.black}",
+          "type": "color"
+        }
+      }
+    }
+  }
+}
