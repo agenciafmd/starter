@@ -10,6 +10,7 @@ const BOOTSTRAP_TOKEN_MAP = {
   'ds-gray-700': 'base.gray.700',
   'ds-gray-800': 'base.gray.800',
   'ds-gray-900': 'base.gray.900',
+
   'ds-blue': 'base.blue',
   'ds-indigo': 'base.indigo',
   'ds-purple': 'base.purple',
@@ -22,15 +23,17 @@ const BOOTSTRAP_TOKEN_MAP = {
   'ds-cyan': 'base.cyan',
   'ds-black': 'base.black',
   'ds-white': 'base.white',
+
   'ds-action-link': 'action.link',
-  'primary': 'brand.primary',
-  'secondary': 'brand.secondary',
-  'success': 'feedback.success',
-  'info': 'feedback.info',
-  'warning': 'feedback.warning',
-  'danger': 'feedback.danger',
-  'light': 'utility.light',
-  'dark': 'utility.dark',
+
+  'ds-primary': 'brand.primary.default',
+  'ds-secondary': 'brand.secondary.default',
+  'ds-success': 'feedback.success',
+  'ds-info': 'feedback.info',
+  'ds-warning': 'feedback.warning',
+  'ds-danger': 'feedback.danger',
+  'ds-light': 'utility.light',
+  'ds-dark': 'utility.dark',
 };
 
 const tokens = JSON.parse(
@@ -38,7 +41,9 @@ const tokens = JSON.parse(
 );
 
 const colors = tokens.global.color;
-// console.log(colors);
+
+let scss = `// AUTO-GENERATED — DO NOT EDIT\n\n`;
+const errors = [];
 
 const getToken = (path) => {
 
@@ -47,9 +52,9 @@ const getToken = (path) => {
 
   for (const key of keys) {
 
-    if (!current) {
+    if (!current || typeof current !== 'object') {
 
-      throw new Error(`❌ Token invalid: ${ path }`);
+      throw new Error(`❌ Invalid token path: ${ path }`);
     }
 
     current = current[key];
@@ -58,7 +63,28 @@ const getToken = (path) => {
   return current;
 };
 
-const resolveValue = (value) => {
+const isFinalToken = (node) => {
+
+  return node && typeof node === 'object' && '$value' in node && '$type' in node;
+};
+
+const assertFinalToken = (node, path, variableName) => {
+
+  if (!isFinalToken(node)) {
+
+    throw new Error(
+        [
+          '❌ Invalid token mapping',
+          '',
+          `$${ variableName } → ${ path }`,
+          'Reason: path does not resolve to a final token ($value missing)',
+          'Hint: point to an explicit variant (e.g. *.default)',
+        ].join('\n'),
+    );
+  }
+};
+
+const resolveValue = (value, stack = []) => {
 
   if (typeof value !== 'string') {
 
@@ -74,37 +100,54 @@ const resolveValue = (value) => {
       .replace(/[{}]/g, '')
       .replace('global.color.', '');
 
+  if (stack.includes(refPath)) {
+
+    throw new Error(
+        `❌ Circular token reference detected:\n${ [
+          ...stack,
+          refPath,
+        ].join(' → ') }`,
+    );
+  }
+
   const token = getToken(refPath);
 
-  if (!token?.value) {
+  if (!isFinalToken(token)) {
 
-    throw new Error(`❌ Token not found: ${ refPath }`);
+    throw new Error(`❌ Alias does not resolve to a final token: ${ refPath }`);
   }
 
-  return resolveValue(token.value);
+  return resolveValue(token.$value, [...stack, refPath]);
 };
 
-// SCSS output
-let scss = `// AUTO-GENERATED — DO NOT EDIT\n\n`;
+Object.entries(BOOTSTRAP_TOKEN_MAP).forEach(([variableName, tokenPath]) => {
 
-Object.entries(BOOTSTRAP_TOKEN_MAP).forEach(([nameVariable, tokenPath]) => {
+  try {
 
-  const token = getToken(tokenPath);
+    const token = getToken(tokenPath);
 
-  if (!token) {
+    assertFinalToken(token, tokenPath, variableName);
 
-    throw new Error(`❌ Missing token: ${ tokenPath }`);
+    const value = resolveValue(token.$value);
+
+    scss += `$${ variableName }: ${ value };\n`;
+
+  } catch (err) {
+
+    errors.push(err.message);
   }
-
-  const value = resolveValue(token.value);
-  // console.log(`$${nameVariable}: ${value}`);
-
-  scss += `$${ nameVariable }: ${ value };\n`;
 });
+
+if (errors.length > 0) {
+
+  console.error('\n❌ Token build failed:\n');
+  console.error(errors.join('\n\n'));
+  process.exit(1);
+}
 
 fs.writeFileSync(
     'resources/scss/frontend/tokens/_color-tokens.scss',
     scss,
 );
 
-console.log('✅ _color-tokens.scss generate');
+console.log('✅ _color-tokens.scss generated successfully');
