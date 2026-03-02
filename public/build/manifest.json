@@ -1,6 +1,6 @@
 {
-  "_frontend-UQadoxIo.js": {
-    "file": "assets/frontend-UQadoxIo.js",
+  "_frontend-D96WKv6K.js": {
+    "file": "assets/frontend-D96WKv6K.js",
     "name": "frontend"
   },
   "_swiper-BmjqlY3u.js": {
@@ -539,22 +539,22 @@
     "src": "resources/images/video-film.webp"
   },
   "resources/js/components/share-api.js": {
-    "file": "assets/share-api-BDKgjPTI.js",
+    "file": "assets/share-api-CxcXLBUB.js",
     "name": "share-api",
     "src": "resources/js/components/share-api.js",
     "isEntry": true,
     "imports": [
-      "_frontend-UQadoxIo.js"
+      "_frontend-D96WKv6K.js"
     ]
   },
   "resources/js/components/sliders/articles.js": {
-    "file": "assets/articles-B2Tps4Zv.js",
+    "file": "assets/articles-BeAaxmw3.js",
     "name": "articles",
     "src": "resources/js/components/sliders/articles.js",
     "isEntry": true,
     "imports": [
       "_swiper-BmjqlY3u.js",
-      "_frontend-UQadoxIo.js",
+      "_frontend-D96WKv6K.js",
       "_swiper-core-CjM4C1qp.js"
     ]
   },
@@ -569,26 +569,26 @@
     ]
   },
   "resources/js/frontend-imports.js": {
-    "file": "assets/frontend-imports-Cycz5IRg.js",
+    "file": "assets/frontend-imports-Djxkjh3z.js",
     "name": "frontend-imports",
     "src": "resources/js/frontend-imports.js",
     "isEntry": true,
     "imports": [
-      "_frontend-UQadoxIo.js",
+      "_frontend-D96WKv6K.js",
       "_swiper-core-CjM4C1qp.js"
     ]
   },
   "resources/js/pages/theme.js": {
-    "file": "assets/theme-DU4QINYv.js",
+    "file": "assets/theme-BdHL0HSG.js",
     "name": "theme",
     "src": "resources/js/pages/theme.js",
     "isEntry": true,
     "imports": [
-      "_frontend-UQadoxIo.js"
+      "_frontend-D96WKv6K.js"
     ]
   },
   "resources/scss/frontend.scss": {
-    "file": "assets/frontend-Dl5-R0MG.css",
+    "file": "assets/frontend-CF8giJXG.css",
     "src": "resources/scss/frontend.scss",
     "isEntry": true
   }
