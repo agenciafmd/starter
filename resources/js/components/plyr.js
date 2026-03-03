@@ -4,6 +4,8 @@ function setupPlyr() {
 
   const playerEmbeds = document.querySelectorAll('.js-player-embed');
 
+  let players = [];
+
   if (!playerEmbeds) {
 
     return;
@@ -16,7 +18,18 @@ function setupPlyr() {
       quality: 1080,
       settings: ['captions', 'quality', 'speed', 'loop'],
     });
+
+    players.push(playerEmbed)
   });
+
+  document.addEventListener("click", function (event) {
+    players.forEach(player => {
+      const container = player.elements.container;
+      if (!container.contains(event.target) && !player.paused) {
+        player.pause();
+      }
+    })
+  })
 }
 
 function setupEmbedVideo() {
