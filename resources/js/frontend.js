@@ -9,7 +9,7 @@ import {
 } from './helpers/form-helpers.js';
 import { setupUtmHelpers } from './helpers/utm-helper.js';
 import { setupFmdHeader } from './components/fmd-header.js';
-import IMask from 'imask';
+import mask from '@alpinejs/mask';
 import ClipboardJS from 'clipboard';
 import WOW from 'wow.js';
 import { Modal, Popover, Tooltip, Toast } from 'bootstrap';
@@ -259,135 +259,70 @@ function isSafari() {
   return getBrowser() === 'safari';
 }
 
+function setupAlpine() {
+  Alpine.plugin(mask);
+
+  window.Alpine = Alpine;
+}
+
 function setupInputMasks() {
 
-  function setMaskToAllElements(elements, maskOptions) {
+  function setMaskToAllElements(elements, maskExpression) {
 
-    elements.forEach(function (element) {
+    elements.forEach((element) => {
+      element.setAttribute('x-mask:dynamic', maskExpression);
 
-      const mask = IMask(element, maskOptions);
-
-      mask.on('complete', function () {
-
-        // Safari doesn't detect the latest input changes
-        if (isSafari()) {
-
-          if ('createEvent' in document) {
-            const evt = new Event(
-                'change',
-                {
-                  'bubbles': true,
-                  'cancelable': false,
-                },
-            );
-            element.dispatchEvent(evt);
-            return;
-          }
-
-          element.dispatchEvent(new InputEvent('change'));
-        }
-      });
+      if (window.Alpine) {
+        Alpine.initTree(element);
+      }
     });
   }
 
-  const phoneMaskOptions = {
-    mask: [
-      { mask: '(00) 0000-0000' },
-      { mask: '(00) 00000-0000' },
-    ],
-  };
+  // PHONE (dynamic mask)
   setMaskToAllElements(
       document.querySelectorAll('.js-mask-phone'),
-      phoneMaskOptions,
+      '$input.length <= 14 ? \'(99) 9999-9999\' : \'(99) 99999-9999\'',
   );
 
-  const cpfMaskOptions = { mask: '000.000.000-00' };
+  // CPF
   setMaskToAllElements(
       document.querySelectorAll('.js-mask-cpf'),
-      cpfMaskOptions,
+      () => { return '999.999.999-99'; },
   );
 
-  const cnpjMaskOptions = { mask: '00.000.000/0000-00' };
+  // CNPJ
   setMaskToAllElements(
       document.querySelectorAll('.js-mask-cnpj'),
-      cnpjMaskOptions,
+      () => { return '99.999.999/9999-99'; },
   );
 
-  const cpfCnpjMaskOptions = { mask: [cpfMaskOptions, cnpjMaskOptions] };
+  // CPF or CNPJ (dynamic)
   setMaskToAllElements(
       document.querySelectorAll('.js-mask-cpfcnpj'),
-      cpfCnpjMaskOptions,
+      '$input.replace(/\\D/g,\'\').length <= 11 ? \'999.999.999-99\' : \'99.999.999/9999-99\'',
   );
 
-  const rgMaskOptions = {
-    mask: '00.000.000-X',
-    definitions: {
-      'X': /[0-9Xx]/,
-    },
-  };
+  // RG
   setMaskToAllElements(
       document.querySelectorAll('.js-mask-rg'),
-      rgMaskOptions,
+      '$input.endsWith(\'x\') ? \'99.999.999-x\' : ($input.endsWith(\'X\') ? \'99.999.999-X\' : \'99.999.999-9\')',
   );
 
-  const cepMaskOptions = { mask: '00000-000' };
+  // CEP
   setMaskToAllElements(
       document.querySelectorAll('.js-mask-cep'),
-      cepMaskOptions,
+      () => { return '99999-999'; },
   );
 
-  const moneyMaskOptions = {
-    mask: 'R$ num',
-    blocks: {
-      num: {
-        mask: Number,
-        thousandsSeparator: '.',
-      },
-    },
-  };
   setMaskToAllElements(
       document.querySelectorAll('.js-mask-money'),
-      moneyMaskOptions,
+      '\'R$ \' + $money($input, \',\')',
   );
 
-  const dateMaskOptions = {
-    mask: Date,
-    autofix: true,
-    pattern: 'd{/}`m{/}`Y',
-    blocks: {
-      Y: {
-        mask: IMask.MaskedRange,
-        from: 1900,
-        to: 2999,
-      },
-    },
-    format: function (date) {
-      let day = date.getDate();
-      let month = date.getMonth() + 1;
-      const year = date.getFullYear();
-
-      if (day < 10) {
-        day = '0' + day;
-      }
-      if (month < 10) {
-        month = '0' + month;
-      }
-
-      return [day, month, year].join('/');
-    },
-    parse: function (str) {
-      const yearMonthDay = str.split('/');
-      const day = yearMonthDay[0];
-      const month = yearMonthDay[1] - 1;
-      const year = yearMonthDay[2];
-
-      // console.log(new Date(year, month, day))
-      return new Date(year, month, day);
-    },
-  };
+  // DATE
   setMaskToAllElements(
       document.querySelectorAll('.js-mask-date'),
-      dateMaskOptions,
+      () => { return '99/99/9999'; },
   );
 
   const cpfCnpjValidators = new CpfCnpjValidators();
@@ -655,6 +590,8 @@ function setupModalConfig() {
   // setupStateCityOptions();
 
   onChangeSelectLink();
+
+  setupAlpine();
 
   setupInputMasks();
 
