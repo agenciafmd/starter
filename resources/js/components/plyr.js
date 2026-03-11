@@ -19,17 +19,21 @@ function setupPlyr() {
       settings: ['captions', 'quality', 'speed', 'loop'],
     });
 
-    players.push(playerEmbed)
+    players.push(playerEmbed);
   });
 
-  document.addEventListener("click", function (event) {
+  document.addEventListener('click', function (event) {
+
     players.forEach(player => {
+
       const container = player.elements.container;
+
       if (!container.contains(event.target) && !player.paused) {
+
         player.pause();
       }
-    })
-  })
+    });
+  });
 }
 
 function setupEmbedVideo() {
